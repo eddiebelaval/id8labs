@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import * as THREE from 'three'
+import type * as THREE from 'three'
 
 /**
  * Strange Attractor Background
@@ -38,30 +38,11 @@ const SCALE = 1.0
 const CENTER_Y_OFFSET = -27
 const CROSSOVER_THRESHOLD = 2.5
 
-// id8Labs palette
-const COLORS = {
-  bg: 0x0a0a0b,
-  trail: new THREE.Color(0xff7a4d),
-  trailFade: new THREE.Color(0x3a1a08),
-  crossover: new THREE.Color(0x4ecdc4),
-  particle: new THREE.Color(0xff7a4d),
-  particleDim: new THREE.Color(0x5a2a10),
-  filament: new THREE.Color(0x222222),
-}
-
 function lorenzStep(x: number, y: number, z: number, dt: number): [number, number, number] {
   const dx = LORENZ.sigma * (y - x) * dt
   const dy = (x * (LORENZ.rho - z) - y) * dt
   const dz = (x * y - LORENZ.beta * z) * dt
   return [x + dx, y + dy, z + dz]
-}
-
-function toScene(x: number, y: number, z: number): THREE.Vector3 {
-  return new THREE.Vector3(
-    x * SCALE,
-    (z + CENTER_Y_OFFSET) * SCALE,
-    y * SCALE
-  )
 }
 
 export function NeuralNetworkBg({
@@ -70,6 +51,7 @@ export function NeuralNetworkBg({
   const containerRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
   const animationIdRef = useRef<number>(0)
+  const cleanupRef = useRef<(() => void) | null>(null)
 
   useEffect(() => {
     setIsClient(true)
@@ -79,6 +61,31 @@ export function NeuralNetworkBg({
     if (!isClient || !containerRef.current) return
 
     const container = containerRef.current
+    let disposed = false
+
+    async function init() {
+      const THREE = await import('three')
+
+      if (disposed || !container) return
+
+      // id8Labs palette
+      const COLORS = {
+        bg: 0x0a0a0b,
+        trail: new THREE.Color(0xff7a4d),
+        trailFade: new THREE.Color(0x3a1a08),
+        crossover: new THREE.Color(0x4ecdc4),
+        particle: new THREE.Color(0xff7a4d),
+        particleDim: new THREE.Color(0x5a2a10),
+        filament: new THREE.Color(0x222222),
+      }
+
+      function toScene(x: number, y: number, z: number): THREE.Vector3 {
+        return new THREE.Vector3(
+          x * SCALE,
+          (z + CENTER_Y_OFFSET) * SCALE,
+          y * SCALE
+        )
+      }
 
     // Detect mobile for performance scaling
     const isMobile = window.innerWidth < 768
@@ -463,8 +470,6 @@ export function NeuralNetworkBg({
     const crossoverGlow = createCrossoverGlow()
 
     // ─── Animation Loop ─────────────────────────────
-    let disposed = false
-
     function animate() {
       if (disposed) return
       const animationId = requestAnimationFrame(animate)
@@ -489,24 +494,19 @@ export function NeuralNetworkBg({
       const timeSinceScroll = now - scrollState.lastScrollTime
 
       if (scrollState.isScrolling) {
-        // Apply scroll velocity to rotation
         scrollState.scrollDrivenAngle += scrollState.scrollVelocity * 0.05
         scrollState.scrollVelocity *= VELOCITY_DECAY
 
-        // Return to auto-rotate when scroll decays
         if (timeSinceScroll > IDLE_DELAY && Math.abs(scrollState.scrollVelocity) < 0.01) {
           scrollState.isScrolling = false
           scrollState.scrollVelocity = 0
         }
       }
 
-      // Auto-rotate always accumulates (provides baseline spin)
       scrollState.autoRotateAngle += AUTO_ROTATE_SPEED
 
-      // Total rotation = auto + scroll-driven
       const totalAngle = scrollState.autoRotateAngle + scrollState.scrollDrivenAngle
 
-      // Orbit camera around the attractor
       const orbitRadius = 30
       camera.position.x = Math.sin(totalAngle) * orbitRadius
       camera.position.z = Math.cos(totalAngle) * orbitRadius
@@ -531,18 +531,16 @@ export function NeuralNetworkBg({
 
     window.addEventListener('resize', handleResize)
 
-    // ─── Cleanup ────────────────────────────────────
-    return () => {
-      disposed = true
+    // Store cleanup references
+    cleanupRef.current = () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
       if (scrollRafId !== null) cancelAnimationFrame(scrollRafId)
 
-      // Dispose Three.js resources
       for (const trail of trails) trail.dispose()
       cloud.dispose()
 
-      filaments.traverse((child) => {
+      filaments.traverse((child: THREE.Object3D) => {
         if (child instanceof THREE.Line) {
           child.geometry.dispose()
           ;(child.material as THREE.Material).dispose()
@@ -558,7 +556,14 @@ export function NeuralNetworkBg({
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement)
       }
+    }
+    } // end init()
 
+    init()
+
+    return () => {
+      disposed = true
+      cleanupRef.current?.()
     }
   }, [isClient])
 
