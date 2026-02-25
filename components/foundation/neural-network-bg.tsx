@@ -1,482 +1,577 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
 
 /**
- * Neural Network Background Component
+ * Strange Attractor Background
  *
- * 3D visualization of neurons firing and connecting
- * Slowly rotates in space, synapses fire and travel to connected neurons
+ * Lorenz attractor visualization — a deterministic chaotic system
+ * that traces the topology of cross-domain thinking.
+ * Two lobes (human dynamics / technical architecture) connected
+ * by an insight zone where trajectories cross over.
+ *
+ * Scroll-driven rotation: scrolling the page rotates the attractor.
+ * When idle, it auto-rotates slowly.
  */
 
 interface NeuralNetworkBgProps {
-  neuronCount?: number      // Number of neurons (default 60)
-  connectionDensity?: number // 0-100, how connected the network is
-  rotationSpeed?: number    // How fast it rotates (default 0.001)
-  fireRate?: number         // How often neurons fire (0-100)
-  orangeIntensity?: number  // 0-100
-  parallaxFactor?: number   // How much parallax effect (0 = none, 0.15 = subtle)
-  zoomFactor?: number       // How much to zoom on scroll (0 = none, 0.5 = subtle zoom in)
+  neuronCount?: number
+  connectionDensity?: number
+  rotationSpeed?: number
+  fireRate?: number
+  orangeIntensity?: number
+  parallaxFactor?: number
+  zoomFactor?: number
   className?: string
 }
 
-// Color palette
+// Lorenz system parameters
+const LORENZ = {
+  sigma: 10,
+  rho: 28,
+  beta: 8 / 3,
+  dt: 0.003,
+}
+
+const SCALE = 1.0
+const CENTER_Y_OFFSET = -27
+const CROSSOVER_THRESHOLD = 2.5
+
+// id8Labs palette
 const COLORS = {
-  background: '#0a0a0b',
-  neuronDim: '#1a1a1c',
-  neuronActive: '#2a2a2e',
-  connectionDim: 'rgba(40, 40, 45, 0.3)',
-  connectionActive: 'rgba(255, 122, 77, 0.6)',
-  fireOrange: '#FF7A4D',
-  fireGlow: 'rgba(255, 122, 77, 0.8)',
+  bg: 0x0a0a0b,
+  trail: new THREE.Color(0xff7a4d),
+  trailFade: new THREE.Color(0x3a1a08),
+  crossover: new THREE.Color(0x4ecdc4),
+  particle: new THREE.Color(0xff7a4d),
+  particleDim: new THREE.Color(0x5a2a10),
+  filament: new THREE.Color(0x222222),
 }
 
-interface Vector3 {
-  x: number
-  y: number
-  z: number
+function lorenzStep(x: number, y: number, z: number, dt: number): [number, number, number] {
+  const dx = LORENZ.sigma * (y - x) * dt
+  const dy = (x * (LORENZ.rho - z) - y) * dt
+  const dz = (x * y - LORENZ.beta * z) * dt
+  return [x + dx, y + dy, z + dz]
 }
 
-interface Neuron {
-  pos: Vector3           // 3D position
-  connections: number[]  // Indices of connected neurons
-  brightness: number     // Current brightness (0-1)
-  baseSize: number       // Base size of neuron
-}
-
-interface Signal {
-  from: number          // Neuron index
-  to: number            // Neuron index
-  progress: number      // 0-1 along the connection
-  speed: number         // How fast it travels
-}
-
-// 3D rotation functions
-function rotateY(point: Vector3, angle: number): Vector3 {
-  const cos = Math.cos(angle)
-  const sin = Math.sin(angle)
-  return {
-    x: point.x * cos - point.z * sin,
-    y: point.y,
-    z: point.x * sin + point.z * cos,
-  }
-}
-
-function rotateX(point: Vector3, angle: number): Vector3 {
-  const cos = Math.cos(angle)
-  const sin = Math.sin(angle)
-  return {
-    x: point.x,
-    y: point.y * cos - point.z * sin,
-    z: point.y * sin + point.z * cos,
-  }
-}
-
-// Project 3D to 2D with perspective
-function project(point: Vector3, width: number, height: number, fov: number = 500): { x: number; y: number; scale: number } {
-  // Ensure scale is always positive to prevent negative radius in canvas arc()
-  // When point.z < -fov, the object is "behind the camera" - clamp to small positive value
-  const rawScale = fov / (fov + point.z)
-  const scale = Math.max(0.01, rawScale)
-  return {
-    x: point.x * scale + width / 2,
-    y: point.y * scale + height / 2,
-    scale: scale,
-  }
+function toScene(x: number, y: number, z: number): THREE.Vector3 {
+  return new THREE.Vector3(
+    x * SCALE,
+    (z + CENTER_Y_OFFSET) * SCALE,
+    y * SCALE
+  )
 }
 
 export function NeuralNetworkBg({
-  neuronCount = 60,
-  connectionDensity = 40,
-  rotationSpeed = 0.001,
-  fireRate = 30,
-  orangeIntensity = 60,
-  parallaxFactor = 0.15,
-  zoomFactor = 0.4,
   className = '',
 }: NeuralNetworkBgProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isClient, setIsClient] = useState(false)
-  const neuronsRef = useRef<Neuron[]>([])
-  const signalsRef = useRef<Signal[]>([])
-  const rotationRef = useRef({ x: 0, y: 0 })
-  const scrollOffsetRef = useRef(0)
-  const zoomRef = useRef(1) // Current zoom level (1 = normal, higher = zoomed in)
+  const animationIdRef = useRef<number>(0)
 
   useEffect(() => {
     setIsClient(true)
   }, [])
 
-  // Parallax scroll effect + zoom
-  // Uses RAF to batch updates and avoid layout thrashing (INP optimization)
   useEffect(() => {
-    if (!isClient) return
+    if (!isClient || !containerRef.current) return
 
-    let rafId: number | null = null
-    let lastScrollY = -1
+    const container = containerRef.current
 
-    const updateTransform = () => {
-      rafId = null
-      const scrollY = window.scrollY
+    // Detect mobile for performance scaling
+    const isMobile = window.innerWidth < 768
+    const TRAIL_COUNT = isMobile ? 30 : 80
+    const PARTICLE_COUNT = isMobile ? 600 : 2000
+    const FILAMENT_COUNT = isMobile ? 12 : 30
+    const TRAIL_LENGTH = isMobile ? 300 : 600
 
-      // Skip if scroll position hasn't changed
-      if (scrollY === lastScrollY) return
-      lastScrollY = scrollY
+    // Scene
+    const scene = new THREE.Scene()
+    scene.background = new THREE.Color(COLORS.bg)
+    // No fog — let the attractor shine at full brightness
 
-      // Calculate scroll progress (0 to 1)
-      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
-      const scrollProgress = Math.min(1, scrollY / maxScroll)
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+      55,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      500
+    )
+    camera.position.set(0, 5, 30)
 
-      // Parallax translation - use will-change CSS to promote to compositor
-      if (parallaxFactor !== 0) {
-        scrollOffsetRef.current = scrollY * parallaxFactor
-        if (containerRef.current) {
-          containerRef.current.style.transform = `translate3d(0, ${scrollOffsetRef.current}px, 0)`
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: false })
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    container.appendChild(renderer.domElement)
+
+    // Clock
+    const clock = new THREE.Clock()
+
+    // ─── Trail System ───────────────────────────────
+    class Trail {
+      x: number
+      y: number
+      z: number
+      prevX: number
+      positions: Float32Array
+      colors: Float32Array
+      head: number
+      length: number
+      crossoverCount: number
+      geometry: THREE.BufferGeometry
+      material: THREE.LineBasicMaterial
+      line: THREE.Line
+
+      constructor(index: number) {
+        const offset = index * 0.01
+        this.x = 1 + offset * Math.cos(index)
+        this.y = 1 + offset * Math.sin(index)
+        this.z = 1 + offset
+        this.prevX = this.x
+        this.head = 0
+        this.length = 0
+        this.crossoverCount = 0
+
+        this.positions = new Float32Array(TRAIL_LENGTH * 3)
+        this.colors = new Float32Array(TRAIL_LENGTH * 3)
+
+        // Pre-fill history
+        for (let i = 0; i < TRAIL_LENGTH; i++) {
+          this.step()
+        }
+
+        this.geometry = new THREE.BufferGeometry()
+        this.geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3))
+        this.geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3))
+
+        this.material = new THREE.LineBasicMaterial({
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.6 + Math.random() * 0.3,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        })
+
+        this.line = new THREE.Line(this.geometry, this.material)
+        scene.add(this.line)
+      }
+
+      step() {
+        this.prevX = this.x
+        ;[this.x, this.y, this.z] = lorenzStep(this.x, this.y, this.z, LORENZ.dt)
+
+        const p = toScene(this.x, this.y, this.z)
+        const idx = this.head * 3
+        this.positions[idx] = p.x
+        this.positions[idx + 1] = p.y
+        this.positions[idx + 2] = p.z
+
+        const atCrossover = Math.abs(this.x) < CROSSOVER_THRESHOLD
+        if (atCrossover) {
+          if (this.prevX * this.x < 0) this.crossoverCount++
+          const t = 1 - Math.abs(this.x) / CROSSOVER_THRESHOLD
+          const c = COLORS.trail.clone().lerp(COLORS.crossover, t * 0.8)
+          this.colors[idx] = c.r
+          this.colors[idx + 1] = c.g
+          this.colors[idx + 2] = c.b
+        } else {
+          const dist = Math.sqrt(this.x * this.x + this.y * this.y) / 30
+          const c = COLORS.trail.clone().lerp(COLORS.trailFade, dist * 0.5)
+          this.colors[idx] = c.r
+          this.colors[idx + 1] = c.g
+          this.colors[idx + 2] = c.b
+        }
+
+        this.head = (this.head + 1) % TRAIL_LENGTH
+        this.length = Math.min(this.length + 1, TRAIL_LENGTH)
+      }
+
+      update() {
+        for (let i = 0; i < 3; i++) this.step()
+
+        for (let i = 0; i < this.length; i++) {
+          const age = (this.head - i + TRAIL_LENGTH) % TRAIL_LENGTH
+          const fade = Math.pow(1 - age / TRAIL_LENGTH, 2)
+          const ci = i * 3
+          this.colors[ci] *= fade
+          this.colors[ci + 1] *= fade
+          this.colors[ci + 2] *= fade
+        }
+
+        this.geometry.attributes.position.needsUpdate = true
+        this.geometry.attributes.color.needsUpdate = true
+        this.geometry.setDrawRange(0, this.length)
+      }
+
+      dispose() {
+        scene.remove(this.line)
+        this.geometry.dispose()
+        this.material.dispose()
+      }
+    }
+
+    // ─── Particle Cloud ─────────────────────────────
+    interface ParticleVelocity { x: number; y: number; z: number }
+
+    class ParticleCloud {
+      geometry: THREE.BufferGeometry
+      material: THREE.ShaderMaterial
+      points: THREE.Points
+      velocities: ParticleVelocity[]
+      positions: Float32Array
+      colors: Float32Array
+      sizes: Float32Array
+
+      constructor() {
+        this.positions = new Float32Array(PARTICLE_COUNT * 3)
+        this.colors = new Float32Array(PARTICLE_COUNT * 3)
+        this.sizes = new Float32Array(PARTICLE_COUNT)
+        this.velocities = []
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          let x = 0.1 + Math.random() * 2
+          let y = 0.1 + Math.random() * 2
+          let z = 0.1 + Math.random() * 2
+
+          const steps = Math.floor(Math.random() * 5000) + 1000
+          for (let s = 0; s < steps; s++) {
+            ;[x, y, z] = lorenzStep(x, y, z, LORENZ.dt)
+          }
+
+          this.velocities.push({ x, y, z })
+
+          const p = toScene(x, y, z)
+          this.positions[i * 3] = p.x
+          this.positions[i * 3 + 1] = p.y
+          this.positions[i * 3 + 2] = p.z
+
+          const atCrossover = Math.abs(x) < CROSSOVER_THRESHOLD
+          const c = atCrossover
+            ? COLORS.particle.clone().lerp(COLORS.crossover, 0.5)
+            : COLORS.particle.clone().lerp(COLORS.particleDim, Math.random() * 0.7)
+
+          this.colors[i * 3] = c.r
+          this.colors[i * 3 + 1] = c.g
+          this.colors[i * 3 + 2] = c.b
+          this.sizes[i] = atCrossover ? 4 + Math.random() * 3 : 2 + Math.random() * 2
+        }
+
+        this.geometry = new THREE.BufferGeometry()
+        this.geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3))
+        this.geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3))
+        this.geometry.setAttribute('size', new THREE.BufferAttribute(this.sizes, 1))
+
+        this.material = new THREE.ShaderMaterial({
+          uniforms: {
+            uTime: { value: 0 },
+            uPixelRatio: { value: renderer.getPixelRatio() },
+          },
+          vertexShader: `
+            attribute float size;
+            attribute vec3 color;
+            varying vec3 vColor;
+            varying float vAlpha;
+            uniform float uTime;
+            uniform float uPixelRatio;
+
+            void main() {
+              vColor = color;
+              vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+              float dist = -mvPosition.z;
+              gl_PointSize = size * uPixelRatio * (80.0 / dist);
+              gl_Position = projectionMatrix * mvPosition;
+              float twinkle = sin(uTime * 2.0 + position.x * 10.0 + position.y * 7.0) * 0.5 + 0.5;
+              vAlpha = 0.5 + twinkle * 0.5;
+            }
+          `,
+          fragmentShader: `
+            varying vec3 vColor;
+            varying float vAlpha;
+
+            void main() {
+              float d = length(gl_PointCoord - vec2(0.5));
+              if (d > 0.5) discard;
+              float glow = 1.0 - smoothstep(0.0, 0.5, d);
+              glow = pow(glow, 1.5);
+              gl_FragColor = vec4(vColor, glow * vAlpha);
+            }
+          `,
+          transparent: true,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        })
+
+        this.points = new THREE.Points(this.geometry, this.material)
+        scene.add(this.points)
+      }
+
+      update(elapsed: number) {
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          const v = this.velocities[i]
+          ;[v.x, v.y, v.z] = lorenzStep(v.x, v.y, v.z, LORENZ.dt)
+
+          const p = toScene(v.x, v.y, v.z)
+          this.positions[i * 3] = p.x
+          this.positions[i * 3 + 1] = p.y
+          this.positions[i * 3 + 2] = p.z
+
+          const atCrossover = Math.abs(v.x) < CROSSOVER_THRESHOLD
+          if (atCrossover) {
+            const t = 1 - Math.abs(v.x) / CROSSOVER_THRESHOLD
+            const c = COLORS.particle.clone().lerp(COLORS.crossover, t * 0.7)
+            this.colors[i * 3] = c.r
+            this.colors[i * 3 + 1] = c.g
+            this.colors[i * 3 + 2] = c.b
+            this.sizes[i] = 4 + t * 3
+          } else {
+            this.colors[i * 3] = COLORS.particle.r * (0.4 + Math.random() * 0.3)
+            this.colors[i * 3 + 1] = COLORS.particle.g * (0.4 + Math.random() * 0.3)
+            this.colors[i * 3 + 2] = COLORS.particle.b * (0.4 + Math.random() * 0.3)
+            this.sizes[i] = 2 + Math.random() * 1.5
+          }
+        }
+
+        this.geometry.attributes.position.needsUpdate = true
+        this.geometry.attributes.color.needsUpdate = true
+        this.geometry.attributes.size.needsUpdate = true
+        this.material.uniforms.uTime.value = elapsed
+      }
+
+      dispose() {
+        scene.remove(this.points)
+        this.geometry.dispose()
+        this.material.dispose()
+      }
+    }
+
+    // ─── Filaments (long-range connections) ─────────
+    function createFilaments(): THREE.Group {
+      const group = new THREE.Group()
+
+      for (let i = 0; i < FILAMENT_COUNT; i++) {
+        let x1 = 0.1 + Math.random(), y1 = 0.1 + Math.random(), z1 = 0.1 + Math.random()
+        let x2 = 0.1 + Math.random() * 3, y2 = 0.1 + Math.random() * 3, z2 = 0.1 + Math.random() * 3
+
+        const steps1 = 3000 + Math.random() * 3000
+        for (let s = 0; s < steps1; s++) {
+          ;[x1, y1, z1] = lorenzStep(x1, y1, z1, LORENZ.dt)
+        }
+        const steps2 = 3000 + Math.random() * 3000
+        for (let s = 0; s < steps2; s++) {
+          ;[x2, y2, z2] = lorenzStep(x2, y2, z2, LORENZ.dt)
+        }
+
+        const p1 = toScene(x1, y1, z1)
+        const p2 = toScene(x2, y2, z2)
+        const dist = p1.distanceTo(p2)
+
+        if (dist > 15) {
+          const mid = p1.clone().add(p2).multiplyScalar(0.5)
+          mid.y += (Math.random() - 0.5) * 5
+
+          const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2)
+          const pts = curve.getPoints(20)
+          const geo = new THREE.BufferGeometry().setFromPoints(pts)
+          const mat = new THREE.LineBasicMaterial({
+            color: COLORS.filament,
+            transparent: true,
+            opacity: 0.12 + Math.random() * 0.1,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+          })
+          group.add(new THREE.Line(geo, mat))
         }
       }
 
-      // Zoom effect: scale from 1 to (1 + zoomFactor) as user scrolls
-      zoomRef.current = 1 + scrollProgress * zoomFactor
+      scene.add(group)
+      return group
     }
 
+    // ─── Crossover Glow Ring ────────────────────────
+    function createCrossoverGlow(): THREE.Mesh {
+      const geo = new THREE.TorusGeometry(CROSSOVER_THRESHOLD * SCALE * 1.5, 0.3, 8, 32)
+      const mat = new THREE.MeshBasicMaterial({
+        color: COLORS.crossover,
+        transparent: true,
+        opacity: 0.06,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      })
+      const torus = new THREE.Mesh(geo, mat)
+      torus.rotation.x = Math.PI / 2
+      torus.position.y = 1.5
+      scene.add(torus)
+      return torus
+    }
+
+    // ─── Scroll-Driven Rotation ─────────────────────
+    interface ScrollState {
+      lastScrollY: number
+      scrollVelocity: number
+      autoRotateAngle: number
+      scrollDrivenAngle: number
+      lastScrollTime: number
+      isScrolling: boolean
+    }
+
+    const scrollState: ScrollState = {
+      lastScrollY: window.scrollY,
+      scrollVelocity: 0,
+      autoRotateAngle: 0,
+      scrollDrivenAngle: 0,
+      lastScrollTime: 0,
+      isScrolling: false,
+    }
+
+    const AUTO_ROTATE_SPEED = 0.002
+    const SCROLL_SENSITIVITY = 0.003
+    const VELOCITY_DECAY = 0.92
+    const IDLE_DELAY = 800
+
+    let scrollRafId: number | null = null
+
     const handleScroll = () => {
-      // Throttle to rAF to avoid blocking main thread (INP fix)
-      if (rafId === null) {
-        rafId = requestAnimationFrame(updateTransform)
-      }
+      if (scrollRafId !== null) return
+      scrollRafId = requestAnimationFrame(() => {
+        scrollRafId = null
+        const currentY = window.scrollY
+        const delta = currentY - scrollState.lastScrollY
+        scrollState.lastScrollY = currentY
+
+        if (Math.abs(delta) > 0.5) {
+          scrollState.scrollVelocity += delta * SCROLL_SENSITIVITY
+          scrollState.lastScrollTime = performance.now()
+          scrollState.isScrolling = true
+        }
+      })
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    updateTransform() // Initialize on mount
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
-      }
-    }
-  }, [isClient, parallaxFactor, zoomFactor])
 
-  useEffect(() => {
-    if (!isClient) return
-
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    let width = window.innerWidth
-    let viewportHeight = window.innerHeight  // For centering neurons
-    let canvasHeight = window.innerHeight    // Extended for parallax
-
-    // Calculate extra height needed for parallax scrolling
-    // This ensures the background never runs out as we scroll
-    const getCanvasHeight = () => {
-      const pageHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        window.innerHeight
-      )
-      const maxScroll = pageHeight - window.innerHeight
-      const maxParallaxOffset = maxScroll * parallaxFactor
-      // Add generous buffer to ensure we never see the edge
-      return window.innerHeight + maxParallaxOffset + 500
+    // ─── Initialize ─────────────────────────────────
+    const trails: Trail[] = []
+    for (let i = 0; i < TRAIL_COUNT; i++) {
+      trails.push(new Trail(i))
     }
 
-    const resize = () => {
-      width = window.innerWidth
-      viewportHeight = window.innerHeight  // Actual viewport for centering
-      canvasHeight = getCanvasHeight()     // Extended height for parallax
-      canvas.width = width
-      canvas.height = canvasHeight
+    const cloud = new ParticleCloud()
+    const filaments = createFilaments()
+    const crossoverGlow = createCrossoverGlow()
+
+    // ─── Animation Loop ─────────────────────────────
+    let disposed = false
+
+    function animate() {
+      if (disposed) return
+      const animationId = requestAnimationFrame(animate)
+
+      const elapsed = clock.getElapsedTime()
+      const now = performance.now()
+
+      // Update trails
+      for (const trail of trails) {
+        trail.update()
+      }
+
+      // Update particle cloud
+      cloud.update(elapsed)
+
+      // Pulse crossover glow
+      const glowMat = crossoverGlow.material as THREE.MeshBasicMaterial
+      glowMat.opacity = 0.04 + Math.sin(elapsed * 0.5) * 0.03
+      crossoverGlow.scale.setScalar(1 + Math.sin(elapsed * 0.3) * 0.1)
+
+      // ─── Rotation: scroll-driven + auto ─────────
+      const timeSinceScroll = now - scrollState.lastScrollTime
+
+      if (scrollState.isScrolling) {
+        // Apply scroll velocity to rotation
+        scrollState.scrollDrivenAngle += scrollState.scrollVelocity * 0.05
+        scrollState.scrollVelocity *= VELOCITY_DECAY
+
+        // Return to auto-rotate when scroll decays
+        if (timeSinceScroll > IDLE_DELAY && Math.abs(scrollState.scrollVelocity) < 0.01) {
+          scrollState.isScrolling = false
+          scrollState.scrollVelocity = 0
+        }
+      }
+
+      // Auto-rotate always accumulates (provides baseline spin)
+      scrollState.autoRotateAngle += AUTO_ROTATE_SPEED
+
+      // Total rotation = auto + scroll-driven
+      const totalAngle = scrollState.autoRotateAngle + scrollState.scrollDrivenAngle
+
+      // Orbit camera around the attractor
+      const orbitRadius = 30
+      camera.position.x = Math.sin(totalAngle) * orbitRadius
+      camera.position.z = Math.cos(totalAngle) * orbitRadius
+      camera.position.y = 5 + Math.sin(elapsed * 0.1) * 2
+      camera.lookAt(0, 0, 0)
+
+      renderer.render(scene, camera)
+
+      animationIdRef.current = animationId
     }
 
-    // Initialize neurons in a 3D sphere/ellipsoid
-    const initializeNeurons = () => {
-      neuronsRef.current = []
-      signalsRef.current = [] // Clear any existing signals
-      // Use viewportHeight for spread calculation so neurons stay in visible area
-      const spread = Math.min(width, viewportHeight) * 0.4
-
-      for (let i = 0; i < neuronCount; i++) {
-        // Distribute in a sphere using fibonacci sphere
-        const phi = Math.acos(1 - 2 * (i + 0.5) / neuronCount)
-        const theta = Math.PI * (1 + Math.sqrt(5)) * i
-
-        // Add some randomness to break perfect sphere
-        const r = spread * (0.6 + Math.random() * 0.4)
-
-        const pos: Vector3 = {
-          x: r * Math.sin(phi) * Math.cos(theta) + (Math.random() - 0.5) * spread * 0.3,
-          y: r * Math.sin(phi) * Math.sin(theta) * 0.7 + (Math.random() - 0.5) * spread * 0.3, // Flatten slightly
-          z: r * Math.cos(phi) + (Math.random() - 0.5) * spread * 0.3,
-        }
-
-        neuronsRef.current.push({
-          pos,
-          connections: [],
-          brightness: 0.1 + Math.random() * 0.1,
-          baseSize: 2 + Math.random() * 3,
-        })
-      }
-
-      // Create connections based on proximity
-      const maxDist = spread * 0.6
-      for (let i = 0; i < neuronCount; i++) {
-        for (let j = i + 1; j < neuronCount; j++) {
-          const dx = neuronsRef.current[i].pos.x - neuronsRef.current[j].pos.x
-          const dy = neuronsRef.current[i].pos.y - neuronsRef.current[j].pos.y
-          const dz = neuronsRef.current[i].pos.z - neuronsRef.current[j].pos.z
-          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
-
-          // Connect if close enough and random chance based on density
-          if (dist < maxDist && Math.random() * 100 < connectionDensity) {
-            neuronsRef.current[i].connections.push(j)
-            neuronsRef.current[j].connections.push(i)
-          }
-        }
-      }
-    }
-
-    // Fire a signal from a random neuron
-    const fireSignal = () => {
-      if (neuronsRef.current.length === 0) return
-
-      const fromIdx = Math.floor(Math.random() * neuronsRef.current.length)
-      const neuron = neuronsRef.current[fromIdx]
-
-      if (neuron.connections.length > 0) {
-        const toIdx = neuron.connections[Math.floor(Math.random() * neuron.connections.length)]
-
-        signalsRef.current.push({
-          from: fromIdx,
-          to: toIdx,
-          progress: 0,
-          speed: 0.008 + Math.random() * 0.012,
-        })
-
-        // Light up the source neuron
-        neuron.brightness = 1
-      }
-    }
-
-    // Animation loop
-    let animationId: number
-    let frameCount = 0
-
-    const animate = () => {
-      frameCount++
-
-      // Clear canvas (use full canvasHeight for extended parallax area)
-      ctx.fillStyle = COLORS.background
-      ctx.fillRect(0, 0, width, canvasHeight)
-
-      // Slowly rotate
-      rotationRef.current.y += rotationSpeed
-      rotationRef.current.x = Math.sin(frameCount * 0.0003) * 0.3 // Gentle tilt
-
-      // Fire new signals based on rate
-      if (Math.random() * 100 < fireRate * 0.3) {
-        fireSignal()
-      }
-
-      // Transform all neuron positions
-      // Use viewportHeight for projection centering so neurons stay in visible viewport
-      // Apply zoom by adjusting FOV: lower FOV = more zoomed in
-      // Base FOV is 500, zoom multiplies the scale effect
-      const currentZoom = zoomRef.current
-      const transformedNeurons = neuronsRef.current.map(n => {
-        let rotated = rotateY(n.pos, rotationRef.current.y)
-        rotated = rotateX(rotated, rotationRef.current.x)
-        // Scale positions by zoom to create "diving in" effect
-        const zoomedRotated = {
-          x: rotated.x * currentZoom,
-          y: rotated.y * currentZoom,
-          z: rotated.z,
-        }
-        return {
-          ...n,
-          projected: project(zoomedRotated, width, viewportHeight),
-          rotated: zoomedRotated,
-        }
-      })
-
-      // Sort by z for proper depth rendering (back to front)
-      const sortedIndices = transformedNeurons
-        .map((n, i) => ({ idx: i, z: n.rotated.z }))
-        .sort((a, b) => a.z - b.z)
-
-      // Draw connections first (behind neurons)
-      ctx.lineWidth = 1
-      for (let i = 0; i < neuronsRef.current.length; i++) {
-        const neuron = neuronsRef.current[i]
-        const t1 = transformedNeurons[i]
-
-        for (const connIdx of neuron.connections) {
-          if (connIdx > i) { // Draw each connection only once
-            const t2 = transformedNeurons[connIdx]
-
-            // Depth-based opacity
-            const avgZ = (t1.rotated.z + t2.rotated.z) / 2
-            const depthAlpha = Math.max(0.1, Math.min(0.4, (avgZ + 400) / 800))
-
-            ctx.beginPath()
-            ctx.moveTo(t1.projected.x, t1.projected.y)
-            ctx.lineTo(t2.projected.x, t2.projected.y)
-            ctx.strokeStyle = `rgba(40, 40, 45, ${depthAlpha})`
-            ctx.stroke()
-          }
-        }
-      }
-
-      // Update and draw signals
-      for (let i = signalsRef.current.length - 1; i >= 0; i--) {
-        const signal = signalsRef.current[i]
-        signal.progress += signal.speed
-
-        if (signal.progress >= 1) {
-          // Signal arrived - light up destination and maybe cascade
-          neuronsRef.current[signal.to].brightness = 1
-
-          // Chance to cascade to another connected neuron
-          if (Math.random() < 0.4) {
-            const nextNeuron = neuronsRef.current[signal.to]
-            if (nextNeuron.connections.length > 0) {
-              const nextTo = nextNeuron.connections[Math.floor(Math.random() * nextNeuron.connections.length)]
-              if (nextTo !== signal.from) { // Don't go back
-                signalsRef.current.push({
-                  from: signal.to,
-                  to: nextTo,
-                  progress: 0,
-                  speed: 0.008 + Math.random() * 0.012,
-                })
-              }
-            }
-          }
-
-          signalsRef.current.splice(i, 1)
-        } else {
-          // Draw the signal
-          const t1 = transformedNeurons[signal.from]
-          const t2 = transformedNeurons[signal.to]
-
-          // Guard against undefined neurons (can happen during reinitialization)
-          if (!t1 || !t2) {
-            signalsRef.current.splice(i, 1)
-            continue
-          }
-
-          const x = t1.projected.x + (t2.projected.x - t1.projected.x) * signal.progress
-          const y = t1.projected.y + (t2.projected.y - t1.projected.y) * signal.progress
-          const scale = t1.projected.scale + (t2.projected.scale - t1.projected.scale) * signal.progress
-
-          const intensity = orangeIntensity / 100
-
-          // Draw glowing signal
-          const glowSize = Math.max(0.1, 8 * scale * intensity)
-          const gradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize)
-          gradient.addColorStop(0, `rgba(255, 200, 180, ${0.9 * intensity})`)
-          gradient.addColorStop(0.3, `rgba(255, 122, 77, ${0.6 * intensity})`)
-          gradient.addColorStop(1, 'transparent')
-          ctx.fillStyle = gradient
-          ctx.beginPath()
-          ctx.arc(x, y, glowSize, 0, Math.PI * 2)
-          ctx.fill()
-
-          // Draw signal core
-          ctx.beginPath()
-          ctx.arc(x, y, Math.max(0.1, 2 * scale), 0, Math.PI * 2)
-          ctx.fillStyle = COLORS.fireOrange
-          ctx.fill()
-
-          // Light up connection path behind signal
-          ctx.beginPath()
-          ctx.moveTo(t1.projected.x, t1.projected.y)
-          ctx.lineTo(x, y)
-          ctx.strokeStyle = `rgba(255, 122, 77, ${0.4 * intensity * (1 - signal.progress)})`
-          ctx.lineWidth = 2 * scale
-          ctx.stroke()
-          ctx.lineWidth = 1
-        }
-      }
-
-      // Draw neurons (front to back for proper layering)
-      for (const { idx } of sortedIndices) {
-        const neuron = neuronsRef.current[idx]
-        const t = transformedNeurons[idx]
-
-        // Decay brightness
-        neuron.brightness *= 0.95
-
-        // Depth-based alpha
-        const depthAlpha = Math.max(0.3, Math.min(1, (t.rotated.z + 400) / 600))
-        const size = neuron.baseSize * t.projected.scale
-
-        // Draw glow if bright
-        if (neuron.brightness > 0.2) {
-          const glowSize = Math.max(0.1, size * 4 * neuron.brightness * (orangeIntensity / 100))
-          const gradient = ctx.createRadialGradient(t.projected.x, t.projected.y, 0, t.projected.x, t.projected.y, glowSize)
-          gradient.addColorStop(0, `rgba(255, 122, 77, ${neuron.brightness * 0.5 * depthAlpha})`)
-          gradient.addColorStop(1, 'transparent')
-          ctx.fillStyle = gradient
-          ctx.beginPath()
-          ctx.arc(t.projected.x, t.projected.y, glowSize, 0, Math.PI * 2)
-          ctx.fill()
-        }
-
-        // Draw neuron body
-        const safeSize = Math.max(0.1, size)
-        ctx.beginPath()
-        ctx.arc(t.projected.x, t.projected.y, safeSize, 0, Math.PI * 2)
-
-        if (neuron.brightness > 0.3) {
-          // Orange when firing
-          const t_intensity = Math.min(1, neuron.brightness)
-          const r = Math.floor(26 + (255 - 26) * t_intensity)
-          const g = Math.floor(26 + (122 - 26) * t_intensity)
-          const b = Math.floor(28 + (77 - 28) * t_intensity)
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${depthAlpha})`
-        } else {
-          // Charcoal when dim
-          const brightness = 26 + neuron.brightness * 30
-          ctx.fillStyle = `rgba(${brightness}, ${brightness}, ${brightness + 2}, ${depthAlpha * 0.8})`
-        }
-        ctx.fill()
-      }
-
-      animationId = requestAnimationFrame(animate)
-    }
-
-    resize()
-    initializeNeurons()
-    window.addEventListener('resize', resize)
     animate()
 
-    return () => {
-      cancelAnimationFrame(animationId)
-      window.removeEventListener('resize', resize)
+    // ─── Resize Handler ─────────────────────────────
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      cloud.material.uniforms.uPixelRatio.value = renderer.getPixelRatio()
     }
-  }, [isClient, neuronCount, connectionDensity, rotationSpeed, fireRate, orangeIntensity, parallaxFactor])
+
+    window.addEventListener('resize', handleResize)
+
+    // ─── Cleanup ────────────────────────────────────
+    return () => {
+      disposed = true
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+      if (scrollRafId !== null) cancelAnimationFrame(scrollRafId)
+
+      // Dispose Three.js resources
+      for (const trail of trails) trail.dispose()
+      cloud.dispose()
+
+      filaments.traverse((child) => {
+        if (child instanceof THREE.Line) {
+          child.geometry.dispose()
+          ;(child.material as THREE.Material).dispose()
+        }
+      })
+      scene.remove(filaments)
+
+      crossoverGlow.geometry.dispose()
+      ;(crossoverGlow.material as THREE.Material).dispose()
+      scene.remove(crossoverGlow)
+
+      renderer.dispose()
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement)
+      }
+
+    }
+  }, [isClient])
 
   if (!isClient) {
-    return <div className={`fixed inset-0 ${className}`} style={{ background: COLORS.background }} />
+    return <div className={`fixed inset-0 ${className}`} style={{ background: '#0a0a0b' }} />
   }
 
   return (
     <div
       ref={containerRef}
       className={`fixed inset-0 ${className}`}
-      style={{
-        willChange: 'transform',
-        background: COLORS.background,
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0"
-        style={{ background: 'transparent' }}
-      />
-    </div>
+      style={{ background: '#0a0a0b' }}
+    />
   )
 }
 
