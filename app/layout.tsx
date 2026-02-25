@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import { NeuralNetworkBg } from '@/components/foundation/neural-network-bg'
 import { GoogleAnalytics, UmamiAnalytics } from '@/components/Analytics'
 import LeadMagnetFunnel from '@/components/LeadMagnetFunnel'
+import ContentFrost from '@/components/ContentFrost'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -114,21 +115,14 @@ export default function RootLayout({
       <body className={`${inter.variable} ${instrumentSerif.variable} ${fraunces.variable} ${pressStart.variable}`}>
         <GoogleAnalytics />
         <UmamiAnalytics />
-        {/* Neural Network Background - "Thoughtful Brain" settings */}
-        <NeuralNetworkBg
-          neuronCount={120}
-          connectionDensity={79}
-          rotationSpeed={0.0015}
-          fireRate={6}
-          orangeIntensity={100}
-          parallaxFactor={0.04}
-        />
+        {/* Strange Attractor Background — Lorenz system topology */}
+        <NeuralNetworkBg />
 
         <ThemeProvider>
           <div className="relative" style={{ zIndex: 1 }}>
             <Header />
             <main className="min-h-screen">
-              {children}
+              <ContentFrost>{children}</ContentFrost>
             </main>
             <Footer />
           </div>

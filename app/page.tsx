@@ -124,17 +124,19 @@ export default function Home() {
       ))}
       <HomeNavigation />
       <Hero />
-      <SocialProofStrip
-        essayCount={essayCount}
-        productsShipping={productsShipping}
-        activeProjects={activeProjects}
-        startYear={2024}
-      />
-      <ProductGrid />
-      <LatestFromLab items={writingItems} />
-      <Education />
-      <Mission />
-      <Builder />
+      <div className="attractor-frost">
+        <SocialProofStrip
+          essayCount={essayCount}
+          productsShipping={productsShipping}
+          activeProjects={activeProjects}
+          startYear={2024}
+        />
+        <ProductGrid />
+        <LatestFromLab items={writingItems} />
+        <Education />
+        <Mission />
+        <Builder />
+      </div>
     </>
   )
 }
