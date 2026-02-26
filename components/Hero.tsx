@@ -1,6 +1,69 @@
 'use client'
 
-import { m } from '@/components/motion'
+import { useState } from 'react'
+import { m, AnimatePresence } from '@/components/motion'
+
+function AttractorPlacard() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className="absolute bottom-8 left-8 z-10">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 text-xs tracking-wide text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors cursor-pointer"
+        aria-label="About this visualization"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+        <span className="hidden sm:inline">What is this?</span>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <m.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute bottom-10 left-0 w-[340px] bg-zone-glass rounded-xl p-5 space-y-3"
+          >
+            <div className="flex items-start justify-between">
+              <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                Lorenz Strange Attractor
+              </h3>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors cursor-pointer"
+                aria-label="Close"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+            <p className="text-xs leading-relaxed text-[var(--text-secondary)]">
+              A deterministic chaotic system with two lobes of activity connected
+              by a crossover zone. One lobe represents human dynamics, the other
+              technical architecture. Insight happens where trajectories cross between them.
+            </p>
+            <p className="text-xs leading-relaxed text-[var(--text-secondary)]">
+              Born from a question asked to Claude: <em>&quot;What would the shape
+              of my mind be?&quot;</em> The answer mapped cross-domain thinking to
+              this mathematical form.
+            </p>
+            <div className="text-[10px] font-mono text-[var(--text-tertiary)] pt-1">
+              &sigma;=10 &nbsp; &rho;=28 &nbsp; &beta;=8/3
+            </div>
+          </m.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 function ScrollIndicator() {
   return (
@@ -36,6 +99,7 @@ export default function Hero() {
         id="hero"
         className="relative h-screen bg-zone-full"
       >
+        <AttractorPlacard />
         <ScrollIndicator />
       </section>
 
