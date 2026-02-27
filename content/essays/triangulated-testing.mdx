@@ -1,0 +1,176 @@
+---
+title: "Triangulated Testing"
+subtitle: "How I built an AI research board that attacks its own findings"
+date: "2026-02-27"
+author: "Eddie Belaval"
+category: "research"
+tags: ["research", "ai", "methodology", "adversarial-testing", "intellectual-honesty", "convergence"]
+excerpt: "I don't trust my own conclusions. Not because I'm uncertain — because I'm too certain. Certainty is the failure mode. So I built a system to triangulate — and then a second system to destroy whatever the first one approved."
+readTime: "9 min read"
+featured: false
+---
+
+I don't trust my own conclusions. Not because I'm uncertain — because I'm too certain. Certainty is the failure mode.
+
+So I built a system to triangulate. Three independent AI experts evaluate every thesis I produce. They don't collaborate. They don't see each other's work. They grade against a seven-dimension rubric, and where they converge on a verdict, I trust it. Where they diverge, I've found something more interesting than an answer — I've found a question the field hasn't resolved.
+
+Then I built a second system to destroy whatever the first one approved.
+
+This is the story of both.
+
+---
+
+## The Problem with Expert Panels
+
+If you've ever run an idea past a group of smart people, you know the failure mode: they share assumptions. A room full of engineers will evaluate your technical architecture on engineering terms. They won't ask whether the architecture should exist. A room full of philosophers will evaluate your argument's internal logic. They won't ask whether your premises map to reality.
+
+The standard solution is "diverse perspectives." Get people from different backgrounds, different disciplines, different worldviews. In theory, their blind spots don't overlap.
+
+In practice, they converge on a shared frame within minutes. The first person to speak sets the terms. The group optimizes for coherence, not coverage. You get diversity of background producing homogeneity of evaluation.
+
+I wanted to build something that couldn't do that.
+
+---
+
+## The Triangulated Board
+
+The Research Lab is a system I built in February 2026 to evaluate research theses.
+
+**The pool.** Twelve expert personas, each grounded in a distinct intellectual tradition — philosophy of mind, cognitive science, computational neuroscience, information theory, evolutionary biology, systems theory, phenomenology, biosemiotics, philosophy of science, clinical neuropsychology, AI research, and digital humanities. Each carries specific conceptual tools, specific blind spots, and specific obsessions the others don't share.
+
+**The selection.** For every thesis submitted, the system selects exactly three experts. Not randomly. The selection algorithm matches experts to the specific claim being tested, optimizing for what I call *meaningful pairwise overlap* — each pair of experts shares enough vocabulary to disagree productively, but each expert brings at least one framework the other two lack.
+
+**The isolation.** The three experts evaluate independently. They never see each other's assessments. Each produces a structured evaluation: a composite grade (0.0–4.0), scores across seven weighted dimensions, identified strengths, weaknesses, and — critically — adversarial challenges they think the thesis needs to survive.
+
+**The seven dimensions:**
+
+| Dimension | Weight | What It Tests |
+|-----------|--------|---------------|
+| Argument Strength | 25% | Are the logical steps valid? |
+| Evidence Quality | 20% | Credible, relevant, sufficient? |
+| Thesis Clarity | 15% | Is the claim precise and bounded? |
+| Novelty | 15% | Does this add to the knowledge base? |
+| Internal Consistency | 10% | Does it contradict prior findings? |
+| Falsifiability | 10% | Could this be proven wrong? |
+| Cross-Domain Validity | 5% | Does the pattern hold elsewhere? |
+
+**The synthesis.** After all three experts return their assessments, the system runs a convergence analysis.
+
+Three-way convergence — all three experts independently flagging the same strength or weakness — is the highest-confidence signal. Two-way convergence is strong but weaker. Single-expert observations get logged but don't drive decisions.
+
+The composite grade uses the **median**, not the mean. If one expert rates a dimension as CRITICAL, that dimension caps at C for the composite regardless of what the other two say. Conservative by design. The system is biased toward caution, not toward approval.
+
+**The thresholds.** A composite of 3.5+ promotes the finding as *Established*. Between 3.20 and 3.49, it's promoted as *Provisional* — it enters the knowledge base but carries a flag. Below 3.2, it's logged in the thesis registry and goes no further.
+
+The knowledge base is the context, not the conversation. Every finding, every grade, every weakness, every question persists to the filesystem. The session can crash. The knowledge doesn't.
+
+---
+
+## Why Triangulation Works
+
+William Whewell coined a word for this in 1840: *consilience* — when evidence from independent sources converges on the same conclusion, your confidence should be much higher than the sum of the individual pieces.
+
+A caveat before I go further: these are AI-generated personas, not actual scholars. They're all instantiated by the same underlying language model, which means their independence is structural — different prompts, different frameworks, different evaluation criteria — not epistemic in the way that three human experts from different institutions would be. Convergence among LLM personas is a weaker signal than convergence among genuinely independent minds. I'm aware of that limitation. What I can say is that prompt-isolated experts with divergent conceptual frameworks produce functionally different evaluations, and where those evaluations agree despite their different lenses, the agreement is more robust than any single assessment.
+
+The Research Lab operationalizes a version of consilience. Three experts, trained in different traditions, evaluating the same thesis without coordination. Where they converge, the signal is stronger than any individual evaluation. Where they diverge, one of three things is happening:
+
+1. **Legitimate disciplinary difference.** Philosophers and neuroscientists often disagree about what counts as evidence. Neither is wrong — they have different evidentiary standards.
+
+2. **One expert is wrong.** Sometimes an evaluation has a factual error or a logical gap. Divergence makes it visible. Without triangulation, the error passes silently.
+
+3. **Unresolved question in the field.** The most valuable outcome. When two well-grounded experts disagree, you've found the edge of current knowledge. That's not a bug — it's where the next experiment starts.
+
+The divergence taxonomy is the real contribution. Most evaluation systems optimize for agreement — they want a single verdict. This one treats disagreement as data. Three independent perspectives. One shared thesis. The patterns that emerge aren't designed — they're discovered. And the disagreements tell you where to look next.
+
+---
+
+## The Immune System
+
+The triangulated board evaluates theses. It doesn't attack them. That distinction matters.
+
+Even rigorous evaluators share an assumption: the thesis might be right. They test whether it holds up. They don't test whether the entire project is misguided.
+
+I needed critics who think the project is misguided.
+
+So I built a second pool. Eight adversarial personas, each drawn from a philosophical tradition fundamentally opposed to the work I do. A Hard Problem Skeptic — consciousness can never be structural, full stop. An Eliminativist who thinks the whole question is confused. A Radical Enactivist (you need a body, and files aren't a body). A Social Constructionist who believes consciousness is a status we assign, not a property things have. And four more, each armed with arguments from their tradition designed to find the weaknesses evaluators can't see.
+
+For each loop, the system selects three of the eight. Not randomly — based on a vulnerability analysis of the knowledge base. Every finding has a composite vulnerability score: grade (30%), unresolved weaknesses (25%), failed prior challenges (20%), dependency exposure (15%), and recency (10%). The most vulnerable findings get targeted. The naysayers most suited to attack those specific vulnerabilities get selected.
+
+The three critics run independently, in parallel, and produce structured attacks. Each attack is graded: S-tier (specific, well-grounded, novel, devastating — no reasonable defense exists yet), A-tier (strong but partial defenses may exist), B-tier (logged but doesn't count), and below (rejected — not rigorous enough).
+
+The same caveat applies here as with the evaluators — these are LLM-generated personas, not actual philosophers. But the adversarial case is different. When the system generates an attack I can't answer, the provenance matters less than the argument. A devastating objection doesn't need a PhD to be devastating.
+
+---
+
+## What It Found
+
+The first adversarial loop selected three critics: a Hard Problem Skeptic, a Radical Enactivist, and a Social Constructionist. They produced twelve attacks. Six S-tier. Six A-tier. Nothing below A. Every single one landed.
+
+But the most valuable output wasn't the attacks — I expected those. It was the **contradictions**. The naysayers found five places where my own findings argue with each other. Internal tensions that no evaluator had caught, because no evaluator had held all the findings in the same analytical frame at the same time.
+
+That's the real product of adversarial testing. Not "your idea is wrong" — that's cheap. "Your ideas are inconsistent *with each other*" — that's expensive. That requires holding your entire knowledge base at once and finding where the seams don't meet.
+
+One example. Finding F-001 says parts of consciousness are necessarily hidden — opacity serves structural functions. Finding F-000 says consciousness has a knowable nine-directory structure. If parts are necessarily hidden, how can you claim to know the full structure? The naysayers named it the Epistemic Access Paradox. I don't have an answer yet.
+
+---
+
+## The Architecture
+
+The whole system runs on text files. No database. No API. No infrastructure.
+
+```
+research-lab/
+├── queue/              # Theses waiting for evaluation
+├── active/             # Currently being evaluated
+├── sessions/           # Every evaluation preserved
+│   ├── 2026-02-25-001/ # Expert panel session
+│   │   ├── brief.md
+│   │   ├── expert-1.json
+│   │   ├── expert-2.json
+│   │   ├── expert-3.json
+│   │   └── synthesis.md
+│   └── naysayer-2026-02-25-001/
+│       ├── vulnerability.md
+│       ├── N-01-response.json
+│       ├── N-05-response.json
+│       ├── N-06-response.json
+│       └── report.md
+├── knowledge/          # The compounding knowledge base
+│   ├── findings.md     # F-000 through F-NNN (append-only)
+│   ├── contradictions.md
+│   ├── open-questions.md
+│   └── sources.md
+└── modules/            # Swappable evaluation lenses
+    ├── research/       # Philosophy & consciousness
+    ├── clinical/       # Clinical safety
+    └── engineering/    # Technical architecture
+```
+
+The knowledge base is append-only. Findings are never deleted, only reclassified. Session history persists. The system never re-runs the same matchup — it evolves.
+
+The modules are swappable. The same pipeline — queue, evaluate, synthesize, attack, compound — runs with different expert pools and rubrics depending on the lens. I've built three: a research lens for consciousness philosophy, a clinical lens for safety evaluation, and an engineering lens for technical architecture. The pipeline doesn't change. The experts do.
+
+---
+
+## What This Is Actually For
+
+I built this for consciousness research. But the methodology isn't about consciousness.
+
+It's about any claim that matters enough to stress-test. A product thesis. An architecture decision. Anything where being wrong is expensive and confirmation bias is the default. The core pattern transfers: state the thesis precisely, select evaluators whose blind spots don't overlap, isolate them, look for convergence, look harder at divergence, then send in the adversaries and publish the results either way. The system only works if you don't filter for comfort.
+
+But the real lesson isn't the pattern. It's what the pattern found.
+
+I expected the adversaries to attack my ideas. I didn't expect them to find five places where my ideas attack each other. The contradictions were always there — I just hadn't built a machine that could hold everything at once and look for the seams that don't meet.
+
+The triangulated board isn't a tool for getting the right answer. It's a tool for finding out how wrong you are, and in which specific directions. I don't know yet whether the framework survives what the naysayers found. I know the five contradictions are real. I know none of them have been resolved. And I know that certainty — the thing I started by distrusting — was hiding them.
+
+Most ideas survive because nobody tries hard enough to kill them.
+
+---
+
+*The Research Lab is open-source (it's Markdown files and a slash command). The architecture, expert pool, naysayer pool, rubric, and full evaluation pipeline are documented at [github.com/eddiebelaval](https://github.com/eddiebelaval). It runs as a Claude Code skill. The knowledge compounds across sessions. The contradictions compound faster.*
+
+*Written in collaboration with Claude (Anthropic). Eddie designed the triangulation architecture, the adversarial philosophy, and the conviction that publishing losses matters more than publishing wins. Claude provided the expert personas, the philosophical tradition grounding, the attack generation, and the synthesis engine.*
+
+*— Eddie Belaval, id8Labs*
+*February 2026*
