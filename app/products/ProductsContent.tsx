@@ -49,6 +49,30 @@ const flagshipProducts: FlagshipProduct[] = [
     accentColor: 'orange',
   },
   {
+    name: 'Parallax',
+    tagline: 'Someone to talk to',
+    description: 'Ava listens, remembers, and helps you see what you can\'t — blind spots, unmet needs, patterns you repeat. 19 psychological frameworks, a psychoeducational Academy, and a safety system built around one test: would this help or hurt the most vulnerable person on their worst day?',
+    version: 'v1.0',
+    status: 'live',
+    link: 'https://tryparallax.space',
+    external: true,
+    image: '/images/parallax-preview.webp',
+    features: [
+      '19 psychological frameworks',
+      'Academy of Self (15 articles)',
+      'Behavioral profiles over time',
+      'Arena validation system',
+      'Safety-first design',
+      'Solo + mediation modes',
+    ],
+    specs: [
+      { label: 'Platform', value: 'Web App' },
+      { label: 'AI Model', value: 'Claude Opus' },
+      { label: 'Price', value: 'Free + Pro + Premium' },
+    ],
+    accentColor: 'amber',
+  },
+  {
     name: 'HOMER',
     tagline: 'Deal & Negotiation Automation',
     description: 'Parse contracts, coordinate calendars, track deadlines, automate compliance. HOMER manages the entire deal lifecycle—from contract to close. Built to eliminate deal friction.',
@@ -145,13 +169,6 @@ const comingSoonProducts: ComingSoonProduct[] = [
     link: '/products/lexicon',
   },
   {
-    name: 'Pause',
-    tagline: 'Communication translator for conflict',
-    description: 'When emotions run high, people stop hearing each other. Translation, not therapy.',
-    status: 'exploration',
-    link: '/products/pause',
-  },
-  {
     name: 'X-Place',
     tagline: 'r/place meets X',
     description: 'Shared pixel canvas, cooldown timers, real-time chaos. A social experiment.',
@@ -172,6 +189,7 @@ function FlagshipCard({ product, index }: { product: FlagshipProduct; index: num
     green: 'border-green-500/30 shadow-[0_0_30px_rgba(34,197,94,0.15)]',
     emerald: 'border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)]',
     blue: 'border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.15)]',
+    amber: 'border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.15)]',
   }
 
   return (
