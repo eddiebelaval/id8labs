@@ -51,15 +51,15 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'Parallax',
     tagline: 'Someone to talk to',
-    description: 'Ava listens, remembers, and helps you see what you can\'t — blind spots, unmet needs, patterns you repeat. 19 psychological frameworks, a psychoeducational Academy, and a safety system built around one test: would this help or hurt the most vulnerable person on their worst day?',
-    version: 'v1.0',
-    status: 'live',
+    description: 'Meet Ava — the Attuned Voice Advocate. She listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, an 18-article Academy, and a safety system validated through 22 agentic assess-fix cycles. Free. Private. No waitlist.',
+    version: 'Beta',
+    status: 'beta' as const,
     link: 'https://tryparallax.space',
     external: true,
     image: '/images/parallax-preview.webp',
     features: [
-      '19 psychological frameworks',
-      'Academy of Self (15 articles)',
+      '19 analytical lenses',
+      'Academy of Self (18 articles)',
       'Behavioral profiles over time',
       'Arena validation system',
       'Safety-first design',
@@ -205,9 +205,15 @@ function FlagshipCard({ product, index }: { product: FlagshipProduct; index: num
         <div className={!isEven ? 'lg:order-2' : ''}>
           {/* Status Badge */}
           <div className="flex items-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-              {product.version} • Live
+            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
+              product.status === 'beta'
+                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+            }`}>
+              <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                product.status === 'beta' ? 'bg-amber-500' : 'bg-emerald-500'
+              }`} />
+              {product.status === 'beta' ? product.version : `${product.version} • Live`}
             </span>
           </div>
 
