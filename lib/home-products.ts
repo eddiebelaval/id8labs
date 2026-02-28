@@ -23,6 +23,15 @@ export const featuredHomeProducts: HomeProduct[] = [
     category: 'creators',
   },
   {
+    name: 'Parallax',
+    status: 'shipping',
+    statusLabel: 'v1.0 • Live',
+    description: 'Someone to talk to — powered by Claude. Ava listens, remembers, and helps you see what you can\'t through 19 psychological frameworks. Academy, safety system, and mediation when you\'re ready.',
+    link: 'https://tryparallax.space',
+    external: true,
+    category: 'creators',
+  },
+  {
     name: 'HOMER',
     status: 'shipping',
     statusLabel: 'v1.0 • Live',

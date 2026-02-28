@@ -61,6 +61,22 @@ function MiloPreview() {
   )
 }
 
+function ParallaxPreview() {
+  return (
+    <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-lg overflow-hidden border-2 border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.15)]">
+      <Image
+        src="/images/parallax-preview.webp"
+        alt="Parallax - Someone to talk to, powered by Claude. Ava helps you process and prepare for hard conversations."
+        fill
+        className="object-cover object-top"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+    </div>
+  )
+}
+
 function HomerPreview() {
   return (
     <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-lg overflow-hidden border-2 border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
@@ -83,6 +99,8 @@ function FeaturedCard({ product, index }: { product: HomeProduct; index: number 
     switch (product.name) {
       case 'Composer':
         return <ComposerPreview />
+      case 'Parallax':
+        return <ParallaxPreview />
       case 'HOMER':
         return <HomerPreview />
       case 'DeepStack':
