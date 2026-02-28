@@ -25,8 +25,8 @@ export const featuredHomeProducts: HomeProduct[] = [
   {
     name: 'Parallax',
     status: 'shipping',
-    statusLabel: 'v1.0 • Live',
-    description: 'Someone to talk to — powered by Claude. Ava listens, remembers, and helps you see what you can\'t through 19 psychological frameworks. Academy, safety system, and mediation when you\'re ready.',
+    statusLabel: 'Beta',
+    description: 'Someone to talk to — powered by Claude. Ava listens, remembers, and helps you understand what\'s really going on through 19 analytical lenses. Academy, safety system, and mediation when you\'re ready. Free. Private. No waitlist.',
     link: 'https://tryparallax.space',
     external: true,
     category: 'creators',

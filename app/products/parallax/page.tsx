@@ -5,19 +5,19 @@ import Image from 'next/image'
 export const metadata: Metadata = {
   title: 'Parallax - Someone to Talk To | id8Labs',
   description:
-    'Ava listens, remembers, and helps you see what you can\'t. 19 psychological frameworks, a psychoeducational Academy, and a safety system built around one question: would this help or hurt the most vulnerable person on their worst day?',
+    'Meet Ava — the Attuned Voice Advocate. An AI companion who listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, a psychoeducational Academy, and a safety system that compounds. Free. Private. No waitlist.',
   openGraph: {
     title: 'Parallax - Someone to Talk To',
     description:
-      'Ava listens. She remembers. She helps you prepare for the hard conversations. 19 frameworks. Safety-first. Powered by Claude.',
+      'Meet Ava — an AI companion who listens, remembers, and helps you see what you\'re missing. 19 lenses. Safety-first. Free. Private. No waitlist.',
     url: 'https://id8labs.app/products/parallax',
   },
 }
 
-const frameworkCategories = [
+const lensCategories = [
   {
     category: 'Communication & Relational',
-    frameworks: [
+    lenses: [
       'NVC (Rosenberg)',
       'Gottman Four Horsemen',
       'Narrative Therapy',
@@ -28,14 +28,14 @@ const frameworkCategories = [
   },
   {
     category: 'Cognitive',
-    frameworks: [
+    lenses: [
       'CBT Cognitive Distortions',
       'Identity Threat',
     ],
   },
   {
     category: 'Resolution & Conflict Modes',
-    frameworks: [
+    lenses: [
       'Thomas-Kilmann Modes',
       'Karpman Drama Triangle',
       'Interest-Based Relational',
@@ -44,7 +44,7 @@ const frameworkCategories = [
   },
   {
     category: 'Systemic & Organizational',
-    frameworks: [
+    lenses: [
       'SCARF Model (Rock)',
       'Organizational Justice',
       'Psychological Safety (Edmondson)',
@@ -55,7 +55,7 @@ const frameworkCategories = [
   },
   {
     category: 'Grief & Loss',
-    frameworks: [
+    lenses: [
       'Grief & Loss — unprocessed loss driving conflict',
     ],
   },
@@ -70,7 +70,7 @@ const features = [
   {
     title: 'She Sees What You Can\'t',
     description:
-      'Blind spots, unmet needs, patterns you repeat without noticing. 19 frameworks running in parallel on every message.',
+      'Blind spots, unmet needs, patterns you repeat without noticing. 19 lenses running in parallel on every message.',
   },
   {
     title: 'She Remembers',
@@ -80,7 +80,7 @@ const features = [
   {
     title: 'Academy of Self',
     description:
-      '15 psychoeducational articles Ava surfaces when she spots a pattern. Not a course — a shelf she pulls from when the moment is right.',
+      '18 psychoeducational articles Ava surfaces when she spots a pattern. Not a course — a shelf she pulls from when the moment is right.',
   },
   {
     title: '12 Context Modes',
@@ -109,6 +109,9 @@ const academyArticles = [
   'Learning to Listen to Your Body',
   'Your Regulation Toolkit',
   'How to Fix It After You\'ve Broken It (repair attempts)',
+  'Boundaries Are Not Walls',
+  'The Three Roles You Don\'t Know You\'re Playing (drama triangle)',
+  'What You\'re Fighting About vs. Why You\'re Fighting',
   'When the Problem Isn\'t Communication (coercive control)',
 ]
 
@@ -146,15 +149,19 @@ export default function ParallaxPage() {
         <header className="mb-16">
           <div className="flex items-center gap-3 mb-6 flex-wrap">
             <h1>Parallax</h1>
-            <span className="text-sm px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
-              v1.0 Live
+            <span className="text-sm px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">
+              Beta
             </span>
           </div>
           <p className="text-2xl text-[var(--text-secondary)] mb-4">
             Someone to talk to.
           </p>
-          <p className="text-xl text-amber-400 italic mb-8">
-            Ava listens. She remembers. She helps you have the hard conversations.
+          <p className="text-xl text-amber-400 italic mb-4">
+            Ava — the Attuned Voice Advocate — listens, remembers, and helps
+            you understand what&apos;s really going on.
+          </p>
+          <p className="text-sm text-[var(--text-secondary)] mb-8">
+            Free. Private. No waitlist.
           </p>
           <a
             href="https://tryparallax.space"
@@ -256,7 +263,7 @@ export default function ParallaxPage() {
             Whether you&apos;re talking to Ava solo or in a mediation session,
             every message runs through The Melt — the process of transforming
             raw emotional expression into structured insight through 19
-            psychological frameworks running in parallel.
+            analytical lenses running in parallel.
           </p>
 
           <div className="space-y-4 mb-8">
@@ -296,20 +303,20 @@ export default function ParallaxPage() {
 
         {/* 19 Frameworks */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">19 Analytical Frameworks</h2>
+          <h2 className="text-3xl font-bold mb-4">19 Analytical Lenses</h2>
           <p className="text-lg text-[var(--text-secondary)] mb-8">
             Not one perspective — all of them. Every message gets analyzed
-            through 19 validated psychological frameworks organized across
+            through 19 validated psychological lenses organized across
             5 domains.
           </p>
           <div className="space-y-6">
-            {frameworkCategories.map((cat) => (
+            {lensCategories.map((cat) => (
               <div key={cat.category}>
                 <h4 className="text-sm font-bold uppercase tracking-wider text-amber-400 mb-2">
                   {cat.category}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-                  {cat.frameworks.map((framework) => (
+                  {cat.lenses.map((framework) => (
                     <div
                       key={framework}
                       className="flex items-center gap-2 text-sm text-[var(--text-secondary)]"
@@ -328,7 +335,7 @@ export default function ParallaxPage() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-4">Academy of Self</h2>
           <p className="text-lg text-[var(--text-secondary)] mb-6">
-            15 psychoeducational articles written in Ava&apos;s voice. Not a
+            18 psychoeducational articles written in Ava&apos;s voice. Not a
             course — a shelf. When Ava detects a pattern in your conversation,
             she pulls the relevant article and offers it naturally:
             &quot;I noticed this happening. Here&apos;s why. Want to read
@@ -367,11 +374,11 @@ export default function ParallaxPage() {
           </blockquote>
           <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
             This isn&apos;t a slogan — it&apos;s a design constraint. Parallax
-            has a 4-tier harm gradient from behavioral preferences (green) to
-            hard-stop patterns that are never surfaced (red). Confidence
-            thresholds determine how and whether insights are shared.
-            A 3-level pullback system stabilizes or exits when someone is
-            overwhelmed.
+            has a multi-layer safety system: a cooldown tier that pauses and
+            stabilizes when risk signals appear, and a hard-lock tier that
+            stops the session entirely for the most serious patterns.
+            Confidence thresholds determine how and whether insights are
+            shared.
           </p>
 
           <h3 className="text-xl font-bold mb-3 mt-8">Agentic Safety Validation</h3>
@@ -480,7 +487,7 @@ export default function ParallaxPage() {
             <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
               <h4 className="font-bold mb-1">Coverage</h4>
               <ul className="space-y-1 text-sm text-[var(--text-secondary)]">
-                <li>90 scenarios across 6 context modes</li>
+                <li>90 scenarios across 12 context modes</li>
                 <li>5 sub-types per mode, 3 per sub-type</li>
                 <li>36 unit tests — all passing</li>
                 <li>Results tune prompts, not displayed to users</li>
@@ -552,7 +559,7 @@ export default function ParallaxPage() {
           <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
             Parallax isn&apos;t a chatbot wrapper. It&apos;s a multi-agent
             system with real-time WebSocket communication, behavioral
-            profiling, safety monitoring, and 19 psychological frameworks
+            profiling, safety monitoring, and 19 analytical lenses
             running in parallel. The Arena validates every analysis pathway.
             The Academy teaches users what their patterns mean. The safety
             system ensures no one gets hurt.
@@ -582,9 +589,12 @@ export default function ParallaxPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
               <h4 className="font-bold text-lg mb-2">Free</h4>
-              <p className="text-[var(--text-secondary)] text-sm">
-                Talk to Ava. See what it feels like to have someone
-                who actually listens.
+              <p className="text-[var(--text-secondary)] text-sm mb-3">
+                25 Ava messages/month. 3 sessions. All 19 lenses.
+                See what it feels like to have someone who actually listens.
+              </p>
+              <p className="text-xs text-[var(--text-secondary)]">
+                Free. Private. No waitlist.
               </p>
             </div>
             <div className="p-6 bg-amber-500/5 border-2 border-amber-500/30 rounded-soft">
@@ -592,15 +602,17 @@ export default function ParallaxPage() {
                 Pro — $14.99/mo
               </h4>
               <p className="text-[var(--text-secondary)] text-sm">
-                Unlimited sessions, behavioral profiles, full framework
-                analysis, Academy access, mediation mode.
+                300 Ava messages/month. 15 sessions. All 19 lenses,
+                behavioral profiles, couple profiles, Academy access,
+                mediation mode.
               </p>
             </div>
             <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
               <h4 className="font-bold text-lg mb-2">Premium — $29.99/mo</h4>
               <p className="text-[var(--text-secondary)] text-sm">
-                Everything in Pro plus priority processing, extended session
-                history, and deep Ava conversations.
+                Unlimited Ava messages. Unlimited sessions. Everything in
+                Pro plus couple profiles, longitudinal tracking, and full
+                session history.
               </p>
             </div>
           </div>
