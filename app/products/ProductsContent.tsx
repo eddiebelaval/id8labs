@@ -54,8 +54,8 @@ const flagshipProducts: FlagshipProduct[] = [
     description: 'Meet Ava — the Attuned Voice Advocate. She listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, an 18-article Academy, and a safety system validated through 22 agentic assess-fix cycles. Free. Private. No waitlist.',
     version: 'Beta',
     status: 'beta' as const,
-    link: 'https://tryparallax.space',
-    external: true,
+    link: '/products/parallax',
+    external: false,
     image: '/images/parallax-preview.webp',
     features: [
       '19 analytical lenses',

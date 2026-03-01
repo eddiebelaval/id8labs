@@ -147,7 +147,7 @@ function FeaturedCard({ product, index }: { product: HomeProduct; index: number 
 
           {/* CTA */}
           <div className="flex items-center gap-3 text-[var(--id8-orange)] font-semibold text-lg group-hover:gap-4 transition-all">
-            Launch App
+            {product.external ? 'Launch App' : 'Learn More'}
             <svg
               width="24"
               height="24"

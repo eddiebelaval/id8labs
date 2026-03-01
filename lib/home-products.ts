@@ -27,8 +27,8 @@ export const featuredHomeProducts: HomeProduct[] = [
     status: 'shipping',
     statusLabel: 'Beta',
     description: 'Someone to talk to — powered by Claude. Ava listens, remembers, and helps you understand what\'s really going on through 19 analytical lenses. Academy, safety system, and mediation when you\'re ready. Free. Private. No waitlist.',
-    link: 'https://tryparallax.space',
-    external: true,
+    link: '/products/parallax',
+    external: false,
     category: 'creators',
   },
   {
