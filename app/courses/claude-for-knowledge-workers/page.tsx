@@ -536,7 +536,7 @@ export default function ClaudeForKnowledgeWorkersPage() {
                   </p>
                   <div className="mt-4 pt-4 border-t border-[var(--border)]">
                     <Link
-                      href="/essays/claude-code-isnt-for-coders"
+                      href="/writing/claude-code-isnt-for-coders"
                       className="inline-flex items-center gap-2 text-id8-orange hover:underline group text-sm"
                     >
                       Read the full story

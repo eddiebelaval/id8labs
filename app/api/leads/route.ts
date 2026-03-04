@@ -194,12 +194,19 @@ function getActionPlanUrl(level: string): string {
   return actionPlans[level] || actionPlans.Explorer
 }
 
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
 function generateWelcomeEmail(
   name: string,
   level: string,
   score: number,
   recommendations: string[]
 ): string {
+  name = escapeHtml(name)
+  level = escapeHtml(level)
+  recommendations = recommendations.map(escapeHtml)
   const levelColors: Record<string, string> = {
     Explorer: '#3B82F6',
     Adopter: '#F59E0B',

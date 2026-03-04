@@ -52,7 +52,7 @@ export default function ComposePage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_ADMIN_SECRET || ''}`,
+          'X-Admin-Request': 'true',
         },
         body: JSON.stringify({
           issueNumber: selectedIssue,
@@ -99,7 +99,7 @@ export default function ComposePage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_ADMIN_SECRET || ''}`,
+          'X-Admin-Request': 'true',
         },
         body: JSON.stringify({
           issueNumber: selectedIssue,
