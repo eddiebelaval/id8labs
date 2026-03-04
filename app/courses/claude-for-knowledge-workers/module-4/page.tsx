@@ -709,7 +709,7 @@ Create a briefing covering: background, key facts, recent developments, and anyt
             </p>
             <div className="rounded-xl overflow-hidden border border-[var(--border)]">
               <Image
-                src="/courses/module-4/media/module-4-mindmap.png"
+                src="/courses/module-4/media/module-4-mindmap.webp"
                 alt="Module 4 Mindmap - Research & Analysis"
                 width={800}
                 height={400}

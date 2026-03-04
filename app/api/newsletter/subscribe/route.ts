@@ -1,18 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { createAdminClient } from '@/lib/supabase/server'
 import { checkRateLimit, getRateLimitKey, rateLimitHeaders, RATE_LIMITS } from '@/lib/rate-limit'
-
-// Initialize Supabase client with service role for server-side operations
-const getSupabase = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-  if (!supabaseUrl || !supabaseServiceKey) {
-    throw new Error('Missing Supabase environment variables')
-  }
-
-  return createClient(supabaseUrl, supabaseServiceKey)
-}
 
 // POST - Subscribe to newsletter
 export async function POST(request: NextRequest) {
@@ -46,7 +34,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     // Check if already subscribed
     const { data: existing } = await supabase
@@ -133,7 +124,10 @@ export async function DELETE(request: NextRequest) {
       )
     }
 
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     const { error: updateError } = await supabase
       .from('newsletter_subscribers')
@@ -177,7 +171,10 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     const { data, error } = await supabase
       .from('newsletter_subscribers')

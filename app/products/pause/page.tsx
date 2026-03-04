@@ -4,6 +4,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Pause - ID8Labs',
   description: 'A communication translation platform for conflict resolution. When emotions run high, people stop hearing each other. Pause cleans the signal so the message can land.',
+  alternates: { canonical: '/products/pause' },
+  openGraph: {
+    title: 'Pause | id8Labs',
+    description: 'A communication translation platform for conflict resolution. Pause cleans the signal so the message can land.',
+    url: 'https://id8labs.app/products/pause',
+  },
 }
 
 const coreFeatures = [

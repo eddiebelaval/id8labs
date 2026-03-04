@@ -4,6 +4,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Clearance - ID8Labs',
   description: 'Protect creators from copyright strikes by removing background music from footage. Save re-shoot costs, avoid takedowns, keep your content monetized.',
+  alternates: { canonical: '/products/clear' },
+  openGraph: {
+    title: 'Clearance | id8Labs',
+    description: 'Protect creators from copyright strikes by removing background music from footage.',
+    url: 'https://id8labs.app/products/clear',
+  },
 }
 
 export default function ClearPage() {

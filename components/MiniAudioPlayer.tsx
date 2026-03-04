@@ -136,6 +136,7 @@ export default function MiniAudioPlayer({ src, title, downloadName }: MiniAudioP
               max={duration || 100}
               value={currentTime}
               onChange={handleSeek}
+              aria-label="Seek"
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
           </div>
@@ -156,6 +157,7 @@ export default function MiniAudioPlayer({ src, title, downloadName }: MiniAudioP
             step="0.1"
             value={volume}
             onChange={handleVolumeChange}
+            aria-label="Volume"
             className="w-16 h-1 bg-[var(--border)] rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-id8-orange [&::-webkit-slider-thumb]:rounded-full"
           />
         </div>

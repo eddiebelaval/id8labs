@@ -4,6 +4,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Factory - ID8Labs',
   description: 'AI creative production pipeline. Orchestrates Midjourney, Grok, Gemini and other AI tools into a single tracked workflow. The AI handles logistics, you handle taste.',
+  alternates: { canonical: '/products/factory' },
+  openGraph: {
+    title: 'Factory | id8Labs',
+    description: 'AI creative production pipeline. Orchestrates Midjourney, Grok, Gemini and other AI tools into a single tracked workflow.',
+    url: 'https://id8labs.app/products/factory',
+  },
 }
 
 const pipelineSteps = [

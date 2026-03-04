@@ -710,7 +710,7 @@ Save the template to ~/Workflows/weekly-review.md so I can reference it every Fr
             </p>
             <div className="rounded-xl overflow-hidden border border-[var(--border)]">
               <Image
-                src="/courses/module-5/media/module-5-mindmap.png"
+                src="/courses/module-5/media/module-5-mindmap.webp"
                 alt="Module 5 Mindmap - Building Workflows"
                 width={800}
                 height={400}

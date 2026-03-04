@@ -610,7 +610,7 @@ export default function Module2Page() {
             </p>
             <div className="rounded-xl overflow-hidden border border-[var(--border)]">
               <Image
-                src="/courses/module-2/media/module-2-mindmap.png"
+                src="/courses/module-2/media/module-2-mindmap.webp"
                 alt="Module 2 Mindmap - Working With Your Files"
                 width={800}
                 height={400}
