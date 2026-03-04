@@ -44,6 +44,20 @@ export async function middleware(request: NextRequest) {
   // All course pages are allowed through - AuthGate component handles auth gating
   // This provides better UX: modal overlay instead of hard redirect
 
+  // --- Admin protection: only ADMIN_EMAIL can access /admin/* and /api/admin/* ---
+  const isAdminPath = request.nextUrl.pathname.startsWith('/admin') || request.nextUrl.pathname.startsWith('/api/admin')
+  if (isAdminPath) {
+    const adminEmail = process.env.ADMIN_EMAIL
+    if (!user || user.email !== adminEmail) {
+      if (request.nextUrl.pathname.startsWith('/api/')) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      }
+      const url = request.nextUrl.clone()
+      url.pathname = '/'
+      return NextResponse.redirect(url)
+    }
+  }
+
   // Redirect to courses if accessing auth pages while authenticated
   const authPaths = ['/sign-in', '/sign-up']
   const isAuthPath = authPaths.includes(request.nextUrl.pathname)
@@ -70,6 +84,8 @@ export const config = {
      * - All other API routes (they handle their own auth)
      * - All public pages (/, /essays, /products, etc.)
      */
+    '/admin/:path*',
+    '/api/admin/:path*',
     '/courses/:path*',
     '/sign-in',
     '/sign-up',
