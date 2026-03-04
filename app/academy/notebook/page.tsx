@@ -269,7 +269,7 @@ export default function NotebookPage() {
                 Create an account to save highlights and notes while reading courses.
               </p>
               <Link
-                href="/auth/login"
+                href="/sign-in"
                 className="inline-block mt-6 px-6 py-3 bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors"
               >
                 Sign In

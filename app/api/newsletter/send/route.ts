@@ -57,22 +57,28 @@ function getSubject(content: NewsletterContent): string {
   return content.subject
 }
 
-// Verify admin secret for sending newsletters
-function verifyAdminSecret(request: NextRequest): boolean {
+// Verify admin access — accepts either ADMIN_SECRET/CRON_SECRET (for cron jobs)
+// or session-based admin email check (for the admin UI compose page)
+async function verifyAdminAccess(request: NextRequest): Promise<boolean> {
+  // Check bearer token first (cron jobs)
   const authHeader = request.headers.get('authorization')
   const adminSecret = process.env.ADMIN_SECRET || process.env.CRON_SECRET
+  if (adminSecret && authHeader === `Bearer ${adminSecret}`) return true
 
-  if (!adminSecret) {
-    console.warn('ADMIN_SECRET not set - rejecting request')
-    return false
-  }
-
-  return authHeader === `Bearer ${adminSecret}`
+  // Check session-based admin access (admin UI)
+  const { createServerClient } = await import('@supabase/ssr')
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { cookies: { getAll() { return request.cookies.getAll() }, setAll() {} } }
+  )
+  const { data: { user } } = await supabase.auth.getUser()
+  return user?.email === process.env.ADMIN_EMAIL
 }
 
 export async function POST(request: NextRequest) {
   // Verify authorization
-  if (!verifyAdminSecret(request)) {
+  if (!(await verifyAdminAccess(request))) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }

@@ -159,7 +159,7 @@ async function handleAgentKitRefund(
 // Trigger the Academy onboarding email sequence
 async function triggerAcademyOnboarding(email: string) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://id8labs.tech'
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://id8labs.app'
     const internalKey = process.env.SUPABASE_SERVICE_ROLE_KEY
     const response = await fetch(`${baseUrl}/api/email-sequences/trigger`, {
       method: 'POST',

@@ -206,7 +206,7 @@ function SidebarContent({
           Sign in to save your highlights and notes
         </p>
         <a
-          href="/auth/login"
+          href="/sign-in"
           className="mt-4 px-4 py-2 bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors"
         >
           Sign In

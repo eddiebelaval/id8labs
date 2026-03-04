@@ -202,7 +202,7 @@ export default function FactoryPage() {
             </p>
             <div className="pt-4">
               <Link
-                href="/essays/id8factory-missing-orchestration-layer"
+                href="/writing/id8factory-missing-orchestration-layer"
                 className="inline-flex items-center gap-2 text-lg text-[var(--id8-orange)] hover:underline"
               >
                 Read the full essay

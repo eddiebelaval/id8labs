@@ -335,14 +335,14 @@ export default function AcademyPage() {
 
                   <div className="flex flex-col gap-3 w-full md:w-auto">
                     <Link
-                      href="/auth/signin?redirect=/academy"
+                      href="/sign-in?redirect=/academy"
                       className="btn btn-primary text-center group inline-flex items-center justify-center gap-2"
                     >
                       Sign In
                       <ArrowRightIcon />
                     </Link>
                     <Link
-                      href="/auth/signup?redirect=/academy"
+                      href="/sign-up?redirect=/academy"
                       className="btn bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] hover:border-id8-orange/50 text-center"
                     >
                       Create Account

@@ -324,7 +324,7 @@ export default function LLCOpsContent() {
               </p>
               <div className="pt-4">
                 <Link
-                  href="/essays/building-llc-ops"
+                  href="/writing/building-llc-ops"
                   className="inline-flex items-center gap-2 text-lg text-[var(--id8-orange)] hover:underline"
                 >
                   Read the full case study
