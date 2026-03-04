@@ -1,20 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
-
-const getSupabase = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-  if (!supabaseUrl || !supabaseServiceKey) {
-    throw new Error('Missing Supabase environment variables')
-  }
-
-  return createClient(supabaseUrl, supabaseServiceKey)
-}
+import { createAdminClient } from '@/lib/supabase/server'
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) return NextResponse.json({ error: 'Server config error' }, { status: 500 })
     const searchParams = request.nextUrl.searchParams
 
     const category = searchParams.get('category') || 'all'
@@ -49,7 +39,8 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) return NextResponse.json({ error: 'Server config error' }, { status: 500 })
     const body = await request.json()
 
     const { data, error } = await supabase

@@ -7,8 +7,10 @@ import type {
 
 // --- Helpers ---
 
+const USD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+
 function fmt(cents: number): string {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100)
+  return USD.format(cents / 100)
 }
 
 function fmtCompact(cents: number): string {
@@ -17,14 +19,25 @@ function fmtCompact(cents: number): string {
   return fmt(cents)
 }
 
-function frequencyLabel(f: string): string {
-  const map: Record<string, string> = { monthly: 'Monthly', annual: 'Annual', 'one-time': 'One-time', 'usage-based': 'Usage' }
-  return map[f] || f
+const FREQUENCY_LABELS: Record<ExpenseFrequency, string> = {
+  monthly: 'Monthly', annual: 'Annual', 'one-time': 'One-time', 'usage-based': 'Usage',
 }
+function frequencyLabel(f: ExpenseFrequency): string { return FREQUENCY_LABELS[f] }
 
-function assetCategoryLabel(c: string): string {
-  const map: Record<string, string> = { hardware: 'Hardware', domain: 'Domain', software_ip: 'Software IP', financial: 'Financial', other: 'Other' }
-  return map[c] || c
+const ASSET_CATEGORY_LABELS: Record<AssetCategory, string> = {
+  hardware: 'Hardware', domain: 'Domain', software_ip: 'Software IP', financial: 'Financial', other: 'Other',
+}
+function assetCategoryLabel(c: AssetCategory): string { return ASSET_CATEGORY_LABELS[c] }
+
+// Shared form styles
+const inputClass = "w-full px-3 py-2 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--id8-orange)]"
+const labelClass = "block text-xs text-[var(--text-secondary)] mb-1"
+
+// Shared recharts lazy loader
+function useRecharts() {
+  const [mod, setMod] = useState<any>(null)
+  useEffect(() => { import('recharts').then(setMod) }, [])
+  return mod
 }
 
 // --- Components ---
@@ -63,12 +76,7 @@ function AddButton({ label, onClick }: { label: string; onClick: () => void }) {
 // --- Charts wrapper (lazy loaded to avoid SSR issues) ---
 
 function Charts({ summary }: { summary: BalanceSummary }) {
-  const [recharts, setRecharts] = useState<any>(null)
-
-  useEffect(() => {
-    import('recharts').then(mod => setRecharts(mod))
-  }, [])
-
+  const recharts = useRecharts()
   if (!recharts) return <p className="text-sm text-[var(--text-tertiary)] p-4">Loading charts...</p>
 
   const { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } = recharts
@@ -108,8 +116,7 @@ function Charts({ summary }: { summary: BalanceSummary }) {
 }
 
 function CashFlowChart({ summary }: { summary: BalanceSummary }) {
-  const [recharts, setRecharts] = useState<any>(null)
-  useEffect(() => { import('recharts').then(mod => setRecharts(mod)) }, [])
+  const recharts = useRecharts()
   if (!recharts || summary.monthly_timeline.length === 0) return null
 
   const { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, Legend } = recharts
@@ -134,8 +141,7 @@ function CashFlowChart({ summary }: { summary: BalanceSummary }) {
 }
 
 function VendorChart({ summary }: { summary: BalanceSummary }) {
-  const [recharts, setRecharts] = useState<any>(null)
-  useEffect(() => { import('recharts').then(mod => setRecharts(mod)) }, [])
+  const recharts = useRecharts()
   const vendors = summary.expense_by_vendor.filter((v: { monthly_cents: number }) => v.monthly_cents > 0)
   if (!recharts || vendors.length === 0) return <p className="text-sm text-[var(--text-tertiary)]">No vendor data</p>
 
@@ -166,8 +172,8 @@ function AddExpenseForm({ categories, onSave, onCancel }: {
       vendor: form.vendor || undefined, project: form.project || undefined, notes: form.notes || undefined,
     })
   }
-  const ic = "w-full px-3 py-2 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--id8-orange)]"
-  const lc = "block text-xs text-[var(--text-secondary)] mb-1"
+  const ic = inputClass
+  const lc = labelClass
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onCancel}>
       <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 w-full max-w-md space-y-3">
@@ -205,8 +211,8 @@ function AddAssetForm({ onSave, onCancel }: { onSave: (data: Record<string, unkn
       vendor: form.vendor || undefined, notes: form.notes || undefined,
     })
   }
-  const ic = "w-full px-3 py-2 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--id8-orange)]"
-  const lc = "block text-xs text-[var(--text-secondary)] mb-1"
+  const ic = inputClass
+  const lc = labelClass
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onCancel}>
       <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 w-full max-w-md space-y-3">
@@ -243,7 +249,7 @@ export default function FinanceDashboard() {
   const [categories, setCategories] = useState<ExpenseCategory[]>([])
   const [showAddExpense, setShowAddExpense] = useState(false)
   const [showAddAsset, setShowAddAsset] = useState(false)
-  const [expenseFilter, setExpenseFilter] = useState<'all' | 'monthly' | 'annual' | 'one-time' | 'usage-based'>('all')
+  const [expenseFilter, setExpenseFilter] = useState<'all' | ExpenseFrequency>('all')
 
   const fetchAll = useCallback(async () => {
     setLoading(true)
@@ -414,7 +420,7 @@ export default function FinanceDashboard() {
                 <div className="space-y-2">
                   {s.asset_by_category.map(cat => (
                     <div key={cat.category} className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0">
-                      <div><p className="text-sm text-[var(--text-primary)] font-medium">{assetCategoryLabel(cat.category)}</p><p className="text-xs text-[var(--text-tertiary)]">{cat.count} item{cat.count !== 1 ? 's' : ''}</p></div>
+                      <div><p className="text-sm text-[var(--text-primary)] font-medium">{assetCategoryLabel(cat.category as AssetCategory)}</p><p className="text-xs text-[var(--text-tertiary)]">{cat.count} item{cat.count !== 1 ? 's' : ''}</p></div>
                       <p className="text-sm font-bold text-blue-500">{cat.total_value_cents > 0 ? fmt(cat.total_value_cents) : 'Not valued'}</p>
                     </div>
                   ))}
