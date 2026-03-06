@@ -4,6 +4,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'ID8Foundry - ID8Labs',
   description: 'The system that builds systems. A self-improving development framework that captures patterns, decisions, and failures across projects.',
+  alternates: { canonical: '/products/foundry' },
+  openGraph: {
+    title: 'ID8Foundry | id8Labs',
+    description: 'The system that builds systems. A self-improving development framework that captures patterns, decisions, and failures across projects.',
+    url: 'https://id8labs.app/products/foundry',
+  },
 }
 
 // Pipeline files structure

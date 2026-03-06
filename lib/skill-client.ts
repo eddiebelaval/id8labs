@@ -31,7 +31,7 @@ export function getInstallCommand(skill: Skill, method: InstallMethod = 'copy'):
  * Get shareable stack URL
  */
 export function getStackShareUrl(shareId: string): string {
-  return `${process.env.NEXT_PUBLIC_SITE_URL || ''}/skills/share/${shareId}`
+  return `${process.env.NEXT_PUBLIC_APP_URL || ''}/skills/share/${shareId}`
 }
 
 /**

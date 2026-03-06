@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { createAdminClient } from '@/lib/supabase/server'
 import { Resend } from 'resend'
 import {
   AI_FUNDAMENTALS_SEQUENCE,
@@ -12,18 +12,6 @@ import {
 
 // Email sender address
 const EMAIL_FROM = 'Eddie @ ID8Labs <hello@id8labs.tech>'
-
-// Initialize clients
-const getSupabase = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-  if (!supabaseUrl || !supabaseServiceKey) {
-    throw new Error('Missing Supabase environment variables')
-  }
-
-  return createClient(supabaseUrl, supabaseServiceKey)
-}
 
 const getResend = () => {
   const resendApiKey = process.env.RESEND_API_KEY
@@ -84,7 +72,10 @@ export async function GET(request: NextRequest) {
     )
   }
 
-  const supabase = getSupabase()
+  const supabase = createAdminClient()
+  if (!supabase) {
+    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+  }
   const resend = getResend()
   const now = new Date()
 

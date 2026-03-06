@@ -277,13 +277,13 @@ export default function Module0Page() {
               >
                 <h3 className="font-semibold mb-3">Module Mindmap</h3>
                 <a
-                  href="/courses/module-0/media/module-0-mindmap.png"
+                  href="/courses/module-0/media/module-0-mindmap.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block"
                 >
                   <Image
-                    src="/courses/module-0/media/module-0-mindmap.png"
+                    src="/courses/module-0/media/module-0-mindmap.webp"
                     alt="Module 0 Mindmap - The Mental Model Shift"
                     width={800}
                     height={600}

@@ -4,6 +4,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'X-Place - ID8Labs',
   description: 'Collaborative pixel canvas for the X ecosystem. r/place meets Twitter—a 500x500 shared canvas where thousands create pixel art together.',
+  alternates: { canonical: '/products/xplace' },
+  openGraph: {
+    title: 'X-Place | id8Labs',
+    description: 'Collaborative pixel canvas for the X ecosystem. r/place meets Twitter.',
+    url: 'https://id8labs.app/products/xplace',
+  },
 }
 
 const features = [

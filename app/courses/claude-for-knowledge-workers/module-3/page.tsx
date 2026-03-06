@@ -648,7 +648,7 @@ Turn this into a clear, structured [blog post/email/memo]. Keep my voice and exa
             </p>
             <div className="rounded-xl overflow-hidden border border-[var(--border)]">
               <Image
-                src="/courses/module-3/media/module-3-mindmap.png"
+                src="/courses/module-3/media/module-3-mindmap.webp"
                 alt="Module 3 Mindmap - Writing With Claude"
                 width={800}
                 height={400}

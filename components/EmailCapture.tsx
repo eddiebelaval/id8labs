@@ -89,7 +89,9 @@ export default function EmailCapture({
             </p>
 
             <div className="flex gap-2">
+              <label htmlFor="email-capture" className="sr-only">Email address</label>
               <input
+                id="email-capture"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

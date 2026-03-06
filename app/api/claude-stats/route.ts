@@ -1,38 +1,6 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
-import { cachedJsonResponse, CachePresets, withCache } from '@/lib/cache'
-
-// Lazy-load Supabase clients
-let supabaseAnon: SupabaseClient | null = null
-let supabaseService: SupabaseClient | null = null
-
-function getSupabaseAnon() {
-  if (!supabaseAnon) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-    if (!supabaseUrl || !supabaseAnonKey) {
-      throw new Error('Supabase not configured')
-    }
-
-    supabaseAnon = createClient(supabaseUrl, supabaseAnonKey)
-  }
-  return supabaseAnon
-}
-
-function getSupabaseService() {
-  if (!supabaseService) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-    if (!supabaseUrl || !supabaseServiceKey) {
-      throw new Error('Supabase service role not configured')
-    }
-
-    supabaseService = createClient(supabaseUrl, supabaseServiceKey)
-  }
-  return supabaseService
-}
+import { createAdminClient } from '@/lib/supabase/server'
+import { cachedJsonResponse, withCache } from '@/lib/cache'
 
 // GET - Fetch current stats (no sync) - uses anon key for public read access
 // Optimized with edge caching and in-memory cache
@@ -40,7 +8,8 @@ export async function GET() {
   try {
     // Use in-memory cache for 30s to reduce DB calls during high traffic
     const stats = await withCache('claude-stats', async () => {
-      const client = getSupabaseAnon()
+      const client = createAdminClient()
+      if (!client) throw new Error('Server configuration error')
       const { data, error } = await client
         .from('claude_stats')
         .select('*')
@@ -101,7 +70,10 @@ export async function POST(request: Request) {
     // Support legacy 'tool' param or new 'name' param
     const itemName = name || tool
 
-    const client = getSupabaseService()
+    const client = createAdminClient()
+    if (!client) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     // Fetch current stats
     const { data: current, error: fetchError } = await client
@@ -243,7 +215,10 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'No valid fields to update' }, { status: 400 })
     }
 
-    const client = getSupabaseService()
+    const client = createAdminClient()
+    if (!client) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     // Get the stats row first
     const { data: current, error: fetchError } = await client

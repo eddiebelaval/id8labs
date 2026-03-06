@@ -3,7 +3,8 @@ import { Metadata } from 'next'
 import { TrendingUp, Sparkles, Rocket, Trophy, Zap, Terminal, Settings, Puzzle, ArrowRight, Star, Download, Eye, Shield, CheckCircle } from 'lucide-react'
 import { getTrendingItems, getFeaturedItems, getRisingStars, getLeaderboard, type TrendingItem, type TrendingItemType } from '@/lib/trending'
 import { StackShackLogo } from '@/components/StackShackLogo'
-import { StackBuilder } from '@/components/stack/StackBuilder'
+import dynamic from 'next/dynamic'
+const StackBuilder = dynamic(() => import('@/components/stack/StackBuilder').then(m => m.StackBuilder), { ssr: false })
 import { TrendingItemCard } from './TrendingItemCard'
 
 export const metadata: Metadata = {

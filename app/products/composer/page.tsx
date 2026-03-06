@@ -4,6 +4,12 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Composer - ID8Labs',
   description: 'Timeline-based AI story development platform for writers, directors, and producers.',
+  alternates: { canonical: '/products/composer' },
+  openGraph: {
+    title: 'Composer | id8Labs',
+    description: 'Timeline-based AI story development platform for writers, directors, and producers.',
+    url: 'https://id8labs.app/products/composer',
+  },
 }
 
 export default function ComposerPage() {

@@ -1,19 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
+import { createAdminClient } from '@/lib/supabase/server'
 import { AI_FUNDAMENTALS_SEQUENCE } from '@/lib/email/templates/ai-fundamentals-sequence'
 import { ACADEMY_ONBOARDING_SEQUENCE } from '@/lib/email/templates/academy-onboarding-sequence'
-
-// Initialize Supabase client with service role for server-side operations
-const getSupabase = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-  if (!supabaseUrl || !supabaseServiceKey) {
-    throw new Error('Missing Supabase environment variables')
-  }
-
-  return createClient(supabaseUrl, supabaseServiceKey)
-}
 
 // Sequence configuration type
 interface SequenceConfig {
@@ -84,7 +72,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     // Check if user already has an active sequence of this type
     const { data: existingSequence } = await supabase
@@ -169,7 +160,10 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const supabase = getSupabase()
+    const supabase = createAdminClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     let query = supabase
       .from('email_sequences')

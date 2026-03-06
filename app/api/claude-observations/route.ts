@@ -1,23 +1,6 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
+import { createAdminClient } from '@/lib/supabase/server'
 import { cachedJsonResponse, withCache } from '@/lib/cache'
-
-// Lazy-load Supabase client to avoid build-time errors
-let supabase: SupabaseClient | null = null
-
-function getSupabase() {
-  if (!supabase) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-    if (!supabaseUrl || !supabaseServiceKey) {
-      throw new Error('Supabase not configured')
-    }
-
-    supabase = createClient(supabaseUrl, supabaseServiceKey)
-  }
-  return supabase
-}
 
 // Static fallback observations (used when table doesn't exist)
 // These match the component's staticObservations for consistency
@@ -188,7 +171,8 @@ export async function GET() {
   try {
     // Use in-memory cache for 60s (observations change less frequently)
     const result = await withCache('claude-observations', async () => {
-      const client = getSupabase()
+      const client = createAdminClient()
+      if (!client) throw new Error('Server configuration error')
       const { data, error } = await client
         .from('claude_observations')
         .select('*')
@@ -263,7 +247,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Text is required' }, { status: 400 })
     }
 
-    const client = getSupabase()
+    const client = createAdminClient()
+    if (!client) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     // Build insert object - only include columns that exist in table
     const insertData: Record<string, unknown> = {
@@ -366,7 +353,10 @@ export async function PUT(request: Request) {
       return NextResponse.json({ skipped: true, reason: 'No observation generated' })
     }
 
-    const client = getSupabase()
+    const client = createAdminClient()
+    if (!client) {
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+    }
 
     // Build insert object - only include columns that exist in table
     const insertData: Record<string, unknown> = {
