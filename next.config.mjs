@@ -38,6 +38,17 @@ const nextConfig = {
         destination: '/stackshack/:path*',
         permanent: true,
       },
+      // Legacy /essays routes → /writing
+      {
+        source: '/essays',
+        destination: '/writing',
+        permanent: true,
+      },
+      {
+        source: '/essays/:slug',
+        destination: '/writing/:slug',
+        permanent: true,
+      },
       // Legacy browse pages → unified marketplace tabs
       {
         source: '/commands',
