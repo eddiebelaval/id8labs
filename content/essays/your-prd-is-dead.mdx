@@ -1,0 +1,130 @@
+---
+title: "Your PRD Is Dead. Here's What Replaces It."
+subtitle: "A three-document system that evolves with your build"
+date: "2026-03-06"
+category: "essay"
+excerpt: "Every product team has the same dirty secret: the PRD died on day three. Here's a three-document system that evolves with your build and becomes the source of truth you actually test against."
+tags: ["documentation", "product-development", "open-source", "claude-code"]
+featured: true
+---
+
+# Your PRD Is Dead. Here's What Replaces It.
+
+*A three-document system that evolves with your build -- and becomes the source of truth you actually test against.*
+
+---
+
+Every product team has the same dirty secret: the PRD died on day three.
+
+You wrote it before you started building. It was thorough. It had user stories, acceptance criteria, maybe even a diagram. Everyone signed off. Then you started building, learned something new about your users, pivoted a feature, cut a scope, and suddenly the PRD describes a product that doesn't exist. Nobody updates it. Nobody references it. It sits in a Notion page with a "Last edited 47 days ago" timestamp, slowly becoming fiction.
+
+This isn't a discipline problem. It's a structural one. The PRD tries to be two things at once -- a vision document AND a specification -- and it does both badly. The vision part goes stale because builds evolve. The spec part goes stale because nobody rewrites it when reality changes. You end up navigating a build with a map that was drawn before you knew where you were going.
+
+I hit this wall building [Parallax](https://tryparallax.space), an AI companion for conflict resolution. Six weeks in, 500+ commits, the product had evolved so far from the original concept that no single document described what it was, what it was becoming, or how we got here. I had a BUILDING.md (our build journal), but that only told me where we'd been -- not where we were or where we were headed.
+
+So I built a system that fixes this. It's three documents, and they form a triangle.
+
+## The Triangle
+
+Three documents. Three temporal perspectives. Each one stays in its lane:
+
+**VISION.md** -- What this product is *becoming*. The north star. Written in directional language. Evolves when you learn something new about your users or your product. Gets REWRITTEN, not appended. The Soul section almost never changes. The Pillars section tracks what you've committed to, with honest status markers: REALIZED, PARTIAL, UNREALIZED.
+
+**SPEC.md** -- What this product *IS*, right now, today. Present tense only. "The system DOES X" -- never "will do" or "should do." Every capability is testable. The Verification Surface section is a checklist you can audit against the live product. When something ships, this document gets rewritten to match reality.
+
+**BUILDING.md** -- How we got here. The build journal. Append-only. This one already exists in a lot of codebases. It's the retrospective record -- what was built, why, and what decisions were made along the way.
+
+The power isn't in any one document. It's in the **gaps between them.**
+
+## The Gap Is the Roadmap
+
+Here's the insight that changed how I think about product documentation:
+
+**The delta between VISION.md and SPEC.md IS your roadmap.**
+
+You don't need a separate roadmap document. VISION has 10 pillars. SPEC shows 6 are realized. The 4 unrealized pillars ARE the roadmap -- prioritized by pillar order, justified by the Evolution Log, bounded by the Anti-Vision (what the product must never become).
+
+When you ship something, SPEC catches up to VISION. When you learn something, VISION might shift. The drift between them is where the anxiety used to live. Now it's just a measurable gap.
+
+## Why Three, Not Two
+
+Two documents give you a line -- one-dimensional. You can move forward or backward, but you can't navigate.
+
+Three documents give you a plane. You can triangulate your position. If SPEC goes stale, diff VISION against BUILDING to figure out what's true now. If you lose track of where you're headed, the gap between SPEC and BUILDING reveals your trajectory. Any two documents can reconstruct the third.
+
+This is the same geometry that shows up everywhere stable systems exist. Three points of reference, self-correcting.
+
+## What Makes This Different From a Wiki
+
+A few things that are easy to miss:
+
+**1. Rewrite, don't append.** VISION and SPEC are present-tense documents. When reality changes, the affected section gets rewritten. The Evolution Log (VISION) and Drift Log (SPEC) capture what changed and why -- so you have the history without polluting the current truth.
+
+**2. Anti-Vision is the immune system.** VISION.md has a section for what the product must NEVER become. When you're reconciling SPEC and a new capability contradicts the Anti-Vision, the system flags it before it ships. Documentation that protects you from yourself.
+
+**3. The Verification Surface is testable.** Every capability in SPEC.md maps to an assertion you can check: "User can X." "System does Y." "Free tier gates at Z." Run the checklist against your live product. If assertions fail, the spec is stale. That's your signal to reconcile.
+
+**4. It's conversational, not form-based.** I built a `/reconcile` command that interviews you when the vision evolves. It asks "which part shifted?" -- gives you structured choices -- then asks "what happened? what did you learn?" -- and rewrites the document from your answers. You talk, the system writes. No brackets to fill in.
+
+## The Documents in Practice
+
+Here's what Parallax's VISION.md Soul section looks like:
+
+> Parallax exists because people in conflict are almost always saying the same thing -- they just can't hear each other. Twenty years behind a reality TV camera taught Eddie that every fight has a surface and a subtext, and the subtext is where the truth lives. Most relationship technology compresses the raw signal into something consumable. Parallax is the diary, not the media product.
+
+And its Anti-Vision:
+
+> **Never become a chatbot.** Ava is an entity with persistence, memory, and behavioral understanding. If she loses those, she's just another ChatGPT wrapper.
+>
+> **Never compress the signal.** The moment Parallax starts gamifying conflict or reducing it to scores/badges/streaks, the soul is dead.
+>
+> **Never optimize for engagement.** Parallax succeeds when people need it less, not more.
+
+SPEC.md has 20+ verification assertions. Things like:
+
+> - Free tier gates at 25 Ava messages with upgrade prompt
+> - Violence admission detection triggers appropriate response (not validation)
+> - Safety cooldown activates 5-min Ava check-in (not 14-day lockout)
+
+When any of those fail, we know the spec is stale and needs reconciliation. That's not documentation -- that's a contract.
+
+## When to Use Each Document
+
+| Situation | What to Do |
+|-----------|-----------|
+| Starting a new product | Write VISION.md first (interview yourself about the Soul) |
+| Something shipped | Rewrite the affected section of SPEC.md |
+| You learned something about your users | Evolve VISION.md, add to the Evolution Log |
+| Pre-release check | Scan SPEC against the codebase for drift |
+| Someone asks "what does this do?" | Hand them SPEC.md |
+| Someone asks "where is this going?" | Hand them VISION.md |
+| Someone asks "how did we get here?" | Hand them BUILDING.md |
+| Things feel off | Diff VISION vs. SPEC. The gap tells you what's wrong. |
+
+## The Tools (Open Source)
+
+I've open-sourced the full system as part of [id8-toolkit](https://github.com/eddiebelaval/id8-toolkit):
+
+- **Templates** -- `vision.md` and `spec.md` document templates
+- **`/reconcile`** -- A Claude Code slash command with 5 modes:
+  - `/reconcile init` -- Interview-driven initialization for a new project
+  - `/reconcile scan` -- Drift detection (report without editing)
+  - `/reconcile vision` -- Conversational north star evolution
+  - `/reconcile spec` -- Codebase scan + contract update
+  - `/reconcile` -- Full reconciliation (all of the above)
+
+The `/reconcile` skill is conversational by design. It uses structured questions for scoping ("which part shifted?") and open conversation for nuance ("what did you learn?"). It writes the docs from your answers. The whole point is that documentation maintenance becomes a conversation, not a chore.
+
+## Start Here
+
+You don't need the toolkit to try this. Create two files at your project root:
+
+**VISION.md** -- Answer one question: "Why does this exist?" Write one paragraph. Then list the 3-7 commitments your product makes (pillars). Mark each as realized, partial, or unrealized. Add what it must never become (anti-vision).
+
+**SPEC.md** -- Answer one question: "What can this product do TODAY?" List every capability in present tense. For each one, write a testable assertion. Add your current tech stack. List what the product explicitly does NOT do.
+
+That's it. The triangle is alive. The gap between those two documents is your roadmap. The gap that changes over time is your evolution.
+
+---
+
+*The three-document system was developed while building [Parallax](https://tryparallax.space), an AI companion for conflict resolution. The tools are open source at [id8-toolkit](https://github.com/eddiebelaval/id8-toolkit). Built with Claude Code.*
