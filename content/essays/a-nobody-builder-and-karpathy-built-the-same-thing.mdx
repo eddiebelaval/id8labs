@@ -1,0 +1,104 @@
+---
+title: "A Nobody Builder and Karpathy Built the Same Thing"
+subtitle: "When the patterns converge, pay attention"
+date: "2026-03-09"
+author: "Eddie Belaval"
+category: "essay"
+tags: ["research", "autoresearch", "claude-code", "patterns", "open-source"]
+featured: true
+excerpt: "I'm a solo founder in Florida. Karpathy co-founded OpenAI. This weekend he released a framework that rhymes with what I've been building for weeks. The pattern is the same. Here's what that means."
+---
+
+*Written in collaboration with Claude (Opus) -- Anthropic*
+
+---
+
+I'm a solo founder in Florida building AI tools out of my apartment. Andrej Karpathy is... Andrej Karpathy. He co-founded OpenAI, led AI at Tesla, and his YouTube channel has more subscribers than most countries have people.
+
+This weekend he released [autoresearch](https://github.com/karpathy/autoresearch) -- a framework where AI agents autonomously run ML training experiments overnight. The agent modifies code, runs a 5-minute experiment, measures a single metric, accepts or rejects, and repeats. About 100 iterations while you sleep.
+
+I've been building a [Research Lab](https://github.com/eddiebelaval/research-lab) for weeks that does the same thing. Not for ML training -- for ideas. But the architecture is the same.
+
+I'm not comparing myself to Karpathy. That would be delusional. But when two people working on completely different problems independently arrive at the same structural pattern, that pattern is probably real. And that's worth writing about.
+
+## The Pattern
+
+Strip away the domains and both systems do the same four things:
+
+**1. Autonomous iteration.** An AI agent processes a queue of work without human intervention. Autoresearch runs training experiments. My Research Lab evaluates theses through expert panels. Neither requires you to be awake.
+
+**2. A single accept/reject signal.** Autoresearch uses validation bits-per-byte -- one number, lower is better. My lab uses a weighted composite score -- above 3.2 is ACCEPT, below is REJECT. The rich data is there for analysis, but a binary signal forces the decision.
+
+**3. Constraints breed focus.** Autoresearch limits every experiment to 5 minutes on one GPU modifying one file. My lab uses scope tiers -- NARROW, FOCUSED, or BROAD -- to prevent sessions from ballooning. Both systems get better results by doing less per iteration.
+
+**4. The knowledge compounds.** Autoresearch keeps the best version of `train.py` and discards failed experiments. My lab appends findings to a persistent knowledge base that grows across sessions. In both cases, the system remembers what worked.
+
+That's it. That's the pattern. Iterate autonomously, measure with a single signal, constrain the scope, compound the knowledge.
+
+## Where We Diverge
+
+The similarities are structural. The differences are domain-specific, and they're interesting.
+
+**Autoresearch is empirical.** It runs code and measures a number. There's no ambiguity about whether an experiment improved things -- val_bpb went down or it didn't. My Research Lab is conceptual. It evaluates arguments, not code. Three expert subagents grade a thesis on seven dimensions, and the synthesis identifies where they agree and disagree. There's no single ground truth -- there's convergence and divergence.
+
+**Autoresearch iterates on one artifact.** `train.py` is the only file the agent modifies. The constraint is elegant -- one file means clean diffs and reviewable history. My lab iterates on ideas, which are messier. A finding can be STRENGTHENED (better argument), LIMITED (narrower scope), RETIRED (withdrawn), or SPLIT (broken into sub-claims). Ideas don't have a single axis of improvement.
+
+**Autoresearch has no adversary.** The metric is the judge. My lab has a naysayer system -- 8 critic archetypes (Hard Problem Skeptic, Radical Enactivist, Social Constructionist, etc.) that actively attack findings. The adversarial framework grows over time. New challenges are added but never removed. The bar only goes up.
+
+This last difference matters. Autoresearch optimizes toward a fixed target. My lab optimizes toward a target that's trying to move away from you. That's closer to how real research works -- the better your argument gets, the more sophisticated the objections become.
+
+## What I Stole
+
+When I saw autoresearch, three things jumped out that my system was missing:
+
+**The refinement loop.** My lab evaluated a thesis once and moved on. The queue generated new questions but never circled back to strengthen existing answers. Finding F-005 got a B+ with known weaknesses -- and just sat there. I built a REFINE action that takes a finding, diagnoses its specific weaknesses, generates a strengthened version, and re-evaluates it. Same finding, multiple passes, measurable improvement.
+
+**The convergence metric.** Autoresearch has val_bpb -- one number that tells you if the whole system is getting smarter. My lab had rich data (expert scores, adversarial survival rates, contradiction counts) but no aggregate signal. I created a 0-100 convergence score combining five components: finding maturity, contradiction resolution, question coverage, adversarial survival, and refinement depth. Current score: 12.5 out of 100. Nowhere to go but up.
+
+**The scope constraint.** Autoresearch's 5-minute fixed budget is genius. It forces the agent to optimize within a constraint rather than endlessly exploring. I added scope tiers to briefs -- NARROW (one dimension, one challenge), FOCUSED (two to three each), or BROAD (full evaluation). Refinement cycles are always NARROW or FOCUSED. Never open-ended.
+
+These three additions took about an hour to build. The Research Lab was already 95% of the way there -- the architecture supported iteration, it just wasn't using it. Sometimes you need someone else's work to show you what you already have.
+
+## The Convergence Score
+
+This is my favorite part of the enhancement because it made something invisible visible.
+
+My knowledge base has 6 findings, 30 open questions, 5 unresolved contradictions, and 21 adversarial challenges. Before the convergence metric, those were just numbers in different files. After it, they collapsed into a single score: 12.5 out of 100.
+
+That number tells a clear story. The naysayer loop devastated every finding (good -- that's its job) but nothing has been refined yet (bad -- that's intellectual debt). The path up is through the REFINE loop: take the weakest finding, strengthen it against the specific attacks that damaged it, re-evaluate, measure the delta.
+
+It's the same insight autoresearch embodies: if you can't measure it, you can't improve it. A single number creates accountability that a spreadsheet of rubric scores never will.
+
+## Why Convergent Evolution Matters
+
+I don't think Karpathy and I are uniquely smart. I think we're both responding to the same environmental pressure: AI agents are good enough to run unsupervised, but most workflows still require a human in the loop for every step.
+
+The pattern -- autonomous iteration with a single metric and compounding state -- is the natural architecture for "let the AI work overnight." It's what you build when you trust the agent enough to let it run but need a way to verify it's improving.
+
+I expect to see this pattern everywhere in the next year. Research, code optimization, content generation, trading strategies, design iteration. Any domain where you can define "better" with a measurable signal and the iteration cost is low enough to run 100 times overnight.
+
+The specific implementations will look different. Karpathy's uses PyTorch and a GPU. Mine uses Claude Code subagents and markdown files. Someone else's will use a different stack entirely. But the structure -- queue, iterate, measure, accept/reject, compound -- will be the same.
+
+## The Honest Reaction
+
+When I saw autoresearch, my first thought was: this is cool as fuck. And then: this feels familiar.
+
+That's it. No ego. No competition. Just recognition -- like hearing a melody you've been humming and realizing someone else wrote it down in a different key. I wasn't threatened. I was excited. Because when someone operating at Karpathy's level releases something that rhymes with what you've been building alone in Florida, that's not a threat -- that's validation that the pattern is real.
+
+I'm obviously a nobody. I don't have a Stanford pedigree or a YouTube channel with millions of subscribers. I'm a solo founder building AI tools with slash commands and markdown files. But that's exactly why the convergence matters. Good patterns get discovered independently because they're correct, not because the discoverers are special. The filesystem solved hierarchical organization before any individual programmer decided it should. REST emerged from multiple groups because it was the right abstraction for the web. And autonomous-iterate-measure-compound is emerging now because it's the right abstraction for AI-augmented work.
+
+My only reaction was: what can I learn from this? How do I make what I've got better? That's all I care about.
+
+## What's Next
+
+The Research Lab is [open source](https://github.com/eddiebelaval/research-lab). It's a Claude Code-native tool -- you run it as a slash command that orchestrates subagents. The modules are swappable, so you can use it for any domain where rigorous evaluation matters: research, engineering architecture, clinical safety, trading strategies, whatever.
+
+The convergence score is at 12.5. My immediate plan is to run the first REFINE cycle -- probably on F-005, the finding about write-protection as a consciousness precondition. It scored B+ with three known weaknesses and got devastated by the naysayer loop. If the refinement loop works, it should either come back stronger or get retired. Both outcomes push the convergence score up.
+
+The broader plan is overnight autonomous mode -- HYDRA-scheduled batch processing that drains the queue while I sleep. Right now the lab requires an active session. The architecture supports full autonomy; the scheduling doesn't exist yet.
+
+And I'll keep watching what Karpathy does with autoresearch. When someone operating at that level validates a pattern you discovered independently, you don't get precious about it. You learn everything you can.
+
+---
+
+*The Research Lab is open source at [github.com/eddiebelaval/research-lab](https://github.com/eddiebelaval/research-lab). Built with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) by [id8Labs](https://id8labs.app).*
