@@ -150,7 +150,7 @@ export default function PrivateAIPage() {
                 Free Course
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
-                Course 3 of 4 • AI Academy
+                Course 7 of 7 • AI Academy
               </span>
             </m.div>
 

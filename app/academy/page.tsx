@@ -152,6 +152,64 @@ const coursesCatalog = [
   }
 ]
 
+// Curated Anthropic Academy courses
+const anthropicCourses = [
+  {
+    id: 'claude-101',
+    title: 'Claude 101',
+    track: 'AI Fluency',
+    description: 'Official intro to Claude — core features, effective prompting, and real-world use cases.',
+    duration: 'Self-paced',
+    href: '/academy/anthropic/claude-101',
+    externalUrl: 'https://anthropic.skilljar.com/claude-101',
+  },
+  {
+    id: 'building-with-claude-api',
+    title: 'Building with the Claude API',
+    track: 'Developer',
+    description: 'Full API course — authentication, tool use, streaming, and production architecture patterns.',
+    duration: 'Self-paced',
+    href: '/academy/anthropic/building-with-claude-api',
+    externalUrl: 'https://anthropic.skilljar.com/claude-with-the-anthropic-api',
+  },
+  {
+    id: 'claude-code-in-action',
+    title: 'Claude Code in Action',
+    track: 'Developer',
+    description: 'Integrate Claude Code into your dev workflow — code generation, debugging, and multi-file editing.',
+    duration: '30 min video',
+    href: '/academy/anthropic/claude-code-in-action',
+    externalUrl: 'https://anthropic.skilljar.com/claude-code-in-action',
+  },
+  {
+    id: 'claude-code-skills',
+    title: 'Claude Code Skills',
+    track: 'Developer',
+    description: 'Build reusable Skills — markdown instructions that Claude applies automatically to the right tasks.',
+    duration: 'Self-paced',
+    href: '/academy/anthropic/claude-code-skills',
+    externalUrl: 'https://anthropic.skilljar.com/claude-code-skills',
+  },
+  {
+    id: 'introduction-to-mcp',
+    title: 'Introduction to MCP',
+    track: 'Developer',
+    description: 'Model Context Protocol fundamentals — build MCP servers and clients, connect Claude to external services.',
+    duration: 'Self-paced',
+    href: '/academy/anthropic/introduction-to-mcp',
+    externalUrl: 'https://anthropic.skilljar.com/introduction-to-model-context-protocol',
+  },
+  {
+    id: 'introduction-to-agent-skills',
+    title: 'Introduction to Agent Skills',
+    track: 'Developer',
+    description: 'Build autonomous AI agents — tool use, multi-step reasoning, and agentic workflow patterns.',
+    duration: '30 min video',
+    href: '/academy/anthropic/introduction-to-agent-skills',
+    externalUrl: 'https://anthropic.skilljar.com/introduction-to-agent-skills',
+  },
+]
+
 // Why ID8Labs differentiators
 const differentiators = [
   {
@@ -369,7 +427,7 @@ export default function AcademyPage() {
               All courses. All modules. Your journey.
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              7 courses, 57 total modules covering everything from AI fundamentals to organizational scaling.
+              7 original courses with 57 modules, plus 6 curated courses from Anthropic Academy.
             </p>
           </div>
 
@@ -487,6 +545,80 @@ export default function AcademyPage() {
               </m.div>
             ))}
           </m.div>
+        </div>
+      </section>
+
+      {/* Anthropic Academy Courses */}
+      <section className="section-spacing bg-[var(--bg-secondary)] border-y border-[var(--border)]" id="anthropic-courses">
+        <div className="container">
+          <div className="text-center mb-16">
+            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
+              Go Deeper — Official Anthropic Courses
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+              From the team that built Claude
+            </h2>
+            <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+              Complement your ID8Labs learning with Anthropic&apos;s official free courses. Earn certificates. All hosted on Anthropic Academy.
+            </p>
+          </div>
+
+          <m.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {anthropicCourses.map((course) => (
+              <m.div
+                key={course.id}
+                variants={fadeUp}
+                className="card-featured flex flex-col"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)]">
+                    {course.track}
+                  </span>
+                  <span className="px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-[var(--text-primary)] text-[var(--bg-primary)] rounded">
+                    Anthropic
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold mb-2">{course.title}</h3>
+
+                <div className="flex items-center gap-3 text-sm text-[var(--text-tertiary)] mb-3">
+                  <span className="font-mono">{course.duration}</span>
+                  <span>•</span>
+                  <span>Free + Certificate</span>
+                </div>
+
+                <p className="text-[var(--text-secondary)] mb-6 flex-grow">{course.description}</p>
+
+                <Link
+                  href={course.href}
+                  className="btn bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] hover:border-id8-orange/50 text-center group inline-flex items-center justify-center gap-2"
+                >
+                  Learn More
+                  <ArrowRightIcon />
+                </Link>
+              </m.div>
+            ))}
+          </m.div>
+
+          <div className="text-center mt-8">
+            <p className="text-sm text-[var(--text-tertiary)]">
+              All Anthropic Academy courses are free and include official certification.{' '}
+              <a
+                href="https://anthropic.skilljar.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-id8-orange hover:underline"
+              >
+                Browse full catalog on Anthropic Academy
+              </a>
+            </p>
+          </div>
         </div>
       </section>
 

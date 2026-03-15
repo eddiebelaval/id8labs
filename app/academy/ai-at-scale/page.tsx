@@ -153,7 +153,7 @@ export default function AIAtScalePage() {
                 Free Course
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
-                Course 4 of 4 • AI Academy
+                Course 6 of 7 • AI Academy
               </span>
             </m.div>
 

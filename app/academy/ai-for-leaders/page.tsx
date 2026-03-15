@@ -144,7 +144,7 @@ export default function AIForLeadersPage() {
                 Free Course
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
-                Course 2 of 4 • AI Academy
+                Course 5 of 7 • AI Academy
               </span>
             </m.div>
 

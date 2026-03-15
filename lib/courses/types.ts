@@ -10,6 +10,17 @@ export interface CourseConfig {
   description: string
 }
 
+export interface ExternalCourseConfig {
+  slug: string
+  title: string
+  path: string
+  externalUrl: string
+  provider: string
+  description: string
+  duration?: string
+  track: 'developer' | 'fluency' | 'platform'
+}
+
 export interface CourseProgress {
   id: string
   user_id: string
