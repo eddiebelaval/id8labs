@@ -46,9 +46,6 @@ export default function Header() {
             <Link href="/services" className="text-base hover:opacity-70 transition-opacity">
               Services
             </Link>
-            <Link href="/ai-setup" className="text-base hover:opacity-70 transition-opacity">
-              AI Setup
-            </Link>
             {/* Academy Dropdown */}
             <div
               className="relative"
@@ -230,13 +227,6 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
-            </Link>
-            <Link
-              href="/ai-setup"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              AI Setup
             </Link>
             {/* Mobile Academy Section - Collapsible */}
             <div className="space-y-3">

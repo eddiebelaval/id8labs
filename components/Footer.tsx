@@ -35,9 +35,6 @@ export default function Footer() {
               <Link href="/services" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
                 Services
               </Link>
-              <Link href="/ai-setup" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                AI Setup
-              </Link>
               <Link href="/writing" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
                 Writing
               </Link>
