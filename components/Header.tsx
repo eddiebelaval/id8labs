@@ -8,18 +8,25 @@ import { StackShackLogo } from './StackShackLogo'
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [academyExpanded, setAcademyExpanded] = useState(false)
+  const [desktopAcademyOpen, setDesktopAcademyOpen] = useState(false)
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
   }, [mobileMenuOpen])
+
+  // Close desktop academy dropdown on Escape
+  useEffect(() => {
+    if (!desktopAcademyOpen) return
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setDesktopAcademyOpen(false)
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [desktopAcademyOpen])
 
   return (
     <>
@@ -39,18 +46,31 @@ export default function Header() {
             <Link href="/services" className="text-base hover:opacity-70 transition-opacity">
               Services
             </Link>
+            <Link href="/ai-setup" className="text-base hover:opacity-70 transition-opacity">
+              AI Setup
+            </Link>
             {/* Academy Dropdown */}
-            <div className="relative group">
-              <Link
-                href="/academy"
+            <div
+              className="relative"
+              onMouseEnter={() => setDesktopAcademyOpen(true)}
+              onMouseLeave={() => setDesktopAcademyOpen(false)}
+            >
+              <button
+                type="button"
                 className="text-base hover:opacity-70 transition-opacity flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={desktopAcademyOpen}
+                onClick={() => setDesktopAcademyOpen(!desktopAcademyOpen)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setDesktopAcademyOpen(false)
+                }}
               >
                 Academy
-                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg className={`w-4 h-4 transition-transform ${desktopAcademyOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M6 9l6 6 6-6"/>
                 </svg>
-              </Link>
-              <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              </button>
+              <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${desktopAcademyOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg shadow-xl py-3 min-w-[380px]">
                   {/* Foundation */}
                   <div className="px-4 pb-2">
@@ -77,7 +97,7 @@ export default function Header() {
                     href="/academy/prompt-engineering-creators"
                     className="flex items-center gap-3 px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
                   >
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-green-500 text-white rounded">New</span>
+                    <span className="px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-[var(--accent-green)] text-white rounded">New</span>
                     <div>
                       <p className="font-medium text-sm">Prompt Engineering for Creators</p>
                       <p className="text-xs text-[var(--text-tertiary)]">9 modules • Better prompts & outputs</p>
@@ -210,6 +230,13 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
+            </Link>
+            <Link
+              href="/ai-setup"
+              className="block text-lg hover:opacity-70 transition-opacity"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              AI Setup
             </Link>
             {/* Mobile Academy Section - Collapsible */}
             <div className="space-y-3">
