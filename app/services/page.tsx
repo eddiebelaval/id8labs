@@ -293,6 +293,28 @@ export default function ServicesPage() {
       </section>
 
 
+      {/* AI Setup Cross-link */}
+      <section className="py-12 border-t border-[var(--border)]">
+        <div className="container">
+          <Link
+            href="/services/ai-setup"
+            className="group flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-8 border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)] transition-all duration-300"
+          >
+            <div>
+              <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-2">New</p>
+              <h3 className="text-2xl font-bold mb-2">AI Setup — White-Glove Agent Deployment</h3>
+              <p className="text-[var(--text-secondary)] max-w-xl">
+                Your AI assistant, built and running in 24 hours. We deploy, harden, and customize your agent — then keep it running.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 text-id8-orange font-semibold whitespace-nowrap">
+              Learn more
+              <ArrowRightIcon />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* Audience Section */}
       <section className="section-spacing border-t border-[var(--border)]">
         <div className="container">
