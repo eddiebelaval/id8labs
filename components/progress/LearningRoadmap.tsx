@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useProgress } from '@/hooks/useProgress'
-import { COURSES, COURSES_BY_ORDER, FOUNDATION_COURSE } from '@/lib/courses/config'
+import { COURSES, COURSES_BY_ORDER, FOUNDATION_COURSE, EXTERNAL_COURSES } from '@/lib/courses/config'
 
 const CheckIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -81,8 +81,10 @@ export default function LearningRoadmap() {
       )}
 
       {/* Parallel Courses Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        {parallelCourses.map((course, index) => {
+      <div className={`grid grid-cols-2 md:grid-cols-3 gap-3 ${
+        parallelCourses.length <= 6 ? 'lg:grid-cols-6' : 'lg:grid-cols-4'
+      }`}>
+        {parallelCourses.map((course) => {
           const stats = getCourseStats(course.slug)
           const isComplete = stats ? stats.completed >= stats.total : false
           const hasStarted = stats ? stats.completed > 0 : false
@@ -137,6 +139,16 @@ export default function LearningRoadmap() {
             </div>
           )
         })}
+      </div>
+
+      {/* External Courses Hint */}
+      <div className="mt-6 text-center">
+        <Link
+          href="#anthropic-courses"
+          className="text-sm text-[var(--text-tertiary)] hover:text-id8-orange transition-colors"
+        >
+          + {Object.keys(EXTERNAL_COURSES).length} official Anthropic courses available below
+        </Link>
       </div>
     </div>
   )
