@@ -13,6 +13,9 @@ import type * as THREE from 'three'
  *
  * Scroll-driven rotation: scrolling the page rotates the attractor.
  * When idle, it auto-rotates slowly.
+ *
+ * Post-processing: UnrealBloomPass + ACESFilmic tone mapping for
+ * cinematic light bleed and HDR color compression.
  */
 
 interface NeuralNetworkBgProps {
@@ -68,13 +71,13 @@ export function NeuralNetworkBg({
 
       if (disposed || !container) return
 
-      // id8Labs palette
+      // id8Labs palette — HDR multipliers for bloom pickup
       const COLORS = {
         bg: 0x0a0a0b,
-        trail: new THREE.Color(0xff7a4d),
+        trail: new THREE.Color(0xff7a4d).multiplyScalar(1.8),
         trailFade: new THREE.Color(0x3a1a08),
-        crossover: new THREE.Color(0x4ecdc4),
-        particle: new THREE.Color(0xff7a4d),
+        crossover: new THREE.Color(0x4ecdc4).multiplyScalar(2.2),
+        particle: new THREE.Color(0xff7a4d).multiplyScalar(1.5),
         particleDim: new THREE.Color(0x5a2a10),
         filament: new THREE.Color(0x222222),
       }
@@ -97,7 +100,8 @@ export function NeuralNetworkBg({
     // Scene
     const scene = new THREE.Scene()
     scene.background = new THREE.Color(COLORS.bg)
-    // No fog — let the attractor shine at full brightness
+    // Subtle exponential fog for depth — bloom compensates for brightness loss
+    scene.fog = new THREE.FogExp2(COLORS.bg, 0.012)
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
@@ -112,7 +116,27 @@ export function NeuralNetworkBg({
     const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: false })
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.toneMapping = THREE.ACESFilmicToneMapping
+    renderer.toneMappingExposure = 1.0
     container.appendChild(renderer.domElement)
+
+    // Post-processing pipeline (bloom + tone mapping output)
+    const { EffectComposer } = await import('three/examples/jsm/postprocessing/EffectComposer.js')
+    const { RenderPass } = await import('three/examples/jsm/postprocessing/RenderPass.js')
+    const { UnrealBloomPass } = await import('three/examples/jsm/postprocessing/UnrealBloomPass.js')
+    const { OutputPass } = await import('three/examples/jsm/postprocessing/OutputPass.js')
+
+    const composer = new EffectComposer(renderer)
+    composer.addPass(new RenderPass(scene, camera))
+
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      isMobile ? 0.8 : 1.2,  // strength
+      0.6,                     // radius
+      0.15                     // threshold
+    )
+    composer.addPass(bloomPass)
+    composer.addPass(new OutputPass())
 
     // Clock
     const clock = new THREE.Clock()
@@ -157,7 +181,7 @@ export function NeuralNetworkBg({
         this.material = new THREE.LineBasicMaterial({
           vertexColors: true,
           transparent: true,
-          opacity: 0.6 + Math.random() * 0.3,
+          opacity: 0.8 + Math.random() * 0.2,
           blending: THREE.AdditiveBlending,
           depthWrite: false,
         })
@@ -291,7 +315,7 @@ export function NeuralNetworkBg({
               gl_PointSize = size * uPixelRatio * (80.0 / dist);
               gl_Position = projectionMatrix * mvPosition;
               float twinkle = sin(uTime * 2.0 + position.x * 10.0 + position.y * 7.0) * 0.5 + 0.5;
-              vAlpha = 0.5 + twinkle * 0.5;
+              vAlpha = 0.6 + twinkle * 0.4;
             }
           `,
           fragmentShader: `
@@ -301,9 +325,8 @@ export function NeuralNetworkBg({
             void main() {
               float d = length(gl_PointCoord - vec2(0.5));
               if (d > 0.5) discard;
-              float glow = 1.0 - smoothstep(0.0, 0.5, d);
-              glow = pow(glow, 1.5);
-              gl_FragColor = vec4(vColor, glow * vAlpha);
+              float glow = exp(-d * d * 10.0);
+              gl_FragColor = vec4(vColor * glow, glow * vAlpha);
             }
           `,
           transparent: true,
@@ -487,7 +510,7 @@ export function NeuralNetworkBg({
 
       // Pulse crossover glow
       const glowMat = crossoverGlow.material as THREE.MeshBasicMaterial
-      glowMat.opacity = 0.04 + Math.sin(elapsed * 0.5) * 0.03
+      glowMat.opacity = 0.08 + Math.sin(elapsed * 0.5) * 0.05
       crossoverGlow.scale.setScalar(1 + Math.sin(elapsed * 0.3) * 0.1)
 
       // ─── Rotation: scroll-driven + auto ─────────
@@ -513,7 +536,7 @@ export function NeuralNetworkBg({
       camera.position.y = 5 + Math.sin(elapsed * 0.1) * 2
       camera.lookAt(0, 0, 0)
 
-      renderer.render(scene, camera)
+      composer.render()
 
       animationIdRef.current = animationId
     }
@@ -526,6 +549,7 @@ export function NeuralNetworkBg({
       camera.updateProjectionMatrix()
       renderer.setSize(window.innerWidth, window.innerHeight)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      composer.setSize(window.innerWidth, window.innerHeight)
       cloud.material.uniforms.uPixelRatio.value = renderer.getPixelRatio()
     }
 
@@ -552,6 +576,7 @@ export function NeuralNetworkBg({
       ;(crossoverGlow.material as THREE.Material).dispose()
       scene.remove(crossoverGlow)
 
+      composer.dispose()
       renderer.dispose()
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement)
