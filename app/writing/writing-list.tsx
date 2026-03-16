@@ -62,7 +62,7 @@ export function WritingList({ items }: WritingListProps) {
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-[rgba(10,10,10,0.88)] backdrop-blur-[40px]">
       {/* Hero Section */}
       <section className="section-spacing border-b border-[var(--border)]">
         <div className="container">
@@ -289,6 +289,6 @@ export function WritingList({ items }: WritingListProps) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }

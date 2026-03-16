@@ -217,9 +217,9 @@
  */
 .attractor-frost {
   position: relative;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  background-color: rgba(10, 10, 11, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(10, 10, 11, 0.82);
 }
 
 /* ========================================
@@ -239,9 +239,9 @@
   content: '';
   position: absolute;
   inset: -12px -20px;
-  background: rgba(10, 10, 11, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(10, 10, 11, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   z-index: -1;
   pointer-events: none;

@@ -29,7 +29,7 @@ export default function EssayPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <article data-copy-root="article">
+    <article data-copy-root="article" className="min-h-screen bg-[rgba(10,10,10,0.88)] backdrop-blur-[40px]">
       {/* Header */}
       <section className="section-spacing border-b border-[var(--border)]">
         <div className="container">

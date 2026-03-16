@@ -1,30 +1,29 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Implementation Services & Claude Code Training | ID8Labs',
-  description: 'Live AI implementation services and Claude Code training. Learn hooks, MCP servers, plugins, and production workflows. From 90-minute sessions to full operational transformation.',
+  title: 'AI Agent Deployment Services | ID8Labs',
+  description: 'White-glove AI agent deployment. We build, deploy, and tune OpenClaw agents on your hardware — wired into your tools, customized to your workflow. Running in 24 hours.',
   keywords: [
-    'Claude Code training',
-    'Claude Code course',
-    'AI implementation',
-    'MCP servers',
-    'Claude Code hooks',
+    'AI agent deployment',
+    'OpenClaw setup',
+    'AI implementation services',
     'AI workflow automation',
-    'Claude Code plugins',
+    'white-glove AI setup',
     'AI consulting',
-    'learn Claude Code',
+    'AI agents for business',
+    'custom AI agents',
   ],
   openGraph: {
-    title: 'AI Implementation Services & Claude Code Training | ID8Labs',
-    description: 'Live AI implementation services and Claude Code training. Learn hooks, MCP servers, plugins, and production workflows from someone who ships with Claude Code daily.',
+    title: 'AI Agent Deployment Services | ID8Labs',
+    description: 'White-glove AI agent deployment. We build, deploy, and tune OpenClaw agents on your hardware — wired into your tools, customized to your workflow.',
     url: 'https://id8labs.app/services',
     siteName: 'ID8Labs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Implementation & Claude Code Training | ID8Labs',
-    description: 'Live Claude Code training. Hooks, MCP servers, plugins, and production workflows.',
+    title: 'AI Agent Deployment | ID8Labs',
+    description: 'White-glove AI agent deployment. OpenClaw agents on your hardware, running in 24 hours.',
   },
 }
 
