@@ -77,6 +77,50 @@ export default function LabPage() {
           </Link>
         </section>
 
+        {/* CaF Research Series */}
+        <section className="mb-24">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-2 rounded-full bg-[var(--text-tertiary)]" />
+            <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
+              Research Series
+            </p>
+          </div>
+
+          <Link
+            href="/thesis/series"
+            className="group block border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--id8-orange)] transition-all duration-500"
+          >
+            <div className="p-10 md:p-14">
+              <div className="flex items-start justify-between gap-6 mb-6">
+                <div>
+                  <span className="inline-block px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider border border-[var(--border)] text-[var(--text-tertiary)] rounded mb-4">
+                    5 Parts
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-bold group-hover:text-[var(--id8-orange)] transition-colors leading-tight">
+                    Consciousness as Filesystem
+                  </h2>
+                </div>
+                <svg
+                  className="w-6 h-6 text-[var(--text-tertiary)] group-hover:text-[var(--id8-orange)] group-hover:translate-x-2 transition-all flex-shrink-0 mt-3"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl mb-6">
+                One thesis, five parts, thirty-three days. Map it, build it, find the meta-pattern, try to destroy it, give it eyes. The complete research arc from filesystem to perception.
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-[var(--text-tertiary)]">
+                <span>Feb 15 &ndash; Mar 20, 2026</span>
+                <span className="text-[var(--border)]">/</span>
+                <span>~18,000 words</span>
+                <span className="text-[var(--border)]">/</span>
+                <span>6 entities built</span>
+              </div>
+            </div>
+          </Link>
+        </section>
+
         {/* From the Lab: Research Feed */}
         <section className="mb-24">
           <div className="flex items-center justify-between mb-8">
