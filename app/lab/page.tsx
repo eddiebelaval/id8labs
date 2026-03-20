@@ -1,104 +1,171 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { getEssaysByCategory } from '@/lib/essays'
 
 export const metadata: Metadata = {
   title: 'Lab',
   description: 'Where id8Labs does the thinking. Thesis, research, and the story behind what we build.',
 }
 
-const labItems = [
-  {
-    title: 'Thesis',
-    subtitle: 'Consciousness as Filestructure',
-    description: 'What AI architecture accidentally revealed about the operating system of awareness. Interactive essay with Chladni plate shader.',
-    href: '/thesis',
-    tag: 'Featured',
-    tagColor: 'bg-[var(--id8-orange)] text-white',
-  },
-  {
-    title: 'Lab Story',
-    subtitle: 'How We Got Here',
-    description: 'From cameraman to systems architect. Twenty years in production, now building tools for creators and infrastructure for builders.',
-    href: '/lab/story',
-    tag: 'Origin',
-    tagColor: 'bg-[var(--accent-green)] text-white',
-  },
-  {
-    title: 'Research',
-    subtitle: 'Published Research and Deep Dives',
-    description: 'Consciousness as infrastructure, agent-native pipelines, and everything we publish from the lab.',
-    href: '/writing?category=research',
-    tag: 'Ongoing',
-    tagColor: 'bg-[var(--accent-blue)] text-white',
-  },
-]
-
 export default function LabPage() {
+  const researchEssays = getEssaysByCategory('research')
+  const recentResearch = researchEssays
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 5)
+
   return (
     <div className="min-h-screen pt-32 pb-24">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
+
         {/* Hero */}
-        <div className="mb-20">
+        <div className="mb-24">
           <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-[var(--text-tertiary)] mb-4">
             id8Labs
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
             The Lab.
           </h1>
-          <p className="text-xl text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-            Where the thinking happens. Thesis work, published research, and the story behind what we build. Everything here started as a question we couldn&apos;t stop asking.
+          <p className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl leading-relaxed">
+            Every product we ship started as a question we couldn&apos;t stop asking. This is where those questions live before they become code.
           </p>
         </div>
 
-        {/* Lab Items */}
-        <div className="space-y-6">
-          {labItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group block border border-[var(--border)] rounded-lg p-8 hover:border-[var(--id8-orange)] transition-all duration-300 hover:shadow-lg"
-            >
-              <div className="flex items-start justify-between gap-4 mb-4">
+        {/* Featured: Thesis */}
+        <section className="mb-24">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-2 rounded-full bg-[var(--id8-orange)]" />
+            <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
+              Featured Work
+            </p>
+          </div>
+
+          <Link
+            href="/thesis"
+            className="group block border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--id8-orange)] transition-all duration-500"
+          >
+            <div className="p-10 md:p-14">
+              <div className="flex items-start justify-between gap-6 mb-6">
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <h2 className="text-2xl font-bold group-hover:text-[var(--id8-orange)] transition-colors">
-                      {item.title}
-                    </h2>
-                    <span className={`px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider rounded ${item.tagColor}`}>
-                      {item.tag}
-                    </span>
-                  </div>
-                  <p className="text-sm font-mono text-[var(--text-tertiary)]">
-                    {item.subtitle}
-                  </p>
+                  <span className="inline-block px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider bg-[var(--id8-orange)] text-white rounded mb-4">
+                    Thesis
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold group-hover:text-[var(--id8-orange)] transition-colors leading-tight">
+                    Consciousness as Filestructure
+                  </h2>
                 </div>
                 <svg
-                  className="w-5 h-5 text-[var(--text-tertiary)] group-hover:text-[var(--id8-orange)] group-hover:translate-x-1 transition-all flex-shrink-0 mt-2"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+                  className="w-6 h-6 text-[var(--text-tertiary)] group-hover:text-[var(--id8-orange)] group-hover:translate-x-2 transition-all flex-shrink-0 mt-3"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
-                {item.description}
+              <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mb-8">
+                What AI architecture accidentally revealed about the operating system of awareness. An interactive essay with WebGL Chladni plate shader, mapping explorer, and convergence evidence from biology, engineering, and contemplative practice.
               </p>
-            </Link>
-          ))}
-        </div>
+              <div className="flex flex-wrap gap-3">
+                {['Interactive', '12 Sections', 'WebGL Shader', '3 Visualizations'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 text-[11px] font-mono tracking-wide border border-[var(--border)] rounded-full text-[var(--text-tertiary)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Link>
+        </section>
 
-        {/* Bottom CTA */}
-        <div className="mt-20 pt-12 border-t border-[var(--border)]">
-          <p className="text-sm text-[var(--text-tertiary)] font-mono">
-            More coming from the lab. Follow the work on{' '}
-            <Link href="/writing" className="text-[var(--id8-orange)] hover:underline">
-              Writing
+        {/* From the Lab: Research Feed */}
+        <section className="mb-24">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-[var(--accent-green)]" />
+              <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
+                From the Lab
+              </p>
+            </div>
+            <Link
+              href="/writing?category=research"
+              className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] hover:text-[var(--id8-orange)] transition-colors"
+            >
+              View all
             </Link>
-            .
-          </p>
-        </div>
+          </div>
+
+          <div className="space-y-1">
+            {recentResearch.map((essay) => (
+              <Link
+                key={essay.slug}
+                href={`/writing/${essay.slug}`}
+                className="group flex items-baseline justify-between gap-4 py-4 border-b border-[var(--border)] hover:border-[var(--id8-orange)] transition-colors"
+              >
+                <div className="min-w-0">
+                  <h3 className="text-base font-medium group-hover:text-[var(--id8-orange)] transition-colors truncate">
+                    {essay.title}
+                  </h3>
+                  {essay.excerpt && (
+                    <p className="text-sm text-[var(--text-tertiary)] mt-1 line-clamp-1">
+                      {essay.excerpt}
+                    </p>
+                  )}
+                </div>
+                <span className="text-xs font-mono text-[var(--text-tertiary)] flex-shrink-0">
+                  {new Date(essay.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* About This Lab */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-2 rounded-full bg-[var(--accent-blue)]" />
+            <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
+              About This Lab
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
+                id8Labs started as one person asking why production workflows still run on spreadsheets and group texts. Twenty years behind the camera, then in front of the codebase. Every tool we ship solves a problem we felt first.
+              </p>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
+                The research arm exists because the tools kept raising questions bigger than the tools themselves. When you build an AI companion, you start asking what companionship means. When you build a context window, you start asking what attention is. The thesis came from the code. Not the other way around.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <Link
+                href="/lab/story"
+                className="group block p-6 border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-all"
+              >
+                <p className="text-sm font-mono text-[var(--text-tertiary)] mb-2">Origin</p>
+                <h3 className="text-lg font-bold group-hover:text-[var(--id8-orange)] transition-colors">
+                  The Full Lab Story
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] mt-2">
+                  From cameraman to systems architect. The long version.
+                </p>
+              </Link>
+              <Link
+                href="/eddie"
+                className="group block p-6 border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-all"
+              >
+                <p className="text-sm font-mono text-[var(--text-tertiary)] mb-2">Builder</p>
+                <h3 className="text-lg font-bold group-hover:text-[var(--id8-orange)] transition-colors">
+                  Eddie Belaval
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] mt-2">
+                  The person behind the lab.
+                </p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   )
