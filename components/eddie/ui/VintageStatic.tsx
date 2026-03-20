@@ -176,24 +176,28 @@ export function VintageStatic() {
     }
 
     function drawStatic(time: number) {
-      if (!ctx || !canvas) return
-      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-      const data = imgData.data
-      const density = 0.03 * GLITCH_INTENSITY
-      seed = Math.floor(time * 60) * 9973
-      const totalPixels = canvas.width * canvas.height
-      const step = Math.max(1, Math.floor(1 / density))
+      if (!ctx || !canvas || canvas.width === 0 || canvas.height === 0) return
+      try {
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        const data = imgData.data
+        const density = 0.03 * GLITCH_INTENSITY
+        seed = Math.floor(time * 60) * 9973
+        const totalPixels = canvas.width * canvas.height
+        if (totalPixels === 0) return
+        const step = Math.max(1, Math.floor(1 / density))
 
-      for (let p = 0; p < totalPixels; p += step) {
-        seed = (seed * 1103515245 + 12345) & 0x7fffffff
-        const idx = ((seed % totalPixels) | 0) * 4
-        seed = (seed * 1103515245 + 12345) & 0x7fffffff
-        const brightness = seed & 0xff
-        data[idx] = Math.min(255, data[idx] + brightness)
-        data[idx + 1] = Math.min(255, data[idx + 1] + Math.floor(brightness * 0.85))
-        data[idx + 2] = Math.min(255, data[idx + 2] + Math.floor(brightness * 0.7))
-      }
-      ctx.putImageData(imgData, 0, 0)
+        for (let p = 0; p < totalPixels; p += step) {
+          seed = (seed * 1103515245 + 12345) & 0x7fffffff
+          const idx = ((seed % totalPixels) | 0) * 4
+          if (idx + 2 >= data.length) continue
+          seed = (seed * 1103515245 + 12345) & 0x7fffffff
+          const brightness = seed & 0xff
+          data[idx] = Math.min(255, data[idx] + brightness)
+          data[idx + 1] = Math.min(255, data[idx + 1] + Math.floor(brightness * 0.85))
+          data[idx + 2] = Math.min(255, data[idx + 2] + Math.floor(brightness * 0.7))
+        }
+        ctx.putImageData(imgData, 0, 0)
+      } catch { /* skip frame if getImageData fails */ }
     }
 
     let lastAberrationTime = 0
@@ -265,20 +269,23 @@ export function VintageStatic() {
     function render(timestamp: number) {
       if (!running) { animId = requestAnimationFrame(render); return }
       if (!startTime) startTime = timestamp
-      if (!ctx) return
-      const time = prefersReduced ? 0 : (timestamp - startTime) / 1000
-      const cycleT = (time * MELT_SPEED * 0.15) % 1.0
+      if (!ctx || !width || !height) { animId = requestAnimationFrame(render); return }
 
-      ctx.fillStyle = '#0a0a0a'
-      ctx.fillRect(0, 0, width, height)
+      try {
+        const time = prefersReduced ? 0 : (timestamp - startTime) / 1000
+        const cycleT = (time * MELT_SPEED * 0.15) % 1.0
 
-      drawMeltedBars(time, cycleT)
-      drawScanLines(time)
-      drawTrackingGlitch(time)
-      drawStatic(time)
-      drawChromaticAberration(time)
-      drawPhosphorDots()
-      drawCRTEffect()
+        ctx.fillStyle = '#0a0a0a'
+        ctx.fillRect(0, 0, width, height)
+
+        drawMeltedBars(time, cycleT)
+        drawScanLines(time)
+        drawTrackingGlitch(time)
+        drawStatic(time)
+        drawChromaticAberration(time)
+        drawPhosphorDots()
+        drawCRTEffect()
+      } catch { /* skip frame on error */ }
 
       animId = requestAnimationFrame(render)
     }
