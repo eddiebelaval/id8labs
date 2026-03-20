@@ -192,7 +192,7 @@ export default function Header() {
                     <p className="text-xs text-[var(--text-tertiary)]">The complete research series (5 parts)</p>
                   </Link>
                   <Link
-                    href="/lab"
+                    href="/lab/story"
                     className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
                   >
                     <p className="font-medium text-sm">Lab Story</p>
@@ -399,7 +399,7 @@ export default function Header() {
                     CaF Series
                   </Link>
                   <Link
-                    href="/lab"
+                    href="/lab/story"
                     className="block text-base hover:opacity-70 transition-opacity"
                     onClick={() => setMobileMenuOpen(false)}
                   >
