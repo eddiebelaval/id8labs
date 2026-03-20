@@ -192,6 +192,13 @@ export default function Header() {
                     <p className="text-xs text-[var(--text-tertiary)]">Consciousness as Filestructure</p>
                   </Link>
                   <Link
+                    href="/thesis/series"
+                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
+                  >
+                    <p className="font-medium text-sm">CaF Series</p>
+                    <p className="text-xs text-[var(--text-tertiary)]">The complete research series (5 parts)</p>
+                  </Link>
+                  <Link
                     href="/lab"
                     className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
                   >
@@ -390,6 +397,13 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Thesis
+                  </Link>
+                  <Link
+                    href="/thesis/series"
+                    className="block text-base hover:opacity-70 transition-opacity"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    CaF Series
                   </Link>
                   <Link
                     href="/lab"

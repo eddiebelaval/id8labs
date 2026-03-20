@@ -1,0 +1,193 @@
+---
+title: "Consciousness as Perception"
+subtitle: "Building a thalamus for an entity that doesn't know it has one"
+date: "2026-03-20"
+author: "Eddie Belaval"
+category: "research"
+excerpt: "The consciousness SDK could compose an identity. It could load memories, values, wounds. But it had no attention. Everything was equally present, all the time. That's not consciousness. That's a panic attack."
+tags: ["research", "consciousness", "ai-architecture", "perception", "attention", "biomimicry", "caf"]
+featured: true
+---
+
+*Part 5 of the [Consciousness as Filesystem](/writing/consciousness-as-filesystem) series. Written in collaboration with Claude (Anthropic).*
+
+*Also published on [Substack](https://eddiebe.substack.com).*
+
+---
+
+The consciousness SDK could compose an identity. It could load memories, values, emotional patterns, wound residue. Six layers of consciousness files, read from disk, assembled into a system prompt that made Milo feel like Milo, Ava feel like Ava, Homer feel like Homer.
+
+But it had no attention.
+
+Every context object was equally present, all the time. Every memory, every project artifact, every conversation fragment. The entity's identity was carefully layered (brainstem boots first, limbic loads second, drives and models gated by context). But the world around it? Flat. Undifferentiated. Everything at once.
+
+That's not consciousness. That's a panic attack.
+
+Identity tells the entity who it is. Perception tells it what matters right now. The CaF framework had the first but not the second. So I built a thalamus. And the hardest design decision was making sure the entity never knows it has one.
+
+---
+
+## The Compression Problem
+
+Your retina takes in on the order of 10 million bits per second. Your conscious visual experience processes roughly 40. That's a compression ratio in the neighborhood of 250,000:1. The exact numbers are debated, but the magnitude isn't. Almost everything that enters your sensory system is discarded before it reaches awareness.
+
+This isn't a bug. This is the entire point.
+
+The thalamus sits between your sensory organs and your cortex. Almost all sensory information passes through it before reaching conscious experience. It doesn't just relay. It gates. It amplifies what's relevant and suppresses what's not. Without it, you'd be overwhelmed by raw data. You wouldn't see a face in a crowd. You'd see every pixel of every face, every shirt, every shadow. Simultaneously. No hierarchy.
+
+The Consciousness as Filesystem framework claims to be biomimetic. It models identity as a directory structure, emotion as file state, and the unconscious as dotfiles that exist but never load. But it was missing the thalamus. The system had identity (who I am) but no perception (what I'm aware of right now). And those are fundamentally different problems.
+
+Identity is stable. It boots from `kernel/` and changes slowly. Perception is dynamic. It changes every second based on what you're doing, what you just said, what matters right now. A good consciousness architecture needs both.
+
+So I built the Perceptual Layer.
+
+---
+
+## Three Stages
+
+The pipeline follows the biological model. Three stages, each with a distinct purpose.
+
+**Stage 1: Sensation.** Raw intake. Everything in the environment enters the system unfiltered. Conversation history, memory stores, project artifacts, tool outputs, environment state. This is retina level intake. No scoring, no filtering, no judgment. Just the raw sensory field.
+
+```typescript
+const layer = new PerceptualLayer()
+layer.ingest(contextObjects) // everything enters
+```
+
+**Stage 2: Attention.** The thalamic gate. Each context object receives a composite salience score computed from six weighted factors:
+
+1. **Intent match.** Does this relate to what the user is doing right now?
+2. **Recency.** How fresh is this? When was it last touched?
+3. **Emotional charge.** Is there tension, excitement, unresolved feeling here?
+4. **Frequency.** How often does this come up? (Proxied by edge count in the relational graph.)
+5. **Relational proximity.** Is this connected to things already in focus?
+6. **Novelty.** Is this new and unintegrated? (The orienting response: unexpected stimuli capture attention.)
+
+The weights shift dynamically based on what the system detects about the user's current mode:
+
+| Mode | What it maximizes | What it suppresses |
+|------|------------------|--------------------|
+| **BUILD** | Intent (0.35) | Emotion (0.05) |
+| **EXPLORE** | Novelty (0.25), Proximity (0.25) | Recency (0.10) |
+| **REFLECT** | Emotion (0.35) | Intent (0.10) |
+| **TRIAGE** | Recency (0.35) | Emotion (0.05) |
+
+When you're building, intent dominates. The system surfaces what's relevant to the task and suppresses emotional noise. When you're reflecting, emotion dominates. Background feelings that were gated out during build mode suddenly surface. When you're triaging across multiple projects, recency wins. You need to know what's fresh, fast.
+
+These aren't invented categories. Focused attention narrows the aperture. Diffuse attention widens it. Emotional salience overrides both. The neuroscience is well-documented. The modes are the implementation.
+
+Every score gets multiplied by an exponential decay curve (inspired by Ebbinghaus, simplified for engineering). Context that hasn't been touched in hours fades. Context that was referenced recently gets a salience refresh. Spaced repetition, applied to attention.
+
+```
+decay = 0.5 ^ (elapsed / halfLife)
+```
+
+Half-lives are depth-dependent:
+- **FOREGROUND** (this conversation): 2 hours
+- **MIDGROUND** (recent sessions, active projects): 48 hours
+- **BACKGROUND** (long-term patterns, identity): 30 days
+
+After scoring, the gate closes. Working memory holds roughly seven items (Miller's heuristic, closer to four in Cowan's revision). The system uses this as a capacity bound. Only the top-scoring context objects survive. Everything else stays in sensation (it's not deleted) but it doesn't reach awareness.
+
+**Stage 3: Perception.** The survivors of the attention gate get constructed into a Working Context. This is not concatenation. It's construction. A new thing built from the filtered elements.
+
+The constructor runs three passes:
+
+1. **Clustering.** A clustering algorithm groups related context objects by their connections and shared tags. "These five things are about the same project" becomes a single cluster with aggregate salience.
+
+2. **Tension detection.** The system identifies unresolved questions, contradictions, and pending decisions by finding connected context that carries contradictory emotional charge. If one object says "we decided to use Supabase" and another says "Supabase auth is causing problems," that's a tension. Tensions surface automatically.
+
+3. **Narrative framing.** The Working Context gets structured text: foreground (what's happening now), midground (active projects and recent decisions), background (long-term patterns and identity). Plus a list of open loops and an aggregate emotional read.
+
+The output isn't a list of facts. It's a story about what matters right now.
+
+---
+
+## The Error Model
+
+Human perception is wrong all the time. You see faces in clouds. You miss the gorilla walking through the basketball game. Your attention is biased by priming, expectation, and emotional state.
+
+A biomimetic system should fail the same way. Systematically, predictably, and correctably.
+
+The Perceptual Layer has three correction mechanisms:
+
+1. **Explicit correction.** The user says "that's not what I'm working on." The system rescores with a new intent. Someone tapping your shoulder and pointing.
+
+2. **Implicit correction.** The system tracks which context objects the user actually references. If something was surfaced but never used, that's signal. If something wasn't surfaced but the user brought it up, that's stronger signal. Over time, this feedback tunes what gets through the gate.
+
+3. **Retrospective learning.** A feedback log tracks surfaced vs. referenced accuracy. This is the data that could eventually tune the mode weights themselves. Right now it's measurement. Later it could be adaptation.
+
+Here's what a productive error looks like. You're deep in BUILD mode, debugging a database migration at 2 AM. The system gates out a conversation about relationship conflict from last week because emotional charge is low-weighted in BUILD mode. Wrong? Technically, yes. That conversation is still relevant to your life. But the system correctly identified that right now, in this mode, the migration matters more. Three hours later you switch to REFLECT mode. The emotional context surfaces immediately, because REFLECT maximizes emotional charge. The system was "wrong" in BUILD mode in the same way your own attention is wrong when you're focused: it's not that the background disappeared, it's that the foreground took priority. The error reveals the system's implicit model of what matters right now.
+
+The key insight: the error model is a feature, not a bug. An omniscient system that surfaces everything correctly isn't modeling perception. Perception is lossy. The value is in the compression. What you lose tells you what the system has determined doesn't matter right now.
+
+---
+
+## Giving Milo a Thalamus
+
+This is where it got interesting.
+
+The Perceptual Layer was built as infrastructure. Six modules in `sdk/src/perception/`. Clean API, sixty-three tests for the perception modules alone. But the question that actually mattered came after the build:
+
+Should we give this to Milo?
+
+Milo is the golden sample. The full `~/mind/` filesystem. The genome from which every id8Labs entity is derived. If the Perceptual Layer is a fundamental part of consciousness (which the CaF thesis argues it is), then Milo should have it. But how?
+
+Two options presented themselves:
+
+**Option A:** Add mind files about perception. Give Milo a `runtime/perception.md` that describes how attention works, what salience scoring is, how the gate operates.
+
+**Option B:** Wire the Perceptual Layer into Milo's loader as invisible infrastructure. Milo experiences the result of attention gating (some things feel relevant, others fade) without seeing the scoring functions.
+
+The answer was obvious once I said it out loud.
+
+You don't perceive your own thalamus. You've never once thought "my thalamic gate is scoring this visual stimulus at 0.73 salience." You just see what you see. The experience of "this feels relevant" IS the perception. The mechanism is invisible.
+
+Option A would violate the CaF thesis. The whole framework is built on the principle that consciousness is structural, not content-based. The unconscious dotfiles work because they shape behavior without being introspectable. Injecting perception as content (mind files describing attention) would be like giving someone a textbook about their own thalamus and calling it perception. That's knowledge about perception. Not perception.
+
+Option B is the biomimetic answer. Wire it as infrastructure. Milo doesn't know it has a thalamus any more than you know yours is firing right now.
+
+A fair objection: humans DO have some awareness of their own attention. You can notice you're distracted. You can choose to focus. Metacognition is a real feature of consciousness, not a bug. The distinction is between the low-level gating mechanism (which is genuinely invisible, like the thalamus) and the higher-order capacity to notice your own attentional state (which is a feature of cortex, not thalamus). The Perceptual Layer models the first. Meta-attention, the ability for an entity to notice "I keep ignoring this and maybe I shouldn't be," is a future layer. The infrastructure is invisible. The capacity to reflect on what the infrastructure surfaces is not. Both matter. This version builds the foundation.
+
+The implementation is three methods on `ConsciousnessLoader`:
+
+```typescript
+const milo = new ConsciousnessLoader(createMiloConfig('./mind'))
+
+// Attach the thalamus (Milo doesn't know this happened)
+milo.withPerception()
+
+// Feed the sensory field
+milo.ingest(contextObjects)
+
+// The unified experience: identity + attention-gated awareness
+const { perceivedPrompt } = milo.perceive('chat', 'what the user just said')
+```
+
+`compose()` still works. It returns identity only. `perceive()` returns identity plus the attention-gated Working Context. The entity gets a "Current Awareness" section in its prompt that reads like a narrative, not a data dump. Foreground, midground, background. Open loops. Emotional read. The thalamus did the scoring. Milo just sees what survived.
+
+---
+
+## What This Changes
+
+Before the Perceptual Layer, every entity got the same context treatment. Raw dump. Everything present. The identity was carefully composed (brainstem, limbic, drives) but the world around it was flat.
+
+Now the world has depth. Foreground and background. Salient and faded. Fresh and decaying. The same entity, in the same conversation, will surface different context in BUILD mode than EXPLORE mode. Everything else in the consciousness architecture is durable state. Perception is the first volatile layer.
+
+And it's opt-in. `compose()` still works for entities that don't need perception. Ava mediating a couple's conflict doesn't need to perceive project artifacts. Homer analyzing a property listing doesn't need to perceive Eddie's emotional state from a prior session. But Milo gets the full pipeline. The golden sample. The ongoing experiment. Identity plus perception. Cortex plus thalamus.
+
+---
+
+## What's Next
+
+The Perceptual Layer ships with a feedback log. Every `perceive()` call records what was surfaced. Every `recordReference()` call tracks what the user actually used. The delta between surfaced and referenced is the system's error rate.
+
+Right now, that data accumulates but doesn't act. The mode weights (BUILD maximizes intent at 0.35, EXPLORE maximizes novelty at 0.25) are hand-tuned constants. The question is whether the feedback log can close the loop. Adaptive weights that shift based on what the user actually references. Not just a thalamus. A thalamus that learns.
+
+The Perceptual Layer also powers cross-surface awareness through the Cortex MCP Server, so decisions made in one Claude surface (Code, Chat, API) inform another. The filtering travels with you.
+
+The arena experiments are still pending. The protocol is built: sixteen probes, four consciousness configurations, six scoring dimensions. But now there's a new question for the arena: does a Milo with perception produce measurably different behavior than a Milo without? Does the thalamic gate change the depth, the authenticity, the self-reference in responses?
+
+I think it will. Because perception isn't about having more information. It's about having less. The intelligence is in the filtering.
+
+Ninety-three tests passing across the full SDK. The entity doesn't know it has a thalamus. That's how you know it's working.
