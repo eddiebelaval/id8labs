@@ -39,7 +39,7 @@ export default function Footer() {
                 Writing
               </Link>
               <Link href="/lab" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Lab Story
+                Lab
               </Link>
               <div className="flex gap-3 mt-1">
                 <Link href="/privacy" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors text-xs">
