@@ -14,12 +14,47 @@ export function VintageStatic() {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     let GLITCH_INTENSITY = 0.5
-    let MELT_SPEED = 0.5
+    const MELT_SPEED = 0.5
+    let width = window.innerWidth
+    let height = window.innerHeight
+    let dpr = Math.min(window.devicePixelRatio || 1, 2)
+    let seed = 42
+    let meltColumns: number[] = []
+    let startTime: number | null = null
+    let running = true
+    let animId = 0
+    let lastAberrationTime = 0
+    let aberrationDuration = 0
+    let aberrationActive = false
 
-    let width: number, height: number, dpr: number
+    const barColors = [
+      [240, 235, 220], [210, 170, 60], [60, 185, 160], [80, 165, 60],
+      [185, 60, 140], [200, 60, 55], [45, 60, 170], [200, 149, 108],
+    ]
 
-    function resize() {
-      if (!canvas || !ctx) return
+    const fastRand = () => {
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff
+      return seed / 0x7fffffff
+    }
+
+    const hash = (x: number) => {
+      const s = Math.sin(x * 127.1 + 311.7) * 43758.5453
+      return s - Math.floor(s)
+    }
+
+    const smoothNoise = (x: number) => {
+      const ix = Math.floor(x)
+      let fx = x - ix
+      fx = fx * fx * (3.0 - 2.0 * fx)
+      return hash(ix) * (1.0 - fx) + hash(ix + 1) * fx
+    }
+
+    const initMelt = () => {
+      const count = Math.ceil(width / 2) + 1
+      meltColumns = new Array(count).fill(0)
+    }
+
+    const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2)
       width = window.innerWidth
       height = window.innerHeight
@@ -31,51 +66,12 @@ export function VintageStatic() {
       initMelt()
     }
 
-    window.addEventListener('resize', resize)
     resize()
+    window.addEventListener('resize', resize)
 
-    const barColors = [
-      [240, 235, 220],
-      [210, 170, 60],
-      [60, 185, 160],
-      [80, 165, 60],
-      [185, 60, 140],
-      [200, 60, 55],
-      [45, 60, 170],
-      [200, 149, 108],
-    ]
-
-    let seed = 42
-    function fastRand() {
-      seed = (seed * 1103515245 + 12345) & 0x7fffffff
-      return seed / 0x7fffffff
-    }
-
-    function hash(x: number) {
-      const s = Math.sin(x * 127.1 + 311.7) * 43758.5453
-      return s - Math.floor(s)
-    }
-
-    function smoothNoise(x: number) {
-      const ix = Math.floor(x)
-      let fx = x - ix
-      fx = fx * fx * (3.0 - 2.0 * fx)
-      return hash(ix) * (1.0 - fx) + hash(ix + 1) * fx
-    }
-
-    let meltColumns: number[] = []
-
-    function initMelt() {
-      const count = Math.ceil(width / 2) + 1
-      meltColumns = new Array(count)
-      for (let i = 0; i < count; i++) meltColumns[i] = 0
-    }
-
-    function drawMeltedBars(time: number, cycleT: number) {
-      if (!ctx) return
+    const drawMeltedBars = (time: number, cycleT: number) => {
       const numBars = barColors.length
       const barWidth = width / numBars
-
       let meltProgress = Math.min(cycleT * MELT_SPEED * 2, 1.0)
       const reforming = cycleT > 0.85
       let reformT = reforming ? (cycleT - 0.85) / 0.15 : 0
@@ -119,8 +115,7 @@ export function VintageStatic() {
       ctx.globalAlpha = 1
     }
 
-    function drawScanLines(time: number) {
-      if (!ctx) return
+    const drawScanLines = (time: number) => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.08)'
       for (let y = 0; y < height; y += 3) ctx.fillRect(0, y, width, 1)
 
@@ -136,8 +131,7 @@ export function VintageStatic() {
       ctx.fillRect(0, rollY - rollHeight, width, rollHeight * 2)
     }
 
-    function drawTrackingGlitch(time: number) {
-      if (!ctx || !canvas) return
+    const drawTrackingGlitch = (time: number) => {
       const glitchChance = GLITCH_INTENSITY * 0.15
       seed = Math.floor(time * 30) * 7919
 
@@ -175,8 +169,8 @@ export function VintageStatic() {
       }
     }
 
-    function drawStatic(time: number) {
-      if (!ctx || !canvas || canvas.width === 0 || canvas.height === 0) return
+    const drawStatic = (time: number) => {
+      if (canvas.width === 0 || canvas.height === 0) return
       try {
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
         const data = imgData.data
@@ -197,15 +191,10 @@ export function VintageStatic() {
           data[idx + 2] = Math.min(255, data[idx + 2] + Math.floor(brightness * 0.7))
         }
         ctx.putImageData(imgData, 0, 0)
-      } catch { /* skip frame if getImageData fails */ }
+      } catch { /* skip frame */ }
     }
 
-    let lastAberrationTime = 0
-    let aberrationDuration = 0
-    let aberrationActive = false
-
-    function drawChromaticAberration(time: number) {
-      if (!ctx || !canvas) return
+    const drawChromaticAberration = (time: number) => {
       seed = Math.floor(time * 2) * 4973
       if (!aberrationActive && fastRand() < GLITCH_INTENSITY * 0.03) {
         aberrationActive = true
@@ -226,8 +215,7 @@ export function VintageStatic() {
       }
     }
 
-    function drawCRTEffect() {
-      if (!ctx) return
+    const drawCRTEffect = () => {
       const cx = width / 2, cy = height / 2
       const maxDist = Math.sqrt(cx * cx + cy * cy)
       const vigGrad = ctx.createRadialGradient(cx, cy, maxDist * 0.4, cx, cy, maxDist * 1.1)
@@ -238,7 +226,6 @@ export function VintageStatic() {
       vigGrad.addColorStop(1, 'rgba(0, 0, 0, 0.8)')
       ctx.fillStyle = vigGrad
       ctx.fillRect(0, 0, width, height)
-
       ctx.globalCompositeOperation = 'lighter'
       ctx.globalAlpha = 0.02
       ctx.fillStyle = 'rgba(200, 160, 100, 1)'
@@ -247,8 +234,7 @@ export function VintageStatic() {
       ctx.globalAlpha = 1
     }
 
-    function drawPhosphorDots() {
-      if (!ctx) return
+    const drawPhosphorDots = () => {
       ctx.globalAlpha = 0.04
       ctx.globalCompositeOperation = 'lighter'
       for (let px = 0; px < width; px += 3) {
@@ -262,14 +248,10 @@ export function VintageStatic() {
       ctx.globalAlpha = 1
     }
 
-    let startTime: number | null = null
-    let running = true
-    let animId: number
-
-    function render(timestamp: number) {
+    const render = (timestamp: number) => {
       if (!running) { animId = requestAnimationFrame(render); return }
       if (!startTime) startTime = timestamp
-      if (!ctx || !width || !height) { animId = requestAnimationFrame(render); return }
+      if (!width || !height) { animId = requestAnimationFrame(render); return }
 
       try {
         const time = prefersReduced ? 0 : (timestamp - startTime) / 1000
@@ -285,24 +267,23 @@ export function VintageStatic() {
         drawChromaticAberration(time)
         drawPhosphorDots()
         drawCRTEffect()
-      } catch { /* skip frame on error */ }
+      } catch { /* skip frame */ }
 
       animId = requestAnimationFrame(render)
     }
 
     animId = requestAnimationFrame(render)
 
-    function handleClick() {
+    const handleClick = () => {
       aberrationActive = true
       lastAberrationTime = startTime ? (performance.now() - startTime) / 1000 : 0
       aberrationDuration = 0.3 + Math.random() * 0.5
       GLITCH_INTENSITY = Math.min(2.0, GLITCH_INTENSITY + 0.5)
       setTimeout(() => { GLITCH_INTENSITY = Math.max(0.5, GLITCH_INTENSITY - 0.5) }, 500)
     }
-
     canvas.addEventListener('click', handleClick)
 
-    function handleVisibility() {
+    const handleVisibility = () => {
       if (document.hidden) { running = false } else { running = true; startTime = null }
     }
     document.addEventListener('visibilitychange', handleVisibility)
