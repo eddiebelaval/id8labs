@@ -9,6 +9,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [academyExpanded, setAcademyExpanded] = useState(false)
   const [desktopAcademyOpen, setDesktopAcademyOpen] = useState(false)
+  const [labExpanded, setLabExpanded] = useState(false)
+  const [desktopLabOpen, setDesktopLabOpen] = useState(false)
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -18,15 +20,18 @@ export default function Header() {
     }
   }, [mobileMenuOpen])
 
-  // Close desktop academy dropdown on Escape
+  // Close desktop dropdowns on Escape
   useEffect(() => {
-    if (!desktopAcademyOpen) return
+    if (!desktopAcademyOpen && !desktopLabOpen) return
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDesktopAcademyOpen(false)
+      if (e.key === 'Escape') {
+        setDesktopAcademyOpen(false)
+        setDesktopLabOpen(false)
+      }
     }
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
-  }, [desktopAcademyOpen])
+  }, [desktopAcademyOpen, desktopLabOpen])
 
   return (
     <>
@@ -159,12 +164,53 @@ export default function Header() {
             <Link href="/writing" className="text-base hover:opacity-70 transition-opacity">
               Writing
             </Link>
-            <Link href="/thesis" className="text-base hover:opacity-70 transition-opacity">
-              Thesis
-            </Link>
-            <Link href="/lab" className="text-base hover:opacity-70 transition-opacity">
-              Lab Story
-            </Link>
+            {/* Lab Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setDesktopLabOpen(true)}
+              onMouseLeave={() => setDesktopLabOpen(false)}
+            >
+              <button
+                type="button"
+                className="text-base hover:opacity-70 transition-opacity flex items-center gap-1"
+                aria-haspopup="menu"
+                aria-expanded={desktopLabOpen}
+                onClick={() => setDesktopLabOpen(!desktopLabOpen)}
+              >
+                Lab
+                <svg className={`w-4 h-4 transition-transform ${desktopLabOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${desktopLabOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+                <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg shadow-xl py-3 min-w-[300px]">
+                  <Link
+                    href="/thesis"
+                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
+                  >
+                    <p className="font-medium text-sm">Thesis</p>
+                    <p className="text-xs text-[var(--text-tertiary)]">Consciousness as Filestructure</p>
+                  </Link>
+                  <Link
+                    href="/lab"
+                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
+                  >
+                    <p className="font-medium text-sm">Lab Story</p>
+                    <p className="text-xs text-[var(--text-tertiary)]">How we got here</p>
+                  </Link>
+
+                  <div className="my-2 mx-4 h-px bg-[var(--border)]" />
+
+                  <Link
+                    href="/writing?category=research"
+                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
+                  >
+                    <p className="font-medium text-sm">Research</p>
+                    <p className="text-xs text-[var(--text-tertiary)]">Published research and deep dives</p>
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link href="/contact" className="text-base hover:opacity-70 transition-opacity">
               Contact
             </Link>
@@ -325,20 +371,43 @@ export default function Header() {
             >
               Writing
             </Link>
-            <Link
-              href="/thesis"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Thesis
-            </Link>
-            <Link
-              href="/lab"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Lab Story
-            </Link>
+            {/* Lab Expandable */}
+            <div>
+              <button
+                className="text-lg hover:opacity-70 transition-opacity flex items-center gap-2 w-full"
+                onClick={() => setLabExpanded(!labExpanded)}
+              >
+                Lab
+                <svg className={`w-4 h-4 transition-transform ${labExpanded ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              {labExpanded && (
+                <div className="pl-4 mt-3 space-y-3 border-l border-[var(--border)]">
+                  <Link
+                    href="/thesis"
+                    className="block text-base hover:opacity-70 transition-opacity"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Thesis
+                  </Link>
+                  <Link
+                    href="/lab"
+                    className="block text-base hover:opacity-70 transition-opacity"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Lab Story
+                  </Link>
+                  <Link
+                    href="/writing?category=research"
+                    className="block text-base hover:opacity-70 transition-opacity"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Research
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link
               href="/contact"
               className="block text-lg hover:opacity-70 transition-opacity"
