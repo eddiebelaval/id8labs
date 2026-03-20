@@ -57,21 +57,16 @@ export default function Header() {
               onMouseEnter={() => setDesktopAcademyOpen(true)}
               onMouseLeave={() => setDesktopAcademyOpen(false)}
             >
-              <button
-                type="button"
+              <Link
+                href="/academy"
                 className="text-base hover:opacity-70 transition-opacity flex items-center gap-1"
-                aria-haspopup="menu"
-                aria-expanded={desktopAcademyOpen}
-                onClick={() => setDesktopAcademyOpen(!desktopAcademyOpen)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Escape') setDesktopAcademyOpen(false)
-                }}
+                onMouseEnter={() => setDesktopAcademyOpen(true)}
               >
                 Academy
                 <svg className={`w-4 h-4 transition-transform ${desktopAcademyOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M6 9l6 6 6-6"/>
                 </svg>
-              </button>
+              </Link>
               <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${desktopAcademyOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg shadow-xl py-3 min-w-[380px]">
                   {/* Foundation */}
@@ -170,18 +165,16 @@ export default function Header() {
               onMouseEnter={() => setDesktopLabOpen(true)}
               onMouseLeave={() => setDesktopLabOpen(false)}
             >
-              <button
-                type="button"
+              <Link
+                href="/lab"
                 className="text-base hover:opacity-70 transition-opacity flex items-center gap-1"
-                aria-haspopup="menu"
-                aria-expanded={desktopLabOpen}
-                onClick={() => setDesktopLabOpen(!desktopLabOpen)}
+                onMouseEnter={() => setDesktopLabOpen(true)}
               >
                 Lab
                 <svg className={`w-4 h-4 transition-transform ${desktopLabOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M6 9l6 6 6-6"/>
                 </svg>
-              </button>
+              </Link>
               <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${desktopLabOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg shadow-xl py-3 min-w-[300px]">
                   <Link
