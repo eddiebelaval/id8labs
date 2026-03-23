@@ -619,6 +619,183 @@
   text-decoration: none;
 }
 
+/* ═══ THESIS Q&A DIALOGUE ═══ */
+.qaSection {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(4, 4, 4, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+}
+
+.qaSuggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.qaSuggestionBtn {
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.qaSuggestionBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.qaMessages {
+  max-height: 480px;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.qaMessages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.qaMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.qaMessages::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.qaMessage {
+  margin-bottom: 1.5rem;
+}
+
+.qaUser {
+  padding-left: 1rem;
+  border-left: 2px solid var(--text-dim);
+}
+
+.qaAssistant {
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+}
+
+.qaRole {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.qaUser .qaRole {
+  color: var(--text-dim);
+}
+
+.qaAssistant .qaRole {
+  color: var(--accent);
+}
+
+.qaContent {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-mid);
+  white-space: pre-wrap;
+}
+
+.qaAssistant .qaContent {
+  font-family: var(--font-crimson), 'Georgia', serif;
+  font-size: 0.95rem;
+}
+
+.qaCursor {
+  color: var(--accent);
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.qaError {
+  font-size: 0.72rem;
+  color: #ff6666;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255, 102, 102, 0.2);
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  background: rgba(255, 102, 102, 0.05);
+}
+
+.qaInputRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.qaInput {
+  flex: 1;
+  font-size: 0.85rem;
+  padding: 0.7em 1em;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--code-bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.qaInput::placeholder {
+  color: var(--text-dim);
+}
+
+.qaInput:focus {
+  border-color: var(--accent);
+}
+
+.qaInput:disabled {
+  opacity: 0.5;
+}
+
+.qaSendBtn {
+  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.qaSendBtn:hover:not(:disabled) {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.qaSendBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
 /* ═══ ANIMATION ═══ */
 @keyframes fadeUp {
   from {
@@ -658,5 +835,13 @@
   .pullQuote {
     padding-left: 1.2rem;
     font-size: 1.1rem;
+  }
+
+  .qaSection {
+    padding: 1.5rem;
+  }
+
+  .qaMessages {
+    max-height: 360px;
   }
 }

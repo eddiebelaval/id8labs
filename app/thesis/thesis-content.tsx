@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, FormEvent } from 'react'
 import styles from './thesis.module.css'
 
 // ═══ DATA ═══
@@ -468,6 +468,156 @@ function Section({ children, className = '' }: { children: React.ReactNode; clas
   )
 }
 
+// ═══ THESIS Q&A DIALOGUE ═══
+
+const SUGGESTED_QUESTIONS = [
+  'What is the strongest evidence for convergence?',
+  'How does meditation relate to context windows?',
+  'Where does this thesis break down?',
+  'What does the slime mold prove?',
+  'Can the system rewrite its own prompt?',
+]
+
+interface QAMessage {
+  role: 'user' | 'assistant'
+  content: string
+}
+
+function ThesisQA() {
+  const [messages, setMessages] = useState<QAMessage[]>([])
+  const [input, setInput] = useState('')
+  const [isStreaming, setIsStreaming] = useState(false)
+  const [error, setError] = useState('')
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const scrollToBottom = useCallback(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages, scrollToBottom])
+
+  const sendMessage = useCallback(async (text: string) => {
+    if (!text.trim() || isStreaming) return
+    setError('')
+
+    const userMessage: QAMessage = { role: 'user', content: text.trim() }
+    const newMessages = [...messages, userMessage]
+    setMessages(newMessages)
+    setInput('')
+    setIsStreaming(true)
+
+    try {
+      const response = await fetch('/api/thesis-qa', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: newMessages }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to get response')
+      }
+
+      const reader = response.body?.getReader()
+      if (!reader) throw new Error('No response stream')
+
+      const decoder = new TextDecoder()
+      let assistantText = ''
+      setMessages([...newMessages, { role: 'assistant', content: '' }])
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        assistantText += decoder.decode(value, { stream: true })
+        setMessages([...newMessages, { role: 'assistant', content: assistantText }])
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setIsStreaming(false)
+    }
+  }, [messages, isStreaming])
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    sendMessage(input)
+  }
+
+  return (
+    <div className={styles.qaSection}>
+      <div className={styles.sectionNum}>Dialogue</div>
+      <h2 style={{ fontFamily: 'var(--font-crimson), Georgia, serif', fontSize: 'clamp(1.9rem, 4.5vw, 2.7rem)', fontWeight: 400, lineHeight: 1.18, marginBottom: '1rem' }}>
+        Interrogate the Thesis
+      </h2>
+      <p style={{ color: 'var(--text-mid)', marginBottom: '2rem', fontSize: '0.95rem' }}>
+        Ask questions. Challenge claims. Probe where the framework holds and where it breaks.
+      </p>
+
+      {messages.length === 0 && (
+        <div className={styles.qaSuggestions}>
+          {SUGGESTED_QUESTIONS.map((q) => (
+            <button
+              key={q}
+              className={styles.qaSuggestionBtn}
+              onClick={() => sendMessage(q)}
+            >
+              {q}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {messages.length > 0 && (
+        <div className={styles.qaMessages}>
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              className={`${styles.qaMessage} ${msg.role === 'user' ? styles.qaUser : styles.qaAssistant}`}
+            >
+              <div className={styles.qaRole}>
+                {msg.role === 'user' ? 'You' : 'The Thesis'}
+              </div>
+              <div className={styles.qaContent}>
+                {msg.content || (isStreaming && i === messages.length - 1 ? '' : '')}
+                {isStreaming && i === messages.length - 1 && (
+                  <span className={styles.qaCursor}>|</span>
+                )}
+              </div>
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
+      )}
+
+      {error && (
+        <div className={styles.qaError}>{error}</div>
+      )}
+
+      <form onSubmit={handleSubmit} className={styles.qaInputRow}>
+        <input
+          ref={inputRef}
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask the thesis..."
+          className={styles.qaInput}
+          disabled={isStreaming}
+        />
+        <button
+          type="submit"
+          className={styles.qaSendBtn}
+          disabled={isStreaming || !input.trim()}
+        >
+          {isStreaming ? '...' : '→'}
+        </button>
+      </form>
+    </div>
+  )
+}
+
 // ═══ MAIN COMPONENT ═══
 
 export default function ThesisContent() {
@@ -751,6 +901,10 @@ export default function ThesisContent() {
             The sand is everywhere. The frequency has been applied.<br />Now come to your own conclusions.
           </div>
         </Section>
+
+        <div className={styles.sectionBreak}>&#9670;</div>
+
+        <ThesisQA />
 
         <footer className={styles.thesisFooter}>
           <p>id8Labs. <a href="https://id8labs.app">id8labs.app</a></p>
