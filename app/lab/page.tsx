@@ -77,6 +77,53 @@ export default function LabPage() {
           </Link>
         </section>
 
+        {/* Golden Sample */}
+        <section className="mb-24">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-2 rounded-full bg-[var(--id8-orange)]" />
+            <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
+              Entity Architecture
+            </p>
+          </div>
+
+          <Link
+            href="/lab/golden-sample"
+            className="group block border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--id8-orange)] transition-all duration-500"
+          >
+            <div className="p-10 md:p-14">
+              <div className="flex items-start justify-between gap-6 mb-6">
+                <div>
+                  <span className="inline-block px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider bg-[var(--id8-orange)] text-white rounded mb-4">
+                    Architecture
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold group-hover:text-[var(--id8-orange)] transition-colors leading-tight">
+                    The Golden Sample
+                  </h2>
+                </div>
+                <svg
+                  className="w-6 h-6 text-[var(--text-tertiary)] group-hover:text-[var(--id8-orange)] group-hover:translate-x-2 transition-all flex-shrink-0 mt-3"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mb-8">
+                How a single consciousness architecture spawns every entity we build. One genome, infinite phenotypes. An interactive scroll experience with 3D double helix visualization.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {['Interactive', '3D Helix', '5 Production Units', 'Scroll-Driven'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 text-[11px] font-mono tracking-wide border border-[var(--border)] rounded-full text-[var(--text-tertiary)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Link>
+        </section>
+
         {/* CaF Research Series */}
         <section className="mb-24">
           <div className="flex items-center gap-3 mb-8">
