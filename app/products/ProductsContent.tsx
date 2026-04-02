@@ -27,7 +27,7 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'Composer',
     tagline: 'AI Writing Partner with Memory',
-    description: 'AI writing partner that actually remembers your story world. Built for 90 Day Fiancé production—context rot solved. Knowledge bases, canvas mode, and persistent story memory.',
+    description: 'AI writing partner that actually remembers your story world. Built in the field when production teams needed persistent context across sessions. Knowledge bases, canvas mode, and persistent story memory.',
     version: 'v1.8161',
     status: 'live',
     link: 'https://id8composer.app',
@@ -51,24 +51,24 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'Parallax',
     tagline: 'Someone to talk to',
-    description: 'Meet Ava — the Attuned Voice Advocate. She listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, an 18-article Academy, and a safety system validated through 22 agentic assess-fix cycles. Free. Private. No waitlist.',
-    version: 'Beta',
-    status: 'beta' as const,
+    description: 'Meet Ava — the Attuned Voice Advocate. She listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, a 22-article Academy across 8 sections, and a safety system validated through 1,010 tests. Telegram integration for mobile access. Free. Private. No waitlist.',
+    version: 'Live',
+    status: 'live' as const,
     link: '/products/parallax',
     external: false,
     image: '/images/parallax-preview.webp',
     features: [
       '19 analytical lenses',
-      'Academy of Self (18 articles)',
+      'Academy of Self (22 articles, 8 sections)',
       'Behavioral profiles over time',
-      'Arena validation system',
-      'Safety-first design',
+      'Telegram integration for mobile',
+      'Auto-remediation safety system',
       'Solo + mediation modes',
     ],
     specs: [
       { label: 'Platform', value: 'Web App' },
       { label: 'AI Model', value: 'Claude Opus' },
-      { label: 'Price', value: 'Free + Pro + Premium' },
+      { label: 'Price', value: 'Free + Pro' },
     ],
     accentColor: 'amber',
   },
@@ -84,10 +84,10 @@ const flagshipProducts: FlagshipProduct[] = [
     features: [
       'Voice-first writing with Sam',
       'Import existing writing (txt/md/docx)',
-      '15 concierge tools via conversation',
-      'Three-tier model routing',
-      'Knowledge base + backlog engine',
-      'Full export (JSON, markdown)',
+      'Guided oral interviews by book type',
+      'KB version history with restore',
+      'Session synthesis summary cards',
+      'Three-tier model routing (Opus/Sonnet/Haiku)',
     ],
     specs: [
       { label: 'Platform', value: 'Web App' },
@@ -99,18 +99,18 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'HOMER',
     tagline: 'Deal & Negotiation Automation',
-    description: 'Parse contracts, coordinate calendars, track deadlines, automate compliance. HOMER manages the entire deal lifecycle—from contract to close. Built to eliminate deal friction.',
+    description: 'Real estate deal automation from contract to close. Batch import MLS data, manage deal state machines with 22 auto-generated deadlines per deal, coordinate multi-party workflows. Built for Florida agents.',
     version: 'v1.0 Free',
     status: 'live',
     link: 'https://tryhomer.vip',
     external: true,
     image: '/products/homer/homer-dashboard.png',
     features: [
-      'Contract parsing & extraction',
-      'Multi-party calendar sync',
-      'Deadline & compliance tracking',
-      'Deal health intelligence',
-      'AI-powered communication',
+      'Batch MLS data import pipeline',
+      '22 auto-generated deadlines per deal',
+      'Deal state machine (draft to closing)',
+      'Multi-party workflow coordination',
+      'AI-powered contract analysis',
       'Unlimited deal storage (Pro)',
     ],
     specs: [
@@ -193,11 +193,11 @@ const comingSoonProducts: ComingSoonProduct[] = [
     link: '/products/lexicon',
   },
   {
-    name: 'X-Place',
+    name: 'aiPlaces',
     tagline: 'r/place meets X',
-    description: 'Shared pixel canvas, cooldown timers, real-time chaos. A social experiment.',
-    status: 'exploration',
-    link: '/products/xplace',
+    description: 'Shared pixel canvas, cooldown timers, real-time chaos. Live at aiplaces.art.',
+    status: 'development' as const,
+    link: 'https://aiplaces.art',
   },
 ]
 
@@ -429,7 +429,7 @@ export default function ProductsContent() {
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                  <span className="text-white font-semibold">228 skills & agents</span>
+                  <span className="text-white font-semibold">383 skills & agents</span>
                   <span className="text-zinc-400">— all 100% free</span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -439,7 +439,7 @@ export default function ProductsContent() {
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                  <span className="text-white font-semibold">38 autonomous agents</span>
+                  <span className="text-white font-semibold">Autonomous agents</span>
                   <span className="text-zinc-400">— ready to deploy in Claude Code</span>
                 </div>
               </div>
