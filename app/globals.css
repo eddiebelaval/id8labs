@@ -229,17 +229,23 @@ a:hover {
 
 /* Typography Utilities */
 .text-gradient-orange {
+  color: var(--id8-orange);
   background: linear-gradient(135deg, var(--id8-orange) 0%, var(--id8-orange-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .text-gradient-multi {
+  color: var(--id8-orange);
   background: linear-gradient(135deg, var(--id8-orange) 0%, var(--accent-purple) 50%, var(--accent-blue) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .text-outline {
