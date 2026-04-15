@@ -1,0 +1,89 @@
+---
+title: "The Execution Layer: How AI Agents Pick Up Work From Three Documents"
+subtitle: "The Triad gives you direction. The execution layer gives agents something to do."
+date: "2026-04-07"
+category: "essay"
+excerpt: "For AI coding agents, computed views are not enough. The execution layer turns the Triad's gap into persistent, agent-readable work. An agent opens TICKETS.md, picks the highest priority unblocked ticket, does the work, verifies it, marks it done. No human in the loop for routine execution."
+tags: ["triad", "execution-layer", "ai-agents", "documentation", "open-source", "claude-code"]
+featured: true
+---
+
+# The Execution Layer: How AI Agents Pick Up Work From Three Documents
+
+*The Triad gives you direction. The derivation engine gives you views. The execution layer gives agents something to do.*
+
+---
+
+**TL;DR:** For AI coding agents, computed views are not enough. The execution layer turns the Triad's gap into persistent, agent-readable work. An agent opens TICKETS.md, picks the highest priority unblocked ticket, does the work, verifies it, marks it done. No human in the loop for routine execution. Open source at [github.com/eddiebelaval/triad](https://github.com/eddiebelaval/triad).
+
+---
+
+In the first article I described a system where three documents replace the PRD: VISION.md, SPEC.md, BUILDING.md. The gap between VISION and SPEC is the roadmap. In the second article I showed how six slash commands compute views over those three files. All derived. None stored. Zero maintenance artifacts.
+
+Both articles assumed a human reads the output and goes to work.
+
+That assumption broke.
+
+## The Problem With Computed Views
+
+I run multiple AI coding agents on the same product. Claude Code sessions building features, fixing bugs, writing tests. The derivation engine tells me what to build next. But telling an agent "type /roadmap and read the gap" does not work. Agents need more than a prioritized list. They need file targets, verification criteria, dependencies, status fields.
+
+Computed views are ephemeral. An agent needs persistent state. It needs to mark a ticket in_progress so the next agent does not pick the same one. It needs to know which files to touch and how to verify the work is done.
+
+The derivation engine computes the *what*. The execution layer materializes the *how*.
+
+## Four Documents, Four Zoom Levels
+
+The execution layer takes the roadmap (computed from the Triad) and materializes it into four persistent documents:
+
+**ROADMAP.md** is strategy. Milestones, sequencing, gates. The bridge between the Triad's computed gap and the tactical work below. Readable by humans and agents both.
+
+**MILESTONE_TASKLISTS.md** breaks that into task lists with verification criteria. Each milestone has a checklist of concrete deliverables.
+
+**TICKETS.md** is where agents actually live. Each ticket has a status (pending, in_progress, done), a priority, dependencies, and file targets. This is the execution board.
+
+**MILESTONE_N_CHECKLIST.md** goes all the way down to line numbers for the current milestone. Which files to create, which functions to modify, which tests to write. Exclusively for agents.
+
+A human reads the top two. An agent reads all four.
+
+## How an Agent Session Works
+
+An agent session opens TICKETS.md, reads every ticket, and finds the highest priority unblocked one. It marks it in_progress, does the work, verifies it, marks it done. Updates affected docs. No human in the loop for routine execution.
+
+The agent does not need to understand the whole product. It reads the ticket for instructions. It reads SPEC.md for context on what the product does today. It reads VISION.md for what the product is becoming. The Triad provides judgment. The ticket provides marching orders.
+
+Multiple agent sessions can work the board simultaneously. Each picks the next unblocked ticket. Status fields prevent most collisions. This is optimistic locking, not a guarantee. For two or three agent sessions on a solo project, it is good enough.
+
+I have been running this on Homer, a real estate platform, and on DeepStack, a trading research pipeline. Both use the same seven-file structure: three Triad documents plus four execution documents. The execution layer was built once and applied to both. Same skeleton, different product.
+
+## Why Direction Matters More Than Speed
+
+Before the execution layer, I watched an agent session on Homer build an entire auth flow against a SPEC that had changed two days earlier. Forty minutes of clean code pointed at a target that no longer existed. The agent was fast. It was also useless.
+
+That is the problem with speed without direction. AI agents can write code. But the bottleneck is not how fast they write it. It is whether they are building the right thing.
+
+The execution layer fixes this by keeping the chain in sync. When something ships, SPEC gets updated. Priority recomputes. New tickets appear. The agent picks up a ticket that reflects the current state of the product, not last week's state. The source of truth is three files a human actually maintains. Everything downstream stays current because nothing downstream is stored separately.
+
+## When You Need It
+
+The execution layer adds overhead that only pays off when agents are doing the building. If you are a solo builder holding context in your head, the Triad and derivation engine are enough. Type /roadmap, read the gap, go build.
+
+You need the execution layer when you run AI coding agents for implementation, when you want overnight builds that do not require you at the keyboard, when multiple agent sessions need to coordinate without stepping on each other, or when execution state needs to persist across sessions. If any of those describe your workflow, the four documents pay for themselves immediately.
+
+## The Pattern Generalizes
+
+The seven files are not about software. They are about closing the gap between intention and action in any domain.
+
+I run the same structure on my personal life system. HEADING.md, NOW.md, GOALS.md for the Triad. ROADMAP.md, commitments, and weekly tickets for the execution layer. A daemon computes the delta every Sunday and sends me a Telegram summary. Same math, different domain.
+
+## Open Source
+
+The Triad is now open source: [github.com/eddiebelaval/triad](https://github.com/eddiebelaval/triad)
+
+Templates for all seven documents. Slash commands for the derivation engine (/roadmap, /drift, /changelog, /pitch, /debt, /onboard). The /reconcile skill that maintains the triangle through conversation. An installer that drops everything into Claude Code in under a minute.
+
+Or skip the tooling. If you already have VISION.md and SPEC.md from the first article, add ROADMAP.md and TICKETS.md. The gap is already there. Now it is executable.
+
+---
+
+*This is the third article in the Triad series. [Part 1: Your PRD Is Dead](/writing/your-prd-is-dead). Part 2: Three Documents, Six Outputs. Open source at [github.com/eddiebelaval/triad](https://github.com/eddiebelaval/triad).*
