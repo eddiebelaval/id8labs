@@ -58,7 +58,8 @@ export function WritingList({ items }: WritingListProps) {
     essay: 'Essay',
     research: 'Research',
     release: 'Release Note',
-    newsletter: 'Newsletter'
+    newsletter: 'Newsletter',
+    magazine: 'Magazine'
   }
 
   return (
@@ -74,7 +75,7 @@ export function WritingList({ items }: WritingListProps) {
           >
             <h1 className="mb-6">Writing</h1>
             <p className="text-xl text-[var(--text-secondary)]">
-              Essays, research, release notes, and the signal:noise newsletter.
+              Essays, research, release notes, the signal:noise newsletter, and Shipped<span className="text-id8-orange">.</span> — the weekly magazine on what Anthropic ships.
             </p>
           </m.div>
         </div>
@@ -103,6 +104,16 @@ export function WritingList({ items }: WritingListProps) {
               }`}
             >
               Newsletter
+            </button>
+            <button
+              onClick={() => setFilter('magazine')}
+              className={`pb-2 transition-all whitespace-nowrap ${
+                filter === 'magazine'
+                  ? 'border-b-2 border-id8-orange font-medium text-id8-orange'
+                  : 'text-[var(--text-secondary)] hover:text-id8-orange'
+              }`}
+            >
+              Magazine
             </button>
             <button
               onClick={() => setFilter('essay')}
@@ -210,6 +221,15 @@ export function WritingList({ items }: WritingListProps) {
           <div className="max-w-3xl space-y-12">
             {filteredItems.map((item, index) => {
               const isNewsletter = item.category === 'newsletter'
+              const isMagazine = item.category === 'magazine'
+              // Magazine items carry an explicit href to /shipped/{NN}.
+              // Newsletter items resolve to /newsletter/{slug} (slug already prefixed).
+              // Everything else routes to /writing/{slug}.
+              const linkHref = item.href
+                ? item.href
+                : isNewsletter
+                  ? `/${item.slug}`
+                  : `/writing/${item.slug}`
 
               return (
                 <m.article
@@ -219,11 +239,15 @@ export function WritingList({ items }: WritingListProps) {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="border-b border-[var(--border)] pb-12 last:border-0"
                 >
-                  <Link href={isNewsletter ? `/${item.slug}` : `/writing/${item.slug}`} className="group block">
+                  <Link href={linkHref} className="group block">
                     <div className="mb-3 flex items-center gap-3 text-sm text-[var(--text-secondary)]">
                       {isNewsletter ? (
                         <span className="text-[var(--id8-orange)] font-medium">
                           Issue #{item.issueNumber}
+                        </span>
+                      ) : isMagazine ? (
+                        <span className="text-[var(--id8-orange)] font-medium">
+                          Shipped. Issue #{item.issueNumber}
                         </span>
                       ) : (
                         <span className="uppercase tracking-wide">
@@ -253,7 +277,7 @@ export function WritingList({ items }: WritingListProps) {
                     </p>
 
                     <div className="flex items-center gap-2 text-sm group-hover:translate-x-1 transition-transform">
-                      Read {isNewsletter ? 'issue' : 'more'}
+                      Read {isNewsletter || isMagazine ? 'issue' : 'more'}
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
