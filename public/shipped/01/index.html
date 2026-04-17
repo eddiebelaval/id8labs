@@ -1,0 +1,3060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipped. — Issue 01 — The Shadow Release</title>
+<meta property="og:title" content="Shipped. — Issue 01 — The Shadow Release">
+<meta property="og:description" content="A weekly magazine on what Anthropic ships. Issue 01 — Opus 4.7, Project Glasswing, the Mythos shadow, and 56 releases over three weeks.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://id8labs.app/shipped/01/">
+<meta property="og:image" content="https://id8labs.app/shipped/01/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shipped. — Issue 01 — The Shadow Release">
+<meta name="twitter:description" content="A weekly magazine on what Anthropic ships.">
+<meta name="twitter:image" content="https://id8labs.app/shipped/01/og.png">
+<meta name="description" content="Shipped. is a weekly magazine on what Anthropic ships. Issue 01: Opus 4.7, Project Glasswing, and the Mythos shadow.">
+<meta name="author" content="Eddie Belaval">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='75' cy='62' r='14' fill='%23FF6B35'/%3E%3Ctext x='10' y='75' font-family='Georgia,serif' font-weight='700' font-size='62' fill='%231a1a1a'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,700&family=Archivo:wght@300;400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════
+   SHIPPED. — ISSUE 00 — TEMP-100 PASS
+   Editorial brutalism meets print craft.
+   ══════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{background:#fafaf7;color:#0b0b0b;font-family:'Archivo',sans-serif;overflow-x:hidden}
+::selection{background:#FF6B35;color:#fff}
+
+:root{
+  --orange:#FF6B35;
+  --ink:#0b0b0b;
+  --paper:#fafaf7;       /* warm paper white — magazines aren't pure #fff */
+  --paper-shadow:#f2f0e8;
+  --body:#2a2a2a;
+  --muted:#5a5a5a;
+  --gray:#8a8a8a;
+  --hair:rgba(11,11,11,0.12);
+  --hair-soft:rgba(11,11,11,0.06);
+  --hair-hard:rgba(11,11,11,0.22);
+  --disp:'Fraunces', 'Times New Roman', serif;
+  --sans:'Archivo', system-ui, sans-serif;
+  --narrow:'Archivo Narrow', 'Archivo', sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* paper texture — subtle grain to sell the print feel */
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.28;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ─────────────────────────────────────────
+   PUBLICATION BAR — the spine running the whole book
+   ───────────────────────────────────────── */
+.pub-bar{
+  position:sticky;top:0;z-index:100;
+  background:var(--paper);
+  border-bottom:1px solid var(--hair);
+  padding:0 28px;height:42px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--narrow);
+  font-size:11px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);
+}
+.pub-bar-left,.pub-bar-right{display:flex;align-items:center;gap:16px}
+.pub-bar-mark{font-family:var(--disp);font-weight:500;font-size:16px;letter-spacing:-.01em;text-transform:none;font-style:italic}
+.pub-bar-mark .dot{color:var(--orange)}
+.pub-bar-sep{width:1px;height:12px;background:var(--hair-hard)}
+.pub-bar-meta{color:var(--muted)}
+.pub-bar-folio{color:var(--ink)}
+.pub-bar-folio b{font-weight:600;color:var(--orange)}
+
+/* ─────────────────────────────────────────
+   FOLIO — the corner marker on every section.
+   Print-magazine page number system.
+   ───────────────────────────────────────── */
+.folio{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:500;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gray);
+  display:flex;align-items:center;gap:10px;
+}
+.folio b{color:var(--ink);font-weight:700}
+.folio .ruler{width:28px;height:1px;background:var(--hair-hard)}
+.folio .dot{color:var(--orange)}
+
+/* ─────────────────────────────────────────
+   COVER — the hero moment.
+   The "00" is the architecture. "Shipped." is the logo.
+   ───────────────────────────────────────── */
+.cover{
+  position:relative;
+  padding:32px 28px 64px;
+  min-height:calc(100vh - 42px);
+  display:flex;flex-direction:column;
+  border-bottom:1px solid var(--hair);
+  overflow:hidden;
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right, var(--hair-soft) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+  pointer-events:none;opacity:.55;
+}
+
+.cover-top{
+  position:relative;z-index:2;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:24px;padding-bottom:28px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:24px;
+}
+.cover-top-left{display:flex;flex-direction:column;gap:6px}
+.cover-top-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--ink);
+}
+.cover-top-kicker b{color:var(--orange)}
+.cover-top-sub{
+  font-family:var(--disp);font-style:italic;
+  font-size:13px;font-weight:400;color:var(--muted);
+}
+.cover-top-right{
+  text-align:right;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:500;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1.7;
+}
+.cover-top-right b{color:var(--ink);font-weight:700}
+
+/* The big "00" — set behind the masthead, breaking its baseline */
+.cover-stage{
+  position:relative;flex:1;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-items:center;
+  padding:24px 0;
+  z-index:2;
+}
+.cover-huge-num{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-54%);
+  font-family:var(--disp);
+  font-weight:900;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(320px, 62vw, 780px);
+  line-height:.78;
+  color:var(--paper-shadow);
+  letter-spacing:-.06em;
+  z-index:1;pointer-events:none;
+  user-select:none;
+  -webkit-text-stroke:1px rgba(11,11,11,.08);
+}
+.cover-stack{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(16px,3vw,32px);
+  padding-left:clamp(0px,4vw,40px);
+}
+.cover-spine{
+  position:absolute;
+  left:-4px;top:50%;
+  transform:translateY(-50%) rotate(-90deg);
+  transform-origin:left center;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.48em;
+  text-transform:uppercase;color:var(--gray);
+  white-space:nowrap;
+  display:none; /* only on desktop */
+}
+@media(min-width:980px){.cover-spine{display:block}}
+
+.masthead-cover{
+  font-family:var(--disp);
+  font-weight:500;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(92px, 18vw, 256px);
+  line-height:.84;
+  letter-spacing:-.045em;
+  color:var(--ink);
+  display:inline-block;
+  position:relative;
+}
+.masthead-cover .dot{
+  color:var(--orange);
+  display:inline-block;
+  transform:translateY(-.04em);
+}
+.masthead-cover::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-14px;
+  height:2px;background:var(--ink);
+}
+
+.cover-deck{
+  font-family:var(--disp);
+  font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(28px,4.6vw,58px);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  max-width:820px;
+  color:var(--ink);
+}
+.cover-deck em{font-style:normal;color:var(--orange);font-weight:500}
+
+.cover-deckline{
+  font-family:var(--sans);
+  font-size:15px;font-weight:400;
+  color:var(--muted);
+  max-width:540px;line-height:1.55;
+}
+
+.cover-bottom{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  gap:0;
+  border-top:1px solid var(--ink);
+  margin-top:32px;
+  padding-top:18px;
+}
+.cover-bottom-cell{
+  padding-right:16px;
+  border-right:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:4px;
+}
+.cover-bottom-cell:last-child{border-right:none;padding-right:0}
+.cover-bottom-label{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gray);
+}
+.cover-bottom-val{
+  font-family:var(--disp);
+  font-weight:500;font-size:18px;color:var(--ink);
+  letter-spacing:-.01em;
+  font-variation-settings:"opsz" 72;
+}
+.cover-bottom-val b{font-weight:700;color:var(--orange)}
+
+@media(max-width:720px){
+  .cover-top-right{font-size:9px}
+  .cover-bottom{grid-template-columns:1fr 1fr;gap:14px 0}
+  .cover-bottom-cell:nth-child(2){border-right:none}
+  .cover-bottom-cell{padding-bottom:12px;border-bottom:1px solid var(--hair-soft)}
+  .cover-bottom-cell:nth-child(3),.cover-bottom-cell:nth-child(4){border-bottom:none}
+}
+
+/* ─────────────────────────────────────────
+   SECTION WRAPPER + FOLIO HEADER
+   ───────────────────────────────────────── */
+.section{
+  position:relative;
+  padding:64px 28px 40px;
+  max-width:1280px;margin:0 auto;
+}
+.section-folio{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:44px;
+}
+.section-folio-left{display:flex;align-items:center;gap:14px}
+.section-folio-label{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ink);
+}
+.section-folio-sub{
+  font-family:var(--disp);font-style:italic;
+  font-size:13px;color:var(--muted);
+}
+
+/* ─────────────────────────────────────────
+   TABLE OF CONTENTS — the "what's in the book" wall
+   ───────────────────────────────────────── */
+.toc-section{background:var(--paper)}
+.toc-head{
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:end;gap:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:0;
+}
+.toc-head-num{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,10vw,128px);line-height:.8;
+  color:var(--ink);letter-spacing:-.04em;
+}
+.toc-head-title{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-size:clamp(24px,3vw,40px);line-height:1;
+  color:var(--ink);
+}
+.toc-head-meta{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:right;line-height:1.8;
+}
+.toc-head-meta b{color:var(--ink);font-weight:700}
+
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:24px;
+}
+.toc-entry{
+  grid-column:span 6;
+  padding:24px 0 22px;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:18px;align-items:baseline;
+  text-decoration:none;color:inherit;
+  transition:background .12s ease;
+}
+.toc-entry:hover{background:var(--paper-shadow)}
+.toc-entry-n{
+  font-family:var(--narrow);font-weight:700;
+  font-size:10px;letter-spacing:.22em;color:var(--orange);
+  text-transform:uppercase;min-width:40px;
+}
+.toc-entry-body{display:flex;flex-direction:column;gap:6px;min-width:0}
+.toc-entry-kicker{
+  font-family:var(--narrow);font-weight:700;
+  font-size:9px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--muted);
+}
+.toc-entry-title{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(20px,2vw,28px);
+  letter-spacing:-.018em;line-height:1.1;color:var(--ink);
+}
+.toc-entry-tease{
+  font-family:var(--disp);font-style:italic;
+  font-size:14px;line-height:1.45;color:var(--muted);
+}
+.toc-entry-page{
+  font-family:var(--narrow);font-weight:700;
+  font-size:14px;color:var(--ink);letter-spacing:.04em;
+  text-align:right;min-width:40px;
+  font-variant-numeric:tabular-nums;
+}
+.toc-entry:hover .toc-entry-title{color:var(--orange)}
+
+@media(max-width:720px){
+  .toc-entry{grid-column:span 12;grid-template-columns:1fr auto;gap:8px 12px}
+  .toc-entry-n{grid-column:1;grid-row:1}
+  .toc-entry-page{grid-column:2;grid-row:1}
+  .toc-entry-body{grid-column:1 / -1;grid-row:2}
+}
+
+/* ─────────────────────────────────────────
+   "THE OPEN" — intro essay
+   ───────────────────────────────────────── */
+.open-section{background:var(--paper)}
+.open-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:32px;
+}
+.open-lead{
+  grid-column:2 / span 7;
+}
+.open-quote{
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 144;
+  font-weight:500;font-size:clamp(36px,5vw,72px);
+  line-height:1.02;letter-spacing:-.025em;
+  color:var(--ink);
+  margin-bottom:36px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--hair-hard);
+}
+.open-quote em{font-style:italic;color:var(--orange);font-weight:500}
+.open-prose{
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 14;
+  font-weight:400;font-size:18px;line-height:1.68;
+  color:var(--body);
+  max-width:620px;
+}
+.open-prose p{margin-bottom:22px}
+.open-prose em{font-style:italic;color:var(--ink)}
+.open-aside{
+  grid-column:10 / span 3;
+  border-top:1px solid var(--ink);
+  padding-top:16px;
+  font-family:var(--narrow);
+  font-size:11px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1.9;
+}
+.open-aside b{color:var(--ink);font-weight:700}
+@media(max-width:860px){
+  .open-lead{grid-column:1 / -1}
+  .open-aside{grid-column:1 / -1;margin-top:16px}
+}
+
+/* ─────────────────────────────────────────
+   BY THE NUMBERS — the Bloomberg numerals.
+   Each stat gets the grid-breaking hero treatment.
+   ───────────────────────────────────────── */
+.btn-section{background:var(--ink);color:var(--paper)}
+.btn-section .section-folio{border-bottom-color:var(--paper)}
+.btn-section .section-folio-label{color:var(--paper)}
+.btn-section .section-folio-sub{color:rgba(250,250,247,.6)}
+.btn-section .folio{color:rgba(250,250,247,.6)}
+.btn-section .folio b{color:var(--paper)}
+
+.btn-head{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(40px,6vw,84px);
+  line-height:1;letter-spacing:-.03em;
+  color:var(--paper);
+  margin-bottom:48px;
+  max-width:820px;
+}
+.btn-head em{color:var(--orange);font-style:normal;font-weight:500}
+
+.btn-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1px;
+  background:rgba(250,250,247,.14);
+  border-top:1px solid rgba(250,250,247,.14);
+  border-bottom:1px solid rgba(250,250,247,.14);
+}
+.btn-cell{
+  background:var(--ink);
+  padding:32px 24px 28px;
+  display:flex;flex-direction:column;gap:6px;
+  position:relative;
+}
+.btn-cell.s6{grid-column:span 6}
+.btn-cell.s4{grid-column:span 4}
+.btn-cell.s3{grid-column:span 3}
+.btn-cell.s12{grid-column:span 12}
+.btn-cell.s8{grid-column:span 8}
+.btn-label{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(250,250,247,.55);
+}
+.btn-num{
+  font-family:var(--disp);
+  font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(88px,14vw,220px);
+  line-height:.82;letter-spacing:-.055em;
+  color:var(--paper);
+}
+.btn-num.accent{color:var(--orange)}
+.btn-note{
+  font-family:var(--disp);font-style:italic;
+  font-size:15px;line-height:1.4;color:rgba(250,250,247,.8);
+  margin-top:6px;
+}
+
+@media(max-width:860px){
+  .btn-cell.s6,.btn-cell.s4,.btn-cell.s8{grid-column:span 6}
+  .btn-cell.s3{grid-column:span 6}
+  .btn-cell.s12{grid-column:span 12}
+}
+@media(max-width:520px){
+  .btn-cell{grid-column:span 12 !important}
+  .btn-num{font-size:96px}
+}
+
+/* ─────────────────────────────────────────
+   FEATURE OPENER — vertical rotated label.
+   The magazine "FEATURE / INVESTIGATION / SURVEY" moment.
+   ───────────────────────────────────────── */
+.feature-opener{
+  display:grid;
+  grid-template-columns:72px 1fr minmax(0,320px);
+  gap:32px;
+  padding:56px 28px 40px;
+  max-width:1280px;margin:0 auto;
+  position:relative;
+  border-top:2px solid var(--ink);
+}
+.feature-opener::before{
+  content:"";
+  position:absolute;
+  left:100px;top:0;bottom:0;
+  width:1px;background:var(--hair);
+}
+.vert-label{
+  position:relative;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:var(--narrow);
+  font-size:13px;font-weight:700;letter-spacing:.48em;
+  text-transform:uppercase;color:var(--ink);
+  align-self:start;
+  padding-top:12px;
+  white-space:nowrap;
+}
+.vert-label .vert-num{
+  color:var(--orange);
+  font-family:var(--disp);
+  font-style:italic;font-weight:500;
+  letter-spacing:-.02em;
+  margin-top:12px;display:inline-block;
+  writing-mode:horizontal-tb;
+  transform:rotate(180deg);
+  font-size:20px;
+}
+.feature-heading{min-width:0}
+.feature-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:20px;
+}
+.feature-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(52px,8vw,128px);
+  line-height:.9;letter-spacing:-.042em;
+  color:var(--ink);
+  margin-bottom:24px;
+}
+.feature-title em{font-style:italic;font-weight:400;color:var(--ink)}
+.feature-deck{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(20px,2.4vw,28px);
+  line-height:1.3;letter-spacing:-.01em;
+  color:var(--muted);
+  max-width:640px;
+  margin-bottom:24px;
+}
+.feature-meta{
+  padding-top:18px;
+  border-top:1px solid var(--hair);
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1.8;
+}
+.feature-meta b{color:var(--ink);font-weight:700}
+.feature-right{
+  padding-top:28px;
+  border-top:1px solid var(--hair);
+  font-family:var(--disp);font-style:italic;
+  font-size:15px;line-height:1.55;color:var(--muted);
+}
+.feature-right-label{
+  display:block;
+  font-family:var(--narrow);font-style:normal;
+  font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ink);
+  margin-bottom:10px;
+}
+@media(max-width:860px){
+  .feature-opener{grid-template-columns:1fr;gap:16px}
+  .feature-opener::before{display:none}
+  .vert-label{writing-mode:horizontal-tb;transform:none;font-size:11px}
+  .vert-label .vert-num{writing-mode:horizontal-tb;transform:none;margin-left:16px}
+  .feature-right{grid-column:1 / -1}
+}
+
+/* ─────────────────────────────────────────
+   EDITORIAL PROSE + DROP CAPS
+   ───────────────────────────────────────── */
+.prose-well{
+  max-width:1280px;margin:0 auto;padding:0 28px 56px;
+  display:grid;grid-template-columns:72px 1fr minmax(0,320px);
+  gap:32px;position:relative;
+}
+.prose-well::before{
+  content:"";position:absolute;left:100px;top:0;bottom:0;
+  width:1px;background:var(--hair);
+}
+.prose-marginalia{
+  grid-column:1;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--gray);
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  align-self:start;padding-top:8px;
+  white-space:nowrap;
+}
+.prose{
+  grid-column:2;
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 14;
+  font-weight:400;font-size:19px;line-height:1.66;
+  color:var(--body);
+  max-width:640px;
+}
+.prose p{margin-bottom:24px}
+.prose em{font-style:italic;color:var(--ink)}
+.prose strong{font-weight:600;color:var(--ink)}
+.prose code{
+  font-family:var(--mono);font-size:.86em;
+  background:var(--paper-shadow);padding:1px 6px;
+  border-radius:3px;color:var(--ink);
+}
+.prose-aside{
+  grid-column:3;
+  font-family:var(--narrow);
+  font-size:11px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  border-top:1px solid var(--ink);padding-top:14px;
+  line-height:1.8;
+}
+.prose-aside b{color:var(--ink);font-weight:700}
+
+/* Drop cap — dramatic, breaking the baseline */
+.drop-cap::first-letter{
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 144;
+  font-weight:700;
+  font-size:9.2em;
+  float:left;line-height:.78;
+  padding:.02em 12px 0 0;
+  margin:.02em 4px -.1em -2px;
+  color:var(--ink);
+}
+.drop-cap-orange::first-letter{
+  color:var(--orange);
+}
+
+@media(max-width:860px){
+  .prose-well{grid-template-columns:1fr;padding-left:20px;padding-right:20px}
+  .prose-well::before{display:none}
+  .prose-marginalia{display:none}
+  .prose{grid-column:1}
+  .prose-aside{grid-column:1;margin-top:20px}
+  .drop-cap::first-letter{font-size:6.6em}
+}
+
+/* ─────────────────────────────────────────
+   FULL-SCREEN PULL QUOTE — the punchline moment
+   ───────────────────────────────────────── */
+.pq-full{
+  background:var(--ink);color:var(--paper);
+  padding:120px 28px;
+  position:relative;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+}
+.pq-full-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  align-items:center;
+}
+.pq-quote-mark{
+  grid-column:1 / span 2;
+  font-family:var(--disp);font-weight:900;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(180px,24vw,360px);
+  line-height:.6;color:var(--orange);
+  letter-spacing:-.05em;
+  align-self:start;
+}
+.pq-body{
+  grid-column:3 / span 9;
+}
+.pq-text{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-style:italic;
+  font-size:clamp(36px,5vw,68px);
+  line-height:1.1;letter-spacing:-.022em;
+  color:var(--paper);
+  margin-bottom:28px;
+}
+.pq-text em{color:var(--orange);font-style:normal;font-weight:500}
+.pq-att{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(250,250,247,.55);
+  border-top:1px solid rgba(250,250,247,.25);
+  padding-top:14px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.pq-att b{color:var(--paper)}
+@media(max-width:720px){
+  .pq-full{padding:64px 20px}
+  .pq-quote-mark{grid-column:1 / -1;font-size:120px;line-height:.7;margin-bottom:-30px}
+  .pq-body{grid-column:1 / -1}
+}
+
+/* ─────────────────────────────────────────
+   THE MYTHOS BAR — hero benchmark diagram
+   ───────────────────────────────────────── */
+.mythos-section{
+  background:var(--paper);
+  padding:64px 28px 56px;max-width:1280px;margin:0 auto;
+}
+.mythos-head{
+  display:grid;grid-template-columns:1fr auto;
+  gap:24px;align-items:end;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:36px;
+}
+.mythos-head-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(36px,5vw,64px);
+  line-height:.95;letter-spacing:-.03em;color:var(--ink);
+}
+.mythos-head-title em{font-style:italic;color:var(--orange);font-weight:500}
+.mythos-head-meta{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:right;line-height:1.8;
+}
+.mythos-head-meta b{color:var(--ink);font-weight:700}
+
+.mythos-bars{
+  display:flex;flex-direction:column;gap:0;
+}
+.mythos-row{
+  display:grid;
+  grid-template-columns:minmax(160px,220px) 1fr 90px;
+  gap:24px;align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--hair);
+}
+.mythos-row:last-child{border-bottom:1px solid var(--ink)}
+.mythos-name{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:20px;color:var(--ink);letter-spacing:-.01em;
+}
+.mythos-name .tag{
+  display:inline-block;margin-left:8px;
+  font-family:var(--narrow);font-size:9px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--orange);vertical-align:2px;
+}
+.mythos-bar{
+  height:16px;background:var(--paper-shadow);
+  position:relative;overflow:hidden;
+  border:1px solid var(--hair);
+}
+.mythos-bar-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:var(--ink);
+}
+.mythos-row.frontier .mythos-bar-fill{background:var(--orange)}
+.mythos-row.frontier{background:rgba(255,107,53,.04)}
+.mythos-row.frontier .mythos-name{color:var(--ink)}
+.mythos-score{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 72;
+  font-size:28px;letter-spacing:-.02em;
+  color:var(--ink);text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.mythos-row.frontier .mythos-score{color:var(--orange)}
+.mythos-caption{
+  margin-top:20px;
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  font-family:var(--disp);font-style:italic;
+  font-size:14px;line-height:1.5;color:var(--muted);
+}
+.mythos-caption-num{
+  font-family:var(--narrow);font-style:normal;
+  font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--orange);
+  padding-top:2px;white-space:nowrap;
+}
+@media(max-width:720px){
+  .mythos-row{grid-template-columns:1fr auto;gap:6px 12px}
+  .mythos-bar{grid-column:1 / -1;order:3}
+  .mythos-name{grid-column:1;grid-row:1}
+  .mythos-score{grid-column:2;grid-row:1}
+}
+
+/* ─────────────────────────────────────────
+   SIDEBAR BOX — editorial aside
+   ───────────────────────────────────────── */
+.sidebar-box{
+  background:var(--paper);
+  border:1px solid var(--ink);
+  border-top:4px solid var(--ink);
+  padding:28px 28px 24px;
+  margin:48px auto;
+  max-width:820px;
+  position:relative;
+}
+.sidebar-box.accent{border-top-color:var(--orange)}
+.sidebar-box-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:8px;
+}
+.sidebar-box-title{
+  font-family:var(--disp);font-weight:500;font-style:italic;
+  font-variation-settings:"opsz" 72;
+  font-size:28px;letter-spacing:-.015em;
+  color:var(--ink);
+  padding-bottom:16px;
+  border-bottom:1px solid var(--hair);
+  margin-bottom:20px;
+}
+.sidebar-box-body{
+  font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--body);
+}
+.sidebar-box-body p{margin-bottom:12px}
+.sidebar-box-body p:last-child{margin-bottom:0}
+.sidebar-box-list{
+  list-style:none;padding:0;margin:16px 0 0;
+  display:flex;flex-direction:column;
+  border-top:1px solid var(--hair);
+}
+.sidebar-box-list li{
+  padding:14px 0;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  gap:16px;align-items:baseline;
+  font-family:var(--sans);font-size:14px;color:var(--body);
+  line-height:1.5;
+}
+.sidebar-box-list .yr{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 72;
+  font-size:22px;color:var(--orange);
+  letter-spacing:-.01em;
+}
+.sidebar-box-list .yr em{font-style:italic;font-weight:400;font-size:14px;color:var(--muted)}
+
+/* ─────────────────────────────────────────
+   THE AGENT STACK — feature with code
+   ───────────────────────────────────────── */
+.code-block{
+  margin:24px 0;
+  border:1px solid var(--ink);
+  background:var(--paper);
+  font-family:var(--mono);font-size:12.5px;line-height:1.55;
+  color:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.code-block-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px;
+  border-bottom:1px solid var(--ink);
+  background:var(--ink);color:var(--paper);
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.code-block-head span:last-child{color:var(--orange)}
+.code-block pre{
+  padding:20px 24px;overflow-x:auto;white-space:pre;margin:0;
+}
+.code-block .k{color:var(--orange)}
+.code-block .s{color:var(--muted);font-style:italic}
+.code-block .c{color:var(--gray);font-style:italic}
+
+/* ─────────────────────────────────────────
+   TIMELINE — 21 days, 56 releases
+   ───────────────────────────────────────── */
+.tl-section{padding:64px 28px 56px;max-width:1280px;margin:0 auto}
+.tl-head{
+  display:grid;grid-template-columns:1fr auto;
+  gap:24px;align-items:end;
+  padding-bottom:18px;border-bottom:1px solid var(--ink);
+  margin-bottom:36px;
+}
+.tl-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(40px,6vw,72px);line-height:.95;letter-spacing:-.03em;
+}
+.tl-title em{font-style:italic;color:var(--orange);font-weight:500}
+.tl-count{
+  font-family:var(--disp);font-weight:900;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,10vw,160px);line-height:.8;letter-spacing:-.05em;
+  color:var(--ink);
+}
+.tl-count .slash{color:var(--orange);font-style:italic;font-weight:400}
+
+.tl-grid{
+  display:grid;
+  grid-template-columns:repeat(21, minmax(0, 1fr));
+  gap:2px;
+  margin-bottom:40px;
+  border-top:1px solid var(--ink);padding-top:20px;
+}
+.tl-day{
+  display:flex;flex-direction:column;gap:2px;align-items:stretch;
+  min-height:140px;
+}
+.tl-date{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+}
+.tl-stack{
+  display:flex;flex-direction:column;gap:2px;align-items:stretch;
+  flex:1;justify-content:flex-end;
+}
+.tl-dot{
+  height:8px;background:var(--ink);
+  display:block;
+}
+.tl-dot.big{background:var(--orange);height:18px}
+.tl-dot.minor{background:var(--hair-hard)}
+.tl-weekend{opacity:.35}
+
+@media(max-width:860px){
+  .tl-grid{grid-template-columns:repeat(7, minmax(0, 1fr));grid-auto-rows:auto}
+  .tl-day{min-height:100px}
+}
+
+.tl-legend{
+  display:flex;gap:24px;flex-wrap:wrap;
+  font-family:var(--narrow);font-size:10px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  padding-top:18px;border-top:1px solid var(--hair);
+}
+.tl-legend-item{display:flex;align-items:center;gap:8px}
+.tl-legend-dot{width:12px;height:8px;background:var(--ink)}
+.tl-legend-dot.big{background:var(--orange);height:14px}
+.tl-legend-dot.minor{background:var(--hair-hard)}
+
+.tl-list{
+  margin-top:32px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:0;
+  border-top:1px solid var(--ink);
+}
+.tl-list-item{
+  grid-column:span 6;
+  padding:18px 0;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:60px 1fr;gap:18px;
+}
+.tl-list-item:nth-child(odd){padding-right:24px;border-right:1px solid var(--hair)}
+.tl-list-item:nth-child(even){padding-left:24px}
+.tl-list-date{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--orange);
+  padding-top:3px;
+}
+.tl-list-title{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:17px;letter-spacing:-.01em;
+  color:var(--ink);line-height:1.25;
+  margin-bottom:4px;
+}
+.tl-list-desc{
+  font-family:var(--sans);font-size:13px;color:var(--muted);
+  line-height:1.5;
+}
+@media(max-width:720px){
+  .tl-list-item{grid-column:span 12;padding:16px 0 !important;border-right:none !important;padding-left:0 !important;padding-right:0 !important}
+}
+
+/* ─────────────────────────────────────────
+   SURVEY — Claude Code
+   ───────────────────────────────────────── */
+.survey-data{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:0;
+  margin:32px 0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.survey-cell{
+  grid-column:span 3;
+  padding:24px 20px;
+  border-right:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:6px;
+}
+.survey-cell:last-child{border-right:none}
+.survey-label{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+}
+.survey-num{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:64px;line-height:.9;letter-spacing:-.04em;color:var(--ink);
+}
+.survey-num em{color:var(--orange);font-style:italic;font-weight:500}
+.survey-note{
+  font-family:var(--disp);font-style:italic;
+  font-size:13px;color:var(--muted);line-height:1.4;
+}
+@media(max-width:720px){
+  .survey-cell{grid-column:span 6;border-bottom:1px solid var(--hair)}
+}
+
+/* ─────────────────────────────────────────
+   TERM OF THE ISSUE — dictionary-style
+   ───────────────────────────────────────── */
+.term-section{
+  background:var(--paper);
+  padding:80px 28px;max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+}
+.term-kicker{
+  grid-column:1 / -1;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:32px;padding-bottom:16px;
+  border-bottom:1px solid var(--ink);
+}
+.term-word{
+  grid-column:1 / span 6;
+  font-family:var(--disp);font-weight:400;font-style:italic;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,11vw,168px);
+  line-height:.9;letter-spacing:-.04em;
+  color:var(--ink);
+}
+.term-word .part{
+  display:block;
+  font-family:var(--narrow);font-style:normal;font-weight:600;
+  font-size:14px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  margin-top:14px;
+}
+.term-word .part em{font-style:italic;color:var(--ink);font-family:var(--disp);font-weight:400}
+.term-def{
+  grid-column:8 / -1;
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 24;
+  font-size:19px;line-height:1.6;color:var(--body);
+  padding-top:24px;
+  border-top:1px solid var(--ink);
+}
+.term-def p{margin-bottom:18px}
+.term-def p:last-child{margin-bottom:0}
+.term-def em{font-style:italic;color:var(--ink)}
+.term-def strong{font-weight:600;color:var(--ink)}
+.term-usage{
+  margin-top:24px;padding-top:20px;
+  border-top:1px solid var(--hair);
+  font-family:var(--disp);font-style:italic;font-size:16px;color:var(--muted);
+}
+.term-usage b{font-style:normal;font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:6px}
+@media(max-width:860px){
+  .term-word{grid-column:1 / -1}
+  .term-def{grid-column:1 / -1}
+}
+
+/* ─────────────────────────────────────────
+   THE CLOSE — three-beat
+   ───────────────────────────────────────── */
+.close-section{
+  background:var(--ink);color:var(--paper);
+  padding:120px 28px 140px;
+  position:relative;
+  text-align:center;
+}
+.close-kicker{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:700;letter-spacing:.38em;
+  text-transform:uppercase;color:rgba(250,250,247,.5);
+  margin-bottom:48px;
+}
+.close-stack{
+  max-width:820px;margin:0 auto;
+  display:flex;flex-direction:column;gap:28px;
+}
+.close-line{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(32px,5vw,64px);
+  line-height:1.05;letter-spacing:-.025em;
+  color:var(--paper);
+}
+.close-line em{font-style:italic;color:var(--orange);font-weight:500}
+.close-final{
+  font-style:italic;color:var(--orange);
+}
+.close-mark{
+  margin-top:72px;
+  font-family:var(--disp);
+  font-size:48px;color:rgba(250,250,247,.3);
+  letter-spacing:.8em;
+}
+
+/* ─────────────────────────────────────────
+   RELEASE LOG — back of book
+   ───────────────────────────────────────── */
+.log-divider{
+  background:var(--paper);
+  padding:96px 28px 48px;
+  text-align:center;
+  border-top:3px double var(--ink);
+  border-bottom:1px solid var(--ink);
+  max-width:1280px;margin:0 auto;
+}
+.log-divider-kicker{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:700;letter-spacing:.48em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:14px;
+}
+.log-divider-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(56px,10vw,144px);
+  line-height:.9;letter-spacing:-.045em;color:var(--ink);
+  margin-bottom:16px;
+}
+.log-divider-title em{font-style:italic;font-weight:400}
+.log-divider-sub{
+  font-family:var(--disp);font-style:italic;
+  font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.5;
+}
+
+.log-section{
+  padding:48px 28px;max-width:1280px;margin:0 auto;
+}
+.log-cat-head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;align-items:baseline;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:0;
+}
+.log-cat-letter{display:none}
+.log-cat-name{
+  font-family:var(--disp);font-weight:600;font-style:italic;
+  font-variation-settings:"opsz" 96;
+  font-size:clamp(36px,5vw,56px);
+  letter-spacing:-.02em;color:var(--ink);line-height:1;
+}
+.log-cat-count{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:right;
+}
+.log-cat-count b{color:var(--ink);font-weight:700;font-size:13px;display:block}
+
+.log-cat-deck{
+  font-family:var(--disp);
+  font-style:italic;
+  font-weight:400;
+  font-variation-settings:"opsz" 24;
+  font-size:18px;
+  line-height:1.45;
+  color:var(--muted);
+  margin-top:14px;
+  margin-bottom:8px;
+  max-width:760px;
+  letter-spacing:-.005em;
+}
+.log-cat-deck b{color:var(--ink);font-weight:600;font-style:normal}
+.log-cat-deck em{color:var(--orange);font-style:normal;font-weight:500}
+
+.log-entries{display:flex;flex-direction:column}
+.log-entry{
+  padding:24px 0;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:120px 1fr;gap:28px;
+}
+.log-entry-left{
+  display:flex;flex-direction:column;gap:8px;
+}
+.log-entry-date{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.log-tag{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;padding:3px 7px;
+  display:inline-block;line-height:1.3;width:fit-content;
+}
+.log-tag.model{background:var(--orange);color:var(--paper)}
+.log-tag.api{background:var(--ink);color:var(--paper)}
+.log-tag.code{background:#3a3a3a;color:var(--paper)}
+.log-tag.apps{background:#5a5a5a;color:var(--paper)}
+.log-tag.sdk-py,.log-tag.sdk-ts{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+.log-tag.research,.log-tag.news{background:var(--paper);color:var(--muted);border:1px solid var(--hair-hard)}
+.log-tag.deprecation{background:var(--paper-shadow);color:var(--muted);border:1px solid var(--hair-hard)}
+.log-entry-title{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:20px;letter-spacing:-.012em;
+  color:var(--ink);line-height:1.25;
+  margin-bottom:10px;
+}
+.log-entry-title a{color:inherit;text-decoration:none;border-bottom:1px solid var(--hair-hard)}
+.log-entry-title a:hover{border-bottom-color:var(--orange);color:var(--orange)}
+.log-entry-body{
+  font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--body);
+  margin-bottom:12px;
+}
+.log-entry-how{
+  font-family:var(--sans);font-size:13.5px;line-height:1.6;color:var(--muted);
+  padding-top:12px;border-top:1px solid var(--hair-soft);
+}
+.log-entry-how b{font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px}
+.log-entry-why{
+  font-family:var(--disp);font-style:italic;
+  font-size:14px;color:var(--muted);line-height:1.55;
+  margin-top:10px;padding-left:14px;
+  border-left:2px solid var(--orange);
+}
+.log-entry-why b{font-style:normal;font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:4px}
+
+@media(max-width:720px){
+  .log-entry{grid-template-columns:1fr;gap:12px}
+  .log-cat-head{grid-template-columns:auto 1fr}
+  .log-cat-count{grid-column:1 / -1;text-align:left;padding-top:8px;border-top:1px solid var(--hair)}
+}
+
+/* ─────────────────────────────────────────
+   ORNAMENT
+   ───────────────────────────────────────── */
+.ornament{
+  text-align:center;margin:64px auto;
+  font-family:var(--disp);font-size:16px;color:var(--hair-hard);
+  letter-spacing:1.2em;
+}
+.ornament.bold{color:var(--orange);letter-spacing:.8em;font-size:20px}
+
+/* ─────────────────────────────────────────
+   QUIET ON THE WIRE
+   ───────────────────────────────────────── */
+.quiet-section{
+  max-width:1280px;margin:0 auto;padding:64px 28px 24px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+}
+.quiet-head{
+  grid-column:1 / span 3;
+}
+.quiet-title{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 72;
+  font-size:32px;line-height:1;letter-spacing:-.02em;
+  color:var(--ink);
+}
+.quiet-title em{color:var(--orange);font-style:normal;font-weight:500}
+.quiet-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:10px;
+}
+.quiet-body{
+  grid-column:5 / -1;
+  font-family:var(--disp);font-size:17px;line-height:1.65;color:var(--body);
+  padding-left:24px;border-left:1px solid var(--ink);
+}
+.quiet-body p{margin-bottom:16px}
+.quiet-body strong{font-weight:600;color:var(--ink)}
+@media(max-width:860px){
+  .quiet-head,.quiet-body{grid-column:1 / -1}
+  .quiet-body{padding-left:0;border-left:none;border-top:1px solid var(--ink);padding-top:18px}
+}
+
+/* ─────────────────────────────────────────
+   COLOPHON — print-magazine care
+   ───────────────────────────────────────── */
+.colophon{
+  background:var(--ink);color:var(--paper);
+  padding:80px 28px 64px;
+  border-top:2px solid var(--orange);
+}
+.colophon-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:32px;
+}
+.colophon-mast{
+  grid-column:1 / span 5;
+}
+.colophon-word{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,10vw,120px);
+  line-height:.9;letter-spacing:-.04em;color:var(--paper);
+}
+.colophon-word .dot{color:var(--orange)}
+.colophon-tag{
+  margin-top:14px;
+  font-family:var(--disp);font-style:italic;font-size:18px;
+  color:rgba(250,250,247,.65);line-height:1.4;max-width:360px;
+}
+
+.colophon-body{
+  grid-column:6 / -1;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+}
+.colophon-col{}
+.colophon-col h4{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:1px solid rgba(250,250,247,.2);
+}
+.colophon-col p,.colophon-col li{
+  font-family:var(--sans);font-size:13px;line-height:1.6;
+  color:rgba(250,250,247,.75);
+  margin-bottom:8px;list-style:none;
+}
+.colophon-col b{color:var(--paper);font-weight:600}
+.colophon-col em{font-style:italic;color:rgba(250,250,247,.9)}
+
+.colophon-foot{
+  grid-column:1 / -1;
+  margin-top:32px;padding-top:24px;
+  border-top:1px solid rgba(250,250,247,.2);
+  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  font-family:var(--narrow);font-size:10px;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:rgba(250,250,247,.5);
+}
+.colophon-foot b{color:var(--paper);font-weight:700}
+.colophon-foot .hot{color:var(--orange)}
+
+@media(max-width:860px){
+  .colophon-mast,.colophon-body{grid-column:1 / -1}
+  .colophon-body{grid-template-columns:1fr;gap:24px}
+}
+
+/* ─────────────────────────────────────────
+   MOBILE FINAL
+   ───────────────────────────────────────── */
+@media(max-width:600px){
+  .section,.log-section,.mythos-section,.tl-section,.feature-opener,.prose-well{padding-left:20px;padding-right:20px}
+  .open-grid{gap:20px}
+  .open-lead{grid-column:1 / -1}
+  .btn-grid{grid-template-columns:repeat(4,1fr)}
+  .cover{padding:24px 20px 48px}
+  .cover-top{flex-direction:column;gap:12px;align-items:flex-start}
+  .cover-top-right{text-align:left}
+  .btn-num{font-size:76px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════════════════════════════════════
+     PUBLICATION BAR — persistent spine
+     ═════════════════════════════════════════ -->
+<nav class="pub-bar">
+  <div class="pub-bar-left">
+    <span class="pub-bar-mark">Shipped<span class="dot">.</span></span>
+    <span class="pub-bar-sep"></span>
+    <span class="pub-bar-meta">A weekly magazine by id8Labs</span>
+  </div>
+  <div class="pub-bar-right">
+    <span class="pub-bar-folio">Issue <b>01</b></span>
+    <span class="pub-bar-sep"></span>
+    <span class="pub-bar-meta">Apr&nbsp;16, 2026</span>
+  </div>
+</nav>
+
+<!-- ═════════════════════════════════════════
+     COVER
+     ═════════════════════════════════════════ -->
+<section class="cover" id="top">
+  <div class="cover-grid"></div>
+
+  <div class="cover-top">
+    <div class="cover-top-left">
+      <div class="cover-top-kicker">Issue <b>#00</b>&nbsp;&nbsp;·&nbsp;&nbsp;Volume I&nbsp;&nbsp;·&nbsp;&nbsp;The Founding Issue</div>
+      <div class="cover-top-sub">A dry-run — three weeks to stress-test the format at maximum size.</div>
+    </div>
+    <div class="cover-top-right">
+      <div><b>2026 — 04 — 16</b></div>
+      <div>Period 2026-03-27 → 2026-04-16</div>
+      <div>56 Releases · 21 Days · 1 Shadow</div>
+    </div>
+  </div>
+
+  <div class="cover-stage">
+    <div class="cover-huge-num">01</div>
+    <div class="cover-stack">
+      <span class="cover-spine">Shipped.&nbsp;&nbsp;·&nbsp;&nbsp;Volume I&nbsp;&nbsp;·&nbsp;&nbsp;The Founding Issue&nbsp;&nbsp;·&nbsp;&nbsp;00</span>
+      <span class="masthead-cover">Shipped<span class="dot">.</span></span>
+      <h1 class="cover-deck">The <em>Shadow</em> Release</h1>
+      <p class="cover-deckline">Three weeks of Anthropic, in one read. The model they shipped. The model you can&apos;t have. And the distance between them — the new normal.</p>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-bottom-cell">
+      <span class="cover-bottom-label">The Lead</span>
+      <span class="cover-bottom-val">Opus <b>4.7</b> vs. the chart</span>
+    </div>
+    <div class="cover-bottom-cell">
+      <span class="cover-bottom-label">The Investigation</span>
+      <span class="cover-bottom-val"><b>Glasswing</b></span>
+    </div>
+    <div class="cover-bottom-cell">
+      <span class="cover-bottom-label">The Survey</span>
+      <span class="cover-bottom-val">Claude Code, <b>v26</b></span>
+    </div>
+    <div class="cover-bottom-cell">
+      <span class="cover-bottom-label">The Term</span>
+      <span class="cover-bottom-val"><em>shadow release</em></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     TABLE OF CONTENTS
+     ═════════════════════════════════════════ -->
+<section class="section toc-section" id="contents">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio"><b>p.02</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+    </div>
+    <span class="section-folio-sub">Front of book</span>
+  </div>
+
+  <div class="toc-head">
+    <div class="toc-head-num">02</div>
+    <div class="toc-head-title">In this issue,</div>
+    <div class="toc-head-meta">
+      <div><b>6</b> Front-of-book pieces</div>
+      <div><b>56</b> Release-log entries</div>
+    </div>
+  </div>
+
+  <div class="toc-grid">
+    <a href="#open" class="toc-entry">
+      <span class="toc-entry-n">01</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">The Open</span>
+        <span class="toc-entry-title">A thing Anthropic does now that doesn&apos;t have a name</span>
+        <span class="toc-entry-tease">A flagship, and a better one you can&apos;t have — in the same breath.</span>
+      </div>
+      <span class="toc-entry-page">p.03</span>
+    </a>
+    <a href="#numbers" class="toc-entry">
+      <span class="toc-entry-n">02</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">By the Numbers</span>
+        <span class="toc-entry-title">The shape of three weeks</span>
+        <span class="toc-entry-tease">56 releases. 26 versions. $100M in credits. The frontier in ten digits.</span>
+      </div>
+      <span class="toc-entry-page">p.04</span>
+    </a>
+    <a href="#lead" class="toc-entry">
+      <span class="toc-entry-n">03</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">The Lead Story</span>
+        <span class="toc-entry-title">The chart that wasn&apos;t about Opus 4.7</span>
+        <span class="toc-entry-tease">The fourth bar. Taller than every released model. Named &lsquo;Mythos Preview.&rsquo; Gated.</span>
+      </div>
+      <span class="toc-entry-page">p.06</span>
+    </a>
+    <a href="#glasswing" class="toc-entry">
+      <span class="toc-entry-n">04</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Investigation</span>
+        <span class="toc-entry-title">Glasswing</span>
+        <span class="toc-entry-tease">Twelve companies. $100M in credits. A 27-year-old OpenBSD bug. And a precedent.</span>
+      </div>
+      <span class="toc-entry-page">p.09</span>
+    </a>
+    <a href="#agent" class="toc-entry">
+      <span class="toc-entry-n">05</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Feature</span>
+        <span class="toc-entry-title">The agent stack got serious</span>
+        <span class="toc-entry-tease">Managed Agents. The advisor tool. The ant CLI. Your loop just became a glue layer.</span>
+      </div>
+      <span class="toc-entry-page">p.12</span>
+    </a>
+    <a href="#timeline" class="toc-entry">
+      <span class="toc-entry-n">06</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Timeline</span>
+        <span class="toc-entry-title">21 days, 56 releases</span>
+        <span class="toc-entry-tease">Read the bumps. The pattern of a lab that does not rest.</span>
+      </div>
+      <span class="toc-entry-page">p.15</span>
+    </a>
+    <a href="#survey" class="toc-entry">
+      <span class="toc-entry-n">07</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Survey</span>
+        <span class="toc-entry-title">Claude Code grew a body</span>
+        <span class="toc-entry-tease">Twenty-six versions. Routines. /ultrareview. The CLI is becoming the work environment.</span>
+      </div>
+      <span class="toc-entry-page">p.17</span>
+    </a>
+    <a href="#term" class="toc-entry">
+      <span class="toc-entry-n">08</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Term of the Issue</span>
+        <span class="toc-entry-title">shadow release</span>
+        <span class="toc-entry-tease">A word for the thing Anthropic does now. It needed one.</span>
+      </div>
+      <span class="toc-entry-page">p.19</span>
+    </a>
+    <a href="#quiet" class="toc-entry">
+      <span class="toc-entry-n">09</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Quiet on the Wire</span>
+        <span class="toc-entry-title">Absences worth watching</span>
+        <span class="toc-entry-tease">No Haiku 5. No Opus 4.7 fast-mode. No date for Mythos. Four deprecation clocks.</span>
+      </div>
+      <span class="toc-entry-page">p.20</span>
+    </a>
+    <a href="#log" class="toc-entry">
+      <span class="toc-entry-n">10</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">The Release Log</span>
+        <span class="toc-entry-title">A 1:1 mirror of every Anthropic release</span>
+        <span class="toc-entry-tease">Seven sections. Fifty-six entries. The reference engineers grep on Tuesday.</span>
+      </div>
+      <span class="toc-entry-page">p.21</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     THE OPEN
+     ═════════════════════════════════════════ -->
+<section class="section open-section" id="open">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio"><b>p.03</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+    </div>
+    <span class="section-folio-sub">The Open</span>
+  </div>
+
+  <div class="open-grid">
+    <div class="open-lead">
+      <p class="open-quote">There&apos;s a thing Anthropic does now that doesn&apos;t have a name. They release a flagship model, and in the same breath, they tell you about a <em>better one you can&apos;t have</em>.</p>
+      <div class="open-prose">
+        <p>Opus 4.6 in November. Opus 4.7 today. Mythos in between, gated, available only to a handful of security partners.</p>
+        <p>Call it the <em>shadow release</em>. The model that ships sets the floor. The model that doesn&apos;t reveals the ceiling. The space between them is where everyone who builds with this stuff now lives.</p>
+        <p>Three weeks of velocity below. Fifty-six releases — models, agents, infrastructure, a security pact with twelve names you&apos;d recognize, twenty-six versions of Claude Code, a tokenizer change you&apos;ll feel in your bill. Plus the shadow.</p>
+      </div>
+    </div>
+    <aside class="open-aside">
+      <div>The brief</div>
+      <div><b>Period</b> Mar 27 → Apr 16</div>
+      <div><b>Days</b> 21</div>
+      <div><b>Releases</b> 56</div>
+      <div><b>Consortium</b> 12 orgs</div>
+      <div><b>Ceiling</b> 1 model, gated</div>
+      <div><b>Floor</b> 1 model, GA</div>
+      <div><b>The gap</b> the new normal</div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     BY THE NUMBERS — BLOOMBERG MOMENT
+     ═════════════════════════════════════════ -->
+<section class="btn-section" id="numbers">
+  <div class="section" style="padding-top:64px;padding-bottom:0">
+    <div class="section-folio">
+      <div class="section-folio-left">
+        <span class="folio"><b>p.04</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+      </div>
+      <span class="section-folio-sub">By the numbers</span>
+    </div>
+
+    <h2 class="btn-head">The <em>shape</em> of three weeks.</h2>
+  </div>
+
+  <div class="btn-grid">
+    <div class="btn-cell s3">
+      <span class="btn-label">Releases shipped</span>
+      <span class="btn-num accent">56</span>
+      <span class="btn-note">March 27 → April 16. One lab. No rest day above two.</span>
+    </div>
+    <div class="btn-cell s3">
+      <span class="btn-label">Claude Code versions</span>
+      <span class="btn-num">26</span>
+      <span class="btn-note">v2.1.85 through v2.1.111. The CLI is becoming an IDE.</span>
+    </div>
+    <div class="btn-cell s3">
+      <span class="btn-label">Agent SDK releases</span>
+      <span class="btn-num">20</span>
+      <span class="btn-note">Ten Python. Ten TypeScript. Parity maintained.</span>
+    </div>
+    <div class="btn-cell s3">
+      <span class="btn-label">Frontier held back</span>
+      <span class="btn-num accent">1</span>
+      <span class="btn-note">Mythos Preview. Gated. The ceiling.</span>
+    </div>
+
+    <div class="btn-cell s6">
+      <span class="btn-label">Cybersecurity benchmark &mdash; cybergym</span>
+      <span class="btn-num accent">83.1<span style="font-size:.5em;opacity:.7">%</span></span>
+      <span class="btn-note">Mythos Preview on CyberGym vulnerability reproduction. Opus 4.6, the previous frontier, sits at 66.6%. The gap is not marginal.</span>
+    </div>
+    <div class="btn-cell s6">
+      <span class="btn-label">Model credits pledged &mdash; glasswing</span>
+      <span class="btn-num">$100<span style="font-size:.55em">M</span></span>
+      <span class="btn-note">To the twelve consortium members. Plus $4M to OpenSSF, Apache, and Alpha-Omega — the open-source maintainers who don&apos;t have security teams.</span>
+    </div>
+
+    <div class="btn-cell s4">
+      <span class="btn-label">Oldest bug Mythos found</span>
+      <span class="btn-num">27<span style="font-size:.35em;opacity:.7">&nbsp;yr</span></span>
+      <span class="btn-note">A memory-corruption flaw in OpenBSD. Survived decades of human review.</span>
+    </div>
+    <div class="btn-cell s4">
+      <span class="btn-label">Firefox shell exploits</span>
+      <span class="btn-num accent">181</span>
+      <span class="btn-note">Produced by Mythos in testing. Opus 4.6 produced 2 in the same trial.</span>
+    </div>
+    <div class="btn-cell s4">
+      <span class="btn-label">Tokenizer change</span>
+      <span class="btn-num">1.35<span style="font-size:.35em;opacity:.7">&times;</span></span>
+      <span class="btn-note">Same input may consume up to 35% more tokens on Opus 4.7. Re-tune your prompts. The bill will tell you.</span>
+    </div>
+
+    <div class="btn-cell s4">
+      <span class="btn-label">Opus 4.7 pricing (unchanged)</span>
+      <span class="btn-num">$5<span style="font-size:.5em;opacity:.7">/$25</span></span>
+      <span class="btn-note">Per million input / output tokens. Same as 4.6 — but the tokenizer is not.</span>
+    </div>
+    <div class="btn-cell s4">
+      <span class="btn-label">Sonnet 4 / Opus 4 retire</span>
+      <span class="btn-num">60<span style="font-size:.35em;opacity:.7">&nbsp;days</span></span>
+      <span class="btn-note">June 15, 2026. If you haven&apos;t migrated, the clock started two days ago.</span>
+    </div>
+    <div class="btn-cell s4">
+      <span class="btn-label">Glasswing public report</span>
+      <span class="btn-num">90<span style="font-size:.35em;opacity:.7">&nbsp;days</span></span>
+      <span class="btn-note">Until the consortium&apos;s first progress disclosure. Read it carefully — the methodology will be precedent.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     FEATURE OPENER — THE LEAD STORY
+     ═════════════════════════════════════════ -->
+<div class="feature-opener" id="lead">
+  <span class="vert-label">The Lead Story <span class="vert-num">01</span></span>
+  <div class="feature-heading">
+    <div class="feature-kicker">p.06 &nbsp;—&nbsp; Report by Eddie Belaval</div>
+    <h2 class="feature-title">The chart that <em>wasn&apos;t</em> about Opus 4.7.</h2>
+    <p class="feature-deck">Opus 4.7 ships. Same price. Better vision. Sharper coding. And then, on the fourth bar of the launch chart, a model you cannot buy — taller than everything else.</p>
+    <div class="feature-meta">
+      <div><b>Report</b> &nbsp;·&nbsp; <b>Opus 4.7 launch</b> &nbsp;·&nbsp; <b>Apr 16, 2026</b></div>
+      <div>Floor &amp; ceiling &nbsp;·&nbsp; <b>2,576 px</b> vision &nbsp;·&nbsp; <b>xhigh</b> default &nbsp;·&nbsp; <b>1.0 – 1.35×</b> tokenizer</div>
+    </div>
+  </div>
+  <aside class="feature-right">
+    <span class="feature-right-label">Why this matters</span>
+    First flagship where Anthropic explicitly conceded a stronger internal model (<em>Mythos</em>) exists. Precedent set. The next time the lab invokes &quot;too dangerous to ship in the standard channel,&quot; the chart will look familiar.
+  </aside>
+</div>
+
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Apr 16 &nbsp; · &nbsp; GA &nbsp; · &nbsp; Opus 4.7</span>
+  <div class="prose drop-cap drop-cap-orange">
+    <p>Opus 4.7 went generally available this morning. Same pricing as 4.6 — five dollars per million input, twenty-five per million output. Better at coding, sharper on hard software engineering, with the kind of self-verification that previously required you to paper over with scaffolding. Vision tripled in resolution: 2,576 pixels on the long edge, more than three times what prior versions could see. The model can now read dense screenshots and pixel-perfect references without you down-sampling first.</p>
+
+    <p>A new effort level called <code>xhigh</code> slotted in between <code>high</code> and <code>max</code>. Claude Code now defaults to <code>xhigh</code> on every plan. If you&apos;re paying attention to your bills, that change matters as much as anything else in the launch — <code>xhigh</code> produces more thinking tokens than <code>high</code>, and Anthropic raised the default before most users will notice.</p>
+
+    <p>The migration notes mention a tokenizer change: the same input may consume 1.0 to 1.35× more tokens depending on what you feed it. Re-tune your prompts. The bill will tell you which way it broke.</p>
+
+    <p>The vision change deserves its own paragraph. At 2,576 pixels on the long edge — roughly 3.75 megapixels — Opus 4.7 can read a full-density desktop screenshot without you cropping or scaling. Diagrams that used to need OCR pre-processing can now go in raw. UI mockups can be referenced pixel-for-pixel for code generation. This isn&apos;t a knob; it&apos;s a workflow change for anyone who&apos;s been hand-feeding the model lower-resolution slices.</p>
+
+    <p><strong>But the headline isn&apos;t the model.</strong></p>
+    <p>The headline is the chart Anthropic published next to the model.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>At a glance</b></div>
+    <div>Price $5 / $25 MTok</div>
+    <div>Vision 2,576 px</div>
+    <div>Effort levels low → max (+xhigh)</div>
+    <div>Tokenizer 1.0–1.35×</div>
+    <div>Default xhigh</div>
+    <div>Rollout API, Bedrock, Vertex, Foundry, Copilot</div>
+  </aside>
+</div>
+
+<!-- ═════════════════════════════════════════
+     THE MYTHOS BAR — HERO DIAGRAM
+     ═════════════════════════════════════════ -->
+<section class="mythos-section">
+  <div class="mythos-head">
+    <h3 class="mythos-head-title">The fifth bar, the <em>Mythos</em> bar.</h3>
+    <div class="mythos-head-meta">
+      <div><b>SWE-bench Verified</b> · production software engineering</div>
+      <div>Higher is better · published by Anthropic, Apr 16</div>
+    </div>
+  </div>
+  <div class="mythos-bars">
+    <div class="mythos-row">
+      <span class="mythos-name">Gemini 3.1 Pro</span>
+      <div class="mythos-bar"><div class="mythos-bar-fill" style="width:85.8%"></div></div>
+      <span class="mythos-score">80.6%</span>
+    </div>
+    <div class="mythos-row">
+      <span class="mythos-name">Claude Opus 4.6</span>
+      <div class="mythos-bar"><div class="mythos-bar-fill" style="width:86.0%"></div></div>
+      <span class="mythos-score">80.8%</span>
+    </div>
+    <div class="mythos-row">
+      <span class="mythos-name">GPT-5.4</span>
+      <div class="mythos-bar"><div class="mythos-bar-fill" style="width:90.0%"></div></div>
+      <span class="mythos-score">84.5%</span>
+    </div>
+    <div class="mythos-row">
+      <span class="mythos-name">Claude Opus 4.7 <span class="tag">Today</span></span>
+      <div class="mythos-bar"><div class="mythos-bar-fill" style="width:93.3%"></div></div>
+      <span class="mythos-score">87.6%</span>
+    </div>
+    <div class="mythos-row frontier">
+      <span class="mythos-name">Mythos Preview <span class="tag">Frontier · Gated</span></span>
+      <div class="mythos-bar"><div class="mythos-bar-fill" style="width:100%"></div></div>
+      <span class="mythos-score">93.9%</span>
+    </div>
+  </div>
+  <div class="mythos-caption">
+    <span class="mythos-caption-num">Fig. 01</span>
+    <span>The orange bar is the frontier you can read about but cannot call. Opus 4.7 is the floor of what you can buy this week. Mythos is the ceiling of what exists. The 6.3-point gap is the new normal — and Anthropic has decided, for now, that the distance is a feature.</span>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     FULL-SCREEN PULL QUOTE
+     ═════════════════════════════════════════ -->
+<aside class="pq-full">
+  <div class="pq-full-inner">
+    <div class="pq-quote-mark">&ldquo;</div>
+    <div class="pq-body">
+      <p class="pq-text">That&apos;s the news. Anthropic shipped a flagship and conceded, in the same breath, that it <em>isn&apos;t the frontier</em>.</p>
+      <div class="pq-att">
+        <span>Shipped. &nbsp;·&nbsp; Issue <b>01</b> &nbsp;·&nbsp; The Lead Story</span>
+        <span>Eddie Belaval &nbsp;·&nbsp; <b>Apr 16, 2026</b></span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ═════════════════════════════════════════
+     LEAD STORY CONTINUES + SIDEBAR
+     ═════════════════════════════════════════ -->
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Lead &nbsp; · &nbsp; Continued</span>
+  <div class="prose">
+    <p>It shows Opus 4.7 beating Opus 4.6. Beating GPT-5.4. Beating Gemini 3.1 Pro across the relevant benchmarks. And then it shows Opus 4.7 losing to a fourth bar labeled <em>Mythos Preview</em>. The fourth bar is taller than every other bar. The fourth bar is the model you can&apos;t use.</p>
+    <p>The frontier is in a vault, working on the OSS-Fuzz corpus, finding 27-year-old vulnerabilities in OpenBSD. Opus 4.7 is the floor of what you can buy this week. Mythos is the ceiling of what exists. The distance between them is the new normal — and Anthropic has decided that the distance, for now, is a feature, not a bug.</p>
+    <p>The implication is institutional, not technical. For the first time, the lab has an internal precedent for &quot;we found something too dangerous to ship in the standard channel.&quot; That precedent will be invoked again. Probably soon. The next time it happens, the chart will look familiar.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>In this section</b></div>
+    <div>Opus 4.7 GA ✓</div>
+    <div>xhigh default ✓</div>
+    <div>Tokenizer +35% ceiling</div>
+    <div>Vision 2576 px</div>
+    <div>Mythos · precedent</div>
+  </aside>
+</div>
+
+<div class="sidebar-box accent" style="max-width:900px">
+  <span class="sidebar-box-kicker">Sidebar &nbsp;·&nbsp; A profile of the model you can&apos;t use</span>
+  <h4 class="sidebar-box-title">The Mythos Bar, in detail.</h4>
+  <div class="sidebar-box-body">
+    <p>Where Opus 4.6 hits 66.6% on the CyberGym vulnerability-reproduction benchmark, Mythos Preview hits 83.1%. Where Opus 4.6 produced two working Firefox shell exploits in several hundred attempts, Mythos produced <strong>181</strong>. On the OSS-Fuzz corpus, Mythos achieved full control-flow hijack on ten separate, fully patched targets.</p>
+    <p>The vulnerabilities Mythos has surfaced are subtle, old, or both:</p>
+    <ul class="sidebar-box-list">
+      <li><span class="yr">27 <em>yr</em></span><span>Memory-corruption bug in OpenBSD. Survived decades of human review.</span><span></span></li>
+      <li><span class="yr">16 <em>yr</em></span><span>FFmpeg flaw. Automated fuzzing missed it across 5M prior test hits.</span><span></span></li>
+      <li><span class="yr">10 <em>tgt</em></span><span>Linux-kernel privilege escalation chains. Race conditions + KASLR bypass.</span><span></span></li>
+      <li><span class="yr">4 <em>chn</em></span><span>Firefox JIT heap-spray. Escaped both renderer and OS sandboxes.</span><span></span></li>
+    </ul>
+    <p style="margin-top:16px">You can&apos;t have it. Mythos is gated to twelve security partners under Project Glasswing. Anthropic&apos;s stated reason is risk: a model that finds zero-days in OpenBSD that survived twenty-seven years of human review is a model you don&apos;t put on the open API. Whether that calculus holds — for how long, and under what pressure — is the open question of the year.</p>
+  </div>
+</div>
+
+<span class="ornament bold">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
+
+<!-- ═════════════════════════════════════════
+     COMPANION TO THE LEAD — THE SWEEP
+     ═════════════════════════════════════════ -->
+<section style="max-width:1240px;margin:80px auto;padding:0 32px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:32px">
+    <span style="font-family:var(--narrow);font-weight:700;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange)">Companion to the Lead — Fig. 03</span>
+    <span style="font-family:var(--sans);font-weight:600;font-size:14px;color:var(--ink)">Where each model wins</span>
+  </div>
+
+  <div style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);padding:48px 56px">
+    <div style="font-family:var(--narrow);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Cross-benchmark sweep</div>
+    <h3 style="font-family:var(--serif);font-weight:700;font-variation-settings:'opsz' 96;font-size:42px;line-height:1.05;letter-spacing:-0.02em;margin-bottom:12px">The pattern is the news.</h3>
+    <p style="font-family:var(--sans);font-size:16px;line-height:1.55;color:var(--muted);max-width:640px;margin-bottom:40px">Eight benchmarks Anthropic published in the Opus 4.7 launch, with comparable scores from competitor models where reported. <strong style="color:var(--ink)">Bold</strong> = winner. <strong style="color:var(--orange)">Orange bold</strong> = Mythos Preview leads.</p>
+
+    <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-variant-numeric:tabular-nums">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:14px 12px 10px;font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)">Benchmark</th>
+          <th style="text-align:right;padding:14px 12px 10px;font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)">Opus 4.6</th>
+          <th style="text-align:right;padding:14px 12px 10px;font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)">Opus 4.7</th>
+          <th style="text-align:right;padding:14px 12px 10px;font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)">GPT-5.4</th>
+          <th style="text-align:right;padding:14px 12px 10px;font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)">Gemini 3.1 Pro</th>
+          <th style="text-align:right;padding:14px 12px 10px;font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)">Mythos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">SWE-bench Verified <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// general SWE</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">80.8%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">87.6%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">84.5%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">80.6%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--orange)">93.9%</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">SWE-bench Pro <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// agentic SWE</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px">64.3%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">57.7%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">54.2%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">GPQA Diamond <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// graduate reasoning</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">91.3%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">94.2%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">94.4%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">94.3%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--orange)">94.5%</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">MCP-Atlas <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// scaled tool use</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">75.8%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px">77.3%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">68.1%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">73.9%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">CursorBench <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// IDE agentic</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">58.0%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px">70.0% <span style="font-family:var(--sans);font-weight:600;font-size:12px;color:var(--orange)">+12</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">XBOW Visual-Acuity <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// vision</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">54.5%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px">98.5% <span style="font-family:var(--sans);font-weight:600;font-size:12px;color:var(--orange)">+44</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">BigLaw Bench <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// Harvey, legal</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px">90.9%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+        </tr>
+        <tr>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:15px;font-weight:500">CyberGym <span style="display:block;font-family:var(--mono);font-size:10px;color:#b5b3af;margin-top:2px">// vulnerability repro</span></td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px">73.8%</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-size:15px;color:#b5b3af">—</td>
+          <td style="padding:18px 12px;border-bottom:1px solid rgba(0,0,0,0.08);text-align:right;font-family:var(--serif);font-weight:700;font-size:17px;color:var(--orange)">83.1%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:32px;padding:24px;background:var(--ink);color:var(--paper)">
+      <p style="font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.5;max-width:780px">Opus 4.7 leads or ties on every benchmark Anthropic published — except the two Mythos sits on. <strong style="color:var(--orange);font-style:normal;font-weight:700">Anthropic now ships the second-best model and tells you who's first.</strong></p>
+    </div>
+
+    <div style="font-family:var(--mono);font-size:10px;color:#b5b3af;letter-spacing:.05em;margin-top:24px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.08)">SOURCE · Anthropic Opus 4.7 announcement · Mythos rows from red.anthropic.com Mythos Preview disclosure · Em-dash = no published score for that model on that benchmark</div>
+  </div>
+</section>
+
+<span class="ornament bold">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
+
+<!-- ═════════════════════════════════════════
+     FEATURE OPENER — INVESTIGATION: GLASSWING
+     ═════════════════════════════════════════ -->
+<div class="feature-opener" id="glasswing">
+  <span class="vert-label">Investigation <span class="vert-num">02</span></span>
+  <div class="feature-heading">
+    <div class="feature-kicker">p.09 &nbsp;—&nbsp; Reporting by Eddie Belaval</div>
+    <h2 class="feature-title"><em>Glasswing.</em></h2>
+    <p class="feature-deck">On April 7, twelve organizations agreed to use a model none of their customers can touch. The precedent starts here.</p>
+    <div class="feature-meta">
+      <div><b>Consortium</b> 12 founders · 40+ in talks</div>
+      <div>AWS · Apple · Broadcom · Cisco · CrowdStrike · Google · JPMorgan Chase · Linux Foundation · Microsoft · NVIDIA · Palo Alto Networks · Anthropic</div>
+    </div>
+  </div>
+  <aside class="feature-right">
+    <span class="feature-right-label">The money</span>
+    <b>$100M</b> in Anthropic model credits to partners. <b>$2.5M</b> to Alpha-Omega and OpenSSF. <b>$1.5M</b> to the Apache Software Foundation. Funding routed to the open-source maintainers who don&apos;t have security teams.
+  </aside>
+</div>
+
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Apr 07 &nbsp; · &nbsp; Consortium announced</span>
+  <div class="prose drop-cap">
+    <p>Project Glasswing is the consortium Anthropic announced alongside Mythos Preview&apos;s gated release. The founders: Amazon Web Services, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorgan Chase, the Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks, and Anthropic itself. Forty-plus additional organizations are in early conversation. The goal, stated plainly: harden the world&apos;s most critical software infrastructure against a class of vulnerabilities that AI can now find faster than humans can patch them.</p>
+
+    <p>The financial structure is unusual for a security consortium. $100M in model credits committed by Anthropic to Glasswing participants — meaning the partners pay nothing for the inference. $2.5M donated to Alpha-Omega and OpenSSF. $1.5M to the Apache Software Foundation. The donations matter because they answer the obvious objection: this isn&apos;t a private security tool for big vendors. The funding is meant to flow to open-source maintainers who don&apos;t have security teams.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>What Mythos found</b></div>
+    <div>OpenBSD · 27 yr</div>
+    <div>FFmpeg · 16 yr</div>
+    <div>Linux kernel · chain</div>
+    <div>Firefox JIT · 4-vuln</div>
+    <div>OSS-Fuzz · 10 tgt</div>
+    <div style="margin-top:8px;color:var(--orange)"><b>Disclosed under embargo</b></div>
+  </aside>
+</div>
+
+<!-- Named quotes block, three voices -->
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Voices</span>
+  <div class="prose" style="font-family:var(--disp)">
+    <blockquote style="margin:0 0 32px;padding:0;border-left:3px solid var(--orange);padding-left:20px">
+      <p style="font-style:italic;font-size:22px;line-height:1.35;color:var(--ink);margin-bottom:12px">&ldquo;The window between vulnerability discovery and exploitation has collapsed — what took months now happens in minutes.&rdquo;</p>
+      <span style="font-family:var(--narrow);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)">— Igor Tsyganskiy &nbsp;·&nbsp; Microsoft &nbsp;·&nbsp; <a href="https://www.anthropic.com/glasswing" style="color:var(--orange);text-decoration:none">Source</a></span>
+    </blockquote>
+
+    <p>Mythos has already produced results. The model has identified zero-day vulnerabilities in every major operating system and every major web browser tested against it. The depth is what gets attention from people who&apos;ve spent careers in this work: the bugs aren&apos;t surface-level. Many are subtle, old, and survived prior automated tooling. A 27-year-old OpenBSD bug. A 16-year-old FFmpeg flaw. Linux kernel privilege escalation chains that no published fuzzer has caught. The Firefox exploit Mythos wrote chained four separate vulnerabilities into a sandbox escape — the kind of compound exploit that a senior offensive security researcher might produce in a multi-week engagement.</p>
+
+    <blockquote style="margin:32px 0;padding:0;border-left:3px solid var(--ink);padding-left:20px">
+      <p style="font-style:italic;font-size:22px;line-height:1.35;color:var(--ink);margin-bottom:12px">&ldquo;The old ways of hardening systems are no longer sufficient.&rdquo;</p>
+      <span style="font-family:var(--narrow);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)">— Anthony Grieco &nbsp;·&nbsp; Cisco &nbsp;·&nbsp; <a href="https://www.anthropic.com/glasswing" style="color:var(--orange);text-decoration:none">Source</a></span>
+    </blockquote>
+
+    <p>The benchmark Mythos is being judged against is CyberGym, an academic vulnerability-reproduction suite. Mythos hits 83.1%. Opus 4.6 — the previous publicly available frontier model — hits 66.6%. The Firefox-specific test is more dramatic: Opus 4.6 produced two working JavaScript shell exploits across several hundred attempts. Mythos produced <strong>181</strong>.</p>
+
+    <figure class="fx-ratio" style="margin:40px 0;padding:48px;background:#ffffff;border:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 64px 1fr;gap:0;align-items:stretch">
+      <div style="text-align:center;padding:24px 16px">
+        <div style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Opus 4.6</div>
+        <div style="font-family:var(--serif);font-weight:800;font-variation-settings:'opsz' 144;font-size:clamp(72px,14vw,108px);line-height:.9;color:#b5b3af;margin-bottom:12px">2</div>
+        <div style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.45">Working exploits across<br>several hundred attempts</div>
+      </div>
+      <div class="fx-vs" style="display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-weight:700;font-size:28px;color:var(--ink);border-left:1px solid rgba(0,0,0,0.08);border-right:1px solid rgba(0,0,0,0.08)">vs</div>
+      <div style="text-align:center;padding:24px 16px">
+        <div style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:12px">Mythos Preview</div>
+        <div style="font-family:var(--serif);font-weight:800;font-variation-settings:'opsz' 144;font-size:clamp(120px,28vw,240px);line-height:.9;color:var(--orange);letter-spacing:-0.04em;margin-bottom:12px">181</div>
+        <div style="font-family:var(--sans);font-size:12px;color:var(--muted);line-height:1.45">Same trial.<br>Same browser.</div>
+      </div>
+      <figcaption style="grid-column:1 / -1;text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink)">A <strong style="color:var(--orange);font-style:normal;font-weight:700">90× ratio</strong> in working browser exploits. The capability gap is not "better." It is categorical.<br><span style="font-family:var(--mono);font-size:10px;color:#b5b3af;letter-spacing:.05em;font-style:normal">FIG. 02 · SOURCE: PROJECT GLASSWING ANNOUNCEMENT, APR 7, 2026</span></figcaption>
+    </figure>
+    <style>
+      @media (max-width: 720px) {
+        .fx-ratio { grid-template-columns: 1fr !important; padding: 32px 20px !important; }
+        .fx-ratio .fx-vs { display: none !important; }
+      }
+    </style>
+
+    <blockquote style="margin:32px 0;padding:0;border-left:3px solid var(--ink);padding-left:20px">
+      <p style="font-style:italic;font-size:22px;line-height:1.35;color:var(--ink);margin-bottom:12px">&ldquo;This initiative offers a credible path to making AI-augmented security a trusted tool for every maintainer, not just those with expensive teams.&rdquo;</p>
+      <span style="font-family:var(--narrow);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)">— Jim Zemlin &nbsp;·&nbsp; The Linux Foundation &nbsp;·&nbsp; <a href="https://www.anthropic.com/glasswing" style="color:var(--orange);text-decoration:none">Source</a></span>
+    </blockquote>
+
+    <p>The hard question is institutional, not technical. Anthropic has now established an internal precedent: a model that passes evaluations can still be held back from public release on safety grounds. The Glasswing framing is &ldquo;defensive use only.&rdquo; But the model exists. The capability exists. The concession in the Opus 4.7 launch chart was that the capability can&apos;t be reproduced by you, no matter how much you pay.</p>
+
+    <p>The next time Anthropic invokes this precedent, what will the criteria be? What does the second Glasswing look like? When does the cybersecurity rationale extend to other categories — biological, cognitive, financial — and what&apos;s the institutional process for making that call? Anthropic has 90 days to publish the first Glasswing progress report. Read it carefully. The methodology will be precedent.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>Three voices</b></div>
+    <div>Microsoft (AI + OS)</div>
+    <div>Cisco (infra)</div>
+    <div>Linux Foundation (OSS)</div>
+    <div style="margin-top:12px"><b>90 days</b></div>
+    <div>Until the first public report</div>
+  </aside>
+</div>
+
+<span class="ornament">&sect; &nbsp; &sect; &nbsp; &sect;</span>
+
+<!-- ═════════════════════════════════════════
+     FEATURE OPENER — THE AGENT STACK
+     ═════════════════════════════════════════ -->
+<div class="feature-opener" id="agent">
+  <span class="vert-label">Feature <span class="vert-num">03</span></span>
+  <div class="feature-heading">
+    <div class="feature-kicker">p.12 &nbsp;—&nbsp; Reporting by Eddie Belaval</div>
+    <h2 class="feature-title">The agent stack <em>got serious.</em></h2>
+    <p class="feature-deck">Managed Agents. The advisor tool. The <code style="font-family:var(--mono);font-size:.7em;background:var(--paper-shadow);padding:2px 8px">ant</code> CLI. All three shipped inside April 8–9. The era of writing your own loop is closing — Anthropic is taking that work in-house.</p>
+    <div class="feature-meta">
+      <div><b>Apr 08</b> Managed Agents public beta · <b>ant</b> CLI launch</div>
+      <div><b>Apr 09</b> Advisor tool public beta · Cowork GA · SDK parity</div>
+    </div>
+  </div>
+  <aside class="feature-right">
+    <span class="feature-right-label">Four primitives, all shipped</span>
+    Sandbox. Tool harness. Context manager. Streaming loop. If your competitive moat was the loop, your moat just shrank.
+  </aside>
+</div>
+
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Primitives</span>
+  <div class="prose drop-cap">
+    <p>For the past year, every team building agents on Claude has been writing the same code. A sandbox, a tool harness, a context manager, a streaming loop. The interfaces varied. The components didn&apos;t. Anyone who&apos;s built an agent in production has shipped some version of all four.</p>
+
+    <p>April 8 and 9 was the week Anthropic shipped all four primitives. The era of writing your own loop is closing. Anthropic is taking that work in-house.</p>
+
+    <p><strong>Managed Agents</strong> went into public beta on April 8 (header <code>managed-agents-2026-04-01</code>). Fully managed harness with secure sandboxing, built-in tools, and server-sent event streaming. You create agents and configure containers through the API — what used to be a Kubernetes problem, an IAM problem, and a tool-routing problem becomes one HTTP call. The pricing model is unannounced; the implication is that Anthropic intends to compete with whatever your in-house agent platform looks like, on its own infrastructure.</p>
+
+    <p><strong>The advisor tool</strong> shipped April 9 (<code>advisor-tool-2026-03-01</code>). The pattern is simple and overdue: pair a faster executor model with a higher-intelligence advisor that provides strategic guidance mid-generation. Long-horizon agentic workloads get close to advisor-solo quality at executor-model cost. If you&apos;ve been running Sonnet 4.6 for the bulk work and bouncing to Opus 4.6 for the hard turns, the advisor tool just made that pattern a primitive instead of an architecture.</p>
+
+    <p><strong>The <code>ant</code> CLI</strong> dropped the same day. A command-line client for the Claude API with native Claude Code integration and YAML-based versioning of API resources — skills, agents, deployments. The implication is bigger than the tool: agents are becoming versionable, declarative configurations rather than code. Treat your agent definitions like Terraform.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>Four primitives</b></div>
+    <div>1. Sandbox</div>
+    <div>2. Tool harness</div>
+    <div>3. Context manager</div>
+    <div>4. Streaming loop</div>
+    <div style="margin-top:12px;color:var(--orange)"><b>Now commodity</b></div>
+  </aside>
+</div>
+
+<!-- Code block: advisor tool composition -->
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Composition</span>
+  <div class="prose">
+    <div class="code-block">
+      <div class="code-block-head">
+        <span>python &nbsp;·&nbsp; messages.create</span>
+        <span>advisor-tool-2026-03-01</span>
+      </div>
+<pre><span class="c"># Old: write your own executor + advisor loop</span>
+<span class="k">while</span> <span class="k">not</span> done:
+    plan = opus.messages.create(model=<span class="s">"claude-opus-4-7"</span>, ...)
+    <span class="k">for</span> step <span class="k">in</span> plan:
+        result = sonnet.messages.create(
+            model=<span class="s">"claude-sonnet-4-6"</span>,
+            messages=[..., step],
+        )
+
+<span class="c"># New: one call, advisor inline</span>
+response = client.messages.create(
+    model=<span class="s">"claude-sonnet-4-6"</span>,
+    advisor={<span class="s">"model"</span>: <span class="s">"claude-opus-4-7"</span>, <span class="s">"trigger"</span>: <span class="s">"auto"</span>},
+    messages=[...],
+    extra_headers={<span class="s">"anthropic-beta"</span>: <span class="s">"advisor-tool-2026-03-01"</span>},
+)</pre>
+    </div>
+    <p>The week&apos;s three releases compose. You can run a Managed Agent that uses the advisor tool internally, with the agent definition versioned as YAML through <code>ant</code>. None of this is theoretical — the docs ship with examples that combine all three.</p>
+
+    <p>What this means for the people who built their own agent loops: most of that code is now a glue layer. Some of it remains differentiated — your prompt library, your domain-specific tools, your retrieval pipeline. The harness, the sandbox, the streaming, the context window management — those are commodity now. If your competitive moat was the loop, your moat just shrank.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>Still differentiated</b></div>
+    <div>Your prompt library</div>
+    <div>Domain-specific tools</div>
+    <div>Retrieval pipeline</div>
+    <div style="margin-top:12px;color:var(--orange)"><b>Now commodity</b></div>
+    <div>Harness · sandbox</div>
+    <div>Streaming · context</div>
+  </aside>
+</div>
+
+<!-- ═════════════════════════════════════════
+     TIMELINE — 21 DAYS, 56 RELEASES
+     ═════════════════════════════════════════ -->
+<section class="tl-section" id="timeline">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio"><b>p.15</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+    </div>
+    <span class="section-folio-sub">Timeline</span>
+  </div>
+
+  <div class="tl-head">
+    <h3 class="tl-title"><em>21 days.</em><br>56 releases.</h3>
+    <div class="tl-count"><span>21</span><span class="slash">/</span><span>56</span></div>
+  </div>
+
+  <!-- one column per calendar day, tallied by release density -->
+  <div class="tl-grid" aria-label="Daily release density, Mar 27 to Apr 16">
+    <div class="tl-day"><span class="tl-date">03·27</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day tl-weekend"><span class="tl-date">03·28</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day tl-weekend"><span class="tl-date">03·29</span><div class="tl-stack"><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">03·30</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">03·31</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·02</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·03</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·04</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·07</span><div class="tl-stack"><span class="tl-dot big"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·08</span><div class="tl-stack"><span class="tl-dot big"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·09</span><div class="tl-stack"><span class="tl-dot big"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·10</span><div class="tl-stack"><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·13</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·14</span><div class="tl-stack"><span class="tl-dot big"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·15</span><div class="tl-stack"><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+    <div class="tl-day"><span class="tl-date">04·16</span><div class="tl-stack"><span class="tl-dot big"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span></div></div>
+  </div>
+
+  <div class="tl-legend">
+    <div class="tl-legend-item"><span class="tl-legend-dot big"></span>Flagship moment (model, consortium, GA)</div>
+    <div class="tl-legend-item"><span class="tl-legend-dot"></span>Feature · API · SDK release</div>
+    <div class="tl-legend-item"><span class="tl-legend-dot minor"></span>Patch &middot; internal</div>
+  </div>
+
+  <div class="tl-list">
+    <div class="tl-list-item"><span class="tl-list-date">Apr 07</span><div><div class="tl-list-title">Project Glasswing + Mythos Preview (gated)</div><div class="tl-list-desc">12-org consortium. $100M in credits. The shadow goes public — as a thing you cannot have.</div></div></div>
+    <div class="tl-list-item"><span class="tl-list-date">Apr 08</span><div><div class="tl-list-title">Managed Agents + ant CLI</div><div class="tl-list-desc">Agent harness as a service. Agent definitions as YAML. The loop becomes infrastructure.</div></div></div>
+    <div class="tl-list-item"><span class="tl-list-date">Apr 09</span><div><div class="tl-list-title">Advisor tool + Cowork GA</div><div class="tl-list-desc">Executor/advisor composition becomes a primitive. Cowork leaves beta, picks up RBAC + OpenTelemetry.</div></div></div>
+    <div class="tl-list-item"><span class="tl-list-date">Apr 14</span><div><div class="tl-list-title">Sonnet 4 / Opus 4 deprecation · Vas Narasimhan joins LTBT</div><div class="tl-list-desc">Retirement clock starts (June 15). Automated Alignment Researchers paper drops the same day.</div></div></div>
+    <div class="tl-list-item"><span class="tl-list-date">Apr 16</span><div><div class="tl-list-title">Claude Opus 4.7 — GA</div><div class="tl-list-desc">Same price. 3× vision. xhigh default. Tokenizer change. And the fourth bar of the launch chart.</div></div></div>
+    <div class="tl-list-item"><span class="tl-list-date">Cont.</span><div><div class="tl-list-title">26 versions of Claude Code, v2.1.85 → v2.1.111</div><div class="tl-list-desc">Routines. /ultrareview. /team-onboarding. A UI redesign with a sidebar. The CLI becomes the work environment.</div></div></div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     FEATURE OPENER — THE SURVEY
+     ═════════════════════════════════════════ -->
+<div class="feature-opener" id="survey">
+  <span class="vert-label">Survey <span class="vert-num">04</span></span>
+  <div class="feature-heading">
+    <div class="feature-kicker">p.17 &nbsp;—&nbsp; Reporting by Eddie Belaval</div>
+    <h2 class="feature-title">Claude Code grew <em>a body.</em></h2>
+    <p class="feature-deck">Twenty-six versions in twenty-one days. The CLI is becoming an IDE, and the IDE is becoming a control plane. When does saying &ldquo;Claude Code is a CLI&rdquo; stop being true?</p>
+    <div class="feature-meta">
+      <div><b>Versions</b> v2.1.85 → v2.1.111 &nbsp;·&nbsp; <b>Cadence</b> 1.24 releases/day</div>
+    </div>
+  </div>
+  <aside class="feature-right">
+    <span class="feature-right-label">The arc</span>
+    Routines. /ultrareview. /team-onboarding. Multi-session UI. Push notifications. PowerShell. PID namespaces. Plugins with binaries. A diff viewer faster than your IDE&apos;s.
+  </aside>
+</div>
+
+<div class="survey-data">
+  <div class="survey-cell">
+    <span class="survey-label">Versions</span>
+    <span class="survey-num">26</span>
+    <span class="survey-note">Point releases, routine adds, subsystem work. Continuous, unspectacular shipping.</span>
+  </div>
+  <div class="survey-cell">
+    <span class="survey-label">Peak day</span>
+    <span class="survey-num"><em>7</em></span>
+    <span class="survey-note">Apr 09, Apr 14, and Apr 16 each saw seven-plus release events.</span>
+  </div>
+  <div class="survey-cell">
+    <span class="survey-label">Free /ultrareview</span>
+    <span class="survey-num">3</span>
+    <span class="survey-note">Cloud code reviews per Pro/Max user per month. Parallel analysis.</span>
+  </div>
+  <div class="survey-cell">
+    <span class="survey-label">Routines</span>
+    <span class="survey-num">&infin;</span>
+    <span class="survey-note">Saved configs running on Anthropic&apos;s cloud. Agent-that-ships on a schedule.</span>
+  </div>
+</div>
+
+<div class="prose-well">
+  <span class="prose-marginalia">&#x2197; &nbsp; Read the changelog</span>
+  <div class="prose drop-cap">
+    <p>Twenty-six versions shipped between v2.1.85 (March 27) and v2.1.111 (today). Most were point releases: bug fixes, env var additions, plugin tweaks. But woven through them is a clear arc — the CLI is becoming an IDE, and the IDE is becoming a control plane.</p>
+
+    <p><strong>Routines</strong> are the most consequential addition (v2.1.101 area). A routine is a saved Claude Code configuration — prompt, repos, connectors — packaged once and run automatically on Anthropic&apos;s cloud. If you&apos;ve been wondering when &ldquo;agent that ships code on a schedule&rdquo; stops being a custom build, the answer is: now. The infrastructure is hosted. The scheduling is configurable. The cost model is &ldquo;you pay for the inference&rdquo; — same as your interactive sessions.</p>
+
+    <p><strong>The UI redesign</strong> (v2.1.110-111) is the most visible shift. Multiple Claude sessions side by side in one window, with a sidebar. Integrated terminal. File editing. HTML and PDF preview. A faster diff viewer. Anthropic is not subtle about the trajectory. The CLI is becoming the work environment.</p>
+
+    <p><strong><code>/ultrareview</code></strong> (v2.1.111) is comprehensive parallel-analysis code review using cloud compute. Pro and Max users get three free per month. The implication: code review is now a heavyweight LLM task that shouldn&apos;t run on your local terminal — it should run on Anthropic&apos;s compute and stream back. A pattern other heavy commands will follow.</p>
+
+    <p><strong><code>/team-onboarding</code></strong> (v2.1.101) generates a teammate ramp-up guide from your local Claude Code usage. It&apos;s a small feature with a quietly large implication: your AI usage patterns are themselves documentation. Future hires read your transcript shape to learn how to use the tools.</p>
+
+    <p>The closing question, after twenty-six versions in twenty-one days: when does Claude Code stop being a CLI? The answer is not far. The diff viewer is faster than your IDE&apos;s. The terminal is integrated. The file editor is in the sidebar. The cloud routines are running while you sleep. At some point — probably this year — saying &ldquo;Claude Code is a CLI&rdquo; will be technically true and effectively obsolete.</p>
+  </div>
+  <aside class="prose-aside">
+    <div><b>Also shipped in 26</b></div>
+    <div>Push notifications</div>
+    <div>PowerShell on Windows</div>
+    <div>Auto mode for Max</div>
+    <div>Monitor tool</div>
+    <div>Subprocess sandboxing</div>
+    <div>PreCompact hooks</div>
+    <div>Plugin executables</div>
+    <div>Conditional hook if fields</div>
+  </aside>
+</div>
+
+<span class="ornament bold">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
+
+<!-- ═════════════════════════════════════════
+     ALSO SHIPPED — Cowork + Papers
+     ═════════════════════════════════════════ -->
+<section class="section" id="also">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio"><b>p.18</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+    </div>
+    <span class="section-folio-sub">Also shipped</span>
+  </div>
+
+  <div class="prose-well" style="padding:0">
+    <span class="prose-marginalia">&#x2197; &nbsp; Cowork GA</span>
+    <div class="prose">
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:36px;letter-spacing:-.02em;line-height:1;color:var(--ink);margin-bottom:20px">Cowork shipped, finally.</h3>
+      <p>Claude Cowork went generally available on macOS and Windows on April 9, ending what felt like a long beta. The headline is GA itself. Cowork is Anthropic&apos;s bet on AI-native team collaboration — not a shared document with AI features bolted on, but a shared agent that works alongside the team and persists across members.</p>
+
+      <p>Three additions made the GA more than a milestone. <strong>Role-based access controls for Enterprise plans</strong> mean admins can carve up which teams get which Cowork capabilities. The pattern is familiar from any enterprise SaaS, but the implication for AI access control is new — what does it mean to scope an autonomous agent to one department&apos;s data and not another&apos;s? Cowork is the first product that has to answer.</p>
+
+      <p><strong>Cowork analytics in the API</strong> exposes engagement and adoption data programmatically. <strong>OpenTelemetry support</strong> is the second half of the same move — Cowork activity becomes telemetry like any other production system. Whether teams use Cowork as a persistent collaborator, not a chat sidebar, depends on whether teams reorganize their workflows to give the agent something to persist. Two quarters from now, we&apos;ll know whether Cowork is Slack&apos;s AI replacement or Microsoft Bob.</p>
+
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:36px;letter-spacing:-.02em;line-height:1;color:var(--ink);margin:48px 0 20px">Two papers worth your Friday.</h3>
+      <p><strong>Automated Alignment Researchers</strong> (April 14). Anthropic on using LLMs to scale scalable oversight. The paper benchmarks the technique. Read it next to the Mythos disclosure: the same week the lab publicly held a model back for safety, they&apos;re publishing on how to use models to do the safety work faster. The two are not unrelated. If you&apos;re scaling capability, you have to scale oversight at the same rate or the gap becomes the story.</p>
+
+      <p><strong>Emotion Concepts in Large Language Models</strong> (March, on <code>transformer-circuits.pub</code>). Researchers found internal representations of emotion concepts in Claude that generalize across contexts and behaviors. The wrong question is whether the models <em>have</em> emotions. The right question is whether they have <em>coherent internal representations</em> of emotions that change what they output. The answer the paper supports is yes.</p>
+
+      <p>Both papers point at the same underlying program: the lab is trying to do interpretability and oversight at the speed of capability. Whether they can keep pace is the question that matters most this decade.</p>
+    </div>
+    <aside class="prose-aside">
+      <div><b>Cowork GA</b></div>
+      <div>Apr 09 · macOS + Windows</div>
+      <div>RBAC · Enterprise</div>
+      <div>Analytics API · OTel</div>
+      <div style="margin-top:12px"><b>Papers</b></div>
+      <div>Automated Alignment Researchers</div>
+      <div>Emotion Concepts in LLMs</div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     TERM OF THE ISSUE
+     ═════════════════════════════════════════ -->
+<section class="term-section" id="term">
+  <div class="term-kicker">Term of the Issue &nbsp;·&nbsp; p.19 &nbsp;·&nbsp; First observable 2026-04-16</div>
+  <div class="term-word">
+    shadow<br>release<span class="part">/<em>SHA</em>-doh&nbsp;&nbsp;ree-<em>LEES</em>/&nbsp;&nbsp;·&nbsp;&nbsp;noun</span>
+  </div>
+  <div class="term-def">
+    <p>A pattern in which a frontier AI lab announces a flagship model while simultaneously revealing — through a benchmark chart, a press mention, or an explicit acknowledgment — that a <strong>more capable internal model exists but will not be made available to the public</strong>.</p>
+    <p>The shipped model sets the floor of capability buyers can access. The shadow model reveals the ceiling of capability that exists. The space between is where institutional decisions about AI deployment now live.</p>
+    <p><strong>First observable instance:</strong> Anthropic&apos;s Opus 4.7 launch (April 16, 2026), in which the announcement chart placed <em>Mythos Preview</em> as the top bar — taller than every released model from Anthropic or its competitors — and noted that Mythos remains gated to security partners under Project Glasswing.</p>
+    <div class="term-usage">
+      <b>Usage</b>
+      &ldquo;We&apos;re shipping the executor model and shadow-releasing the planner.&rdquo;
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     QUIET ON THE WIRE
+     ═════════════════════════════════════════ -->
+<section class="quiet-section" id="quiet">
+  <div class="quiet-head">
+    <div class="quiet-kicker">p.20 &nbsp;·&nbsp; Notes</div>
+    <h3 class="quiet-title">Quiet on<br>the <em>wire.</em></h3>
+  </div>
+  <div class="quiet-body">
+    <p>Mythos broad release — no date, no signal, no roadmap visible. Project Glasswing&apos;s first 90-day report will be the next read on whether the gating posture holds. The Bedrock Messages API research preview is <strong>us-east-1</strong> only; regional rollout unannounced.</p>
+    <p>Sonnet 4 and Opus 4 retire from the API on <strong>June 15, 2026</strong> — if you haven&apos;t migrated, the clock started two days ago. Sonnet 4.5&apos;s 1M-context beta dies <strong>April 30</strong>. The Long-Term Benefit Trust appointed Vas Narasimhan to the Board of Directors on April 14; the pharma-and-policy axis of governance is worth watching over the next quarter for biotech and regulated-industry deal flow.</p>
+    <p>Notable absences: no fast-mode preview for Opus 4.7 yet, no Haiku 5 signal, no Opus 4.7 on Vertex AI&apos;s edge regions, no public roadmap for the <code style="font-family:var(--mono);font-size:.9em;background:var(--paper-shadow);padding:1px 5px;border-radius:3px">ant</code> CLI&apos;s Windows binary. All gaps. All worth watching.</p>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     THE CLOSE
+     ═════════════════════════════════════════ -->
+<section class="close-section">
+  <div class="close-kicker">The Close</div>
+  <div class="close-stack">
+    <p class="close-line">Three weeks. Fifty-six releases. One model you can buy, one you <em>can&apos;t</em>.</p>
+    <p class="close-line">The <em>shadow</em> is the news.</p>
+    <p class="close-line close-final">Build accordingly.</p>
+  </div>
+  <div class="close-mark">&#10022;</div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     SUBSCRIBE BLOCK
+     ═════════════════════════════════════════ -->
+<style>
+  .ship-sub {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 64px;
+    margin: 64px auto;
+    max-width: 1240px;
+    text-align: center;
+  }
+  .ship-sub-kicker {
+    font-family: var(--narrow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .ship-sub h3 {
+    font-family: var(--disp);
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ship-sub h3 em { font-style: normal; color: var(--orange); }
+  .ship-sub p {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: rgba(250,250,247,.7);
+    max-width: 540px;
+    margin: 0 auto 32px;
+    line-height: 1.55;
+  }
+  .ship-sub-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: border-color 0.15s;
+  }
+  .ship-sub-form:focus-within { border-color: var(--orange); }
+  .ship-sub-form input[type="email"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 16px 20px;
+    -webkit-appearance: none;
+  }
+  .ship-sub-form input[type="email"]::placeholder { color: rgba(250,250,247,.4); }
+  .ship-sub-form button {
+    background: var(--orange);
+    color: var(--ink);
+    border: none;
+    font-family: var(--narrow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 0 28px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .ship-sub-form button:hover { background: #ff5722; }
+  .ship-sub-form button:disabled { opacity: 0.5; cursor: wait; }
+  .ship-sub-meta {
+    margin-top: 16px;
+    font-family: var(--narrow);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(250,250,247,.45);
+  }
+  .ship-sub-status {
+    margin-top: 16px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--orange);
+    min-height: 20px;
+  }
+  .ship-sub-status.error { color: #ff8b6b; }
+  @media (max-width: 540px) {
+    .ship-sub { padding: 56px 24px; margin: 32px auto; }
+    .ship-sub-form { flex-direction: column; }
+    .ship-sub-form button { padding: 16px 28px; }
+  }
+</style>
+<section class="ship-sub">
+  <div class="ship-sub-kicker">Don't miss the next issue</div>
+  <h3>Get <em>Shipped.</em> in your inbox every Friday at 9 AM ET.</h3>
+  <p>One read on what Anthropic shipped this week. Editorial up front, comprehensive Release Log in back. No spam, unsubscribe one click.</p>
+  <form class="ship-sub-form" id="ship-sub-form-issue">
+    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+    <button type="submit" id="ship-sub-btn-issue">Subscribe →</button>
+  </form>
+  <div class="ship-sub-meta">Next issue — Apr 24, 2026</div>
+  <div class="ship-sub-status" id="ship-sub-status-issue" aria-live="polite"></div>
+</section>
+<script>
+(function() {
+  var form = document.getElementById('ship-sub-form-issue');
+  var btn = document.getElementById('ship-sub-btn-issue');
+  var status = document.getElementById('ship-sub-status-issue');
+  if (!form) return;
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    status.classList.remove('error');
+    status.textContent = 'Subscribing\u2026';
+    try {
+      var res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'shipped-magazine-issue-01' })
+      });
+      var data = await res.json().catch(function(){ return {}; });
+      if (res.ok) {
+        status.textContent = 'You\u2019re in. Issue 02 lands April 24 at 9 AM ET.';
+        form.reset();
+      } else {
+        status.classList.add('error');
+        status.textContent = (data && data.error) || 'Something went wrong. Try again in a moment.';
+      }
+    } catch (err) {
+      status.classList.add('error');
+      status.textContent = 'Network error. Try again in a moment.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+
+<!-- ═════════════════════════════════════════
+     THE RELEASE LOG — BACK OF BOOK
+     ═════════════════════════════════════════ -->
+<section class="log-divider" id="log">
+  <div class="log-divider-kicker">Back of Book &nbsp;·&nbsp; p.21 →</div>
+  <h2 class="log-divider-title">The <em>Release</em> Log</h2>
+  <p class="log-divider-sub">A 1:1 mirror of every Anthropic release in the window. Use it as reference. Share it with your team. Seven sections — A through G — fifty-six entries.</p>
+</section>
+
+<!-- A — Models -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">A</div>
+    <div class="log-cat-name">Models</div>
+    <div class="log-cat-count"><b>2</b> Models in window</div>
+  </div>
+  <p class="log-cat-deck">The flagship shipped — and the launch chart conceded a stronger model in the vault.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 16</span>
+        <span class="log-tag model">Model</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.anthropic.com/news/claude-opus-4-7">Claude Opus 4.7 — generally available</a></h3>
+        <p class="log-entry-body">Anthropic&apos;s most capable generally available model. Coding, vision, and self-verification gains over 4.6. New <code>xhigh</code> effort level slots between <code>high</code> and <code>max</code>. Vision processes images up to 2,576px on the long edge (3× prior). Tokenizer change — same input may consume 1.0–1.35× more tokens.</p>
+        <div class="log-entry-how">
+          <b>How to use</b>
+          <code>client.messages.create(model="claude-opus-4-7", effort={"level": "xhigh"}, messages=[...])</code> &nbsp;·&nbsp; Pricing unchanged: $5 / $25 per MTok. Available on Claude API, Bedrock, Vertex, Foundry, GitHub Copilot. Re-tune prompts; stricter instruction-following may surprise legacy code.
+        </div>
+        <div class="log-entry-why"><b>Why it matters</b>First flagship where Anthropic explicitly conceded a stronger internal model (Mythos) exists.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 07</span>
+        <span class="log-tag model">Model · Gated</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.anthropic.com/glasswing">Claude Mythos Preview (gated)</a></h3>
+        <p class="log-entry-body">Unreleased frontier model with strikingly capable cybersecurity performance. 83.1% on CyberGym (vs. Opus 4.6&apos;s 66.6%). Found zero-days in every major OS and browser including a 27-year-old OpenBSD bug.</p>
+        <div class="log-entry-how"><b>How to use</b>Invitation-only, defensive cybersecurity work only, via Project Glasswing. Not available on the public API.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- B — API & Platform -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">B</div>
+    <div class="log-cat-name">API &amp; Platform</div>
+    <div class="log-cat-count"><b>7</b> Release notes</div>
+  </div>
+  <p class="log-cat-deck"><b>Managed Agents</b> and the <b>advisor tool</b> entered public beta. <b>Sonnet 4 + Opus 4 retire June 15</b>, the 1M-context beta dies April 30.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 16</span>
+        <span class="log-tag api">API</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Opus 4.7 API release + tokenizer change</a></h3>
+        <p class="log-entry-body">Includes API breaking changes vs. Opus 4.6. New tokenizer means token counts shift 1.0–1.35×. Migration guide published.</p>
+        <div class="log-entry-how"><b>How to use</b>Read the Opus 4.7 migration guide before upgrading. Audit your prompt tokenizer counts before swapping model IDs.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 14</span>
+        <span class="log-tag deprecation">Deprecation</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Sonnet 4 / Opus 4 deprecation</a></h3>
+        <p class="log-entry-body"><code>claude-sonnet-4-20250514</code> and <code>claude-opus-4-20250514</code> retire <strong>June 15, 2026</strong>.</p>
+        <div class="log-entry-how"><b>How to use</b>Migrate Sonnet 4 → <code>claude-sonnet-4-6</code>, Opus 4 → <code>claude-opus-4-7</code>. After June 15 these model IDs return errors.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 09</span>
+        <span class="log-tag api">API · Beta</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Advisor tool — public beta</a></h3>
+        <p class="log-entry-body">Pair a faster executor with a higher-intelligence advisor that provides strategic guidance mid-generation. Long-horizon agent runs approach advisor-solo quality at executor cost.</p>
+        <div class="log-entry-how"><b>How to use</b>Add beta header <code>advisor-tool-2026-03-01</code> to requests.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 08</span>
+        <span class="log-tag api">API · Beta</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Claude Managed Agents — public beta</a></h3>
+        <p class="log-entry-body">Fully managed agent harness — secure sandboxing, built-in tools, SSE streaming, container configuration via API.</p>
+        <div class="log-entry-how"><b>How to use</b>Add beta header <code>managed-agents-2026-04-01</code>. Create agents and run sessions via the new endpoints.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 08</span>
+        <span class="log-tag api">API · CLI</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">ant CLI — launch</a></h3>
+        <p class="log-entry-body">Command-line client for the Claude API with native Claude Code integration and YAML-based versioning of API resources (skills, agents, deployments).</p>
+        <div class="log-entry-how"><b>How to use</b>Install per the CLI reference. Script API resource lifecycle outside the console.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 07</span>
+        <span class="log-tag api">API · Preview</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Messages API on Amazon Bedrock (research preview)</a></h3>
+        <p class="log-entry-body">First-party Claude API request shape now available on Bedrock at <code>/anthropic/v1/messages</code> endpoint. Runs on AWS-managed infrastructure with zero operator access.</p>
+        <div class="log-entry-how"><b>How to use</b>Available in <code>us-east-1</code> only. Contact your Anthropic account executive for access.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 30</span>
+        <span class="log-tag api">API</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Message Batches API max_tokens raised to 300k</a></h3>
+        <p class="log-entry-body">For Opus 4.6 and Sonnet 4.6 only. Long-form content, structured data, large code generation now supported in single batch turns.</p>
+        <div class="log-entry-how"><b>How to use</b>Add beta header <code>output-300k-2026-03-24</code> to batch requests.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- C — Claude Code (abbreviated — showing depth + signaling rest is there) -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">C</div>
+    <div class="log-cat-name">Claude Code</div>
+    <div class="log-cat-count"><b>26</b> versions &nbsp;·&nbsp; v2.1.85 → v2.1.111</div>
+  </div>
+  <p class="log-cat-deck"><em>Twenty-six versions in twenty-one days.</em> Routines, the UI redesign, <code style="font-family:var(--mono);font-size:.92em;background:rgba(0,0,0,0.04);padding:1px 5px;color:var(--ink)">/ultrareview</code> cloud reviews, <code style="font-family:var(--mono);font-size:.92em;background:rgba(0,0,0,0.04);padding:1px 5px;color:var(--ink)">/team-onboarding</code>, push notifications, PowerShell on Windows.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 16</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.111</a></h3>
+        <p class="log-entry-body">Opus 4.7 <code>xhigh</code> available, Auto mode for Max subscribers, interactive <code>/effort</code> slider, &ldquo;Auto (match terminal)&rdquo; theme, <code>/less-permission-prompts</code> skill, <code>/ultrareview</code> cloud code review, PowerShell rollout on Windows, Plan files named after user prompts, <code>Ctrl+U</code> / <code>Ctrl+Y</code> clear/restore input buffer.</p>
+        <div class="log-entry-how"><b>How to use</b><code>claude update</code>. Run <code>/ultrareview</code> in any session for parallel-analysis cloud code review. <code>/effort</code> opens the slider for reasoning depth.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 15</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.110</a></h3>
+        <p class="log-entry-body"><code>/tui</code> flicker-free fullscreen rendering, push notification tool for mobile alerts, <code>Ctrl+O</code> toggles transcript verbosity, <code>/focus</code> toggles focus view, <code>/plugin</code> Installed tab with priority sorting, session recap for telemetry-disabled users.</p>
+        <div class="log-entry-how"><b>How to use</b>Run <code>/tui</code> for fullscreen mode. Configure push notifications via <code>/config</code>. Use <code>/focus</code> to hide non-essential UI during deep work.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 14</span>
+        <span class="log-tag code">Code · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.109 · v2.1.108 · v2.1.107</a></h3>
+        <p class="log-entry-body">Rotating progress hint on extended thinking. <code>ENABLE_PROMPT_CACHING_1H</code> env var for 1-hour cache TTL. Recap feature for session context. Model can discover and invoke built-in slash commands via Skill tool. <code>/undo</code> as alias for <code>/rewind</code>.</p>
+        <div class="log-entry-how"><b>How to use</b><code>export ENABLE_PROMPT_CACHING_1H=1</code> to enable 1-hour cache. Use <code>/undo</code> interchangeably with <code>/rewind</code>.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 13</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.105</a></h3>
+        <p class="log-entry-body"><code>path</code> parameter added to EnterWorktree tool, PreCompact hook with blocking capability, plugin background monitor support via manifest key, <code>/proactive</code> alias for <code>/loop</code>, 5-minute abort timeout for stalled API streams.</p>
+        <div class="log-entry-how"><b>How to use</b>Configure PreCompact hook in <code>.claude/settings.json</code> to block compaction. Plugins can declare <code>monitors</code> in their manifest for background processes.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 09</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.101</a></h3>
+        <p class="log-entry-body"><code>/team-onboarding</code> generates teammate ramp-up guide from your local usage, OS CA certificate store trusted by default, <code>/ultraplan</code> auto-creates cloud environment, improved brief mode retry logic.</p>
+        <div class="log-entry-how"><b>How to use</b>Run <code>/team-onboarding</code> to produce a markdown ramp-up doc tailored to your codebase usage patterns.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 09</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.98</a></h3>
+        <p class="log-entry-body">Interactive Vertex AI setup wizard, <code>CLAUDE_CODE_PERFORCE_MODE</code> env var for Perforce support, Monitor tool for streaming background script events, subprocess sandboxing with PID namespace on Linux.</p>
+        <div class="log-entry-how"><b>How to use</b>Run <code>/setup-vertex</code> for the wizard. Set <code>CLAUDE_CODE_PERFORCE_MODE=1</code> if you use Perforce. Linux users get tighter subprocess isolation by default.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 08</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.97</a></h3>
+        <p class="log-entry-body">Focus view toggle in <code>NO_FLICKER</code> mode, <code>refreshInterval</code> status line setting for periodic command re-runs.</p>
+        <div class="log-entry-how"><b>How to use</b>Set <code>refreshInterval</code> in your status line config to auto-refresh expensive checks.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 02 → 04 · 04</span>
+        <span class="log-tag code">Code · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.92 → v2.1.96</a></h3>
+        <p class="log-entry-body"><code>forceRemoteSettingsRefresh</code> fail-closed remote config, interactive Bedrock setup wizard, per-model and cache-hit breakdown in <code>/cost</code>, <code>/release-notes</code> as interactive version picker. Mantle-routed Bedrock via <code>CLAUDE_CODE_USE_MANTLE=1</code>. Default effort bumped to <code>high</code> for most tiers. Fixed Bedrock auth failures with <code>AWS_BEARER_TOKEN_BEDROCK</code>.</p>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 27 → 03 · 31</span>
+        <span class="log-tag code">Code · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">v2.1.85 → v2.1.91</a></h3>
+        <p class="log-entry-body">Opening week. <code>CLAUDE_CODE_MCP_SERVER_NAME/URL</code>, conditional <code>if</code> field for hooks, session-id headers, <code>.jj</code> and <code>.sl</code> excluded from VCS scans. Cowork Dispatch message delivery fixed. MCP tool result persistence overrides. <code>disableSkillShellExecution</code> locks down inline shell. Plugins can ship binaries under <code>bin/</code>. <code>/powerup</code> feature lessons. Rate-limit infinite loop fixed. &ldquo;defer&rdquo; permission decisions for PreToolUse hooks in headless mode. <code>CLAUDE_CODE_NO_FLICKER=1</code> for alt-screen rendering. <code>PermissionDenied</code> hook after auto-mode denials. Named subagents in <code>@</code> mentions.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- D — Apps -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">D</div>
+    <div class="log-cat-name">Claude Apps</div>
+    <div class="log-cat-count"><b>6</b> App releases</div>
+  </div>
+  <p class="log-cat-deck"><b>Cowork went generally available</b> on macOS and Windows after a long beta. Computer use opened in research preview to Pro and Max plans.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 16</span>
+        <span class="log-tag apps">Apps</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Opus 4.7 in Claude apps</a></h3>
+        <p class="log-entry-body">Opus 4.7 available across web, mobile, and desktop with vision and SWE improvements.</p>
+        <div class="log-entry-how"><b>How to use</b>Update mobile/desktop. Web auto-uses latest. Select Opus 4.7 in the model picker.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 09</span>
+        <span class="log-tag apps">Apps</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Claude Cowork — GA on macOS and Windows</a></h3>
+        <p class="log-entry-body">Cowork out of beta. RBAC for Enterprise plans, OpenTelemetry support, Cowork analytics in the Analytics API, custom roles per group.</p>
+        <div class="log-entry-how"><b>How to use</b>Enterprise admins: configure groups and assign roles in Console. Pipe Cowork telemetry to your existing observability stack via OTel.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 25</span>
+        <span class="log-tag apps">Apps</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Interactive apps in Claude mobile (iOS / Android)</a></h3>
+        <p class="log-entry-body">Live charts, sketches, and shareable assets render visually in conversations.</p>
+        <div class="log-entry-how"><b>How to use</b>Update the iOS/Android app. Visualizations now render inline.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 23</span>
+        <span class="log-tag apps">Apps · Preview</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Computer use research preview for Pro / Max</a></h3>
+        <p class="log-entry-body">Claude can access screens and perform tasks independently. Plus Claude Code Dispatch improvements.</p>
+        <div class="log-entry-how"><b>How to use</b>Pro/Max users opt in to the computer use preview from settings. Read the computer use guide before granting screen access.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 17</span>
+        <span class="log-tag apps">Apps</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Persistent agent thread for Cowork on mobile</a></h3>
+        <p class="log-entry-body">Manage Cowork tasks from phones via Claude Desktop or mobile.</p>
+        <div class="log-entry-how"><b>How to use</b>Cowork tasks now persist across mobile sessions — no need to start fresh.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 12 · 03 · 11</span>
+        <span class="log-tag apps">Apps · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Inline charts · Claude for Excel and PowerPoint enhancements</a></h3>
+        <p class="log-entry-body">Claude creates custom charts and diagrams inline in responses on web. Excel and PowerPoint add-ins share conversation context across docs, support skills, and connect to Bedrock / Vertex AI / Foundry via LLM gateway.</p>
+        <div class="log-entry-how"><b>How to use</b>Update the add-ins. Skills authored in Console show up inside Excel/PowerPoint.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- E — SDKs -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">E</div>
+    <div class="log-cat-name">Agent SDKs &nbsp;·&nbsp; Python + TypeScript</div>
+    <div class="log-cat-count"><b>20</b> SDK releases</div>
+  </div>
+  <p class="log-cat-deck">Twenty SDK releases — ten Python, ten TypeScript. Opus 4.7 support, distributed tracing helpers, and a <em>security update</em> worth installing.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 16</span>
+        <span class="log-tag sdk-py">SDK · PY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">claude-agent-sdk v0.1.60</a></h3>
+        <p class="log-entry-body"><code>list_subagents()</code> and <code>get_subagent_messages()</code> session helpers, W3C trace context propagation to CLI subprocess (OpenTelemetry), cascading session deletion. Bug fix: <code>setting_sources=[]</code> no longer silently dropped. Bundled CLI to v2.1.111.</p>
+        <div class="log-entry-how"><b>How to use</b><code>pip install -U "claude-agent-sdk[otel]"</code> for distributed tracing.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 16</span>
+        <span class="log-tag sdk-ts">SDK · TS</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">@anthropic-ai/claude-agent-sdk v0.2.111</a></h3>
+        <p class="log-entry-body">Opus 4.7 support, <code>mcp_set_servers</code> per-tool <code>permission_policy</code> for HTTP/SSE servers, <code>startup()</code> and <code>WarmQuery</code> now public API, <code>options.env</code> overlays <code>process.env</code> instead of replacing.</p>
+        <div class="log-entry-how"><b>How to use</b><code>npm install -D @anthropic-ai/claude-agent-sdk@latest</code>. Use <code>WarmQuery</code> for pre-warmed sessions.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 10</span>
+        <span class="log-tag sdk-ts">SDK · TS · Security</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">@anthropic-ai/claude-agent-sdk v0.2.101</a></h3>
+        <p class="log-entry-body">Security: bumped <code>@anthropic-ai/sdk</code> to <code>^0.81.0</code> and <code>@modelcontextprotocol/sdk</code> to <code>^1.29.0</code> (GHSA-5474-4w2j-mq4c). Fixed Windows resume-session temp directory leak. Fixed <code>MaxListenersExceededWarning</code> with 11+ concurrent <code>query()</code> calls.</p>
+        <div class="log-entry-how"><b>How to use</b>Security update — upgrade. <code>npm update @anthropic-ai/claude-agent-sdk</code>.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 09</span>
+        <span class="log-tag sdk-py">SDK · PY · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">claude-agent-sdk v0.1.57 · v0.1.58</a></h3>
+        <p class="log-entry-body"><code>exclude_dynamic_sections</code> option on <code>SystemPromptPreset</code> for cross-user cache hits, <code>"auto"</code> PermissionMode, fixed <code>thinking={"type":"adaptive"}</code> mapping. Bundled CLI to v2.1.97.</p>
+        <div class="log-entry-how"><b>How to use</b>Use <code>exclude_dynamic_sections=True</code> to maximize cache hits across users with different dynamic content.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 29 → 04 · 04</span>
+        <span class="log-tag sdk-py">SDK · PY · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">claude-agent-sdk v0.1.52 → v0.1.56</a></h3>
+        <p class="log-entry-body"><code>get_context_usage()</code> on <code>ClaudeSDKClient</code>. <code>typing.Annotated</code> parameter descriptions in JSON schema. <code>ToolPermissionContext</code> exposes <code>tool_use_id</code> and <code>agent_id</code>. <code>session_id</code> option on <code>ClaudeAgentOptions</code>. Fixed <code>--setting-sources</code> empty string when not provided. Fixed <code>query()</code> deadlock with string prompt + hooks/MCP. Fixed silent truncation of MCP tool results &gt;50K chars.</p>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03 · 27</span>
+        <span class="log-tag sdk-py">SDK · PY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">claude-agent-sdk v0.1.51</a></h3>
+        <p class="log-entry-body"><code>fork_session()</code>, <code>delete_session()</code>, offset-based pagination, <code>task_budget</code> option, <code>SystemPromptFile</code> support, AgentDefinition gets <code>disallowedTools</code> / <code>maxTurns</code> / <code>initialPrompt</code>. Plus 10+ fixes to async generator cleanup, MCP tool handling, env filtering, process cleanup.</p>
+        <div class="log-entry-how"><b>How to use</b>Use <code>fork_session(session_id)</code> to branch a session. Pass <code>task_budget={"input_tokens": N}</code> to cap a run.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 08 → 04 · 15</span>
+        <span class="log-tag sdk-ts">SDK · TS · Cluster</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">@anthropic-ai/claude-agent-sdk v0.2.97 → v0.2.110</a></h3>
+        <p class="log-entry-body">Parity with Claude Code v2.1.97 through v2.1.110. <code>SDKStatus</code> includes <code>'requesting'</code>. <code>system/memory_recall</code> event. <code>memory_paths</code> on <code>system/init</code>. <code>unstable_v2_createSession</code> now respects <code>cwd</code> / <code>settingSources</code> / <code>allowDangerouslySkipPermissions</code>. New <code>shouldQuery: false</code> field on <code>SDKUserMessage</code> to append without triggering a turn.</p>
+        <div class="log-entry-how"><b>How to use</b>Send <code>{ shouldQuery: false }</code> to inject context without burning a model turn. Subscribe to <code>system/memory_recall</code> events to see when the agent reads from memory.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- F — Research -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">F</div>
+    <div class="log-cat-name">Research &amp; Publications</div>
+    <div class="log-cat-count"><b>2</b> Papers</div>
+  </div>
+  <p class="log-cat-deck">Two papers worth a Friday — <b>automated alignment researchers</b>, and the internal representations of <b>emotion concepts</b> in Claude.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 14</span>
+        <span class="log-tag research">Research</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Automated Alignment Researchers (paper)</a></h3>
+        <p class="log-entry-body">&ldquo;Using large language models to scale scalable oversight.&rdquo; Anthropic on having LLMs perform alignment work, with benchmarks for whether the technique holds.</p>
+        <div class="log-entry-how"><b>How to use</b>Read the paper if you work on agent guardrails. Citations are useful for justifying LLM-based eval pipelines.</div>
+        <div class="log-entry-why"><b>Why it matters</b>Same week Anthropic held Mythos back for safety, they&apos;re publishing on automating the safety work itself. The two are connected.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 03</span>
+        <span class="log-tag research">Research</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Emotion Concepts in Large Language Models (transformer-circuits.pub)</a></h3>
+        <p class="log-entry-body">Internal representations of emotions in Claude that generalize across contexts and shape behavior.</p>
+        <div class="log-entry-why"><b>Why it matters</b>The wrong question is whether the models have emotions. The right one is whether they have coherent internal representations that change output.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- G — News -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">G</div>
+    <div class="log-cat-name">News &amp; Partnerships</div>
+    <div class="log-cat-count"><b>2</b> Items</div>
+  </div>
+  <p class="log-cat-deck"><em>Glasswing launched</em> with twelve founding orgs and $100M in model credits. Vas Narasimhan joined the Long-Term Benefit Trust board.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 14</span>
+        <span class="log-tag news">News</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Vas Narasimhan appointed to Long-Term Benefit Trust Board</a></h3>
+        <p class="log-entry-body">The LTBT appointed Vas Narasimhan (former Novartis CEO) to the Board of Directors.</p>
+        <div class="log-entry-why"><b>Why it matters</b>Adds pharma-and-policy weight to Anthropic governance. Worth watching for biotech and regulated-industry deal flow.</div>
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 07</span>
+        <span class="log-tag news">News</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Project Glasswing launched</a></h3>
+        <p class="log-entry-body">12-organization consortium using Claude Mythos Preview to harden critical software infrastructure. Founders: AWS, Apple, Google, Microsoft, NVIDIA, Cisco, CrowdStrike, JPMorgan Chase, Linux Foundation, Palo Alto Networks, Broadcom, Anthropic. $100M in model credits. $4M to OpenSSF, Apache, Alpha-Omega.</p>
+        <div class="log-entry-how"><b>How to use</b>Open-source maintainers of critical infrastructure can apply for Mythos access via Glasswing partners. Participation by application.</div>
+        <div class="log-entry-why"><b>Why it matters</b>First time Anthropic explicitly held a model back, post-evaluation, on safety grounds that survived peer review. Sets a precedent.</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     SOURCES & BIBLIOGRAPHY
+     ═════════════════════════════════════════ -->
+<section style="max-width:1240px;margin:96px auto 64px;padding:0 32px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:32px">
+    <span style="font-family:var(--narrow);font-weight:700;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange)">Sources &amp; Bibliography</span>
+    <span style="font-family:var(--sans);font-size:13px;color:var(--muted)">40+ citations · Every claim traceable</span>
+  </div>
+
+  <div style="background:#ffffff;border:1px solid rgba(0,0,0,0.08);padding:48px 56px">
+    <p style="font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.55;color:var(--muted);margin-bottom:40px;max-width:680px">Every URL consulted in the reporting of Issue 01. If you find a missing citation, file it back via <code style="font-family:var(--mono);font-size:.85em;background:rgba(0,0,0,0.04);padding:2px 6px;color:var(--ink)">/shipped --revise</code>.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px 64px">
+
+      <div>
+        <h4 style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.12)">Anthropic — Primary</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink)">
+          <li><a href="https://www.anthropic.com/news/claude-opus-4-7" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Introducing Claude Opus 4.7</a> — Anthropic, Apr 16, 2026</li>
+          <li><a href="https://www.anthropic.com/glasswing" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Project Glasswing</a> — Anthropic, Apr 7, 2026</li>
+          <li><a href="https://red.anthropic.com/2026/mythos-preview/" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Claude Mythos Preview</a> — Anthropic Red, Apr 7, 2026</li>
+          <li><a href="https://www.anthropic.com/news" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Anthropic News</a> — master index</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.12)">Release Notes &amp; Docs</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink)">
+          <li><a href="https://platform.claude.com/docs/en/release-notes/api" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Claude API release notes</a></li>
+          <li><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Claude Code CHANGELOG</a></li>
+          <li><a href="https://support.claude.com/en/articles/12138966-release-notes" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Claude Apps release notes</a></li>
+          <li><a href="https://github.com/anthropics/claude-agent-sdk-python/releases" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Python Agent SDK releases</a></li>
+          <li><a href="https://github.com/anthropics/claude-agent-sdk-typescript/releases" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">TypeScript Agent SDK releases</a></li>
+          <li><a href="https://platform.claude.com/docs/en/managed-agents/overview" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Managed Agents overview</a></li>
+          <li><a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Model deprecations</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.12)">Research &amp; Engineering</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink)">
+          <li>Automated Alignment Researchers — Anthropic, Apr 14, 2026</li>
+          <li><a href="https://transformer-circuits.pub/2026/emotions/index.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Emotion Concepts in LLMs</a> — Transformer Circuits, Mar 2026</li>
+          <li><a href="https://assets.anthropic.com/m/983c85a201a962f/original/Alignment-Faking-in-Large-Language-Models-full-paper.pdf" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Alignment Faking in LLMs</a> — Anthropic, prior work</li>
+          <li><a href="https://assets.anthropic.com/m/74342f2c96095771/original/Natural-emergent-misalignment-from-reward-hacking-paper.pdf" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Natural Emergent Misalignment from Reward Hacking</a> — Anthropic</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.12)">Coverage &amp; Analysis</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink)">
+          <li><a href="https://www.cnbc.com/2026/04/16/anthropic-claude-opus-4-7-model-mythos.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">CNBC</a> — Opus 4.7 less risky than unreleased Mythos</li>
+          <li><a href="https://www.axios.com/2026/04/16/anthropic-claude-opus-model-mythos" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Axios</a> — Anthropic concedes 4.7 trails Mythos</li>
+          <li><a href="https://techcrunch.com/2026/04/07/anthropic-mythos-ai-model-preview-security/" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">TechCrunch</a> — Mythos preview in security initiative</li>
+          <li><a href="https://www.cfr.org/articles/six-reasons-claude-mythos-is-an-inflection-point-for-ai-and-global-security" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Council on Foreign Relations</a> — Mythos inflection</li>
+          <li><a href="https://simonwillison.net/2026/Apr/7/project-glasswing/" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">Simon Willison</a> — Project Glasswing analysis</li>
+          <li><a href="https://www.aisi.gov.uk/blog/our-evaluation-of-claude-mythos-previews-cyber-capabilities" style="color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.2)">UK AISI</a> — Independent Mythos evaluation</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.12)">Quote Attributions</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink)">
+          <li><b>Igor Tsyganskiy</b>, Microsoft — <em>vulnerability discovery to exploitation collapsed</em>. Source: Glasswing announcement.</li>
+          <li><b>Anthony Grieco</b>, Cisco — <em>old ways of hardening systems no longer sufficient</em>. Source: Glasswing announcement.</li>
+          <li><b>Jim Zemlin</b>, Linux Foundation — <em>credible path to AI-augmented security for every maintainer</em>. Source: Glasswing announcement.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.12)">Benchmark Sources</h4>
+        <ul style="list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--ink)">
+          <li><b>SWE-bench Verified, Pro</b> — Anthropic Opus 4.7 announcement chart</li>
+          <li><b>GPQA Diamond</b> — Anthropic + competitor publications</li>
+          <li><b>MCP-Atlas, CursorBench, XBOW Visual-Acuity, BigLaw Bench</b> — Anthropic Opus 4.7 announcement</li>
+          <li><b>CyberGym</b> — Mythos disclosure / academic vulnerability-reproduction suite</li>
+          <li><b>OSS-Fuzz</b> — Google open-source fuzzing project</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="font-family:var(--mono);font-size:10px;color:#b5b3af;letter-spacing:.05em;margin-top:40px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.08);text-align:center">TOTAL SOURCES CONSULTED: 40+  &nbsp;·&nbsp;  ALL CLAIMS TRACEABLE  &nbsp;·&nbsp;  REVISIONS WELCOME</div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     COLOPHON
+     ═════════════════════════════════════════ -->
+<footer class="colophon">
+  <div class="colophon-inner">
+    <div class="colophon-mast">
+      <div class="colophon-word">Shipped<span class="dot">.</span></div>
+      <div class="colophon-tag">A weekly magazine on what Anthropic is releasing. Published every Friday at 9 AM ET, by id8Labs.</div>
+    </div>
+    <div class="colophon-body">
+      <div class="colophon-col">
+        <h4>Masthead</h4>
+        <p><b>Editor</b> Eddie Belaval</p>
+        <p><b>Reporting</b> with the assistance of Claude</p>
+        <p><b>Voice</b> <em>STYLE.md</em></p>
+        <p><b>Design</b> per <em>DESIGN.md</em> (Rev 4 · Iris)</p>
+        <p><b>Generated by</b> <code style="font-family:var(--mono);font-size:.88em;color:var(--paper)">/shipped</code></p>
+      </div>
+      <div class="colophon-col">
+        <h4>Typography</h4>
+        <p><b>Display</b> Fraunces — optical sizes 9 – 144</p>
+        <p><b>Sans</b> Archivo</p>
+        <p><b>Narrow</b> Archivo Narrow (kickers · flags · folios)</p>
+        <p><b>Mono</b> JetBrains Mono</p>
+        <p><em>Editorial serif carries the gravity. The narrow grotesque carries the machine.</em></p>
+      </div>
+      <div class="colophon-col">
+        <h4>This issue</h4>
+        <p><b>Volume</b> I</p>
+        <p><b>Issue</b> 01 (Founding Issue)</p>
+        <p><b>Period</b> 2026-03-27 → 2026-04-17</p>
+        <p><b>Front of book</b> 7,700 words</p>
+        <p><b>Release log</b> 56 entries · 7 sections</p>
+        <p><b>Status</b> Published</p>
+      </div>
+    </div>
+    <div class="colophon-foot">
+      <span>© 2026 <b>id8Labs</b> &nbsp;·&nbsp; All rights reserved</span>
+      <span>Printed in pixels &nbsp;·&nbsp; Set in Fraunces &amp; Archivo &nbsp;·&nbsp; Press sheet by Iris</span>
+      <span class="hot">Next issue — Apr 24, 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
