@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '50', 10)
     const status = searchParams.get('status') || 'all'
     const search = searchParams.get('search') || ''
+    const source = searchParams.get('source') || 'all'
 
     const offset = (page - 1) * limit
 
@@ -26,6 +27,14 @@ export async function GET(request: NextRequest) {
 
     if (search) {
       query = query.ilike('email', `%${search}%`)
+    }
+
+    if (source !== 'all') {
+      if (source.endsWith('*')) {
+        query = query.ilike('source', source.replace('*', '%'))
+      } else {
+        query = query.eq('source', source)
+      }
     }
 
     const { data: subscribers, count, error } = await query

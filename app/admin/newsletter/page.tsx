@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { SubscriberGrowthChart } from '@/components/admin/SubscriberGrowthChart'
 
 interface Stats {
   totalSubscribers: number
@@ -124,8 +125,13 @@ export default function NewsletterDashboard() {
         ))}
       </div>
 
+      {/* Growth Chart */}
+      <div className="mb-8">
+        <SubscriberGrowthChart days={30} title="Subscriber growth — last 30 days" />
+      </div>
+
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Link
           href="/admin/newsletter/compose"
           className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)]/50 transition-colors group"
@@ -180,6 +186,25 @@ export default function NewsletterDashboard() {
                 View Archive
               </h3>
               <p className="text-sm text-[var(--text-secondary)]">See public newsletter page</p>
+            </div>
+          </div>
+        </Link>
+
+        <Link
+          href="/admin/newsletter/shipped"
+          className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)]/50 transition-colors group"
+        >
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-[var(--id8-orange)]/10 rounded-lg text-[var(--id8-orange)]">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2M9 11h4M9 15h4" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--id8-orange)] transition-colors">
+                Shipped. Dashboard
+              </h3>
+              <p className="text-sm text-[var(--text-secondary)]">Magazine subscribers, by issue</p>
             </div>
           </div>
         </Link>

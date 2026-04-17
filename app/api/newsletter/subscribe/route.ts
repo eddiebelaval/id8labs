@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/server'
 import { checkRateLimit, getRateLimitKey, rateLimitHeaders, RATE_LIMITS } from '@/lib/rate-limit'
+import { notifyNewSubscriber } from '@/lib/notifications/new-subscriber'
 
 // POST - Subscribe to newsletter
 export async function POST(request: NextRequest) {
@@ -96,6 +97,13 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       )
     }
+
+    // Fire-and-forget Shipped. notification (Slack + email, no-op for non-shipped sources)
+    notifyNewSubscriber({
+      email: email.toLowerCase(),
+      source: source || 'website',
+      subscribedAt: new Date().toISOString(),
+    }).catch((err) => console.error('notifyNewSubscriber failed:', err))
 
     return NextResponse.json({
       success: true,

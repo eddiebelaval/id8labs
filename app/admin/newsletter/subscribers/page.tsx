@@ -21,11 +21,18 @@ interface SubscriberResponse {
   totalPages: number
 }
 
+interface SourceCount {
+  source: string
+  count: number
+}
+
 export default function SubscribersPage() {
   const [data, setData] = useState<SubscriberResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
+  const [sourceFilter, setSourceFilter] = useState('all')
+  const [sources, setSources] = useState<SourceCount[]>([])
   const [page, setPage] = useState(1)
 
   const fetchSubscribers = useCallback(async () => {
@@ -35,6 +42,7 @@ export default function SubscribersPage() {
         page: page.toString(),
         limit: '20',
         status: statusFilter,
+        source: sourceFilter,
         ...(search && { search }),
       })
 
@@ -48,11 +56,18 @@ export default function SubscribersPage() {
     } finally {
       setLoading(false)
     }
-  }, [page, statusFilter, search])
+  }, [page, statusFilter, sourceFilter, search])
 
   useEffect(() => {
     fetchSubscribers()
   }, [fetchSubscribers])
+
+  useEffect(() => {
+    fetch('/api/admin/newsletter/sources')
+      .then((r) => r.ok && r.json())
+      .then((j) => j && setSources(j.sources || []))
+      .catch(() => {})
+  }, [])
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -109,6 +124,22 @@ export default function SubscribersPage() {
           <option value="all">All Status</option>
           <option value="active">Active</option>
           <option value="unsubscribed">Unsubscribed</option>
+        </select>
+        <select
+          value={sourceFilter}
+          onChange={(e) => {
+            setSourceFilter(e.target.value)
+            setPage(1)
+          }}
+          className="px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--bg-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+        >
+          <option value="all">All Sources</option>
+          <option value="shipped-magazine-*">All Shipped issues</option>
+          {sources.map((s) => (
+            <option key={s.source} value={s.source}>
+              {s.source} ({s.count})
+            </option>
+          ))}
         </select>
       </div>
 
