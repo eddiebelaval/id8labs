@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shipped. — Issue 01 — OG card source</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #fafaf7;
+    font-family: 'Archivo', sans-serif;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* paper grain */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 5;
+    opacity: .35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.22'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  .page {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    padding: 38px 56px 32px;
+    overflow: hidden;
+  }
+
+  /* The huge "01" — architecture behind the masthead */
+  .huge-num {
+    position: absolute;
+    right: -18px;
+    bottom: -110px;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-variation-settings: "opsz" 144;
+    font-size: 760px;
+    line-height: 0.78;
+    letter-spacing: -0.045em;
+    color: #f2efe8;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    /* Faint outline so it survives even very light backgrounds */
+    -webkit-text-stroke: 1px rgba(0,0,0,0.05);
+  }
+
+  /* Top + bottom hairline rules */
+  .rule-top, .rule-bot {
+    position: absolute;
+    left: 56px; right: 56px;
+    height: 1px;
+    background: #1a1a1a;
+    z-index: 3;
+  }
+  .rule-top { top: 80px; }
+  .rule-bot { bottom: 78px; }
+  .rule-top-2 {
+    position: absolute;
+    left: 56px; right: 56px;
+    top: 86px;
+    height: 1px;
+    background: #1a1a1a;
+    z-index: 3;
+  }
+
+  .kicker-row {
+    position: absolute;
+    top: 38px; left: 56px; right: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    z-index: 4;
+  }
+  .kicker-row .num { color: #ff6b35; }
+
+  .vert-spine {
+    position: absolute;
+    top: 50%;
+    left: 22px;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    white-space: nowrap;
+    z-index: 4;
+  }
+
+  .center {
+    position: relative;
+    z-index: 4;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  .masthead {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-variation-settings: "opsz" 144;
+    font-size: 244px;
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+    color: #1a1a1a;
+    text-align: center;
+  }
+  .masthead .dot { color: #ff6b35; }
+
+  .deck {
+    margin-top: 24px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: "opsz" 72;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: #4a4a4a;
+    text-align: center;
+    max-width: 920px;
+  }
+  .deck em { font-style: normal; color: #ff6b35; font-weight: 600; }
+
+  /* Four-cell teaser strip at bottom */
+  .teaser {
+    position: absolute;
+    bottom: 36px; left: 56px; right: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    z-index: 4;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 16px;
+  }
+  .teaser-cell {
+    padding: 0 18px;
+    border-right: 1px solid rgba(0,0,0,0.18);
+  }
+  .teaser-cell:first-child { padding-left: 0; }
+  .teaser-cell:last-child { border-right: none; padding-right: 0; }
+
+  .teaser-kicker {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .teaser-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-variation-settings: "opsz" 32;
+    font-size: 17px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+  }
+  .teaser-title b { font-style: normal; font-weight: 700; }
+  .teaser-title .hot { color: #ff6b35; font-weight: 700; font-style: normal; }
+
+  .folio-bottom {
+    position: absolute;
+    bottom: 14px; left: 56px; right: 56px;
+    display: flex; justify-content: space-between;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    z-index: 4;
+  }
+  .folio-bottom .url { color: #1a1a1a; }
+  .folio-bottom .url .dot { color: #ff6b35; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="huge-num">01</div>
+
+    <div class="kicker-row">
+      <span>Issue <span class="num">01</span> &nbsp;·&nbsp; April 17, 2026 &nbsp;·&nbsp; A Weekly Magazine</span>
+      <span>by id8Labs</span>
+    </div>
+    <div class="rule-top"></div>
+    <div class="rule-top-2"></div>
+
+    <div class="vert-spine">The Founding Issue</div>
+
+    <div class="center">
+      <div class="masthead">Shipped<span class="dot">.</span></div>
+      <div class="deck">The chart that <em>wasn&rsquo;t</em> about Opus 4.7.</div>
+    </div>
+
+    <div class="rule-bot"></div>
+
+    <div class="teaser">
+      <div class="teaser-cell">
+        <div class="teaser-kicker">The lead</div>
+        <div class="teaser-title">Opus <b>4.7</b> &amp; the shadow chart</div>
+      </div>
+      <div class="teaser-cell">
+        <div class="teaser-kicker">Investigation</div>
+        <div class="teaser-title"><span class="hot">Glasswing.</span></div>
+      </div>
+      <div class="teaser-cell">
+        <div class="teaser-kicker">Survey</div>
+        <div class="teaser-title">Claude Code <b>v2.1.111</b></div>
+      </div>
+      <div class="teaser-cell">
+        <div class="teaser-kicker">Term of issue</div>
+        <div class="teaser-title"><em>shadow release</em></div>
+      </div>
+    </div>
+
+    <div class="folio-bottom">
+      <span>Vol. I</span>
+      <span class="url">id8labs.app/shipped<span class="dot">.</span></span>
+      <span>p. 01</span>
+    </div>
+  </div>
+</body>
+</html>
