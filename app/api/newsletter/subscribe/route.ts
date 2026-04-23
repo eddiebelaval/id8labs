@@ -56,14 +56,45 @@ export async function POST(request: NextRequest) {
         })
       }
 
-      // Resubscribe if previously unsubscribed
-      const { error: updateError } = await supabase
-        .from('newsletter_subscribers')
-        .update({
-          status: 'active',
-          unsubscribed_at: null,
-        })
-        .eq('id', existing.id)
+      // Resubscribe if previously unsubscribed. If source starts with
+      // 'shipped', also ensure they're on the Shipped. list (idempotent).
+      // Tolerant of pre-migration schema where `lists` column doesn't exist.
+      const srcLower = (source || 'website').toLowerCase()
+      const basePayload = {
+        status: 'active',
+        unsubscribed_at: null as null,
+      }
+      let updateError: { message?: string } | null = null
+      if (srcLower.startsWith('shipped')) {
+        const { data: current, error: selectError } = await supabase
+          .from('newsletter_subscribers')
+          .select('lists')
+          .eq('id', existing.id)
+          .single<{ lists: string[] | null }>()
+        if (selectError && !/column.*lists.*does not exist/i.test(selectError.message || '')) {
+          updateError = selectError
+        } else {
+          const existingLists: string[] = current?.lists ?? ['newsletter']
+          const mergedLists = existingLists.includes('shipped')
+            ? existingLists
+            : [...existingLists, 'shipped']
+          updateError = (
+            await supabase
+              .from('newsletter_subscribers')
+              .update({ ...basePayload, lists: mergedLists })
+              .eq('id', existing.id)
+          ).error
+          if (updateError && /column.*lists.*does not exist/i.test(updateError.message || '')) {
+            updateError = (
+              await supabase.from('newsletter_subscribers').update(basePayload).eq('id', existing.id)
+            ).error
+          }
+        }
+      } else {
+        updateError = (
+          await supabase.from('newsletter_subscribers').update(basePayload).eq('id', existing.id)
+        ).error
+      }
 
       if (updateError) {
         console.error('Error resubscribing:', updateError)
@@ -80,15 +111,34 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // New subscriber
-    const { error: insertError } = await supabase
-      .from('newsletter_subscribers')
-      .insert({
-        email: email.toLowerCase(),
-        source: source || 'website',
-        status: 'active',
-        is_academy_member: false,
-      })
+    // Determine which lists this subscriber lands on. Shipped-sourced
+    // signups opt into both the Shipped. weekly and the general newsletter
+    // by default; non-Shipped sources are newsletter-only.
+    const srcLower = (source || 'website').toLowerCase()
+    const lists = srcLower.startsWith('shipped')
+      ? ['newsletter', 'shipped']
+      : ['newsletter']
+
+    // New subscriber — try with lists column first (post-migration). If the
+    // column doesn't exist yet (code ahead of migration), retry without.
+    const baseInsert = {
+      email: email.toLowerCase(),
+      source: source || 'website',
+      status: 'active',
+      is_academy_member: false,
+    }
+    let insertError = (
+      await supabase
+        .from('newsletter_subscribers')
+        .insert({ ...baseInsert, lists })
+    ).error
+
+    if (insertError && /column.*lists.*does not exist/i.test(insertError.message || '')) {
+      // Schema is pre-migration. Insert without lists; list segmentation
+      // is recoverable from source after migration lands.
+      console.warn('[subscribe] newsletter_subscribers.lists not found; inserting without. Apply migration 20260423120000_shipped_list_and_sends.sql.')
+      insertError = (await supabase.from('newsletter_subscribers').insert(baseInsert)).error
+    }
 
     if (insertError) {
       console.error('Error subscribing:', insertError)

@@ -3,469 +3,485 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shipped. — A weekly magazine on what Anthropic ships</title>
-<meta name="description" content="Shipped. is a weekly magazine on what Anthropic ships. Models, features, Claude Code, SDKs, research. Every Friday at 9 AM ET. Published by id8Labs.">
-<meta property="og:title" content="Shipped. — A weekly magazine on what Anthropic ships">
-<meta property="og:description" content="Models, features, Claude Code, SDKs, research. Every Friday at 9 AM ET.">
+<title>Shipped. — A weekly magazine on what Anthropic ships.</title>
+<meta name="description" content="Shipped. is a weekly magazine on what Anthropic ships. Every Friday, 9 AM ET. Auto-ops, human-voice. Edited by Eddie Belaval. Published by id8Labs.">
+<meta property="og:title" content="Shipped. — A weekly magazine on what Anthropic ships.">
+<meta property="og:description" content="Every Friday, 9 AM ET. The week in Anthropic, tied together.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://id8labs.app/shipped/">
-<meta property="og:image" content="https://id8labs.app/shipped/01/og-v3.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='75' cy='62' r='14' fill='%23FF6B35'/%3E%3Ctext x='10' y='75' font-family='Georgia,serif' font-weight='700' font-size='62' fill='%231a1a1a'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://id8labs.app/shipped/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Archivo:wght@300;400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --paper: #fafaf7;
-    --paper-card: #ffffff;
-    --gray-rule: #e5e3df;
-    --muted: #6b6b6b;
-    --soft: #b5b3af;
-    --orange: #ff6b35;
-    --disp: 'Fraunces', Georgia, serif;
-    --sans: 'Archivo', -apple-system, sans-serif;
-    --narrow: 'Archivo Narrow', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
-  body { font-family: var(--sans); }
+:root{
+  --paper:#fafaf7;
+  --paper-shadow:#f2f0e8;
+  --paper-mid:#ededdf;
+  --ink:#0b0b0b;
+  --body:#2a2a2a;
+  --muted:#5a5a5a;
+  --hair:#d6d3c9;
+  --hair-hard:#b4afa0;
+  --rule:#0b0b0b;
+  --orange:#FF6B35;
+  --orange-soft:rgba(255,107,53,.12);
+  --teal:#2a8d83;
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: .28;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.22'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  }
+  --serif:'Fraunces',Georgia,serif;
+  --disp:'Fraunces',Georgia,serif;
+  --sans:'Archivo','Helvetica Neue',system-ui,sans-serif;
+  --narrow:'Archivo Narrow',var(--sans);
+  --mono:'JetBrains Mono','SF Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{min-height:100vh;padding-bottom:80px}
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);transition:border-color .15s,color .15s}
+a:hover{border-bottom-color:var(--orange)}
 
-  .pub-bar {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 12px 32px;
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--narrow);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .pub-bar-mark {
-    font-family: var(--disp);
-    font-weight: 500;
-    font-size: 16px;
-    font-style: italic;
-    letter-spacing: -.01em;
-    text-transform: none;
-  }
-  .pub-bar-mark .dot { color: var(--orange); }
+/* ── masthead ── */
+.pub-bar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,250,247,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+  padding:14px 36px;
+  display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;
+}
+.pub-mark{font-family:var(--serif);font-weight:500;font-size:24px;letter-spacing:-.015em;color:var(--ink);font-style:italic}
+.pub-mark .dot{color:var(--orange);font-style:normal}
+.pub-sub{font-family:var(--narrow);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.pub-sub::before{content:'';display:inline-block;width:1px;height:12px;background:var(--hair);margin:0 16px -1px 0;vertical-align:middle}
+.pub-meta{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted)}
 
-  .hero {
-    max-width: 1240px;
-    margin: 96px auto 48px;
-    padding: 0 32px;
-  }
-  .hero-kicker {
-    font-family: var(--narrow);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 24px;
-  }
-  .hero-mast {
-    font-family: var(--disp);
-    font-weight: 600;
-    font-variation-settings: "opsz" 144;
-    font-size: clamp(96px, 16vw, 240px);
-    line-height: .85;
-    letter-spacing: -.045em;
-    color: var(--ink);
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .hero-mast .dot { color: var(--orange); }
-  .hero-mast::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: -10px;
-    height: 2px;
-    background: var(--ink);
-  }
-  .hero-deck {
-    font-family: var(--disp);
-    font-style: italic;
-    font-variation-settings: "opsz" 72;
-    font-size: clamp(24px, 3.6vw, 44px);
-    line-height: 1.2;
-    color: var(--muted);
-    margin-top: 40px;
-    max-width: 880px;
-    letter-spacing: -.015em;
-  }
-  .hero-deck em {
-    font-style: normal;
-    color: var(--orange);
-    font-weight: 500;
-  }
-  .hero-meta {
-    margin-top: 56px;
-    padding-top: 24px;
-    border-top: 1px solid var(--gray-rule);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--muted);
-  }
-  .hero-meta b { color: var(--ink); font-weight: 600; }
+main{max-width:1200px;margin:0 auto;padding:0 36px}
 
-  .archive {
-    max-width: 1240px;
-    margin: 96px auto;
-    padding: 0 32px;
-  }
-  .archive-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 12px;
-    margin-bottom: 32px;
-  }
-  .archive-kicker {
-    font-family: var(--narrow);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--orange);
-  }
-  .archive-meta {
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--muted);
-  }
+/* ── hero ── */
+.hero{
+  padding:80px 0 60px;
+  border-bottom:1px solid var(--hair);
+}
+.hero-kicker{
+  font-family:var(--narrow);font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--orange);
+  margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-kicker::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;display:inline-block}
+.hero-title{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(44px,6.2vw,96px);
+  letter-spacing:-.03em;line-height:1;
+  color:var(--ink);
+  max-width:980px;margin-bottom:28px;
+}
+.hero-title em{font-style:italic;color:var(--orange);font-weight:400}
+.hero-deck{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:22px;line-height:1.45;color:var(--muted);
+  max-width:720px;margin-bottom:36px;
+}
+.hero-meta{
+  display:flex;gap:32px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  padding-top:24px;border-top:1px solid var(--hair);
+}
+.hero-meta b{color:var(--ink);font-weight:500}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;
+  font-family:var(--narrow);font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.18em;
+  border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  cursor:pointer;transition:all .15s;
+}
+.btn:hover{background:var(--orange);border-color:var(--orange);border-bottom:1px solid var(--orange)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
 
-  .issue-card {
-    background: var(--paper-card);
-    border: 1px solid var(--gray-rule);
-    padding: 56px 64px;
-    margin-bottom: 24px;
-    display: grid;
-    grid-template-columns: 100px 1fr 200px;
-    gap: 48px;
-    align-items: start;
-    text-decoration: none;
-    color: var(--ink);
-    transition: border-color 0.15s;
-  }
-  .issue-card:hover { border-color: var(--ink); }
-  .issue-num {
-    font-family: var(--disp);
-    font-weight: 700;
-    font-variation-settings: "opsz" 144;
-    font-size: 88px;
-    line-height: 1;
-    letter-spacing: -.03em;
-    color: var(--ink);
-  }
-  .issue-num .dot { color: var(--orange); font-size: 1.1em; }
-  .issue-mid h2 {
-    font-family: var(--disp);
-    font-weight: 700;
-    font-variation-settings: "opsz" 96;
-    font-size: 36px;
-    line-height: 1.1;
-    letter-spacing: -.02em;
-    margin-bottom: 12px;
-  }
-  .issue-mid h2 em { color: var(--orange); }
-  .issue-mid p {
-    font-family: var(--disp);
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--muted);
-    max-width: 560px;
-  }
-  .issue-mid .topics {
-    margin-top: 16px;
-    font-family: var(--narrow);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .issue-mid .topics span {
-    margin-right: 16px;
-    padding-right: 16px;
-    border-right: 1px solid var(--gray-rule);
-  }
-  .issue-mid .topics span:last-child { border-right: none; }
-  .issue-right {
-    text-align: right;
-    font-family: var(--narrow);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .issue-right .date {
-    font-family: var(--disp);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.2;
-    color: var(--ink);
-    text-transform: none;
-    letter-spacing: -.01em;
-    margin-bottom: 4px;
-  }
-  .issue-right .read {
-    margin-top: 16px;
-    color: var(--orange);
-  }
+/* ── section heads ── */
+.sec-head{
+  padding:60px 0 28px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule);
+}
+.sec-head h2{
+  font-family:var(--disp);font-weight:400;font-variation-settings:"opsz" 72;
+  font-size:44px;letter-spacing:-.02em;line-height:1;color:var(--ink);
+}
+.sec-head h2 em{font-style:italic;color:var(--orange)}
+.sec-head .archive-meta{
+  font-family:var(--narrow);font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.2em;color:var(--muted);
+}
 
-  .next-up {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 72px 64px;
-    margin-top: 56px;
-    text-align: center;
-  }
-  .next-up-kicker {
-    font-family: var(--narrow);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 20px;
-  }
-  .next-up h3 {
-    font-family: var(--disp);
-    font-weight: 600;
-    font-style: italic;
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1.15;
-    letter-spacing: -.02em;
-    margin-bottom: 16px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .next-up h3 em { font-style: normal; color: var(--orange); }
-  .next-up p {
-    font-family: var(--sans);
-    font-size: 15px;
-    color: rgba(250,250,247,.7);
-    max-width: 540px;
-    margin: 0 auto 32px;
-    line-height: 1.55;
-  }
-  .sub-form {
-    display: flex;
-    max-width: 480px;
-    margin: 0 auto;
-    gap: 0;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    transition: border-color 0.15s;
-  }
-  .sub-form:focus-within { border-color: var(--orange); }
-  .sub-form input[type="email"] {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--paper);
-    font-family: var(--sans);
-    font-size: 15px;
-    padding: 16px 20px;
-    -webkit-appearance: none;
-  }
-  .sub-form input[type="email"]::placeholder { color: rgba(250,250,247,.4); }
-  .sub-form button {
-    background: var(--orange);
-    color: var(--ink);
-    border: none;
-    font-family: var(--narrow);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    padding: 0 28px;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .sub-form button:hover { background: #ff5722; }
-  .sub-form button:disabled { opacity: 0.5; cursor: wait; }
-  .sub-meta {
-    margin-top: 16px;
-    font-family: var(--narrow);
-    font-size: 11px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: rgba(250,250,247,.45);
-  }
-  .sub-status {
-    margin-top: 16px;
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--orange);
-    min-height: 20px;
-  }
-  .sub-status.error { color: #ff8b6b; }
-  @media (max-width: 540px) {
-    .next-up { padding: 48px 24px; }
-    .sub-form { flex-direction: column; }
-    .sub-form button { padding: 16px 28px; }
-  }
+/* ── archive cards ── */
+.archive{padding:36px 0 60px}
+.archive-head{margin-bottom:28px}
+.issue-card{
+  display:grid;grid-template-columns:120px 1fr auto;gap:32px;
+  padding:28px 0;
+  border-bottom:1px solid var(--hair);
+  border-left:none;border-right:none;border-top:none;
+  transition:background .2s;
+  align-items:start;
+}
+.issue-card:hover{background:var(--paper-shadow);padding-left:24px;padding-right:24px;border-radius:6px;border-bottom-color:transparent}
+.issue-card:hover + .issue-card{border-top:1px solid var(--hair)}
+.issue-num{
+  font-family:var(--disp);font-weight:400;font-variation-settings:"opsz" 144;
+  font-size:72px;letter-spacing:-.04em;line-height:1;color:var(--ink);
+}
+.issue-num .dot{color:var(--orange);font-style:italic}
+.issue-mid h2{
+  font-family:var(--disp);font-weight:400;font-variation-settings:"opsz" 72;
+  font-size:30px;letter-spacing:-.015em;line-height:1.15;color:var(--ink);
+  margin-bottom:8px;
+}
+.issue-mid h2 em{font-style:italic}
+.issue-mid p{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:16px;line-height:1.5;color:var(--muted);
+  margin-bottom:14px;max-width:560px;
+}
+.topics{display:flex;gap:6px;flex-wrap:wrap}
+.topics span{
+  font-family:var(--narrow);font-size:10px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.15em;
+  padding:4px 8px;background:var(--paper-mid);color:var(--muted);
+}
+.issue-right{
+  text-align:right;
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  display:flex;flex-direction:column;gap:6px;justify-content:space-between;
+  min-height:100px;
+}
+.issue-right .date{font-size:13px;color:var(--ink);font-weight:500}
+.issue-right .read{
+  margin-top:auto;
+  font-family:var(--narrow);font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--orange);
+}
 
-  .footer {
-    max-width: 1240px;
-    margin: 96px auto 64px;
-    padding: 0 32px;
-    border-top: 1px solid var(--gray-rule);
-    padding-top: 32px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 24px;
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.2); }
+/* ── next-up banner (between archive and about) ── */
+.next-up{
+  background:var(--ink);color:var(--paper);
+  padding:28px 36px;margin:20px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.next-up-label{
+  font-family:var(--narrow);font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--orange);
+}
+.next-up-text{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:18px;color:var(--paper);
+}
 
-  @media (max-width: 768px) {
-    .issue-card {
-      grid-template-columns: 1fr;
-      padding: 32px 24px;
-      gap: 24px;
-    }
-    .issue-num { font-size: 64px; }
-    .issue-mid h2 { font-size: 28px; }
-    .issue-right { text-align: left; }
-    .next-up { padding: 40px 24px; }
-    .next-up h3 { font-size: 24px; }
-  }
+/* ── about section ── */
+.about{padding:60px 0}
+.about-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;
+  margin-top:36px;
+}
+.about-card h3{
+  font-family:var(--disp);font-weight:400;font-variation-settings:"opsz" 72;
+  font-size:24px;letter-spacing:-.015em;color:var(--ink);margin-bottom:14px;
+}
+.about-card h3 em{font-style:italic;color:var(--orange)}
+.about-card p{
+  font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--body);
+  margin-bottom:14px;
+}
+.about-card p:last-child{margin-bottom:0}
+
+/* ── pipeline diagram ── */
+.pipeline{
+  background:var(--paper-shadow);
+  padding:36px 28px;margin-top:36px;
+  border:1px solid var(--hair);
+}
+.pipeline-title{
+  font-family:var(--narrow);font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--muted);
+  margin-bottom:18px;
+}
+.pipeline-steps{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:13px;
+}
+.pipeline-step{
+  padding:8px 14px;background:var(--paper);border:1px solid var(--hair-hard);
+  color:var(--ink);white-space:nowrap;
+}
+.pipeline-step.human{background:var(--orange);border-color:var(--orange);color:var(--paper);font-weight:600}
+.pipeline-arrow{color:var(--muted);font-family:var(--mono)}
+
+/* ── subscribe ── */
+.subscribe{
+  padding:60px 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  margin-top:60px;
+  text-align:center;
+}
+.subscribe-kicker{
+  font-family:var(--narrow);font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--orange);
+  margin-bottom:14px;
+}
+.subscribe h2{
+  font-family:var(--disp);font-weight:400;font-variation-settings:"opsz" 144;
+  font-size:clamp(36px,5vw,64px);letter-spacing:-.025em;line-height:1;color:var(--ink);
+  margin-bottom:18px;
+}
+.subscribe h2 em{font-style:italic;color:var(--orange)}
+.subscribe p{
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:18px;color:var(--muted);
+  max-width:520px;margin:0 auto 32px;
+}
+.subscribe-form{
+  display:flex;gap:8px;max-width:520px;margin:0 auto;
+  flex-wrap:wrap;justify-content:center;
+}
+.subscribe-form input{
+  flex:1 1 260px;
+  padding:16px 20px;
+  font-family:var(--sans);font-size:15px;
+  border:1px solid var(--ink);background:var(--paper);color:var(--ink);
+  outline:none;
+}
+.subscribe-form input:focus{border-color:var(--orange)}
+.subscribe-note{
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  margin-top:18px;
+}
+.subscribe-success{
+  display:none;
+  font-family:var(--serif);font-weight:400;font-style:italic;
+  font-size:18px;color:var(--teal);
+  max-width:520px;margin:0 auto;
+}
+.subscribe-success.shown{display:block}
+.subscribe-form.hidden{display:none}
+
+/* ── footer ── */
+footer{
+  padding:48px 0 20px;
+  font-family:var(--mono);font-size:12px;color:var(--muted);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-top:1px solid var(--hair);
+  margin-top:60px;
+}
+
+/* ── responsive ── */
+@media(max-width:720px){
+  main{padding:0 20px}
+  .pub-bar{padding:12px 20px}
+  .issue-card{grid-template-columns:72px 1fr;gap:18px}
+  .issue-num{font-size:52px}
+  .issue-mid h2{font-size:22px}
+  .issue-right{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:space-between;min-height:auto;padding-top:12px;border-top:1px solid var(--hair)}
+  .issue-right .read{margin-top:0}
+  .hero{padding:48px 0 40px}
+  .sec-head h2{font-size:32px}
+}
 </style>
 </head>
 <body>
 
-<div class="pub-bar">
-  <span class="pub-bar-mark">Shipped<span class="dot">.</span></span>
-  <span>id8labs.app/shipped &nbsp;·&nbsp; A weekly magazine</span>
-</div>
+<nav class="pub-bar">
+  <span class="pub-mark">Shipped<span class="dot">.</span></span>
+  <span class="pub-sub">A weekly magazine on what Anthropic ships</span>
+  <span class="pub-meta">Founded April 2026 · Volume I</span>
+</nav>
 
-<section class="hero">
-  <div class="hero-kicker">A weekly magazine, by id8Labs</div>
-  <div class="hero-mast">Shipped<span class="dot">.</span></div>
-  <p class="hero-deck">A magazine of <em>what Anthropic ships</em>. Models, features, Claude Code, SDKs, research, partnerships — every release in one read. Every Friday at 9 AM ET.</p>
-  <div class="hero-meta">
-    <span><b>Published</b> Every Friday, 9 AM ET</span>
-    <span><b>Beat</b> Anthropic releases</span>
-    <span><b>Format</b> Editorial + comprehensive Release Log</span>
-    <span><b>Reading time</b> 25–40 min</span>
-  </div>
-</section>
+<main>
 
-<section class="archive">
-  <div class="archive-head">
-    <span class="archive-kicker">Archive</span>
-    <span class="archive-meta">1 issue · Founded April 2026</span>
-  </div>
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-kicker">This Friday · 9 AM ET</div>
+    <h1 class="hero-title">The week in Anthropic, <em>tied together.</em></h1>
+    <p class="hero-deck">Every Anthropic ship in one place. Models, agents, infrastructure, the stories behind them. Auto-ops, human-voice. Edited by a person. Shipped by a pipeline. Every Friday, one issue.</p>
+    <div class="hero-cta">
+      <a href="/shipped/02/" class="btn">Read the latest issue</a>
+      <a href="#subscribe" class="btn btn-ghost">Subscribe</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>2</b> issues published</span>
+      <span><b>56+</b> Anthropic releases tracked</span>
+      <span><b>9</b> slash commands drive the pipeline</span>
+      <span><b>1</b> human gate at publish</span>
+    </div>
+  </section>
 
-  <a href="/shipped/01/" class="issue-card">
-    <div class="issue-num">01<span class="dot">.</span></div>
-    <div class="issue-mid">
-      <h2>The chart that <em>wasn't</em> about Opus 4.7.</h2>
-      <p>Three weeks of Anthropic, in one read. Plus: the model you can't have. Founding issue covers Opus 4.7's launch, Project Glasswing, the Mythos shadow, the agent stack going serious, and 56 releases in 21 days.</p>
-      <div class="topics">
-        <span>Opus 4.7</span>
-        <span>Mythos Preview</span>
-        <span>Project Glasswing</span>
-        <span>Agent SDK</span>
-        <span>Claude Code v2.1.85→111</span>
+  <!-- ═══ ARCHIVE ═══ -->
+  <section class="archive" id="archive">
+    <div class="sec-head archive-head">
+      <h2>The <em>archive</em>.</h2>
+      <span class="archive-meta">2 issues · Founded April 2026</span>
+    </div>
+
+    <!-- Issue cards: newest first. The pipeline inserts new cards here on every render. -->
+
+    <a href="/shipped/02/" class="issue-card">
+      <div class="issue-num">02<span class="dot">.</span></div>
+      <div class="issue-mid">
+        <h2>Presence.</h2>
+        <p>The product turn, the leak that was a roadmap, and the trust margin under it all.</p>
+        <div class="topics">
+          <span>Claude Design</span>
+          <span>Project Conway</span>
+          <span>Trust Week</span>
+          <span>Mythos regulators</span>
+          <span>OpenClaw reversal</span>
+        </div>
+      </div>
+      <div class="issue-right">
+        <div class="date">Apr 24, 2026</div>
+        <div>Presence</div>
+        <div class="read">Read →</div>
+      </div>
+    </a>
+
+    <a href="/shipped/01/" class="issue-card">
+      <div class="issue-num">01<span class="dot">.</span></div>
+      <div class="issue-mid">
+        <h2>The chart that <em>wasn't</em> about Opus 4.7.</h2>
+        <p>Three weeks of Anthropic, in one read. Plus: the model you can't have.</p>
+        <div class="topics">
+          <span>Opus 4.7</span>
+          <span>Mythos Preview</span>
+          <span>Project Glasswing</span>
+          <span>Agent SDK</span>
+          <span>Cowork GA</span>
+        </div>
+      </div>
+      <div class="issue-right">
+        <div class="date">Apr 17, 2026</div>
+        <div>The Shadow Release</div>
+        <div class="read">Read →</div>
+      </div>
+    </a>
+
+    <div class="next-up">
+      <div>
+        <div class="next-up-label">Next issue</div>
+        <div class="next-up-text">Issue 03 — Friday, May 1, 2026</div>
+      </div>
+      <a href="#subscribe" class="btn" style="background:var(--orange);border-color:var(--orange)">Get it in your inbox</a>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about" id="about">
+    <div class="sec-head">
+      <h2>What this <em>is</em>.</h2>
+      <span class="archive-meta">About</span>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>The <em>premise</em>.</h3>
+        <p>Anthropic ships at a pace that's blinding. In three weeks before Issue 01, Anthropic pushed 56 releases across models, Claude Code, SDKs, and research. X and Reddit cover them in fragments. Nobody ties the week together.</p>
+        <p>Shipped. does. Every Friday at 9 AM ET, one issue, one read. Lead story, feature, investigation, release log. The whole week in order.</p>
+      </div>
+
+      <div class="about-card">
+        <h3>The <em>doctrine</em>.</h3>
+        <p><b>Auto-ops, human-voice.</b> The pipeline scrapes, assembles, verifies, and stages every issue automatically. Nine slash commands drive it, from Monday signal to Friday ship.</p>
+        <p>The voice is not automated. Every word of every front-of-book section is edited by a person against a voice gate that bans press-release language and enforces a kill list of forbidden phrases.</p>
+      </div>
+
+      <div class="about-card">
+        <h3>The <em>gate</em>.</h3>
+        <p>The pipeline stages the issue. A human pushes it live. That sequence does not change. The publish button is not automated. This isn't a philosophical position — it's the structural guarantee that an issue never ships without someone reading it first.</p>
+        <p>Edited by <a href="https://id8labs.app">Eddie Belaval</a>. Published by id8Labs.</p>
       </div>
     </div>
-    <div class="issue-right">
-      <div class="date">Apr 17, 2026</div>
-      <div>Founding Issue</div>
-      <div class="read">Read →</div>
+
+    <div class="pipeline">
+      <div class="pipeline-title">The pipeline · one week</div>
+      <div class="pipeline-steps">
+        <span class="pipeline-step">Mon signal</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-step">Tue/Wed WIP</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-step">Thu lock + draft</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-step">Fri verify + preflight</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-step human">Fri 9 AM · human push</span>
+        <span class="pipeline-arrow">→</span>
+        <span class="pipeline-step">Sat listen</span>
+      </div>
     </div>
-  </a>
+  </section>
 
-  <div class="next-up">
-    <div class="next-up-kicker">Subscribe</div>
-    <h3>Get <em>Shipped.</em> in your inbox every Friday at 9 AM ET.</h3>
-    <p>One read on what Anthropic shipped this week. Editorial up front, comprehensive Release Log in back. No spam, unsubscribe one click.</p>
-    <form class="sub-form" id="shipped-subscribe-form">
-      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
-      <button type="submit" id="shipped-subscribe-btn">Subscribe →</button>
+  <!-- ═══ SUBSCRIBE ═══ -->
+  <section class="subscribe" id="subscribe">
+    <div class="subscribe-kicker">Every Friday · 9 AM ET</div>
+    <h2>Get it in your <em>inbox</em>.</h2>
+    <p>One email per week. The full issue, the full release log, the week in Anthropic tied together. No upsells. Unsubscribe with one click.</p>
+    <form class="subscribe-form" id="subscribe-form" action="/api/newsletter/subscribe" method="POST">
+      <input type="email" name="email" placeholder="you@domain.com" required aria-label="Email address">
+      <button type="submit" class="btn">Subscribe</button>
     </form>
-    <div class="sub-meta">Next issue — Apr 24, 2026</div>
-    <div class="sub-status" id="shipped-subscribe-status" aria-live="polite"></div>
-  </div>
-</section>
+    <div class="subscribe-success" id="subscribe-success">
+      <p>Got it. First issue arrives Friday 9 AM ET.</p>
+    </div>
+    <p class="subscribe-note">One email per week. Unsubscribe anytime with one click. We use <a href="https://resend.com">Resend</a> to send, <a href="https://supabase.com">Supabase</a> to store. Your email stays with us.</p>
 
-<script>
-(function() {
-  const form = document.getElementById('shipped-subscribe-form');
-  const btn = document.getElementById('shipped-subscribe-btn');
-  const status = document.getElementById('shipped-subscribe-status');
-  if (!form) return;
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = form.email.value.trim();
-    if (!email) return;
-    btn.disabled = true;
-    status.classList.remove('error');
-    status.textContent = 'Subscribing…';
-    try {
-      const res = await fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'shipped-magazine-archive' })
-      });
-      const data = await res.json().catch(function(){ return {}; });
-      if (res.ok) {
-        status.textContent = 'You\u2019re in. Issue 02 lands April 24 at 9 AM ET.';
-        form.reset();
-      } else {
-        status.classList.add('error');
-        status.textContent = (data && data.error) || 'Something went wrong. Try again in a moment.';
-      }
-    } catch (err) {
-      status.classList.add('error');
-      status.textContent = 'Network error. Try again in a moment.';
-    } finally {
-      btn.disabled = false;
-    }
-  });
-})();
-</script>
+    <script>
+      (function(){
+        var form = document.getElementById('subscribe-form');
+        if (!form) return;
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          var email = form.email.value.trim();
+          if (!email) return;
+          var btn = form.querySelector('button');
+          var original = btn.textContent;
+          btn.textContent = 'Subscribing…';
+          btn.disabled = true;
+          try {
+            var res = await fetch(form.action, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email, source: 'shipped-archive' })
+            });
+            if (res.ok) {
+              form.classList.add('hidden');
+              document.getElementById('subscribe-success').classList.add('shown');
+            } else {
+              var data = await res.json().catch(function(){ return {}; });
+              btn.textContent = original;
+              btn.disabled = false;
+              alert(data.error || 'Could not subscribe right now. Try again in a moment.');
+            }
+          } catch (err) {
+            btn.textContent = original;
+            btn.disabled = false;
+            alert('Could not subscribe right now. Try again in a moment.');
+          }
+        });
+      })();
+    </script>
+  </section>
 
-<footer class="footer">
-  <span>© 2026 <a href="/">id8Labs</a> &nbsp;·&nbsp; All rights reserved</span>
-  <span><b>Shipped<span style="color:var(--orange)">.</span></b> &nbsp;·&nbsp; Set in Fraunces &amp; Archivo</span>
-  <span>Generated by <code style="font-family:var(--mono)">/shipped</code> &nbsp;·&nbsp; Designed by Iris</span>
-</footer>
+  <footer>
+    <div>
+      <b>Shipped.</b> · Issue 02 ships Friday April 24, 2026 · 9 AM ET
+    </div>
+    <div>
+      Published by <a href="https://id8labs.app">id8Labs</a> · Edited by Eddie Belaval
+    </div>
+  </footer>
+
+</main>
 
 </body>
 </html>
