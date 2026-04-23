@@ -1548,7 +1548,7 @@ body::before{
 
 <div class="prose-well">
   <div class="prose drop-cap drop-cap-orange">
-    <p>Thursday, 9 AM. Anthropic shipped Claude Design, a product, not a model, the same morning Issue 01 hit. Pro, Max, Team, and Enterprise subscribers got access. Everyone else got a waitlist.</p>
+    <p>The model-first era was never going to end with an announcement. It would end with a product. Thursday morning, Anthropic shipped Claude Design, a component library for designers, not a model for developers. Pro, Max, Team, and Enterprise got access. Everyone else got a waitlist.</p>
     <p>Claude Design turns a prompt, a codebase, or a half-written PRD into something you can send somewhere. Pitch decks, prototypes, one-pagers, full design systems. Exports to PDF, URL, PPTX, or Canva, where the artifact stays editable. Powered by Opus 4.7.</p>
     <p>Figma closed down 7.28%.</p>
     <p>The market's first read is split almost exactly down the middle. Brilliant and Datadog, on record, call it a step change, twenty prompts compressed to two, week-long cycles collapsed into a conversation. The r/ClaudeAI community landed on what one recap called "a resounding meh," every application looks the same unless you upload your own design tokens.</p>
@@ -1575,14 +1575,14 @@ body::before{
 
 <div class="prose-well">
   <div class="prose drop-cap">
-    <p>Lovable, the AI-native app builder, ran a broken object-level authorization flaw that exposed source code, database credentials, and AI chat histories from public projects. A HackerOne report sat for forty-eight days, closed as intended behavior.</p>
+    <p>A vulnerability disclosed is a vulnerability. A vulnerability filed as intended behavior is a posture. Lovable, the AI-native app builder, chose the second for forty-eight days. Source code, database credentials, and AI chat histories from public projects leaked through a broken object-level authorization flaw. HackerOne report sat. Closed as intended behavior.</p>
     <p>Over three weeks in April, Lovable's public story shifted four times.</p>
     <p>First position. Intentional. Public projects are public. Report closed. Second position. HackerOne's fault, the triagers closed the reports as duplicates. Third position. Admission: a February 2026 permissions-unification accidentally re-enabled access to public-project chats that were supposed to be private. Fourth position. Partial fix shipped. New projects patched.</p>
     <p>New projects only.</p>
     <p>Every pre-existing Lovable project created before November 2025 remains exposed. Source code, database credentials, AI chat transcripts, still reachable. Techloy's headline says Lovable "fixes" it. The Register and Computing.co.uk say the fix is new-projects-only. That gap is the story.</p>
     <p>Public project in Lovable is a looser concept than most readers assume. A project could be discoverable while its chats and embedded secrets were, per Lovable's own documentation, supposed to be private. A UI label doing load-bearing work without a contract behind it.</p>
     <p>This is not a vulnerability post. It's a trust-margin collapse. The pattern across AI-native platforms repeats. The platform holds more trust than it deserves, something goes wrong, and the public story evolves faster than the fix. The four positions are the story.</p>
-    <p>Weekend incident, disclosed Sunday April 19. Vercel traced a security breach to stolen employee credentials used through an OAuth-connected AI tool. Context.ai had been granted, at install, read access to Vercel's environment. Someone clicked through the scope six months ago. An attacker pivoted through that session into Vercel's systems.</p>
+    <p>OAuth is a promise with a half-life. Six months ago someone at Vercel clicked through a scope. Sunday, April 19, the bill came due. Stolen employee credentials, used through an AI tool called Context.ai that had been granted read access to Vercel's environment at install. One session, six months old, became the pivot.</p>
     <p>Environment variables marked non-sensitive were exposed. Variables marked sensitive were encrypted at rest and are believed safe. Vercel's fix, per its bulletin, flips the default: new env vars default to <code>sensitive: on</code> going forward. Legacy non-sensitive vars stay in their original state until manually rotated.</p>
     <p>Non-sensitive was a UI label, not a security property.</p>
     <p>Per GitGuardian's analysis, non-sensitive env vars routinely contain API keys to analytics and logging, staging database strings, auth tokens for internal services, feature-flag provider secrets. All of it reachable by whoever held Context.ai's OAuth grant. The default was the problem. The flip is forward-looking only.</p>
@@ -1691,7 +1691,7 @@ body::before{
 
 <div class="prose-well">
   <div class="prose drop-cap">
-    <p>On March 31, 2026, Anthropic shipped <code>@anthropic-ai/claude-code</code> v2.1.88 with a missing <code>.npmignore</code> entry. The package included a 59.8 MB source map. Roughly 512,000 lines of TypeScript across 1,906 files. Anthropic confirmed a packaging error, not a breach. The source is now the fastest-growing repo in GitHub history, in mirrors.</p>
+    <p>The fastest-growing repo in GitHub history this month wasn't open-sourced. It was leaked. <code>@anthropic-ai/claude-code</code> v2.1.88 shipped on March 31 with a 59.8 MB source map packed by mistake, an <code>.npmignore</code> entry that wasn't there. Roughly 512,000 lines of TypeScript across 1,906 files. Anthropic confirmed a packaging error, not a breach. The mirrors did the rest.</p>
     <p>What emerged is a catalog of unshipped product.</p>
     <p>The editorially significant one is <strong>Project Conway</strong>. An always-on, persistent background agent. Three UI panes, Search, Chat, System. Webhook-triggered execution. Browser control. GitHub subscription hooks. As of this week, TestingCatalog reports the iOS build of Claude carries a hidden feature flag for managed 24/7 agents. The leak is old. The staging is current.</p>
     <p>Conway is a daemon.</p>
@@ -1724,7 +1724,7 @@ body::before{
       <p>The committed process changes read like the audit the community asked for: broader per-model evals on every system-prompt change, soak periods for intelligence-impacting changes, staff dogfooding the public build, @ClaudeDevs and GitHub threads for faster transparency. One quoted line matters. <em>"Opus 4.7 found the bug, while Opus 4.6 didn't."</em> The model that caught the regression is the one the company couldn't have used two weeks earlier.</p>
       <p>The silence Fortune named is over. The r/ClaudeAI <em>meh</em> was early.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Vercel flips env-var default to sensitive:on.</h3>
-      <p>Vercel's April bulletin confirms the default for new environment variables flips to <code>sensitive: on</code> going forward. Previously, non-sensitive was the default; users had to opt in. Per GitGuardian's reading of the bulletin, pre-existing env vars stay in their original state until manually rotated. The fix is a default change, not a migration. Legacy non-sensitive vars need manual rotation and re-flagging. Watch Netlify, Railway, Render for parallel moves. The default was the problem.</p>
+      <p>The right default is the one you'd pick on your worst day. Vercel's April bulletin flips new environment variables to <code>sensitive: on</code> going forward, the correct default three years late. Per GitGuardian's reading, pre-existing env vars stay in their original state until manually rotated. This is a default change, not a migration. Legacy non-sensitive vars need manual rotation and re-flagging. Watch Netlify, Railway, Render for parallel moves. The default was the problem.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The field moved too: OpenAI and Google's week.</h3>
       <p>The product turn is not Anthropic's alone. OpenAI shipped GPT-Rosalind (frontier reasoning for biology, drug discovery) on April 17, expanded Codex into computer use, memory, SSH devboxes, and in-app browsing on April 21, and released workspace agents OpenAI calls "an evolution of GPTs." Google shipped Gemini Personal Intelligence reading Gmail and Photos to generate images without explicit prompts, revamped Gemini Enterprise as an "agentic taskforce" at Cloud Next, and committed $750M to 120,000 partners to accelerate agentic-AI adoption. Chrome auto-browse. Pentagon talks. Three labs, one week, one direction. Vertical products and agent platforms, staged or shipped. The bet is the same bet.</p>
     </div>
@@ -2214,7 +2214,7 @@ body::before{
         <p><b>Volume</b> I</p>
         <p><b>Issue</b> 02 (Presence)</p>
         <p><b>Period</b> 2026-04-17 → 2026-04-24</p>
-        <p><b>Front of book</b> 2289 words</p>
+        <p><b>Front of book</b> 2331 words</p>
         <p><b>Release log</b> 17 entries · 4 sections</p>
         <p><b>Status</b> Draft</p>
       </div>
