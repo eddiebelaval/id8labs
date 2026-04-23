@@ -1538,6 +1538,69 @@ body::before{
     </aside>
   </div>
 </section>
+<div class="feature-opener" id="lead">
+  <span class="vert-label">The Lead Story <span class="vert-num">01</span></span>
+  <div class="feature-heading">
+    <div class="feature-kicker">Report by Eddie Belaval</div>
+    <h2 class="feature-title">Claude Design, and the product turn.</h2>
+  </div>
+</div>
+
+<div class="prose-well">
+  <div class="prose drop-cap drop-cap-orange">
+    <p>Thursday, 9 AM. Anthropic shipped Claude Design, a product, not a model, the same morning Issue 01 hit. Pro, Max, Team, and Enterprise subscribers got access. Everyone else got a waitlist.</p>
+    <p>Claude Design turns a prompt, a codebase, or a half-written PRD into something you can send somewhere. Pitch decks, prototypes, one-pagers, full design systems. Exports to PDF, URL, PPTX, or Canva, where the artifact stays editable. Powered by Opus 4.7.</p>
+    <p>Figma closed down 7.28%.</p>
+    <p>The market's first read is split almost exactly down the middle. Brilliant and Datadog, on record, call it a step change, twenty prompts compressed to two, week-long cycles collapsed into a conversation. The r/ClaudeAI community landed on what one recap called "a resounding meh," every application looks the same unless you upload your own design tokens.</p>
+    <p>Both reads are true. For a team with a design system, Claude Design is a compression engine. For an individual trying to ship something with character, it's a mirror that returns whatever average its training produced.</p>
+    <p>Claude Code was the first consumer-facing product Anthropic moved up the stack into. Claude Design is the second. Conway, in the leaked source, is the third staging. Anthropic is not building an API company. It is building a product company whose products happen to be powered by its own models.</p>
+    <p>The distribution choice is the tell. Exports flow to Canva, not Figma. Designers already have their tool. Claude Design is aimed at the team member who opens Canva at 4 PM the Tuesday before an all-hands.</p>
+    <p>That team member has a name. It might be you.</p>
+  </div>
+</div>
+
+
+
+
+
+<span class="ornament bold">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
+
+<div class="feature-opener" id="investigation">
+  <span class="vert-label">Investigation</span>
+  <div class="feature-heading">
+    <div class="feature-kicker">Reporting by Eddie Belaval</div>
+    <h2 class="feature-title">Trust Week.</h2>
+  </div>
+</div>
+
+<div class="prose-well">
+  <div class="prose drop-cap">
+    <p>Lovable, the AI-native app builder, ran a broken object-level authorization flaw that exposed source code, database credentials, and AI chat histories from public projects. A HackerOne report sat for forty-eight days, closed as intended behavior.</p>
+    <p>Over three weeks in April, Lovable's public story shifted four times.</p>
+    <p>First position. Intentional. Public projects are public. Report closed. Second position. HackerOne's fault, the triagers closed the reports as duplicates. Third position. Admission: a February 2026 permissions-unification accidentally re-enabled access to public-project chats that were supposed to be private. Fourth position. Partial fix shipped. New projects patched.</p>
+    <p>New projects only.</p>
+    <p>Every pre-existing Lovable project created before November 2025 remains exposed. Source code, database credentials, AI chat transcripts, still reachable. Techloy's headline says Lovable "fixes" it. The Register and Computing.co.uk say the fix is new-projects-only. That gap is the story.</p>
+    <p>Public project in Lovable is a looser concept than most readers assume. A project could be discoverable while its chats and embedded secrets were, per Lovable's own documentation, supposed to be private. A UI label doing load-bearing work without a contract behind it.</p>
+    <p>This is not a vulnerability post. It's a trust-margin collapse. The pattern across AI-native platforms repeats. The platform holds more trust than it deserves, something goes wrong, and the public story evolves faster than the fix. The four positions are the story.</p>
+    <p>Weekend incident, disclosed Sunday April 19. Vercel traced a security breach to stolen employee credentials used through an OAuth-connected AI tool. Context.ai had been granted, at install, read access to Vercel's environment. Someone clicked through the scope six months ago. An attacker pivoted through that session into Vercel's systems.</p>
+    <p>Environment variables marked non-sensitive were exposed. Variables marked sensitive were encrypted at rest and are believed safe. Vercel's fix, per its bulletin, flips the default: new env vars default to <code>sensitive: on</code> going forward. Legacy non-sensitive vars stay in their original state until manually rotated.</p>
+    <p>Non-sensitive was a UI label, not a security property.</p>
+    <p>Per GitGuardian's analysis, non-sensitive env vars routinely contain API keys to analytics and logging, staging database strings, auth tokens for internal services, feature-flag provider secrets. All of it reachable by whoever held Context.ai's OAuth grant. The default was the problem. The flip is forward-looking only.</p>
+    <p>Then the attribution cracked. A BreachForums listing offered Vercel data for two million dollars, initially credited to ShinyHunters. On Monday and Tuesday of this week, the group told BleepingComputer and Hackread they are not involved. The listing remains live. The identity behind it is now unclear.</p>
+    <p>The AI twist sharpens it. The pivot mechanism was an AI-native OAuth grant. The modern builder stack is OAuth-all-the-way-down. Vercel is the first large-scale public demonstration of AI-tool-as-OAuth-pivot in the wild.</p>
+    <p>The model Issue 01 introduced as a capability ceiling became, one week later, a policy object. US Treasury. Bank of England. Financial Stability Board. White House Chief of Staff. The sitting US President. Same artifact, new room.</p>
+    <p>Monday, April 17. US Treasury Secretary Scott Bessent summoned leaders of the largest US banks to discuss the cyber risk posed by Claude Mythos. The same day, White House Chief of Staff Susie Wiles met with Dario Amodei. Per National Today, "productive and constructive." Across the week, at the IMF and World Bank spring meetings in Washington, central bankers focused on whether Mythos exposes weak spots in bank cyber defenses.</p>
+    <p>Monday, April 21. Trump told reporters Anthropic is "shaping up" and open to a Pentagon deal.</p>
+    <p>Tuesday and Wednesday. Per the Financial Times, UK regulators rush to assess. Bank of England Governor Andrew Bailey, who chairs the Financial Stability Board, calls the issue <em>"a very serious challenge for all of us."</em></p>
+    <p>And from Dario, to the FT, the same week: <em>"I don't want AI turned on our own people."</em></p>
+    <p>Five regulatory venues. Seven days. Zero public-release commitments on Mythos. No prior AI company has had its strongest model named by G-10 bank regulators as a systemic risk before public release.</p>
+    <p>Capability outruns framework. Same shape as the two substories above. At sovereign scale.</p>
+  </div>
+</div>
+
+
+
+<span class="ornament">&sect; &nbsp; &sect; &nbsp; &sect;</span>
 <section class="btn-section" id="numbers">
   <div class="section" style="padding-top:64px;padding-bottom:0">
     <div class="section-folio">
@@ -1618,69 +1681,6 @@ body::before{
     </div>
   </div>
 </section>
-<div class="feature-opener" id="lead">
-  <span class="vert-label">The Lead Story <span class="vert-num">01</span></span>
-  <div class="feature-heading">
-    <div class="feature-kicker">Report by Eddie Belaval</div>
-    <h2 class="feature-title">Claude Design, and the product turn.</h2>
-  </div>
-</div>
-
-<div class="prose-well">
-  <div class="prose drop-cap drop-cap-orange">
-    <p>Thursday, 9 AM. Anthropic shipped Claude Design, a product, not a model, the same morning Issue 01 hit. Pro, Max, Team, and Enterprise subscribers got access. Everyone else got a waitlist.</p>
-    <p>Claude Design turns a prompt, a codebase, or a half-written PRD into something you can send somewhere. Pitch decks, prototypes, one-pagers, full design systems. Exports to PDF, URL, PPTX, or Canva, where the artifact stays editable. Powered by Opus 4.7.</p>
-    <p>Figma closed down 7.28%.</p>
-    <p>The market's first read is split almost exactly down the middle. Brilliant and Datadog, on record, call it a step change, twenty prompts compressed to two, week-long cycles collapsed into a conversation. The r/ClaudeAI community landed on what one recap called "a resounding meh," every application looks the same unless you upload your own design tokens.</p>
-    <p>Both reads are true. For a team with a design system, Claude Design is a compression engine. For an individual trying to ship something with character, it's a mirror that returns whatever average its training produced.</p>
-    <p>Claude Code was the first consumer-facing product Anthropic moved up the stack into. Claude Design is the second. Conway, in the leaked source, is the third staging. Anthropic is not building an API company. It is building a product company whose products happen to be powered by its own models.</p>
-    <p>The distribution choice is the tell. Exports flow to Canva, not Figma. Designers already have their tool. Claude Design is aimed at the team member who opens Canva at 4 PM the Tuesday before an all-hands.</p>
-    <p>That team member has a name. It might be you.</p>
-  </div>
-</div>
-
-
-
-
-
-<span class="ornament bold">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
-
-<div class="feature-opener" id="investigation">
-  <span class="vert-label">Investigation</span>
-  <div class="feature-heading">
-    <div class="feature-kicker">Reporting by Eddie Belaval</div>
-    <h2 class="feature-title">Trust Week.</h2>
-  </div>
-</div>
-
-<div class="prose-well">
-  <div class="prose drop-cap">
-    <p>Lovable, the AI-native app builder, ran a broken object-level authorization flaw that exposed source code, database credentials, and AI chat histories from public projects. A HackerOne report sat for forty-eight days, closed as intended behavior.</p>
-    <p>Over three weeks in April, Lovable's public story shifted four times.</p>
-    <p>First position. Intentional. Public projects are public. Report closed. Second position. HackerOne's fault, the triagers closed the reports as duplicates. Third position. Admission: a February 2026 permissions-unification accidentally re-enabled access to public-project chats that were supposed to be private. Fourth position. Partial fix shipped. New projects patched.</p>
-    <p>New projects only.</p>
-    <p>Every pre-existing Lovable project created before November 2025 remains exposed. Source code, database credentials, AI chat transcripts, still reachable. Techloy's headline says Lovable "fixes" it. The Register and Computing.co.uk say the fix is new-projects-only. That gap is the story.</p>
-    <p>Public project in Lovable is a looser concept than most readers assume. A project could be discoverable while its chats and embedded secrets were, per Lovable's own documentation, supposed to be private. A UI label doing load-bearing work without a contract behind it.</p>
-    <p>This is not a vulnerability post. It's a trust-margin collapse. The pattern across AI-native platforms repeats. The platform holds more trust than it deserves, something goes wrong, and the public story evolves faster than the fix. The four positions are the story.</p>
-    <p>Weekend incident, disclosed Sunday April 19. Vercel traced a security breach to stolen employee credentials used through an OAuth-connected AI tool. Context.ai had been granted, at install, read access to Vercel's environment. Someone clicked through the scope six months ago. An attacker pivoted through that session into Vercel's systems.</p>
-    <p>Environment variables marked non-sensitive were exposed. Variables marked sensitive were encrypted at rest and are believed safe. Vercel's fix, per its bulletin, flips the default: new env vars default to <code>sensitive: on</code> going forward. Legacy non-sensitive vars stay in their original state until manually rotated.</p>
-    <p>Non-sensitive was a UI label, not a security property.</p>
-    <p>Per GitGuardian's analysis, non-sensitive env vars routinely contain API keys to analytics and logging, staging database strings, auth tokens for internal services, feature-flag provider secrets. All of it reachable by whoever held Context.ai's OAuth grant. The default was the problem. The flip is forward-looking only.</p>
-    <p>Then the attribution cracked. A BreachForums listing offered Vercel data for two million dollars, initially credited to ShinyHunters. On Monday and Tuesday of this week, the group told BleepingComputer and Hackread they are not involved. The listing remains live. The identity behind it is now unclear.</p>
-    <p>The AI twist sharpens it. The pivot mechanism was an AI-native OAuth grant. The modern builder stack is OAuth-all-the-way-down. Vercel is the first large-scale public demonstration of AI-tool-as-OAuth-pivot in the wild.</p>
-    <p>The model Issue 01 introduced as a capability ceiling became, one week later, a policy object. US Treasury. Bank of England. Financial Stability Board. White House Chief of Staff. The sitting US President. Same artifact, new room.</p>
-    <p>Monday, April 17. US Treasury Secretary Scott Bessent summoned leaders of the largest US banks to discuss the cyber risk posed by Claude Mythos. The same day, White House Chief of Staff Susie Wiles met with Dario Amodei. Per National Today, "productive and constructive." Across the week, at the IMF and World Bank spring meetings in Washington, central bankers focused on whether Mythos exposes weak spots in bank cyber defenses.</p>
-    <p>Monday, April 21. Trump told reporters Anthropic is "shaping up" and open to a Pentagon deal.</p>
-    <p>Tuesday and Wednesday. Per the Financial Times, UK regulators rush to assess. Bank of England Governor Andrew Bailey, who chairs the Financial Stability Board, calls the issue <em>"a very serious challenge for all of us."</em></p>
-    <p>And from Dario, to the FT, the same week: <em>"I don't want AI turned on our own people."</em></p>
-    <p>Five regulatory venues. Seven days. Zero public-release commitments on Mythos. No prior AI company has had its strongest model named by G-10 bank regulators as a systemic risk before public release.</p>
-    <p>Capability outruns framework. Same shape as the two substories above. At sovereign scale.</p>
-  </div>
-</div>
-
-
-
-<span class="ornament">&sect; &nbsp; &sect; &nbsp; &sect;</span>
 <div class="feature-opener" id="feature">
   <span class="vert-label">Feature</span>
   <div class="feature-heading">
