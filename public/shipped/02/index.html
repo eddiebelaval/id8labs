@@ -1410,7 +1410,7 @@ body::before{
     <div class="cover-top-right">
       <div><b>2026 — 04 — 24</b></div>
       <div>Period 2026-04-17 → 2026-04-24</div>
-      <div>16 Releases · 7 Days</div>
+      <div>17 Releases · 7 Days</div>
     </div>
   </div>
 
@@ -1606,9 +1606,14 @@ body::before{
       <span class="btn-num">$30B</span>
       <span class="btn-note">Up from $9B at end of 2025</span>
     </div>
-    <div class="btn-cell s4">
+    <div class="btn-cell s6">
+      <span class="btn-label">Bugs confirmed in the Anthropic Claude Code post-mortem, published Apr 23</span>
+      <span class="btn-num accent">3</span>
+      <span class="btn-note">Default effort (fixed Apr 7), caching with thinking deletion (v2.1.101, Apr 10), system-prompt verbosity cap (v2.1.116, Apr 20). API never touched.</span>
+    </div>
+    <div class="btn-cell s6">
       <span class="btn-label">Anthropic public statements on Conway between the leak and ship day</span>
-      <span class="btn-num accent">0</span>
+      <span class="btn-num">0</span>
       <span class="btn-note">The silence is the data</span>
     </div>
   </div>
@@ -1712,8 +1717,12 @@ body::before{
   <div class="prose-well" style="padding:0">
     <div class="prose">
 
-      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Claude performance backlash, the contaminating context.</h3>
-      <p>Fortune, April 14. Coverage of community complaints about perceived degradation in Claude model quality. Inconsistent outputs. Failed-then-succeeded regenerations. Hedge-heavy responses. Users across r/ClaudeAI, X, and Hacker News flagging it. Zero Anthropic public statements between the Fortune piece and this week's ship. The reception of every Anthropic launch this month lands in a context where the community is already reading outputs as degraded. The r/ClaudeAI "meh" on Claude Design is partly downstream of this, not just the product. Transparency is the asked-for fix. Methodology disclosure. Version-to-version evals. Anthropic ships; reception filters through prior weeks of frustration.</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The Claude Code post-mortem, three bugs named.</h3>
+      <p>Ninety minutes before this issue shipped, Anthropic published "An update on recent Claude Code quality reports" and broke the silence Fortune called out nine days earlier. Three bugs confirmed. All in Claude Code and the Agent SDK. None in the models. Usage limits reset for all subscribers. <em>"We never intentionally degrade our models and we were able to immediately confirm that our API and inference layer were unaffected."</em></p>
+      <p>The bugs, in order. <strong>March 4, default effort.</strong> Claude Code's default reasoning effort moved from <code>high</code> to <code>medium</code> to reduce UI-latency complaints. The tradeoff cost measurable intelligence. Fixed April 7. <strong>March 26, caching with thinking deletion.</strong> A prompt-cache optimization using the <code>clear_thinking_20251015</code> header with <code>keep:1</code> was meant to clear reasoning after idle periods. Instead it cleared reasoning every turn mid-tool-use, forcing cache misses and draining usage limits faster. Fixed April 10 in v2.1.101. <strong>April 16, system-prompt verbosity.</strong> An instruction to hold responses to under 25 words between tool calls and under 100 in the final dropped coding quality by 3%. Caught after weeks of internal testing that showed no regression. Fixed April 20 in v2.1.116.</p>
+      <p>Cowork was swept in because it runs on the Agent SDK. The API was never touched.</p>
+      <p>The committed process changes read like the audit the community asked for: broader per-model evals on every system-prompt change, soak periods for intelligence-impacting changes, staff dogfooding the public build, @ClaudeDevs and GitHub threads for faster transparency. One quoted line matters. <em>"Opus 4.7 found the bug, while Opus 4.6 didn't."</em> The model that caught the regression is the one the company couldn't have used two weeks earlier.</p>
+      <p>The silence Fortune named is over. The r/ClaudeAI <em>meh</em> was early.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Vercel flips env-var default to sensitive:on.</h3>
       <p>Vercel's April bulletin confirms the default for new environment variables flips to <code>sensitive: on</code> going forward. Previously, non-sensitive was the default; users had to opt in. Per GitGuardian's reading of the bulletin, pre-existing env vars stay in their original state until manually rotated. The fix is a default change, not a migration. Legacy non-sensitive vars need manual rotation and re-flagging. Watch Netlify, Railway, Render for parallel moves. The default was the problem.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The field moved too: OpenAI and Google's week.</h3>
@@ -2077,10 +2086,22 @@ body::before{
   <div class="log-cat-head">
     <div class="log-cat-letter">G</div>
     <div class="log-cat-name">Partnerships and Policy</div>
-    <div class="log-cat-count"><b>6</b> Items</div>
+    <div class="log-cat-count"><b>7</b> Items</div>
   </div>
-  <p class="log-cat-deck">6 entries in window.</p>
+  <p class="log-cat-deck">7 entries in window.</p>
   <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 23</span>
+        <span class="log-tag code">POLICY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Claude Code quality post-mortem published (<a href="https://www.anthropic.com/engineering/april-23-postmortem">Anthropic Engineering</a>, <a href="https://x.com/ClaudeDevs/status/2045206682830303358">@ClaudeDevs on X</a>)</a></h3>
+        <p class="log-entry-body">Anthropic published "An update on recent Claude Code quality reports" addressing perceived degradation that Fortune covered on 2026-04-14. Three bugs confirmed, all in Claude Code and Agent SDK (which also impacted Cowork since it runs on the SDK); the API and inference layer were unaffected. Issue 1: default reasoning effort changed from <code>high</code> to <code>medium</code> on March 4 (fixed April 7). Issue 2: caching bug using <code>clear_thinking_20251015</code> with <code>keep:1</code> cleared reasoning every turn mid-tool-use instead of after idle periods, draining usage limits (fixed April 10 in v2.1.101). Issue 3: system-prompt verbosity instruction ("≤25 words between tool calls, ≤100 final") dropped coding quality 3% (fixed April 20 in v2.1.116). Usage limits reset for all subscribers as of April 23. Process changes: broader per-model evals on every system prompt change, soak periods for intelligence-impacting changes, internal dogfooding at parity with public build, tighter prompt-change review tooling. Anthropic quote: <em>"We never intentionally degrade our models and we were able to immediately confirm that our API and inference layer were unaffected."</em> Category: <code>[POLICY]</code>.</p>
+
+
+      </div>
+    </article>
     <article class="log-entry">
       <div class="log-entry-left">
         <span class="log-entry-date">2026 · 04 · 23</span>
@@ -2194,7 +2215,7 @@ body::before{
         <p><b>Issue</b> 02 (Presence)</p>
         <p><b>Period</b> 2026-04-17 → 2026-04-24</p>
         <p><b>Front of book</b> 2289 words</p>
-        <p><b>Release log</b> 16 entries · 4 sections</p>
+        <p><b>Release log</b> 17 entries · 4 sections</p>
         <p><b>Status</b> Draft</p>
       </div>
     </div>
