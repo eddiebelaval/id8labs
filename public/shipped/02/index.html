@@ -1410,7 +1410,7 @@ body::before{
     <div class="cover-top-right">
       <div><b>2026 — 04 — 24</b></div>
       <div>Period 2026-04-17 → 2026-04-24</div>
-      <div>17 Releases · 7 Days</div>
+      <div>18 Releases · 7 Days</div>
     </div>
   </div>
 
@@ -1717,6 +1717,8 @@ body::before{
   <div class="prose-well" style="padding:0">
     <div class="prose">
 
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Claude goes consumer: 15 connectors for everyday life.</h3>
+      <p>A model becomes a product the moment it starts calling APIs on your behalf. Anthropic shipped 15 consumer connectors Thursday. AllTrails, Audible, Booking.com, Instacart, Credit Karma, TurboTax, Resy, Spotify, StubHub, Taskrabbit, Thumbtack, TripAdvisor, Uber, Uber Eats, Viator. Available on all plans. Mobile in beta. Claude now surfaces relevant ones mid-conversation based on context, ask about a hike and AllTrails appears without being invoked. Over 200 total connectors now live. Anthropic, on record, <em>"ad-free and will stay that way."</em> This is the Presence term of this issue wired into the consumer stack.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The Claude Code post-mortem, three bugs named.</h3>
       <p>Ninety minutes before this issue shipped, Anthropic published "An update on recent Claude Code quality reports" and broke the silence Fortune called out nine days earlier. Three bugs confirmed. All in Claude Code and the Agent SDK. None in the models. Usage limits reset for all subscribers. <em>"We never intentionally degrade our models and we were able to immediately confirm that our API and inference layer were unaffected."</em></p>
       <p>The bugs, in order. <strong>March 4, default effort.</strong> Claude Code's default reasoning effort moved from <code>high</code> to <code>medium</code> to reduce UI-latency complaints. The tradeoff cost measurable intelligence. Fixed April 7. <strong>March 26, caching with thinking deletion.</strong> A prompt-cache optimization using the <code>clear_thinking_20251015</code> header with <code>keep:1</code> was meant to clear reasoning after idle periods. Instead it cleared reasoning every turn mid-tool-use, forcing cache misses and draining usage limits faster. Fixed April 10 in v2.1.101. <strong>April 16, system-prompt verbosity.</strong> An instruction to hold responses to under 25 words between tool calls and under 100 in the final dropped coding quality by 3%. Caught after weeks of internal testing that showed no regression. Fixed April 20 in v2.1.116.</p>
@@ -2086,9 +2088,9 @@ body::before{
   <div class="log-cat-head">
     <div class="log-cat-letter">G</div>
     <div class="log-cat-name">Partnerships and Policy</div>
-    <div class="log-cat-count"><b>7</b> Items</div>
+    <div class="log-cat-count"><b>8</b> Items</div>
   </div>
-  <p class="log-cat-deck">7 entries in window.</p>
+  <p class="log-cat-deck">8 entries in window.</p>
   <div class="log-entries">
     <article class="log-entry">
       <div class="log-entry-left">
@@ -2098,6 +2100,18 @@ body::before{
       <div>
         <h3 class="log-entry-title"><a href="#">Claude Code quality post-mortem published (<a href="https://www.anthropic.com/engineering/april-23-postmortem">Anthropic Engineering</a>, <a href="https://x.com/ClaudeDevs/status/2045206682830303358">@ClaudeDevs on X</a>)</a></h3>
         <p class="log-entry-body">Anthropic published "An update on recent Claude Code quality reports" addressing perceived degradation that Fortune covered on 2026-04-14. Three bugs confirmed, all in Claude Code and Agent SDK (which also impacted Cowork since it runs on the SDK); the API and inference layer were unaffected. Issue 1: default reasoning effort changed from <code>high</code> to <code>medium</code> on March 4 (fixed April 7). Issue 2: caching bug using <code>clear_thinking_20251015</code> with <code>keep:1</code> cleared reasoning every turn mid-tool-use instead of after idle periods, draining usage limits (fixed April 10 in v2.1.101). Issue 3: system-prompt verbosity instruction ("≤25 words between tool calls, ≤100 final") dropped coding quality 3% (fixed April 20 in v2.1.116). Usage limits reset for all subscribers as of April 23. Process changes: broader per-model evals on every system prompt change, soak periods for intelligence-impacting changes, internal dogfooding at parity with public build, tighter prompt-change review tooling. Anthropic quote: <em>"We never intentionally degrade our models and we were able to immediately confirm that our API and inference layer were unaffected."</em> Category: <code>[POLICY]</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 23</span>
+        <span class="log-tag code">PRODUCT</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://claude.com/blog/connectors-for-everyday-life/">Claude ships 15 consumer connectors</a></h3>
+        <p class="log-entry-body">Anthropic added AllTrails, Audible, Booking.com, Instacart, Credit Karma, TurboTax, Resy, Spotify, StubHub, Taskrabbit, Thumbtack, TripAdvisor, Uber, Uber Eats, and Viator as native connectors inside Claude. Available on all plans, mobile in beta. Claude surfaces relevant ones mid-conversation based on context. Over 200 total connectors now live. Anthropic on record: <em>"ad-free and will stay that way."</em> Category: <code>[PRODUCT]</code>.</p>
 
 
       </div>
@@ -2215,7 +2229,7 @@ body::before{
         <p><b>Issue</b> 02 (Presence)</p>
         <p><b>Period</b> 2026-04-17 → 2026-04-24</p>
         <p><b>Front of book</b> 2331 words</p>
-        <p><b>Release log</b> 17 entries · 4 sections</p>
+        <p><b>Release log</b> 18 entries · 4 sections</p>
         <p><b>Status</b> Draft</p>
       </div>
     </div>
