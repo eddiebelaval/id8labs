@@ -73,6 +73,11 @@ body::before{
 .pub-bar-mark .dot{color:var(--orange)}
 .pub-bar-sep{width:1px;height:12px;background:var(--hair-hard)}
 .pub-bar-meta{color:var(--muted)}
+.pub-bar-link{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;transition:color .15s ease}
+.pub-bar-link:hover{color:var(--orange)}
+.colophon-link{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;transition:color .15s ease}
+.colophon-link:hover{color:var(--orange)}
+.colophon-foot .colophon-link b{color:var(--paper)}
 .pub-bar-folio{color:var(--ink)}
 .pub-bar-folio b{font-weight:600;color:var(--orange)}
 
@@ -1387,7 +1392,7 @@ body::before{
   <div class="pub-bar-left">
     <span class="pub-bar-mark">Shipped<span class="dot">.</span></span>
     <span class="pub-bar-sep"></span>
-    <span class="pub-bar-meta">A weekly magazine by id8Labs</span>
+    <span class="pub-bar-meta">A weekly magazine by <a href="https://id8labs.app" class="pub-bar-link">id8Labs</a></span>
   </div>
   <div class="pub-bar-right">
     <span class="pub-bar-folio">Issue <b>02</b></span>
@@ -1410,7 +1415,7 @@ body::before{
     <div class="cover-top-right">
       <div><b>2026 — 04 — 24</b></div>
       <div>Period 2026-04-17 → 2026-04-24</div>
-      <div>19 Releases · 7 Days</div>
+      <div>20 Releases · 7 Days</div>
     </div>
   </div>
 
@@ -1927,7 +1932,7 @@ body::before{
 <section class="log-divider" id="log">
   <div class="log-divider-kicker">Back of Book &nbsp;·&nbsp; p.21 →</div>
   <h2 class="log-divider-title">The <em>Release</em> Log</h2>
-  <p class="log-divider-sub">A 1:1 mirror of every Anthropic release in the window. Use it as reference. Share it with your team. Seven sections — A through G — fifty-six entries.</p>
+  <p class="log-divider-sub">A 1:1 mirror of every Anthropic release in the window. Use it as reference. Share it with your team.</p>
 </section>
 
 <!-- BEGIN RELEASE LOG -->
@@ -1958,9 +1963,9 @@ body::before{
   <div class="log-cat-head">
     <div class="log-cat-letter">C</div>
     <div class="log-cat-name">Claude Code</div>
-    <div class="log-cat-count"><b>6</b> versions &nbsp;·&nbsp; v2.1.112 → v2.1.118</div>
+    <div class="log-cat-count"><b>7</b> versions &nbsp;·&nbsp; v2.1.112 → v2.1.119</div>
   </div>
-  <p class="log-cat-deck">6 entries in window.</p>
+  <p class="log-cat-deck">7 entries in window.</p>
   <div class="log-entries">
     <article class="log-entry">
       <div class="log-entry-left">
@@ -1968,8 +1973,20 @@ body::before{
         <span class="log-tag code">RELEASE</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="https://code.claude.com/docs/en/changelog">Claude Code 2.1.118</a></h3>
-        <p class="log-entry-body">Vim visual mode (<code>v</code>) and visual-line mode (<code>V</code>) added with selection, operators, and visual feedback. Fixed message duplication when scrolling in fullscreen mode. Category: <code>[RELEASE]</code>.</p>
+        <h3 class="log-entry-title"><a href="#">Claude Code 2.1.119 (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">changelog</a>, <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.119">release</a>)</a></h3>
+        <p class="log-entry-body">PowerShell tool commands auto-approvable in permission mode (parity with Bash). <code>PostToolUse</code> hook inputs now include <code>duration_ms</code>. <code>--from-pr</code> accepts GitLab / Bitbucket / GitHub Enterprise URLs. <code>/config</code> settings persist to <code>~/.claude/settings.json</code> with proper override precedence. Added <code>prUrlTemplate</code> for custom review-URL footer badge. Subagent + SDK MCP servers reconnect in parallel. Shipped Apr 23, 7:24 PM ET. Category: <code>[RELEASE]</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 04 · 23</span>
+        <span class="log-tag code">RELEASE</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Claude Code 2.1.118 (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">changelog</a>, <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.118">release</a>)</a></h3>
+        <p class="log-entry-body">Vim visual mode (<code>v</code>) and visual-line mode (<code>V</code>) added with selection, operators, and visual feedback. <code>/cost</code> and <code>/stats</code> merged into <code>/usage</code>. Fixed message duplication when scrolling in fullscreen mode. Category: <code>[RELEASE]</code>.</p>
 
 
       </div>
@@ -1980,7 +1997,7 @@ body::before{
         <span class="log-tag code">RELEASE</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code 2.1.117</a></h3>
+        <h3 class="log-entry-title"><a href="#">Claude Code 2.1.117 (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">changelog</a>, <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.117">release</a>)</a></h3>
         <p class="log-entry-body">Faster startup, stronger plugin management, better session resume and model persistence, improved OpenTelemetry. Experimental Advisor tool updates, safer auth handling, more reliable context and subagent behavior. macOS, Linux, Windows, and API fixes. Category: <code>[RELEASE]</code>.</p>
 
 
@@ -1992,7 +2009,7 @@ body::before{
         <span class="log-tag code">RELEASE</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code 2.1.116</a></h3>
+        <h3 class="log-entry-title"><a href="#">Claude Code 2.1.116 (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">changelog</a>, <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.116">release</a>)</a></h3>
         <p class="log-entry-body">Faster <code>/resume</code> on large sessions. Quicker MCP startup. Smarter slash-command search. Terminal behavior improvements. Category: <code>[RELEASE]</code>.</p>
 
 
@@ -2004,7 +2021,7 @@ body::before{
         <span class="log-tag code">FIX</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code 2.1.114</a></h3>
+        <h3 class="log-entry-title"><a href="#">Claude Code 2.1.114 (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">changelog</a>, <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.114">release</a>)</a></h3>
         <p class="log-entry-body">Fixed crash in permission dialog when agent teammates request tool access. Category: <code>[FIX]</code>.</p>
 
 
@@ -2016,7 +2033,7 @@ body::before{
         <span class="log-tag code">FIX</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code 2.1.112</a></h3>
+        <h3 class="log-entry-title"><a href="#">Claude Code 2.1.112 (<a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">changelog</a>, <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.112">release</a>)</a></h3>
         <p class="log-entry-body">Hotfix: resolved "claude-opus-4-7 is temporarily unavailable" in auto mode. Category: <code>[FIX]</code>. <strong>Note for Issue 02:</strong> v2.1.111 itself was dated 2026-04-16 and was already carried in Issue 01's Release Log; 2.1.112 is the first post-ship-window version.</p>
 
 
@@ -2134,7 +2151,7 @@ body::before{
         <span class="log-tag code">POLICY</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="#">UK and US regulators briefed banks on Mythos cyber risk (<a href="https://www.ft.com/content/56d65763-69fe-4756-baf4-c8192b7aadaf">FT</a>, <a href="https://www.pymnts.com/news/2026/financial-officials-sound-alarm-about-anthropics-banking-risk">PYMNTS</a>, <a href="https://www.bloomberg.com/news/videos/2026-04-17/financial-watchdog-to-share-insight-on-anthropic-ai-video">Bloomberg</a>)</a></h3>
+        <h3 class="log-entry-title"><a href="#">UK and US regulators briefed banks on Mythos cyber risk (<a href="https://www.ft.com/content/56d65763-69fe-4756-baf4-c8192b7aadaf">FT</a>, <a href="https://www.pymnts.com/news/2026/financial-officials-sound-alarm-about-anthropics-banking-risk">PYMNTS</a>)</a></h3>
         <p class="log-entry-body">At the IMF and World Bank spring meetings in Washington, regulators and central bankers focused on Anthropic's Claude Mythos Preview and the possibility that advanced LLMs could expose weak spots in banks' cyber defenses. Bank of England Governor Andrew Bailey (chair of the Financial Stability Board) called the issue "a very serious challenge for all of us." US Treasury secretary Scott Bessent summoned leaders of the largest US banks earlier in the week. Anthropic has said Mythos found thousands of high-severity vulnerabilities in major operating systems and browsers, with access limited to ~40 Project Glasswing partners (Amazon, Apple, JPMorgan Chase, etc.). Category: <code>[POLICY]</code>.</p>
 
 
@@ -2146,7 +2163,7 @@ body::before{
         <span class="log-tag code">DEAL</span>
       </div>
       <div>
-        <h3 class="log-entry-title"><a href="#">Anthropic expands TPU deal with Google and Broadcom, 3.5 GW from 2027 (<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>, <a href="https://www.fool.com/investing/2026/04/22/anthropic-just-announced-huge-news-for-alphabet-an/">Motley Fool</a>, <a href="https://seekingalpha.com/news/4572848-anthropic-targets-30b-revenue-signs-tpu-deal-with-google-and-broadcom">Seeking Alpha</a>)</a></h3>
+        <h3 class="log-entry-title"><a href="#">Anthropic expands TPU deal with Google and Broadcom, 3.5 GW from 2027 (<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic</a>, <a href="https://www.fool.com/investing/2026/04/22/anthropic-just-announced-huge-news-for-alphabet-an/">Motley Fool</a>)</a></h3>
         <p class="log-entry-body">Anthropic announced expanded access to next-generation TPUs via the Broadcom + Alphabet joint venture. Up to 3.5 GW of capacity from 2027. Accelerating demand has pushed run-rate revenue over $30B (up from $9B at end of 2025). Second major compute commitment this week after the Amazon $25B / $100B AWS deal. Category: <code>[DEAL]</code>. Cross-references Amazon entry below.</p>
 
 
@@ -2216,7 +2233,7 @@ body::before{
   <div class="colophon-inner">
     <div class="colophon-mast">
       <div class="colophon-word">Shipped<span class="dot">.</span></div>
-      <div class="colophon-tag">A weekly magazine on what Anthropic is releasing. Published every Friday at 9 AM ET, by id8Labs.</div>
+      <div class="colophon-tag">A weekly magazine on what Anthropic is releasing. Published every Friday at 9 AM ET, by <a href="https://id8labs.app" class="colophon-link">id8Labs</a>.</div>
     </div>
     <div class="colophon-body">
       <div class="colophon-col">
@@ -2241,12 +2258,12 @@ body::before{
         <p><b>Issue</b> 02 (Presence)</p>
         <p><b>Period</b> 2026-04-17 → 2026-04-24</p>
         <p><b>Front of book</b> 2331 words</p>
-        <p><b>Release log</b> 19 entries · 4 sections</p>
+        <p><b>Release log</b> 20 entries · 4 sections</p>
         <p><b>Status</b> Draft</p>
       </div>
     </div>
     <div class="colophon-foot">
-      <span>© 2026 <b>id8Labs</b> &nbsp;·&nbsp; All rights reserved</span>
+      <span>© 2026 <a href="https://id8labs.app" class="colophon-link"><b>id8Labs</b></a> &nbsp;·&nbsp; All rights reserved</span>
       <span>Printed in pixels &nbsp;·&nbsp; Set in Fraunces &amp; Archivo &nbsp;·&nbsp; Press sheet by Iris</span>
       <span class="hot">Next issue — May 1, 2026</span>
     </div>
