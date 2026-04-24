@@ -159,6 +159,9 @@ export default function Header() {
             <Link href="/writing" className="text-base hover:opacity-70 transition-opacity">
               Writing
             </Link>
+            <Link href="/shipped" className="text-base hover:opacity-70 transition-opacity">
+              Shipped<span className="text-[var(--id8-orange)]">.</span>
+            </Link>
             {/* Lab Dropdown */}
             <div
               className="relative"
@@ -370,6 +373,13 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Writing
+            </Link>
+            <Link
+              href="/shipped"
+              className="block text-lg hover:opacity-70 transition-opacity"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Shipped<span className="text-[var(--id8-orange)]">.</span>
             </Link>
             {/* Lab Expandable */}
             <div>
