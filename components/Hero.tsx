@@ -118,10 +118,10 @@ export default function Hero() {
                 <span className="text-gradient-orange">id8</span>Labs
               </span>
               <span className="block text-[clamp(2rem,5vw,3.5rem)] font-bold text-[var(--text-primary)]">
-                Tools for creators.
+                Architecture, not tools.
               </span>
               <span className="block text-[clamp(2rem,5vw,3.5rem)] font-bold text-[var(--text-primary)]">
-                Infrastructure for builders.
+                Primitive chains for AI-era operators.
               </span>
             </h1>
 
@@ -133,7 +133,7 @@ export default function Hero() {
               className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto font-medium leading-relaxed"
               style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}
             >
-              AI as an auxiliary layer of the brain. Handle the repetitive work so there's bandwidth for real thinking.
+              Robust primitive chains with human gates, designed domain-deep. They eat the drudgery before the work, so companies reach scale they could not have reached otherwise.
             </m.p>
 
             <m.div

@@ -325,7 +325,7 @@ export default function ProductGrid() {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[var(--id8-orange)] to-transparent mb-6" />
             <p className="text-xl text-[var(--text-secondary)]">
-              Tools for creators. Infrastructure for builders.
+              Architecture, not tools. Primitive chains shipped from the lab.
             </p>
           </m.div>
 

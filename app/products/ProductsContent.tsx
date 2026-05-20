@@ -375,7 +375,7 @@ export default function ProductsContent() {
             Products<span className="text-[var(--id8-orange)]">.</span>
           </h1>
           <p className="text-xl md:text-2xl text-zinc-400 leading-relaxed">
-            Professional tools for creators. Agent kits for builders.
+            Primitive chains shipping from the lab. Each one is the architecture applied to a specific domain.
             <span className="text-zinc-300"> Everything battle-tested in production.</span>
           </p>
         </m.header>

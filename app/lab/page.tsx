@@ -222,7 +222,7 @@ export default function LabPage() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
-                id8Labs started as one person asking why production workflows still run on spreadsheets and group texts. Twenty years behind the camera, then in front of the codebase. Every tool we ship solves a problem we felt first.
+                id8Labs started as one person asking why production workflows still run on spreadsheets and group texts. Twenty years behind the camera, then in front of the codebase. Every primitive chain we ship solves a problem we felt first, in production, before the work could even begin.
               </p>
               <p className="text-[var(--text-secondary)] leading-relaxed">
                 The research arm exists because the tools kept raising questions bigger than the tools themselves. When you build an AI companion, you start asking what companionship means. When you build a context window, you start asking what attention is. The thesis came from the code. Not the other way around.
@@ -238,7 +238,7 @@ export default function LabPage() {
                   The Full Lab Story
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
-                  From cameraman to systems architect. The long version.
+                  From cameraman to primitive chain architect. The long version.
                 </p>
               </Link>
               <Link

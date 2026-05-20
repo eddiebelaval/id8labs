@@ -52,9 +52,9 @@ export default function Builder() {
 
               {/* Contact/Links */}
               <div className="pt-4 space-y-3 text-sm text-[var(--text-tertiary)]">
-                <p>Filmmaker turned Product Builder</p>
-                <p>Pattern Recognition Specialist</p>
-                <p>Complex Systems Thinker</p>
+                <p>Filmmaker turned Primitive Chain Architect</p>
+                <p>Forward Deployment for AI-era Operators</p>
+                <p>Pattern Recognition Across Domains</p>
               </div>
             </div>
 
@@ -63,7 +63,8 @@ export default function Builder() {
               <p>
                 Started as a cameraman on <span className="text-[var(--id8-orange)] font-semibold">First 48</span>,
                 Orange County Choppers, 90 Day Fiancé. Worked from hands-on production into{' '}
-                <span className="text-[var(--id8-orange)] font-semibold">systems architecture</span> and product development.
+                <span className="text-[var(--id8-orange)] font-semibold">primitive chain architecture</span> and forward
+                deployment for companies that need to reach scale tools alone cannot deliver.
               </p>
 
               <p>

@@ -3,7 +3,7 @@ import ProductsContent from './ProductsContent'
 
 export const metadata: Metadata = {
   title: 'Products - ID8Labs',
-  description: 'Professional tools for creators, AI orchestration for builders, and experiments because we can\'t help ourselves.',
+  description: 'Primitive chains shipping from the lab. Each product is the architecture applied to a specific domain, battle-tested in production.',
 }
 
 export default function ProductsPage() {

@@ -253,7 +253,7 @@ const credentials = [
   { highlight: 'High on the Hog (Netflix)', role: '— Cinematography' },
   { highlight: 'Teen Mom', role: '— Camera & Production' },
   { highlight: '3+ years', role: 'daily AI workflow integration' },
-  { highlight: 'id8Labs', role: '— Founder, building AI tools for creators' },
+  { highlight: 'id8Labs', role: '— Founder, primitive chain architecture for AI-era operators' },
 ]
 
 const testimonials = [
@@ -380,7 +380,7 @@ export default function ServicesPage() {
             </ScrollReveal>
             <ScrollReveal immediate delay={0.2}>
               <p className="text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed mb-10 max-w-2xl">
-                We build, deploy, and tune AI agents for your business — on your hardware, wired into your tools, customized to your workflow. White-glove service. Not another chatbot.
+                We design primitive chain architectures with human gates and deploy them inside your business. Your hardware, your tools, your domain. White-glove service that eats the drudgery before the work, so you reach scale tools alone cannot deliver.
               </p>
             </ScrollReveal>
             <ScrollReveal immediate delay={0.3}>
@@ -662,10 +662,10 @@ export default function ServicesPage() {
                   <span className="text-[var(--id8-orange)]">in the trenches</span>
                 </h2>
                 <p className="text-lg text-[var(--text-secondary)] mb-6 leading-relaxed">
-                  I&apos;m not an AI researcher. I&apos;m a producer who figured out how to make these tools actually work for creative, fast-moving operations.
+                  I&apos;m not an AI researcher. I&apos;m a producer who figured out that the leverage was not in the tools, it was in the architecture between them.
                 </p>
                 <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                  20+ years in film and TV production taught me one thing: systems beat hustle. Now I build AI systems for people who don&apos;t have time to figure it out themselves.
+                  20+ years in film and TV production taught me one thing: systems beat hustle. Now I design primitive chains with human gates for operators who need to reach scale tools alone cannot deliver.
                 </p>
               </ScrollReveal>
             </div>

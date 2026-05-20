@@ -6,10 +6,10 @@ export const resumeData = {
   phone: "917.862.2747",
   website: "www.eddiebelaval.com",
 
-  titles: ["Cinematographer", "Story Producer", "Tech Builder"] as const,
+  titles: ["Cinematographer", "Story Producer", "Primitive Chain Architect"] as const,
 
-  tagline: "Miami-born builder, filmmaker, and thinker.",
-  bio: "From capturing light behind the camera to building tools for creators. Every project starts with understanding people deeply—what they want, what they fear, and what makes them human.",
+  tagline: "Miami-born filmmaker. Architect of primitive chain systems. Founder of id8Labs.",
+  bio: "From capturing light behind the camera to designing architecture inside companies. Every project starts the same way: understanding what people need, what slows them down, and which human gates protect the judgment automation cannot replace.",
 
   // Career stats - the numbers that tell the story
   stats: [
@@ -71,14 +71,14 @@ export const resumeData = {
     },
     {
       phase: "The Build",
-      title: "Tech Builder",
+      title: "Primitive Chain Architect",
       years: "2021-Present",
       description:
-        "Every tool I build starts with a frustration I've felt. After 15 years solving problems on set with duct tape and creativity, I'm now solving them with code.",
+        "Every chain I design starts with a frustration in production. After 15 years solving problems on set with duct tape and creativity, I am now solving them with architecture: primitive chains with human gates, deployed inside companies that need to reach scale tools alone cannot deliver.",
       highlights: [
-        "Founder of ID8Labs - building tools for creative people",
+        "Founder of id8Labs, forward deployment of primitive chain architecture for AI-era companies",
         "Applying production thinking to software: ship fast, iterate, solve real problems",
-        "AI-powered workflow solutions for creators and small teams",
+        "Designing robust primitive chains with human gates that are domain specific, so companies reach scale tools alone cannot deliver",
       ],
     },
   ],
@@ -296,10 +296,10 @@ export const resumeData = {
   },
 
   currentWork: {
-    company: "ID8Labs",
-    tagline: "Building tools for creative people",
+    company: "id8Labs",
+    tagline: "Designing primitive chain architecture with human gates",
     description:
-      "From telling stories to building the tools for storytellers. Every tool I create starts with a frustration—if I'm annoyed by something repeatedly, there's probably a better way.",
+      "From telling stories to designing architecture inside companies. Every chain starts with a frustration in production: if I am hitting the same human-glue moment again and again, there is a primitive chain that should be carrying that weight instead. id8Labs forward-deploys those chains.",
   },
 
   social: {

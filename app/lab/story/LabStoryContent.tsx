@@ -207,38 +207,41 @@ export default function LabStoryContent() {
         {/* The Thesis */}
         <StickySection id="thesis" title="The Thesis">
           <p className="text-2xl font-bold text-id8-orange mb-4">
-            AI as an auxiliary layer of the brain.
+            Architecture, not tools. Primitive chains with human gates, designed domain-deep.
           </p>
           <div className="mt-8 space-y-6">
             <div>
-              <p className="font-bold text-id8-orange mb-2">Offload context management.</p>
+              <p className="font-bold text-id8-orange mb-2">Chains, not tools.</p>
               <p>
-                Let the system remember so you can focus on creating.
+                A tool sits and waits. A chain runs. Primitives wire together into architecture
+                the company operates inside.
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-2">Automate pattern recognition.</p>
+              <p className="font-bold text-id8-orange mb-2">Human gates by design.</p>
               <p>
-                Let the system surface signals so you can focus on decisions.
+                Automation carries the drudgery. Humans carry the judgment. The gate is not a bug
+                in the automation, it is the protected seat where real work happens.
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-2">Build systems, not features.</p>
+              <p className="font-bold text-id8-orange mb-2">Domain-deep, not generic.</p>
               <p>
-                A feature solves one problem once. A system solves categories of problems continuously.
-                The goal is compounding leverage — tools that get more valuable as you use them.
+                Every chain is shaped to a specific operation. The point is not to add another tool.
+                The point is to eat the drudgery a company goes through before the work, so it
+                reaches scale tools alone cannot deliver.
               </p>
             </div>
           </div>
           <p className="mt-8">
             What this is <span className="font-bold">not:</span> replacement. Not a content machine.
-            Not a chatbot. This is cognitive extension — an additional layer of processing that
-            handles the work your brain shouldn&apos;t waste cycles on.
+            Not a chatbot. This is forward deployment of architecture inside companies, with the
+            humans still in the seats where their judgment is doing real work.
           </p>
           <p>
-            In 2025, this was speculative. In 2026, it&apos;s proven. Four products shipping. An
-            operating system connecting them. Forty-nine essays documenting the process. The thesis
-            held up.
+            In 2025, this was a thesis about my own workflow. In 2026, it is a thesis about the
+            architecture inside companies. Four products shipping. An operating system connecting
+            them. Forty-nine essays documenting the process. The thesis held up and grew.
           </p>
         </StickySection>
 

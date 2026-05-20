@@ -56,12 +56,12 @@ export default function Mission() {
                   <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
                   <div>
                     <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Systems Over Features</span>
+                      <span className="text-[var(--id8-orange)] font-semibold">Architecture Over Features</span>
                     </p>
                     <p className="text-[var(--text-secondary)] leading-relaxed">
-                      Most builders add features. I add systems.{' '}
-                      <Link href="/products/llc-ops" className="text-[var(--id8-orange)] hover:underline">LLC Ops</Link> isn't tax tools—it's 9 agents working together.{' '}
-                      <Link href="/products/pipeline" className="text-[var(--id8-orange)] hover:underline">Pipeline</Link> isn't a tracker—it's decay mechanics that create urgency. Connections matter more than components.
+                      Most builders add features. I design architecture.{' '}
+                      <Link href="/products/llc-ops" className="text-[var(--id8-orange)] hover:underline">LLC Ops</Link> is not a tax tool, it is nine agents working as one chain.{' '}
+                      <Link href="/products/pipeline" className="text-[var(--id8-orange)] hover:underline">Pipeline</Link> is not a tracker, it is decay mechanics that create urgency. The connections between primitives are where the leverage actually lives.
                     </p>
                   </div>
                 </div>
@@ -72,11 +72,12 @@ export default function Mission() {
                   <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
                   <div>
                     <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Claude as Creative Partner</span>
+                      <span className="text-[var(--id8-orange)] font-semibold">Primitive Chains, Not Tools</span>
                     </p>
                     <p className="text-[var(--text-secondary)] leading-relaxed">
-                      AI isn't a chatbot—it's a thinking partner with functional memory. I build context systems (knowledge bases,
-                      story bibles, thesis tracking) so conversations compound. Every session picks up where the last ended.
+                      A tool sits and waits. A chain runs. We design primitive chain architectures with human gates in the right
+                      places, so the company gets the leverage of automation without giving up the judgment that only people can supply.
+                      The artifact is not an app. It is a working architecture inside the company.
                     </p>
                   </div>
                 </div>

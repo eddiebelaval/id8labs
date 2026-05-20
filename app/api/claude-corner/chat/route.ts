@@ -68,14 +68,14 @@ function buildKnowledgeBase(): string {
 ## ID8Labs Knowledge Base
 
 ### About ID8Labs
-ID8Labs is a creative technology lab founded by Eddie Belaval. We build AI tools for creators and knowledge workers. Eddie has 20+ years in TV production (90 Day Fiancé, The First 48, Netflix's High on the Hog) and brings that production mindset to software.
+ID8Labs is a forward-deployment lab founded by Eddie Belaval. We design primitive chain architectures with human gates for AI-era operators. Eddie has 20+ years in TV production (90 Day Fiancé, The First 48, Netflix's High on the Hog) and brings that production mindset to architecture inside companies.
 
 ### Philosophy
-- Tools for creators, infrastructure for builders
-- AI augments thinking, doesn't replace it
-- Build comprehensive systems, not isolated features
-- Learn by building, not theorizing
-- Ship fast, iterate faster
+- Architecture, not tools. Primitive chains with human gates, designed domain-deep.
+- Chains carry the drudgery. Humans carry the judgment.
+- The point is not to add another tool. The point is to eat the work before the work, so companies reach scale tools alone cannot deliver.
+- Build comprehensive architecture, not isolated features.
+- Learn by building, not theorizing. Ship fast, iterate faster.
 
 ### Essays & Articles
 ${essaySummaries}

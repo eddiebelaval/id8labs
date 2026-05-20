@@ -17,7 +17,7 @@ const organizationSchema = {
   name: 'ID8Labs',
   url: 'https://id8labs.app',
   logo: 'https://id8labs.app/icon.svg',
-  description: 'ID8Labs builds professional AI tools and offers Claude Code training for developers and creators.',
+  description: 'ID8Labs designs primitive chain architectures with human gates for AI-era operators. Forward deployment that eats the drudgery before the work, so companies reach scale they could not have reached with tools alone.',
   foundingDate: '2024',
   founder: {
     '@type': 'Person',
@@ -37,6 +37,10 @@ const organizationSchema = {
   ],
   knowsAbout: [
     'Artificial Intelligence',
+    'Primitive Chain Architecture',
+    'Forward Deployment for AI Systems',
+    'Human-Gated Workflow Architecture',
+    'Agent Systems Design',
     'Claude Code',
     'MCP Servers',
     'AI Agent Development',
