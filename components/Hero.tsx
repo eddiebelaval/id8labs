@@ -141,13 +141,13 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="pt-6"
+              className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <a
-                href="/lab"
+                href="/services"
                 className="btn btn-primary hover-lift group"
               >
-                Read the Lab Story
+                Work with us
                 <svg
                   width="20"
                   height="20"
@@ -160,6 +160,12 @@ export default function Hero() {
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
+              </a>
+              <a
+                href="#products"
+                className="btn border border-[var(--border)] hover:border-[var(--id8-orange)] transition-colors"
+              >
+                See what we&apos;ve shipped
               </a>
             </m.div>
 

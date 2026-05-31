@@ -23,9 +23,9 @@ interface SocialProofStripProps {
 }
 
 const DEFAULT_METRICS = {
-  essayCount: 41,
+  essayCount: 75,
   productsShipping: 4,
-  activeProjects: 9,
+  activeProjects: 10,
   startYear: 2024,
 }
 

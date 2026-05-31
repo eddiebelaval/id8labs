@@ -1,6 +1,9 @@
 'use client'
 
 import { m } from '@/components/motion'
+import { featuredHomeProducts, showcaseHomeProducts } from '@/lib/home-products'
+
+const activeProjectCount = featuredHomeProducts.length + showcaseHomeProducts.length
 
 export default function Builder() {
   return (
@@ -86,7 +89,7 @@ export default function Builder() {
                   <p className="text-sm text-[var(--text-tertiary)]">Years in Production</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-3xl font-bold text-[var(--id8-orange)]">9</p>
+                  <p className="text-3xl font-bold text-[var(--id8-orange)]">{activeProjectCount}</p>
                   <p className="text-sm text-[var(--text-tertiary)]">Active Projects</p>
                 </div>
               </div>

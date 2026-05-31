@@ -32,6 +32,15 @@ export const featuredHomeProducts: HomeProduct[] = [
     category: 'creators',
   },
   {
+    name: 'Rune',
+    status: 'development',
+    statusLabel: 'Beta',
+    description: 'Speak your book into existence. Sam, a voice-first scribe, listens and turns conversation into manuscript across three stages — Workshop, Study, Press. Import existing writing. Open source.',
+    link: '/products/rune',
+    external: false,
+    category: 'creators',
+  },
+  {
     name: 'HOMER',
     status: 'shipping',
     statusLabel: 'v1.0 • Live',
@@ -84,5 +93,14 @@ export const showcaseHomeProducts: HomeProduct[] = [
     description: 'Story bible as knowledge graph. 100 episodes deep, instantly searchable.',
     link: '/products/lexicon',
     category: 'creators',
+  },
+  {
+    name: 'aiPlaces',
+    status: 'development',
+    statusLabel: 'In Development',
+    description: 'r/place meets X. Shared pixel canvas, cooldown timers, real-time chaos. Live at aiplaces.art.',
+    link: 'https://aiplaces.art',
+    external: true,
+    category: 'fun',
   },
 ]
