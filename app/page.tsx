@@ -7,6 +7,8 @@ import Mission from '@/components/Mission'
 import HomeNavigation from '@/components/HomeNavigation'
 import SocialProofStrip from '@/components/SocialProofStrip'
 import LatestFromLab from '@/components/LatestFromLab'
+import ForwardDeployment from '@/components/ForwardDeployment'
+import DeployCTA from '@/components/DeployCTA'
 import { getAllWriting } from '@/lib/writing'
 import { getAllEssays } from '@/lib/essays'
 import { featuredHomeProducts, showcaseHomeProducts } from '@/lib/home-products'
@@ -111,7 +113,9 @@ export default function Home() {
   // Server-side: fetch writing content for Latest from Lab section
   const writingItems = getAllWriting()
   const essayCount = getAllEssays().length
-  const productsShipping = featuredHomeProducts.length
+  const productsShipping = [...featuredHomeProducts, ...showcaseHomeProducts].filter(
+    (p) => p.status === 'shipping'
+  ).length
   const activeProjects = featuredHomeProducts.length + showcaseHomeProducts.length
 
   return (
@@ -135,11 +139,13 @@ export default function Home() {
           activeProjects={activeProjects}
           startYear={2024}
         />
+        <ForwardDeployment />
         <ProductGrid />
         <LatestFromLab items={writingItems} />
-        <Education />
         <Mission />
+        <Education />
         <Builder />
+        <DeployCTA />
       </div>
     </>
   )

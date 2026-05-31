@@ -77,6 +77,22 @@ function ParallaxPreview() {
   )
 }
 
+function RunePreview() {
+  return (
+    <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-lg overflow-hidden border-2 border-[var(--id8-orange)]/30 shadow-[0_0_30px_rgba(255,107,0,0.15)]">
+      <Image
+        src="/images/rune-preview.webp"
+        alt="Rune - Voice-first book writer. Speak your book into existence with Sam."
+        fill
+        className="object-cover object-top"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+    </div>
+  )
+}
+
 function HomerPreview() {
   return (
     <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-lg overflow-hidden border-2 border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.15)]">
@@ -101,6 +117,8 @@ function FeaturedCard({ product, index }: { product: HomeProduct; index: number 
         return <ComposerPreview />
       case 'Parallax':
         return <ParallaxPreview />
+      case 'Rune':
+        return <RunePreview />
       case 'HOMER':
         return <HomerPreview />
       case 'DeepStack':
@@ -126,12 +144,14 @@ function FeaturedCard({ product, index }: { product: HomeProduct; index: number 
         <div>
           {/* Status Badge */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="badge badge-shipping">
-              <div className="w-1.5 h-1.5 bg-[var(--id8-orange)] rounded-full animate-pulse" />
+            <span className={`badge ${product.status === 'shipping' ? 'badge-shipping' : 'badge-development'}`}>
+              {product.status === 'shipping' && (
+                <div className="w-1.5 h-1.5 bg-[var(--id8-orange)] rounded-full animate-pulse" />
+              )}
               {product.statusLabel}
             </span>
             <span className="text-sm font-semibold text-[var(--text-tertiary)] uppercase tracking-wider">
-              Shipping Now
+              {product.status === 'shipping' ? 'Shipping Now' : 'In the Lab'}
             </span>
           </div>
 
@@ -319,13 +339,13 @@ export default function ProductGrid() {
             className="lg:sticky lg:top-24 lg:self-start"
           >
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              What's Happening
+              Proof,
               <br />
-              <span className="text-gradient-orange">in the Lab</span>
+              <span className="text-gradient-orange">not a portfolio</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[var(--id8-orange)] to-transparent mb-6" />
             <p className="text-xl text-[var(--text-secondary)]">
-              Architecture, not tools. Primitive chains shipped from the lab.
+              We run the method on our own problems first. Every product here is the same primitive-chain architecture we deploy for clients.
             </p>
           </m.div>
 
