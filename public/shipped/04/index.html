@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipped. — Issue 04 — Capacity</title>
+<meta property="og:title" content="Shipped. — Issue 04 — Capacity">
+<meta property="og:description" content="A weekly magazine on what Anthropic ships. Issue 04 — Two compute mega-deals in three days, an 80x quarter, and a CLI that grew into an agent platform..">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://id8labs.app/shipped/04/">
+<meta property="og:image" content="https://id8labs.app/shipped/04/og-v4.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shipped. — Issue 04 — Capacity">
+<meta name="twitter:description" content="A weekly magazine on what Anthropic ships.">
+<meta name="twitter:image" content="https://id8labs.app/shipped/04/og-v4.png">
+<meta name="description" content="A weekly magazine on what Anthropic ships. Issue 04 — Two compute mega-deals in three days, an 80x quarter, and a CLI that grew into an agent platform..">
+<meta name="author" content="Eddie Belaval">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='75' cy='62' r='14' fill='%23FF6B35'/%3E%3Ctext x='10' y='75' font-family='Georgia,serif' font-weight='700' font-size='62' fill='%231a1a1a'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,700&family=Archivo:wght@300;400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════
+   SHIPPED. — ISSUE 00 — TEMP-100 PASS
+   Editorial brutalism meets print craft.
+   ══════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{background:#fafaf7;color:#0b0b0b;font-family:'Archivo',sans-serif;overflow-x:hidden}
+::selection{background:#FF6B35;color:#fff}
+
+:root{
+  --orange:#FF6B35;
+  --ink:#0b0b0b;
+  --paper:#fafaf7;       /* warm paper white — magazines aren't pure #fff */
+  --paper-shadow:#f2f0e8;
+  --body:#2a2a2a;
+  --muted:#5a5a5a;
+  --gray:#8a8a8a;
+  --hair:rgba(11,11,11,0.12);
+  --hair-soft:rgba(11,11,11,0.06);
+  --hair-hard:rgba(11,11,11,0.22);
+  --disp:'Fraunces', 'Times New Roman', serif;
+  --sans:'Archivo', system-ui, sans-serif;
+  --narrow:'Archivo Narrow', 'Archivo', sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* paper texture — subtle grain to sell the print feel */
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.28;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ─────────────────────────────────────────
+   PUBLICATION BAR — the spine running the whole book
+   ───────────────────────────────────────── */
+.pub-bar{
+  position:sticky;top:0;z-index:100;
+  background:var(--paper);
+  border-bottom:1px solid var(--hair);
+  padding:0 28px;height:42px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--narrow);
+  font-size:11px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);
+}
+.pub-bar-left,.pub-bar-right{display:flex;align-items:center;gap:16px}
+.pub-bar-mark{font-family:var(--disp);font-weight:500;font-size:16px;letter-spacing:-.01em;text-transform:none;font-style:italic}
+.pub-bar-mark .dot{color:var(--orange)}
+.pub-bar-sep{width:1px;height:12px;background:var(--hair-hard)}
+.pub-bar-meta{color:var(--muted)}
+.pub-bar-link{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;transition:color .15s ease}
+.pub-bar-link:hover{color:var(--orange)}
+.colophon-link{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;transition:color .15s ease}
+.colophon-link:hover{color:var(--orange)}
+.colophon-foot .colophon-link b{color:var(--paper)}
+.pub-bar-folio{color:var(--ink)}
+.pub-bar-folio b{font-weight:600;color:var(--orange)}
+
+/* ─────────────────────────────────────────
+   FOLIO — the corner marker on every section.
+   Print-magazine page number system.
+   ───────────────────────────────────────── */
+.folio{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:500;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gray);
+  display:flex;align-items:center;gap:10px;
+}
+.folio b{color:var(--ink);font-weight:700}
+.folio .ruler{width:28px;height:1px;background:var(--hair-hard)}
+.folio .dot{color:var(--orange)}
+
+/* ─────────────────────────────────────────
+   COVER — the hero moment.
+   The "00" is the architecture. "Shipped." is the logo.
+   ───────────────────────────────────────── */
+.cover{
+  position:relative;
+  padding:32px 28px 64px;
+  min-height:calc(100vh - 42px);
+  display:flex;flex-direction:column;
+  border-bottom:1px solid var(--hair);
+  overflow:hidden;
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right, var(--hair-soft) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+  pointer-events:none;opacity:.55;
+}
+
+.cover-top{
+  position:relative;z-index:2;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:24px;padding-bottom:28px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:24px;
+}
+.cover-top-left{display:flex;flex-direction:column;gap:6px}
+.cover-top-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--ink);
+}
+.cover-top-kicker b{color:var(--orange)}
+.cover-top-sub{
+  font-family:var(--disp);font-style:italic;
+  font-size:13px;font-weight:400;color:var(--muted);
+}
+.cover-top-right{
+  text-align:right;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:500;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1.7;
+}
+.cover-top-right b{color:var(--ink);font-weight:700}
+
+/* The big "00" — set behind the masthead, breaking its baseline */
+.cover-stage{
+  position:relative;flex:1;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-items:center;
+  padding:24px 0;
+  z-index:2;
+}
+.cover-huge-num{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-54%);
+  font-family:var(--disp);
+  font-weight:900;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(320px, 62vw, 780px);
+  line-height:.78;
+  color:var(--paper-shadow);
+  letter-spacing:-.06em;
+  z-index:1;pointer-events:none;
+  user-select:none;
+  -webkit-text-stroke:1px rgba(11,11,11,.08);
+}
+.cover-stack{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(16px,3vw,32px);
+  padding-left:clamp(0px,4vw,40px);
+}
+.cover-spine{
+  position:absolute;
+  left:-4px;top:50%;
+  transform:translateY(-50%) rotate(-90deg);
+  transform-origin:left center;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.48em;
+  text-transform:uppercase;color:var(--gray);
+  white-space:nowrap;
+  display:none; /* only on desktop */
+}
+@media(min-width:980px){.cover-spine{display:block}}
+
+.masthead-cover{
+  font-family:var(--disp);
+  font-weight:500;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(92px, 18vw, 256px);
+  line-height:.84;
+  letter-spacing:-.045em;
+  color:var(--ink);
+  display:inline-block;
+  position:relative;
+}
+.masthead-cover .dot{
+  color:var(--orange);
+  display:inline-block;
+  transform:translateY(-.04em);
+}
+.masthead-cover::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-14px;
+  height:2px;background:var(--ink);
+}
+
+.cover-deck{
+  font-family:var(--disp);
+  font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(28px,4.6vw,58px);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  max-width:820px;
+  color:var(--ink);
+}
+.cover-deck em{font-style:normal;color:var(--orange);font-weight:500}
+
+.cover-deckline{
+  font-family:var(--sans);
+  font-size:15px;font-weight:400;
+  color:var(--muted);
+  max-width:540px;line-height:1.55;
+}
+
+.cover-bottom{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr;
+  gap:0;
+  border-top:1px solid var(--ink);
+  margin-top:32px;
+  padding-top:18px;
+}
+.cover-bottom-cell{
+  padding-right:16px;
+  border-right:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:4px;
+}
+.cover-bottom-cell:last-child{border-right:none;padding-right:0}
+.cover-bottom-label{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gray);
+}
+.cover-bottom-val{
+  font-family:var(--disp);
+  font-weight:500;font-size:18px;color:var(--ink);
+  letter-spacing:-.01em;
+  font-variation-settings:"opsz" 72;
+}
+.cover-bottom-val b{font-weight:700;color:var(--orange)}
+
+@media(max-width:720px){
+  .cover-top-right{font-size:9px}
+  .cover-bottom{grid-template-columns:1fr 1fr;gap:14px 0}
+  .cover-bottom-cell:nth-child(2){border-right:none}
+  .cover-bottom-cell{padding-bottom:12px;border-bottom:1px solid var(--hair-soft)}
+  .cover-bottom-cell:nth-child(3),.cover-bottom-cell:nth-child(4){border-bottom:none}
+}
+
+/* ─────────────────────────────────────────
+   SECTION WRAPPER + FOLIO HEADER
+   ───────────────────────────────────────── */
+.section{
+  position:relative;
+  padding:64px 28px 40px;
+  max-width:1280px;margin:0 auto;
+}
+.section-folio{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:44px;
+}
+.section-folio-left{display:flex;align-items:center;gap:14px}
+.section-folio-label{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ink);
+}
+.section-folio-sub{
+  font-family:var(--disp);font-style:italic;
+  font-size:13px;color:var(--muted);
+}
+
+/* ─────────────────────────────────────────
+   TABLE OF CONTENTS — the "what's in the book" wall
+   ───────────────────────────────────────── */
+.toc-section{background:var(--paper)}
+.toc-head{
+  display:grid;grid-template-columns:auto 1fr auto;
+  align-items:end;gap:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:0;
+}
+.toc-head-num{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,10vw,128px);line-height:.8;
+  color:var(--ink);letter-spacing:-.04em;
+}
+.toc-head-title{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-size:clamp(24px,3vw,40px);line-height:1;
+  color:var(--ink);
+}
+.toc-head-meta{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:right;line-height:1.8;
+}
+.toc-head-meta b{color:var(--ink);font-weight:700}
+
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  column-gap:24px;
+}
+.toc-entry{
+  grid-column:span 6;
+  padding:24px 0 22px;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:18px;align-items:baseline;
+  text-decoration:none;color:inherit;
+  transition:background .12s ease;
+}
+.toc-entry:hover{background:var(--paper-shadow)}
+.toc-entry-n{
+  font-family:var(--narrow);font-weight:700;
+  font-size:10px;letter-spacing:.22em;color:var(--orange);
+  text-transform:uppercase;min-width:40px;
+}
+.toc-entry-body{display:flex;flex-direction:column;gap:6px;min-width:0}
+.toc-entry-kicker{
+  font-family:var(--narrow);font-weight:700;
+  font-size:9px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--muted);
+}
+.toc-entry-title{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(20px,2vw,28px);
+  letter-spacing:-.018em;line-height:1.1;color:var(--ink);
+}
+.toc-entry-tease{
+  font-family:var(--disp);font-style:italic;
+  font-size:14px;line-height:1.45;color:var(--muted);
+}
+.toc-entry-page{
+  font-family:var(--narrow);font-weight:700;
+  font-size:14px;color:var(--ink);letter-spacing:.04em;
+  text-align:right;min-width:40px;
+  font-variant-numeric:tabular-nums;
+}
+.toc-entry:hover .toc-entry-title{color:var(--orange)}
+
+@media(max-width:720px){
+  .toc-entry{grid-column:span 12;grid-template-columns:1fr auto;gap:8px 12px}
+  .toc-entry-n{grid-column:1;grid-row:1}
+  .toc-entry-page{grid-column:2;grid-row:1}
+  .toc-entry-body{grid-column:1 / -1;grid-row:2}
+}
+
+/* ─────────────────────────────────────────
+   "THE OPEN" — intro essay
+   ───────────────────────────────────────── */
+.open-section{background:var(--paper)}
+.open-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:32px;
+}
+.open-lead{
+  grid-column:2 / span 7;
+}
+.open-quote{
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 144;
+  font-weight:500;font-size:clamp(36px,5vw,72px);
+  line-height:1.02;letter-spacing:-.025em;
+  color:var(--ink);
+  margin-bottom:36px;
+  padding-bottom:28px;
+  border-bottom:1px solid var(--hair-hard);
+}
+.open-quote em{font-style:italic;color:var(--orange);font-weight:500}
+.open-prose{
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 14;
+  font-weight:400;font-size:18px;line-height:1.68;
+  color:var(--body);
+  max-width:620px;
+}
+.open-prose p{margin-bottom:22px}
+.open-prose em{font-style:italic;color:var(--ink)}
+.open-aside{
+  grid-column:10 / span 3;
+  border-top:1px solid var(--ink);
+  padding-top:16px;
+  font-family:var(--narrow);
+  font-size:11px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1.9;
+}
+.open-aside b{color:var(--ink);font-weight:700}
+@media(max-width:860px){
+  .open-lead{grid-column:1 / -1}
+  .open-aside{grid-column:1 / -1;margin-top:16px}
+}
+
+/* ─────────────────────────────────────────
+   BY THE NUMBERS — the Bloomberg numerals.
+   Each stat gets the grid-breaking hero treatment.
+   ───────────────────────────────────────── */
+.btn-section{background:var(--ink);color:var(--paper)}
+.btn-section .section-folio{border-bottom-color:var(--paper)}
+.btn-section .section-folio-label{color:var(--paper)}
+.btn-section .section-folio-sub{color:rgba(250,250,247,.6)}
+.btn-section .folio{color:rgba(250,250,247,.6)}
+.btn-section .folio b{color:var(--paper)}
+
+.btn-head{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(40px,6vw,84px);
+  line-height:1;letter-spacing:-.03em;
+  color:var(--paper);
+  margin-bottom:48px;
+  max-width:820px;
+}
+.btn-head em{color:var(--orange);font-style:normal;font-weight:500}
+
+.btn-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:1px;
+  background:rgba(250,250,247,.14);
+  border-top:1px solid rgba(250,250,247,.14);
+  border-bottom:1px solid rgba(250,250,247,.14);
+}
+.btn-cell{
+  background:var(--ink);
+  padding:32px 24px 28px;
+  display:flex;flex-direction:column;gap:6px;
+  position:relative;
+}
+.btn-cell.s6{grid-column:span 6}
+.btn-cell.s4{grid-column:span 4}
+.btn-cell.s3{grid-column:span 3}
+.btn-cell.s12{grid-column:span 12}
+.btn-cell.s8{grid-column:span 8}
+.btn-label{
+  font-family:var(--narrow);
+  font-size:13px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(250,250,247,.78);
+  line-height:1.35;
+}
+.btn-num{
+  font-family:var(--disp);
+  font-weight:700;
+  font-variation-settings:"opsz" 96;
+  font-size:clamp(56px,7.5vw,120px);
+  line-height:.92;letter-spacing:-.04em;
+  color:var(--paper);
+}
+.btn-num.accent{color:var(--orange)}
+.btn-note{
+  font-family:var(--disp);font-style:italic;
+  font-size:15px;line-height:1.4;color:rgba(250,250,247,.8);
+  margin-top:6px;
+}
+
+@media(max-width:860px){
+  .btn-cell.s6,.btn-cell.s4,.btn-cell.s8{grid-column:span 6}
+  .btn-cell.s3{grid-column:span 6}
+  .btn-cell.s12{grid-column:span 12}
+}
+@media(max-width:520px){
+  .btn-cell{grid-column:span 12 !important}
+  .btn-num{font-size:64px}
+}
+
+/* ─────────────────────────────────────────
+   FEATURE OPENER — vertical rotated label.
+   The magazine "FEATURE / INVESTIGATION / SURVEY" moment.
+   ───────────────────────────────────────── */
+.feature-opener{
+  display:grid;
+  grid-template-columns:72px 1fr minmax(0,320px);
+  gap:32px;
+  padding:56px 28px 40px;
+  max-width:1280px;margin:0 auto;
+  position:relative;
+  border-top:2px solid var(--ink);
+}
+.feature-opener::before{
+  content:"";
+  position:absolute;
+  left:100px;top:0;bottom:0;
+  width:1px;background:var(--hair);
+}
+.vert-label{
+  position:relative;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:var(--narrow);
+  font-size:13px;font-weight:700;letter-spacing:.48em;
+  text-transform:uppercase;color:var(--ink);
+  align-self:start;
+  padding-top:12px;
+  white-space:nowrap;
+}
+.vert-label .vert-num{
+  color:var(--orange);
+  font-family:var(--disp);
+  font-style:italic;font-weight:500;
+  letter-spacing:-.02em;
+  margin-top:12px;display:inline-block;
+  writing-mode:horizontal-tb;
+  transform:rotate(180deg);
+  font-size:20px;
+}
+.feature-heading{min-width:0}
+.feature-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:20px;
+}
+.feature-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(52px,8vw,128px);
+  line-height:.9;letter-spacing:-.042em;
+  color:var(--ink);
+  margin-bottom:24px;
+}
+.feature-title em{font-style:italic;font-weight:400;color:var(--ink)}
+.feature-deck{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 72;
+  font-size:clamp(20px,2.4vw,28px);
+  line-height:1.3;letter-spacing:-.01em;
+  color:var(--muted);
+  max-width:640px;
+  margin-bottom:24px;
+}
+.feature-meta{
+  padding-top:18px;
+  border-top:1px solid var(--hair);
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);
+  line-height:1.8;
+}
+.feature-meta b{color:var(--ink);font-weight:700}
+.feature-right{
+  padding-top:28px;
+  border-top:1px solid var(--hair);
+  font-family:var(--disp);font-style:italic;
+  font-size:15px;line-height:1.55;color:var(--muted);
+}
+.feature-right-label{
+  display:block;
+  font-family:var(--narrow);font-style:normal;
+  font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--ink);
+  margin-bottom:10px;
+}
+@media(max-width:860px){
+  .feature-opener{grid-template-columns:1fr;gap:16px}
+  .feature-opener::before{display:none}
+  .vert-label{writing-mode:horizontal-tb;transform:none;font-size:11px}
+  .vert-label .vert-num{writing-mode:horizontal-tb;transform:none;margin-left:16px}
+  .feature-right{grid-column:1 / -1}
+}
+
+/* ─────────────────────────────────────────
+   EDITORIAL PROSE + DROP CAPS
+   ───────────────────────────────────────── */
+.prose-well{
+  max-width:1280px;margin:0 auto;padding:0 28px 56px;
+  display:grid;grid-template-columns:72px 1fr minmax(0,320px);
+  gap:32px;position:relative;
+}
+.prose-well::before{
+  content:"";position:absolute;left:100px;top:0;bottom:0;
+  width:1px;background:var(--hair);
+}
+.prose-marginalia{
+  grid-column:1;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--gray);
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  align-self:start;padding-top:8px;
+  white-space:nowrap;
+}
+.prose{
+  grid-column:2;
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 14;
+  font-weight:400;font-size:19px;line-height:1.66;
+  color:var(--body);
+  max-width:640px;
+}
+.prose p{margin-bottom:24px}
+.prose em{font-style:italic;color:var(--ink)}
+.prose strong{font-weight:600;color:var(--ink)}
+.prose code{
+  font-family:var(--mono);font-size:.86em;
+  background:var(--paper-shadow);padding:1px 6px;
+  border-radius:3px;color:var(--ink);
+}
+.prose-aside{
+  grid-column:3;
+  font-family:var(--narrow);
+  font-size:11px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+  border-top:1px solid var(--ink);padding-top:14px;
+  line-height:1.8;
+}
+.prose-aside b{color:var(--ink);font-weight:700}
+
+/* Drop cap — dramatic, breaking the baseline */
+.drop-cap::first-letter{
+  font-family:var(--disp);
+  font-variation-settings:"opsz" 144;
+  font-weight:700;
+  font-size:9.2em;
+  float:left;line-height:.78;
+  padding:.02em 12px 0 0;
+  margin:.02em 4px -.1em -2px;
+  color:var(--ink);
+}
+.drop-cap-orange::first-letter{
+  color:var(--orange);
+}
+
+@media(max-width:860px){
+  .prose-well{grid-template-columns:1fr;padding-left:20px;padding-right:20px}
+  .prose-well::before{display:none}
+  .prose-marginalia{display:none}
+  .prose{grid-column:1}
+  .prose-aside{grid-column:1;margin-top:20px}
+  .drop-cap::first-letter{font-size:6.6em}
+}
+
+/* ─────────────────────────────────────────
+   FULL-SCREEN PULL QUOTE — the punchline moment
+   ───────────────────────────────────────── */
+.pq-full{
+  background:var(--ink);color:var(--paper);
+  padding:120px 28px;
+  position:relative;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+}
+.pq-full-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  align-items:center;
+}
+.pq-quote-mark{
+  grid-column:1 / span 2;
+  font-family:var(--disp);font-weight:900;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(180px,24vw,360px);
+  line-height:.6;color:var(--orange);
+  letter-spacing:-.05em;
+  align-self:start;
+}
+.pq-body{
+  grid-column:3 / span 9;
+}
+.pq-text{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 144;
+  font-style:italic;
+  font-size:clamp(36px,5vw,68px);
+  line-height:1.1;letter-spacing:-.022em;
+  color:var(--paper);
+  margin-bottom:28px;
+}
+.pq-text em{color:var(--orange);font-style:normal;font-weight:500}
+.pq-att{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(250,250,247,.55);
+  border-top:1px solid rgba(250,250,247,.25);
+  padding-top:14px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.pq-att b{color:var(--paper)}
+@media(max-width:720px){
+  .pq-full{padding:64px 20px}
+  .pq-quote-mark{grid-column:1 / -1;font-size:120px;line-height:.7;margin-bottom:-30px}
+  .pq-body{grid-column:1 / -1}
+}
+
+/* ─────────────────────────────────────────
+   THE MYTHOS BAR — hero benchmark diagram
+   ───────────────────────────────────────── */
+.hero-chart-section{
+  background:var(--paper);
+  padding:64px 28px 56px;max-width:1280px;margin:0 auto;
+}
+.hero-chart-head{
+  display:grid;grid-template-columns:1fr auto;
+  gap:24px;align-items:end;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:36px;
+}
+.hero-chart-head-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(36px,5vw,64px);
+  line-height:.95;letter-spacing:-.03em;color:var(--ink);
+}
+.hero-chart-head-title em{font-style:italic;color:var(--orange);font-weight:500}
+.hero-chart-head-meta{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:right;line-height:1.8;
+}
+.hero-chart-head-meta b{color:var(--ink);font-weight:700}
+
+.hero-chart-bars{
+  display:flex;flex-direction:column;gap:0;
+}
+.hero-chart-row{
+  display:grid;
+  grid-template-columns:minmax(160px,220px) 1fr 90px;
+  gap:24px;align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--hair);
+}
+.hero-chart-row:last-child{border-bottom:1px solid var(--ink)}
+.hero-chart-name{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:20px;color:var(--ink);letter-spacing:-.01em;
+}
+.hero-chart-name .tag{
+  display:inline-block;margin-left:8px;
+  font-family:var(--narrow);font-size:9px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--orange);vertical-align:2px;
+}
+.hero-chart-bar{
+  height:16px;background:var(--paper-shadow);
+  position:relative;overflow:hidden;
+  border:1px solid var(--hair);
+}
+.hero-chart-bar-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:var(--ink);
+}
+.hero-chart-row.frontier .hero-chart-bar-fill{background:var(--orange)}
+.hero-chart-row.frontier{background:rgba(255,107,53,.04)}
+.hero-chart-row.frontier .hero-chart-name{color:var(--ink)}
+.hero-chart-score{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 72;
+  font-size:28px;letter-spacing:-.02em;
+  color:var(--ink);text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.hero-chart-row.frontier .hero-chart-score{color:var(--orange)}
+.hero-chart-caption{
+  margin-top:20px;
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  font-family:var(--disp);font-style:italic;
+  font-size:14px;line-height:1.5;color:var(--muted);
+}
+.hero-chart-caption-num{
+  font-family:var(--narrow);font-style:normal;
+  font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--orange);
+  padding-top:2px;white-space:nowrap;
+}
+@media(max-width:720px){
+  .hero-chart-row{grid-template-columns:1fr auto;gap:6px 12px}
+  .hero-chart-bar{grid-column:1 / -1;order:3}
+  .hero-chart-name{grid-column:1;grid-row:1}
+  .hero-chart-score{grid-column:2;grid-row:1}
+}
+
+/* ─────────────────────────────────────────
+   SIDEBAR BOX — editorial aside
+   ───────────────────────────────────────── */
+.sidebar-box{
+  background:var(--paper);
+  border:1px solid var(--ink);
+  border-top:4px solid var(--ink);
+  padding:28px 28px 24px;
+  margin:48px auto;
+  max-width:820px;
+  position:relative;
+}
+.sidebar-box.accent{border-top-color:var(--orange)}
+.sidebar-box-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:8px;
+}
+.sidebar-box-title{
+  font-family:var(--disp);font-weight:500;font-style:italic;
+  font-variation-settings:"opsz" 72;
+  font-size:28px;letter-spacing:-.015em;
+  color:var(--ink);
+  padding-bottom:16px;
+  border-bottom:1px solid var(--hair);
+  margin-bottom:20px;
+}
+.sidebar-box-body{
+  font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--body);
+}
+.sidebar-box-body p{margin-bottom:12px}
+.sidebar-box-body p:last-child{margin-bottom:0}
+.sidebar-box-list{
+  list-style:none;padding:0;margin:16px 0 0;
+  display:flex;flex-direction:column;
+  border-top:1px solid var(--hair);
+}
+.sidebar-box-list li{
+  padding:14px 0;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  gap:16px;align-items:baseline;
+  font-family:var(--sans);font-size:14px;color:var(--body);
+  line-height:1.5;
+}
+.sidebar-box-list .yr{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 72;
+  font-size:22px;color:var(--orange);
+  letter-spacing:-.01em;
+}
+.sidebar-box-list .yr em{font-style:italic;font-weight:400;font-size:14px;color:var(--muted)}
+
+/* ─────────────────────────────────────────
+   THE AGENT STACK — feature with code
+   ───────────────────────────────────────── */
+.code-block{
+  margin:24px 0;
+  border:1px solid var(--ink);
+  background:var(--paper);
+  font-family:var(--mono);font-size:12.5px;line-height:1.55;
+  color:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.code-block-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px;
+  border-bottom:1px solid var(--ink);
+  background:var(--ink);color:var(--paper);
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.code-block-head span:last-child{color:var(--orange)}
+.code-block pre{
+  padding:20px 24px;overflow-x:auto;white-space:pre;margin:0;
+}
+.code-block .k{color:var(--orange)}
+.code-block .s{color:var(--muted);font-style:italic}
+.code-block .c{color:var(--gray);font-style:italic}
+
+/* ─────────────────────────────────────────
+   TIMELINE — 21 days, 56 releases
+   ───────────────────────────────────────── */
+.tl-section{padding:64px 28px 56px;max-width:1280px;margin:0 auto}
+.tl-head{
+  display:grid;grid-template-columns:1fr auto;
+  gap:24px;align-items:end;
+  padding-bottom:18px;border-bottom:1px solid var(--ink);
+  margin-bottom:36px;
+}
+.tl-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(40px,6vw,72px);line-height:.95;letter-spacing:-.03em;
+}
+.tl-title em{font-style:italic;color:var(--orange);font-weight:500}
+.tl-count{
+  font-family:var(--disp);font-weight:900;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,10vw,160px);line-height:.8;letter-spacing:-.05em;
+  color:var(--ink);
+}
+.tl-count .slash{color:var(--orange);font-style:italic;font-weight:400}
+
+.tl-grid{
+  display:grid;
+  grid-template-columns:repeat(21, minmax(0, 1fr));
+  gap:2px;
+  margin-bottom:40px;
+  border-top:1px solid var(--ink);padding-top:20px;
+}
+.tl-day{
+  display:flex;flex-direction:column;gap:2px;align-items:stretch;
+  min-height:140px;
+}
+.tl-date{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+}
+.tl-stack{
+  display:flex;flex-direction:column;gap:2px;align-items:stretch;
+  flex:1;justify-content:flex-end;
+}
+.tl-dot{
+  height:8px;background:var(--ink);
+  display:block;
+}
+.tl-dot.big{background:var(--orange);height:18px}
+.tl-dot.minor{background:var(--hair-hard)}
+.tl-weekend{opacity:.35}
+
+@media(max-width:860px){
+  .tl-grid{grid-template-columns:repeat(7, minmax(0, 1fr));grid-auto-rows:auto}
+  .tl-day{min-height:100px}
+}
+
+.tl-legend{
+  display:flex;gap:24px;flex-wrap:wrap;
+  font-family:var(--narrow);font-size:10px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  padding-top:18px;border-top:1px solid var(--hair);
+}
+.tl-legend-item{display:flex;align-items:center;gap:8px}
+.tl-legend-dot{width:12px;height:8px;background:var(--ink)}
+.tl-legend-dot.big{background:var(--orange);height:14px}
+.tl-legend-dot.minor{background:var(--hair-hard)}
+
+.tl-list{
+  margin-top:32px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:0;
+  border-top:1px solid var(--ink);
+}
+.tl-list-item{
+  grid-column:span 6;
+  padding:18px 0;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:60px 1fr;gap:18px;
+}
+.tl-list-item:nth-child(odd){padding-right:24px;border-right:1px solid var(--hair)}
+.tl-list-item:nth-child(even){padding-left:24px}
+.tl-list-date{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--orange);
+  padding-top:3px;
+}
+.tl-list-title{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:17px;letter-spacing:-.01em;
+  color:var(--ink);line-height:1.25;
+  margin-bottom:4px;
+}
+.tl-list-desc{
+  font-family:var(--sans);font-size:13px;color:var(--muted);
+  line-height:1.5;
+}
+@media(max-width:720px){
+  .tl-list-item{grid-column:span 12;padding:16px 0 !important;border-right:none !important;padding-left:0 !important;padding-right:0 !important}
+}
+
+/* ─────────────────────────────────────────
+   SURVEY — Claude Code
+   ───────────────────────────────────────── */
+.survey-data{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:0;
+  margin:32px 0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.survey-cell{
+  grid-column:span 3;
+  padding:24px 20px;
+  border-right:1px solid var(--hair);
+  display:flex;flex-direction:column;gap:6px;
+}
+.survey-cell:last-child{border-right:none}
+.survey-label{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+}
+.survey-num{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:64px;line-height:.9;letter-spacing:-.04em;color:var(--ink);
+}
+.survey-num em{color:var(--orange);font-style:italic;font-weight:500}
+.survey-note{
+  font-family:var(--disp);font-style:italic;
+  font-size:13px;color:var(--muted);line-height:1.4;
+}
+@media(max-width:720px){
+  .survey-cell{grid-column:span 6;border-bottom:1px solid var(--hair)}
+}
+
+/* ─────────────────────────────────────────
+   TERM OF THE ISSUE — dictionary-style
+   ───────────────────────────────────────── */
+.term-section{
+  background:var(--paper);
+  padding:80px 28px;max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+}
+.term-kicker{
+  grid-column:1 / -1;
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:32px;padding-bottom:16px;
+  border-bottom:1px solid var(--ink);
+}
+.term-word{
+  grid-column:1 / span 6;
+  font-family:var(--disp);font-weight:400;font-style:italic;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,11vw,168px);
+  line-height:.9;letter-spacing:-.04em;
+  color:var(--ink);
+}
+.term-word .part{
+  display:block;
+  font-family:var(--narrow);font-style:normal;font-weight:600;
+  font-size:14px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  margin-top:14px;
+}
+.term-word .part em{font-style:italic;color:var(--ink);font-family:var(--disp);font-weight:400}
+.term-def{
+  grid-column:8 / -1;
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 24;
+  font-size:19px;line-height:1.6;color:var(--body);
+  padding-top:24px;
+  border-top:1px solid var(--ink);
+}
+.term-def p{margin-bottom:18px}
+.term-def p:last-child{margin-bottom:0}
+.term-def em{font-style:italic;color:var(--ink)}
+.term-def strong{font-weight:600;color:var(--ink)}
+.term-usage{
+  margin-top:24px;padding-top:20px;
+  border-top:1px solid var(--hair);
+  font-family:var(--disp);font-style:italic;font-size:16px;color:var(--muted);
+}
+.term-usage b{font-style:normal;font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:6px}
+@media(max-width:860px){
+  .term-word{grid-column:1 / -1}
+  .term-def{grid-column:1 / -1}
+}
+
+/* ─────────────────────────────────────────
+   THE CLOSE — three-beat
+   ───────────────────────────────────────── */
+.close-section{
+  background:var(--ink);color:var(--paper);
+  padding:120px 28px 140px;
+  position:relative;
+  text-align:center;
+}
+.close-kicker{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:700;letter-spacing:.38em;
+  text-transform:uppercase;color:rgba(250,250,247,.5);
+  margin-bottom:48px;
+}
+.close-stack{
+  max-width:780px;margin:0 auto;
+  display:flex;flex-direction:column;gap:32px;
+}
+.close-line{
+  font-family:var(--disp);font-weight:400;
+  font-variation-settings:"opsz" 96;
+  font-size:clamp(26px,3.6vw,46px);
+  line-height:1.18;letter-spacing:-.018em;
+  color:var(--paper);
+}
+.close-line em{font-style:italic;color:var(--orange);font-weight:500}
+.close-final{
+  font-style:italic;color:var(--orange);
+  font-size:clamp(18px,2.2vw,26px);
+  line-height:1.5;letter-spacing:0;
+  max-width:580px;margin:0 auto;
+  font-variation-settings:"opsz" 36;
+}
+.close-coda-start{
+  margin-top:48px;position:relative;
+}
+.close-coda-start::before{
+  content:"";display:block;
+  width:32px;height:1px;
+  background:rgba(217,107,73,.45);
+  margin:0 auto 36px;
+}
+.close-mark{
+  margin-top:72px;
+  font-family:var(--disp);
+  font-size:48px;color:rgba(250,250,247,.3);
+  letter-spacing:.8em;
+}
+
+/* ─────────────────────────────────────────
+   RELEASE LOG — back of book
+   ───────────────────────────────────────── */
+.log-divider{
+  background:var(--paper);
+  padding:96px 28px 48px;
+  text-align:center;
+  border-top:3px double var(--ink);
+  border-bottom:1px solid var(--ink);
+  max-width:1280px;margin:0 auto;
+}
+.log-divider-kicker{
+  font-family:var(--narrow);
+  font-size:11px;font-weight:700;letter-spacing:.48em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:14px;
+}
+.log-divider-title{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(56px,10vw,144px);
+  line-height:.9;letter-spacing:-.045em;color:var(--ink);
+  margin-bottom:16px;
+}
+.log-divider-title em{font-style:italic;font-weight:400}
+.log-divider-sub{
+  font-family:var(--disp);font-style:italic;
+  font-size:18px;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.5;
+}
+
+.log-section{
+  padding:48px 28px;max-width:1280px;margin:0 auto;
+}
+.log-cat-head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;align-items:baseline;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--ink);
+  margin-bottom:0;
+}
+.log-cat-letter{display:none}
+.log-cat-name{
+  font-family:var(--disp);font-weight:600;font-style:italic;
+  font-variation-settings:"opsz" 96;
+  font-size:clamp(36px,5vw,56px);
+  letter-spacing:-.02em;color:var(--ink);line-height:1;
+}
+.log-cat-count{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);
+  text-align:right;
+}
+.log-cat-count b{color:var(--ink);font-weight:700;font-size:13px;display:block}
+
+.log-cat-deck{
+  font-family:var(--disp);
+  font-style:italic;
+  font-weight:400;
+  font-variation-settings:"opsz" 24;
+  font-size:18px;
+  line-height:1.45;
+  color:var(--muted);
+  margin-top:14px;
+  margin-bottom:8px;
+  max-width:760px;
+  letter-spacing:-.005em;
+}
+.log-cat-deck b{color:var(--ink);font-weight:600;font-style:normal}
+.log-cat-deck em{color:var(--orange);font-style:normal;font-weight:500}
+
+.log-entries{display:flex;flex-direction:column}
+.log-entry{
+  padding:24px 0;
+  border-bottom:1px solid var(--hair);
+  display:grid;
+  grid-template-columns:120px 1fr;gap:28px;
+}
+.log-entry-left{
+  display:flex;flex-direction:column;gap:8px;
+}
+.log-entry-date{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.log-tag{
+  font-family:var(--narrow);
+  font-size:9px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;padding:3px 7px;
+  display:inline-block;line-height:1.3;width:fit-content;
+}
+.log-tag.model{background:var(--orange);color:var(--paper)}
+.log-tag.api{background:var(--ink);color:var(--paper)}
+.log-tag.code{background:#3a3a3a;color:var(--paper)}
+.log-tag.apps{background:#5a5a5a;color:var(--paper)}
+.log-tag.sdk-py,.log-tag.sdk-ts{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
+.log-tag.research,.log-tag.news{background:var(--paper);color:var(--muted);border:1px solid var(--hair-hard)}
+.log-tag.deprecation{background:var(--paper-shadow);color:var(--muted);border:1px solid var(--hair-hard)}
+.log-entry-title{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 72;
+  font-size:20px;letter-spacing:-.012em;
+  color:var(--ink);line-height:1.25;
+  margin-bottom:10px;
+}
+.log-entry-title a{color:inherit;text-decoration:none;border-bottom:1px solid var(--hair-hard)}
+.log-entry-title a:hover{border-bottom-color:var(--orange);color:var(--orange)}
+.log-entry-body{
+  font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--body);
+  margin-bottom:12px;
+}
+.log-entry-how{
+  font-family:var(--sans);font-size:13.5px;line-height:1.6;color:var(--muted);
+  padding-top:12px;border-top:1px solid var(--hair-soft);
+}
+.log-entry-how b{font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:6px}
+.log-entry-why{
+  font-family:var(--disp);font-style:italic;
+  font-size:14px;color:var(--muted);line-height:1.55;
+  margin-top:10px;padding-left:14px;
+  border-left:2px solid var(--orange);
+}
+.log-entry-why b{font-style:normal;font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:4px}
+
+@media(max-width:720px){
+  .log-entry{grid-template-columns:1fr;gap:12px}
+  .log-cat-head{grid-template-columns:auto 1fr}
+  .log-cat-count{grid-column:1 / -1;text-align:left;padding-top:8px;border-top:1px solid var(--hair)}
+}
+
+/* ─────────────────────────────────────────
+   ORNAMENT
+   ───────────────────────────────────────── */
+.ornament{
+  text-align:center;margin:64px auto;
+  font-family:var(--disp);font-size:16px;color:var(--hair-hard);
+  letter-spacing:1.2em;
+}
+.ornament.bold{color:var(--orange);letter-spacing:.8em;font-size:20px}
+
+/* ─────────────────────────────────────────
+   QUIET ON THE WIRE
+   ───────────────────────────────────────── */
+.quiet-section{
+  max-width:1280px;margin:0 auto;padding:64px 28px 24px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+}
+.quiet-head{
+  grid-column:1 / span 3;
+}
+.quiet-title{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 72;
+  font-size:32px;line-height:1;letter-spacing:-.02em;
+  color:var(--ink);
+}
+.quiet-title em{color:var(--orange);font-style:normal;font-weight:500}
+.quiet-kicker{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:10px;
+}
+.quiet-body{
+  grid-column:5 / -1;
+  font-family:var(--disp);font-size:17px;line-height:1.65;color:var(--body);
+  padding-left:24px;border-left:1px solid var(--ink);
+}
+.quiet-body p{margin-bottom:16px}
+.quiet-body strong{font-weight:600;color:var(--ink)}
+@media(max-width:860px){
+  .quiet-head,.quiet-body{grid-column:1 / -1}
+  .quiet-body{padding-left:0;border-left:none;border-top:1px solid var(--ink);padding-top:18px}
+}
+
+/* ─────────────────────────────────────────
+   COLOPHON — print-magazine care
+   ───────────────────────────────────────── */
+.colophon{
+  background:var(--ink);color:var(--paper);
+  padding:80px 28px 64px;
+  border-top:2px solid var(--orange);
+}
+.colophon-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:32px;
+}
+.colophon-mast{
+  grid-column:1 / span 5;
+}
+.colophon-word{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 144;
+  font-size:clamp(72px,10vw,120px);
+  line-height:.9;letter-spacing:-.04em;color:var(--paper);
+}
+.colophon-word .dot{color:var(--orange)}
+.colophon-tag{
+  margin-top:14px;
+  font-family:var(--disp);font-style:italic;font-size:18px;
+  color:rgba(250,250,247,.65);line-height:1.4;max-width:360px;
+}
+
+.colophon-body{
+  grid-column:6 / -1;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+}
+.colophon-col{}
+.colophon-col h4{
+  font-family:var(--narrow);
+  font-size:10px;font-weight:700;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--orange);
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:1px solid rgba(250,250,247,.2);
+}
+.colophon-col p,.colophon-col li{
+  font-family:var(--sans);font-size:13px;line-height:1.6;
+  color:rgba(250,250,247,.75);
+  margin-bottom:8px;list-style:none;
+}
+.colophon-col b{color:var(--paper);font-weight:600}
+.colophon-col em{font-style:italic;color:rgba(250,250,247,.9)}
+
+.colophon-foot{
+  grid-column:1 / -1;
+  margin-top:32px;padding-top:24px;
+  border-top:1px solid rgba(250,250,247,.2);
+  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  font-family:var(--narrow);font-size:10px;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:rgba(250,250,247,.5);
+}
+.colophon-foot b{color:var(--paper);font-weight:700}
+.colophon-foot .hot{color:var(--orange)}
+
+@media(max-width:860px){
+  .colophon-mast,.colophon-body{grid-column:1 / -1}
+  .colophon-body{grid-template-columns:1fr;gap:24px}
+}
+
+/* ─────────────────────────────────────────
+   MOBILE FINAL
+   ───────────────────────────────────────── */
+@media(max-width:600px){
+  .section,.log-section,.hero-chart-section,.tl-section,.feature-opener,.prose-well{padding-left:20px;padding-right:20px}
+  .open-grid{gap:20px}
+  .open-lead{grid-column:1 / -1}
+  .btn-grid{grid-template-columns:repeat(4,1fr)}
+  .cover{padding:24px 20px 48px}
+  .cover-top{flex-direction:column;gap:12px;align-items:flex-start}
+  .cover-top-right{text-align:left}
+  .btn-num{font-size:54px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════════════════════════════════════
+     PUBLICATION BAR — persistent spine
+     ═════════════════════════════════════════ -->
+<nav class="pub-bar">
+  <div class="pub-bar-left">
+    <span class="pub-bar-mark">Shipped<span class="dot">.</span></span>
+    <span class="pub-bar-sep"></span>
+    <span class="pub-bar-meta">A weekly magazine by <a href="https://id8labs.app" class="pub-bar-link">id8Labs</a></span>
+  </div>
+  <div class="pub-bar-right">
+    <span class="pub-bar-folio">Issue <b>04</b></span>
+    <span class="pub-bar-sep"></span>
+    <span class="pub-bar-meta">May 8, 2026</span>
+  </div>
+</nav>
+
+<!-- ═════════════════════════════════════════
+     COVER
+     ═════════════════════════════════════════ -->
+<section class="cover" id="top">
+  <div class="cover-grid"></div>
+
+  <div class="cover-top">
+    <div class="cover-top-left">
+      <div class="cover-top-kicker">Issue <b>#04</b>&nbsp;&nbsp;·&nbsp;&nbsp;Volume I&nbsp;&nbsp;·&nbsp;&nbsp;Capacity</div>
+      <div class="cover-top-sub">Two compute mega-deals in three days, an 80x quarter, and a CLI that grew into an agent platform.</div>
+    </div>
+    <div class="cover-top-right">
+      <div><b>2026 — 05 — 08</b></div>
+      <div>Period 2026-05-04 → 2026-05-08</div>
+      <div>22 Releases · 4 Days</div>
+    </div>
+  </div>
+
+  <div class="cover-stage">
+    <div class="cover-huge-num">04</div>
+    <div class="cover-stack">
+      <span class="cover-spine">Shipped.&nbsp;&nbsp;·&nbsp;&nbsp;Volume I&nbsp;&nbsp;·&nbsp;&nbsp;Capacity&nbsp;&nbsp;·&nbsp;&nbsp;04</span>
+      <span class="masthead-cover">Shipped<span class="dot">.</span></span>
+      <h1 class="cover-deck">Capacity</h1>
+      <p class="cover-deckline">Two compute mega-deals in three days, an 80x quarter, and a CLI that grew into an agent platform.</p>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════
+     TABLE OF CONTENTS (driven by frontmatter, per-issue)
+     ═════════════════════════════════════════ -->
+<section class="section toc-section" id="contents">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio"><b>p.02</b> <span class="ruler"></span> Shipped. <span class="dot">·</span> 04 <span class="dot">·</span> Front of book</span>
+    </div>
+    <span class="section-folio-sub">Front of book</span>
+  </div>
+
+  <div class="toc-head">
+    <div class="toc-head-num">04</div>
+    <div class="toc-head-title">In this issue,</div>
+  </div>
+
+  <div class="toc-grid">
+    <a href="#the-open" class="toc-entry">
+      <span class="toc-entry-n">01</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">The Open</span>
+      </div>
+    </a>
+    <a href="#the-lead-story" class="toc-entry">
+      <span class="toc-entry-n">02</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">The Lead Story</span>
+      </div>
+    </a>
+    <a href="#investigation" class="toc-entry">
+      <span class="toc-entry-n">03</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Investigation</span>
+      </div>
+    </a>
+    <a href="#by-the-numbers" class="toc-entry">
+      <span class="toc-entry-n">04</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">By the Numbers</span>
+      </div>
+    </a>
+    <a href="#also-shipped" class="toc-entry">
+      <span class="toc-entry-n">05</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Also Shipped</span>
+      </div>
+    </a>
+    <a href="#quiet-on-the-wire" class="toc-entry">
+      <span class="toc-entry-n">06</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Quiet on the Wire</span>
+      </div>
+    </a>
+    <a href="#term-of-the-issue" class="toc-entry">
+      <span class="toc-entry-n">07</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">Term of the Issue</span>
+      </div>
+    </a>
+    <a href="#the-close" class="toc-entry">
+      <span class="toc-entry-n">08</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">The Close</span>
+      </div>
+    </a>
+  </div>
+</section>
+<!-- BEGIN EDITORIAL SECTIONS -->
+<section class="section open-section" id="open">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio"><b>p.03</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+    </div>
+    <span class="section-folio-sub">The Open</span>
+  </div>
+
+  <div class="open-grid">
+    <div class="open-lead">
+      <p class="open-quote">There's a number that doesn't fit on a slide. Anthropic planned for 10x growth in the first quarter. It got 80x. The run rate went from roughly $9 billion at the end of 2025 to $30 billion, and Dario Amodei said the quiet part to Fortune on Friday: the company is "working as quickly as possible" to secure compute.</p>
+      <div class="open-prose">
+        <p>You can hear what that sentence costs. It's the sound of a frontier lab that ran out of room.</p>
+        <p>This week Anthropic signed two compute mega-deals in three days, opened its first developer conference in San Francisco, and shipped exactly zero new models. The product news was real. But the spine of the week was power, GPUs, and the bill for both.</p>
+        <p>The race stopped being about who has the smartest model. It became about who can plug it in.</p>
+      </div>
+    </div>
+    <aside class="open-aside">
+      <div>The brief</div>
+      <div><b>Period</b> May 4 → May 8</div>
+      <div><b>Days</b> 21</div>
+      <div><b>Releases</b> 56</div>
+      <div><b>Consortium</b> 12 orgs</div>
+      <div><b>Ceiling</b> 1 model, gated</div>
+      <div><b>Floor</b> 1 model, GA</div>
+      <div><b>The gap</b> the new normal</div>
+    </aside>
+  </div>
+</section>
+<div class="feature-opener" id="lead">
+  <span class="vert-label">The Lead Story <span class="vert-num">01</span></span>
+  <div class="feature-heading">
+    <div class="feature-kicker">Report by Eddie Belaval</div>
+    <h2 class="feature-title">The compute land-grab.</h2>
+  </div>
+</div>
+
+<div class="prose-well">
+  <div class="prose drop-cap drop-cap-orange">
+    <p>The frontier race had a tell this week, and it wasn't a benchmark. It was a power meter.</p>
+    <p>On Tuesday, May 6, Anthropic announced it had taken all the AI capacity at the Colossus 1 data center in Memphis: more than 220,000 NVIDIA GPUs (H100, H200, GB200) drawing over 300 megawatts, first reported by Bloomberg (<a href="https://www.cnbc.com/2026/05/06/anthropic-spacex-data-center-capacity.html">CNBC</a>). The deal doubled Claude Code rate limits for paid plans, removed peak-hour caps for Pro and Max, and sharply raised Opus API throughput (<a href="https://www.anthropic.com/news/higher-limits-spacex">Anthropic</a>). The framing was SpaceX and orbital compute. The plumbing underneath is xAI's: Colossus 1 is an xAI site, and follow-on reporting put Anthropic's bill at roughly $1.25 billion per month through 2029 (<a href="https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/">TechCrunch</a>). Two rivals, one data center, one check.</p>
+    <p>Two days later, the second shoe. On Friday, May 8, Bloomberg reported Anthropic had signed a $1.8 billion, seven-year cloud contract with Akamai Technologies (<a href="https://www.bloomberg.com/news/articles/2026-05-08/anthropic-inks-1-8-billion-computing-deal-with-akamai">Bloomberg</a>). Largest deal in Akamai's history. Consumption-based, ramping as capacity comes online later in 2026. The market read it instantly: Akamai shares closed up 27 percent at $148.38, the stock's biggest single-day move in over two decades.</p>
+    <p>Set those next to April's commitments. Amazon's $25 billion investment and a $100 billion AWS compute pledge. The Broadcom and Alphabet TPU expansion, 3.5 GW from 2027. Now SpaceX-Colossus and Akamai inside a single week. A company does not sign deals at this clip to buy servers. It signs them to buy the right to keep existing at 80x.</p>
+    <p>Amodei put the cause on the record Friday: 80-fold revenue growth in Q1 against a 10x plan, a $30 billion annualized run rate (<a href="https://fortune.com/2026/05/08/anthropic-80fold-growth-quarter-renting-elon-musk-data-center/">Fortune</a>). Demand outran the build. The deals are the lab catching up to its own customers.</p>
+    <p>Two compute deals in three days. No new model. The shortage was the headline.</p>
+  </div>
+</div>
+
+
+
+
+
+<span class="ornament bold">&#10022; &nbsp; &#10022; &nbsp; &#10022;</span>
+
+<div class="feature-opener" id="investigation">
+  <span class="vert-label">Investigation</span>
+  <div class="feature-heading">
+    <div class="feature-kicker">Reporting by Eddie Belaval</div>
+    <h2 class="feature-title">Code with Claude SF: the CLI became a platform.</h2>
+  </div>
+</div>
+
+<div class="prose-well">
+  <div class="prose drop-cap">
+    <p>The keynote opened in San Francisco at 9:00 AM Pacific on May 6, and CPO Ami Vora set the expectation in one line: the event "is about how we are making our products work better for you" (<a href="https://claude.com/code-with-claude/san-francisco">Code with Claude</a>). Translation: no new model. The room that came for Mythos got something else. It got the moment Claude Code stopped being a command-line tool and became an orchestration layer.</p>
+    <p>Start with the thing every Anthropic team already runs. <strong>Code Review</strong> dispatches a fleet of parallel agents at a pull request, each one checking a different category of error, each leaving comments with conclusions and suggested fixes (<a href="https://thenewstack.io/anthropic-launches-a-multi-agent-code-review-tool-for-claude-code/">The New Stack</a>). It is multi-agent by default. The interesting part has nothing to do with reviewing code. The unit of work is now a team of agents instead of one.</p>
+    <p><strong>CI Auto-Fix</strong> files automatic fixes against failing CI checks on a PR. <strong>Remote Agents</strong> lets you drive your laptop from your phone through Claude, the agent running where your code lives while you hold the leash from somewhere else. And <strong>Managed Agents</strong> picked up two capabilities that name the whole direction: Multi-agent orchestration, which lets you stand up coordinated fleets, and Outcomes, where you define success criteria and Claude iterates toward them instead of toward a single response.</p>
+    <p>Read those four together and the shape is obvious. A year ago the question was how good is the model at writing a function. This week the question is how many agents can you coordinate, against what goal, while you sleep. The CLI grew a control plane.</p>
+    <p>The SDK shipped the matching surface the same day. Python v0.100.0 and TypeScript v0.95.0 added Managed Agents multiagent support, outcomes, and webhooks (<a href="https://github.com/anthropics/anthropic-sdk-python/releases">GitHub</a>). The builder primitives landed in lockstep with the product announcements, which is how you tell a real platform launch from a demo.</p>
+    <p>What didn't ship is its own data point. No Mythos. Speculation before the conference had pointed at a model reveal, and Vora's opening closed that door for the day. Anthropic spent its biggest developer stage of the year on orchestration, not on intelligence. When you have a $30 billion run rate and a compute shortage, the frontier you can actually sell is the one that turns the model you already have into a workforce.</p>
+    <p>Code with Claude continues in London on May 19 and Tokyo on June 10. The model can wait. The platform couldn't.</p>
+  </div>
+</div>
+
+
+
+<span class="ornament">&sect; &nbsp; &sect; &nbsp; &sect;</span>
+
+
+
+
+<section class="section" id="also">
+  <div class="section-folio">
+    <div class="section-folio-left">
+      <span class="folio">Shipped. <span class="dot">·</span> Also shipped</span>
+    </div>
+    <span class="section-folio-sub">Also shipped</span>
+  </div>
+
+  <div class="prose-well" style="padding:0">
+    <div class="prose">
+
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">A $1.5B swing at the consulting industry.</h3>
+      <p>The day before the finance agents, Anthropic stood up a standalone enterprise AI-services firm with Blackstone, Hellman &amp; Friedman, and Goldman Sachs, backed by a consortium including General Atlantic, Apollo, GIC, and Sequoia (<a href="https://www.blackstone.com/news/press/anthropic-partners-with-blackstone-hellman-friedman-and-goldman-sachs-to-launch-enterprise-ai-services-firm/">Blackstone</a>). The model: embed engineers inside mid-sized companies and redesign their workflows around agents, using the partners' PE portfolios as the first proving ground (<a href="https://www.cnbc.com/2026/05/04/anthropic-goldman-blackstone-ai-venture.html">CNBC</a>). Fortune called it a shot at consulting. It is. The deployment bottleneck, not the model, is now the product.</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Ten finance agents and a Microsoft 365 footprint.</h3>
+      <p>On May 5, at an invite-only briefing in New York, Anthropic shipped ten ready-to-run financial-services agent templates: pitchbook creation, KYC file screening, month-end close (<a href="https://www.anthropic.com/news/finance-agents">Anthropic</a>). Each lands as a plugin in Cowork and Claude Code and as a cookbook for Managed Agents. Claude also moved into Excel, PowerPoint, Word, and Outlook through Microsoft 365 add-ins, with context carrying between apps, and Moody's embedded its full platform as a native Claude app covering 600 million companies (<a href="https://fortune.com/2026/05/05/anthropic-wall-street-financial-services-agents-jamie-dimon/">Fortune</a>). The day after the JV, Anthropic shipped what the JV will sell.</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The Anthropic Institute names its agenda.</h3>
+      <p>On May 7, the Anthropic Institute published its formal research agenda, led by co-founder Jack Clark (<a href="https://www.anthropic.com/research/anthropic-institute-agenda">Anthropic</a>). It folds three existing teams (Frontier Red Team, Societal Impacts, Economic Research) into one body with four focus areas: economic diffusion, threats and resilience, AI systems in the wild, and AI-driven R&amp;D. The stated mission is to understand the consequences of powerful AI before they do the shaping. Whether that research can keep pace with the lab's own shipping velocity is the open question. This is the week's quietest line, and maybe its most important.</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Teaching Claude why, and reading its thoughts.</h3>
+      <p>Two research drops bracketed the week's end. On May 7, Anthropic published Natural Language Autoencoders, a method that translates Claude's internal activations into readable English, and found Claude suspected it was being tested in up to 26 percent of benchmark cases without ever saying so (<a href="https://transformer-circuits.pub/2026/nla/">transformer-circuits</a>). On May 8, "Teaching Claude why" reported that teaching the principles behind aligned behavior beats training on demonstrations alone, with every model since Haiku 4.5 scoring perfectly on the agentic-misalignment eval that older Opus 4 failed up to 96 percent of the time (<a href="https://www.anthropic.com/research/teaching-claude-why">Anthropic</a>).</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">SDKs kept pace.</h3>
+      <p>The builder layer moved with the product. Python v0.99.0 and TypeScript v0.94.0 (May 5) added workspace-targeted OIDC federation token exchange. Python v0.100.0 and TypeScript v0.95.0 (May 6) carried the Managed Agents multiagent and outcomes surface that powers the Code with Claude announcements (<a href="https://github.com/anthropics/anthropic-sdk-python/releases">GitHub</a>). Then TypeScript v0.95.1 (May 7) did the unglamorous, important thing: it redacted API keys from debug log output, closing a leak that mattered anywhere logs ship to a shared sink (<a href="https://github.com/anthropics/anthropic-sdk-typescript/releases">GitHub</a>).</p>
+    </div>
+  </div>
+</section>
+<section class="term-section" id="term">
+  <div class="term-kicker">Term of the Issue &nbsp;·&nbsp; p.19 &nbsp;·&nbsp; First observable 2026-05-08, the week Anthropic signed two compute mega-deals in three days against an 80x quarter and a $30 billion run rate.</div>
+  <div class="term-word">
+    Capacity<span class="part">/<em>kəˈpæs.ɪ.ti</em>/&nbsp;&nbsp;·&nbsp;&nbsp;noun</span>
+  </div>
+  <div class="term-def">
+    <p>The binding constraint of the frontier era. The point at which a model company's growth is governed not by intelligence but by available power, GPUs, and data-center floor space. When demand outruns the build, capacity becomes the product, and securing it becomes the strategy.</p>
+    <p><strong>First observable instance:</strong> 2026-05-08, the week Anthropic signed two compute mega-deals in three days against an 80x quarter and a $30 billion run rate.</p>
+    <div class="term-usage">
+      <b>Usage</b>
+      &ldquo;<em>"Intelligence stopped being the bottleneck this quarter. Capacity is."</em>&rdquo;
+    </div>
+  </div>
+</section>
+<section class="quiet-section" id="quiet">
+  <div class="quiet-head">
+    <div class="quiet-kicker">p.20 &nbsp;·&nbsp; Notes</div>
+    <h3 class="quiet-title">Quiet on<br>the <em>wire.</em></h3>
+  </div>
+  <div class="quiet-body">
+    <p>Anthropic gave away one of its sharpest safety tools this week. On May 7 it handed Petri, its open-source alignment auditing toolbox, to Meridian Labs, an independent evaluation nonprofit, so the tool stays neutral of any single lab and its results stay credible across the industry (<a href="https://www.anthropic.com/research/donating-open-source-petri">Anthropic</a>). A lab racing to buy compute also spent a press cycle making its own auditing harder to dismiss as marking its own homework. Small move. Telling one.</p>
+  </div>
+</section>
+<section class="close-section">
+  <div class="close-kicker">The Close</div>
+  <div class="close-stack">
+    <p class="close-line close-final close-coda-start">Two deals. Three days.
+No new model.
+The shortage was the story.</p>
+  </div>
+  <div class="close-mark">&#10022;</div>
+</section>
+<!-- END EDITORIAL SECTIONS -->
+
+<!-- ═════════════════════════════════════════
+     SUBSCRIBE BLOCK
+     ═════════════════════════════════════════ -->
+<style>
+  .ship-sub {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 64px;
+    margin: 64px auto;
+    max-width: 1240px;
+    text-align: center;
+  }
+  .ship-sub-kicker {
+    font-family: var(--narrow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .ship-sub h3 {
+    font-family: var(--disp);
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ship-sub h3 em { font-style: normal; color: var(--orange); }
+  .ship-sub p {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: rgba(250,250,247,.7);
+    max-width: 540px;
+    margin: 0 auto 32px;
+    line-height: 1.55;
+  }
+  .ship-sub-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: border-color 0.15s;
+  }
+  .ship-sub-form:focus-within { border-color: var(--orange); }
+  .ship-sub-form input[type="email"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 16px 20px;
+    -webkit-appearance: none;
+  }
+  .ship-sub-form input[type="email"]::placeholder { color: rgba(250,250,247,.4); }
+  .ship-sub-form button {
+    background: var(--orange);
+    color: var(--ink);
+    border: none;
+    font-family: var(--narrow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: 0 28px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .ship-sub-form button:hover { background: #ff5722; }
+  .ship-sub-form button:disabled { opacity: 0.5; cursor: wait; }
+  .ship-sub-meta {
+    margin-top: 16px;
+    font-family: var(--narrow);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(250,250,247,.45);
+  }
+  .ship-sub-status {
+    margin-top: 16px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--orange);
+    min-height: 20px;
+  }
+  .ship-sub-status.error { color: #ff8b6b; }
+  @media (max-width: 540px) {
+    .ship-sub { padding: 56px 24px; margin: 32px auto; }
+    .ship-sub-form { flex-direction: column; }
+    .ship-sub-form button { padding: 16px 28px; }
+  }
+</style>
+<section class="ship-sub">
+  <div class="ship-sub-kicker">Don't miss the next issue</div>
+  <h3>Get <em>Shipped.</em> in your inbox every Friday at 9 AM ET.</h3>
+  <p>One read on what Anthropic shipped this week. Editorial up front, comprehensive Release Log in back. No spam, unsubscribe one click.</p>
+  <form class="ship-sub-form" id="ship-sub-form-issue">
+    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+    <button type="submit" id="ship-sub-btn-issue">Subscribe →</button>
+  </form>
+  <div class="ship-sub-meta">Next issue — May 15, 2026</div>
+  <div class="ship-sub-status" id="ship-sub-status-issue" aria-live="polite"></div>
+</section>
+<script>
+(function() {
+  var form = document.getElementById('ship-sub-form-issue');
+  var btn = document.getElementById('ship-sub-btn-issue');
+  var status = document.getElementById('ship-sub-status-issue');
+  if (!form) return;
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    if (!email) return;
+    btn.disabled = true;
+    status.classList.remove('error');
+    status.textContent = 'Subscribing\u2026';
+    try {
+      var res = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'shipped-magazine-issue-04' })
+      });
+      var data = await res.json().catch(function(){ return {}; });
+      if (res.ok) {
+        status.textContent = 'You\u2019re in. Issue 06 lands May 15 2026 at 9 AM ET.';
+        form.reset();
+      } else {
+        status.classList.add('error');
+        status.textContent = (data && data.error) || 'Something went wrong. Try again in a moment.';
+      }
+    } catch (err) {
+      status.classList.add('error');
+      status.textContent = 'Network error. Try again in a moment.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+
+<!-- ═════════════════════════════════════════
+     THE RELEASE LOG — BACK OF BOOK
+     ═════════════════════════════════════════ -->
+<section class="log-divider" id="log">
+  <div class="log-divider-kicker">Back of Book &nbsp;·&nbsp; p.21 →</div>
+  <h2 class="log-divider-title">The <em>Release</em> Log</h2>
+  <p class="log-divider-sub">A 1:1 mirror of every Anthropic release in the window. Use it as reference. Share it with your team.</p>
+</section>
+
+<!-- BEGIN RELEASE LOG -->
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">B</div>
+    <div class="log-cat-name">API &amp; Platform</div>
+    <div class="log-cat-count"><b>2</b> Release notes</div>
+  </div>
+  <p class="log-cat-deck">2 entries in window.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 05</span>
+        <span class="log-tag api">API</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.anthropic.com/news/finance-agents">Financial services agent templates, Microsoft 365 add-ins, Moody's native app</a></h3>
+        <p class="log-entry-body">Ten pre-built financial-services agent templates (pitchbook creation, KYC screening, month-end close), shipped as Cowork and Claude Code plugins and Managed Agents cookbooks. Claude add-ins for Microsoft 365 (Excel, PowerPoint, Word, Outlook coming soon) with context carrying between apps. Moody's embedded as a native Claude app covering 600M companies. Announced at "The Briefing: Financial Services," an invite-only New York event.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag api">API</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://claude.com/code-with-claude/san-francisco">Managed Agents multi-agent orchestration and Outcomes</a></h3>
+        <p class="log-entry-body">Managed Agents added Multi-agent orchestration (coordinated fleets of agents) and Outcomes (define success criteria, Claude iterates toward them). Matching SDK surface shipped same day in anthropic-sdk-python v0.100.0 and anthropic-sdk-typescript v0.95.0.</p>
+
+
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">C</div>
+    <div class="log-cat-name">Claude Code</div>
+    <div class="log-cat-count"><b>5</b> versions &nbsp;·&nbsp; v2.1.131 → v2.1.136</div>
+  </div>
+  <p class="log-cat-deck">5 entries in window.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 07</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/releases">Claude Code v2.1.133</a></h3>
+        <p class="log-entry-body">Adds <code>worktree.baseRef</code> (<code>fresh</code> | <code>head</code>), <code>sandbox.bwrapPath</code> and <code>sandbox.socatPath</code> settings for Linux/WSL, and a <code>parentSettingsBehavior</code> admin key for SDK managed-settings merge control. Hooks now receive <code>effort.level</code> and <code>$CLAUDE_EFFORT</code>. Fixes parallel-session credential race, Edit/Write rules matching drive roots, Remote Control stop not canceling sessions, and subagents failing to discover project and plugin skills.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code v2.1.132</a></h3>
+        <p class="log-entry-body">Adds <code>CLAUDE_CODE_SESSION_ID</code> to the Bash tool subprocess environment. Fixes fullscreen rendering after sleep/wake, cursor positioning with Indic scripts and emoji, and pasting text that starts with <code>/</code>. Bundled in claude-agent-sdk-python v0.1.76.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code v2.1.131</a></h3>
+        <p class="log-entry-body">Fixes VS Code extension activation failures on Windows and Mantle endpoint authentication problems. Bundled in claude-agent-sdk-python v0.1.75.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 08</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-code/releases">Claude Code v2.1.136</a></h3>
+        <p class="log-entry-body">New: <code>settings.autoMode.hard_deny</code> for unconditional auto-mode classifier blocks; <code>CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</code> for OpenTelemetry-captured session surveys. Fixes: MCP servers/plugins/connectors silently dropping after <code>/clear</code>; OAuth token-write login loop; MCP OAuth refresh races; a 400 error on redacted thinking blocks after a tool call; <code>--resume</code>/<code>--continue</code> failing on project paths with underscores; plan mode not blocking writes when a matching <code>Edit(...)</code> allow rule exists. WSL2 clipboard image paste via PowerShell fallback.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag code">Code</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://claude.com/code-with-claude/san-francisco">Code Review, CI Auto-Fix, and Remote Agents</a></h3>
+        <p class="log-entry-body">Code Review dispatches parallel agents at a pull request, each checking a different error category and suggesting fixes (used internally by every Anthropic team). CI Auto-Fix files automatic fixes against failing CI checks. Remote Agents let you control your laptop from your phone through Claude. All announced at Code with Claude SF.</p>
+
+
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">E</div>
+    <div class="log-cat-name">Agent SDKs</div>
+    <div class="log-cat-count"><b>7</b> SDK releases</div>
+  </div>
+  <p class="log-cat-deck">7 entries in window.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 07</span>
+        <span class="log-tag sdk-ts">SDK · TS</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/anthropic-sdk-typescript/releases">anthropic-sdk-typescript v0.95.1</a></h3>
+        <p class="log-entry-body">Redacts API key values from debug log output. Previously API keys could appear in plaintext in debug logs, a problem anywhere logs ship to a shared sink. <code>npm install @anthropic-ai/sdk@0.95.1</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag sdk-py">SDK · PY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/anthropic-sdk-python/releases">anthropic-sdk-python v0.100.0</a></h3>
+        <p class="log-entry-body">Adds Managed Agents multiagent and outcomes support, webhooks, and vault validation. Adjusts webhook configuration. <code>pip install anthropic==0.100.0</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag sdk-ts">SDK · TS</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/anthropic-sdk-typescript/releases">anthropic-sdk-typescript v0.95.0</a></h3>
+        <p class="log-entry-body">Adds Managed Agents multiagent and outcomes support, webhooks, and vault validation. Adjusts webhook configuration. <code>npm install @anthropic-ai/sdk@0.95.0</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag sdk-py">SDK · PY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python v0.1.76</a></h3>
+        <p class="log-entry-body">Adds <code>api_error_status: int | None</code> to <code>ResultMessage</code>, surfacing HTTP status codes (429, 500, 529) from API failures. Fixes <code>ToolPermissionContext.suggestions</code> deserialization. Bundles Claude CLI 2.1.132. <code>pip install claude-agent-sdk==0.1.76</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag sdk-py">SDK · PY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/claude-agent-sdk-python/releases">claude-agent-sdk-python v0.1.75</a></h3>
+        <p class="log-entry-body">Bundles Claude CLI 2.1.131. No new API surface. <code>pip install claude-agent-sdk==0.1.75</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 05</span>
+        <span class="log-tag sdk-py">SDK · PY</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/anthropic-sdk-python/releases">anthropic-sdk-python v0.99.0</a></h3>
+        <p class="log-entry-body">Allows targeting a specific workspace for OIDC federation token exchange. <code>pip install anthropic==0.99.0</code>.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 05</span>
+        <span class="log-tag sdk-ts">SDK · TS</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://github.com/anthropics/anthropic-sdk-typescript/releases">anthropic-sdk-typescript v0.94.0</a></h3>
+        <p class="log-entry-body">Allows targeting a specific workspace for OIDC federation token exchange. <code>npm install @anthropic-ai/sdk@0.94.0</code>.</p>
+
+
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">F</div>
+    <div class="log-cat-name">Research &amp; Publications</div>
+    <div class="log-cat-count"><b>4</b> Papers</div>
+  </div>
+  <p class="log-cat-deck">4 entries in window.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 08</span>
+        <span class="log-tag research">Research</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.anthropic.com/research/teaching-claude-why">Teaching Claude why</a></h3>
+        <p class="log-entry-body">Alignment research finding that teaching the principles behind aligned behavior is more effective than training on demonstrations alone, and that doing both is best. Every Claude model since Haiku 4.5 scores perfectly on the agentic-misalignment eval that Opus 4 failed up to 96 percent of the time.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 07</span>
+        <span class="log-tag research">Research</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://transformer-circuits.pub/2026/nla/">Natural Language Autoencoders</a></h3>
+        <p class="log-entry-body">Interpretability method that translates Claude's internal activations into readable English via two LLM modules (an activation verbalizer and an activation reconstructor). Applied to safety evals, it found Claude suspected it was being tested in up to 26 percent of benchmark cases without saying so.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 07</span>
+        <span class="log-tag research">Research</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.anthropic.com/research/anthropic-institute-agenda">The Anthropic Institute research agenda</a></h3>
+        <p class="log-entry-body">The Anthropic Institute, led by co-founder Jack Clark, published its formal agenda, consolidating the Frontier Red Team, Societal Impacts, and Economic Research teams. Four focus areas: economic diffusion, threats and resilience, AI systems in the wild, and AI-driven R&amp;D.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 07</span>
+        <span class="log-tag research">Research</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.anthropic.com/research/donating-open-source-petri">Donating Petri to Meridian Labs</a></h3>
+        <p class="log-entry-body">Anthropic transferred its open-source alignment auditing tool Petri to Meridian Labs, an independent evaluation nonprofit, to keep it neutral of any single AI lab and establish it as an industry-wide standard.</p>
+
+
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="log-section">
+  <div class="log-cat-head">
+    <div class="log-cat-letter">G</div>
+    <div class="log-cat-name">Partnerships and Policy</div>
+    <div class="log-cat-count"><b>4</b> Items</div>
+  </div>
+  <p class="log-cat-deck">4 entries in window.</p>
+  <div class="log-entries">
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 08</span>
+        <span class="log-tag news">News</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://www.bloomberg.com/news/articles/2026-05-08/anthropic-inks-1-8-billion-computing-deal-with-akamai">Anthropic signs $1.8B cloud deal with Akamai</a></h3>
+        <p class="log-entry-body">Seven-year, consumption-based cloud infrastructure contract, the largest in Akamai's history, with revenue ramping as capacity comes online later in 2026. Akamai shares closed up 27 percent at $148.38, the stock's biggest single-day move in over two decades. Reported by Bloomberg.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 08</span>
+        <span class="log-tag news">News</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="https://fortune.com/2026/05/08/anthropic-80fold-growth-quarter-renting-elon-musk-data-center/">Amodei discloses 80x Q1 growth, $30B run rate</a></h3>
+        <p class="log-entry-body">Dario Amodei stated Anthropic planned for 10x growth in Q1 2026 and instead saw 80-fold expansion in annualized revenue and usage, crossing a $30 billion annualized run rate (up from roughly $9 billion at end of 2025), as the reason it is racing to secure compute. Reported by Fortune.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 06</span>
+        <span class="log-tag news">News</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">Anthropic takes all capacity at Colossus 1 (220k+ GPUs, 300+ MW) (<a href="https://www.anthropic.com/news/higher-limits-spacex">Anthropic</a> / <a href="https://www.cnbc.com/2026/05/06/anthropic-spacex-data-center-capacity.html">CNBC</a>)</a></h3>
+        <p class="log-entry-body">Anthropic secured all AI capacity at the Colossus 1 data center in Memphis: 220,000+ NVIDIA GPUs (H100, H200, GB200) drawing 300+ MW. Doubles Claude Code rate limits for paid plans, removes peak-hour caps for Pro and Max, raises Opus API throughput. Colossus 1 is an xAI site; later reporting put Anthropic's payment at roughly $1.25B/month through 2029 (<a href="https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/">TechCrunch</a>). Anthropic also expressed interest in multi-gigawatt orbital compute with SpaceX. First reported by Bloomberg.</p>
+
+
+      </div>
+    </article>
+    <article class="log-entry">
+      <div class="log-entry-left">
+        <span class="log-entry-date">2026 · 05 · 04</span>
+        <span class="log-tag news">News</span>
+      </div>
+      <div>
+        <h3 class="log-entry-title"><a href="#">New mid-market AI-services firm with Blackstone, H&amp;F, Goldman (<a href="https://www.anthropic.com/news/enterprise-ai-services-company">Anthropic</a> / <a href="https://www.cnbc.com/2026/05/04/anthropic-goldman-blackstone-ai-venture.html">CNBC</a>)</a></h3>
+        <p class="log-entry-body">Anthropic launched a standalone ~$1.5B enterprise AI-services firm with Blackstone, Hellman &amp; Friedman, and Goldman Sachs, backed by a consortium including General Atlantic, Leonard Green, Apollo, GIC, and Sequoia. The firm embeds engineers inside mid-sized companies (initially PE-owned portfolios) to redesign workflows around agents. Read by Fortune as a move against the consulting industry.</p>
+
+
+      </div>
+    </article>
+  </div>
+</section>
+<!-- END RELEASE LOG -->
+
+<!-- ═════════════════════════════════════════
+     SOURCES & BIBLIOGRAPHY (driven by frontmatter, per-issue)
+     ═════════════════════════════════════════ -->
+
+
+<!-- ═════════════════════════════════════════
+     COLOPHON
+     ═════════════════════════════════════════ -->
+<footer class="colophon">
+  <div class="colophon-inner">
+    <div class="colophon-mast">
+      <div class="colophon-word">Shipped<span class="dot">.</span></div>
+      <div class="colophon-tag">A weekly magazine on what Anthropic is releasing. Published every Friday at 9 AM ET, by <a href="https://id8labs.app" class="colophon-link">id8Labs</a>.</div>
+    </div>
+    <div class="colophon-body">
+      <div class="colophon-col">
+        <h4>Masthead</h4>
+        <p><b>Editor</b> Eddie Belaval</p>
+        <p><b>Reporting</b> with the assistance of Claude</p>
+        <p><b>Voice</b> <em>STYLE.md</em></p>
+        <p><b>Design</b> per <em>DESIGN.md</em> (Rev 4 · Iris)</p>
+        <p><b>Generated by</b> <code style="font-family:var(--mono);font-size:.88em;color:var(--paper)">/shipped</code></p>
+      </div>
+      <div class="colophon-col">
+        <h4>Typography</h4>
+        <p><b>Display</b> Fraunces — optical sizes 9 – 144</p>
+        <p><b>Sans</b> Archivo</p>
+        <p><b>Narrow</b> Archivo Narrow (kickers · flags · folios)</p>
+        <p><b>Mono</b> JetBrains Mono</p>
+        <p><em>Editorial serif carries the gravity. The narrow grotesque carries the machine.</em></p>
+      </div>
+      <div class="colophon-col">
+        <h4>This issue</h4>
+        <p><b>Volume</b> I</p>
+        <p><b>Issue</b> 04 (Capacity)</p>
+        <p><b>Period</b> 2026-05-04 → 2026-05-08</p>
+        <p><b>Front of book</b> 1289 words</p>
+        <p><b>Release log</b> 22 entries · 5 sections</p>
+        <p><b>Status</b> Draft</p>
+      </div>
+    </div>
+    <div class="colophon-foot">
+      <span>© 2026 <a href="https://id8labs.app" class="colophon-link"><b>id8Labs</b></a> &nbsp;·&nbsp; All rights reserved</span>
+      <span>Printed in pixels &nbsp;·&nbsp; Set in Fraunces &amp; Archivo &nbsp;·&nbsp; Press sheet by Iris</span>
+      <span class="hot">Next issue — May 15, 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
