@@ -296,6 +296,11 @@ footer{
   .hero{padding:48px 0 40px}
   .sec-head h2{font-size:32px}
 }
+
+/* monthly edition flag */
+.monthly-flag{font-family:var(--narrow);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:var(--orange);margin-bottom:8px}
+.monthly-card .issue-num{color:var(--orange)}
+.monthly-card .issue-num .dot{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -318,7 +323,7 @@ footer{
       <a href="#subscribe" class="btn btn-ghost">Subscribe</a>
     </div>
     <div class="hero-meta">
-      <span><b>2</b> issues published</span>
+      <span><b>3</b> issues published</span>
       <span><b>56+</b> Anthropic releases tracked</span>
       <span><b>9</b> slash commands drive the pipeline</span>
       <span><b>1</b> human gate at publish</span>
@@ -329,10 +334,31 @@ footer{
   <section class="archive" id="archive">
     <div class="sec-head archive-head">
       <h2>The <em>archive</em>.</h2>
-      <span class="archive-meta">2 issues · Founded April 2026</span>
+      <span class="archive-meta">2 weekly · 1 monthly · Founded April 2026</span>
     </div>
 
     <!-- Issue cards: newest first. The pipeline inserts new cards here on every render. -->
+
+    <a href="/shipped/monthly/2026-05/" class="issue-card monthly-card">
+      <div class="issue-num">05<span class="dot">.</span></div>
+      <div class="issue-mid">
+        <div class="monthly-flag">Monthly Edition &middot; May 2026</div>
+        <h2>The month Anthropic <em>bought power</em>.</h2>
+        <p>Two compute mega-deals, an $30B run rate, and distribution at every scale &mdash; then Opus 4.8 closed the month with a flagship that runs cheaper.</p>
+        <div class="topics">
+          <span>Opus 4.8</span>
+          <span>SpaceX + Akamai</span>
+          <span>Gates &middot; PwC &middot; Fujitsu</span>
+          <span>Stainless</span>
+          <span>The Landscape</span>
+        </div>
+      </div>
+      <div class="issue-right">
+        <div class="date">Jun 1, 2026</div>
+        <div>May in review</div>
+        <div class="read">Read &rarr;</div>
+      </div>
+    </a>
 
     <a href="/shipped/02/" class="issue-card">
       <div class="issue-num">02<span class="dot">.</span></div>
