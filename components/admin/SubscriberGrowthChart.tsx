@@ -46,41 +46,41 @@ export function SubscriberGrowthChart({ source = 'all', days = 30, title }: Prop
   }
 
   return (
-    <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+    <div className="p-6 bg-[var(--paper)] border border-[var(--hair)]">
       <div className="flex items-baseline justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-[var(--text-primary)]">
+          <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)]">
             {title || 'Subscriber growth'}
           </h3>
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--muted)]">
             {loading ? 'Loading...' : `${total.toLocaleString()} signups in the last ${days} days`}
           </p>
         </div>
-        <span className="text-xs text-[var(--text-tertiary)]">
+        <span className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
           {source === 'all' ? 'all sources' : source}
         </span>
       </div>
       <div style={{ width: '100%', height: 220 }}>
         <ResponsiveContainer>
           <LineChart data={series} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.4} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--hair)" opacity={0.6} />
             <XAxis
               dataKey="date"
               tickFormatter={formatDay}
-              tick={{ fontSize: 11, fill: 'var(--text-tertiary)' }}
+              tick={{ fontSize: 11, fill: 'var(--muted)' }}
               interval="preserveStartEnd"
             />
             <YAxis
-              tick={{ fontSize: 11, fill: 'var(--text-tertiary)' }}
+              tick={{ fontSize: 11, fill: 'var(--muted)' }}
               allowDecimals={false}
               width={32}
             />
             <Tooltip
               labelFormatter={formatDay}
               contentStyle={{
-                background: 'var(--bg-primary)',
-                border: '1px solid var(--border)',
-                borderRadius: 8,
+                background: 'var(--paper)',
+                border: '1px solid var(--hair)',
+                borderRadius: 0,
                 fontSize: 12,
               }}
             />

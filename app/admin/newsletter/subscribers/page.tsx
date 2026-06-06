@@ -84,15 +84,15 @@ export default function SubscribersPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/admin/newsletter"
-            className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="p-2 text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
           <div>
-            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Subscribers</h1>
-            <p className="text-[var(--text-secondary)]">
+            <h1 className="text-2xl font-bold text-[var(--ink)]">Subscribers</h1>
+            <p className="text-[var(--muted)]">
               {data ? `${data.total} total subscribers` : 'Loading...'}
             </p>
           </div>
@@ -110,7 +110,7 @@ export default function SubscribersPage() {
               setSearch(e.target.value)
               setPage(1)
             }}
-            className="w-full px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+            className="w-full px-4 py-2 border border-[var(--hair)]  bg-[var(--paper-shadow)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)]"
           />
         </div>
         <select
@@ -119,7 +119,7 @@ export default function SubscribersPage() {
             setStatusFilter(e.target.value)
             setPage(1)
           }}
-          className="px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--bg-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+          className="px-4 py-2 border border-[var(--hair)]  bg-[var(--paper-shadow)] text-[var(--ink)] focus:outline-none focus:border-[var(--ink)]"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -131,7 +131,7 @@ export default function SubscribersPage() {
             setSourceFilter(e.target.value)
             setPage(1)
           }}
-          className="px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--bg-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+          className="px-4 py-2 border border-[var(--hair)]  bg-[var(--paper-shadow)] text-[var(--ink)] focus:outline-none focus:border-[var(--ink)]"
         >
           <option value="all">All Sources</option>
           <option value="shipped-magazine-*">All Shipped issues</option>
@@ -144,45 +144,45 @@ export default function SubscribersPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl overflow-hidden">
+      <div className="bg-[var(--paper)] border border-[var(--hair)]  overflow-hidden">
         <table className="w-full">
-          <thead className="bg-[var(--bg-primary)]">
+          <thead className="bg-[var(--paper-shadow)]">
             <tr>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--muted)] uppercase tracking-wide">
                 Email
               </th>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--muted)] uppercase tracking-wide">
                 Status
               </th>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--muted)] uppercase tracking-wide">
                 Source
               </th>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--muted)] uppercase tracking-wide">
                 Subscribed
               </th>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-[var(--muted)] uppercase tracking-wide">
                 Academy
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[var(--border)]">
+          <tbody className="divide-y divide-[var(--hair)]">
             {loading ? (
               <tr>
-                <td colSpan={5} className="px-6 py-12 text-center text-[var(--text-secondary)]">
+                <td colSpan={5} className="px-6 py-12 text-center text-[var(--muted)]">
                   Loading...
                 </td>
               </tr>
             ) : data?.subscribers.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-6 py-12 text-center text-[var(--text-secondary)]">
+                <td colSpan={5} className="px-6 py-12 text-center text-[var(--muted)]">
                   No subscribers found
                 </td>
               </tr>
             ) : (
               data?.subscribers.map((subscriber) => (
-                <tr key={subscriber.id} className="hover:bg-[var(--bg-primary)]/50 transition-colors">
+                <tr key={subscriber.id} className="hover:bg-[var(--paper-shadow)] transition-colors">
                   <td className="px-6 py-4">
-                    <span className="text-[var(--text-primary)]">{subscriber.email}</span>
+                    <span className="text-[var(--ink)]">{subscriber.email}</span>
                   </td>
                   <td className="px-6 py-4">
                     <span
@@ -196,22 +196,22 @@ export default function SubscribersPage() {
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-[var(--text-secondary)]">
+                    <span className="text-sm text-[var(--muted)]">
                       {subscriber.source || 'website'}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-[var(--text-secondary)]">
+                    <span className="text-sm text-[var(--muted)]">
                       {formatDate(subscriber.subscribed_at)}
                     </span>
                   </td>
                   <td className="px-6 py-4">
                     {subscriber.is_academy_member ? (
-                      <span className="inline-flex px-2 py-1 text-xs font-medium bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] rounded-full">
+                      <span className="inline-flex px-2 py-1 text-xs font-medium border border-id8-orange text-id8-orange">
                         Member
                       </span>
                     ) : (
-                      <span className="text-sm text-[var(--text-tertiary)]">-</span>
+                      <span className="text-sm text-[var(--muted)]">-</span>
                     )}
                   </td>
                 </tr>
@@ -224,7 +224,7 @@ export default function SubscribersPage() {
       {/* Pagination */}
       {data && data.totalPages > 1 && (
         <div className="flex items-center justify-between mt-6">
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--muted)]">
             Showing {((data.page - 1) * data.limit) + 1} to{' '}
             {Math.min(data.page * data.limit, data.total)} of {data.total}
           </p>
@@ -232,14 +232,14 @@ export default function SubscribersPage() {
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1}
-              className="px-4 py-2 text-sm border border-[var(--border)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--bg-secondary)] transition-colors"
+              className="px-4 py-2 text-sm border border-[var(--hair)]  disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--paper)] transition-colors"
             >
               Previous
             </button>
             <button
               onClick={() => setPage((p) => Math.min(data.totalPages, p + 1))}
               disabled={page === data.totalPages}
-              className="px-4 py-2 text-sm border border-[var(--border)] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--bg-secondary)] transition-colors"
+              className="px-4 py-2 text-sm border border-[var(--hair)]  disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--paper)] transition-colors"
             >
               Next
             </button>

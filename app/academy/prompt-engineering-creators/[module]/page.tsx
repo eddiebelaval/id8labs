@@ -791,176 +791,169 @@ export default function ModulePage() {
   const nextModule = content.number < 9 ? `module-${content.number + 1}` : null
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <section className="py-8 border-b border-[var(--border)]">
-        <div className="container">
+    <div className="min-h-screen bg-[var(--paper)]">
+      {/* Masthead */}
+      <section className="pt-16 pb-10">
+        <Container narrow>
           <Link
             href="/academy/prompt-engineering-creators"
-            className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-6"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] transition-colors hover:text-id8-orange"
           >
-            <ArrowLeftIcon />
-            Back to Course
+            &larr; Back to Course
           </Link>
 
-          <div className="flex items-center gap-3 mb-4">
-            <span className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange text-white flex items-center justify-center font-mono font-bold">
-              {content.number}
-            </span>
-            <span className="text-sm font-mono text-[var(--text-tertiary)]">
-              Module {content.number} of 9 • {content.duration}
-            </span>
-          </div>
-
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+          <Kicker className="mt-7">Module {content.number}</Kicker>
+          <h1 className="mt-4 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)]">
             {content.title}
           </h1>
-          <p className="text-lg text-[var(--text-secondary)]">
-            Based on Anthropic's "{content.subtitle}" chapter
-          </p>
-        </div>
+          <Deck className="mt-5">
+            Based on Anthropic&apos;s &ldquo;{content.subtitle}&rdquo; chapter.
+          </Deck>
+          <MetaRow
+            className="mt-6"
+            items={[
+              { value: `${content.number} / 9`, label: 'module' },
+              { label: content.duration },
+            ]}
+          />
+        </Container>
       </section>
+
+      <Rule />
 
       {/* Key Takeaway */}
-      <section className="py-8 bg-id8-orange/10 border-b border-id8-orange/20">
-        <div className="container">
-          <div className="flex items-start gap-4 max-w-3xl">
-            <LightbulbIcon />
-            <div>
-              <p className="text-sm font-mono uppercase tracking-wider text-id8-orange mb-1">Key Takeaway</p>
-              <p className="text-xl font-medium">{content.keyTakeaway}</p>
-            </div>
+      <section className="py-10">
+        <Container narrow>
+          <div className="border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-6">
+            <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange">
+              Key Takeaway
+            </p>
+            <p className="mt-2 font-[family-name:var(--font-serif)] text-xl italic text-[var(--ink)]">
+              {content.keyTakeaway}
+            </p>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Main Content */}
-      <m.div
-        initial="initial"
-        animate="animate"
-        variants={stagger}
-        className="section-spacing"
-      >
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            {/* Concept Section */}
-            <m.section variants={fadeUp} className="mb-16">
-              <h2 className="text-2xl font-bold mb-4">{content.concept}</h2>
-              {content.conceptExplanation.map((para, index) => (
-                <p key={index} className="text-lg text-[var(--text-secondary)] mb-4 leading-relaxed">
-                  {para}
-                </p>
-              ))}
-            </m.section>
+      {/* Body */}
+      <section className="pb-16">
+        <Container narrow>
+          {/* Concept */}
+          <h2 className="font-[family-name:var(--font-display)] font-normal text-2xl text-[var(--ink)]">
+            {content.concept}
+          </h2>
+          {content.conceptExplanation.map((para, index) => (
+            <p key={index} className="mt-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              {para}
+            </p>
+          ))}
 
-            {/* Creator Scenarios */}
-            <m.section variants={fadeUp} className="mb-16">
-              <h2 className="text-2xl font-bold mb-6">Real-World Examples</h2>
+          {/* Creator Scenarios */}
+          <h2 className="mt-14 font-[family-name:var(--font-display)] font-normal text-2xl text-[var(--ink)]">
+            Real-World Examples
+          </h2>
 
-              {content.creatorScenarios.map((scenario, index) => (
-                <div key={index} className="mb-12 last:mb-0">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="px-2 py-1 text-xs font-mono uppercase tracking-wider bg-[var(--bg-secondary)] rounded">
-                      {scenario.persona}
-                    </span>
-                    <span className="text-sm text-[var(--text-tertiary)]">→ {scenario.task}</span>
-                  </div>
-
-                  {/* Bad Example */}
-                  <div className="mb-4 p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
-                    <p className="text-xs font-mono uppercase tracking-wider text-red-400 mb-2">Before</p>
-                    <div className="bg-[var(--bg-primary)] p-3 rounded font-mono text-sm mb-3">
-                      {scenario.badPrompt}
-                    </div>
-                    <p className="text-sm text-[var(--text-secondary)]">
-                      <span className="text-red-400 font-medium">Result:</span> {scenario.badResult}
-                    </p>
-                  </div>
-
-                  {/* Good Example */}
-                  <div className="mb-4 p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
-                    <p className="text-xs font-mono uppercase tracking-wider text-green-400 mb-2">After</p>
-                    <div className="bg-[var(--bg-primary)] p-3 rounded font-mono text-sm mb-3 whitespace-pre-wrap">
-                      {scenario.goodPrompt}
-                    </div>
-                    <p className="text-sm text-[var(--text-secondary)]">
-                      <span className="text-green-400 font-medium">Result:</span> {scenario.goodResult}
-                    </p>
-                  </div>
-
-                  <p className="text-sm text-id8-orange">
-                    <span className="font-medium">Why it works:</span> {scenario.whyItWorks}
-                  </p>
-                </div>
-              ))}
-            </m.section>
-
-            {/* Practice Exercise */}
-            <m.section variants={fadeUp} className="mb-16">
-              <div className="card-featured p-6">
-                <h2 className="text-xl font-bold mb-2">{content.practiceExercise.title}</h2>
-                <p className="text-[var(--text-secondary)] mb-4">{content.practiceExercise.instructions}</p>
-
-                <div className="bg-[var(--bg-primary)] p-4 rounded-lg">
-                  <p className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-2">Starter Template</p>
-                  <pre className="font-mono text-sm whitespace-pre-wrap text-[var(--text-secondary)]">
-                    {content.practiceExercise.starterPrompt}
-                  </pre>
-                </div>
+          {content.creatorScenarios.map((scenario, index) => (
+            <div key={index} className="mt-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <Tag>{scenario.persona}</Tag>
+                <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">&rarr; {scenario.task}</span>
               </div>
-            </m.section>
 
-            {/* Key Points */}
-            <m.section variants={fadeUp} className="mb-16">
-              <h2 className="text-xl font-bold mb-4">Key Points</h2>
-              <ul className="space-y-3">
-                {content.keyPoints.map((point, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircleIcon />
-                    <span className="text-[var(--text-secondary)]">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </m.section>
+              {/* Before */}
+              <div className="mt-4 border border-[var(--hair)] p-5">
+                <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+                  Before
+                </p>
+                <pre className="mt-3 whitespace-pre-wrap bg-[var(--paper-mid)] p-3 font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">
+                  {scenario.badPrompt}
+                </pre>
+                <p className="mt-3 font-[family-name:var(--font-sans)] text-sm text-[var(--body)]">
+                  <span className="font-medium text-[var(--ink)]">Result:</span> {scenario.badResult}
+                </p>
+              </div>
+
+              {/* After */}
+              <div className="mt-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-5">
+                <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange">
+                  After
+                </p>
+                <pre className="mt-3 whitespace-pre-wrap bg-[var(--paper)] p-3 font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">
+                  {scenario.goodPrompt}
+                </pre>
+                <p className="mt-3 font-[family-name:var(--font-sans)] text-sm text-[var(--body)]">
+                  <span className="font-medium text-[var(--ink)]">Result:</span> {scenario.goodResult}
+                </p>
+              </div>
+
+              <p className="mt-3 font-[family-name:var(--font-sans)] text-sm text-[var(--body)]">
+                <span className="font-medium text-id8-orange">Why it works:</span> {scenario.whyItWorks}
+              </p>
+            </div>
+          ))}
+
+          {/* Practice Exercise */}
+          <div className="mt-14 border border-[var(--hair)] p-6">
+            <Tag>Practice</Tag>
+            <h2 className="mt-4 font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">
+              {content.practiceExercise.title}
+            </h2>
+            <p className="mt-2 font-[family-name:var(--font-sans)] text-[var(--body)]">
+              {content.practiceExercise.instructions}
+            </p>
+            <div className="mt-4 bg-[var(--paper-mid)] p-4">
+              <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+                Starter Template
+              </p>
+              <pre className="mt-2 whitespace-pre-wrap font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">
+                {content.practiceExercise.starterPrompt}
+              </pre>
+            </div>
           </div>
-        </div>
-      </m.div>
+
+          {/* Key Points */}
+          <h2 className="mt-14 font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">
+            Key Points
+          </h2>
+          <ul className="mt-4 space-y-2.5">
+            {content.keyPoints.map((point, index) => (
+              <li key={index} className="flex items-start gap-3 font-[family-name:var(--font-sans)] text-[var(--body)]">
+                <span className="text-id8-orange">—</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <Rule />
 
       {/* Navigation */}
-      <section className="py-8 border-t border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="flex justify-between items-center max-w-3xl mx-auto">
+      <section className="py-8">
+        <Container narrow>
+          <div className="flex items-center justify-between gap-4">
             {prevModule ? (
               <Link
                 href={`/academy/prompt-engineering-creators/${prevModule}`}
-                className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] transition-colors hover:text-id8-orange"
               >
-                <ArrowLeftIcon />
-                <span>Module {content.number - 1}</span>
+                &larr; Module {content.number - 1}
               </Link>
             ) : (
               <div />
             )}
 
             {nextModule ? (
-              <Link
-                href={`/academy/prompt-engineering-creators/${nextModule}`}
-                className="btn btn-primary group inline-flex items-center gap-2"
-              >
-                <span>Continue to Module {content.number + 1}</span>
-                <ArrowRightIcon />
-              </Link>
+              <EditorialButton href={`/academy/prompt-engineering-creators/${nextModule}`} variant="primary">
+                Continue to Module {content.number + 1}
+              </EditorialButton>
             ) : (
-              <Link
-                href="/academy"
-                className="btn btn-primary group inline-flex items-center gap-2"
-              >
-                <span>Complete Course</span>
-                <ArrowRightIcon />
-              </Link>
+              <EditorialButton href="/academy" variant="primary">
+                Complete Course
+              </EditorialButton>
             )}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Module Complete */}
