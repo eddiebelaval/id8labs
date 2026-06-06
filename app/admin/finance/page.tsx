@@ -464,7 +464,7 @@ export default function FinanceDashboard() {
                 {filteredExpenses.map(exp => (
                   <tr key={exp.id} className="border-b border-[var(--hair)] last:border-0 hover:bg-[var(--paper-shadow)] transition-colors">
                     <td className="px-4 py-3 text-[var(--ink)]">{exp.description}{!exp.is_active && <span className="ml-2 text-[10px] px-1.5 py-0.5 border border-id8-orange text-id8-orange">inactive</span>}</td>
-                    <td className="px-4 py-3">{exp.category ? <span className="inline-flex items-center gap-1.5 text-xs"><span className="w-2 h-2  flex-shrink-0" style={{ backgroundColor: PIE_CAT_FALLBACK }} /><span className="text-[var(--body)]">{exp.category.name}</span></span> : <span className="text-[var(--muted)] text-xs">--</span>}</td>
+                    <td className="px-4 py-3">{exp.category ? <span className="inline-flex items-center gap-1.5 text-xs"><span className="w-2 h-2 flex-shrink-0 bg-[var(--ink)]" /><span className="text-[var(--body)]">{exp.category.name}</span></span> : <span className="text-[var(--muted)] text-xs">--</span>}</td>
                     <td className="px-4 py-3 text-right text-[var(--ink)] font-medium tabular-nums">{fmt(exp.amount_cents)}</td>
                     <td className="px-4 py-3"><span className="text-xs px-2 py-0.5  bg-[var(--paper-shadow)] text-[var(--body)]">{frequencyLabel(exp.frequency)}</span></td>
                     <td className="px-4 py-3 text-[var(--body)] text-xs">{exp.vendor || '--'}</td>
