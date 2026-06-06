@@ -114,7 +114,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
   // Once mounted, the animation begins
   if (!mounted) {
     return (
-      <div className="fixed inset-0 bg-black z-50" />
+      <div className="fixed inset-0 bg-[var(--paper)] z-50" />
     )
   }
 
@@ -125,45 +125,21 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     <AnimatePresence>
       {phase !== 'fade' ? (
         <m.div
-          className="fixed inset-0 bg-black z-50 flex items-center justify-center overflow-hidden cursor-pointer"
+          className="fixed inset-0 bg-[var(--paper)] z-50 flex items-center justify-center overflow-hidden cursor-pointer"
           onClick={handleSkip}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* CRT Scanlines */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
-                transparent 1px,
-                transparent 2px
-              )`,
-              zIndex: 10
-            }}
-          />
-
-          {/* Vignette */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.6) 100%)`,
-              zIndex: 11
-            }}
-          />
-
           {/* Main Content */}
-          <div className="relative z-20 font-mono text-center max-w-4xl px-4">
+          <div className="relative z-20 font-[family-name:var(--font-mono)] text-center max-w-4xl px-4">
 
             {/* Flicker Phase */}
             <AnimatePresence mode="wait">
               {phase === 'flicker' && (
                 <m.div
                   key="flicker"
-                  className="text-[#27c93f]"
+                  className="text-[var(--ink)]"
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: [0, 1, 0.3, 1, 0.5, 1],
@@ -181,9 +157,9 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
               {phase === 'logo' && (
                 <m.pre
                   key="logo"
-                  className="text-[#ff6b35] text-[0.35rem] xs:text-[0.45rem] sm:text-[0.6rem] md:text-xs leading-none whitespace-pre"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-id8-orange text-[0.35rem] xs:text-[0.45rem] sm:text-[0.6rem] md:text-xs leading-none whitespace-pre"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
                   {ASCII_LOGO}
@@ -200,7 +176,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                   transition={{ duration: 0.2 }}
                 >
                   {/* Logo stays visible during boot */}
-                  <pre className="text-[#ff6b35] text-[0.35rem] xs:text-[0.45rem] sm:text-[0.6rem] md:text-xs leading-none whitespace-pre mb-6 text-center">
+                  <pre className="text-id8-orange text-[0.35rem] xs:text-[0.45rem] sm:text-[0.6rem] md:text-xs leading-none whitespace-pre mb-6 text-center">
                     {ASCII_LOGO}
                   </pre>
 
@@ -213,12 +189,12 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.1 }}
                         className={`
-                          ${msg.isStatus ? 'text-[#27c93f] inline ml-2' : ''}
-                          ${msg.isHighlight ? 'text-[#27c93f] mt-4' : 'text-[#808080]'}
+                          ${msg.isStatus ? 'text-[var(--teal)] inline ml-2' : ''}
+                          ${msg.isHighlight ? 'text-[var(--teal)] mt-4' : 'text-[var(--muted)]'}
                         `}
                       >
                         {msg.isStatus ? (
-                          <span className="text-[#27c93f]">{msg.text}</span>
+                          <span className="text-[var(--teal)]">{msg.text}</span>
                         ) : (
                           msg.text
                         )}
@@ -227,7 +203,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
                     {/* Cursor */}
                     {visibleMessages >= BOOT_MESSAGES.length && (
-                      <div className="mt-2 text-[#27c93f]">
+                      <div className="mt-2 text-id8-orange">
                         {'> '}
                         <span className={cursorVisible ? 'opacity-100' : 'opacity-0'}>▌</span>
                       </div>
@@ -240,22 +216,13 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
           {/* Skip hint */}
           <m.div
-            className="absolute bottom-8 left-0 right-0 text-center text-[#404040] text-xs font-mono"
+            className="absolute bottom-8 left-0 right-0 text-center text-[var(--muted)] text-xs font-[family-name:var(--font-mono)]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}
           >
             Press any key or click to skip
           </m.div>
-
-          {/* Phosphor glow effect */}
-          <div
-            className="absolute inset-0 pointer-events-none animate-pulse"
-            style={{
-              background: `radial-gradient(ellipse at center, rgba(39, 201, 63, 0.03) 0%, transparent 60%)`,
-              zIndex: 5
-            }}
-          />
         </m.div>
       ) : null}
     </AnimatePresence>
