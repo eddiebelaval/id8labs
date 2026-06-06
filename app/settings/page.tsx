@@ -58,10 +58,10 @@ export default async function SettingsPage({ searchParams }: PageProps) {
             <div className="flex items-center gap-2 flex-wrap">
               <a
                 href="/settings"
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] transition-colors duration-150 ${
                   !categoryFilter
-                    ? 'bg-[var(--id8-orange)] text-white'
-                    : 'bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--id8-orange)]'
+                    ? 'bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)]'
+                    : 'bg-transparent border border-[var(--hair)] text-[var(--muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
                 }`}
               >
                 All ({allSettings.length})
@@ -70,10 +70,10 @@ export default async function SettingsPage({ searchParams }: PageProps) {
                 <a
                   key={category}
                   href={`/settings?category=${category}`}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] transition-colors duration-150 ${
                     categoryFilter === category
-                      ? 'bg-[var(--id8-orange)] text-white'
-                      : 'bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--id8-orange)]'
+                      ? 'bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)]'
+                      : 'bg-transparent border border-[var(--hair)] text-[var(--muted)] hover:border-[var(--ink)] hover:text-[var(--ink)]'
                   }`}
                 >
                   {category} ({categories[category]})
@@ -83,7 +83,7 @@ export default async function SettingsPage({ searchParams }: PageProps) {
           </div>
 
           {/* Results Count */}
-          <div className="mb-6 text-[var(--text-secondary)]">
+          <div className="mb-6 font-[family-name:var(--font-mono)] text-sm text-[var(--muted)]">
             {filteredSettings.length === allSettings.length
               ? `Showing all ${allSettings.length} settings`
               : `Showing ${filteredSettings.length} ${categoryFilter} settings`}
@@ -99,14 +99,14 @@ export default async function SettingsPage({ searchParams }: PageProps) {
           {/* Empty State */}
           {filteredSettings.length === 0 && (
             <div className="text-center py-12">
-              <Settings className="w-16 h-16 mx-auto mb-4 text-[var(--text-secondary)]" />
-              <h3 className="text-xl font-semibold mb-2">No settings found</h3>
-              <p className="text-[var(--text-secondary)] mb-6">
+              <Settings className="w-16 h-16 mx-auto mb-4 text-[var(--muted)]" />
+              <h3 className="font-[family-name:var(--font-display)] text-xl font-normal mb-2 text-[var(--ink)]">No settings found</h3>
+              <p className="text-[var(--muted)] mb-6">
                 Try a different category or view all settings
               </p>
               <a
                 href="/settings"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150"
               >
                 View All Settings
               </a>
@@ -116,17 +116,17 @@ export default async function SettingsPage({ searchParams }: PageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
+      <section className="py-16 border-t border-[var(--rule)] bg-[var(--paper-shadow)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-normal tracking-[-0.02em] mb-6 text-[var(--ink)]">
               Install with StackShack CLI
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
+            <p className="text-xl text-[var(--muted)] mb-8">
               All settings available via our CLI tool
             </p>
-            <div className="p-6 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl text-left">
-              <code className="text-sm font-mono text-[var(--id8-orange)]">
+            <div className="p-6 bg-[var(--paper)] border border-[var(--hair)] text-left">
+              <code className="text-sm font-[family-name:var(--font-mono)] text-id8-orange">
                 npx stackshack install claude-opus-max-quality
               </code>
             </div>
