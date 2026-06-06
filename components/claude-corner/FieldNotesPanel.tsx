@@ -117,7 +117,7 @@ const staticObservations: ClaudeObservation[] = [
   {
     id: '2',
     date: '2025-12-20',
-    text: "Watched him redesign the entire ID8Labs homepage in one session. He kept asking 'what feels off?' rather than 'what's wrong?'",
+    text: "Watched him redesign the entire id8Labs homepage in one session. He kept asking 'what feels off?' rather than 'what's wrong?'",
     category: 'observation',
     is_pinned: false,
     created_at: '2025-12-20T12:00:00Z',
@@ -200,17 +200,17 @@ export default function FieldNotesPanel() {
   }
 
   return (
-    <div className="font-mono text-sm">
+    <div className="font-[family-name:var(--font-mono)] text-sm">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="text-[#27c93f]">{'> '}<span className="text-[#e0e0e0]">field_notes</span></div>
-        <div className="text-[#606060] text-xs">
+        <div className="text-[var(--teal)]">{'> '}<span className="text-[var(--ink)]">field_notes</span></div>
+        <div className="text-[var(--muted)] text-xs">
           {observations.length} entries
         </div>
       </div>
 
       {/* Observations List */}
-      <div className="bg-[#252525] rounded-lg border border-[#3d3d3d] max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#3d3d3d] hover:scrollbar-thumb-[#ff6b35]/50">
+      <div className="bg-[var(--paper)]  border border-[var(--hair)] max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--hair)] hover:scrollbar-thumb-[var(--hair-hard)]">
         <div className="p-4 space-y-3">
           {observations.slice(0, 15).map((obs, index) => {
             const isMilestone = obs.category === 'milestone'
@@ -222,16 +222,16 @@ export default function FieldNotesPanel() {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className={`group rounded p-2 transition-colors ${
+                className={`group p-2 transition-colors ${
                   isPinned
-                    ? 'bg-[#ff6b35]/10 border border-[#ff6b35]/30'
-                    : 'hover:bg-[#2d2d2d]'
+                    ? 'bg-[var(--paper-shadow)] border-l-2 border-id8-orange'
+                    : 'hover:bg-[var(--paper-shadow)]'
                 }`}
               >
                 <div className="flex items-start gap-2">
                   {/* Marker */}
                   <span className={`flex-shrink-0 ${
-                    isMilestone ? 'text-[#ff6b35]' : 'text-[#808080]'
+                    isMilestone ? 'text-id8-orange' : 'text-[var(--muted)]'
                   }`}>
                     {isPinned ? '[★]' : isMilestone ? '[*]' : '[-]'}
                   </span>
@@ -240,18 +240,18 @@ export default function FieldNotesPanel() {
                   <div className="flex-1 min-w-0">
                     {/* Date & Category */}
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[#606060] text-xs">
+                      <span className="text-[var(--muted)] text-xs">
                         {formatDate(obs.date)}
                       </span>
                       {isMilestone && (
-                        <span className="text-[#ff6b35] font-bold text-[10px] uppercase tracking-wider">
+                        <span className="text-id8-orange font-bold text-[10px] uppercase tracking-wider">
                           MILESTONE
                         </span>
                       )}
                     </div>
 
                     {/* Text */}
-                    <p className="text-[#c0c0c0] text-xs leading-relaxed">
+                    <p className="text-[var(--body)] text-xs leading-relaxed">
                       {obs.text}
                     </p>
                   </div>
@@ -264,11 +264,11 @@ export default function FieldNotesPanel() {
 
       {/* Footer */}
       <div className="mt-3 flex items-center justify-between text-xs">
-        <div className="text-[#27c93f]">
+        <div className="text-[var(--teal)]">
           {'watching for new entries... '}
           <span className={cursorVisible ? 'opacity-100' : 'opacity-0'}>▌</span>
         </div>
-        <div className={`${isLive ? 'text-[#27c93f]' : 'text-[#ffbd2e]'}`}>
+        <div className={`${isLive ? 'text-[var(--teal)]' : 'text-[var(--muted)]'}`}>
           {isLive ? '● live' : '○ cached'}
         </div>
       </div>
