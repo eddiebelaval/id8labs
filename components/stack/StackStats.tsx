@@ -13,10 +13,10 @@ export function StackStats({ stats }: StackStatsProps): React.ReactElement {
     <div className="flex items-center justify-center gap-8 mb-8">
       {stats.map((stat, index) => (
         <div key={index}>
-          <div className={`text-3xl font-bold ${stat.highlight ? 'text-[var(--id8-orange)]' : ''}`}>
+          <div className={`font-[family-name:var(--font-display)] font-normal text-3xl ${stat.highlight ? 'text-id8-orange' : 'text-[var(--ink)]'}`}>
             {stat.value}
           </div>
-          <div className="text-sm text-[var(--text-secondary)]">
+          <div className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
             {stat.label}
           </div>
         </div>
