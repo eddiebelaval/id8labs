@@ -107,7 +107,6 @@ export default function IntroMessage({ userEmail, onBootReady, onTypingComplete 
         <div className="flex justify-center overflow-hidden">
           <pre
             className="text-id8-orange text-[0.4rem] xs:text-[0.45rem] sm:text-[0.55rem] md:text-[0.65rem] leading-none whitespace-pre"
-            style={{ textShadow: '0 0 10px rgba(255, 107, 53, 0.4)' }}
           >
             {ASCII_LOGO}
           </pre>
