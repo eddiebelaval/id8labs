@@ -38,14 +38,16 @@ test.describe('Stack Builder - Flip Animation & Floating Panel', () => {
   })
 
   test('should expand and collapse stack builder', async ({ page }) => {
-    // Add a skill first
-    await page.locator('button:has-text("Add to Stack")').first().click()
-    
+    // Add the first item
+    await page.locator('article').first().getByRole('button').last().click()
+
     // Wait for panel to appear
     await page.waitForTimeout(500)
-    
-    // Panel should be expanded by default
-    const expandedContent = page.locator('text=Skills (1)')
+
+    // Panel should be expanded by default, showing the item's group heading.
+    // The first card may be a skill or an agent depending on dataset ordering,
+    // so match any group with one item rather than hardcoding "Skills (1)".
+    const expandedContent = page.getByText(/(Skills|Agents|Commands|Settings) \(1\)/)
     await expect(expandedContent).toBeVisible()
     
     // Click header to collapse
