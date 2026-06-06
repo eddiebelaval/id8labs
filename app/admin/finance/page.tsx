@@ -191,8 +191,8 @@ function AddExpenseForm({ categories, onSave, onCancel }: {
         <div><label className={lc}>Project</label><input className={ic} placeholder="parallax, homer, all..." value={form.project} onChange={e => setForm(f => ({ ...f, project: e.target.value }))} /></div>
         <div><label className={lc}>Notes</label><textarea className={ic} rows={2} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} /></div>
         <div className="flex gap-3 pt-1">
-          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2 border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] text-sm">Cancel</button>
-          <button type="submit" className="flex-1 px-4 py-2 bg-[var(--id8-orange)] text-white rounded-lg hover:opacity-90 text-sm font-medium">Save</button>
+          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2.5 border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Cancel</button>
+          <button type="submit" className="flex-1 px-4 py-2.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Save</button>
         </div>
       </form>
     </div>
@@ -215,9 +215,9 @@ function AddAssetForm({ onSave, onCancel }: { onSave: (data: Record<string, unkn
   const ic = inputClass
   const lc = labelClass
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onCancel}>
-      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 w-full max-w-md space-y-3">
-        <h3 className="text-lg font-semibold text-[var(--text-primary)]">Add Asset</h3>
+    <div className="fixed inset-0 bg-[var(--ink)]/40 flex items-center justify-center z-50 p-4" onClick={onCancel}>
+      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--paper)] border border-[var(--hair-hard)] p-6 w-full max-w-md space-y-3">
+        <h3 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">Add Asset</h3>
         <div><label className={lc}>Name *</label><input className={ic} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required /></div>
         <div className="grid grid-cols-2 gap-3">
           <div><label className={lc}>Category *</label><select className={ic} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value as AssetCategory }))}><option value="hardware">Hardware</option><option value="domain">Domain</option><option value="software_ip">Software IP</option><option value="financial">Financial</option><option value="other">Other</option></select></div>
@@ -229,8 +229,8 @@ function AddAssetForm({ onSave, onCancel }: { onSave: (data: Record<string, unkn
         </div>
         <div><label className={lc}>Description</label><textarea className={ic} rows={2} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} /></div>
         <div className="flex gap-3 pt-1">
-          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2 border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] text-sm">Cancel</button>
-          <button type="submit" className="flex-1 px-4 py-2 bg-[var(--id8-orange)] text-white rounded-lg hover:opacity-90 text-sm font-medium">Save</button>
+          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2.5 border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Cancel</button>
+          <button type="submit" className="flex-1 px-4 py-2.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Save</button>
         </div>
       </form>
     </div>
