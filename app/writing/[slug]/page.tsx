@@ -1,10 +1,18 @@
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getEssayBySlug, getAllEssays } from '@/lib/essays'
 import { CopyPageButton } from '@/components/CopyPageButton'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  Prose,
+  EditorialButton,
+} from '@/components/editorial'
 
 // Revalidate every hour to pick up scheduled posts
 export const revalidate = 3600  // 1 hour in seconds
@@ -28,135 +36,111 @@ export default function EssayPage({ params }: { params: { slug: string } }) {
     release: 'Release Note'
   }
 
+  const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
+
   return (
-    <article data-copy-root="article" className="min-h-screen bg-[rgba(10,10,10,0.88)] backdrop-blur-[40px]">
-      {/* Header */}
-      <section className="section-spacing border-b border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-              <Link
-                href="/writing"
-                data-copy-exclude="true"
-                className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="19" y1="12" x2="5" y2="12" />
-                  <polyline points="12 19 5 12 12 5" />
-                </svg>
-                Back to Essays
-              </Link>
-              <CopyPageButton />
-            </div>
-
-            <div className="mb-6 flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-              <span className="uppercase tracking-wide">
-                {categoryLabels[essay.category]}
-              </span>
-              <span>·</span>
-              <time dateTime={essay.date}>
-                {new Date(essay.date).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric'
-                })}
-              </time>
-              <span>·</span>
-              <span>{essay.readTime}</span>
-            </div>
-
-            <h1 className="mb-6">{essay.title}</h1>
-
-            {essay.subtitle && (
-              <p className="text-xl text-[var(--text-secondary)] italic">
-                {essay.subtitle}
-              </p>
-            )}
+    <article data-copy-root="article" className="min-h-screen bg-[var(--paper)]">
+      {/* Masthead */}
+      <section className="pt-16 pb-10">
+        <Container narrow>
+          <div
+            data-copy-exclude="true"
+            className="mb-10 flex flex-wrap items-center justify-between gap-3"
+          >
+            <EditorialButton href="/writing" variant="ghost">
+              &larr; Back to Writing
+            </EditorialButton>
+            <CopyPageButton />
           </div>
-        </div>
+
+          <Kicker dot>{categoryLabels[essay.category]}</Kicker>
+
+          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
+            {essay.title}
+          </h1>
+
+          {essay.subtitle && (
+            <Deck className="mt-6">{essay.subtitle}</Deck>
+          )}
+
+          <MetaRow
+            className="mt-8"
+            items={[
+              { label: formattedDate },
+              { label: essay.readTime },
+            ]}
+          />
+
+          <Rule className="mt-8" />
+        </Container>
       </section>
 
       {/* Hero Image */}
       {essay.heroImage && (
-        <section className="border-b border-[var(--border)]">
-          <div className="container">
-            <div className="max-w-4xl mx-auto py-8">
-              <div className="relative w-full rounded-lg overflow-hidden border border-[var(--border)]">
-                <Image
-                  src={essay.heroImage}
-                  alt={essay.title}
-                  width={1920}
-                  height={1080}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
+        <section className="pb-4">
+          <Container narrow>
+            <div className="relative w-full overflow-hidden border border-[var(--hair)]">
+              <Image
+                src={essay.heroImage}
+                alt={essay.title}
+                width={1920}
+                height={1080}
+                className="h-auto w-full"
+                priority
+              />
             </div>
-          </div>
+          </Container>
         </section>
       )}
 
       {/* Content */}
-      <section className="section-spacing">
-        <div className="container">
-          <div className="max-w-3xl mx-auto prose-essay">
+      <section className="pb-16 pt-8">
+        <Container narrow>
+          <Prose>
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                h1: ({ children }) => <h2 className="mb-6 mt-12 first:mt-0">{children}</h2>,
-                h2: ({ children }) => <h3 className="mb-4 mt-10">{children}</h3>,
-                p: ({ children }) => <p className="mb-6">{children}</p>,
-                ul: ({ children }) => <ul className="mb-6 pl-6 space-y-2">{children}</ul>,
-                li: ({ children }) => (
-                  <li className="relative pl-2">
-                    <span className="absolute left-[-1rem] text-[var(--text-secondary)]">-</span>
-                    {children}
-                  </li>
-                ),
-                a: ({ href, children }) => (
-                  <a href={href} className="text-id8-orange hover:opacity-70 transition-opacity underline underline-offset-2" target={href?.startsWith('/') ? undefined : '_blank'} rel={href?.startsWith('/') ? undefined : 'noopener noreferrer'}>{children}</a>
-                ),
-                hr: () => <hr className="my-12 border-[var(--border)]" />,
-                em: ({ children }) => <em className="italic text-[var(--text-secondary)]">{children}</em>,
+                h1: ({ children }) => <h2>{children}</h2>,
+                h2: ({ children }) => <h3>{children}</h3>,
                 table: ({ children }) => (
-                  <div className="overflow-x-auto mb-6">
+                  <div className="mb-6 overflow-x-auto">
                     <table className="w-full border-collapse text-sm">{children}</table>
                   </div>
                 ),
-                thead: ({ children }) => <thead className="border-b border-[var(--border)]">{children}</thead>,
+                thead: ({ children }) => (
+                  <thead className="border-b border-[var(--hair)]">{children}</thead>
+                ),
                 tbody: ({ children }) => <tbody>{children}</tbody>,
-                tr: ({ children }) => <tr className="border-b border-[var(--border)]/50">{children}</tr>,
+                tr: ({ children }) => (
+                  <tr className="border-b border-[var(--hair)]">{children}</tr>
+                ),
                 th: ({ children }) => (
-                  <th className="py-3 px-4 text-left font-semibold text-[var(--text-primary)]">{children}</th>
+                  <th className="px-4 py-3 text-left font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--ink)]">
+                    {children}
+                  </th>
                 ),
                 td: ({ children }) => (
-                  <td className="py-3 px-4 text-[var(--text-secondary)]">{children}</td>
+                  <td className="px-4 py-3 text-[var(--body)]">{children}</td>
                 ),
               }}
             >
               {essay.content}
             </ReactMarkdown>
-          </div>
-        </div>
+          </Prose>
+        </Container>
       </section>
 
       {/* Back Link */}
-      <section className="border-t border-[var(--border)] py-12">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <Link
-              href="/writing"
-              data-copy-exclude="true"
-              className="inline-flex items-center gap-2 text-sm text-id8-orange hover:opacity-70 transition-opacity"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="19" y1="12" x2="5" y2="12" />
-                <polyline points="12 19 5 12 12 5" />
-              </svg>
-              Back to all essays
-            </Link>
-          </div>
-        </div>
+      <section className="border-t border-[var(--rule)] py-12" data-copy-exclude="true">
+        <Container narrow>
+          <EditorialButton href="/writing" variant="ghost">
+            &larr; Back to all writing
+          </EditorialButton>
+        </Container>
       </section>
     </article>
   )

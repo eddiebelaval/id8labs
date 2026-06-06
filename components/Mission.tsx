@@ -1,157 +1,140 @@
-'use client'
-
 import Link from 'next/link'
-import { m } from '@/components/motion'
+import { Container, Kicker, Deck } from '@/components/editorial'
+
+const principles = [
+  {
+    title: 'Problem-First, Always',
+    body: (
+      <>
+        Every tool starts with friction I hit in production. Context rot on 90 Day scripts became{' '}
+        <a
+          href="https://id8composer.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-id8-orange hover:text-[var(--ink)] transition-colors"
+        >
+          Composer
+        </a>
+        . Revenge trades bleeding my account became{' '}
+        <a
+          href="https://deepstack.trade"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-id8-orange hover:text-[var(--ink)] transition-colors"
+        >
+          DeepStack&apos;s emotion detection
+        </a>
+        . Problems are never abstract&mdash;they&apos;re personally painful.
+      </>
+    ),
+  },
+  {
+    title: 'Architecture Over Features',
+    body: (
+      <>
+        Most builders add features. I design architecture.{' '}
+        <Link href="/products/llc-ops" className="text-id8-orange hover:text-[var(--ink)] transition-colors">
+          LLC Ops
+        </Link>{' '}
+        is not a tax tool, it is nine agents working as one chain.{' '}
+        <Link href="/products/pipeline" className="text-id8-orange hover:text-[var(--ink)] transition-colors">
+          Pipeline
+        </Link>{' '}
+        is not a tracker, it is decay mechanics that create urgency. The connections between primitives
+        are where the leverage actually lives.
+      </>
+    ),
+  },
+  {
+    title: 'Primitive Chains, Not Tools',
+    body: (
+      <>
+        A tool sits and waits. A chain runs. We design primitive chain architectures with human gates in
+        the right places, so the company gets the leverage of automation without giving up the judgment
+        that only people can supply. The artifact is not an app. It is a working architecture inside the
+        company.
+      </>
+    ),
+  },
+  {
+    title: 'Build to Learn',
+    body: (
+      <>
+        Don&apos;t wait until you understand&mdash;build something, watch it break, build it better.
+        Composer started simple. Now it has canvas, sandbox, persistent story memory. The first version
+        teaches what the real version needs.
+      </>
+    ),
+  },
+  {
+    title: 'Multidisciplinary Translation',
+    body: (
+      <>
+        Mycology teaches networks. Trading teaches emotional systems. Filmmaking teaches narrative
+        structure. Pattern recognition is pulling insight from one field into another. DeepStack&apos;s
+        &ldquo;process integrity&rdquo; came from production workflows, not finance.
+      </>
+    ),
+  },
+  {
+    title: 'Working in Public',
+    body: (
+      <>
+        The lab isn&apos;t hidden. Ship before it&apos;s polished, iterate on real feedback. The
+        discomfort of public imperfection is offset by the acceleration of real-world validation.
+      </>
+    ),
+  },
+]
 
 export default function Mission() {
   return (
-    <section id="mission" className="section-spacing bg-zone-text scroll-mt-20">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left - Headline (Asymmetric) */}
-          <m.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:sticky lg:top-24"
-          >
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              How I
-              <br />
-              <span className="text-gradient-orange">Build</span>
+    <section id="mission" className="py-20 md:py-24 scroll-mt-20">
+      <Container>
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-14 lg:gap-24 items-start">
+          {/* Left - Sticky Header */}
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <Kicker className="mb-4">Philosophy</Kicker>
+            <h2 className="mb-6 font-[family-name:var(--font-display)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--ink)] text-[clamp(2.25rem,4.5vw,3.5rem)]">
+              How I <em className="italic font-normal text-id8-orange">build</em>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[var(--id8-orange)] to-transparent" />
-          </m.div>
+            <Deck>Six principles the lab runs on. Every product is an instance of them.</Deck>
+          </div>
 
-          {/* Right - Content Stack (Asymmetric) */}
-          <m.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="space-y-12"
-          >
-            {/* Core Principles */}
-            <div className="space-y-6">
-              <div className="group">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Problem-First, Always</span>
-                    </p>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      Every tool starts with friction I hit in production. Context rot on 90 Day scripts became{' '}
-                      <a href="https://id8composer.app" target="_blank" rel="noopener noreferrer" className="text-[var(--id8-orange)] hover:underline">Composer</a>.
-                      Revenge trades bleeding my account became{' '}
-                      <a href="https://deepstack.trade" target="_blank" rel="noopener noreferrer" className="text-[var(--id8-orange)] hover:underline">DeepStack's emotion detection</a>. Problems are never abstract—they're personally painful.
-                    </p>
-                  </div>
+          {/* Right - Principles */}
+          <div className="space-y-12">
+            <div>
+              {principles.map((p, i) => (
+                <div
+                  key={p.title}
+                  className="py-8 border-b border-[var(--hair)]"
+                  style={i === 0 ? { paddingTop: 0 } : undefined}
+                >
+                  <h3 className="mb-3 font-[family-name:var(--font-display)] font-normal tracking-[-0.015em] text-[var(--ink)] text-xl md:text-2xl">
+                    {p.title}
+                  </h3>
+                  <p className="leading-relaxed text-[var(--body)]">{p.body}</p>
                 </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Architecture Over Features</span>
-                    </p>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      Most builders add features. I design architecture.{' '}
-                      <Link href="/products/llc-ops" className="text-[var(--id8-orange)] hover:underline">LLC Ops</Link> is not a tax tool, it is nine agents working as one chain.{' '}
-                      <Link href="/products/pipeline" className="text-[var(--id8-orange)] hover:underline">Pipeline</Link> is not a tracker, it is decay mechanics that create urgency. The connections between primitives are where the leverage actually lives.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Primitive Chains, Not Tools</span>
-                    </p>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      A tool sits and waits. A chain runs. We design primitive chain architectures with human gates in the right
-                      places, so the company gets the leverage of automation without giving up the judgment that only people can supply.
-                      The artifact is not an app. It is a working architecture inside the company.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Build to Learn</span>
-                    </p>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      Don't wait until you understand—build something, watch it break, build it better.
-                      Composer started simple. Now it has canvas, sandbox, persistent story memory. The first version teaches what the real version needs.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Multidisciplinary Translation</span>
-                    </p>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      Mycology teaches networks. Trading teaches emotional systems. Filmmaking teaches narrative structure.
-                      Pattern recognition is pulling insight from one field into another. DeepStack's "process integrity" came from production workflows, not finance.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[var(--id8-orange)] rounded-full mt-3 flex-shrink-0 group-hover:scale-150 transition-transform" />
-                  <div>
-                    <p className="text-xl md:text-2xl leading-relaxed mb-2">
-                      <span className="text-[var(--id8-orange)] font-semibold">Working in Public</span>
-                    </p>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
-                      The lab isn't hidden. Ship before it's polished, iterate on real feedback.
-                      The discomfort of public imperfection is offset by the acceleration of real-world validation.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Pull Quote */}
-            <div className="pt-8 border-t border-[var(--border)]">
-              <blockquote className="text-2xl md:text-3xl font-bold italic text-[var(--text-secondary)]">
-                "Products get personality.
-                <br />
-                The lab stays focused."
+            <div>
+              <blockquote className="font-[family-name:var(--font-serif)] italic text-2xl md:text-3xl leading-[1.35] text-[var(--ink)]">
+                &ldquo;Products get personality. The lab stays focused.&rdquo;
               </blockquote>
               <div className="mt-8">
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 text-[var(--id8-orange)] font-semibold hover:gap-3 transition-all"
+                  className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.22em] text-id8-orange transition-colors hover:text-[var(--ink)]"
                 >
-                  Learn how I can help you build
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
+                  Learn how I can help you build &rarr;
                 </Link>
               </div>
             </div>
-          </m.div>
+          </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }
