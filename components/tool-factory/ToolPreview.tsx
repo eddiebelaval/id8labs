@@ -142,7 +142,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-8 space-y-4"
       >
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--teal)] rounded-full">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--paper-mid)] rounded-full">
           <CheckCircle className="w-8 h-8 text-[var(--teal)]" />
         </div>
         <h3 className="text-xl font-bold text-[var(--ink)]">

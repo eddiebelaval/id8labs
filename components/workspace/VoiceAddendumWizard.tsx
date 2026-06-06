@@ -693,7 +693,7 @@ export function VoiceAddendumWizard({
               className="space-y-6"
             >
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-[var(--teal)] rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-[var(--paper-mid)] rounded-full flex items-center justify-center">
                   <Send className="w-8 h-8 text-[var(--teal)]" />
                 </div>
                 <h3 className="text-lg font-semibold text-[var(--ink)]">
