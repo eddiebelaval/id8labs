@@ -64,8 +64,8 @@ export function UserStacksList({ userId }: UserStacksListProps) {
   if (stacks.length === 0) {
     return (
       <div className="text-center py-12">
-        <Package className="w-16 h-16 mx-auto mb-4 text-[var(--text-secondary)]" />
-        <h3 className="text-2xl font-bold mb-2">No Stacks Yet</h3>
+        <Package className="w-16 h-16 mx-auto mb-4 text-[var(--muted)]" />
+        <h3 className="font-[family-name:var(--font-display)] text-2xl font-normal mb-2 text-[var(--ink)]">No Stacks Yet</h3>
       </div>
     )
   }
@@ -77,14 +77,14 @@ export function UserStacksList({ userId }: UserStacksListProps) {
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <h3 className="text-xl font-bold">{stack.name}</h3>
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-normal text-[var(--ink)]">{stack.name}</h3>
                 {stack.is_public ? (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded-full">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-[var(--teal)]">
                     <Globe className="w-3 h-3" />
                     Public
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-[var(--bg-secondary)] rounded-full">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-[var(--muted)]">
                     <Lock className="w-3 h-3" />
                     Private
                   </span>
@@ -93,11 +93,11 @@ export function UserStacksList({ userId }: UserStacksListProps) {
             </div>
           </div>
 
-          <div className="flex gap-2 pt-4 border-t border-[var(--border)]">
+          <div className="flex gap-2 pt-4 border-t border-[var(--hair)]">
             {!stack.is_public && (
               <button
                 onClick={() => handleMakePublic(stack.id)}
-                className="flex items-center gap-1 px-3 py-1.5 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] text-sm"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] transition-colors duration-150"
               >
                 <Globe className="w-4 h-4" />
                 Make Public
@@ -105,7 +105,7 @@ export function UserStacksList({ userId }: UserStacksListProps) {
             )}
             <button
               onClick={() => handleDelete(stack.id, stack.name)}
-              className="flex items-center gap-1 px-3 py-1.5 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 text-sm ml-auto"
+              className="flex items-center gap-1.5 px-3 py-1.5 border border-id8-orange text-id8-orange hover:bg-id8-orange hover:text-[var(--paper)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] transition-colors duration-150 ml-auto"
             >
               <Trash2 className="w-4 h-4" />
               Delete

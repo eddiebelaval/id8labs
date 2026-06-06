@@ -108,17 +108,17 @@ export function AIInsightsPanel({
   }, [action, courseSlug, moduleSlug, highlightId, config.endpoint])
 
   return (
-    <div className={`bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl overflow-hidden ${className}`}>
+    <div className={`bg-[var(--paper)] border border-[var(--hair)] overflow-hidden ${className}`}>
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-gradient-to-r from-id8-orange/10 to-transparent">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--hair)]">
         <div className="flex items-center gap-2">
           <SparklesIcon className="w-5 h-5 text-id8-orange" />
-          <h3 className="font-semibold text-sm">{title || config.title}</h3>
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-sm text-[var(--ink)]">{title || config.title}</h3>
         </div>
         {onClose && (
           <button
             onClick={onClose}
-            className="p-1 hover:bg-[var(--bg-tertiary)] rounded transition-colors"
+            className="p-1 hover:bg-[var(--paper-shadow)] transition-colors"
             aria-label="Close"
           >
             <CloseIcon className="w-4 h-4" />
@@ -137,13 +137,13 @@ export function AIInsightsPanel({
               exit={{ opacity: 0 }}
               className="text-center py-6"
             >
-              <p className="text-sm text-[var(--text-secondary)] mb-4">
+              <p className="text-sm text-[var(--muted)] mb-4">
                 {config.description}
               </p>
               <button
                 onClick={generateInsight}
                 disabled={isLoading}
-                className="px-4 py-2 bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors disabled:opacity-50 flex items-center gap-2 mx-auto"
+                className="px-4 py-2 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors disabled:opacity-50 flex items-center gap-2 mx-auto"
               >
                 <SparklesIcon className="w-4 h-4" />
                 {config.buttonText}
@@ -156,7 +156,7 @@ export function AIInsightsPanel({
               animate={{ opacity: 1 }}
               className="text-center py-6"
             >
-              <div className="text-red-500 mb-4">
+              <div className="text-id8-orange mb-4">
                 <ErrorIcon className="w-8 h-8 mx-auto mb-2" />
                 <p className="text-sm">{error}</p>
               </div>
@@ -177,7 +177,7 @@ export function AIInsightsPanel({
                 <div className="flex items-center justify-center py-8">
                   <div className="flex items-center gap-3">
                     <div className="animate-spin w-5 h-5 border-2 border-id8-orange border-t-transparent rounded-full" />
-                    <span className="text-sm text-[var(--text-secondary)]">
+                    <span className="text-sm text-[var(--muted)]">
                       Analyzing your notes...
                     </span>
                   </div>
@@ -185,21 +185,21 @@ export function AIInsightsPanel({
               )}
 
               {content && (
-                <div className="prose prose-sm dark:prose-invert max-w-none">
+                <div className="prose prose-sm max-w-none">
                   <div className="whitespace-pre-wrap text-sm leading-relaxed">
                     {content}
                     {isLoading && (
-                      <span className="inline-block w-2 h-4 bg-id8-orange/70 animate-pulse ml-0.5" />
+                      <span className="inline-block w-2 h-4 bg-id8-orange animate-pulse ml-0.5" />
                     )}
                   </div>
                 </div>
               )}
 
               {!isLoading && content && (
-                <div className="mt-4 pt-4 border-t border-[var(--border)] flex justify-between items-center">
+                <div className="mt-4 pt-4 border-t border-[var(--hair)] flex justify-between items-center">
                   <button
                     onClick={generateInsight}
-                    className="text-xs text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] flex items-center gap-1"
+                    className="text-xs text-[var(--muted)] hover:text-[var(--muted)] flex items-center gap-1"
                   >
                     <RefreshIcon className="w-3 h-3" />
                     Regenerate
@@ -241,7 +241,7 @@ export function AIActionButton({ action, onClick, disabled, className = '' }: AI
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-id8-orange/10 text-id8-orange rounded-full hover:bg-id8-orange/20 transition-colors disabled:opacity-50 ${className}`}
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-[var(--paper-mid)] text-id8-orange hover:bg-[var(--paper-shadow)] transition-colors disabled:opacity-50 ${className}`}
     >
       <SparklesIcon className="w-3.5 h-3.5" />
       {labels[action]}

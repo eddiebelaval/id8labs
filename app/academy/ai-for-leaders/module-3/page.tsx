@@ -59,7 +59,7 @@ export default function Module3Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-3">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -87,7 +87,7 @@ export default function Module3Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 3
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -97,34 +97,34 @@ export default function Module3Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               The Build/Buy/Partner Decision
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "We've identified the use case. Now comes the decision that will shape everything: how do we actually implement this?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Strategic Choice */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Strategic Choice
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why This Isn't Just a Technical Decision</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why This Isn't Just a Technical Decision</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've validated your AI use case. You know it has value. Now comes the question that determines success or failure: how will you bring this to life?
@@ -145,8 +145,8 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose grid md:grid-cols-3 gap-4 my-8">
-              <div className="p-5 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-blue-500/20 text-blue-400 rounded mb-3">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   Build
                 </div>
                 <h4 className="font-bold text-lg mb-2">Custom Development</h4>
@@ -155,34 +155,34 @@ export default function Module3Page() {
                 </p>
                 <div className="space-y-2 text-xs">
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Full control and customization</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Competitive differentiation</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">No vendor lock-in</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Longest time to value</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Highest upfront investment</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Requires specialized talent</span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-5 bg-green-500/10 border border-green-500/30 rounded-lg">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-green-500/20 text-green-400 rounded mb-3">
+              <div className="p-5 bg-id8-teal/10 border border-[var(--hair-hard)]">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-id8-teal/20 text-id8-teal mb-3">
                   Buy
                 </div>
                 <h4 className="font-bold text-lg mb-2">Off-the-Shelf Solution</h4>
@@ -191,34 +191,34 @@ export default function Module3Page() {
                 </p>
                 <div className="space-y-2 text-xs">
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Fastest deployment</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Predictable costs</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Proven, battle-tested</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Limited customization</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Vendor dependency</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">No competitive advantage</span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-5 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-purple-500/20 text-purple-400 rounded mb-3">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   Partner
                 </div>
                 <h4 className="font-bold text-lg mb-2">Strategic Partnership</h4>
@@ -227,27 +227,27 @@ export default function Module3Page() {
                 </p>
                 <div className="space-y-2 text-xs">
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Access to deep expertise</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Shared risk and investment</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-green-400 mt-0.5">+</span>
+                    <span className="text-id8-teal mt-0.5">+</span>
                     <span className="text-[var(--text-secondary)]">Custom + battle-tested</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Requires relationship mgmt</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Ongoing dependencies</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">-</span>
+                    <span className="text-[var(--muted)] mt-0.5">-</span>
                     <span className="text-[var(--text-secondary)]">Alignment challenges</span>
                   </div>
                 </div>
@@ -269,9 +269,9 @@ export default function Module3Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Criteria</th>
-                    <th className="text-left py-3 px-4 text-blue-400">Build</th>
-                    <th className="text-left py-3 px-4 text-green-400">Buy</th>
-                    <th className="text-left py-3 px-4 text-purple-400">Partner</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Build</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Buy</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Partner</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -338,88 +338,88 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-5 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-5 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-center gap-2 mb-3">
                   <AlertIcon />
-                  <h4 className="font-bold text-red-400">BUILD: Hidden Costs</h4>
+                  <h4 className="font-bold text-[var(--muted)]">BUILD: Hidden Costs</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Talent Acquisition:</strong> AI engineers command premium salaries and are hard to recruit</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Failed Experiments:</strong> Budget 30-40% of development time for approaches that won't work</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Infrastructure Creep:</strong> GPU costs, MLOps tools, and monitoring stack add up fast</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Maintenance Burden:</strong> Models degrade over time and require continuous retraining</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Opportunity Cost:</strong> Your team is building infrastructure instead of features</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="p-5 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-5 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-center gap-2 mb-3">
                   <AlertIcon />
-                  <h4 className="font-bold text-red-400">BUY: Hidden Costs</h4>
+                  <h4 className="font-bold text-[var(--muted)]">BUY: Hidden Costs</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Integration Complexity:</strong> "Plug and play" rarely means what you think it means</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Data Migration:</strong> Getting your data into vendor format is expensive and risky</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Price Escalation:</strong> Per-user or per-transaction pricing scales painfully</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Customization Charges:</strong> Every "small tweak" comes with a professional services fee</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Exit Penalties:</strong> Vendor lock-in makes switching extremely costly</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="p-5 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-5 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-center gap-2 mb-3">
                   <AlertIcon />
-                  <h4 className="font-bold text-red-400">PARTNER: Hidden Costs</h4>
+                  <h4 className="font-bold text-[var(--muted)]">PARTNER: Hidden Costs</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Alignment Overhead:</strong> Coordinating across organizations takes time and energy</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Knowledge Transfer Gaps:</strong> You don't own the expertise, creating ongoing dependency</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Strategic Misalignment:</strong> Partner priorities can shift, leaving you exposed</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>IP Complications:</strong> Who owns the models, data, and improvements? Get this clear upfront.</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">•</span>
+                    <span className="text-[var(--muted)]">•</span>
                     <span><strong>Transition Risk:</strong> If the partnership ends, can you continue operating?</span>
                   </li>
                 </ul>
@@ -432,31 +432,31 @@ export default function Module3Page() {
               The single most useful tool for making this decision: map each use case on two dimensions — <strong>your current capability</strong> and <strong>business criticality</strong>.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="relative w-full aspect-square max-w-xl mx-auto">
                 {/* Grid background */}
                 <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2">
                   {/* Low Capability / Low Criticality - BUY */}
-                  <div className="bg-green-500/10 border border-green-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
-                    <div className="text-xs font-mono text-green-400 mb-2">BUY</div>
+                  <div className="bg-id8-teal/10 border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
+                    <div className="text-xs font-mono text-id8-teal mb-2">BUY</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Off-the-shelf solution</div>
                   </div>
 
                   {/* High Capability / Low Criticality - EXPERIMENT */}
-                  <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
-                    <div className="text-xs font-mono text-yellow-400 mb-2">EXPERIMENT</div>
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
+                    <div className="text-xs font-mono text-[var(--muted)] mb-2">EXPERIMENT</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Build internally to learn</div>
                   </div>
 
                   {/* Low Capability / High Criticality - PARTNER */}
-                  <div className="bg-purple-500/10 border border-purple-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
-                    <div className="text-xs font-mono text-purple-400 mb-2">PARTNER</div>
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
+                    <div className="text-xs font-mono text-[var(--muted)] mb-2">PARTNER</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Strategic partnership</div>
                   </div>
 
                   {/* High Capability / High Criticality - BUILD */}
-                  <div className="bg-blue-500/10 border border-blue-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
-                    <div className="text-xs font-mono text-blue-400 mb-2">BUILD</div>
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
+                    <div className="text-xs font-mono text-[var(--muted)] mb-2">BUILD</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Custom development</div>
                   </div>
                 </div>
@@ -475,10 +475,10 @@ export default function Module3Page() {
               </div>
 
               <div className="mt-12 space-y-3 text-sm text-[var(--text-secondary)]">
-                <p><strong className="text-green-400">BUY (Low/Low):</strong> Non-critical functions where you have no expertise. Use proven solutions.</p>
-                <p><strong className="text-purple-400">PARTNER (Low/High):</strong> Critical functions where you lack capability. Get expert help fast.</p>
-                <p><strong className="text-blue-400">BUILD (High/High):</strong> Core differentiators where you have strength. Invest for competitive advantage.</p>
-                <p><strong className="text-yellow-400">EXPERIMENT (High/Low):</strong> Learning opportunities where failure is cheap. Build to develop capability.</p>
+                <p><strong className="text-id8-teal">BUY (Low/Low):</strong> Non-critical functions where you have no expertise. Use proven solutions.</p>
+                <p><strong className="text-[var(--muted)]">PARTNER (Low/High):</strong> Critical functions where you lack capability. Get expert help fast.</p>
+                <p><strong className="text-[var(--muted)]">BUILD (High/High):</strong> Core differentiators where you have strength. Invest for competitive advantage.</p>
+                <p><strong className="text-[var(--muted)]">EXPERIMENT (High/Low):</strong> Learning opportunities where failure is cheap. Build to develop capability.</p>
               </div>
             </div>
 
@@ -489,10 +489,10 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose my-8 space-y-6">
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Mid-Market SaaS Company</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-green-500/20 text-green-400 rounded">BUY</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal">BUY</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Customer support chatbot
@@ -505,10 +505,10 @@ export default function Module3Page() {
                 </p>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Healthcare Analytics Startup</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-blue-500/20 text-blue-400 rounded">BUILD</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">BUILD</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Predictive patient risk scoring
@@ -521,10 +521,10 @@ export default function Module3Page() {
                 </p>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Regional Bank</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-purple-500/20 text-purple-400 rounded">PARTNER</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">PARTNER</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Fraud detection system
@@ -539,11 +539,11 @@ export default function Module3Page() {
             </div>
 
             {/* Exercise Box */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Decision Framework</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Decision Framework</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Your validated AI use cases from Module 2
@@ -551,35 +551,35 @@ export default function Module3Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Rate your capability (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each use case, honestly assess: do you have the technical talent, data infrastructure, and domain expertise to build this? Rate 1-10.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Rate business criticality (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">How essential is this to your competitive position? How much would failure hurt? Rate 1-10.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Plot on the framework (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Place each use case in the 2x2 matrix. Where does it land? What does the framework recommend?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Apply hidden costs filter (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For your recommended path, list out 3-5 hidden costs specific to your situation. How do they change the calculus?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Make your decision (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Commit to Build, Buy, or Partner for your highest-priority use case. Write down your reasoning in 3 sentences.</p>
@@ -587,7 +587,7 @@ export default function Module3Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A decision matrix showing where each use case falls, the recommended path, and a one-paragraph justification that accounts for hidden costs and organizational context.
                 </p>
@@ -622,36 +622,36 @@ export default function Module3Page() {
             <h2>Five Common Mistakes</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #1</p>
                 <p className="font-bold">"We'll build MVP then decide"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Reality: By the time you've built an MVP, you've already committed to Build. The switching cost is massive. Make the strategic choice before you write code.
                 </p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #2</p>
                 <p className="font-bold">"This vendor can do everything"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Reality: Platforms that claim to solve every AI use case are mediocre at most. Best-of-breed beats all-in-one for serious implementations.
                 </p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #3</p>
                 <p className="font-bold">"We need control, so we'll build"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Reality: Building gives you control over the code, not the outcome. If you lack expertise, building just gives you controlled failure.
                 </p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #4</p>
                 <p className="font-bold">"Partnerships are low-risk"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Reality: Bad partnerships are worse than bad vendors. Misaligned incentives, IP disputes, and dependency create lasting damage.
                 </p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #5</p>
                 <p className="font-bold">"We can always switch later"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Reality: Switching costs are higher than you think. Data migration, retraining users, workflow disruption — plan for a 3-year commitment minimum.
@@ -660,7 +660,7 @@ export default function Module3Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

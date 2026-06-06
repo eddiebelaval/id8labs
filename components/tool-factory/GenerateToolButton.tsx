@@ -23,11 +23,11 @@ export function GenerateToolButton({
   }
 
   const baseClasses =
-    'inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold transition-all'
+    'inline-flex items-center gap-2 px-4 py-2.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150'
   const variantClasses =
     variant === 'primary'
-      ? 'bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange-hover)] shadow-lg shadow-[var(--id8-orange)]/20'
-      : 'bg-[var(--bg-primary)] text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--id8-orange)] hover:text-[var(--id8-orange)]'
+      ? 'bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-[var(--orange)] hover:border-[var(--orange)]'
+      : 'bg-[var(--paper)] text-[var(--ink)] border-[var(--hair)] hover:border-[var(--orange)] hover:text-[var(--orange)]'
 
   return (
     <>

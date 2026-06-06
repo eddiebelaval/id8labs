@@ -272,7 +272,7 @@ test.describe('Tool Factory - Integration with StackShack', () => {
     const toolFactory = new ToolFactoryPage(page)
 
     await page.goto('/stackshack')
-    await page.waitForLoadState('networkidle')
+    await page.waitForLoadState('domcontentloaded')
 
     // Find and click the generate tool button
     const generateButton = page.locator('button:has-text("Generate Tool"), button:has-text("AI Tool Factory")')

@@ -81,32 +81,32 @@ export function ToolFactoryModal({
         >
           {/* Solid backdrop layer to prevent bleed-through from sticky elements */}
           <div
-            className="fixed inset-0 bg-[#0a0a0a]"
+            className="fixed inset-0 bg-[var(--ink)]/40"
             style={{ zIndex: 9998, willChange: 'transform' }}
             onClick={handleClose}
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative bg-[var(--bg-primary)] rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="relative bg-[var(--paper)] border border-[var(--hair-hard)] max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             style={{ zIndex: 10000 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)] flex-shrink-0">
-              <h2 className="text-xl font-bold text-[var(--text-primary)]">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--hair)] flex-shrink-0">
+              <h2 className="font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
                 AI Tool Factory
               </h2>
               <button
                 onClick={handleClose}
                 disabled={state === 'generating' || state === 'saving' || state === 'verifying'}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Close"
               >
-                <X className="w-5 h-5 text-[var(--text-secondary)]" />
+                <X className="w-5 h-5 text-[var(--muted)]" />
               </button>
             </div>
 

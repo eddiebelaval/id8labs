@@ -1,54 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { resumeData } from "@/lib/eddie-constants";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { Container } from "@/components/editorial";
 
 export function Stats() {
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   return (
-    <section className="relative py-16 px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
-        >
-          {resumeData.stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              className="text-center p-6 rounded-2xl backdrop-blur-md"
-              style={{
-                background: "rgba(0, 0, 0, 0.45)",
-                border: "1px solid rgba(0, 255, 65, 0.2)",
-              }}
-              initial={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: prefersReducedMotion ? 0 : 0.5,
-                delay: prefersReducedMotion ? 0 : index * 0.1,
-              }}
-            >
-              <div
-                className="text-3xl md:text-4xl font-[family-name:var(--font-vt323)]"
-                style={{ color: "#00ff41", textShadow: "0 0 5px #00ff41" }}
-              >
+    <section className="border-b border-[var(--hair)] py-16">
+      <Container>
+        <div className="grid grid-cols-2 gap-px border border-[var(--hair)] bg-[var(--hair)] md:grid-cols-4">
+          {resumeData.stats.map((stat) => (
+            <div key={stat.label} className="bg-[var(--paper)] p-7 text-center">
+              <div className="font-[family-name:var(--font-display)] text-4xl font-normal tracking-[-0.03em] text-[var(--ink)] md:text-5xl">
                 {stat.value}
               </div>
-              <div
-                className="text-lg mt-1 font-[family-name:var(--font-vt323)]"
-                style={{ color: "rgba(255, 255, 255, 0.6)" }}
-              >
+              <div className="mt-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
                 {stat.label}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }

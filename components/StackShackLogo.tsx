@@ -19,10 +19,10 @@ export function StackShackLogo({ size = 'md', className = '' }: StackShackLogoPr
       style={{ fontFamily: 'var(--font-press-start)' }}
       suppressHydrationWarning
     >
-      <span className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+      <span className="text-[var(--ink)]">
         STACK
       </span>
-      <span className="text-[#FF6B00] drop-shadow-[0_0_15px_#FF6B00]">
+      <span className="text-id8-orange">
         SHACK
       </span>
     </span>

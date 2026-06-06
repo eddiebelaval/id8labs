@@ -1,102 +1,65 @@
-'use client'
-
-import { m } from '@/components/motion'
+import { Container, Kicker, Deck, MetaRow, Hairline } from '@/components/editorial'
 import { featuredHomeProducts, showcaseHomeProducts } from '@/lib/home-products'
 
 const activeProjectCount = featuredHomeProducts.length + showcaseHomeProducts.length
 
 export default function Builder() {
   return (
-    <section id="builder" className="section-spacing bg-zone-text scroll-mt-20">
-
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left - Headline (Asymmetric) */}
-          <m.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:sticky lg:top-24"
-          >
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              The
-              <br />
-              <span className="text-gradient-orange">Builder</span>
+    <section id="builder" className="py-20 md:py-24 scroll-mt-20">
+      <Container>
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-14 lg:gap-24 items-start">
+          {/* Left - Sticky Header */}
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <Kicker className="mb-4">The Builder</Kicker>
+            <h2 className="mb-6 font-[family-name:var(--font-display)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--ink)] text-[clamp(2.25rem,4.5vw,3.5rem)]">
+              Eddie <em className="italic font-normal text-id8-orange">Belaval</em>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[var(--id8-orange)] to-transparent" />
-          </m.div>
+            <Deck>Filmmaker turned primitive chain architect. Miami, FL.</Deck>
+          </div>
 
           {/* Right - Content */}
-          <m.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="space-y-8"
-          >
-            {/* Name & Location */}
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-4xl md:text-5xl font-bold mb-2">
-                  Eddie Belaval
-                </h3>
-                <p className="text-xl text-[var(--text-secondary)] font-medium">
-                  Miami, FL
-                </p>
-              </div>
-
-              {/* Visual Accent */}
-              <div className="flex gap-2 items-center">
-                <div className="w-3 h-3 bg-[var(--id8-orange)] rounded-full" />
-                <div className="w-2 h-2 bg-[var(--id8-orange)]/60 rounded-full" />
-                <div className="w-1 h-1 bg-[var(--id8-orange)]/30 rounded-full" />
-              </div>
-
-              {/* Contact/Links */}
-              <div className="pt-4 space-y-3 text-sm text-[var(--text-tertiary)]">
-                <p>Filmmaker turned Primitive Chain Architect</p>
-                <p>Forward Deployment for AI-era Operators</p>
-                <p>Pattern Recognition Across Domains</p>
-              </div>
+          <div className="space-y-12">
+            {/* Role lines */}
+            <div className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] space-y-1.5">
+              <p>Filmmaker turned Primitive Chain Architect</p>
+              <p>Forward Deployment for AI-era Operators</p>
+              <p>Pattern Recognition Across Domains</p>
             </div>
 
             {/* Bio Content */}
-            <div className="space-y-6 text-lg md:text-xl leading-relaxed">
+            <div className="space-y-6 font-[family-name:var(--font-serif)] text-lg md:text-xl leading-[1.55] text-[var(--body)]">
               <p>
-                Started as a cameraman on <span className="text-[var(--id8-orange)] font-semibold">First 48</span>,
-                Orange County Choppers, 90 Day Fiancé. Worked from hands-on production into{' '}
-                <span className="text-[var(--id8-orange)] font-semibold">primitive chain architecture</span> and forward
+                Started as a cameraman on{' '}
+                <span className="text-id8-orange">First 48</span>, Orange County Choppers, 90 Day
+                Fiancé. Worked from hands-on production into{' '}
+                <span className="text-id8-orange">primitive chain architecture</span> and forward
                 deployment for companies that need to reach scale tools alone cannot deliver.
               </p>
-
-              <p>
-                <span className="text-[var(--id8-orange)] font-semibold">Multidisciplinary:</span>{' '}
-                filmmaking, AI, mycology, biology, finance, music, writing, complex systems.
-                Pattern recognition is the superpower.
+              <p className="text-[var(--muted)]">
+                Multidisciplinary: filmmaking, AI, mycology, biology, finance, music, writing, complex
+                systems. Pattern recognition is the superpower.
               </p>
-
-              <div className="pt-6 border-t border-[var(--border)]">
-                <p className="text-2xl md:text-3xl font-bold text-[var(--text-secondary)] italic">
-                  ID8Labs is where I work through problems in public and ship solutions.
-                </p>
-              </div>
-
-              {/* Stats or highlights */}
-              <div className="grid grid-cols-2 gap-6 pt-8">
-                <div className="space-y-1">
-                  <p className="text-3xl font-bold text-[var(--id8-orange)]">20+</p>
-                  <p className="text-sm text-[var(--text-tertiary)]">Years in Production</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-3xl font-bold text-[var(--id8-orange)]">{activeProjectCount}</p>
-                  <p className="text-sm text-[var(--text-tertiary)]">Active Projects</p>
-                </div>
-              </div>
             </div>
-          </m.div>
+
+            {/* Pull Quote */}
+            <blockquote className="font-[family-name:var(--font-serif)] italic text-2xl md:text-3xl leading-[1.35] text-[var(--ink)]">
+              &ldquo;ID8Labs is where I work through problems in public and ship solutions.&rdquo;
+            </blockquote>
+
+            {/* Stats */}
+            <div>
+              <Hairline className="mb-6" />
+              <MetaRow
+                items={[
+                  { value: '20+', label: 'Years in production' },
+                  { value: String(activeProjectCount), label: 'Active projects' },
+                ]}
+                className="text-sm"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

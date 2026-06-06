@@ -30,8 +30,8 @@ const ASSET_CATEGORY_LABELS: Record<AssetCategory, string> = {
 function assetCategoryLabel(c: AssetCategory): string { return ASSET_CATEGORY_LABELS[c] }
 
 // Shared form styles
-const inputClass = "w-full px-3 py-2 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--id8-orange)]"
-const labelClass = "block text-xs text-[var(--text-secondary)] mb-1"
+const inputClass = "w-full px-3 py-2 bg-[var(--paper)] border border-[var(--hair)] text-[var(--ink)] text-sm focus:outline-none focus:border-[var(--ink)] transition-colors duration-150"
+const labelClass = "block font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-1"
 
 // Shared recharts lazy loader
 function useRecharts() {
@@ -45,11 +45,11 @@ function useRecharts() {
 function MetricCard({ label, value, subtext, trend, color }: {
   label: string; value: string; subtext?: string; trend?: 'up' | 'down' | 'neutral'; color?: string
 }) {
-  const trendColor = trend === 'up' ? 'text-green-500' : trend === 'down' ? 'text-red-500' : 'text-[var(--text-tertiary)]'
+  const trendColor = trend === 'up' ? 'text-[var(--teal)]' : trend === 'down' ? 'text-id8-orange' : 'text-[var(--muted)]'
   return (
-    <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-      <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-1">{label}</p>
-      <p className={`text-2xl font-bold ${color || 'text-[var(--text-primary)]'}`}>{value}</p>
+    <div className="p-5 bg-[var(--paper)] border border-[var(--hair)]">
+      <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</p>
+      <p className={`font-[family-name:var(--font-mono)] text-2xl font-medium ${color || 'text-[var(--ink)]'}`}>{value}</p>
       {subtext && <p className={`text-xs mt-1 ${trendColor}`}>{subtext}</p>}
     </div>
   )
@@ -58,7 +58,7 @@ function MetricCard({ label, value, subtext, trend, color }: {
 function SectionHeader({ title, action }: { title: string; action?: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between mb-4">
-      <h2 className="text-lg font-semibold text-[var(--text-primary)]">{title}</h2>
+      <h2 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">{title}</h2>
       {action}
     </div>
   )
@@ -66,7 +66,7 @@ function SectionHeader({ title, action }: { title: string; action?: React.ReactN
 
 function AddButton({ label, onClick }: { label: string; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--id8-orange)] text-white rounded-lg hover:opacity-90 transition-opacity text-xs font-medium">
+    <button onClick={onClick} className="flex items-center gap-1.5 px-4 py-2 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">
       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
       {label}
     </button>
@@ -77,10 +77,11 @@ function AddButton({ label, onClick }: { label: string; onClick: () => void }) {
 
 function Charts({ summary }: { summary: BalanceSummary }) {
   const recharts = useRecharts()
-  if (!recharts) return <p className="text-sm text-[var(--text-tertiary)] p-4">Loading charts...</p>
+  if (!recharts) return <p className="text-sm text-[var(--muted)] p-4">Loading charts...</p>
 
   const { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } = recharts
-  const PIE_COLORS = ['#3B82F6', '#8B5CF6', '#F59E0B', '#10B981', '#EF4444', '#6366F1', '#EC4899', '#6B7280']
+  // On-palette ramp only — ink, orange, teal, hairline tones.
+  const PIE_COLORS = ['#0b0b0b', '#ff6b35', '#2a8d83', '#5a5a5a', '#b4afa0', '#d6d3c9', '#2a2a2a', '#ededdf']
   const s = summary
 
   return (
@@ -91,21 +92,21 @@ function Charts({ summary }: { summary: BalanceSummary }) {
           <ResponsiveContainer width={140} height={140}>
             <PieChart>
               <Pie data={s.expense_by_category} dataKey="total_cents" nameKey="name" cx="50%" cy="50%" outerRadius={60} innerRadius={35}>
-                {s.expense_by_category.map((entry: { name: string; color: string }, i: number) => (
-                  <Cell key={entry.name} fill={entry.color || PIE_COLORS[i % PIE_COLORS.length]} />
+                {s.expense_by_category.map((entry: { name: string }, i: number) => (
+                  <Cell key={entry.name} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip formatter={(value: number) => fmt(Number(value))} />
             </PieChart>
           </ResponsiveContainer>
           <div className="flex-1 space-y-1.5">
-            {s.expense_by_category.map((cat: { name: string; color: string; total_cents: number }, i: number) => (
+            {s.expense_by_category.map((cat: { name: string; total_cents: number }, i: number) => (
               <div key={cat.name} className="flex items-center justify-between text-xs">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: cat.color || PIE_COLORS[i % PIE_COLORS.length] }} />
-                  <span className="text-[var(--text-secondary)]">{cat.name}</span>
+                  <span className="w-2 h-2" style={{ backgroundColor: PIE_COLORS[i % PIE_COLORS.length] }} />
+                  <span className="text-[var(--body)]">{cat.name}</span>
                 </span>
-                <span className="text-[var(--text-primary)] font-medium">{fmtCompact(cat.total_cents)}</span>
+                <span className="font-[family-name:var(--font-mono)] text-[var(--ink)]">{fmtCompact(cat.total_cents)}</span>
               </div>
             ))}
           </div>
@@ -121,19 +122,19 @@ function CashFlowChart({ summary }: { summary: BalanceSummary }) {
 
   const { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, Legend } = recharts
   return (
-    <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-      <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-4">Monthly Cash Flow</p>
+    <div className="p-5 bg-[var(--paper)] border border-[var(--hair)]">
+      <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-4">Monthly Cash Flow</p>
       <ResponsiveContainer width="100%" height={280}>
         <AreaChart data={summary.monthly_timeline.map((t: { month: string; revenue_cents: number; expenses_cents: number }) => ({
           month: t.month, revenue: t.revenue_cents / 100, expenses: t.expenses_cents / 100,
         }))}>
-          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-          <XAxis dataKey="month" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-          <YAxis tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} tickFormatter={(v: number) => `$${v}`} />
-          <Tooltip contentStyle={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: '8px', fontSize: '12px' }} formatter={(value: number) => `$${Number(value).toFixed(2)}`} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--hair)" />
+          <XAxis dataKey="month" tick={{ fill: 'var(--muted)', fontSize: 11 }} />
+          <YAxis tick={{ fill: 'var(--muted)', fontSize: 11 }} tickFormatter={(v: number) => `$${v}`} />
+          <Tooltip contentStyle={{ background: 'var(--paper)', border: '1px solid var(--hair)', borderRadius: '0px', fontSize: '12px' }} formatter={(value: number) => `$${Number(value).toFixed(2)}`} />
           <Legend wrapperStyle={{ fontSize: '12px' }} />
-          <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#10B981" fill="#10B981" fillOpacity={0.15} />
-          <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#EF4444" fill="#EF4444" fillOpacity={0.1} />
+          <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#2a8d83" fill="#2a8d83" fillOpacity={0.15} />
+          <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#ff6b35" fill="#ff6b35" fillOpacity={0.1} />
         </AreaChart>
       </ResponsiveContainer>
     </div>
@@ -143,16 +144,16 @@ function CashFlowChart({ summary }: { summary: BalanceSummary }) {
 function VendorChart({ summary }: { summary: BalanceSummary }) {
   const recharts = useRecharts()
   const vendors = summary.expense_by_vendor.filter((v: { monthly_cents: number }) => v.monthly_cents > 0)
-  if (!recharts || vendors.length === 0) return <p className="text-sm text-[var(--text-tertiary)]">No vendor data</p>
+  if (!recharts || vendors.length === 0) return <p className="text-sm text-[var(--muted)]">No vendor data</p>
 
   const { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } = recharts
   return (
     <ResponsiveContainer width="100%" height={Math.min(vendors.length * 36, 250)}>
       <BarChart data={vendors} layout="vertical" margin={{ left: 80, right: 20, top: 0, bottom: 0 }}>
-        <XAxis type="number" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} tickFormatter={(v: number) => `$${(v / 100).toFixed(0)}`} />
-        <YAxis type="category" dataKey="vendor" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} width={80} />
+        <XAxis type="number" tick={{ fill: 'var(--muted)', fontSize: 11 }} tickFormatter={(v: number) => `$${(v / 100).toFixed(0)}`} />
+        <YAxis type="category" dataKey="vendor" tick={{ fill: 'var(--muted)', fontSize: 11 }} width={80} />
         <Tooltip formatter={(value: number) => fmt(Number(value))} />
-        <Bar dataKey="monthly_cents" name="Monthly" fill="#8B5CF6" radius={[0, 4, 4, 0]} />
+        <Bar dataKey="monthly_cents" name="Monthly" fill="#0b0b0b" radius={[0, 0, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   )
@@ -175,9 +176,9 @@ function AddExpenseForm({ categories, onSave, onCancel }: {
   const ic = inputClass
   const lc = labelClass
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onCancel}>
-      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 w-full max-w-md space-y-3">
-        <h3 className="text-lg font-semibold text-[var(--text-primary)]">Add Expense</h3>
+    <div className="fixed inset-0 bg-[var(--ink)]/40 flex items-center justify-center z-50 p-4" onClick={onCancel}>
+      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--paper)] border border-[var(--hair-hard)] p-6 w-full max-w-md space-y-3">
+        <h3 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">Add Expense</h3>
         <div><label className={lc}>Description *</label><input className={ic} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} required /></div>
         <div className="grid grid-cols-2 gap-3">
           <div><label className={lc}>Amount (USD) *</label><input className={ic} type="number" step="0.01" min="0" value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} required /></div>
@@ -190,8 +191,8 @@ function AddExpenseForm({ categories, onSave, onCancel }: {
         <div><label className={lc}>Project</label><input className={ic} placeholder="parallax, homer, all..." value={form.project} onChange={e => setForm(f => ({ ...f, project: e.target.value }))} /></div>
         <div><label className={lc}>Notes</label><textarea className={ic} rows={2} value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} /></div>
         <div className="flex gap-3 pt-1">
-          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2 border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] text-sm">Cancel</button>
-          <button type="submit" className="flex-1 px-4 py-2 bg-[var(--id8-orange)] text-white rounded-lg hover:opacity-90 text-sm font-medium">Save</button>
+          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2.5 border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Cancel</button>
+          <button type="submit" className="flex-1 px-4 py-2.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Save</button>
         </div>
       </form>
     </div>
@@ -214,9 +215,9 @@ function AddAssetForm({ onSave, onCancel }: { onSave: (data: Record<string, unkn
   const ic = inputClass
   const lc = labelClass
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onCancel}>
-      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 w-full max-w-md space-y-3">
-        <h3 className="text-lg font-semibold text-[var(--text-primary)]">Add Asset</h3>
+    <div className="fixed inset-0 bg-[var(--ink)]/40 flex items-center justify-center z-50 p-4" onClick={onCancel}>
+      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--paper)] border border-[var(--hair-hard)] p-6 w-full max-w-md space-y-3">
+        <h3 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">Add Asset</h3>
         <div><label className={lc}>Name *</label><input className={ic} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required /></div>
         <div className="grid grid-cols-2 gap-3">
           <div><label className={lc}>Category *</label><select className={ic} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value as AssetCategory }))}><option value="hardware">Hardware</option><option value="domain">Domain</option><option value="software_ip">Software IP</option><option value="financial">Financial</option><option value="other">Other</option></select></div>
@@ -228,8 +229,8 @@ function AddAssetForm({ onSave, onCancel }: { onSave: (data: Record<string, unkn
         </div>
         <div><label className={lc}>Description</label><textarea className={ic} rows={2} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} /></div>
         <div className="flex gap-3 pt-1">
-          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2 border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] text-sm">Cancel</button>
-          <button type="submit" className="flex-1 px-4 py-2 bg-[var(--id8-orange)] text-white rounded-lg hover:opacity-90 text-sm font-medium">Save</button>
+          <button type="button" onClick={onCancel} className="flex-1 px-4 py-2.5 border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Cancel</button>
+          <button type="submit" className="flex-1 px-4 py-2.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">Save</button>
         </div>
       </form>
     </div>
@@ -305,8 +306,8 @@ export default function FinanceDashboard() {
   const filteredExpenses = expenseFilter === 'all' ? expenses : expenses.filter(e => e.frequency === expenseFilter)
 
   const tabClass = (t: Tab) =>
-    `px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-      tab === t ? 'bg-[var(--id8-orange)] text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-primary)]'
+    `px-4 py-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
+      tab === t ? 'bg-[var(--ink)] text-[var(--paper)]' : 'text-[var(--muted)] hover:text-[var(--ink)]'
     }`
 
   const s = summary
@@ -314,12 +315,12 @@ export default function FinanceDashboard() {
   return (
     <div className="p-8 max-w-[1400px]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 border-b border-[var(--rule)] pb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--text-primary)]">Finance</h1>
-          <p className="text-sm text-[var(--text-secondary)]">id8Labs LLC Financial Dashboard</p>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Finance</h1>
+          <p className="text-sm text-[var(--muted)]">id8Labs LLC Ops Financial Dashboard</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex border border-[var(--hair)]">
           <button className={tabClass('overview')} onClick={() => setTab('overview')}>Overview</button>
           <button className={tabClass('expenses')} onClick={() => setTab('expenses')}>Expenses</button>
           <button className={tabClass('assets')} onClick={() => setTab('assets')}>Assets</button>
@@ -331,38 +332,38 @@ export default function FinanceDashboard() {
         <div className="space-y-6">
           {/* Row 1: Key Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <MetricCard label="Monthly Burn" value={loading ? '...' : fmt(s?.total_monthly_burn_cents || 0)} subtext="Active recurring" color="text-red-500" />
+            <MetricCard label="Monthly Burn" value={loading ? '...' : fmt(s?.total_monthly_burn_cents || 0)} subtext="Active recurring" color="text-id8-orange" />
             <MetricCard label="Annual Expenses" value={loading ? '...' : fmt(s?.total_annual_expenses_cents || 0)} subtext={`${s?.active_expense_count || 0} active items`} />
-            <MetricCard label="Total Revenue" value={loading ? '...' : fmt(s?.total_revenue_cents || 0)} subtext={`${s?.total_purchase_count || 0} purchases`} color="text-green-500" />
-            <MetricCard label="EBITDA" value={loading ? '...' : fmt(s?.ebitda_cents || 0)} subtext="Revenue - OpEx" color={(s?.ebitda_cents || 0) >= 0 ? 'text-green-500' : 'text-red-500'} />
-            <MetricCard label="Total Assets" value={loading ? '...' : fmt(s?.total_assets_cents || 0)} subtext={`${s?.active_asset_count || 0} active`} color="text-blue-500" />
+            <MetricCard label="Total Revenue" value={loading ? '...' : fmt(s?.total_revenue_cents || 0)} subtext={`${s?.total_purchase_count || 0} purchases`} color="text-[var(--teal)]" />
+            <MetricCard label="EBITDA" value={loading ? '...' : fmt(s?.ebitda_cents || 0)} subtext="Revenue - OpEx" color={(s?.ebitda_cents || 0) >= 0 ? 'text-[var(--teal)]' : 'text-id8-orange'} />
+            <MetricCard label="Total Assets" value={loading ? '...' : fmt(s?.total_assets_cents || 0)} subtext={`${s?.active_asset_count || 0} active`} color="text-[var(--ink)]" />
             <MetricCard label="Runway" value={loading ? '...' : s?.runway_months != null ? `${s.runway_months} mo` : 'N/A'} subtext="At current burn rate" trend={s?.runway_months != null && s.runway_months > 12 ? 'up' : s?.runway_months != null && s.runway_months < 6 ? 'down' : 'neutral'} />
           </div>
 
           {/* Row 2: Cash Position + Category Pie */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-2">Cash Position</p>
-              <p className="text-3xl font-bold text-[var(--text-primary)]">{loading ? '...' : fmt(s?.cash_position_cents || 0)}</p>
-              <p className="text-xs text-[var(--text-tertiary)] mt-1">Capital + Revenue - Paid Expenses</p>
-              <div className="mt-4 pt-4 border-t border-[var(--border)] grid grid-cols-3 gap-4">
+            <div className="p-5 bg-[var(--paper)] border border-[var(--hair)] ">
+              <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-2">Cash Position</p>
+              <p className="text-3xl font-bold text-[var(--ink)]">{loading ? '...' : fmt(s?.cash_position_cents || 0)}</p>
+              <p className="text-xs text-[var(--muted)] mt-1">Capital + Revenue - Paid Expenses</p>
+              <div className="mt-4 pt-4 border-t border-[var(--hair)] grid grid-cols-3 gap-4">
                 <div>
-                  <p className="text-xs text-[var(--text-tertiary)]">Capital In</p>
-                  <p className="text-sm font-medium text-[var(--text-primary)]">{loading ? '...' : fmt(s?.total_capital_cents || 0)}</p>
+                  <p className="text-xs text-[var(--muted)]">Capital In</p>
+                  <p className="text-sm font-medium text-[var(--ink)]">{loading ? '...' : fmt(s?.total_capital_cents || 0)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-[var(--text-tertiary)]">Revenue</p>
-                  <p className="text-sm font-medium text-green-500">{loading ? '...' : fmt(s?.total_revenue_cents || 0)}</p>
+                  <p className="text-xs text-[var(--muted)]">Revenue</p>
+                  <p className="text-sm font-medium text-[var(--teal)]">{loading ? '...' : fmt(s?.total_revenue_cents || 0)}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-[var(--text-tertiary)]">Net Position</p>
-                  <p className={`text-sm font-medium ${(s?.net_position_cents || 0) >= 0 ? 'text-green-500' : 'text-red-500'}`}>{loading ? '...' : fmt(s?.net_position_cents || 0)}</p>
+                  <p className="text-xs text-[var(--muted)]">Net Position</p>
+                  <p className={`text-sm font-medium ${(s?.net_position_cents || 0) >= 0 ? 'text-[var(--teal)]' : 'text-id8-orange'}`}>{loading ? '...' : fmt(s?.net_position_cents || 0)}</p>
                 </div>
               </div>
             </div>
-            <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-2">Annual Spend by Category</p>
-              {s ? <Charts summary={s} /> : <p className="text-sm text-[var(--text-tertiary)]">{loading ? 'Loading...' : 'No data'}</p>}
+            <div className="p-5 bg-[var(--paper)] border border-[var(--hair)] ">
+              <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-2">Annual Spend by Category</p>
+              {s ? <Charts summary={s} /> : <p className="text-sm text-[var(--muted)]">{loading ? 'Loading...' : 'No data'}</p>}
             </div>
           </div>
 
@@ -371,8 +372,8 @@ export default function FinanceDashboard() {
 
           {/* Row 4: Cost by Project + Top Vendors */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-3">Cost by Project</p>
+            <div className="p-5 bg-[var(--paper)] border border-[var(--hair)] ">
+              <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-3">Cost by Project</p>
               {s && s.expense_by_project.length > 0 ? (
                 <div className="space-y-3">
                   {s.expense_by_project.map(proj => {
@@ -381,51 +382,51 @@ export default function FinanceDashboard() {
                     return (
                       <div key={proj.project}>
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm text-[var(--text-primary)] font-medium">{proj.project}</span>
-                          <span className="text-xs text-[var(--text-secondary)]">{fmt(proj.monthly_cents)}/mo &middot; {fmt(proj.annual_cents)}/yr</span>
+                          <span className="text-sm text-[var(--ink)] font-medium">{proj.project}</span>
+                          <span className="text-xs text-[var(--body)]">{fmt(proj.monthly_cents)}/mo &middot; {fmt(proj.annual_cents)}/yr</span>
                         </div>
-                        <div className="h-2 bg-[var(--bg-primary)] rounded-full overflow-hidden">
-                          <div className="h-full bg-[var(--id8-orange)] rounded-full transition-all" style={{ width: `${pct}%` }} />
+                        <div className="h-2 bg-[var(--paper-shadow)]  overflow-hidden">
+                          <div className="h-full bg-id8-orange  transition-all" style={{ width: `${pct}%` }} />
                         </div>
                       </div>
                     )
                   })}
                 </div>
-              ) : <p className="text-sm text-[var(--text-tertiary)]">{loading ? 'Loading...' : 'No project data'}</p>}
+              ) : <p className="text-sm text-[var(--muted)]">{loading ? 'Loading...' : 'No project data'}</p>}
             </div>
-            <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-3">Top Vendors (Monthly)</p>
-              {s ? <VendorChart summary={s} /> : <p className="text-sm text-[var(--text-tertiary)]">{loading ? 'Loading...' : 'No data'}</p>}
+            <div className="p-5 bg-[var(--paper)] border border-[var(--hair)] ">
+              <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-3">Top Vendors (Monthly)</p>
+              {s ? <VendorChart summary={s} /> : <p className="text-sm text-[var(--muted)]">{loading ? 'Loading...' : 'No data'}</p>}
             </div>
           </div>
 
           {/* Row 5: Revenue + Assets */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-3">Revenue by Product</p>
+            <div className="p-5 bg-[var(--paper)] border border-[var(--hair)] ">
+              <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-3">Revenue by Product</p>
               {s && s.revenue_by_product.length > 0 ? (
                 <div className="space-y-2">
                   {s.revenue_by_product.map(prod => (
-                    <div key={prod.product_id} className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0">
-                      <div><p className="text-sm text-[var(--text-primary)] font-medium">{prod.product_id}</p><p className="text-xs text-[var(--text-tertiary)]">{prod.count} purchase{prod.count !== 1 ? 's' : ''}</p></div>
-                      <p className="text-sm font-bold text-green-500">{fmt(prod.total_cents)}</p>
+                    <div key={prod.product_id} className="flex items-center justify-between py-2 border-b border-[var(--hair)] last:border-0">
+                      <div><p className="text-sm text-[var(--ink)] font-medium">{prod.product_id}</p><p className="text-xs text-[var(--muted)]">{prod.count} purchase{prod.count !== 1 ? 's' : ''}</p></div>
+                      <p className="text-sm font-bold text-[var(--teal)]">{fmt(prod.total_cents)}</p>
                     </div>
                   ))}
                 </div>
-              ) : <p className="text-sm text-[var(--text-tertiary)]">{loading ? 'Loading...' : 'No revenue yet'}</p>}
+              ) : <p className="text-sm text-[var(--muted)]">{loading ? 'Loading...' : 'No revenue yet'}</p>}
             </div>
-            <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-3">Asset Breakdown</p>
+            <div className="p-5 bg-[var(--paper)] border border-[var(--hair)] ">
+              <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-3">Asset Breakdown</p>
               {s && s.asset_by_category.length > 0 ? (
                 <div className="space-y-2">
                   {s.asset_by_category.map(cat => (
-                    <div key={cat.category} className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0">
-                      <div><p className="text-sm text-[var(--text-primary)] font-medium">{assetCategoryLabel(cat.category as AssetCategory)}</p><p className="text-xs text-[var(--text-tertiary)]">{cat.count} item{cat.count !== 1 ? 's' : ''}</p></div>
-                      <p className="text-sm font-bold text-blue-500">{cat.total_value_cents > 0 ? fmt(cat.total_value_cents) : 'Not valued'}</p>
+                    <div key={cat.category} className="flex items-center justify-between py-2 border-b border-[var(--hair)] last:border-0">
+                      <div><p className="text-sm text-[var(--ink)] font-medium">{assetCategoryLabel(cat.category as AssetCategory)}</p><p className="text-xs text-[var(--muted)]">{cat.count} item{cat.count !== 1 ? 's' : ''}</p></div>
+                      <p className="text-sm font-bold text-[var(--ink)]">{cat.total_value_cents > 0 ? fmt(cat.total_value_cents) : 'Not valued'}</p>
                     </div>
                   ))}
                 </div>
-              ) : <p className="text-sm text-[var(--text-tertiary)]">{loading ? 'Loading...' : 'No assets'}</p>}
+              ) : <p className="text-sm text-[var(--muted)]">{loading ? 'Loading...' : 'No assets'}</p>}
             </div>
           </div>
         </div>
@@ -436,42 +437,42 @@ export default function FinanceDashboard() {
         <div className="space-y-4">
           <SectionHeader title="Expense Tracker" action={
             <div className="flex items-center gap-3">
-              <select className="px-3 py-1.5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] text-xs" value={expenseFilter} onChange={e => setExpenseFilter(e.target.value as typeof expenseFilter)}>
+              <select className="px-3 py-1.5 bg-[var(--paper)] border border-[var(--hair)]  text-[var(--body)] text-xs" value={expenseFilter} onChange={e => setExpenseFilter(e.target.value as typeof expenseFilter)}>
                 <option value="all">All Frequencies</option><option value="monthly">Monthly</option><option value="annual">Annual</option><option value="one-time">One-time</option><option value="usage-based">Usage-based</option>
               </select>
               <AddButton label="Add Expense" onClick={() => setShowAddExpense(true)} />
             </div>
           } />
           <div className="grid grid-cols-4 gap-3">
-            <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center"><p className="text-lg font-bold text-[var(--text-primary)]">{filteredExpenses.length}</p><p className="text-[10px] text-[var(--text-tertiary)] uppercase">Items</p></div>
-            <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center"><p className="text-lg font-bold text-[var(--text-primary)]">{fmt(filteredExpenses.filter(e => e.frequency === 'monthly').reduce((acc, e) => acc + e.amount_cents, 0))}</p><p className="text-[10px] text-[var(--text-tertiary)] uppercase">Monthly Total</p></div>
-            <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center"><p className="text-lg font-bold text-[var(--text-primary)]">{fmt(filteredExpenses.filter(e => e.frequency === 'annual').reduce((acc, e) => acc + e.amount_cents, 0))}</p><p className="text-[10px] text-[var(--text-tertiary)] uppercase">Annual Total</p></div>
-            <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center"><p className="text-lg font-bold text-[var(--text-primary)]">{filteredExpenses.filter(e => e.is_active).length}</p><p className="text-[10px] text-[var(--text-tertiary)] uppercase">Active</p></div>
+            <div className="p-3 bg-[var(--paper)] border border-[var(--hair)]  text-center"><p className="text-lg font-bold text-[var(--ink)]">{filteredExpenses.length}</p><p className="text-[10px] text-[var(--muted)] uppercase">Items</p></div>
+            <div className="p-3 bg-[var(--paper)] border border-[var(--hair)]  text-center"><p className="text-lg font-bold text-[var(--ink)]">{fmt(filteredExpenses.filter(e => e.frequency === 'monthly').reduce((acc, e) => acc + e.amount_cents, 0))}</p><p className="text-[10px] text-[var(--muted)] uppercase">Monthly Total</p></div>
+            <div className="p-3 bg-[var(--paper)] border border-[var(--hair)]  text-center"><p className="text-lg font-bold text-[var(--ink)]">{fmt(filteredExpenses.filter(e => e.frequency === 'annual').reduce((acc, e) => acc + e.amount_cents, 0))}</p><p className="text-[10px] text-[var(--muted)] uppercase">Annual Total</p></div>
+            <div className="p-3 bg-[var(--paper)] border border-[var(--hair)]  text-center"><p className="text-lg font-bold text-[var(--ink)]">{filteredExpenses.filter(e => e.is_active).length}</p><p className="text-[10px] text-[var(--muted)] uppercase">Active</p></div>
           </div>
-          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl overflow-hidden">
+          <div className="bg-[var(--paper)] border border-[var(--hair)]  overflow-hidden">
             <table className="w-full text-sm">
-              <thead><tr className="border-b border-[var(--border)] bg-[var(--bg-primary)]/50">
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Description</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Category</th>
-                <th className="text-right px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Amount</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Freq</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Vendor</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Project</th>
+              <thead><tr className="border-b border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Description</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Category</th>
+                <th className="text-right px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Amount</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Freq</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Vendor</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Project</th>
                 <th className="w-10"></th>
               </tr></thead>
               <tbody>
                 {filteredExpenses.map(exp => (
-                  <tr key={exp.id} className="border-b border-[var(--border)] last:border-0 hover:bg-[var(--bg-primary)]/30 transition-colors">
-                    <td className="px-4 py-3 text-[var(--text-primary)]">{exp.description}{!exp.is_active && <span className="ml-2 text-[10px] px-1.5 py-0.5 bg-red-500/10 text-red-500 rounded">inactive</span>}</td>
-                    <td className="px-4 py-3">{exp.category ? <span className="inline-flex items-center gap-1.5 text-xs"><span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: exp.category.color || '#6B7280' }} /><span className="text-[var(--text-secondary)]">{exp.category.name}</span></span> : <span className="text-[var(--text-tertiary)] text-xs">--</span>}</td>
-                    <td className="px-4 py-3 text-right text-[var(--text-primary)] font-medium tabular-nums">{fmt(exp.amount_cents)}</td>
-                    <td className="px-4 py-3"><span className="text-xs px-2 py-0.5 rounded-full bg-[var(--bg-primary)] text-[var(--text-secondary)]">{frequencyLabel(exp.frequency)}</span></td>
-                    <td className="px-4 py-3 text-[var(--text-secondary)] text-xs">{exp.vendor || '--'}</td>
-                    <td className="px-4 py-3 text-[var(--text-secondary)] text-xs">{exp.project || '--'}</td>
-                    <td className="px-4 py-3"><button onClick={() => handleDeleteExpense(exp.id)} className="text-[var(--text-tertiary)] hover:text-red-500 transition-colors" title="Delete"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button></td>
+                  <tr key={exp.id} className="border-b border-[var(--hair)] last:border-0 hover:bg-[var(--paper-shadow)] transition-colors">
+                    <td className="px-4 py-3 text-[var(--ink)]">{exp.description}{!exp.is_active && <span className="ml-2 text-[10px] px-1.5 py-0.5 border border-id8-orange text-id8-orange">inactive</span>}</td>
+                    <td className="px-4 py-3">{exp.category ? <span className="inline-flex items-center gap-1.5 text-xs"><span className="w-2 h-2 flex-shrink-0 bg-[var(--ink)]" /><span className="text-[var(--body)]">{exp.category.name}</span></span> : <span className="text-[var(--muted)] text-xs">--</span>}</td>
+                    <td className="px-4 py-3 text-right text-[var(--ink)] font-medium tabular-nums">{fmt(exp.amount_cents)}</td>
+                    <td className="px-4 py-3"><span className="text-xs px-2 py-0.5  bg-[var(--paper-shadow)] text-[var(--body)]">{frequencyLabel(exp.frequency)}</span></td>
+                    <td className="px-4 py-3 text-[var(--body)] text-xs">{exp.vendor || '--'}</td>
+                    <td className="px-4 py-3 text-[var(--body)] text-xs">{exp.project || '--'}</td>
+                    <td className="px-4 py-3"><button onClick={() => handleDeleteExpense(exp.id)} className="text-[var(--muted)] hover:text-id8-orange transition-colors" title="Delete"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button></td>
                   </tr>
                 ))}
-                {filteredExpenses.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-[var(--text-tertiary)] text-sm">No expenses {expenseFilter !== 'all' ? `with ${expenseFilter} frequency` : 'yet'}.</td></tr>}
+                {filteredExpenses.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-[var(--muted)] text-sm">No expenses {expenseFilter !== 'all' ? `with ${expenseFilter} frequency` : 'yet'}.</td></tr>}
               </tbody>
             </table>
           </div>
@@ -487,38 +488,38 @@ export default function FinanceDashboard() {
               const items = assets.filter(a => a.category === cat && a.is_active)
               const value = items.reduce((acc, a) => acc + (a.current_value_cents || a.purchase_cost_cents || 0), 0)
               return (
-                <div key={cat} className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                  <p className="text-[10px] text-[var(--text-tertiary)] uppercase tracking-wider mb-1">{assetCategoryLabel(cat)}</p>
-                  <p className="text-lg font-bold text-[var(--text-primary)]">{items.length}</p>
-                  {value > 0 && <p className="text-xs text-blue-500">{fmt(value)}</p>}
+                <div key={cat} className="p-3 bg-[var(--paper)] border border-[var(--hair)] ">
+                  <p className="text-[10px] text-[var(--muted)] uppercase tracking-wider mb-1">{assetCategoryLabel(cat)}</p>
+                  <p className="text-lg font-bold text-[var(--ink)]">{items.length}</p>
+                  {value > 0 && <p className="text-xs text-[var(--ink)]">{fmt(value)}</p>}
                 </div>
               )
             })}
           </div>
-          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl overflow-hidden">
+          <div className="bg-[var(--paper)] border border-[var(--hair)]  overflow-hidden">
             <table className="w-full text-sm">
-              <thead><tr className="border-b border-[var(--border)] bg-[var(--bg-primary)]/50">
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Name</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Category</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Description</th>
-                <th className="text-right px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Cost</th>
-                <th className="text-right px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Value</th>
-                <th className="text-left px-4 py-3 text-[var(--text-tertiary)] font-medium text-xs uppercase tracking-wider">Vendor</th>
+              <thead><tr className="border-b border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Name</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Category</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Description</th>
+                <th className="text-right px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Cost</th>
+                <th className="text-right px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Value</th>
+                <th className="text-left px-4 py-3 text-[var(--muted)] font-medium text-xs uppercase tracking-wider">Vendor</th>
                 <th className="w-10"></th>
               </tr></thead>
               <tbody>
                 {assets.map(asset => (
-                  <tr key={asset.id} className="border-b border-[var(--border)] last:border-0 hover:bg-[var(--bg-primary)]/30 transition-colors">
-                    <td className="px-4 py-3 text-[var(--text-primary)] font-medium">{asset.name}{!asset.is_active && <span className="ml-2 text-[10px] px-1.5 py-0.5 bg-red-500/10 text-red-500 rounded">inactive</span>}</td>
-                    <td className="px-4 py-3"><span className="text-xs px-2 py-0.5 rounded-full bg-[var(--bg-primary)] text-[var(--text-secondary)]">{assetCategoryLabel(asset.category)}</span></td>
-                    <td className="px-4 py-3 text-[var(--text-secondary)] text-xs max-w-[200px] truncate">{asset.description || '--'}</td>
-                    <td className="px-4 py-3 text-right text-[var(--text-primary)] tabular-nums">{asset.purchase_cost_cents ? fmt(asset.purchase_cost_cents) : '--'}</td>
-                    <td className="px-4 py-3 text-right text-blue-500 font-medium tabular-nums">{asset.current_value_cents ? fmt(asset.current_value_cents) : '--'}</td>
-                    <td className="px-4 py-3 text-[var(--text-secondary)] text-xs">{asset.vendor || '--'}</td>
-                    <td className="px-4 py-3"><button onClick={() => handleDeleteAsset(asset.id)} className="text-[var(--text-tertiary)] hover:text-red-500 transition-colors" title="Delete"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button></td>
+                  <tr key={asset.id} className="border-b border-[var(--hair)] last:border-0 hover:bg-[var(--paper-shadow)] transition-colors">
+                    <td className="px-4 py-3 text-[var(--ink)] font-medium">{asset.name}{!asset.is_active && <span className="ml-2 text-[10px] px-1.5 py-0.5 border border-id8-orange text-id8-orange">inactive</span>}</td>
+                    <td className="px-4 py-3"><span className="text-xs px-2 py-0.5  bg-[var(--paper-shadow)] text-[var(--body)]">{assetCategoryLabel(asset.category)}</span></td>
+                    <td className="px-4 py-3 text-[var(--body)] text-xs max-w-[200px] truncate">{asset.description || '--'}</td>
+                    <td className="px-4 py-3 text-right text-[var(--ink)] tabular-nums">{asset.purchase_cost_cents ? fmt(asset.purchase_cost_cents) : '--'}</td>
+                    <td className="px-4 py-3 text-right text-[var(--ink)] font-medium tabular-nums">{asset.current_value_cents ? fmt(asset.current_value_cents) : '--'}</td>
+                    <td className="px-4 py-3 text-[var(--body)] text-xs">{asset.vendor || '--'}</td>
+                    <td className="px-4 py-3"><button onClick={() => handleDeleteAsset(asset.id)} className="text-[var(--muted)] hover:text-id8-orange transition-colors" title="Delete"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button></td>
                   </tr>
                 ))}
-                {assets.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-[var(--text-tertiary)] text-sm">No assets registered yet.</td></tr>}
+                {assets.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-[var(--muted)] text-sm">No assets registered yet.</td></tr>}
               </tbody>
             </table>
           </div>

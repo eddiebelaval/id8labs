@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { Container, Kicker, Deck, Rule, SectionHead, MetaRow } from '@/components/editorial'
 import BookCallCard from '@/components/BookCallCard'
 
 export const metadata: Metadata = {
@@ -10,57 +10,33 @@ export const metadata: Metadata = {
 const intents = [
   {
     id: 'build',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-      </svg>
-    ),
     title: 'Build Something',
     description: 'Need a custom agent system, CLI tool, or automation workflow? Let\'s talk scope.',
     cta: 'DM on X',
     href: 'https://x.com/eddiebe',
-    color: 'var(--id8-orange)',
   },
   {
     id: 'collaborate',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
     title: 'Collaborate',
     description: 'Partnership ideas, joint ventures, or consulting opportunities. I read every email.',
     cta: 'Send Email',
     href: 'mailto:eb@id8labs.tech?subject=Collaboration%20Inquiry',
-    color: '#A855F7',
   },
   {
     id: 'hello',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-        <polyline points="22,6 12,13 2,6" />
-      </svg>
-    ),
     title: 'Just Saying Hi',
     description: 'Following along, have a question, or want to share something interesting? I\'m around.',
     cta: 'Say Hi on X',
     href: 'https://x.com/eddiebe',
-    color: '#06B6D4',
   },
 ]
 
 interface Intent {
   id: string
-  icon: React.ReactNode
   title: string
   description: string
   cta: string
   href: string
-  color: string
 }
 
 function IntentCard({ intent }: { intent: Intent }) {
@@ -70,65 +46,49 @@ function IntentCard({ intent }: { intent: Intent }) {
       href={intent.href}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      className="group flex flex-col p-8 bg-[var(--surface)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-all duration-300"
+      className="group flex flex-col border border-[var(--hair)] p-7 no-underline transition-colors duration-200 hover:border-[var(--hair-hard)] hover:bg-[var(--paper-shadow)]"
     >
-      <div
-        className="mb-6 transition-colors duration-300"
-        style={{ color: intent.color }}
-      >
-        {intent.icon}
-      </div>
-      <h2 className="text-xl font-bold mb-3 group-hover:text-id8-orange transition-colors">
+      <h2 className="mb-3 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
         {intent.title}
       </h2>
-      <p className="text-[var(--text-secondary)] mb-6 flex-grow">
+      <p className="mb-6 flex-grow text-[15px] leading-relaxed text-[var(--body)]">
         {intent.description}
       </p>
-      <div
-        className="inline-flex items-center gap-2 font-semibold transition-colors"
-        style={{ color: intent.color }}
-      >
+      <span className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-id8-orange">
         {intent.cta}
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <line x1="5" y1="12" x2="19" y2="12" />
           <polyline points="12 5 19 12 12 19" />
         </svg>
-      </div>
+      </span>
     </a>
   )
 }
 
 export default function ContactPage() {
   return (
-    <div className="container py-24">
-      <div className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-id8-orange mb-12 transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to home
-        </Link>
-
+    <Container>
+      <div className="pt-28 pb-24 md:pt-36">
         {/* Header */}
-        <header className="mb-16 text-center">
-          <h1 className="mb-6">What brings you here?</h1>
-          <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Different conversations need different channels. Pick what fits.
-          </p>
-        </header>
+        <Kicker dot className="mb-5">
+          Contact · id8Labs
+        </Kicker>
+        <h1 className="mb-7 max-w-3xl font-[family-name:var(--font-display)] font-normal leading-[1.0] tracking-[-0.03em] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)]">
+          What brings you <em className="italic text-id8-orange">here?</em>
+        </h1>
+        <Deck className="mb-9 max-w-2xl">
+          Different conversations need different channels. Pick what fits.
+        </Deck>
 
-        {/* Intent Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <Rule className="mb-12" />
+
+        {/* Intent Cards + Cal embed */}
+        <div className="mb-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {intents.slice(0, 2).map((intent) => (
             <IntentCard key={intent.id} intent={intent} />
           ))}
 
-          {/* Book a Call - Cal.com Embed */}
+          {/* Book a Call - Cal.com Embed (shared component) */}
           <BookCallCard />
 
           {/* Remaining intent cards */}
@@ -138,72 +98,68 @@ export default function ContactPage() {
         </div>
 
         {/* Response Expectations */}
-        <section className="text-center py-12 border-t border-[var(--border)]">
-          <h3 className="text-lg font-bold mb-4">Response Times</h3>
-          <div className="flex flex-wrap justify-center gap-8 text-[var(--text-secondary)]">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#10B981] rounded-full" />
-              <span>Cal.com: Instant</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[var(--accent-green)] rounded-full" />
-              <span>X DMs: Usually &lt;24h</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#A855F7] rounded-full" />
-              <span>Email: 1-2 days</span>
-            </div>
-          </div>
+        <section className="mb-20">
+          <SectionHead title={<>Response <em className="italic">times</em></>} meta="Channels" />
+          <MetaRow
+            className="mt-8"
+            items={[
+              { value: 'Cal.com', label: 'Instant' },
+              { value: 'X DMs', label: 'Usually <24h' },
+              { value: 'Email', label: '1–2 days' },
+            ]}
+          />
         </section>
 
         {/* About Me */}
-        <section className="text-center pt-8 pb-8 border-t border-[var(--border)]">
-          <h3 className="text-lg font-bold mb-4">About Me</h3>
-          <p className="text-[var(--text-secondary)] mb-6 max-w-xl mx-auto">
+        <section className="mb-20">
+          <SectionHead title={<>About <em className="italic">me</em></>} meta="Background" />
+          <p className="mt-8 max-w-2xl font-[family-name:var(--font-serif)] text-xl italic leading-[1.5] text-[var(--body)]">
             15+ years in production. Cinematographer turned Story Producer turned Tech Builder.
           </p>
-          <Link
-            href="/eddie"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white font-semibold rounded-lg hover:bg-[var(--id8-orange-hover)] transition-colors"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            View Full Resume
-          </Link>
-        </section>
-
-        {/* Direct Links */}
-        <section className="text-center pt-8">
-          <p className="text-sm text-[var(--text-secondary)] mb-4">
-            Or just go direct:
-          </p>
-          <div className="flex justify-center gap-6">
+          <div className="mt-7">
             <a
-              href="https://x.com/eddiebe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
+              href="/eddie"
+              className="inline-flex items-center gap-2.5 border border-[var(--ink)] bg-[var(--ink)] px-6 py-3.5 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] no-underline transition-colors duration-150 hover:border-id8-orange hover:bg-id8-orange"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              View Full Resume
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
               </svg>
-              @eddiebe
-            </a>
-            <a
-              href="mailto:eb@id8labs.tech"
-              className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              eb@id8labs.tech
             </a>
           </div>
         </section>
+
+        <Rule className="mb-9" />
+
+        {/* Direct Links */}
+        <div className="flex flex-wrap items-center gap-x-10 gap-y-4">
+          <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+            Or just go direct
+          </p>
+          <a
+            href="https://x.com/eddiebe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-sm text-[var(--ink)] no-underline transition-colors hover:text-id8-orange"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            @eddiebe
+          </a>
+          <a
+            href="mailto:eb@id8labs.tech"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-sm text-[var(--ink)] no-underline transition-colors hover:text-id8-orange"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            eb@id8labs.tech
+          </a>
+        </div>
       </div>
-    </div>
+    </Container>
   )
 }

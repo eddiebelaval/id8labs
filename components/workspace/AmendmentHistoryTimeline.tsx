@@ -58,7 +58,7 @@ export function AmendmentHistoryTimeline({
 
   if (entries.length === 0) {
     return (
-      <div className={`p-4 text-center text-[var(--text-tertiary)] ${className}`}>
+      <div className={`p-4 text-center text-[var(--muted)] ${className}`}>
         <FileText className="w-8 h-8 mx-auto mb-2 opacity-50" />
         <p className="text-sm">No version history yet</p>
       </div>
@@ -69,11 +69,11 @@ export function AmendmentHistoryTimeline({
     <div className={`relative ${className}`}>
       {/* Header */}
       <div className="flex items-center gap-2 mb-4">
-        <GitBranch className="w-4 h-4 text-[var(--text-tertiary)]" />
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <GitBranch className="w-4 h-4 text-[var(--muted)]" />
+        <h3 className="text-sm font-medium text-[var(--muted)]">
           Amendment History
         </h3>
-        <span className="text-xs text-[var(--text-tertiary)] bg-[var(--bg-secondary)] px-2 py-0.5 rounded-full">
+        <span className="text-xs text-[var(--muted)] bg-[var(--paper-shadow)] px-2 py-0.5 rounded-full">
           {entries.length} version{entries.length !== 1 ? 's' : ''}
         </span>
       </div>
@@ -81,7 +81,7 @@ export function AmendmentHistoryTimeline({
       {/* Timeline */}
       <div className="relative">
         {/* Vertical line */}
-        <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-[var(--border)]" />
+        <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-[var(--hair)]" />
 
         {/* Entries */}
         <AnimatePresence mode="popLayout">
@@ -123,7 +123,7 @@ export function AmendmentHistoryTimeline({
                       <div className="flex items-center gap-2 flex-wrap">
                         {/* Version badge */}
                         <span
-                          className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium ${colors.bg} ${colors.text} border ${colors.border}`}
+                          className={`inline-flex items-center px-2 py-0.5  text-xs font-mono font-medium ${colors.bg} ${colors.text} border ${colors.border}`}
                         >
                           v{entry.version}
                         </span>
@@ -137,12 +137,12 @@ export function AmendmentHistoryTimeline({
                       </div>
 
                       {/* Title/Summary */}
-                      <p className="mt-1 text-sm text-[var(--text-primary)] line-clamp-2">
+                      <p className="mt-1 text-sm text-[var(--ink)] line-clamp-2">
                         {entry.title}
                       </p>
 
                       {/* Meta: Author & Time */}
-                      <div className="flex items-center gap-3 mt-1.5 text-xs text-[var(--text-tertiary)]">
+                      <div className="flex items-center gap-3 mt-1.5 text-xs text-[var(--muted)]">
                         <span className="flex items-center gap-1">
                           <User className="w-3 h-3" />
                           {entry.createdByName}
@@ -158,7 +158,7 @@ export function AmendmentHistoryTimeline({
                     {onViewDiff && !entry.isCurrentVersion && (
                       <button
                         onClick={() => onViewDiff(entry.id)}
-                        className="flex items-center gap-1 px-2 py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] rounded transition-colors"
+                        className="flex items-center gap-1 px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--paper-shadow)]  transition-colors"
                       >
                         <ExternalLink className="w-3 h-3" />
                         View
@@ -176,7 +176,7 @@ export function AmendmentHistoryTimeline({
       {hasMore && (
         <motion.button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center gap-2 w-full mt-2 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="flex items-center gap-2 w-full mt-2 py-2 text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
           whileTap={{ scale: 0.98 }}
         >
           {isExpanded ? (

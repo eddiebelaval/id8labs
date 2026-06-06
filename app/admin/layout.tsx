@@ -37,16 +37,16 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] flex">
+    <div className="min-h-screen bg-[var(--paper)] flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-[var(--bg-secondary)] border-r border-[var(--border)] flex flex-col">
-        <div className="p-6 border-b border-[var(--border)]">
+      <aside className="w-64 bg-[var(--paper)] border-r border-[var(--hair)] flex flex-col">
+        <div className="p-6 border-b border-[var(--hair)]">
           <Link href="/admin" className="flex items-center gap-2">
-            <span className="text-xl font-bold">
-              <span className="text-[var(--id8-orange)]">id8</span>
-              <span className="text-[var(--text-primary)]">Labs</span>
+            <span className="font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.02em]">
+              <span className="text-[var(--ink)]">id8</span>
+              <span className="text-[var(--ink)]">Labs</span>
             </span>
-            <span className="text-xs px-2 py-0.5 bg-[var(--text-primary)]/10 rounded text-[var(--text-secondary)]">
+            <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 border border-[var(--hair)] text-[var(--muted)]">
               Admin
             </span>
           </Link>
@@ -58,7 +58,7 @@ export default function AdminLayout({
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-primary)] transition-colors"
+                  className="flex items-center gap-3 px-3 py-2 font-[family-name:var(--font-narrow)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--paper-shadow)] transition-colors duration-150"
                 >
                   {item.icon}
                   {item.label}
@@ -68,10 +68,10 @@ export default function AdminLayout({
           </ul>
         </nav>
 
-        <div className="p-4 border-t border-[var(--border)]">
+        <div className="p-4 border-t border-[var(--hair)]">
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors"
+            className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-[var(--ink)] transition-colors duration-150"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -82,9 +82,9 @@ export default function AdminLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto">
         {children}
-      </main>
+      </div>
     </div>
   )
 }

@@ -1,57 +1,47 @@
 import Link from 'next/link'
-import { Package, ArrowLeft, AlertTriangle } from 'lucide-react'
 import { getAllCollections } from '@/lib/skills'
 import { SkillStarterKits, FeaturedStarterKit } from '@/components/skills/SkillStarterKits'
+import { Container, Kicker, Deck, SectionHead } from '@/components/editorial'
 
 export const revalidate = 3600
 
 // Error fallback component
 function StarterKitsError({ error }: { error?: string }) {
   return (
-    <main className="min-h-screen">
-      <div className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="container py-8">
+    <div className="bg-[var(--paper)] min-h-screen">
+      <div className="border-b border-[var(--hair)]">
+        <Container className="py-10 md:py-14">
           <Link
             href="/stackshack"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--id8-orange)] mb-6 transition-colors"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-id8-orange mb-7 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Marketplace
+            &larr; Back to Marketplace
           </Link>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-purple-500/10 text-purple-500 rounded-xl">
-              <Package className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Starter Kits</h1>
-              <p className="text-[var(--text-secondary)] mt-1">
-                Curated skill bundles for common workflows
-              </p>
-            </div>
-          </div>
-        </div>
+          <Kicker className="mb-4">Marketplace</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)] mb-3">
+            Starter <em className="italic text-id8-orange">kits</em>
+          </h1>
+          <Deck className="max-w-2xl">Curated skill bundles for common workflows.</Deck>
+        </Container>
       </div>
-      <div className="container py-12">
-        <div className="text-center py-16">
-          <div className="w-16 h-16 mx-auto mb-4 bg-amber-500/10 rounded-full flex items-center justify-center">
-            <AlertTriangle className="w-8 h-8 text-amber-500" />
-          </div>
-          <h3 className="text-xl font-semibold mb-2">Unable to load starter kits</h3>
-          <p className="text-[var(--text-secondary)] max-w-md mx-auto mb-6">
+      <Container className="py-12">
+        <div className="text-center py-16 border border-[var(--hair)]">
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">Unable to load starter kits</h3>
+          <p className="text-[var(--muted)] max-w-md mx-auto mb-6">
             We&apos;re having trouble loading the starter kits right now. Please try again in a moment.
           </p>
           {error && process.env.NODE_ENV === 'development' && (
-            <p className="text-xs text-red-500 font-mono mb-4">{error}</p>
+            <p className="text-xs text-[var(--muted)] font-[family-name:var(--font-mono)] mb-4">{error}</p>
           )}
           <Link
             href="/stackshack"
-            className="inline-flex items-center gap-2 text-[var(--id8-orange)] hover:text-[var(--id8-orange-hover)]"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange"
           >
             Browse all skills instead
           </Link>
         </div>
-      </div>
-    </main>
+      </Container>
+    </div>
   )
 }
 
@@ -80,34 +70,27 @@ export default async function StarterKitsPage() {
   const featuredCollection = officialCollections[0]
 
   return (
-    <main className="min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
-      <div className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="container py-8">
+      <div className="border-b border-[var(--hair)]">
+        <Container className="py-10 md:py-14">
           <Link
             href="/stackshack"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--id8-orange)] mb-6 transition-colors"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-id8-orange mb-7 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Marketplace
+            &larr; Back to Marketplace
           </Link>
 
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-purple-500/10 text-purple-500 rounded-xl">
-              <Package className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Starter Kits</h1>
-              <p className="text-[var(--text-secondary)] mt-1">
-                Curated skill bundles for common workflows
-              </p>
-            </div>
-          </div>
-        </div>
+          <Kicker className="mb-4">Marketplace</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)] mb-3">
+            Starter <em className="italic text-id8-orange">kits</em>
+          </h1>
+          <Deck className="max-w-2xl">Curated skill bundles for common workflows.</Deck>
+        </Container>
       </div>
 
       {/* Content */}
-      <div className="container py-12">
+      <Container className="py-12">
         {/* Featured Collection */}
         {featuredCollection && (
           <section className="mb-16">
@@ -118,12 +101,7 @@ export default async function StarterKitsPage() {
         {/* Official Collections */}
         {officialCollections.length > 0 && (
           <section className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <h2 className="text-2xl font-bold">Official Kits</h2>
-              <span className="px-2 py-0.5 bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] text-xs font-semibold rounded-full">
-                ID8Labs
-              </span>
-            </div>
+            <SectionHead title={<>Official <em className="italic text-id8-orange">kits</em></>} meta="id8Labs" className="mb-8" />
             <SkillStarterKits
               collections={officialCollections.slice(1)} // Exclude featured
               variant="grid"
@@ -134,31 +112,27 @@ export default async function StarterKitsPage() {
         {/* Community Collections */}
         {communityCollections.length > 0 && (
           <section>
-            <h2 className="text-2xl font-bold mb-6">Community Kits</h2>
+            <SectionHead title={<>Community <em className="italic text-id8-orange">kits</em></>} className="mb-8" />
             <SkillStarterKits collections={communityCollections} variant="grid" />
           </section>
         )}
 
         {/* Empty State */}
         {collections.length === 0 && (
-          <div className="text-center py-16">
-            <div className="w-16 h-16 mx-auto mb-4 bg-[var(--bg-secondary)] rounded-full flex items-center justify-center">
-              <Package className="w-8 h-8 text-[var(--text-tertiary)]" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">No starter kits yet</h3>
-            <p className="text-[var(--text-secondary)] max-w-md mx-auto">
-              Starter kits are coming soon! In the meantime, browse individual
-              skills.
+          <div className="text-center py-16 border border-[var(--hair)]">
+            <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">No starter kits yet</h3>
+            <p className="text-[var(--muted)] max-w-md mx-auto">
+              Starter kits are coming soon. In the meantime, browse individual skills.
             </p>
             <Link
               href="/stackshack"
-              className="inline-flex items-center gap-2 mt-6 text-[var(--id8-orange)] hover:text-[var(--id8-orange-hover)]"
+              className="inline-flex items-center gap-2 mt-6 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange"
             >
               Browse all skills
             </Link>
           </div>
         )}
-      </div>
-    </main>
+      </Container>
+    </div>
   )
 }

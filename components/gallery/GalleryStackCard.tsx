@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Package, Download, Copy, CheckCircle } from 'lucide-react'
+import { Download, CheckCircle } from 'lucide-react'
 import type { DbStack } from '@/lib/stacks-db'
 import { forkStack } from '@/lib/stacks-db-client'
 import { useRouter } from 'next/navigation'
@@ -38,41 +38,36 @@ export function GalleryStackCard({ stack }: GalleryStackCardProps) {
 
   return (
     <Link href={`/gallery/${stack.share_id}`}>
-      <article className="card group hover-lift h-full flex flex-col">
-        <div className="flex items-start gap-3 mb-4">
-          <div className="p-2 bg-[var(--id8-orange)]/20 rounded-lg">
-            <Package className="w-6 h-6 text-[var(--id8-orange)]" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-lg mb-1 group-hover:text-[var(--id8-orange)] transition-colors line-clamp-1">
-              {stack.name}
-            </h3>
-            {stack.description && (
-              <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
-                {stack.description}
-              </p>
-            )}
-          </div>
+      <article className="group flex flex-col h-full border border-[var(--hair)] p-6 transition-colors duration-150 hover:bg-[var(--paper-shadow)] hover:border-[var(--hair-hard)]">
+        <div className="mb-4">
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-lg mb-1.5 text-[var(--ink)] group-hover:text-id8-orange transition-colors line-clamp-1">
+            {stack.name}
+          </h3>
+          {stack.description && (
+            <p className="text-sm text-[var(--body)] leading-relaxed line-clamp-2">
+              {stack.description}
+            </p>
+          )}
         </div>
 
-        <div className="flex items-center gap-4 mb-4 text-sm text-[var(--text-secondary)]">
-          <span>{stack.items?.length || 0} items</span>
+        <div className="mb-4 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+          {stack.items?.length || 0} items
         </div>
 
-        <div className="mt-auto pt-4 border-t border-[var(--border)]">
+        <div className="mt-auto pt-3 border-t border-[var(--hair)]">
           <button
             onClick={handleFork}
             disabled={forking || forked}
-            className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            className={`w-full flex items-center justify-center gap-2 py-3 px-4 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
               forked
-                ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500'
-                : 'bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange-hover)]'
+                ? 'bg-transparent text-teal border-teal'
+                : 'bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange'
             }`}
           >
             {forked ? (
               <>
                 <CheckCircle className="w-4 h-4" />
-                Forked!
+                Forked
               </>
             ) : forking ? (
               'Forking...'

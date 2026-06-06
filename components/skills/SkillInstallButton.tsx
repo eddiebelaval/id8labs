@@ -45,7 +45,7 @@ export function SkillInstallButton({
     return (
       <button
         onClick={() => handleInstall('copy')}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] transition-all"
+        className="inline-flex items-center gap-1.5 px-4 py-2 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 hover:bg-id8-orange hover:border-id8-orange"
       >
         {copiedMethod === 'copy' ? (
           <>
@@ -83,23 +83,23 @@ export function SkillInstallButton({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-[var(--ink)]/60"
             onClick={closeModal}
           />
 
           {/* Modal */}
-          <div className="relative w-full max-w-lg bg-[var(--bg-primary)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden">
+          <div className="relative w-full max-w-lg bg-[var(--paper)] border border-[var(--hair-hard)] overflow-hidden">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--hair)]">
               <div>
-                <h3 className="text-xl font-bold">Install {skill.name}</h3>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">Install {skill.name}</h3>
+                <p className="text-sm text-[var(--muted)] mt-1">
                   Choose your preferred installation method
                 </p>
               </div>
               <button
                 onClick={closeModal}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                className="p-2 hover:bg-[var(--paper-shadow)] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -140,9 +140,9 @@ export function SkillInstallButton({
             </div>
 
             {/* Footer */}
-            <div className="px-6 py-4 bg-[var(--bg-secondary)] border-t border-[var(--border)]">
-              <p className="text-xs text-[var(--text-tertiary)]">
-                Skills are installed to <code className="px-1 py-0.5 bg-[var(--bg-tertiary)] rounded">~/.claude/skills/</code>
+            <div className="px-6 py-4 bg-[var(--paper-shadow)] border-t border-[var(--hair)]">
+              <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                Skills are installed to <code className="px-1 py-0.5 bg-[var(--paper-mid)]">~/.claude/skills/</code>
               </p>
             </div>
           </div>
@@ -173,31 +173,31 @@ function InstallOption({
 }: InstallOptionProps) {
   return (
     <div
-      className={`p-4 border border-[var(--border)] rounded-xl transition-all ${
-        disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-[var(--id8-orange)]/50'
+      className={`p-4 border border-[var(--hair)] transition-colors ${
+        disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-[var(--hair-hard)]'
       }`}
     >
       <div className="flex items-start gap-3 mb-3">
-        <div className="p-2 bg-[var(--bg-secondary)] rounded-lg text-[var(--id8-orange)]">
+        <div className="p-2 bg-[var(--paper-shadow)] text-id8-orange">
           {icon}
         </div>
         <div className="flex-1">
-          <h4 className="font-semibold">{title}</h4>
-          <p className="text-sm text-[var(--text-secondary)]">{description}</p>
+          <h4 className="font-[family-name:var(--font-display)] font-normal text-[var(--ink)]">{title}</h4>
+          <p className="text-sm text-[var(--muted)]">{description}</p>
         </div>
       </div>
 
       <div className="flex items-center gap-2">
-        <code className="flex-1 px-3 py-2 bg-[var(--bg-tertiary)] rounded-lg text-sm font-mono truncate text-[var(--text-secondary)]">
+        <code className="flex-1 px-3 py-2 bg-[var(--paper-mid)] text-sm font-[family-name:var(--font-mono)] truncate text-[var(--body)]">
           {command}
         </code>
         <button
           onClick={onCopy}
           disabled={disabled}
-          className={`flex-shrink-0 px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+          className={`flex-shrink-0 px-4 py-2 border font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
             isCopied
-              ? 'bg-emerald-500 text-white'
-              : 'bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange-hover)]'
+              ? 'bg-teal text-[var(--paper)] border-teal'
+              : 'bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange'
           }`}
         >
           {isCopied ? (

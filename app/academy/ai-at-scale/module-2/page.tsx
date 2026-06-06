@@ -72,7 +72,7 @@ export default function Module2Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-2">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -101,43 +101,43 @@ export default function Module2Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 border border-[var(--hair)] bg-[var(--paper-shadow)] px-3 py-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mb-6"
             >
               <span>Module 2</span>
-              <span className="text-id8-orange/50">•</span>
+              <span className="text-[var(--hair-hard)]">·</span>
               <span>~60 minutes</span>
             </m.div>
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               MLOps Fundamentals
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "Models don't fail in development. They fail at 3am when the data pipeline breaks and nobody's watching."
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why ML Models Die in Production</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why ML Models Die in Production</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your data science team built a model that's 95% accurate. Six months later, it's making wrong predictions. The model code didn't change. The data did—slowly, invisibly, until one day customers started complaining.
@@ -154,10 +154,10 @@ export default function Module2Page() {
             {/* Section 1: What is MLOps */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <RefreshIcon />
                 </div>
-                <h2 className="text-2xl font-bold">What MLOps Actually Means</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">What MLOps Actually Means</h2>
               </div>
 
               <div className="space-y-6">
@@ -165,46 +165,46 @@ export default function Module2Page() {
                   MLOps is DevOps for machine learning. But ML has unique challenges that traditional DevOps doesn't address: data versioning, model decay, experiment tracking, and the fact that code changes are often less important than data changes.
                 </p>
 
-                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h3 className="text-lg font-bold mb-4">The MLOps Lifecycle</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">1</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">1</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Data Management</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Version, validate, and monitor your training data. Track lineage from raw sources to processed features.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">2</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">2</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Experiment Tracking</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Log every model training run with its parameters, metrics, and artifacts. Make experiments reproducible.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">3</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">3</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Model Training Pipelines</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Automate the full training workflow: data loading, preprocessing, training, evaluation, and artifact storage.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">4</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">4</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Model Registry</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Store models with metadata, version them, and manage promotion through dev/staging/prod environments.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">5</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">5</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Deployment & Serving</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Deploy models as APIs, batch jobs, or embedded services. Handle scaling, rollbacks, and A/B testing.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">6</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">6</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Monitoring & Observability</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Track model performance, detect drift, and trigger alerts when predictions degrade.</p>
@@ -213,7 +213,7 @@ export default function Module2Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">The key insight:</strong> MLOps is not about tools. It's about treating ML as a continuous process, not a one-time project. The model you ship today is not the model you'll be running in 6 months.
                   </p>
@@ -224,10 +224,10 @@ export default function Module2Page() {
             {/* Section 2: The 5 Core Pipeline Components */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <GitBranchIcon />
                 </div>
-                <h2 className="text-2xl font-bold">The 5 Core Pipeline Components</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The 5 Core Pipeline Components</h2>
               </div>
 
               <div className="space-y-6">
@@ -236,10 +236,10 @@ export default function Module2Page() {
                 </p>
 
                 <div className="grid gap-4">
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">1. Data Pipeline</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-blue-400 rounded">Extract-Transform-Load</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Extract-Transform-Load</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Moves data from sources (databases, APIs, files) to your training environment. Handles cleaning, validation, and transformation.
@@ -247,15 +247,15 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> Apache Airflow, Prefect, Dagster, dbt
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Schema validation. If upstream data changes shape, your pipeline should fail loudly, not silently corrupt your model.
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">2. Feature Store</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-purple-500/20 text-purple-400 rounded">Feature Management</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Feature Management</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Centralized repository of features used for training and serving. Ensures training-serving consistency and enables feature reuse.
@@ -263,15 +263,15 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> Feast, Tecton, Databricks Feature Store, AWS SageMaker Feature Store
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Point-in-time correctness. Training features must reflect what was known at prediction time, not future data.
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">3. Training Orchestrator</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-green-500/20 text-green-400 rounded">Experiment Management</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal">Experiment Management</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Manages the training workflow: data prep, model training, hyperparameter tuning, validation, and artifact storage.
@@ -279,15 +279,15 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> MLflow, Kubeflow, Weights & Biases, Neptune
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Reproducibility. Any experiment should be re-runnable with identical results given the same data snapshot.
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">4. Model Registry</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-yellow-500/20 text-yellow-400 rounded">Model Versioning</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Model Versioning</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Central repository for trained models. Stores model artifacts, metadata, lineage, and manages promotion between environments.
@@ -295,15 +295,15 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> MLflow Model Registry, Seldon Core, BentoML
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Rollback. If a new model performs poorly, you need one-click return to the previous version.
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">5. Serving Infrastructure</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-red-500/20 text-red-400 rounded">Deployment</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Deployment</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Exposes models as APIs or batch jobs. Handles autoscaling, load balancing, A/B testing, and canary deployments.
@@ -311,7 +311,7 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> Seldon Core, KServe, TensorFlow Serving, Triton Inference Server
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Shadow mode. Run new models alongside old ones without affecting users, compare results before switching.
                     </div>
                   </div>
@@ -322,10 +322,10 @@ export default function Module2Page() {
             {/* Section 3: MLOps Maturity Levels */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <ActivityIcon />
                 </div>
-                <h2 className="text-2xl font-bold">MLOps Maturity Levels</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">MLOps Maturity Levels</h2>
               </div>
 
               <div className="space-y-6">
@@ -351,7 +351,7 @@ export default function Module2Page() {
                         </td>
                         <td className="py-3 px-4">Jupyter notebooks, manual deployment, no versioning</td>
                         <td className="py-3 px-4">POCs, internal tools, low-stakes predictions</td>
-                        <td className="py-3 px-4 text-red-400">High - no reproducibility</td>
+                        <td className="py-3 px-4 text-[var(--muted)]">High - no reproducibility</td>
                       </tr>
                       <tr className="border-b border-[var(--border)]">
                         <td className="py-3 px-4">
@@ -360,7 +360,7 @@ export default function Module2Page() {
                         </td>
                         <td className="py-3 px-4">Automated training pipeline, experiment tracking, model registry</td>
                         <td className="py-3 px-4">Models retrained weekly, 1-5 models in production</td>
-                        <td className="py-3 px-4 text-yellow-400">Medium - manual deployment</td>
+                        <td className="py-3 px-4 text-[var(--muted)]">Medium - manual deployment</td>
                       </tr>
                       <tr className="border-b border-[var(--border)]">
                         <td className="py-3 px-4">
@@ -369,7 +369,7 @@ export default function Module2Page() {
                         </td>
                         <td className="py-3 px-4">Automated testing, staging environments, automated deployment</td>
                         <td className="py-3 px-4">Daily retraining, 5-20 models, production-critical</td>
-                        <td className="py-3 px-4 text-green-400">Low - full automation</td>
+                        <td className="py-3 px-4 text-id8-teal">Low - full automation</td>
                       </tr>
                       <tr className="border-b border-[var(--border)]">
                         <td className="py-3 px-4">
@@ -378,13 +378,13 @@ export default function Module2Page() {
                         </td>
                         <td className="py-3 px-4">Feature stores, drift detection, automated retraining triggers, A/B testing</td>
                         <td className="py-3 px-4">Continuous learning, 20+ models, ML is core product</td>
-                        <td className="py-3 px-4 text-green-400">Minimal - self-healing</td>
+                        <td className="py-3 px-4 text-id8-teal">Minimal - self-healing</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">Reality check:</strong> Most companies should aim for Level 2. Level 3 requires significant investment and is only justified if ML is a core differentiator. Don't over-engineer.
                   </p>
@@ -395,10 +395,10 @@ export default function Module2Page() {
             {/* Section 4: Model Drift */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <AlertIcon />
                 </div>
-                <h2 className="text-2xl font-bold">Understanding Model Drift</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Understanding Model Drift</h2>
               </div>
 
               <div className="space-y-6">
@@ -407,7 +407,7 @@ export default function Module2Page() {
                 </p>
 
                 <div className="grid gap-4">
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">Data Drift (Covariate Shift)</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       The distribution of input features changes. Your model trained on summer data doesn't work in winter. Users from a new market have different behavior patterns.
@@ -424,7 +424,7 @@ export default function Module2Page() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">Concept Drift</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       The relationship between inputs and outputs changes. User preferences evolve. Economic conditions shift. What was a "good" prediction last year isn't anymore.
@@ -441,7 +441,7 @@ export default function Module2Page() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">Prediction Drift</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       The distribution of model outputs changes, even without data drift. Useful when you don't have ground truth—if predictions suddenly skew high or low, something's wrong.
@@ -459,7 +459,7 @@ export default function Module2Page() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h3 className="text-lg font-bold mb-4">The Monitoring Pyramid</h3>
                   <div className="space-y-3 text-[var(--text-secondary)] text-sm">
                     <div className="flex items-start gap-3">
@@ -489,11 +489,11 @@ export default function Module2Page() {
 
             {/* Section 5: Common MLOps Mistakes */}
             <div className="not-prose mb-12">
-              <h2 className="text-2xl font-bold mb-6">Five MLOps Mistakes That Kill Production Systems</h2>
+              <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">Five MLOps Mistakes That Kill Production Systems</h2>
 
               <div className="space-y-4">
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500 rounded-xl">
-                  <h3 className="text-lg font-bold mb-2 text-red-400">1. Training-Serving Skew</h3>
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
+                  <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">1. Training-Serving Skew</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Different feature computation code for training vs. serving. Looks fine in testing, breaks silently in production.
                   </p>
@@ -502,8 +502,8 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500 rounded-xl">
-                  <h3 className="text-lg font-bold mb-2 text-red-400">2. Ignoring Data Versioning</h3>
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
+                  <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">2. Ignoring Data Versioning</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     You can reproduce the model code but not the training data. "The model trained differently this time" with no idea why.
                   </p>
@@ -512,8 +512,8 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500 rounded-xl">
-                  <h3 className="text-lg font-bold mb-2 text-red-400">3. No Rollback Strategy</h3>
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
+                  <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">3. No Rollback Strategy</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     New model ships, predictions go bad, and nobody knows how to go back. Panic ensues.
                   </p>
@@ -522,8 +522,8 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500 rounded-xl">
-                  <h3 className="text-lg font-bold mb-2 text-red-400">4. Monitoring Only Accuracy</h3>
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
+                  <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">4. Monitoring Only Accuracy</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Accuracy requires ground truth, which often arrives with a delay. By the time accuracy drops, users have been affected for days.
                   </p>
@@ -532,8 +532,8 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500 rounded-xl">
-                  <h3 className="text-lg font-bold mb-2 text-red-400">5. Manual Retraining</h3>
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
+                  <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">5. Manual Retraining</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Someone has to remember to retrain the model. They get busy. Model decays. Months pass.
                   </p>
@@ -545,11 +545,11 @@ export default function Module2Page() {
             </div>
 
             {/* Your Turn Exercise */}
-            <div className="not-prose mb-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose mb-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-6">Build: MLOps Pipeline Design</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">Build: MLOps Pipeline Design</h3>
 
               <div className="space-y-6 text-[var(--text-secondary)]">
                 <p className="text-lg">
@@ -558,7 +558,7 @@ export default function Module2Page() {
 
                 <div className="space-y-4">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       1
                     </div>
                     <div>
@@ -570,7 +570,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       2
                     </div>
                     <div>
@@ -582,7 +582,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       3
                     </div>
                     <div>
@@ -594,7 +594,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       4
                     </div>
                     <div>
@@ -606,7 +606,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       5
                     </div>
                     <div>
@@ -618,7 +618,7 @@ export default function Module2Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl mt-6">
+                <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] mt-6">
                   <h4 className="font-bold mb-2">Deliverable Template</h4>
                   <p className="text-sm font-mono text-[var(--text-tertiary)]">
                     MODEL: [name]<br/>
@@ -634,7 +634,7 @@ export default function Module2Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Key Takeaways
               </h2>

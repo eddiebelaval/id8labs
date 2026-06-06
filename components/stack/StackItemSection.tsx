@@ -21,8 +21,8 @@ export function StackItemSection({ title, emoji, items, linkPrefix }: StackItemS
   const content = items.map((item) => {
     const itemContent = (
       <>
-        <h4 className="font-medium">{item.name}</h4>
-        <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
+        <h4 className="font-[family-name:var(--font-display)] font-normal text-[var(--ink)]">{item.name}</h4>
+        <p className="text-sm text-[var(--body)] line-clamp-2">
           {item.description}
         </p>
       </>
@@ -33,7 +33,7 @@ export function StackItemSection({ title, emoji, items, linkPrefix }: StackItemS
         <Link
           key={item.id}
           href={`${linkPrefix}${item.slug}`}
-          className="block p-3 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-colors"
+          className="block p-3 border border-[var(--hair)] transition-colors duration-150 hover:bg-[var(--paper-shadow)] hover:border-[var(--hair-hard)]"
         >
           {itemContent}
         </Link>
@@ -43,21 +43,16 @@ export function StackItemSection({ title, emoji, items, linkPrefix }: StackItemS
     return (
       <div
         key={item.id}
-        className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg"
+        className="p-3 border border-[var(--hair)]"
       >
         {itemContent}
       </div>
     )
   })
 
-  const containerClass = linkPrefix
-    ? 'p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl'
-    : 'card'
-
   return (
-    <div className={containerClass}>
-      <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-        <span className="text-2xl">{emoji}</span>
+    <div className="border border-[var(--hair)] p-6">
+      <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-4">
         {title} ({items.length})
       </h3>
       <div className="space-y-2">{content}</div>

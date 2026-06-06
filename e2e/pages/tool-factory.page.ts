@@ -46,15 +46,17 @@ export class ToolFactoryPage extends BasePage {
     this.modalBackdrop = page.locator('[class*="fixed"][class*="inset-0"][class*="bg-"]').first()
     this.closeButton = page.getByRole('button', { name: 'Close' })
 
-    // Tab container and tabs - find within the modal content area (not backdrop)
-    // The modal content has a specific structure with a header containing "AI Tool Factory"
-    const modalContent = page.locator('[class*="bg-"][class*="rounded-2xl"][class*="shadow"]')
-    this.tabContainer = modalContent.locator('[class*="bg-"][class*="rounded-xl"]').first()
-    // Tabs use icons plus optional labels - locate by their position in the tab bar
-    this.tabSkill = this.tabContainer.getByRole('button').nth(0)
-    this.tabCommand = this.tabContainer.getByRole('button').nth(1)
-    this.tabAgent = this.tabContainer.getByRole('button').nth(2)
-    this.tabMCP = this.tabContainer.getByRole('button').nth(3)
+    // Tab container and tabs - find within the modal content area (not backdrop).
+    // The refaced modal panel no longer uses rounded-2xl/shadow, so scope to the
+    // portaled modal wrapper (z-[9999]) which contains the panel and nothing from
+    // the page behind it.
+    const modalContent = page.locator('[class*="z-[9999]"]')
+    this.tabContainer = modalContent.locator('div.flex.gap-1').first()
+    // Tabs are buttons labelled by tool type (icon + label span); select by name.
+    this.tabSkill = modalContent.getByRole('button', { name: 'Skill', exact: true })
+    this.tabCommand = modalContent.getByRole('button', { name: 'Command', exact: true })
+    this.tabAgent = modalContent.getByRole('button', { name: 'Agent', exact: true })
+    this.tabMCP = modalContent.getByRole('button', { name: 'MCP Server', exact: true })
 
     // Common form elements - scoped to modal content to avoid matching StackShack search bar
     this.descriptionTextarea = modalContent.getByRole('textbox').first()
@@ -212,7 +214,7 @@ export class ToolFactoryPage extends BasePage {
    * Scoped to modal content area to avoid matching other page elements
    */
   async getHeaderText(): Promise<string> {
-    const modalContent = this.page.locator('[class*="bg-"][class*="rounded-2xl"][class*="shadow"]')
+    const modalContent = this.page.locator('[class*="z-[9999]"]')
     const header = modalContent.locator('h3').first()
     return (await header.textContent()) || ''
   }

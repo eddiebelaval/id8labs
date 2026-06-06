@@ -19,12 +19,11 @@ const WorldMapVisualization = dynamic(
 // Loading skeleton for charts
 function ChartSkeleton({ title }: { title: string }) {
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm animate-pulse">
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5 font-[family-name:var(--font-mono)] animate-pulse">
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-4 h-4 bg-[#FF6B35]/20 rounded" />
-        <span className="text-[#FF6B35]/50 text-sm font-bold tracking-wider">{title}</span>
+        <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">{title}</span>
       </div>
-      <div className="h-64 bg-gray-800/30 rounded-lg" />
+      <div className="h-64 bg-[var(--paper-shadow)]" />
     </div>
   )
 }
@@ -191,72 +190,63 @@ function StatCard({
   const isPositive = invertChange ? !change?.positive : change?.positive
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm group hover:border-[#FF6B35]/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#FF6B35]/10 transition-all duration-300">
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      <div className="relative z-10">
-        <div className="flex items-center justify-between mb-2">
-          <div className="text-gray-300 text-xs uppercase tracking-wider flex items-center gap-2">
-            {icon}
-            {label}
-          </div>
-          {change && (
-            <div className={`flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ${
-              isPositive
-                ? 'bg-green-500/20 text-green-400'
-                : 'bg-red-500/20 text-red-400'
-            }`}>
-              <span className="text-[10px]">{isPositive ? '▲' : '▼'}</span>
-              {change.value.toFixed(1)}%
-            </div>
-          )}
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5 hover:bg-[var(--paper-shadow)] hover:border-[var(--hair-hard)] transition-colors duration-150">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+          {icon}
+          {label}
         </div>
-
-        <div className="text-3xl font-bold text-white mb-3">
-          <AnimatedNumber value={value} format={formatFn} />
-        </div>
-
-        {/* Mini sparkline */}
-        {sparklineData.length > 0 && (
-          <div className="h-8 flex items-end gap-0.5">
-            {sparklineData.slice(-12).map((val, i) => {
-              const max = Math.max(...sparklineData.slice(-12), 1)
-              const height = Math.max(4, (val / max) * 32)
-              return (
-                <div
-                  key={i}
-                  className="flex-1 bg-gradient-to-t from-[#FF6B35]/60 to-[#FF6B35] rounded-t transition-all duration-300"
-                  style={{ height }}
-                />
-              )
-            })}
+        {change && (
+          <div
+            className={`flex items-center gap-1 font-[family-name:var(--font-mono)] text-xs ${
+              isPositive ? 'text-[var(--teal)]' : 'text-id8-orange'
+            }`}
+          >
+            <span className="text-[10px]">{isPositive ? '▲' : '▼'}</span>
+            {change.value.toFixed(1)}%
           </div>
         )}
       </div>
+
+      <div className="font-[family-name:var(--font-mono)] text-3xl font-medium text-[var(--ink)] mb-3">
+        <AnimatedNumber value={value} format={formatFn} />
+      </div>
+
+      {/* Mini sparkline */}
+      {sparklineData.length > 0 && (
+        <div className="h-8 flex items-end gap-0.5">
+          {sparklineData.slice(-12).map((val, i) => {
+            const max = Math.max(...sparklineData.slice(-12), 1)
+            const height = Math.max(4, (val / max) * 32)
+            return (
+              <div
+                key={i}
+                className="flex-1 bg-[var(--hair-hard)]"
+                style={{ height }}
+              />
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
 
-// Real-time pulse indicator
+// Real-time indicator
 function RealtimeIndicator({ count }: { count: number }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-[#FF6B35]/20 to-black/90 border-2 border-[#FF6B35]/50 rounded-xl p-5 font-mono backdrop-blur-sm shadow-lg shadow-[#FF6B35]/10">
-      {/* Animated pulse rings */}
-      <div className="absolute top-4 right-4">
-        <div className="relative">
-          <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-pulse" />
-          <div className="absolute inset-0 w-3 h-3 bg-[#FF6B35] rounded-full animate-ping opacity-75" />
-        </div>
+    <div className="relative border border-id8-orange bg-[var(--paper)] p-5">
+      <div className="absolute top-5 right-5">
+        <span className="inline-block w-2 h-2 bg-id8-orange rounded-full" />
       </div>
 
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-[#FF6B35] text-xs font-bold tracking-widest">● LIVE</span>
+        <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.22em] text-id8-orange">Live</span>
       </div>
-      <div className="text-4xl font-bold text-[#FF6B35] mb-1">
+      <div className="font-[family-name:var(--font-mono)] text-4xl font-medium text-[var(--ink)] mb-1">
         <AnimatedNumber value={count} />
       </div>
-      <div className="text-[#FF6B35]/60 text-xs uppercase tracking-wide">active now</div>
+      <div className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">active now</div>
     </div>
   )
 }
@@ -275,8 +265,8 @@ function TopList({
   const maxValue = Math.max(...data.map((d) => d.y), 1)
 
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm">
-      <h3 className="text-[#FF6B35] text-sm font-bold tracking-wider mb-4 flex items-center gap-2">
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5">
+      <h3 className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--ink)] mb-4">
         {icon}
         {title}
       </h3>
@@ -285,28 +275,28 @@ function TopList({
         {data.slice(0, 8).map((item, i) => (
           <div key={i} className="group">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-gray-300 text-sm truncate max-w-[70%] group-hover:text-white transition-colors">
+              <span className="text-sm text-[var(--body)] truncate max-w-[70%]">
                 {item.x || '(direct)'}
               </span>
-              <div className="flex items-center gap-2">
-                <span className="text-[#FF6B35] text-sm font-bold">{formatNumber(item.y)}</span>
-                <span className="text-gray-500 text-xs">
+              <div className="flex items-center gap-2 font-[family-name:var(--font-mono)]">
+                <span className="text-sm text-[var(--ink)]">{formatNumber(item.y)}</span>
+                <span className="text-xs text-[var(--muted)]">
                   {((item.y / maxValue) * 100).toFixed(0)}%
                 </span>
               </div>
             </div>
-            <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+            <div className="h-1.5 bg-[var(--paper-mid)] overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#FF6B35]/80 to-[#FF6B35] rounded-full transition-all duration-500 group-hover:from-[#FF6B35] group-hover:to-[#FF8B55]"
+                className="h-full bg-id8-orange transition-all duration-500"
                 style={{ width: `${(item.y / maxValue) * 100}%` }}
               />
             </div>
           </div>
         ))}
         {data.length === 0 && (
-          <div className="text-center py-10 border border-dashed border-gray-800 rounded-lg">
-            <div className="text-gray-600 font-mono text-sm mb-2">[ NO DATA ]</div>
-            <p className="text-gray-500 text-xs">Waiting for traffic...</p>
+          <div className="text-center py-10 border border-dashed border-[var(--hair)]">
+            <div className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)] mb-2">[ NO DATA ]</div>
+            <p className="text-xs text-[var(--muted)]">Waiting for traffic...</p>
           </div>
         )}
       </div>
@@ -316,12 +306,12 @@ function TopList({
 
 // Browser/Device pie chart alternative - horizontal bars
 function DeviceBreakdown({ browsers, title }: { browsers: MetricItem[]; title: string }) {
-  const colors = ['#FF6B35', '#FF8B55', '#FFAb75', '#FFCB95', '#FFEBB5']
+  const colors = ['#0b0b0b', '#ff6b35', '#2a8d83', '#b4afa0', '#d6d3c9']
   const total = browsers.reduce((sum, b) => sum + b.y, 0)
 
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm">
-      <h3 className="text-[#FF6B35] text-sm font-bold tracking-wider mb-4 flex items-center gap-2">
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5">
+      <h3 className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--ink)] mb-4">
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
@@ -329,11 +319,11 @@ function DeviceBreakdown({ browsers, title }: { browsers: MetricItem[]; title: s
       </h3>
 
       {/* Stacked bar */}
-      <div className="h-4 flex rounded-full overflow-hidden mb-4">
+      <div className="h-4 flex overflow-hidden mb-4">
         {browsers.slice(0, 5).map((browser, i) => (
           <div
             key={i}
-            className="h-full transition-all duration-300 hover:opacity-80"
+            className="h-full transition-opacity duration-150 hover:opacity-80"
             style={{
               width: `${(browser.y / total) * 100}%`,
               backgroundColor: colors[i % colors.length]
@@ -347,18 +337,18 @@ function DeviceBreakdown({ browsers, title }: { browsers: MetricItem[]; title: s
         {browsers.slice(0, 5).map((browser, i) => (
           <div key={i} className="flex items-center gap-3">
             <div
-              className="w-3 h-3 rounded-full flex-shrink-0"
+              className="w-3 h-3 flex-shrink-0"
               style={{ backgroundColor: colors[i % colors.length] }}
             />
-            <span className="text-gray-300 text-sm flex-1 truncate">{browser.x}</span>
-            <span className="text-gray-400 text-xs">{((browser.y / total) * 100).toFixed(1)}%</span>
-            <span className="text-[#FF6B35] text-sm font-bold">{formatNumber(browser.y)}</span>
+            <span className="text-sm flex-1 truncate text-[var(--body)]">{browser.x}</span>
+            <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">{((browser.y / total) * 100).toFixed(1)}%</span>
+            <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">{formatNumber(browser.y)}</span>
           </div>
         ))}
         {browsers.length === 0 && (
-          <div className="text-center py-8 border border-dashed border-gray-800 rounded-lg">
-            <div className="text-gray-600 font-mono text-sm mb-2">[ NO DATA ]</div>
-            <p className="text-gray-500 text-xs">No browser data yet</p>
+          <div className="text-center py-8 border border-dashed border-[var(--hair)]">
+            <div className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)] mb-2">[ NO DATA ]</div>
+            <p className="text-xs text-[var(--muted)]">No browser data yet</p>
           </div>
         )}
       </div>
@@ -471,39 +461,34 @@ export default function DashboardPage() {
   const sparklineData = pageviews.map(p => p.y)
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Subtle grid background */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-black to-black" />
-      <div className="fixed inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMTA3LDUzLDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50" />
-
-      <div className="relative z-10 p-6">
+    <div className="min-h-screen bg-[var(--paper)] text-[var(--body)]">
+      <div className="p-6">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 border-b border-[var(--rule)] pb-7">
             <div>
-              <h1 className="text-2xl font-mono font-bold text-white flex items-center gap-3">
-                <span className="text-[#FF6B35]">▸</span>
-                id8labs analytics
-                <span className="text-xs bg-[#FF6B35]/20 text-[#FF6B35] px-2 py-1 rounded-full font-normal">
-                  BETA
+              <h1 className="flex items-center gap-3 font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">
+                id8Labs <em className="not-italic text-id8-orange font-[family-name:var(--font-display)] italic">analytics</em>
+                <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.2em] text-id8-orange border border-id8-orange px-2 py-0.5">
+                  Beta
                 </span>
               </h1>
-              <p className="text-gray-400 text-sm font-mono mt-1 flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#FF6B35] rounded-full animate-pulse" />
+              <p className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mt-2">
+                <span className="inline-block w-1.5 h-1.5 bg-id8-orange rounded-full" />
                 {lastUpdated && `Last synced ${format(lastUpdated, 'HH:mm:ss')}`}
               </p>
             </div>
 
             {/* Time range selector */}
-            <div className="flex gap-1 font-mono bg-gray-900/50 p-1 rounded-lg border border-gray-800">
+            <div className="flex border border-[var(--hair)]">
               {TIME_RANGES.map((range) => (
                 <button
                   key={range.value}
                   onClick={() => setTimeRange(range.value)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 focus:ring-offset-black ${
+                  className={`px-4 py-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 focus:outline-none ${
                     timeRange === range.value
-                      ? 'bg-[#FF6B35] text-black shadow-lg shadow-[#FF6B35]/25 hover:bg-[#FF8B55]'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800/80'
+                      ? 'bg-[var(--ink)] text-[var(--paper)]'
+                      : 'text-[var(--muted)] hover:text-[var(--ink)]'
                   }`}
                 >
                   {range.label}
@@ -514,12 +499,7 @@ export default function DashboardPage() {
 
           {loading ? (
             <div className="flex flex-col items-center justify-center h-64 gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-              </div>
-              <p className="text-gray-500 font-mono text-sm animate-pulse">Loading analytics...</p>
+              <p className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)] animate-pulse">Loading analytics...</p>
             </div>
           ) : (
             <>
@@ -532,7 +512,7 @@ export default function DashboardPage() {
                   previousValue={stats?.comparison?.visitors}
                   sparklineData={sparklineData}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   }
@@ -543,7 +523,7 @@ export default function DashboardPage() {
                   previousValue={stats?.comparison?.pageviews}
                   sparklineData={sparklineData}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
@@ -555,7 +535,7 @@ export default function DashboardPage() {
                   previousValue={stats?.comparison?.visits}
                   sparklineData={sparklineData}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   }
@@ -567,7 +547,7 @@ export default function DashboardPage() {
                   format={(n) => `${n.toFixed(1)}%`}
                   invertChange
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
                     </svg>
                   }
@@ -578,7 +558,7 @@ export default function DashboardPage() {
                   previousValue={prevAvgDuration}
                   format={formatDuration}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   }
@@ -619,20 +599,17 @@ export default function DashboardPage() {
               </div>
 
               {/* Footer */}
-              <div className="mt-12 pt-8 border-t border-gray-800/50 text-center">
+              <div className="mt-12 pt-8 border-t border-[var(--rule)] text-center">
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <svg className="w-4 h-4 text-[#FF6B35]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-                  </svg>
-                  <span className="text-gray-500 font-mono text-xs">id8labs dashboard</span>
+                  <span className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">id8Labs dashboard</span>
                 </div>
-                <p className="text-gray-600 font-mono text-xs">
+                <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
                   Powered by{' '}
                   <a
                     href="https://umami.is"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#FF6B35]/60 hover:text-[#FF6B35] transition-colors"
+                    className="text-[var(--ink)] hover:text-id8-orange transition-colors"
                   >
                     Umami
                   </a>

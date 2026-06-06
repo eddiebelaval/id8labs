@@ -40,12 +40,19 @@ jobs:
           NEXT_TELEMETRY_DISABLED: 1
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          # next.config evaluates redirects() at BUILD time, so the marketplace
+          # redirects (/skills, /commands, /settings -> /stackshack) must be
+          # disabled here — not just on the test server — so the suite can
+          # exercise those legacy routes directly. Test-build only; the Vercel
+          # production build keeps the redirects.
+          DISABLE_MARKETPLACE_REDIRECTS: 'true'
 
       - name: Run E2E tests
         run: npx playwright test --project=chromium
         env:
           CI: true
           PLAYWRIGHT_BASE_URL: http://localhost:3000
+          DISABLE_MARKETPLACE_REDIRECTS: 'true'
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -99,11 +106,14 @@ jobs:
           NEXT_TELEMETRY_DISABLED: 1
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          # redirects() is evaluated at BUILD time (see chromium job above)
+          DISABLE_MARKETPLACE_REDIRECTS: 'true'
 
       - name: Run E2E tests
         run: npx playwright test
         env:
           CI: true
+          DISABLE_MARKETPLACE_REDIRECTS: 'true'
 
       - name: Upload test results
         uses: actions/upload-artifact@v4

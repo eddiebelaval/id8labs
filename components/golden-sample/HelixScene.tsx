@@ -56,7 +56,7 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
 
       // ─── Scene ───────────────────────────────────
       const scene = new THREE.Scene()
-      scene.background = new THREE.Color(0x050505)
+      scene.background = new THREE.Color(0xfafaf7)
 
       // ─── Camera ──────────────────────────────────
       const camera = new THREE.PerspectiveCamera(
@@ -84,9 +84,9 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
       composer.addPass(new RenderPass(scene, camera))
       const bloomPass = new UnrealBloomPass(
         new THREE.Vector2(window.innerWidth, window.innerHeight),
-        isMobile ? 0.8 : 1.2,
-        0.6,
-        0.2
+        0.0,
+        0.0,
+        1.0
       )
       composer.addPass(bloomPass)
       composer.addPass(new OutputPass())
@@ -133,8 +133,8 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
         uniforms: {
           uTime: { value: 0 },
           uPixelRatio: { value: renderer.getPixelRatio() },
-          uColor1: { value: new THREE.Color(0xffd700) }, // bright gold
-          uColor2: { value: new THREE.Color(0xd4af37) }, // deeper gold
+          uColor1: { value: new THREE.Color(0xff6b35) }, // orange accent
+          uColor2: { value: new THREE.Color(0x0b0b0b) }, // ink
         },
         vertexShader: `
           attribute float size;
@@ -177,7 +177,7 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
           }
         `,
         transparent: true,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         depthWrite: false,
       })
 
@@ -231,8 +231,8 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
         uniforms: {
           uTime: { value: 0 },
           uPixelRatio: { value: renderer.getPixelRatio() },
-          uColor1: { value: new THREE.Color(0xffd700) },
-          uColor2: { value: new THREE.Color(0x8b7226) },
+          uColor1: { value: new THREE.Color(0xff6b35) },
+          uColor2: { value: new THREE.Color(0x5a5a5a) },
         },
         vertexShader: `
           attribute float size;
@@ -265,7 +265,7 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
           }
         `,
         transparent: true,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         depthWrite: false,
       })
 
@@ -293,7 +293,7 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
         uniforms: {
           uTime: { value: 0 },
           uPixelRatio: { value: renderer.getPixelRatio() },
-          uColor: { value: new THREE.Color(0xd4af37) },
+          uColor: { value: new THREE.Color(0xb4afa0) },
         },
         vertexShader: `
           attribute float size;
@@ -323,7 +323,7 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
           }
         `,
         transparent: true,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         depthWrite: false,
       })
 
@@ -405,6 +405,6 @@ export function HelixScene({ scrollProgress }: HelixSceneProps) {
   }, [])
 
   return (
-    <div ref={containerRef} className="absolute inset-0 [&_canvas]:!rounded-none" style={{ background: '#050505' }} />
+    <div ref={containerRef} className="absolute inset-0 [&_canvas]:!rounded-none" style={{ background: 'var(--paper)' }} />
   )
 }

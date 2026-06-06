@@ -59,7 +59,7 @@ export default function Module5Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-5">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -87,7 +87,7 @@ export default function Module5Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 5
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -97,34 +97,34 @@ export default function Module5Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Evaluating AI Vendors
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "We've had 23 vendor demos in the last two months. They all look good. How do I actually choose?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Problem */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Vendor Landscape
               </h2>
-              <h3 className="text-2xl font-bold mb-4">500+ Tools, Same Pitch Deck</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">500+ Tools, Same Pitch Deck</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   The AI vendor market is overwhelming. Over 500 "enterprise AI solutions" launched in the last 18 months. Most have identical marketing: "AI-powered," "10x productivity," "seamless integration," "enterprise-ready."
@@ -189,7 +189,7 @@ export default function Module5Page() {
                   questions: "Funding, team, market position, product velocity"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-2xl">{item.icon}</span>
                     <span className="text-xs font-mono text-id8-orange">{item.weight}</span>
@@ -217,7 +217,7 @@ export default function Module5Page() {
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Question</th>
                     <th className="text-left py-3 px-4">What You're Looking For</th>
-                    <th className="text-left py-3 px-4 text-red-400">Red Flag</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Red Flag</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -260,7 +260,7 @@ export default function Module5Page() {
               Integration is where hidden costs live. A tool that requires 6 months of custom engineering isn't "easy to integrate" no matter what the sales deck says.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">Integration Assessment Checklist</h3>
               <div className="space-y-3">
                 {[
@@ -304,8 +304,8 @@ export default function Module5Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Security Area</th>
-                    <th className="text-left py-3 px-4 text-green-400">Must Have</th>
-                    <th className="text-left py-3 px-4 text-yellow-400">Nice to Have</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Must Have</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Nice to Have</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -349,53 +349,53 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="font-mono text-sm text-green-400 mb-2">Good Support Signals</p>
+              <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-id8-teal mb-2">Good Support Signals</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Named account manager (not rotating support queue)</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>SLA includes response AND resolution time</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Technical documentation you can actually follow</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Active community or user forum</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Regular training/onboarding for new team members</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-2">Bad Support Signals</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-2">Bad Support Signals</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>"Email us and we'll get back to you"</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>Support is offshore with no AI expertise</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>Documentation is just API reference (no examples)</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>No status page or uptime history published</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>"Premium support" is an expensive add-on</span>
                   </li>
                 </ul>
@@ -447,7 +447,7 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <div className="flex items-start gap-3">
                 <AlertIcon />
                 <div>
@@ -455,7 +455,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Don't just look at the sticker price. Calculate total cost of ownership:
                   </p>
-                  <div className="font-mono text-xs bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="font-mono text-xs bg-[var(--bg-primary)] p-3">
                     <p>TCO = Base License + Integration + Training + Support + Hidden Fees + Switching Cost</p>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mt-3">
@@ -471,7 +471,7 @@ export default function Module5Page() {
               The AI vendor landscape is consolidating rapidly. You don't want to pick a tool that gets acqui-hired or shut down 18 months in.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">Vendor Stability Indicators</h3>
               <div className="space-y-4">
                 <div>
@@ -556,12 +556,12 @@ export default function Module5Page() {
                   why: "You're locked into their consulting rates forever. Look for partner ecosystem instead."
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-3 p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-sm">
+                <div key={i} className="flex gap-3 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold text-sm">
                     {i + 1}
                   </span>
                   <div>
-                    <p className="font-bold text-red-400">{item.flag}</p>
+                    <p className="font-bold text-[var(--muted)]">{item.flag}</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">{item.why}</p>
                   </div>
                 </div>
@@ -574,13 +574,13 @@ export default function Module5Page() {
               Never buy without a POC. Here's how to structure one that actually proves value:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">The 4-Week POC Framework</h3>
 
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 1</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 1</span>
                     <p className="font-bold">Setup & Baseline</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -593,7 +593,7 @@ export default function Module5Page() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 2</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 2</span>
                     <p className="font-bold">Testing & Tuning</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -606,7 +606,7 @@ export default function Module5Page() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 3</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 3</span>
                     <p className="font-bold">Real-World Validation</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -619,7 +619,7 @@ export default function Module5Page() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 4</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 4</span>
                     <p className="font-bold">Decision & Scaling Path</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -631,7 +631,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Non-negotiable:</strong> The vendor must agree to success criteria upfront. If they won't commit to measurable outcomes, they don't believe in their product.
                 </p>
@@ -682,9 +682,9 @@ export default function Module5Page() {
                   caveat: "Better to pay slightly more and have flexibility than save 10% and be locked in"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">
                       {i + 1}
                     </span>
                     <div className="flex-1">
@@ -692,7 +692,7 @@ export default function Module5Page() {
                       <p className="text-sm text-[var(--text-secondary)] mt-1">
                         <strong>Tactic:</strong> {item.tactic}
                       </p>
-                      <p className="text-xs text-yellow-400 mt-2">
+                      <p className="text-xs text-[var(--muted)] mt-2">
                         <strong>Caveat:</strong> {item.caveat}
                       </p>
                     </div>
@@ -702,11 +702,11 @@ export default function Module5Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build Your Vendor Evaluation Scorecard</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build Your Vendor Evaluation Scorecard</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> One vendor you're actively evaluating (or pick one from your research)
@@ -714,35 +714,35 @@ export default function Module5Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Set your dimension weights (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Adjust the six dimensions based on your context. Total must equal 100%. Be honest about what matters most.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Score each dimension 1-10 (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the questions from each section. Score based on evidence, not sales pitch. Document your reasoning.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Calculate weighted score (2 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Multiply each dimension score by its weight, sum them up. This is your vendor's final score out of 10.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Identify red flags (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Review the 10 red flags list. Does this vendor trigger any? One red flag might outweigh a good score.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Make your recommendation (3 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Based on score and flags: Proceed to POC, Keep evaluating, or Pass. Write one paragraph explaining why.</p>
@@ -750,9 +750,9 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm font-bold mb-2">Scorecard Template</p>
-                <div className="font-mono text-xs bg-[var(--bg-secondary)] p-3 rounded space-y-1">
+                <div className="font-mono text-xs bg-[var(--bg-secondary)] p-3 space-y-1">
                   <p>Capability:     [Score 1-10] × [Weight %] = [Weighted Score]</p>
                   <p>Integration:   [Score 1-10] × [Weight %] = [Weighted Score]</p>
                   <p>Security:      [Score 1-10] × [Weight %] = [Weighted Score]</p>
@@ -766,7 +766,7 @@ export default function Module5Page() {
                 </p>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A scored evaluation you can present to stakeholders with clear recommendation and supporting evidence. This becomes your template for all future vendor evaluations.
                 </p>
@@ -774,7 +774,7 @@ export default function Module5Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

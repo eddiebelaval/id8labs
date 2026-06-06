@@ -59,7 +59,7 @@ export default function Module2Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-2">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -87,7 +87,7 @@ export default function Module2Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 2
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -97,34 +97,34 @@ export default function Module2Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               The Collaboration Framework
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "The best AI conversations feel like thinking with a brilliant colleague who never forgets what you told them."
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Problem */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Problem
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Every Conversation Starts From Zero</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Every Conversation Starts From Zero</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've had the same conversation with AI five times this month. Each time, you start over:
@@ -159,7 +159,7 @@ export default function Module2Page() {
               <li>The patterns that make your work unique</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-id8-orange/10 border border-id8-orange/30 rounded-lg">
+            <div className="not-prose my-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
               <p className="font-bold text-id8-orange mb-2">The Shift:</p>
               <p className="text-[var(--text-secondary)]">
                 From treating AI like a stranger you meet in a coffee shop every day, to treating it like a colleague who knows your work, your style, and your standards.
@@ -203,16 +203,16 @@ export default function Module2Page() {
                   example: "Client proposals always follow: Problem → Strategic Insight → 3 Positioning Options → Recommended Direction → Scope & Timeline."
                 }
               ].map((layer, i) => (
-                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">
+                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">
                       {layer.num}
                     </span>
                     <div className="flex-1">
                       <h4 className="font-bold text-lg mb-1">{layer.title}</h4>
                       <p className="text-sm text-id8-orange mb-2">{layer.subtitle}</p>
                       <p className="text-sm text-[var(--text-secondary)] mb-3">{layer.desc}</p>
-                      <div className="p-3 bg-[var(--bg-primary)] border border-[var(--border)] rounded text-xs font-mono text-[var(--text-tertiary)]">
+                      <div className="p-3 bg-[var(--bg-primary)] border border-[var(--border)] text-xs font-mono text-[var(--text-tertiary)]">
                         {layer.example}
                       </div>
                     </div>
@@ -229,28 +229,28 @@ export default function Module2Page() {
 
             <div className="not-prose my-8 space-y-6">
               {/* Without Protocol */}
-              <div className="p-5 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-3">Without a Collaboration Protocol:</p>
+              <div className="p-5 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-3">Without a Collaboration Protocol:</p>
                 <div className="text-sm text-[var(--text-secondary)] space-y-3">
                   <p><strong>You:</strong> "Write a LinkedIn post about a client win. They're a fintech startup and we helped them rebrand."</p>
                   <p><strong>AI:</strong> <em>[Generates generic "thrilled to announce" corporate-speak that sounds like every other agency]</em></p>
                   <p><strong>You:</strong> "Make it less corporate."</p>
                   <p><strong>AI:</strong> <em>[Swings too casual, loses professionalism]</em></p>
                   <p><strong>You:</strong> "No, more like... ugh, forget it, I'll just write it myself."</p>
-                  <p className="text-red-400 font-mono pt-2"><strong>Time wasted:</strong> 15 minutes. <strong>Outcome:</strong> Frustration.</p>
+                  <p className="text-[var(--muted)] font-mono pt-2"><strong>Time wasted:</strong> 15 minutes. <strong>Outcome:</strong> Frustration.</p>
                 </div>
               </div>
 
               {/* With Protocol */}
-              <div className="p-5 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="font-mono text-sm text-green-400 mb-3">With a Collaboration Protocol:</p>
+              <div className="p-5 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-id8-teal mb-3">With a Collaboration Protocol:</p>
                 <div className="text-sm text-[var(--text-secondary)] space-y-3">
                   <p><strong>You:</strong> "Help me write a LinkedIn post about the Fundbridge rebrand. Use my protocol for context."</p>
                   <p><em>[You paste or reference your 1-page protocol document]</em></p>
                   <p><strong>AI:</strong> <em>[Generates post in your voice, matches your style, leads with strategic insight over logo reveal, includes the humble-but-confident tone you prefer]</em></p>
                   <p><strong>You:</strong> "Perfect. Make it 20% shorter and add a question at the end to drive comments."</p>
                   <p><strong>AI:</strong> <em>[Delivers exactly what you wanted]</em></p>
-                  <p className="text-green-400 font-mono pt-2"><strong>Time saved:</strong> 12 minutes. <strong>Outcome:</strong> Published.</p>
+                  <p className="text-id8-teal font-mono pt-2"><strong>Time saved:</strong> 12 minutes. <strong>Outcome:</strong> Published.</p>
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@ export default function Module2Page() {
               Here's the exact structure to use. Fill it out once, refine it as you learn what works, and reuse it forever.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl font-mono text-sm">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-sm">
               <div className="text-id8-orange mb-4 font-bold">COLLABORATION PROTOCOL TEMPLATE</div>
               <div className="space-y-6 text-[var(--text-secondary)]">
                 <div>
@@ -312,7 +312,7 @@ export default function Module2Page() {
               Here's what Sarah's actual protocol looks like for Spark Creative:
             </p>
 
-            <div className="not-prose my-8 p-5 bg-[var(--bg-secondary)] border border-id8-orange/30 rounded-lg font-mono text-xs">
+            <div className="not-prose my-8 p-5 bg-[var(--bg-secondary)] border border-id8-orange/30 font-mono text-xs">
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <div>
                   <p className="text-id8-orange font-bold mb-1">IDENTITY</p>
@@ -339,8 +339,8 @@ export default function Module2Page() {
               Once built, your protocol becomes the first thing you share in any new AI conversation:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-3">Starting a new conversation:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-3">Starting a new conversation:</p>
               <div className="text-[var(--text-secondary)] space-y-2">
                 <p>"Here's my collaboration protocol. Use it to understand my context, style, and preferences."</p>
                 <p><em>[Paste protocol]</em></p>
@@ -372,7 +372,7 @@ export default function Module2Page() {
               <li>"My approach has evolved — time to update"</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-id8-orange/10 border border-id8-orange/30 rounded-lg">
+            <div className="not-prose my-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
               <p className="font-bold text-id8-orange mb-2">Pro Tip: Versioning</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Add a version number and date to your protocol (e.g., "v2.3 — Updated Jan 2026"). When you make meaningful updates, bump the version. This helps you track what's working and makes it easy to A/B test changes.
@@ -392,7 +392,7 @@ export default function Module2Page() {
                 { title: "Team Protocol", desc: "Shared context for your entire team, company voice, standards" },
                 { title: "Role-Specific Protocol", desc: "Different hats you wear: strategist, writer, manager" }
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold mb-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
                 </div>
@@ -404,14 +404,14 @@ export default function Module2Page() {
             </p>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <div className="flex items-center gap-2 mb-4">
                 <LayersIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">
                   Your Turn
                 </h2>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Collaboration Protocol v1.0</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Collaboration Protocol v1.0</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll create:</strong> A 1-2 page protocol document you can use in every AI conversation
@@ -419,28 +419,28 @@ export default function Module2Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">IDENTITY LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Write 3-5 sentences: Who you are, what you do, your industry, what makes your work unique.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">APPROACH LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Capture your methodology, core principles, and what "quality" means in your work.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">PREFERENCES LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Define your communication style, tone, format preferences, and what to avoid.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">PATTERNS LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List recurring deliverables and the structures/formats you default to.</p>
@@ -448,7 +448,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)] border border-[var(--border)]">
                 <p className="text-sm font-bold mb-2">Test it immediately:</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   After building v1.0, use it in your next AI conversation. Notice what works and what's missing. Update it. Version control matters.
@@ -457,7 +457,7 @@ export default function Module2Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

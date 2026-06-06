@@ -12,7 +12,7 @@ test.describe('StackShack - Layout', () => {
   test('should load with correct title', async ({ page }) => {
     await page.waitForLoadState('domcontentloaded');
     const title = await page.title();
-    expect(title).toMatch(/skills|stackshack/i);
+    expect(title).toMatch(/id8labs/i);
   });
 
   test('should display header and footer', async ({ page }) => {
@@ -124,7 +124,7 @@ test.describe('StackShack - Sidebar Filters', () => {
   test('should combine type and category filters', async ({ page }) => {
     // Navigate with both filters
     await page.goto('/skills?type=skills&category=code');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
     expect(page.url()).toContain('type=skills');
     expect(page.url()).toContain('category=code');
   });
@@ -169,7 +169,7 @@ test.describe('StackShack - Sidebar Widgets', () => {
   test('should expand How to Install when clicked', async ({ page }) => {
     await skillsPage.expandHelpSection('install');
     // Check if content is visible after expansion
-    const content = page.locator('text=Click any skill to view details');
+    const content = page.getByText(/Click any item to view details/i);
     await expect(content).toBeVisible();
   });
 
@@ -243,8 +243,8 @@ test.describe('StackShack - Navigation', () => {
     
     if (kitCount > 0) {
       await skillsPage.clickStarterKit(0);
-      await page.waitForLoadState('domcontentloaded');
-      
+      await page.waitForURL(/\/skills\/starter-kits/);
+
       expect(page.url()).toContain('/skills/starter-kits');
     }
   });

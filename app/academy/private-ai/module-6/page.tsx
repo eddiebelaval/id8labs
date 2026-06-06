@@ -59,7 +59,7 @@ export default function Module6Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-6">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -87,7 +87,7 @@ export default function Module6Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 6
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -97,34 +97,34 @@ export default function Module6Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Compliance Frameworks
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "We need to prove our AI is compliant with GDPR, HIPAA, and SOC2. Where do we even start?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Compliance Reality
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Private AI Simplifies Compliance — But Doesn't Eliminate It</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Private AI Simplifies Compliance — But Doesn't Eliminate It</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   One of the strongest arguments for private AI is compliance. By keeping data on-premises, you sidestep many of the regulatory headaches that come with cloud-based AI services.
@@ -145,7 +145,7 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <FileCheckIcon />
                   <div>
@@ -159,7 +159,7 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <FileCheckIcon />
                   <div>
@@ -173,7 +173,7 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <FileCheckIcon />
                   <div>
@@ -254,7 +254,7 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Access (Art. 15)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Individuals can request copies of their personal data.
@@ -264,7 +264,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Rectification (Art. 16)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Individuals can correct inaccurate data.
@@ -274,7 +274,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Erasure (Art. 17)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   "Right to be forgotten" — delete personal data on request.
@@ -284,7 +284,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Restrict Processing (Art. 18)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Temporarily stop processing while disputes are resolved.
@@ -294,7 +294,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Data Portability (Art. 20)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Receive data in structured, machine-readable format.
@@ -304,7 +304,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Object (Art. 21)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Object to processing for direct marketing or legitimate interests.
@@ -314,7 +314,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Rights Related to Automated Decision-Making (Art. 22)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Not to be subject to purely automated decisions with legal effects.
@@ -324,7 +324,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Right to Withdraw Consent (Art. 7.3)</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Withdraw consent as easily as it was given.
@@ -335,7 +335,7 @@ export default function Module6Page() {
               </div>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Critical challenge:</strong> The "Right to Erasure" is particularly difficult for AI. Once data is in a trained model, removing it requires retraining without that data. Many organizations maintain separate training datasets precisely for this reason.
               </p>
@@ -412,7 +412,7 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Security (Required)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Focus:</strong> Protection against unauthorized access<br />
@@ -421,7 +421,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Availability (Optional)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Focus:</strong> System uptime and reliability<br />
@@ -430,7 +430,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Processing Integrity (Optional)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Focus:</strong> System processes data accurately and completely<br />
@@ -439,7 +439,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Confidentiality (Optional)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Focus:</strong> Sensitive information protected as agreed<br />
@@ -448,7 +448,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Privacy (Optional)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Focus:</strong> Personal information collected, used, retained, disclosed per commitments<br />
@@ -468,7 +468,7 @@ export default function Module6Page() {
               Compliance is about proving what you do. Documentation is how you prove it:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="text-lg font-bold mb-4">Essential Compliance Documents</h3>
               <div className="space-y-4">
                 <div>
@@ -534,40 +534,40 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Pitfall #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Pitfall #1</p>
                 <p className="font-bold">Assuming On-Prem Equals Compliant</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Private AI solves data residency but not the other 90% of compliance requirements. You still need access controls, encryption, audit trails, etc.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Pitfall #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Pitfall #2</p>
                 <p className="font-bold">Incomplete Data Inventory</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Not documenting what data trains your models. When data subject requests arrive, you can't respond because you don't know what's in your training set.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Pitfall #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Pitfall #3</p>
                 <p className="font-bold">No Mechanism for Data Subject Rights</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Building AI without designing for GDPR rights (access, erasure, portability). Retrofitting these capabilities is expensive and time-consuming.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Pitfall #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Pitfall #4</p>
                 <p className="font-bold">Insufficient Audit Logging</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Logging only errors instead of all access. Auditors want to see who queried the AI, what data they accessed, and when. No logs = failed audit.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Pitfall #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Pitfall #5</p>
                 <p className="font-bold">Treating Compliance as One-Time Event</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Compliance is continuous. Regulations change, new vulnerabilities emerge, your system evolves. Annual reviews are minimum; quarterly is better.
@@ -576,11 +576,11 @@ export default function Module6Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Compliance Mapping</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Compliance Mapping</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> List of compliance frameworks that apply to your organization
@@ -588,7 +588,7 @@ export default function Module6Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Identify Applicable Frameworks (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -598,7 +598,7 @@ export default function Module6Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Map Current Controls to Requirements (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -608,7 +608,7 @@ export default function Module6Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Document Evidence Gaps (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -618,7 +618,7 @@ export default function Module6Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Create Remediation Timeline (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -628,7 +628,7 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A compliance mapping document that shows which requirements you meet, which you partially meet, and which are gaps. This is exactly what auditors ask for.
                 </p>
@@ -636,7 +636,7 @@ export default function Module6Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

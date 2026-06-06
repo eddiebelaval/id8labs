@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
-import { ArrowRight, Sparkles, TrendingUp, Clock, Package, CheckCircle } from 'lucide-react'
 import {
   getAllSkills,
   getAllCategories,
@@ -24,6 +23,16 @@ const StackBuilder = dynamic(() => import('@/components/stack/StackBuilder').the
 import { MarketplaceTabs, type MarketplaceTab } from '@/components/stackshack/MarketplaceTabs'
 import { MarketplaceSidebar } from '@/components/stackshack/MarketplaceSidebar'
 import { GenerateToolButton } from '@/components/tool-factory'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+} from '@/components/editorial'
 
 export const revalidate = 3600
 
@@ -101,66 +110,56 @@ export default async function StackShackMarketplacePage({
 
   const skillsCount = allSkills.filter((s) => !s.tags?.includes('agent')).length
   const agentsCount = allSkills.filter((s) => s.tags?.includes('agent')).length
+  const totalTools =
+    tabCounts.skills + tabCounts.commands + tabCounts.settings + tabCounts.plugins
 
   return (
-    <main className="relative">
+    <div className="relative bg-[var(--paper)]">
       <StackBuilder />
 
-      <section className="relative py-16 md:py-24 overflow-hidden bg-[var(--bg-secondary)]">
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: 'radial-gradient(var(--text-primary) 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
-        />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-[var(--id8-orange)]/5 blur-[100px] pointer-events-none rounded-full" />
+      {/* Masthead */}
+      <section className="border-b border-[var(--hair)] py-16 md:py-24">
+        <Container>
+          <div className="max-w-3xl mx-auto text-center">
+            <Kicker dot className="mb-6 justify-center">
+              The Lab · Marketplace · {totalTools}+ tools
+            </Kicker>
 
-        <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 bg-[var(--bg-primary)] text-[var(--id8-orange)] rounded-full text-sm font-semibold border border-[var(--id8-orange)]/20 shadow-lg shadow-[var(--id8-orange)]/10">
-              <Package className="w-4 h-4" />
-              <span>{tabCounts.skills + tabCounts.commands + tabCounts.settings + tabCounts.plugins}+ Tools</span>
-            </div>
-
-            <h1 className="mb-4">
+            <h1 className="mb-5">
               <StackShackLogo size="xl" />
             </h1>
 
-            <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-              Free skills, commands, and settings for{' '}
-              <span className="font-semibold text-[var(--text-primary)]">Claude Code</span>.
-              Build your stack, ship faster.
-            </p>
+            <Deck className="mx-auto max-w-2xl mb-9">
+              Free skills, commands, and settings for Claude Code. Build your
+              stack, ship faster.
+            </Deck>
 
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-7">
               <div className="w-full max-w-xl">
-                <Suspense fallback={<div className="h-14 bg-[var(--bg-secondary)] rounded-xl animate-pulse" />}>
+                <Suspense fallback={<div className="h-14 border border-[var(--hair)]" />}>
                   <SkillSearchBar placeholder="Search all tools..." />
                 </Suspense>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3 text-sm font-medium">
+            <div className="flex flex-wrap justify-center items-center gap-3">
               <GenerateToolButton variant="primary" />
-              <div className="flex items-center gap-2 px-4 py-2 bg-[var(--bg-primary)] text-[var(--text-secondary)] rounded-full border border-[var(--border)]">
-                <span className="w-2 h-2 bg-emerald-500 rounded-full" />
-                <span>100% Free</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-[var(--bg-primary)] text-[var(--text-secondary)] rounded-full border border-[var(--border)]">
-                <CheckCircle className="w-4 h-4 text-blue-500" />
-                <span>Verified</span>
-              </div>
+              <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-teal">
+                100% Free
+              </span>
+              <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
+                Verified
+              </span>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       <MarketplaceTabs activeTab={activeTab} counts={tabCounts} basePath={basePath} />
 
-      <section className="py-8 md:py-12">
-        <div className="container">
-          <div className="flex gap-8">
+      <section className="py-10 md:py-14">
+        <Container>
+          <div className="flex gap-10">
             <MarketplaceSidebar
               activeTab={activeTab}
               basePath={basePath}
@@ -187,18 +186,17 @@ export default async function StackShackMarketplacePage({
 
               {activeTab === 'commands' && (
                 <div>
-                  <div className="mb-6">
-                    <p className="text-[var(--text-secondary)]">
-                      Showing {filteredCommands.length} of {allCommands.length} commands
-                    </p>
+                  <div className="mb-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                    Showing <span className="text-[var(--ink)]">{filteredCommands.length}</span> of{' '}
+                    <span className="text-[var(--ink)]">{allCommands.length}</span> commands
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                     {filteredCommands.map((command) => (
                       <CommandCard key={command.id} command={command} />
                     ))}
                   </div>
                   {filteredCommands.length === 0 && (
-                    <div className="text-center py-12 text-[var(--text-secondary)]">
+                    <div className="text-center py-12 text-[var(--muted)]">
                       No commands found in this category.
                     </div>
                   )}
@@ -207,18 +205,17 @@ export default async function StackShackMarketplacePage({
 
               {activeTab === 'settings' && (
                 <div>
-                  <div className="mb-6">
-                    <p className="text-[var(--text-secondary)]">
-                      Showing {filteredSettings.length} of {allSettings.length} settings
-                    </p>
+                  <div className="mb-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                    Showing <span className="text-[var(--ink)]">{filteredSettings.length}</span> of{' '}
+                    <span className="text-[var(--ink)]">{allSettings.length}</span> settings
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                     {filteredSettings.map((setting) => (
                       <SettingCard key={setting.id} setting={setting} />
                     ))}
                   </div>
                   {filteredSettings.length === 0 && (
-                    <div className="text-center py-12 text-[var(--text-secondary)]">
+                    <div className="text-center py-12 text-[var(--muted)]">
                       No settings found in this category.
                     </div>
                   )}
@@ -227,23 +224,21 @@ export default async function StackShackMarketplacePage({
 
               {activeTab === 'plugins' && (
                 <div>
-                  <div className="mb-6">
-                    <h2 className="text-2xl font-bold mb-2">Claude Code Plugins</h2>
-                    <p className="text-[var(--text-secondary)]">
-                      Showing {filteredPlugins.length} of {allPlugins.length} plugins
-                      {' '}&bull;{' '}
-                      <span className="text-amber-500">
-                        {allPlugins.filter(p => p.official).length} Official
-                      </span>
-                    </p>
+                  <SectionHead
+                    title={<>Claude Code <em className="italic text-id8-orange">plugins</em></>}
+                    meta={`${allPlugins.filter(p => p.official).length} official`}
+                  />
+                  <div className="mt-5 mb-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                    Showing <span className="text-[var(--ink)]">{filteredPlugins.length}</span> of{' '}
+                    <span className="text-[var(--ink)]">{allPlugins.length}</span> plugins
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                     {filteredPlugins.map((plugin) => (
                       <PluginCard key={plugin.id} plugin={plugin} />
                     ))}
                   </div>
                   {filteredPlugins.length === 0 && (
-                    <div className="text-center py-12 text-[var(--text-secondary)]">
+                    <div className="text-center py-12 text-[var(--muted)]">
                       No plugins found in this category.
                     </div>
                   )}
@@ -252,46 +247,37 @@ export default async function StackShackMarketplacePage({
 
               {activeTab === 'kits' && (
                 <div>
-                  <div className="mb-6">
-                    <h2 className="text-2xl font-bold mb-2">Starter Kits</h2>
-                    <p className="text-[var(--text-secondary)]">
-                      Pre-configured tool bundles to supercharge your workflow. Copy the prompt into Claude Code to install.
-                    </p>
-                  </div>
+                  <SectionHead
+                    title={<>Starter <em className="italic text-id8-orange">kits</em></>}
+                    meta={`${collections.length} kits`}
+                  />
+                  <p className="mt-5 mb-8 text-[var(--muted)]">
+                    Pre-configured tool bundles for common workflows. Copy the prompt into Claude Code to install.
+                  </p>
                   {collections.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       {collections.map((kit) => {
                         const isConfiguration = kit.content_type === 'configuration'
                         return (
-                          <Link
-                            key={kit.id}
-                            href={`/stackshack/starter-kits/${kit.slug}`}
-                            className="group block p-6 rounded-xl border border-[var(--border)] hover:border-purple-500/50 hover:bg-purple-500/5 transition-all"
-                          >
-                            <div className="flex items-start gap-4">
-                              <span className="text-4xl">{kit.emoji || '📦'}</span>
-                              <div className="flex-1">
-                                <h3 className="text-xl font-semibold group-hover:text-purple-500 transition-colors">
-                                  {kit.name}
-                                </h3>
-                                <p className="text-[var(--text-secondary)] mt-1 line-clamp-2">
-                                  {kit.description}
-                                </p>
-                                <div className="flex items-center gap-4 mt-3 text-sm text-[var(--text-tertiary)]">
-                                  <span>{isConfiguration ? 'Configuration' : `${kit.skill_count || 0} skills included`}</span>
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
+                          <EditorialCard key={kit.id} href={`/stackshack/starter-kits/${kit.slug}`} className="h-full">
+                            <Kicker className="mb-3">
+                              {isConfiguration ? 'Configuration' : `${kit.skill_count || 0} skills`}
+                            </Kicker>
+                            <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">
+                              {kit.name}
+                            </h3>
+                            <p className="text-sm text-[var(--body)] leading-relaxed line-clamp-2">
+                              {kit.description}
+                            </p>
+                          </EditorialCard>
                         )
                       })}
                     </div>
                   ) : (
-                    <div className="text-center py-12">
-                      <Package className="w-16 h-16 mx-auto mb-4 text-[var(--text-secondary)]" />
-                      <h3 className="text-xl font-semibold mb-2">No Starter Kits Yet</h3>
-                      <p className="text-[var(--text-secondary)]">
-                        Check back soon for curated tool bundles!
+                    <div className="text-center py-16 border border-[var(--hair)]">
+                      <h3 className="font-[family-name:var(--font-display)] font-normal text-xl mb-2 text-[var(--ink)]">No starter kits yet</h3>
+                      <p className="text-[var(--muted)]">
+                        Check back soon for curated tool bundles.
                       </p>
                     </div>
                   )}
@@ -299,31 +285,30 @@ export default async function StackShackMarketplacePage({
               )}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="py-16 bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Build your stack. Ship faster.
-            </h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
+      <Rule />
+
+      <section className="py-16 md:py-20">
+        <Container narrow>
+          <div className="text-center">
+            <SectionHead
+              title={<>Build your stack. <em className="italic text-id8-orange">Ship faster.</em></>}
+              className="border-0 pb-0 justify-center"
+            />
+            <p className="mt-7 mb-9 text-lg text-[var(--muted)]">
               All tools are 100% free. Add to your stack and install in seconds.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/stackshack/starter-kits" className="btn btn-primary">
-                <Package className="w-5 h-5" />
-                Browse Starter Kits
-              </Link>
-              <Link href="/stackshack?tab=skills" className="btn btn-secondary">
-                <TrendingUp className="w-5 h-5" />
+            <div className="flex flex-col sm:flex-row gap-3.5 justify-center">
+              <EditorialButton href="/stackshack/starter-kits">Browse Starter Kits</EditorialButton>
+              <EditorialButton href="/stackshack?tab=skills" variant="secondary">
                 View All Skills
-              </Link>
+              </EditorialButton>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
-    </main>
+    </div>
   )
 }

@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { getAllCategories, getSkillCounts } from '@/lib/skills'
+import { Container, Kicker, Deck, EditorialCard } from '@/components/editorial'
 
 export const revalidate = 3600
 
@@ -10,42 +10,40 @@ export default async function CategoriesPage(): Promise<React.JSX.Element> {
   ])
 
   return (
-    <main className="min-h-screen py-12">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Browse by Category</h1>
-          <p className="text-lg text-[var(--text-secondary)]">
-            Explore {counts.published}+ skills organized by use case
-          </p>
-        </div>
+    <div className="bg-[var(--paper)] py-16 md:py-24">
+      <Container>
+        <header className="border-b border-[var(--hair)] pb-12 mb-12 text-center">
+          <Kicker dot className="mb-5 justify-center">Marketplace · Categories</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2.5rem,5vw,4rem)] mb-5">
+            Browse by <em className="italic text-id8-orange">category</em>
+          </h1>
+          <Deck className="mx-auto max-w-2xl">
+            Explore {counts.published}+ skills organized by use case.
+          </Deck>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {categories.map((category) => {
             const count = counts.byCategory[category.id] || 0
 
             return (
-              <Link
-                key={category.id}
-                href={`/stackshack/categories/${category.id}`}
-                className="group p-8 bg-[var(--bg-primary)] border border-[var(--border)] rounded-2xl hover:border-[var(--id8-orange)]/50 hover:shadow-xl transition-all"
-              >
-                <span className="text-5xl mb-4 block">{category.emoji || '📦'}</span>
-                <h2 className="text-xl font-bold mb-2 group-hover:text-[var(--id8-orange)] transition-colors">
+              <EditorialCard key={category.id} href={`/stackshack/categories/${category.id}`} className="h-full">
+                <h2 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">
                   {category.name}
                 </h2>
                 {category.description && (
-                  <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">
+                  <p className="text-sm text-[var(--body)] leading-relaxed mb-4 line-clamp-2">
                     {category.description}
                   </p>
                 )}
-                <p className="text-sm text-[var(--text-tertiary)]">
+                <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
                   {count} skill{count !== 1 ? 's' : ''}
                 </p>
-              </Link>
+              </EditorialCard>
             )
           })}
         </div>
-      </div>
-    </main>
+      </Container>
+    </div>
   )
 }

@@ -25,7 +25,7 @@ test.describe('Settings Browse Page', () => {
     // Check first card has expected elements
     const firstCard = settingCards.first()
     await expect(firstCard.locator('h3')).toBeVisible()
-    await expect(firstCard.getByText(/installs?/i)).toBeVisible()
+    await expect(firstCard.getByRole('button', { name: /Add/i })).toBeVisible()
   })
 
   test('should filter by category', async ({ page }) => {
@@ -77,12 +77,10 @@ test.describe('Settings Browse Page', () => {
     const firstCard = page.locator('article').first()
     const addButton = firstCard.getByRole('button', { name: /Add/i })
     await addButton.click()
-    
-    // Button should change to "In Stack"
+
+    // Button should change to "In Stack". (The /settings route does not mount
+    // the floating Stack Builder panel — that lives on /skills and /stackshack.)
     await expect(firstCard.getByText('In Stack')).toBeVisible()
-    
-    // Stack builder should appear
-    await expect(page.getByText('Stack Builder')).toBeVisible()
   })
 })
 
@@ -98,9 +96,9 @@ test.describe('Setting Detail Page', () => {
     
     // Should show setting details
     await expect(page.locator('h1')).toBeVisible()
-    await expect(page.getByText(/Installation/i)).toBeVisible()
-    await expect(page.getByText(/Configuration/i)).toBeVisible()
-    
+    await expect(page.getByRole('heading', { name: 'Installation', exact: true })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Configuration', exact: true })).toBeVisible()
+
     // Should show back button
     await expect(page.getByRole('link', { name: /Back to Settings/i })).toBeVisible()
   })
@@ -111,8 +109,8 @@ test.describe('Setting Detail Page', () => {
     const firstCard = page.locator('article').first()
     await firstCard.click()
     
-    // Check for configuration section
-    const configSection = page.getByText(/Configuration/i)
+    // Check for configuration section (the Configuration JSON card is always present)
+    const configSection = page.getByRole('heading', { name: 'Configuration', exact: true })
     await expect(configSection).toBeVisible()
   })
 
@@ -126,12 +124,9 @@ test.describe('Setting Detail Page', () => {
     // Click "Add to Stack" button
     const addButton = page.getByRole('button', { name: /Add to Stack/i }).first()
     await addButton.click()
-    
-    // Button should change
-    await expect(page.getByText('In Stack')).toBeVisible()
-    
-    // Stack builder should appear
-    await expect(page.getByText('Stack Builder')).toBeVisible()
+
+    // Button should change to "In Stack" (no floating panel on /settings detail)
+    await expect(page.getByText('In Stack').first()).toBeVisible()
   })
 
   test('should navigate back to settings list', async ({ page }) => {

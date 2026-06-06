@@ -1,276 +1,55 @@
 /**
- * Background Opacity Zones
+ * Background Zones — NEUTRALIZED for the editorial (paper) system.
  *
- * Content-aware opacity utilities for the LED halftone background.
- * Apply these classes to containers to control background visibility:
- * - Lower opacity for text-heavy areas (readability)
- * - Higher opacity for design-focused areas (visual impact)
+ * These classes previously layered dark overlays + frosted blur on top
+ * of an animated LED background. The editorial system is flat paper, so
+ * every zone is now a no-op: it keeps content stacking context but adds
+ * no overlay, blur, or color. Class names are preserved so the existing
+ * markup across the site keeps working without edits.
  */
 
-/* ========================================
-   Text Zone - Maximum Readability
-   ======================================== */
-
-/**
- * For text-heavy content areas
- * Background is subtle to not interfere with reading
- * REMOVED BLACK OVERLAY - just dims the dots behind text
- */
-.bg-zone-text {
+.bg-zone-text,
+.bg-zone-nav,
+.bg-zone-hero,
+.bg-zone-full,
+.bg-zone-gradient-top,
+.bg-zone-gradient-bottom,
+.attractor-frost,
+.attractor-text-bg {
   position: relative;
-}
-
-/* Text zones — no full-section overlay. Blur is applied per-element via .attractor-text-bg */
-.bg-zone-text > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ========================================
-   Navigation Zone - Moderate Presence
-   ======================================== */
-
-/**
- * For navigation bars and sidebars
- * Background visible but not distracting
- */
-.bg-zone-nav {
-  position: relative;
-}
-
-.bg-zone-nav::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 10, 10, 0.7) 0%,
-    rgba(26, 26, 26, 0.6) 100%
-  );
-  backdrop-filter: blur(4px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bg-zone-nav > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ========================================
-   Hero Zone - Bold Visual Impact
-   ======================================== */
-
-/**
- * For hero sections and landing areas
- * Background prominent for visual drama
- */
-.bg-zone-hero {
-  position: relative;
-}
-
-.bg-zone-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 11, 0.35);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bg-zone-hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ========================================
-   Full Zone - Maximum Background Intensity
-   ======================================== */
-
-/**
- * For pure design areas with minimal text
- * Background fully visible for maximum visual impact
- */
-.bg-zone-full {
-  position: relative;
-}
-
-.bg-zone-full::before {
-  content: '';
-  position: absolute;
-  inset: 0;
   background: transparent;
-  z-index: 0;
-  pointer-events: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
+.bg-zone-text::before,
+.bg-zone-nav::before,
+.bg-zone-hero::before,
+.bg-zone-full::before,
+.bg-zone-gradient-top::before,
+.bg-zone-gradient-bottom::before,
+.attractor-text-bg::before {
+  content: none;
+  display: none;
+}
+
+.bg-zone-text > *,
+.bg-zone-nav > *,
+.bg-zone-hero > *,
 .bg-zone-full > * {
   position: relative;
   z-index: 1;
 }
 
-/* ========================================
-   Accessibility Overrides
-   ======================================== */
-
-/**
- * For users who prefer reduced transparency
- * Ensure text remains readable
- */
-@media (prefers-contrast: high) {
-  .bg-zone-text::before,
-  .bg-zone-nav::before {
-    background: rgba(10, 10, 10, 0.95);
-  }
-
-  .bg-zone-hero::before {
-    background: rgba(10, 10, 10, 0.75);
-  }
-}
-
-/* ========================================
-   Responsive Adjustments
-   ======================================== */
-
-/**
- * Mobile devices get stronger overlays for better readability
- * on smaller screens
- */
-@media (max-width: 768px) {
-  .bg-zone-text::before {
-    background: linear-gradient(
-      135deg,
-      rgba(10, 10, 10, 0.9) 0%,
-      rgba(26, 26, 26, 0.85) 100%
-    );
-  }
-
-  .bg-zone-nav::before {
-    background: linear-gradient(
-      135deg,
-      rgba(10, 10, 10, 0.8) 0%,
-      rgba(26, 26, 26, 0.75) 100%
-    );
-  }
-
-  .bg-zone-hero::before {
-    background: linear-gradient(
-      135deg,
-      rgba(10, 10, 10, 0.6) 0%,
-      rgba(26, 26, 26, 0.5) 100%
-    );
-  }
-}
-
-/* ========================================
-   Utility Variants
-   ======================================== */
-
-/**
- * Gradient overlays for smooth transitions
- * between zones
- */
-.bg-zone-gradient-top {
-  position: relative;
-}
-
-.bg-zone-gradient-top::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 10, 0.9) 0%,
-    transparent 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bg-zone-gradient-bottom {
-  position: relative;
-}
-
-.bg-zone-gradient-bottom::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 10, 10, 0.9) 0%,
-    transparent 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* ========================================
-   Attractor Content Frost
-   ======================================== */
-
-/**
- * Global frosted layer for content below the hero.
- * Keeps the attractor as a soft ambient glow without
- * fighting text or UI elements.
- */
-.attractor-frost {
-  position: relative;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background-color: rgba(10, 10, 11, 0.82);
-}
-
-/* ========================================
-   Attractor Text Background
-   ======================================== */
-
-/**
- * Localized frosted blur behind text blocks only.
- * Does NOT cover the full section — lets the attractor
- * show through everywhere except directly behind text.
- */
-.attractor-text-bg {
-  position: relative;
-}
-
-.attractor-text-bg::before {
-  content: '';
-  position: absolute;
-  inset: -12px -20px;
-  background: rgba(10, 10, 11, 0.55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* ========================================
-   Glass Morphism Effects
-   ======================================== */
-
-/**
- * Modern glass effect for floating panels
- * Works beautifully with the LED background
- */
+/* Glass panels collapse to a hairline card on paper */
 .bg-zone-glass {
   position: relative;
-  background: rgba(26, 26, 26, 0.3);
-  backdrop-filter: blur(12px) saturate(150%);
-  border: 1px solid rgba(255, 107, 26, 0.1);
+  background: var(--paper);
+  backdrop-filter: none;
+  border: 1px solid var(--hair);
 }
 
 .bg-zone-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 107, 26, 0.05) 0%,
-    transparent 100%
-  );
-  border-radius: inherit;
-  pointer-events: none;
+  content: none;
+  display: none;
 }

@@ -1,12 +1,10 @@
 import Link from 'next/link'
-import { Zap, Terminal, Settings, Package, Puzzle } from 'lucide-react'
 
 export type MarketplaceTab = 'skills' | 'commands' | 'settings' | 'plugins' | 'kits'
 
 interface TabConfig {
   id: MarketplaceTab
   label: string
-  icon: React.ReactNode
   count?: number
 }
 
@@ -25,42 +23,17 @@ interface MarketplaceTabsProps {
 export function MarketplaceTabs({ activeTab = 'skills', counts, basePath = '/stackshack' }: MarketplaceTabsProps) {
 
   const tabs: TabConfig[] = [
-    {
-      id: 'skills',
-      label: 'Skills',
-      icon: <Zap className="w-4 h-4" />,
-      count: counts?.skills,
-    },
-    {
-      id: 'commands',
-      label: 'Commands',
-      icon: <Terminal className="w-4 h-4" />,
-      count: counts?.commands,
-    },
-    {
-      id: 'settings',
-      label: 'Settings',
-      icon: <Settings className="w-4 h-4" />,
-      count: counts?.settings,
-    },
-    {
-      id: 'plugins',
-      label: 'Plugins',
-      icon: <Puzzle className="w-4 h-4" />,
-      count: counts?.plugins,
-    },
-    {
-      id: 'kits',
-      label: 'Starter Kits',
-      icon: <Package className="w-4 h-4" />,
-      count: counts?.kits,
-    },
+    { id: 'skills', label: 'Skills', count: counts?.skills },
+    { id: 'commands', label: 'Commands', count: counts?.commands },
+    { id: 'settings', label: 'Settings', count: counts?.settings },
+    { id: 'plugins', label: 'Plugins', count: counts?.plugins },
+    { id: 'kits', label: 'Starter Kits', count: counts?.kits },
   ]
 
   return (
-    <div className="sticky top-0 z-30 bg-[var(--bg-primary)]/95 backdrop-blur-md border-b border-[var(--border)]">
-      <div className="container">
-        <nav className="flex items-center justify-center gap-1 overflow-x-auto scrollbar-hide py-2">
+    <div className="sticky top-0 z-30 bg-[var(--paper)] border-b border-[var(--rule)]">
+      <div className="mx-auto w-full px-6 md:px-9" style={{ maxWidth: '1200px' }}>
+        <nav className="flex items-center justify-center gap-7 overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id
             const href = tab.id === 'skills' ? basePath : basePath + '?tab=' + tab.id
@@ -70,23 +43,15 @@ export function MarketplaceTabs({ activeTab = 'skills', counts, basePath = '/sta
                 key={tab.id}
                 href={href}
                 className={
-                  'flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ' +
+                  'flex items-center gap-2 py-4 -mb-px border-b-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] whitespace-nowrap transition-colors duration-150 ' +
                   (isActive
-                    ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] border border-[var(--id8-orange)]/30'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]')
+                    ? 'border-id8-orange text-id8-orange'
+                    : 'border-transparent text-[var(--muted)] hover:text-[var(--ink)]')
                 }
               >
-                {tab.icon}
                 <span>{tab.label}</span>
                 {tab.count !== undefined && (
-                  <span
-                    className={
-                      'px-1.5 py-0.5 text-xs rounded-full ' +
-                      (isActive
-                        ? 'bg-[var(--id8-orange)]/20 text-[var(--id8-orange)]'
-                        : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)]')
-                    }
-                  >
+                  <span className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--muted)]">
                     {tab.count}
                   </span>
                 )}

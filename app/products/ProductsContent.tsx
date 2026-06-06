@@ -1,9 +1,15 @@
-'use client'
-
-import { m } from '@/components/motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ExternalLink, Check, Package, Wrench, Zap, Terminal, Bot } from 'lucide-react'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+} from '@/components/editorial'
 
 // ============================================
 // FLAGSHIP PRODUCTS - Full feature showcase
@@ -20,7 +26,6 @@ interface FlagshipProduct {
   image: string
   features: string[]
   specs: { label: string; value: string }[]
-  accentColor: string
 }
 
 const flagshipProducts: FlagshipProduct[] = [
@@ -46,7 +51,6 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'AI Model', value: 'Claude' },
       { label: 'Price', value: 'Free' },
     ],
-    accentColor: 'orange',
   },
   {
     name: 'Parallax',
@@ -70,7 +74,6 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'AI Model', value: 'Claude Opus' },
       { label: 'Price', value: 'Free + Pro' },
     ],
-    accentColor: 'amber',
   },
   {
     name: 'Rune',
@@ -94,7 +97,6 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'AI Model', value: 'Claude (3 tiers)' },
       { label: 'License', value: 'MIT' },
     ],
-    accentColor: 'orange',
   },
   {
     name: 'HOMER',
@@ -118,7 +120,6 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'AI Model', value: 'Claude' },
       { label: 'Price', value: 'Free + Pro' },
     ],
-    accentColor: 'blue',
   },
   {
     name: 'DeepStack',
@@ -142,7 +143,6 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'AI Model', value: 'Claude' },
       { label: 'Price', value: 'Free' },
     ],
-    accentColor: 'green',
   },
   {
     name: 'MILO',
@@ -166,11 +166,8 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'Integration', value: 'Claude Code' },
       { label: 'Price', value: 'Open Source' },
     ],
-    accentColor: 'emerald',
   },
 ]
-
-
 
 // ============================================
 // IN DEVELOPMENT - Coming soon products
@@ -207,144 +204,92 @@ const comingSoonProducts: ComingSoonProduct[] = [
 
 function FlagshipCard({ product, index }: { product: FlagshipProduct; index: number }) {
   const isEven = index % 2 === 0
-
-  const colorClasses = {
-    orange: 'border-[var(--id8-orange)]/30 shadow-[0_0_30px_rgba(255,107,0,0.15)]',
-    green: 'border-green-500/30 shadow-[0_0_30px_rgba(34,197,94,0.15)]',
-    emerald: 'border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)]',
-    blue: 'border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.15)]',
-    amber: 'border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.15)]',
-  }
+  const Wrapper = product.external ? 'a' : Link
+  const wrapperProps = product.external
+    ? { href: product.link, target: '_blank', rel: 'noopener noreferrer' }
+    : { href: product.link }
 
   return (
-    <m.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:p-10 hover:bg-white/[0.04] transition-all"
-    >
-      <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+    <article className="border border-[var(--hair)] transition-colors duration-200 hover:border-[var(--hair-hard)]">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Content */}
-        <div className={!isEven ? 'lg:order-2' : ''}>
-          {/* Status Badge */}
-          <div className="flex items-center gap-3 mb-4">
-            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-              product.status === 'beta'
-                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-            }`}>
-              <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${
-                product.status === 'beta' ? 'bg-amber-500' : 'bg-emerald-500'
-              }`} />
-              {product.status === 'beta' ? product.version : `${product.version} • Live`}
+        <div className={`p-8 md:p-10 ${!isEven ? 'lg:order-2' : ''}`}>
+          <div className="flex items-baseline gap-3 mb-5">
+            <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+              {String(index + 1).padStart(2, '0')}
             </span>
+            <Kicker dot>
+              {product.status === 'beta' ? product.version : `${product.version} · Live`}
+            </Kicker>
           </div>
 
-          {/* Name & Tagline */}
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-[var(--id8-orange)] transition-colors">
+          <h3 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-3xl md:text-4xl text-[var(--ink)] mb-1">
             {product.name}
           </h3>
-          <p className="text-lg text-[var(--id8-orange)]/80 font-medium mb-4">{product.tagline}</p>
+          <p className="font-[family-name:var(--font-serif)] italic text-lg text-[var(--muted)] mb-5">
+            {product.tagline}
+          </p>
 
-          {/* Description */}
-          <p className="text-zinc-400 leading-relaxed mb-6">{product.description}</p>
+          <p className="text-[var(--body)] leading-relaxed mb-6">{product.description}</p>
 
-          {/* Features */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 mb-6">
             {product.features.map((feature) => (
-              <div key={feature} className="flex items-center gap-2 text-sm text-zinc-300">
-                <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+              <li key={feature} className="flex items-baseline gap-2 text-sm text-[var(--body)]">
+                <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&rarr;</span>
                 {feature}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          {/* Specs */}
-          <div className="flex flex-wrap gap-4 mb-6 text-sm">
-            {product.specs.map((spec) => (
-              <div key={spec.label} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                <span className="text-zinc-500">{spec.label}:</span>{' '}
-                <span className="text-white font-medium">{spec.value}</span>
-              </div>
-            ))}
-          </div>
+          <MetaRow
+            className="mb-7"
+            items={product.specs.map((spec) => ({ value: spec.value, label: spec.label.toLowerCase() }))}
+          />
 
-          {/* CTA */}
-          <div className="flex items-center gap-2 text-[var(--id8-orange)] font-semibold group-hover:gap-3 transition-all">
-            {product.external ? 'Launch App' : 'Learn More'}
-            {product.external ? (
-              <ExternalLink className="w-4 h-4" />
-            ) : (
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            )}
-          </div>
+          <Wrapper
+            {...wrapperProps}
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.22em] text-id8-orange no-underline"
+          >
+            {product.external ? 'Launch App' : 'Learn More'} &rarr;
+          </Wrapper>
         </div>
 
         {/* Image */}
-        <div className={`relative ${!isEven ? 'lg:order-1' : ''}`}>
-          <div className={`relative w-full h-64 md:h-80 rounded-xl overflow-hidden border-2 ${colorClasses[product.accentColor as keyof typeof colorClasses]}`}>
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          </div>
+        <div className={`relative min-h-[16rem] lg:min-h-0 border-t lg:border-t-0 ${isEven ? 'lg:border-l' : 'lg:border-r lg:order-1'} border-[var(--hair)]`}>
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
         </div>
       </div>
-
-      {/* Click target */}
-      {product.external ? (
-        <a href={product.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10">
-          <span className="sr-only">Go to {product.name}</span>
-        </a>
-      ) : (
-        <Link href={product.link} className="absolute inset-0 z-10">
-          <span className="sr-only">Go to {product.name}</span>
-        </Link>
-      )}
-    </m.div>
+    </article>
   )
 }
 
-
-
 function ComingSoonCard({ product }: { product: ComingSoonProduct }) {
-  const statusStyles = {
-    development: {
-      label: 'In Development',
-      className: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-    },
-    exploration: {
-      label: 'Exploring',
-      className: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
-    },
-  }
-  const status = statusStyles[product.status]
-
-  return (
-    <div className="group relative flex flex-col p-5 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all">
-      <div className="flex items-start justify-between mb-3">
-        <h3 className="text-lg font-bold text-white group-hover:text-[var(--id8-orange)] transition-colors">
+  const label = product.status === 'development' ? 'In Development' : 'Exploring'
+  const inner = (
+    <>
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">
           {product.name}
         </h3>
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-wider border ${status.className}`}>
-          {status.label}
+        <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
+          {label}
         </span>
       </div>
-      <p className="text-sm text-[var(--id8-orange)]/70 mb-2">{product.tagline}</p>
-      <p className="text-sm text-zinc-500 leading-relaxed">{product.description}</p>
-
-      {product.link && (
-        <Link href={product.link} className="absolute inset-0">
-          <span className="sr-only">Learn more about {product.name}</span>
-        </Link>
-      )}
-    </div>
+      <p className="font-[family-name:var(--font-serif)] italic text-sm text-[var(--muted)] mb-2">{product.tagline}</p>
+      <p className="text-sm text-[var(--body)] leading-relaxed">{product.description}</p>
+    </>
   )
+
+  if (product.link) {
+    return <EditorialCard href={product.link} className="h-full">{inner}</EditorialCard>
+  }
+  return <EditorialCard className="h-full">{inner}</EditorialCard>
 }
 
 // ============================================
@@ -353,181 +298,102 @@ function ComingSoonCard({ product }: { product: ComingSoonProduct }) {
 
 export default function ProductsContent() {
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] px-6 py-24">
-      <div className="max-w-[1200px] mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="group inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white mb-12 transition-colors"
-        >
-          <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
-          Back to home
-        </Link>
-
-        {/* Header */}
-        <m.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-16"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6">
-            Products<span className="text-[var(--id8-orange)]">.</span>
+    <div className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">The Lab · Products</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            Primitive chains, <em className="italic text-id8-orange">shipped</em>.
           </h1>
-          <p className="text-xl md:text-2xl text-zinc-400 leading-relaxed">
-            Primitive chains shipping from the lab. Each one is the architecture applied to a specific domain.
-            <span className="text-zinc-300"> Everything battle-tested in production.</span>
-          </p>
-        </m.header>
+          <Deck className="max-w-2xl mb-9">
+            Each product is the architecture applied to a specific domain. Everything battle-tested
+            in production.
+          </Deck>
+          <EditorialButton href="/" variant="ghost">
+            Back to home
+          </EditorialButton>
+          <MetaRow
+            className="mt-12 border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: '6', label: 'flagship products' },
+              { value: '2', label: 'in development' },
+              { value: '383', label: 'free skills & agents' },
+            ]}
+          />
+        </header>
 
-        {/* ===== FLAGSHIP PRODUCTS ===== */}
-        <section className="mb-24">
-          <m.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-8"
-          >
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
-              <Zap className="w-5 h-5" />
-            </div>
-            <h2 className="text-2xl font-bold text-white">Flagship Products</h2>
-            <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              Live Now
-            </span>
-          </m.div>
-
-          <div className="space-y-8">
+        {/* Flagship Products */}
+        <section className="py-16">
+          <SectionHead title={<>Flagship <em className="italic text-id8-orange">products</em></>} meta="Live now" />
+          <div className="mt-10 space-y-8">
             {flagshipProducts.map((product, index) => (
               <FlagshipCard key={product.name} product={product} index={index} />
             ))}
           </div>
         </section>
 
-        {/* ===== STACKSHACK - FREE SKILLS & AGENTS ===== */}
-        <section className="mb-24">
-          <m.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="relative overflow-hidden rounded-3xl border border-[var(--id8-orange)]/30 bg-gradient-to-br from-[var(--id8-orange)]/10 via-[var(--id8-orange)]/5 to-transparent p-8 md:p-12"
-          >
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-[var(--id8-orange)]/20 text-[var(--id8-orange)]">
-                  <Bot className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-white" style={{ fontFamily: 'var(--font-press-start)' }}>
-                    <span className="text-white">STACK</span>
-                    <span className="text-[#FF6B00]">SHACK</span>
-                  </h2>
-                  <span className="text-sm text-[var(--id8-orange)]/80 font-medium">Free Skills & Agents for Claude</span>
-                </div>
-              </div>
+        <Rule />
 
-              <div className="space-y-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                  <span className="text-white font-semibold">383 skills & agents</span>
-                  <span className="text-zinc-400">— all 100% free</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                  <span className="text-white font-semibold">10 starter packs</span>
-                  <span className="text-zinc-400">— curated for common workflows</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                  <span className="text-white font-semibold">Autonomous agents</span>
-                  <span className="text-zinc-400">— ready to deploy in Claude Code</span>
-                </div>
-              </div>
+        {/* StackShack */}
+        <section className="py-16">
+          <EditorialCard featured>
+            <Kicker className="mb-3">StackShack</Kicker>
+            <h2 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-3xl md:text-4xl text-[var(--ink)] mb-2">
+              Free skills &amp; agents for Claude
+            </h2>
+            <p className="font-[family-name:var(--font-serif)] italic text-lg text-[var(--muted)] mb-7 max-w-2xl">
+              Everything you need to build your AI workflow stack. No paywalls, no subscriptions&mdash;just
+              tools that work.
+            </p>
 
-              <p className="text-lg text-zinc-300 mb-8 leading-relaxed">
-                Everything you need to build your AI workflow stack. No paywalls, no subscriptions—just tools that work.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/stackshack"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[var(--id8-orange)] text-white font-semibold rounded-xl hover:bg-[var(--id8-orange)]/90 transition-all hover:scale-105 active:scale-95"
-                >
-                  Browse StackShack
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/stackshack/starter-kits"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all border border-white/10"
-                >
-                  <Package className="w-4 h-4" />
-                  View Starter Kits
-                </Link>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)] mb-8">
+              {[
+                { value: '383', label: 'skills & agents — all 100% free' },
+                { value: '10', label: 'starter packs — curated for common workflows' },
+                { value: '∞', label: 'autonomous agents — ready in Claude Code' },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-[var(--paper)] p-6">
+                  <div className="font-[family-name:var(--font-display)] font-normal text-4xl text-[var(--ink)] mb-1">{stat.value}</div>
+                  <p className="text-sm text-[var(--muted)]">{stat.label}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Decorative element */}
-            <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[var(--id8-orange)]/10 rounded-full blur-3xl pointer-events-none" />
-          </m.div>
+            <div className="flex flex-col sm:flex-row gap-3.5">
+              <EditorialButton href="/stackshack">Browse StackShack</EditorialButton>
+              <EditorialButton href="/stackshack/starter-kits" variant="secondary">
+                View Starter Kits
+              </EditorialButton>
+            </div>
+          </EditorialCard>
         </section>
 
-        {/* ===== IN DEVELOPMENT ===== */}
-        <section className="mb-24">
-          <m.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 mb-3"
-          >
-            <div className="p-2 rounded-lg bg-violet-500/10 text-violet-400">
-              <Wrench className="w-5 h-5" />
-            </div>
-            <h2 className="text-2xl font-bold text-white">In Development</h2>
-          </m.div>
-          <p className="text-zinc-400 ml-12 mb-8">
-            What's cooking in the lab. Building in public.
-          </p>
+        <Rule />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* In Development */}
+        <section className="py-16">
+          <SectionHead title="In development" meta="Building in public" />
+          <p className="mt-8 mb-10 text-lg text-[var(--muted)]">What&apos;s cooking in the lab.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {comingSoonProducts.map((product) => (
               <ComingSoonCard key={product.name} product={product} />
             ))}
           </div>
         </section>
 
-        {/* ===== CUSTOM BUILDS CTA ===== */}
-        <m.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl border border-[var(--id8-orange)]/20 bg-[var(--id8-orange)]/5 p-8 md:p-12 md:py-20 text-center"
-        >
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[var(--id8-orange)]/5 to-transparent pointer-events-none" />
+        <Rule />
 
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] mb-6">
-              <Terminal className="w-8 h-8" />
-            </div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Need Something Custom?</h2>
-
-            <p className="text-lg text-zinc-300 mb-8 leading-relaxed">
-              Every tool here started as a real problem I faced. If you've got a workflow that's
-              held together by duct tape and browser tabs, I can probably build something better.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="group relative inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--id8-orange)] text-white font-semibold rounded-full hover:bg-[var(--id8-orange)]/90 transition-all hover:scale-105 active:scale-95"
-              >
-                Let's Talk
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </m.section>
-      </div>
+        {/* Custom Builds CTA */}
+        <section className="py-16 text-center">
+          <SectionHead title={<>Need something <em className="italic text-id8-orange">custom</em>?</>} className="border-0 pb-0 justify-center" />
+          <p className="mt-7 mb-9 text-lg text-[var(--muted)] max-w-2xl mx-auto">
+            Every tool here started as a real problem I faced. If you&apos;ve got a workflow that&apos;s
+            held together by duct tape and browser tabs, I can probably build something better.
+          </p>
+          <EditorialButton href="/contact">Let&apos;s Talk</EditorialButton>
+        </section>
+      </Container>
     </div>
   )
 }

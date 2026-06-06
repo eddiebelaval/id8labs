@@ -1,78 +1,20 @@
 'use client'
 
-import { m } from '@/components/motion'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Icons
-const DownloadIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-    <polyline points="7 10 12 15 17 10" />
-    <line x1="12" y1="15" x2="12" y2="3" />
-  </svg>
-)
-
-const CheckIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
-
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M12 5l7 7-7 7" />
-  </svg>
-)
-
-// Icons for challenges
-const RocketIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-  </svg>
-)
-
-const ShareIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="18" cy="5" r="3" />
-    <circle cx="6" cy="12" r="3" />
-    <circle cx="18" cy="19" r="3" />
-    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-  </svg>
-)
-
-const DeepDiveIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2v20M2 12h20M12 2a10 10 0 0 1 10 10M12 2a10 10 0 0 0-10 10" />
-  </svg>
-)
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  EditorialButton,
+} from '@/components/editorial'
 
 // Action Plan Data
 const actionPlans: Record<string, {
   level: string
   score: string
   tagline: string
-  color: string
-  colorLight: string
   insight: string
   insightExamples?: { wrong: string; right: string }
   firstChallenge: {
@@ -98,8 +40,6 @@ const actionPlans: Record<string, {
     level: 'Explorer',
     score: '5-8',
     tagline: "You're starting fresh. That's an advantage - no bad habits to unlearn.",
-    color: '#3B82F6',
-    colorLight: 'rgba(59, 130, 246, 0.1)',
     insight: "Claude Code isn't a chatbot - it's a junior developer who reads everything before typing.",
     insightExamples: {
       wrong: '"How do I parse JSON in Node.js?"',
@@ -169,8 +109,6 @@ const actionPlans: Record<string, {
     level: 'Adopter',
     score: '9-13',
     tagline: "You use AI daily, but it's still ask-answer-copy-paste. Time to delegate.",
-    color: '#F59E0B',
-    colorLight: 'rgba(245, 158, 11, 0.1)',
     insight: 'The shift from assistance to delegation is the shift from "help me with X" to "do X and show me the result."',
     firstChallenge: {
       time: '10 min',
@@ -236,8 +174,6 @@ const actionPlans: Record<string, {
     level: 'Practitioner',
     score: '14-17',
     tagline: "You're ahead of 90% of developers. Now make it reliable, secure, and repeatable.",
-    color: '#10B981',
-    colorLight: 'rgba(16, 185, 129, 0.1)',
     insight: "Multi-agent isn't about more agents - it's about specialized agents with clear handoffs.",
     firstChallenge: {
       time: '15 min',
@@ -303,8 +239,6 @@ const actionPlans: Record<string, {
     level: 'Pioneer',
     score: '18-20',
     tagline: "You're not reading this for instructions. You're reading it to see if I know what I'm talking about.",
-    color: '#FF6B35',
-    colorLight: 'rgba(255, 107, 53, 0.1)',
     insight: "The bottleneck isn't technology - it's shared knowledge.",
     firstChallenge: {
       time: '30 min',
@@ -385,358 +319,200 @@ export default function ActionPlanPage({ params }: { params: { level: string } }
   const isPioneer = level.toLowerCase() === 'pioneer'
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-zone-text">
-        <div className="container">
-          <m.div
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-            className="max-w-4xl"
-          >
-            <m.div variants={fadeUp} className="flex items-center gap-4 mb-6">
-              <span
-                className="text-sm font-mono uppercase tracking-widest px-3 py-1 rounded-md"
-                style={{ backgroundColor: plan.colorLight, color: plan.color }}
-              >
-                {plan.level} Level
-              </span>
-              <span className="text-sm font-mono text-[var(--text-tertiary)]">
-                Score: {plan.score}
-              </span>
-            </m.div>
+    <div className="min-h-screen bg-[var(--paper)]">
+      {/* Hero */}
+      <section className="pt-20 pb-12">
+        <Container>
+          <Kicker dot>{plan.level} Level · Score {plan.score}</Kicker>
 
-            <m.h1
-              variants={fadeUp}
-              className="text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] font-bold tracking-tight mb-6"
+          <h1 className="mt-6 max-w-4xl font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.5rem,6vw,4rem)]">
+            {plan.level} <em className="italic text-id8-orange">Action Plan</em>
+          </h1>
+
+          <Deck className="mt-7 max-w-2xl">{plan.tagline}</Deck>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <EditorialButton
+              href={`/resources/action-plans/${level.toLowerCase()}.pdf`}
+              variant="primary"
+              external
             >
-              {plan.level} Action Plan
-            </m.h1>
+              Download PDF
+            </EditorialButton>
+            <EditorialButton href="#roadmap" variant="secondary">
+              View Roadmap
+            </EditorialButton>
+          </div>
 
-            <m.p
-              variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] max-w-2xl mb-8 leading-relaxed"
-            >
-              {plan.tagline}
-            </m.p>
-
-            <m.div variants={fadeUp} className="flex gap-4 flex-wrap">
-              <a
-                href={`/resources/action-plans/${level.toLowerCase()}.pdf`}
-                className="btn btn-primary hover-lift group inline-flex items-center gap-2"
-                download
-              >
-                <DownloadIcon />
-                Download PDF
-              </a>
-              <Link
-                href="#roadmap"
-                className="btn btn-secondary hover-lift"
-              >
-                View Roadmap
-              </Link>
-            </m.div>
-          </m.div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+          <Rule className="mt-10" />
+        </Container>
       </section>
 
-      {/* The One Thing Section */}
-      <section className="section-spacing border-b border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sm font-mono uppercase tracking-widest text-[var(--text-tertiary)] mb-6">
+      {/* The One Thing */}
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container narrow>
+          <div className="text-center">
+            <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)] mb-8">
               The One Thing to Understand
             </p>
-            <blockquote
-              className="text-2xl md:text-3xl font-bold leading-snug mb-8 relative"
-              style={{ color: plan.color }}
-            >
-              <span className="absolute -left-4 -top-2 text-6xl opacity-20">"</span>
+            <blockquote className="font-[family-name:var(--font-display)] font-normal italic text-[var(--ink)] text-[clamp(1.5rem,3.5vw,2.25rem)] leading-snug border-l-2 border-id8-orange pl-6 text-left">
               {plan.insight}
-              <span className="absolute -right-4 bottom-0 text-6xl opacity-20">"</span>
             </blockquote>
 
             {plan.insightExamples && (
-              <div className="grid md:grid-cols-2 gap-4 mt-8">
-                <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
-                  <p className="text-sm font-mono text-red-400 mb-2">Don't do this</p>
-                  <p className="text-[var(--text-secondary)]">{plan.insightExamples.wrong}</p>
+              <div className="grid md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)] mt-8 text-left">
+                <div className="bg-[var(--paper)] p-4">
+                  <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">Don&apos;t do this</p>
+                  <p className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)]">{plan.insightExamples.wrong}</p>
                 </div>
-                <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-                  <p className="text-sm font-mono text-green-400 mb-2">Do this</p>
-                  <p className="text-[var(--text-secondary)]">{plan.insightExamples.right}</p>
+                <div className="bg-[var(--paper-shadow)] p-4 border-t-2 md:border-t-0 md:border-l-2 border-id8-orange">
+                  <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-2">Do this</p>
+                  <p className="font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">{plan.insightExamples.right}</p>
                 </div>
               </div>
             )}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Your First Challenge */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="max-w-3xl mx-auto"
-          >
-            <m.div variants={fadeUp} className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4" style={{ backgroundColor: plan.colorLight }}>
-                <span style={{ color: plan.color }}><RocketIcon /></span>
-                <span className="text-sm font-mono" style={{ color: plan.color }}>{plan.firstChallenge.time}</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-                Your First Challenge
-              </h2>
-            </m.div>
-
-            <m.div variants={fadeUp} className="card border-2" style={{ borderColor: plan.colorLight }}>
-              <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                {plan.firstChallenge.task}
-              </p>
-
-              <div className="p-4 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]">
-                <div className="flex items-start gap-3">
-                  <span style={{ color: plan.color }} className="mt-1 flex-shrink-0"><ShareIcon /></span>
-                  <div>
-                    <p className="text-sm font-mono text-[var(--text-tertiary)] mb-2">Share your win:</p>
-                    <p className="text-sm text-[var(--text-secondary)] italic">"{plan.firstChallenge.sharePrompt}"</p>
-                  </div>
-                </div>
-              </div>
-            </m.div>
-          </m.div>
-        </div>
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container narrow>
+          <SectionHead title="Your First Challenge" meta={plan.firstChallenge.time} className="mb-8" />
+          <div className="border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-8">
+            <p className="text-lg text-[var(--body)] leading-[1.7] mb-6">{plan.firstChallenge.task}</p>
+            <div className="border border-[var(--hair)] bg-[var(--paper)] p-4">
+              <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">Share your win</p>
+              <p className="font-[family-name:var(--font-serif)] italic text-sm text-[var(--body)]">&quot;{plan.firstChallenge.sharePrompt}&quot;</p>
+            </div>
+          </div>
+        </Container>
       </section>
 
       {/* 30-Day Roadmap */}
-      <section id="roadmap" className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="text-center mb-12">
-            <p className="text-sm font-mono uppercase tracking-widest mb-4" style={{ color: plan.color }}>
-              Your 30-Day Focus
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Week by Week Roadmap
-            </h2>
-          </div>
-
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
+      <section id="roadmap" className="py-16 border-t border-[var(--rule)]">
+        <Container>
+          <SectionHead title="Week by Week Roadmap" meta="Your 30-Day Focus" className="mb-8" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {plan.weeks.map((week, index) => (
-              <m.div
-                key={index}
-                variants={fadeUp}
-                className="card"
-              >
-                <div
-                  className="text-xs font-mono uppercase tracking-widest mb-3"
-                  style={{ color: plan.color }}
-                >
-                  Week {index + 1}
-                </div>
-                <h3 className="text-xl font-bold mb-4">{week.title}</h3>
+              <div key={index} className="bg-[var(--paper)] p-6">
+                <p className="font-[family-name:var(--font-mono)] text-xs text-id8-orange mb-3">Week {index + 1}</p>
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-4">{week.title}</h3>
                 <ul className="space-y-3">
                   {week.tasks.map((task, taskIndex) => (
-                    <li key={taskIndex} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
-                      <span style={{ color: plan.color }} className="mt-0.5 flex-shrink-0">
-                        <CheckIcon />
-                      </span>
+                    <li key={taskIndex} className="flex items-start gap-3 text-sm text-[var(--body)]">
+                      <span className="text-id8-orange flex-shrink-0">&rarr;</span>
                       <span>{task}</span>
                     </li>
                   ))}
                 </ul>
-              </m.div>
+              </div>
             ))}
-          </m.div>
-        </div>
+          </div>
+        </Container>
       </section>
 
       {/* Want to Go Deeper? */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="max-w-3xl mx-auto"
-          >
-            <m.div variants={fadeUp} className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4" style={{ backgroundColor: plan.colorLight }}>
-                <span style={{ color: plan.color }}><DeepDiveIcon /></span>
-                <span className="text-sm font-mono" style={{ color: plan.color }}>{plan.deeperChallenge.time}</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-                Want to Go Deeper?
-              </h2>
-            </m.div>
-
-            <m.div variants={fadeUp} className="card">
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">The Challenge</h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed">
-                  {plan.deeperChallenge.task}
-                </p>
-              </div>
-
-              <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: plan.colorLight }}>
-                <h4 className="text-sm font-mono mb-2" style={{ color: plan.color }}>What You'll Build</h4>
-                <p className="text-[var(--text-primary)]">
-                  {plan.deeperChallenge.outcome}
-                </p>
-              </div>
-
-              <div className="p-4 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]">
-                <div className="flex items-start gap-3">
-                  <span style={{ color: plan.color }} className="mt-1 flex-shrink-0"><ShareIcon /></span>
-                  <div>
-                    <p className="text-sm font-mono text-[var(--text-tertiary)] mb-2">Share your work:</p>
-                    <p className="text-sm text-[var(--text-secondary)] italic">"{plan.deeperChallenge.sharePrompt}"</p>
-                  </div>
-                </div>
-              </div>
-            </m.div>
-          </m.div>
-        </div>
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container narrow>
+          <SectionHead title="Want to Go Deeper?" meta={plan.deeperChallenge.time} className="mb-8" />
+          <div className="border border-[var(--hair)] p-7">
+            <div className="mb-6">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-3">The Challenge</h3>
+              <p className="text-[var(--body)] leading-[1.7]">{plan.deeperChallenge.task}</p>
+            </div>
+            <div className="border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-4 mb-6">
+              <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-2">What You&apos;ll Build</p>
+              <p className="text-[var(--ink)]">{plan.deeperChallenge.outcome}</p>
+            </div>
+            <div className="border border-[var(--hair)] bg-[var(--paper-shadow)] p-4">
+              <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">Share your work</p>
+              <p className="font-[family-name:var(--font-serif)] italic text-sm text-[var(--body)]">&quot;{plan.deeperChallenge.sharePrompt}&quot;</p>
+            </div>
+          </div>
+        </Container>
       </section>
 
       {/* Pioneer-only: What's Coming */}
       {isPioneer && (
-        <section className="section-spacing border-t border-[var(--border)]">
-          <div className="container">
-            <div className="text-center mb-12">
-              <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-                2025-2026 Trends
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                What's Coming
-              </h2>
-            </div>
-
-            <div className="max-w-3xl mx-auto">
-              <div className="overflow-hidden rounded-lg border border-[var(--border)]">
-                <table className="w-full">
-                  <thead className="bg-[var(--bg-secondary)]">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-sm font-mono uppercase tracking-wider text-[var(--text-tertiary)]">Trend</th>
-                      <th className="px-6 py-4 text-left text-sm font-mono uppercase tracking-wider text-[var(--text-tertiary)]">Opportunity</th>
+        <section className="py-16 border-t border-[var(--rule)]">
+          <Container narrow>
+            <SectionHead title="What's Coming" meta="2025-2026 Trends" className="mb-8" />
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-sm">
+                <thead className="border-b border-[var(--hair-hard)]">
+                  <tr>
+                    <th className="py-3 px-4 text-left font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">Trend</th>
+                    <th className="py-3 px-4 text-left font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">Opportunity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {futureOpportunities.map((item, index) => (
+                    <tr key={index} className="border-b border-[var(--hair)]">
+                      <td className="py-3 px-4 font-medium text-[var(--ink)]">{item.trend}</td>
+                      <td className="py-3 px-4 text-[var(--body)]">{item.opportunity}</td>
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[var(--border)]">
-                    {futureOpportunities.map((item, index) => (
-                      <tr key={index}>
-                        <td className="px-6 py-4 font-semibold">{item.trend}</td>
-                        <td className="px-6 py-4 text-[var(--text-secondary)]">{item.opportunity}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </div>
+          </Container>
         </section>
       )}
 
       {/* Ready Checklist */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-8">
-              <p className="text-sm font-mono uppercase tracking-widest mb-4" style={{ color: plan.color }}>
-                Level Up Checklist
-              </p>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-                You're Ready for {plan.level === 'Pioneer' ? 'Enterprise' : 'Next'} Level When...
-              </h2>
-            </div>
-
-            <m.ul
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={stagger}
-              className="space-y-4"
-            >
-              {plan.readyChecklist.map((item, index) => (
-                <m.li
-                  key={index}
-                  variants={fadeUp}
-                  className="flex items-center gap-4 p-4 rounded-lg border border-[var(--border)] bg-[var(--bg-primary)]"
-                >
-                  <div
-                    className="w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                    style={{ borderColor: plan.color }}
-                  >
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: plan.color }} />
-                  </div>
-                  <span className="text-[var(--text-secondary)]">{item}</span>
-                </m.li>
-              ))}
-            </m.ul>
-          </div>
-        </div>
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container narrow>
+          <SectionHead
+            title={`You're Ready for ${plan.level === 'Pioneer' ? 'Enterprise' : 'Next'} Level When...`}
+            meta="Level Up Checklist"
+            className="mb-8"
+          />
+          <ul className="space-y-px bg-[var(--hair)] border border-[var(--hair)]">
+            {plan.readyChecklist.map((item, index) => (
+              <li key={index} className="flex items-center gap-4 bg-[var(--paper)] p-4">
+                <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange flex-shrink-0">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="text-[var(--body)]">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-spacing-lg bg-[var(--bg-secondary)] relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] aspect-square bg-[radial-gradient(circle,var(--id8-orange-light)_0%,transparent_70%)] opacity-30 pointer-events-none" />
-
-        <div className="container relative">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+      {/* CTA */}
+      <section className="py-20 border-t border-[var(--rule)]">
+        <Container narrow>
+          <div className="text-center">
+            <Kicker dot className="justify-center">Next Step</Kicker>
+            <h2 className="mt-6 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2rem,4.5vw,3rem)]">
               {plan.ctaTitle}
             </h2>
-            <p className="text-lg text-[var(--text-secondary)] mb-8">
-              {plan.ctaDescription}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <p className="mt-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">{plan.ctaDescription}</p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               {plan.freeResource && (
-                <a
-                  href={plan.freeResource.url}
-                  className="btn btn-secondary hover-lift"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <EditorialButton href={plan.freeResource.url} variant="secondary" external>
                   Free: {plan.freeResource.title}
-                </a>
+                </EditorialButton>
               )}
-              <a
-                href={plan.ctaLink}
-                className="btn btn-primary hover-lift group inline-flex items-center gap-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {plan.ctaLinkText}
-                <ArrowRightIcon />
-              </a>
+              <EditorialButton href={plan.ctaLink} variant="primary" external>
+                {plan.ctaLinkText} &rarr;
+              </EditorialButton>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Footer */}
-      <section className="py-8 border-t border-[var(--border)]">
-        <div className="container">
-          <p className="text-center text-sm text-[var(--text-tertiary)]">
+      <section className="py-8 border-t border-[var(--hair)]">
+        <Container>
+          <p className="text-center font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
             Built by{' '}
-            <Link href="/" className="text-id8-orange hover:underline">
-              ID8Labs
-            </Link>
+            <a href="/" className="text-id8-orange hover:underline">id8Labs</a>
             {' '}— Tools for Builders
           </p>
-        </div>
+        </Container>
       </section>
     </div>
   )

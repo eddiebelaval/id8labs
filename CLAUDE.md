@@ -32,77 +32,79 @@
 **Design Principle:** "NO feature creep. NO RGB glows. NO heavy animations. Just clean, fast, credible."
 
 ## Design Philosophy
-### **White Paper Edition**
-- This is the **lab coat** - boring, scientific, professional, credible
-- Products bring personality; the lab just needs to be **trusted**
-- **Monochromatic only** - no colors except black, white, gray
+### **Editorial Edition ("Shipped." language)**
+The site is a **print magazine on warm paper** — restrained, credible, high-craft.
+Big Fraunces serif headlines with italic-orange emphasis, narrow uppercase
+kickers, mono metadata, hairline rules, generous whitespace. **Light only,
+sharp corners, flat (no shadows/glows/gradients).**
+
+- **Brand DNA (HALO Genome):** `genome/` — `AGENT.md` is the enforcement contract every producing agent reads first; `DESIGN.md` / `VOICE.md` / `ETHOS.md` / `genome.json` are the genes. Assets must be on-brand *by construction*.
+- Reference: `public/shipped/` · React kit: `components/editorial/`
+- **Applied design contract:** `docs/EDITORIAL_SYSTEM.md` — read it before any UI work
+- Orange is emphasis, not decoration: one or two orange moments per view
 - **Generous whitespace** - breathing room everywhere
 - **Maximum credibility** - every design decision reinforces trust
 
 ## Tech Stack Rules
 - **Next.js 14** - App Router, TypeScript strict mode
 - **Tailwind CSS** - Utility-first styling, design system compliance
-- **Framer Motion** - Subtle animations only (no heavy effects)
-- **Inter font family** - Professional typography
-- **Radix Icons** - Minimal iconography
+- **Framer Motion** - Subtle color/opacity transitions only (no heavy effects)
+- **Fonts** - Fraunces (serif display), Archivo + Archivo Narrow (sans/UI), JetBrains Mono (meta)
+- **Lucide Icons** - Minimal iconography
 - **React 18** - Modern patterns, no class components
 
-## Color System (STRICT)
-### **Light Mode**
-- Background: `#FFFFFF` (pure white)
-- Primary text: `#000000` (black)
-- Secondary text: `#666666` (gray)
-- Borders: `#E5E5E5`
+## Color System (STRICT — editorial palette)
+**Light only. No dark mode.** Canonical tokens live in `app/globals.css`;
+legacy var names (`--bg-primary`, `--text-primary`, `--id8-orange`, …) are
+aliased to these so existing markup renders correctly.
 
-### **Dark Mode**
-- Background: `#0A0A0A` (near black)
-- Primary text: `#FFFFFF` (white)
-- Secondary text: `#999999` (gray)
-- Borders: `#2A2A2A`
+- Paper (bg): `#fafaf7` · Paper-shadow: `#f2f0e8` · Paper-mid: `#ededdf`
+- Ink (headings/rules/buttons): `#0b0b0b` · Body: `#2a2a2a` · Muted: `#5a5a5a`
+- Hairline: `#d6d3c9` · Hairline-hard: `#b4afa0`
+- **Accent: orange `#ff6b35`** (emphasis only) · teal `#2a8d83` (sparingly)
 
-**NO OTHER COLORS ALLOWED** - This is a monochromatic system.
+**NO other colors** — no blues/purples/greens/ambers, no gradients, no glows.
 
 ## Typography System
-- **Font:** Inter (loaded from Google Fonts)
-- **H1:** 3.5rem (56px), 700 weight
-- **H2:** 2.5rem (40px), 700 weight
-- **H3:** 2rem (32px), 600 weight
-- **Body:** 1.125rem (18px), 400 weight
-- **Small:** 0.875rem (14px), 400 weight
+- **Display/headings:** Fraunces, weight 400, tight tracking; italic-orange `<em>` for emphasis
+- **Body/UI:** Archivo, ~17px / 1.65
+- **Kickers/nav/buttons/tags:** Archivo Narrow, uppercase, ~0.22em tracking
+- **Metadata/dates/code:** JetBrains Mono
+- **H1:** clamp(2.75rem, 6vw, 6rem) · **H2:** clamp(2rem, 4vw, 2.75rem) · **H3:** clamp(1.5rem, 2.5vw, 1.875rem)
 
 ## Layout Standards
-- **Max width:** 1200px (container)
+- **Max width:** 1200px (container) · 760px (reading measure)
+- **Shape:** sharp corners (radius 0); separation via 1px hairlines + ink rules
 - **Section spacing:** 6rem (96px) vertical
 - **Component spacing:** 2rem-4rem depending on hierarchy
 - **Mobile breakpoints:** sm:640px, md:768px, lg:1024px, xl:1280px
 
 ## Component Patterns
 ### **Page Structure**
+> Header/Footer are rendered globally in `app/layout.tsx`. Page files render
+> their own content directly. Build from `@/components/editorial`.
+
 ```tsx
+import { Container, Kicker, SectionHead, Deck } from '@/components/editorial'
+
 export default function PageName() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
-      <Header />
-      <main className="pt-20">
-        <Container>
-          {/* Page content */}
-        </Container>
-      </main>
-      <Footer />
-    </div>
+    <Container className="py-16">
+      <Kicker dot>Section label</Kicker>
+      <h1>A headline with <em>emphasis</em>.</h1>
+      <Deck>The italic serif standfirst that frames the page.</Deck>
+      {/* Page content */}
+    </Container>
   )
 }
 ```
 
 ### **Section Pattern**
 ```tsx
-<section className="py-24">
+<section className="section-spacing">
   <Container>
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold mb-6">Section Title</h2>
-      <p className="text-xl text-gray-600">Section description</p>
-    </div>
-    {/* Section content */}
+    <SectionHead title={<>The <em>archive</em>.</>} meta="About" />
+    {/* Section content — hairline cards / editorial grids */}
   </Container>
 </section>
 ```
@@ -127,10 +129,11 @@ export default function PageName() {
 
 ## What NOT to Do
 ### **Design Violations**
-- **NO colors** except black/white/gray
-- **NO heavy animations** - subtle motion only
+- **NO colors** except the editorial palette (paper/ink/body/muted/hair + orange + teal)
+- **NO dark mode**, no `dark:` classes — the system is paper-only
+- **NO rounded corners** (except pills/avatars), **no shadows, glows, or gradients**
+- **NO heavy animations** - subtle color/opacity transitions only
 - **NO feature creep** - every addition must justify its existence
-- **NO RGB glows** or fancy effects
 - **NO decorative elements** that don't serve function
 
 ### **Code Violations**

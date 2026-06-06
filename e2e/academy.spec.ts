@@ -297,8 +297,9 @@ test.describe('Academy - Mobile', () => {
     await academyPage.goto();
     await page.waitForLoadState('domcontentloaded');
 
-    // Course content should be visible on mobile
-    const courseText = page.getByText(/AI Partner Mastery|AI for Leaders/i).first();
+    // Course content should be visible on mobile (target a visible instance —
+    // the course name also appears in elements hidden at the mobile breakpoint)
+    const courseText = page.getByText(/AI Partner Mastery|AI for Leaders/i).filter({ visible: true }).first();
     await expect(courseText).toBeVisible();
   });
 
@@ -339,8 +340,8 @@ test.describe('Academy - Tablet', () => {
     // Header should be visible
     await expect(page.locator('header')).toBeVisible();
 
-    // Course content should be visible
-    const courseText = page.getByText(/Academy|AI/i).first();
+    // Course content should be visible (target a visible instance)
+    const courseText = page.getByText(/Academy|AI/i).filter({ visible: true }).first();
     await expect(courseText).toBeVisible();
   });
 });

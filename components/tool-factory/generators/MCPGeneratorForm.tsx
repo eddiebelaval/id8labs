@@ -41,21 +41,21 @@ export function MCPGeneratorForm() {
     <div className="space-y-4">
       {/* Description Input */}
       <div>
-        <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+        <label className="block text-sm font-medium text-[var(--ink)] mb-2">
           What MCP server do you need?
         </label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="e.g., An MCP server that connects to Notion to read and create pages, with tools for searching, updating, and organizing content..."
-          className="w-full px-4 py-3 border border-[var(--border)] rounded-xl
-                     bg-[var(--bg-secondary)] text-[var(--text-primary)]
-                     placeholder:text-[var(--text-tertiary)]
-                     focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]
+          className="w-full px-4 py-3 border border-[var(--hair)] 
+                     bg-[var(--paper-shadow)] text-[var(--ink)]
+                     placeholder:text-[var(--muted)]
+                     focus:outline-none focus:ring-2 focus:ring-[var(--orange)]
                      focus:border-transparent resize-none transition-all"
           rows={4}
         />
-        <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+        <p className="mt-1 text-xs text-[var(--muted)]">
           {description.length}/1000 characters
         </p>
       </div>
@@ -64,7 +64,7 @@ export function MCPGeneratorForm() {
       <button
         type="button"
         onClick={() => setShowAdvanced(!showAdvanced)}
-        className="text-sm text-[var(--id8-orange)] hover:underline"
+        className="text-sm text-[var(--orange)] hover:underline"
       >
         {showAdvanced ? 'Hide' : 'Show'} advanced options
       </button>
@@ -80,7 +80,7 @@ export function MCPGeneratorForm() {
           >
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              <label className="block text-sm font-medium text-[var(--ink)] mb-2">
                 Category (optional)
               </label>
               <select
@@ -90,9 +90,9 @@ export function MCPGeneratorForm() {
                     e.target.value ? (e.target.value as typeof mcpCategoryHint) : null
                   )
                 }
-                className="w-full px-4 py-2 border border-[var(--border)] rounded-lg
-                           bg-[var(--bg-secondary)] text-[var(--text-primary)]
-                           focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+                className="w-full px-4 py-2 border border-[var(--hair)] 
+                           bg-[var(--paper-shadow)] text-[var(--ink)]
+                           focus:outline-none focus:ring-2 focus:ring-[var(--orange)]"
               >
                 <option value="">Auto-detect</option>
                 {MCP_CATEGORIES.map((cat) => (
@@ -102,7 +102,7 @@ export function MCPGeneratorForm() {
                 ))}
               </select>
               {mcpCategoryHint && (
-                <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+                <p className="mt-1 text-xs text-[var(--muted)]">
                   {MCP_CATEGORY_DESCRIPTIONS[mcpCategoryHint]}
                 </p>
               )}
@@ -110,7 +110,7 @@ export function MCPGeneratorForm() {
 
             {/* Transport */}
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              <label className="block text-sm font-medium text-[var(--ink)] mb-2">
                 Transport (optional)
               </label>
               <select
@@ -120,9 +120,9 @@ export function MCPGeneratorForm() {
                     e.target.value ? (e.target.value as typeof transportHint) : null
                   )
                 }
-                className="w-full px-4 py-2 border border-[var(--border)] rounded-lg
-                           bg-[var(--bg-secondary)] text-[var(--text-primary)]
-                           focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+                className="w-full px-4 py-2 border border-[var(--hair)] 
+                           bg-[var(--paper-shadow)] text-[var(--ink)]
+                           focus:outline-none focus:ring-2 focus:ring-[var(--orange)]"
               >
                 <option value="">Auto-detect (stdio)</option>
                 {MCP_TRANSPORTS.map((transport) => (
@@ -132,7 +132,7 @@ export function MCPGeneratorForm() {
                 ))}
               </select>
               {transportHint && (
-                <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+                <p className="mt-1 text-xs text-[var(--muted)]">
                   {TRANSPORT_DESCRIPTIONS[transportHint]}
                 </p>
               )}
@@ -140,7 +140,7 @@ export function MCPGeneratorForm() {
 
             {/* Language */}
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              <label className="block text-sm font-medium text-[var(--ink)] mb-2">
                 Language (optional)
               </label>
               <select
@@ -150,9 +150,9 @@ export function MCPGeneratorForm() {
                     e.target.value ? (e.target.value as typeof languageHint) : null
                   )
                 }
-                className="w-full px-4 py-2 border border-[var(--border)] rounded-lg
-                           bg-[var(--bg-secondary)] text-[var(--text-primary)]
-                           focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+                className="w-full px-4 py-2 border border-[var(--hair)] 
+                           bg-[var(--paper-shadow)] text-[var(--ink)]
+                           focus:outline-none focus:ring-2 focus:ring-[var(--orange)]"
               >
                 <option value="">Auto-detect (TypeScript)</option>
                 {MCP_LANGUAGES.map((lang) => (
@@ -164,11 +164,11 @@ export function MCPGeneratorForm() {
             </div>
 
             {/* Tips */}
-            <div className="p-3 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)]">
-              <p className="text-xs text-[var(--text-secondary)]">
+            <div className="p-3 bg-[var(--paper-shadow)]  border border-[var(--hair)]">
+              <p className="text-xs text-[var(--muted)]">
                 <strong>Tips for MCP servers:</strong>
               </p>
-              <ul className="mt-1 text-xs text-[var(--text-tertiary)] list-disc list-inside">
+              <ul className="mt-1 text-xs text-[var(--muted)] list-disc list-inside">
                 <li>Describe the tools you want (list, create, update, etc.)</li>
                 <li>Mention any external APIs or services to integrate</li>
                 <li>Consider resources for data Claude should access</li>

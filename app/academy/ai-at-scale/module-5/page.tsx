@@ -57,7 +57,7 @@ export default function Module5Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-5">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -86,43 +86,43 @@ export default function Module5Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 border border-[var(--hair)] bg-[var(--paper-shadow)] px-3 py-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mb-6"
             >
               <span>Module 5</span>
-              <span className="text-id8-orange/50">•</span>
+              <span className="text-[var(--hair-hard)]">·</span>
               <span>~60 minutes</span>
             </m.div>
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Scaling from Pilot to Production
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               The valley of death between POC and production
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Valley of Death
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why 87% of AI Projects Never Make It to Production</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why 87% of AI Projects Never Make It to Production</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your pilot worked. The demo impressed executives. The ROI projections look incredible. Everyone is excited to scale this thing.
@@ -143,11 +143,11 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Trap #1: The Clean Data Illusion</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Trap #1: The Clean Data Illusion</p>
                     <p className="font-bold">Your pilot used curated data. Production data is chaos.</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Pilot: 10,000 hand-picked, validated records<br />
@@ -157,11 +157,11 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Trap #2: The Performance Cliff</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Trap #2: The Performance Cliff</p>
                     <p className="font-bold">What runs in 200ms on test data takes 5 seconds in production.</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Linear scaling is a myth. Performance degrades non-linearly as data volume increases. Cache hits decrease. Joining large tables kills queries. Distributed systems introduce network latency.
@@ -170,11 +170,11 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Trap #3: The Cost Explosion</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Trap #3: The Cost Explosion</p>
                     <p className="font-bold">$50 in API costs for the pilot becomes $50,000/month at scale.</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Pilot: 100 predictions/day = manageable<br />
@@ -184,11 +184,11 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Trap #4: The Integration Nightmare</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Trap #4: The Integration Nightmare</p>
                     <p className="font-bold">Your pilot was a Python script. Production has 47 dependencies.</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Real systems have authentication, authorization, logging, monitoring, error handling, retry logic, rate limiting, graceful degradation, and integration with legacy systems that don't speak REST.
@@ -197,11 +197,11 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Trap #5: The Model Drift Surprise</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Trap #5: The Model Drift Surprise</p>
                     <p className="font-bold">Your model was trained on last year's data. The world changed.</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Customer behavior shifts. Product mix evolves. Seasonality emerges. Competitors react. Your model's accuracy quietly degrades from 94% to 76% over six months and nobody notices until it's a crisis.
@@ -210,11 +210,11 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Trap #6: The People Problem</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Trap #6: The People Problem</p>
                     <p className="font-bold">Your pilot had dedicated data scientists. Production needs operations.</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Who retrains the model? Who debugs inference failures at 2am? Who handles the angry VP when predictions are wrong? Your data scientists didn't sign up for on-call rotations.
@@ -232,7 +232,7 @@ export default function Module5Page() {
 
             <div className="not-prose my-8">
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-3">1. DATA QUALITY GATES</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Build validation at every data ingestion point
@@ -246,7 +246,7 @@ export default function Module5Page() {
                   </ul>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-3">2. PERFORMANCE OPTIMIZATION</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Design for scale from day one
@@ -260,7 +260,7 @@ export default function Module5Page() {
                   </ul>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-3">3. COST CONTROLS</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Budget constraints before they constrain you
@@ -274,7 +274,7 @@ export default function Module5Page() {
                   </ul>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-3">4. OBSERVABILITY</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     You can't fix what you can't see
@@ -288,7 +288,7 @@ export default function Module5Page() {
                   </ul>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-3">5. MODEL LIFECYCLE</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Continuous improvement, not one-and-done
@@ -302,7 +302,7 @@ export default function Module5Page() {
                   </ul>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-3">6. OPERATIONAL EXCELLENCE</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Build for 3am debugging
@@ -363,8 +363,8 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-              <p className="text-sm font-mono text-blue-400 mb-2">Pro Tip</p>
+            <div className="not-prose my-8 p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+              <p className="text-sm font-mono text-[var(--muted)] mb-2">Pro Tip</p>
               <p className="text-sm text-[var(--text-primary)]">
                 <strong>Shadow mode is your safety net.</strong> Run predictions in parallel with your existing system without impacting users. Compare outputs. Measure performance. Find surprises before they become incidents. Organizations that skip shadow mode almost always regret it.
               </p>
@@ -380,20 +380,20 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Business Impact Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
-                    <p className="font-mono text-xs text-green-400 mb-1">Revenue Impact</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-id8-teal mb-1">Revenue Impact</p>
                     <p className="text-sm">Incremental revenue attributed to AI vs baseline</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
-                    <p className="font-mono text-xs text-green-400 mb-1">Cost Savings</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-id8-teal mb-1">Cost Savings</p>
                     <p className="text-sm">Automation savings minus infrastructure costs</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
-                    <p className="font-mono text-xs text-green-400 mb-1">Time Savings</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-id8-teal mb-1">Time Savings</p>
                     <p className="text-sm">Hours saved per week per user</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
-                    <p className="font-mono text-xs text-green-400 mb-1">User Adoption</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-id8-teal mb-1">User Adoption</p>
                     <p className="text-sm">Active users, frequency, retention rate</p>
                   </div>
                 </div>
@@ -402,20 +402,20 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Technical Health Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
-                    <p className="font-mono text-xs text-blue-400 mb-1">Inference Latency</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Inference Latency</p>
                     <p className="text-sm">p50, p95, p99 response times</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
-                    <p className="font-mono text-xs text-blue-400 mb-1">Error Rate</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Error Rate</p>
                     <p className="text-sm">Failures per 10,000 predictions</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
-                    <p className="font-mono text-xs text-blue-400 mb-1">Cost per Prediction</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Cost per Prediction</p>
                     <p className="text-sm">Compute + data + model serving costs</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
-                    <p className="font-mono text-xs text-blue-400 mb-1">Model Freshness</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Model Freshness</p>
                     <p className="text-sm">Time since last training update</p>
                   </div>
                 </div>
@@ -424,20 +424,20 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Model Performance Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
-                    <p className="font-mono text-xs text-purple-400 mb-1">Accuracy Trends</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Accuracy Trends</p>
                     <p className="text-sm">Weekly accuracy vs baseline (detect drift)</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
-                    <p className="font-mono text-xs text-purple-400 mb-1">Prediction Distribution</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Prediction Distribution</p>
                     <p className="text-sm">Output distribution vs training (detect skew)</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
-                    <p className="font-mono text-xs text-purple-400 mb-1">Feature Drift</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Feature Drift</p>
                     <p className="text-sm">Input data distribution changes</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
-                    <p className="font-mono text-xs text-purple-400 mb-1">Human Override Rate</p>
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Human Override Rate</p>
                     <p className="text-sm">How often users reject predictions</p>
                   </div>
                 </div>
@@ -450,7 +450,7 @@ export default function Module5Page() {
               Before you flip the switch, ensure you can answer "yes" to every item on this list. If you can't, you're not ready.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 {[
                   {
@@ -524,11 +524,11 @@ export default function Module5Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Production Readiness Checklist</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Production Readiness Checklist</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 45 minutes<br />
                 <strong>You'll need:</strong> Details of your current AI pilot or planned deployment
@@ -536,28 +536,28 @@ export default function Module5Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Assess your current state (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each of the 6 categories above (Data, Performance, Cost, Observability, Reliability, Operations), rate yourself 1-5. Be brutally honest.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify your gaps (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For anything below a 4, list the specific gaps. What's missing? What's broken? What's manual that should be automated?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Build your checklist (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Customize the checklist above for your specific project. Add your gaps. Remove items that don't apply. Be specific.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Estimate timelines (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each gap, estimate effort: days, weeks, or months. Be realistic. Aggregate to get your true "time to production-ready."</p>
@@ -565,7 +565,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A production readiness checklist with current state assessment, identified gaps, specific action items, and realistic timeline. Share with your team and executives to set proper expectations.
                 </p>
@@ -573,7 +573,7 @@ export default function Module5Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

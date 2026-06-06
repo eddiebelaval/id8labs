@@ -143,32 +143,33 @@ export default function SignInModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          transition={{ duration: 0.15 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--ink)]/40"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-[var(--bg-primary)] rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="bg-[var(--paper)] border border-[var(--hair-hard)] max-w-md w-full max-h-[90vh] overflow-auto"
             onClick={e => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--hair)]">
               <div>
-                <h2 className="text-xl font-bold text-[var(--text-primary)]">
+                <h2 className="font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
                   {magicLinkSent ? 'Check your email' : 'Sign in to continue'}
                 </h2>
                 {moduleName && !magicLinkSent && (
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">
+                  <p className="text-sm text-[var(--muted)] mt-1">
                     {moduleName} requires sign-in
                   </p>
                 )}
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                className="p-2 hover:bg-[var(--paper-shadow)] transition-colors duration-150 text-[var(--ink)]"
                 aria-label="Close"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -189,23 +190,23 @@ export default function SignInModal({
                     exit={{ opacity: 0, y: -10 }}
                     className="text-center space-y-4"
                   >
-                    <div className="w-16 h-16 bg-[var(--id8-orange)]/10 rounded-full flex items-center justify-center mx-auto">
-                      <svg className="w-8 h-8 text-[var(--id8-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-16 h-16 bg-[var(--paper-shadow)] rounded-full flex items-center justify-center mx-auto">
+                      <svg className="w-8 h-8 text-id8-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-[var(--text-primary)] font-medium">
+                      <p className="text-[var(--ink)] font-medium">
                         We sent a magic link to
                       </p>
-                      <p className="text-[var(--id8-orange)] font-semibold">{email}</p>
+                      <p className="font-[family-name:var(--font-mono)] text-id8-orange">{email}</p>
                     </div>
-                    <p className="text-sm text-[var(--text-secondary)]">
+                    <p className="text-sm text-[var(--muted)]">
                       Click the link in the email to sign in. No password needed.
                     </p>
                     <button
                       onClick={resetForm}
-                      className="text-sm text-[var(--id8-orange)] hover:underline"
+                      className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange hover:underline"
                     >
                       Use a different email
                     </button>
@@ -220,8 +221,8 @@ export default function SignInModal({
                   >
                     {/* Context Banner */}
                     {moduleName && (
-                      <div className="p-3 bg-[var(--id8-orange)]/10 border border-[var(--id8-orange)]/30 rounded-xl">
-                        <p className="text-sm text-[var(--text-secondary)]">
+                      <div className="p-3 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
+                        <p className="text-sm text-[var(--body)]">
                           Sign in to access course content and track your progress.
                         </p>
                       </div>
@@ -231,7 +232,7 @@ export default function SignInModal({
                     <button
                       onClick={handleGoogleSignIn}
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[var(--border)] rounded-xl bg-[var(--bg-primary)] hover:bg-[var(--bg-secondary)] text-[var(--text-primary)] font-medium transition-colors disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-3 px-4 py-3.5 border border-[var(--ink)] bg-transparent hover:bg-[var(--ink)] hover:text-[var(--paper)] text-[var(--ink)] font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 disabled:opacity-50"
                     >
                       <svg className="w-5 h-5" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -244,24 +245,24 @@ export default function SignInModal({
 
                     <div className="relative">
                       <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-[var(--border)]" />
+                        <div className="w-full border-t border-[var(--hair)]" />
                       </div>
-                      <div className="relative flex justify-center text-sm">
-                        <span className="px-4 bg-[var(--bg-primary)] text-[var(--text-tertiary)]">
+                      <div className="relative flex justify-center">
+                        <span className="px-4 bg-[var(--paper)] font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
                           or continue with email
                         </span>
                       </div>
                     </div>
 
                     {/* Auth Method Toggle */}
-                    <div className="flex rounded-xl border border-[var(--border)] overflow-hidden">
+                    <div className="flex border border-[var(--hair)]">
                       <button
                         type="button"
                         onClick={() => setAuthMethod('magic-link')}
-                        className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
+                        className={`flex-1 px-4 py-2.5 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
                           authMethod === 'magic-link'
-                            ? 'bg-[var(--id8-orange)] text-white'
-                            : 'bg-[var(--bg-primary)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
+                            ? 'bg-[var(--ink)] text-[var(--paper)]'
+                            : 'bg-transparent text-[var(--muted)] hover:text-[var(--ink)]'
                         }`}
                       >
                         Magic Link
@@ -269,10 +270,10 @@ export default function SignInModal({
                       <button
                         type="button"
                         onClick={() => setAuthMethod('password')}
-                        className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
+                        className={`flex-1 px-4 py-2.5 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
                           authMethod === 'password'
-                            ? 'bg-[var(--id8-orange)] text-white'
-                            : 'bg-[var(--bg-primary)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
+                            ? 'bg-[var(--ink)] text-[var(--paper)]'
+                            : 'bg-transparent text-[var(--muted)] hover:text-[var(--ink)]'
                         }`}
                       >
                         Password
@@ -282,7 +283,7 @@ export default function SignInModal({
                     {authMethod === 'magic-link' ? (
                       <form onSubmit={handleMagicLink} className="space-y-4">
                         <div>
-                          <label htmlFor="modal-email" className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                          <label htmlFor="modal-email" className="block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">
                             Email
                           </label>
                           <input
@@ -291,17 +292,17 @@ export default function SignInModal({
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="w-full px-4 py-3 border border-[var(--border)] rounded-xl bg-[var(--bg-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)] focus:border-transparent"
+                            className="w-full px-4 py-3 border border-[var(--hair)] bg-[var(--paper)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)] transition-colors duration-150"
                             placeholder="you@example.com"
                           />
-                          <p className="mt-2 text-xs text-[var(--text-tertiary)]">
+                          <p className="mt-2 text-xs text-[var(--muted)]">
                             We'll email you a magic link for password-free sign in.
                           </p>
                         </div>
 
                         {error && (
-                          <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl">
-                            <p className="text-sm text-red-400">{error}</p>
+                          <div className="p-3 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
+                            <p className="text-sm text-[var(--body)]">{error}</p>
                           </div>
                         )}
 
@@ -316,7 +317,7 @@ export default function SignInModal({
                     ) : (
                       <form onSubmit={handlePasswordSignIn} className="space-y-4">
                         <div>
-                          <label htmlFor="modal-email-pw" className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                          <label htmlFor="modal-email-pw" className="block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">
                             Email
                           </label>
                           <input
@@ -325,13 +326,13 @@ export default function SignInModal({
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="w-full px-4 py-3 border border-[var(--border)] rounded-xl bg-[var(--bg-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)] focus:border-transparent"
+                            className="w-full px-4 py-3 border border-[var(--hair)] bg-[var(--paper)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)] transition-colors duration-150"
                             placeholder="you@example.com"
                           />
                         </div>
 
                         <div>
-                          <label htmlFor="modal-password" className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                          <label htmlFor="modal-password" className="block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">
                             Password
                           </label>
                           <input
@@ -340,14 +341,14 @@ export default function SignInModal({
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="w-full px-4 py-3 border border-[var(--border)] rounded-xl bg-[var(--bg-primary)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)] focus:border-transparent"
+                            className="w-full px-4 py-3 border border-[var(--hair)] bg-[var(--paper)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)] transition-colors duration-150"
                             placeholder="Enter your password"
                           />
                         </div>
 
                         {error && (
-                          <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl">
-                            <p className="text-sm text-red-400">{error}</p>
+                          <div className="p-3 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
+                            <p className="text-sm text-[var(--body)]">{error}</p>
                           </div>
                         )}
 
@@ -361,9 +362,9 @@ export default function SignInModal({
                       </form>
                     )}
 
-                    <p className="text-center text-sm text-[var(--text-tertiary)]">
+                    <p className="text-center text-sm text-[var(--muted)]">
                       Don't have an account?{' '}
-                      <a href="/sign-up" className="text-[var(--id8-orange)] hover:underline font-medium">
+                      <a href="/sign-up" className="text-id8-orange hover:underline font-medium">
                         Sign up
                       </a>
                     </p>

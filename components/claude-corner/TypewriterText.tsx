@@ -51,7 +51,7 @@ export default function TypewriterText({
     <span className={className}>
       {displayedText}
       {hasStarted && !isComplete && (
-        <span className="animate-pulse text-[#ff6b35]">▌</span>
+        <span className="animate-pulse text-id8-orange">▌</span>
       )}
     </span>
   )

@@ -31,11 +31,11 @@ export function VerificationPanel({
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl"
+        className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)] "
       >
         <div className="flex items-center gap-3">
-          <Loader2 className="w-5 h-5 text-[var(--id8-orange)] animate-spin" />
-          <span className="text-sm font-medium text-[var(--text-primary)]">
+          <Loader2 className="w-5 h-5 text-[var(--orange)] animate-spin" />
+          <span className="text-sm font-medium text-[var(--ink)]">
             Verifying tool...
           </span>
         </div>
@@ -51,20 +51,20 @@ export function VerificationPanel({
 
   // Get badge color based on score
   const getBadgeColor = () => {
-    if (score >= 90) return 'text-green-500 bg-green-500/10 border-green-500/30'
-    if (score >= 70) return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/30'
-    return 'text-red-500 bg-red-500/10 border-red-500/30'
+    if (score >= 90) return 'text-[var(--paper)] bg-[var(--teal)] border-[var(--teal)]'
+    if (score >= 70) return 'text-[var(--paper)] bg-id8-orange border-id8-orange'
+    return 'text-[var(--paper)] bg-id8-orange border-id8-orange'
   }
 
   // Get icon for check status
   const getCheckIcon = (check: { passed: boolean; issues: string[] }) => {
     if (check.passed) {
-      return <CheckCircle className="w-4 h-4 text-green-500" />
+      return <CheckCircle className="w-4 h-4 text-[var(--teal)]" />
     }
     if (check.issues.length > 2) {
-      return <AlertCircle className="w-4 h-4 text-red-500" />
+      return <AlertCircle className="w-4 h-4 text-id8-orange" />
     }
-    return <AlertTriangle className="w-4 h-4 text-yellow-500" />
+    return <AlertTriangle className="w-4 h-4 text-id8-orange" />
   }
 
   const checkItems = [
@@ -102,17 +102,17 @@ export function VerificationPanel({
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl space-y-4"
+      className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)]  space-y-4"
     >
       {/* Header with Score Badge */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {passed ? (
-            <CheckCircle className="w-5 h-5 text-green-500" />
+            <CheckCircle className="w-5 h-5 text-[var(--teal)]" />
           ) : (
-            <AlertTriangle className="w-5 h-5 text-yellow-500" />
+            <AlertTriangle className="w-5 h-5 text-id8-orange" />
           )}
-          <span className="text-sm font-semibold text-[var(--text-primary)]">
+          <span className="text-sm font-semibold text-[var(--ink)]">
             {passed ? 'Verification Passed' : 'Verification Issues'}
           </span>
         </div>
@@ -129,10 +129,10 @@ export function VerificationPanel({
           <div key={item.key} className="space-y-1">
             <div className="flex items-center gap-2">
               {getCheckIcon(item.check)}
-              <span className="text-sm font-medium text-[var(--text-primary)]">
+              <span className="text-sm font-medium text-[var(--ink)]">
                 {item.label}
               </span>
-              <span className="text-xs text-[var(--text-tertiary)]">
+              <span className="text-xs text-[var(--muted)]">
                 {item.description}
               </span>
             </div>
@@ -149,9 +149,9 @@ export function VerificationPanel({
                   {item.check.issues.map((issue, idx) => (
                     <li
                       key={idx}
-                      className="text-xs text-[var(--text-secondary)] flex items-start gap-1"
+                      className="text-xs text-[var(--muted)] flex items-start gap-1"
                     >
-                      <span className="text-red-400">•</span>
+                      <span className="text-id8-orange">•</span>
                       {issue}
                     </li>
                   ))}
@@ -164,17 +164,17 @@ export function VerificationPanel({
 
       {/* AI Suggestions (if any) */}
       {checks.aiReview.suggestions.length > 0 && (
-        <div className="pt-2 border-t border-[var(--border)]">
-          <p className="text-xs font-medium text-[var(--text-tertiary)] mb-2">
+        <div className="pt-2 border-t border-[var(--hair)]">
+          <p className="text-xs font-medium text-[var(--muted)] mb-2">
             AI Suggestions
           </p>
           <ul className="space-y-1">
             {checks.aiReview.suggestions.map((suggestion, idx) => (
               <li
                 key={idx}
-                className="text-xs text-[var(--text-secondary)] flex items-start gap-1"
+                className="text-xs text-[var(--muted)] flex items-start gap-1"
               >
-                <Sparkles className="w-3 h-3 text-[var(--id8-orange)] flex-shrink-0 mt-0.5" />
+                <Sparkles className="w-3 h-3 text-[var(--orange)] flex-shrink-0 mt-0.5" />
                 {suggestion}
               </li>
             ))}
@@ -184,29 +184,29 @@ export function VerificationPanel({
 
       {/* Auto-Fix Suggestions */}
       {autoFixes.length > 0 && onApplyFix && (
-        <div className="pt-2 border-t border-[var(--border)]">
-          <p className="text-xs font-medium text-[var(--text-tertiary)] mb-2">
+        <div className="pt-2 border-t border-[var(--hair)]">
+          <p className="text-xs font-medium text-[var(--muted)] mb-2">
             Auto-Fix Available
           </p>
           <div className="space-y-2">
             {autoFixes.map((fix, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between p-2 bg-[var(--bg-primary)] rounded-lg"
+                className="flex items-center justify-between p-2 bg-[var(--paper)] "
               >
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-medium text-[var(--text-primary)]">
+                  <p className="text-xs font-medium text-[var(--ink)]">
                     {fix.field}
                   </p>
-                  <p className="text-xs text-[var(--text-tertiary)] truncate">
+                  <p className="text-xs text-[var(--muted)] truncate">
                     {fix.original} → {fix.fixed}
                   </p>
                 </div>
                 <button
                   onClick={() => onApplyFix(fix.field, fix.fixed)}
-                  className="px-2 py-1 text-xs font-medium text-[var(--id8-orange)]
-                             border border-[var(--id8-orange)] rounded
-                             hover:bg-[var(--id8-orange)]/10 transition-colors"
+                  className="px-2 py-1 text-xs font-medium text-[var(--orange)]
+                             border border-[var(--orange)] 
+                             hover:bg-[var(--orange)]/10 transition-colors"
                 >
                   Apply
                 </button>

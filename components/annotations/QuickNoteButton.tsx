@@ -10,15 +10,15 @@ export function QuickNoteButton() {
   return (
     <button
       onClick={toggleSidebar}
-      className="fixed bottom-6 right-6 z-30 flex items-center gap-2 px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-full shadow-lg hover:shadow-xl hover:border-id8-orange/50 transition-all group"
+      className="fixed bottom-6 right-6 z-30 flex items-center gap-2 px-4 py-3 bg-[var(--paper)] border border-[var(--hair-hard)] rounded-full hover:border-id8-orange transition-colors duration-150 group"
       aria-label="Open notes sidebar"
     >
-      <NotebookIcon className="w-5 h-5 text-[var(--text-secondary)] group-hover:text-id8-orange transition-colors" />
-      <span className="text-sm font-medium text-[var(--text-primary)]">
+      <NotebookIcon className="w-5 h-5 text-[var(--muted)] group-hover:text-id8-orange transition-colors" />
+      <span className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--ink)]">
         My Notes
       </span>
       {isAuthenticated && totalAnnotations > 0 && (
-        <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold bg-id8-orange text-white rounded-full">
+        <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 font-[family-name:var(--font-mono)] text-xs bg-id8-orange text-[var(--paper)] rounded-full">
           {totalAnnotations}
         </span>
       )}
@@ -35,12 +35,12 @@ export function QuickNoteButtonMinimal() {
   return (
     <button
       onClick={toggleSidebar}
-      className="relative p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-full shadow-lg hover:shadow-xl hover:border-id8-orange/50 transition-all"
+      className="relative p-3 bg-[var(--paper)] border border-[var(--hair-hard)] rounded-full hover:border-id8-orange transition-colors duration-150"
       aria-label="Open notes sidebar"
     >
-      <NotebookIcon className="w-5 h-5 text-[var(--text-secondary)]" />
+      <NotebookIcon className="w-5 h-5 text-[var(--muted)]" />
       {isAuthenticated && totalAnnotations > 0 && (
-        <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold bg-id8-orange text-white rounded-full">
+        <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 font-[family-name:var(--font-mono)] text-xs bg-id8-orange text-[var(--paper)] rounded-full">
           {totalAnnotations > 99 ? '99+' : totalAnnotations}
         </span>
       )}

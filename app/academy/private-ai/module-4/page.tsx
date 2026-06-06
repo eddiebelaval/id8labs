@@ -57,7 +57,7 @@ export default function Module4Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-4">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -85,7 +85,7 @@ export default function Module4Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 4
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -95,34 +95,34 @@ export default function Module4Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Data Handling Protocols
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "How do we make sure sensitive data actually stays protected?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Keep Sensitive Data Where It Belongs</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Keep Sensitive Data Where It Belongs</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've chosen your deployment architecture and selected your model. But private AI isn't just about where the model runs — it's about how data flows through your entire system. A single misconfigured endpoint or overlooked log file can expose everything you worked to protect.
@@ -143,63 +143,63 @@ export default function Module4Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
                     <p className="font-bold">Input Collection</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">User enters prompt through UI, API, or integration. First point where sensitive data enters the system.</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
                     <p className="font-bold">Classification & Routing</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">System determines sensitivity level and routes to appropriate model endpoint (cloud, private cloud, local, edge).</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
                     <p className="font-bold">Preprocessing & Context Injection</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Prompt engineering, RAG context retrieval, any transformations before model sees input.</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
                     <p className="font-bold">Model Inference</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Model processes input and generates output. This is where your deployment choice from Module 2 matters.</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
                     <p className="font-bold">Output Sanitization</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Filter model output for PII leakage, inappropriate content, or sensitive information that shouldn't be returned.</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">6</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">6</span>
                   <div>
                     <p className="font-bold">Response Delivery</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Send output back to user. Ensure encryption in transit (TLS), log only what's necessary.</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">7</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">7</span>
                   <div>
                     <p className="font-bold">Long-Term Storage (If Any)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Conversation history, analytics, model training data. Requires strictest controls.</p>
@@ -230,25 +230,25 @@ export default function Module4Page() {
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">Public</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal text-xs">Public</span></td>
                     <td className="py-3 px-4">Already public or intended for public release</td>
                     <td className="py-3 px-4">Marketing copy, blog posts, public FAQs</td>
                     <td className="py-3 px-4">Any endpoint (cloud OK)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Internal</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Internal</span></td>
                     <td className="py-3 px-4">Non-sensitive business information</td>
                     <td className="py-3 px-4">Meeting notes, project plans, internal docs</td>
                     <td className="py-3 px-4">Private cloud with controls</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-orange-500/20 text-orange-400 rounded text-xs">Confidential</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs">Confidential</span></td>
                     <td className="py-3 px-4">Competitive or strategic information</td>
                     <td className="py-3 px-4">Roadmaps, financials, customer lists</td>
                     <td className="py-3 px-4">Local deployment only</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs">Restricted</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Restricted</span></td>
                     <td className="py-3 px-4">Legally protected or regulated data</td>
                     <td className="py-3 px-4">PII, PHI, financial records, trade secrets</td>
                     <td className="py-3 px-4">Air-gapped local or edge only</td>
@@ -268,7 +268,7 @@ export default function Module4Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">PII Detection</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">Use pattern matching and NER (Named Entity Recognition) to detect:</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
@@ -278,7 +278,7 @@ export default function Module4Page() {
                   <li>• <strong>Action:</strong> Block, redact, or route to more secure endpoint</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Prompt Injection Protection</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">Detect attempts to manipulate model behavior:</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
@@ -288,7 +288,7 @@ export default function Module4Page() {
                   <li>• <strong>Action:</strong> Reject, sanitize, or require human review</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Size & Rate Limits</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">Prevent abuse and accidental data dumps:</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
@@ -307,7 +307,7 @@ export default function Module4Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Embedding Privacy</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>• Generate embeddings locally (not via cloud embedding APIs)</li>
@@ -316,7 +316,7 @@ export default function Module4Page() {
                   <li>• Implement access controls on chunks (user/role-based filtering)</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Retrieval Filtering</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>• Filter retrieved chunks by classification level before injection</li>
@@ -325,7 +325,7 @@ export default function Module4Page() {
                   <li>• Log what was retrieved (for audit trail) but not in plaintext</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Context Separation</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Best practice:</strong> Maintain separate vector databases for different sensitivity levels. Public, Internal, Confidential, Restricted each get isolated storage. Query only the appropriate one based on input classification.
@@ -340,7 +340,7 @@ export default function Module4Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">PII Redaction</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">Scan model outputs for accidentally leaked PII:</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
@@ -350,7 +350,7 @@ export default function Module4Page() {
                   <li>• Log redactions for review</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Content Filtering</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>• Check for harmful content (hate speech, explicit material)</li>
@@ -359,7 +359,7 @@ export default function Module4Page() {
                   <li>• <strong>Action:</strong> Block, sanitize, or require human review</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Watermarking (Optional)</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   For high-stakes deployments, embed invisible watermarks in outputs to trace leaks. Techniques include synonym substitution patterns, whitespace encoding, or generative watermarks. Trade-off: Adds complexity and may affect quality.
@@ -417,8 +417,8 @@ export default function Module4Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-mono text-sm text-red-400 mb-2">Logging Warning</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-mono text-sm text-[var(--muted)] mb-2">Logging Warning</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Default logging in most frameworks captures full HTTP requests/responses. This includes prompts, responses, auth tokens — everything. <strong>Disable default logging</strong> and implement custom privacy-aware logging. Popular culprits: Express.js morgan, Django debug logs, Flask default logger.
               </p>
@@ -431,7 +431,7 @@ export default function Module4Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Encryption</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>• <strong>At rest:</strong> AES-256, keys managed separately (KMS, vault)</li>
@@ -440,7 +440,7 @@ export default function Module4Page() {
                   <li>• Rotate keys periodically (quarterly for Restricted data)</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Access Controls</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>• Role-Based Access Control (RBAC) — minimum necessary principle</li>
@@ -449,7 +449,7 @@ export default function Module4Page() {
                   <li>• Time-limited access grants (temporary elevation)</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Retention Policies</p>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>• Define clear retention periods per classification level</li>
@@ -458,7 +458,7 @@ export default function Module4Page() {
                   <li>• Archive (encrypted, offline) what must be kept for compliance</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-2">Backups</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Critical:</strong> Backups inherit sensitivity of source data. Encrypt backups with separate keys, store in secure location (ideally offline for Restricted), test restoration regularly, and include backups in retention/deletion policies.
@@ -472,38 +472,38 @@ export default function Module4Page() {
               Despite best efforts, breaches happen. Have a plan:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Detection</p>
                     <p className="text-sm text-[var(--text-secondary)]">Monitor for anomalies: unusual data access patterns, failed auth attempts, unexpected data exports. Set up alerts for Restricted data access.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Containment</p>
                     <p className="text-sm text-[var(--text-secondary)]">Immediately isolate affected systems. Revoke compromised credentials. Disable affected endpoints. Preserve evidence (logs, disk images).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Assessment</p>
                     <p className="text-sm text-[var(--text-secondary)]">Determine scope: What data was exposed? How many users affected? Classification level of leaked data? Timeline of breach.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Notification</p>
                     <p className="text-sm text-[var(--text-secondary)]">GDPR: 72 hours to notify authorities. HIPAA: 60 days. CCPA: "without unreasonable delay." Notify affected users. Prepare public statement if necessary.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Remediation</p>
                     <p className="text-sm text-[var(--text-secondary)]">Fix root cause, rotate all credentials, review access logs, update security controls, conduct post-mortem, update incident response plan.</p>
@@ -513,11 +513,11 @@ export default function Module4Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Data Flow Diagram</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Data Flow Diagram</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 25 minutes<br />
                 <strong>You'll need:</strong> Your AI use cases, deployment architecture, model selection
@@ -525,21 +525,21 @@ export default function Module4Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map your data flow (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Draw the seven-stage flow for your primary use case. Label each stage with: where it happens (client, API gateway, model server, database), what security controls apply, and sensitivity level of data at that stage.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify leak points (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Mark every arrow/transition where data could leak (logs, errors, caches, backups, third-party services). Be paranoid.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Define controls for each leak point (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each identified leak point, specify: What control prevents leakage? (encryption, sanitization, access control, etc.) How is it enforced? How is compliance verified?</p>
@@ -547,7 +547,7 @@ export default function Module4Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A visual data flow diagram showing all seven stages, every potential leak point clearly marked, and security controls annotated at each stage. This becomes your implementation blueprint.
                 </p>
@@ -555,7 +555,7 @@ export default function Module4Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

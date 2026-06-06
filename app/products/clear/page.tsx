@@ -1,5 +1,13 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Clearance - ID8Labs',
@@ -12,111 +20,96 @@ export const metadata: Metadata = {
   },
 }
 
+const features = [
+  {
+    title: 'Copyright strike prevention',
+    description: 'Remove copyrighted music before platforms flag your content.',
+  },
+  {
+    title: 'Preserve dialogue',
+    description: 'Strip music while keeping voices and natural ambience intact.',
+  },
+  {
+    title: 'Save re-shoot costs',
+    description: 'Rescue footage that would otherwise require expensive re-shoots.',
+  },
+  {
+    title: 'Batch processing',
+    description: 'Process entire projects at once.',
+  },
+  {
+    title: 'Keep revenue flowing',
+    description: 'Maintain monetization on content that would otherwise be demonetized or blocked.',
+  },
+]
+
 export default function ClearPage() {
   return (
-    <div className="container py-24">
-      <article className="max-w-3xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to products
-        </Link>
-
-        {/* Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <h1>Clearance</h1>
-            <span className="text-sm px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full">
-              Early exploration
-            </span>
-          </div>
-          <p className="text-2xl text-[var(--text-secondary)] mb-8">
-            Protect your content from copyright strikes
-          </p>
+    <div className="bg-[var(--paper)] py-20 md:py-28">
+      <Container narrow>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Audio · Early exploration</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] mb-7">
+            Protect your content from <em className="italic text-id8-orange">copyright strikes</em>.
+          </h1>
+          <Deck className="mb-9">
+            Remove background music from your footage before it gets flagged. Keep your
+            content monetized, avoid takedowns, and skip expensive re-shoots.
+          </Deck>
+          <MetaRow
+            className="border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: 'Video / Audio', label: 'domain' },
+              { value: 'Early exploration', label: 'status' },
+            ]}
+          />
         </header>
 
         {/* Description */}
-        <section className="mb-16 space-y-6 text-lg leading-relaxed">
-          <p>
-            <strong className="text-id8-orange">Built to save creators and producers from copyright strikes.</strong>
-          </p>
-          <p>
-            Remove background music from your footage before it gets flagged. Keep your content monetized, avoid
-            takedowns, and skip expensive re-shoots.
-          </p>
-          <p>
-            You've got great footage but there's copyrighted music in the background. Maybe someone walked past
-            a store playing music. Maybe your subject had their TV on. Maybe you're in a location with ambient
-            music you didn't notice until post.
-          </p>
-          <p>
-            Clearance strips the music while preserving your dialogue and natural ambience. No more worrying
-            about copyright claims destroying your content's revenue or getting your video taken down.
-          </p>
-        </section>
-
-        {/* Key Features */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Planned Features</h2>
-          <ul className="space-y-6 text-lg">
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Copyright strike prevention</strong> — Remove copyrighted music before platforms
-                flag your content
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Preserve dialogue</strong> — Strip music while keeping voices and natural
-                ambience intact
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Save re-shoot costs</strong> — Rescue footage that would otherwise require
-                expensive re-shoots
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Batch processing</strong> — Process entire projects at once
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Keep revenue flowing</strong> — Maintain monetization on content that would
-                otherwise be demonetized or blocked
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        {/* Status */}
-        <section className="pt-12 border-t border-[var(--border)]">
-          <div className="space-y-4">
-            <p className="text-lg text-[var(--text-secondary)]">
-              <strong>Status:</strong> Early exploration
+        <section className="py-16">
+          <div className="space-y-6 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.65] text-[var(--body)]">
+            <p>
+              You&apos;ve got great footage but there&apos;s copyrighted music in the background. Maybe someone walked past
+              a store playing music. Maybe your subject had their TV on. Maybe you&apos;re in a location with ambient
+              music you didn&apos;t notice until post.
             </p>
-            <a
-              href="#clearance"
-              className="inline-flex items-center gap-2 text-lg px-8 py-4 border-2 border-purple-400 text-purple-400 rounded-soft cursor-not-allowed opacity-50"
-            >
-              In development
-            </a>
+            <p>
+              Clearance strips the music while preserving your dialogue and natural ambience. No more worrying
+              about copyright claims destroying your content&apos;s revenue or getting your video taken down.
+            </p>
           </div>
         </section>
-      </article>
+
+        <Rule />
+
+        {/* Planned Features */}
+        <section className="py-16">
+          <SectionHead title={<>Planned <em className="italic text-id8-orange">features</em></>} meta="Roadmap" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+            {features.map((feature) => (
+              <div key={feature.title} className="py-6 grid md:grid-cols-[280px_1fr] gap-3 md:gap-8">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">
+                  {feature.title}
+                </h3>
+                <p className="text-[var(--body)] leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <Rule />
+
+        {/* Status */}
+        <section className="pt-16 flex flex-wrap items-center gap-5">
+          <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+            <b className="font-medium text-[var(--ink)]">Status</b> · Early exploration
+          </p>
+          <EditorialButton href="#clearance" variant="ghost" className="cursor-not-allowed opacity-60">
+            In development
+          </EditorialButton>
+        </section>
+      </Container>
     </div>
   )
 }

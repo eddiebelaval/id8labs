@@ -1,5 +1,14 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Composer - ID8Labs',
@@ -12,109 +21,109 @@ export const metadata: Metadata = {
   },
 }
 
+const features = [
+  {
+    title: 'Timeline-based structure',
+    description: 'Visual story building that matches how creatives actually think.',
+  },
+  {
+    title: 'AI collaboration',
+    description: 'Work with AI as a creative partner, not a replacement for human creativity.',
+  },
+  {
+    title: 'Non-linear workflow',
+    description: 'Rearrange, experiment, iterate without fighting your tools.',
+  },
+  {
+    title: 'Production-tested',
+    description: 'Built by professionals, for professionals.',
+  },
+  {
+    title: 'Real-time updates',
+    description: 'Changes propagate instantly across your timeline.',
+  },
+]
+
 export default function ComposerPage() {
   return (
-    <div className="container py-24">
-      <article className="max-w-3xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to products
-        </Link>
-
-        {/* Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <h1>Composer</h1>
-            <span className="text-sm uppercase tracking-wide text-[var(--text-secondary)]">● Active</span>
+    <div className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Story Development · Active</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            Build your story <em className="italic text-id8-orange">the way you think</em>.
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            A timeline-based story development platform for writers, directors, and
+            producers who think visually and work non-linearly.
+          </Deck>
+          <div className="flex flex-wrap gap-3.5">
+            <EditorialButton href="https://id8composer.app" external>
+              Visit Composer
+            </EditorialButton>
+            <EditorialButton href="/products" variant="ghost">
+              Back to products
+            </EditorialButton>
           </div>
-          <p className="text-2xl text-[var(--text-secondary)] mb-8">
-            Timeline-based AI story development platform
-          </p>
+          <MetaRow
+            className="mt-12 border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: 'Web App', label: 'platform' },
+              { value: 'Claude', label: 'ai model' },
+              { value: 'Active', label: 'status' },
+              { value: '20yr', label: 'production roots' },
+            ]}
+          />
         </header>
 
-        {/* Description */}
-        <section className="mb-16 space-y-6 text-lg leading-relaxed">
-          <p>
-            Composer is a timeline-based story development platform built for writers, directors,
-            and producers who think visually and work non-linearly.
-          </p>
-          <p>
-            Unlike traditional outlining tools that force you into a linear structure, Composer
-            treats story development like the messy, iterative process it actually is. Build your
-            narrative on a visual timeline. Rearrange scenes. Experiment with structure. Work with
-            AI as a collaborative partner, not a replacement.
-          </p>
-          <p>
-            Born from 20 years of production experience, Composer solves the problems we faced
-            daily as storytellers working in television and film.
-          </p>
+        {/* Overview */}
+        <section className="py-16 max-w-2xl">
+          <div className="space-y-6 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.65] text-[var(--body)]">
+            <p>
+              Unlike traditional outlining tools that force you into a linear structure, Composer
+              treats story development like the messy, iterative process it actually is. Build your
+              narrative on a visual timeline. Rearrange scenes. Experiment with structure. Work with
+              AI as a collaborative partner, not a replacement.
+            </p>
+            <p>
+              Born from 20 years of production experience, Composer solves the problems we faced
+              daily as storytellers working in television and film.
+            </p>
+          </div>
         </section>
 
-        {/* Key Features */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Key Features</h2>
-          <ul className="space-y-6 text-lg">
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Timeline-based structure</strong> — Visual story building that matches how
-                creatives actually think
+        <Rule />
+
+        {/* Features */}
+        <section className="py-16">
+          <SectionHead title={<>Key <em className="italic text-id8-orange">features</em></>} meta="Capabilities" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {features.map((feature) => (
+              <div key={feature.title} className="bg-[var(--paper)] p-7">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-[var(--body)] leading-relaxed">{feature.description}</p>
               </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>AI collaboration</strong> — Work with AI as a creative partner, not a
-                replacement for human creativity
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Non-linear workflow</strong> — Rearrange, experiment, iterate without
-                fighting your tools
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Production-tested</strong> — Built by professionals, for professionals
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-2xl">●</span>
-              <div>
-                <strong>Real-time updates</strong> — Changes propagate instantly across your
-                timeline
-              </div>
-            </li>
-          </ul>
+            ))}
+          </div>
         </section>
+
+        <Rule />
 
         {/* CTA */}
-        <section className="pt-12 border-t border-[var(--border)]">
-          <a
-            href="https://id8composer.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-xl px-8 py-4 border-2 border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-200"
-          >
-            Visit Composer
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
+        <section className="pt-16">
+          <EditorialCard featured className="text-center">
+            <p className="font-[family-name:var(--font-serif)] italic text-xl text-[var(--muted)] mb-7 max-w-xl mx-auto">
+              Story development, the way it actually happens.
+            </p>
+            <EditorialButton href="https://id8composer.app" external>
+              Visit Composer
+            </EditorialButton>
+          </EditorialCard>
         </section>
-      </article>
+      </Container>
     </div>
   )
 }

@@ -34,9 +34,12 @@ export function ImportStackButton({ stack }: ImportStackButtonProps) {
     }
   }
 
+  const chrome =
+    'inline-flex items-center gap-2.5 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150'
+
   if (alreadyImported) {
     return (
-      <div className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500/10 text-emerald-500 border-2 border-emerald-500 rounded-lg font-medium">
+      <div className={`${chrome} bg-transparent text-teal border-teal`}>
         <CheckCircle className="w-5 h-5" />
         Already in Your Collection
       </div>
@@ -45,9 +48,9 @@ export function ImportStackButton({ stack }: ImportStackButtonProps) {
 
   if (imported) {
     return (
-      <div className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500/10 text-emerald-500 border-2 border-emerald-500 rounded-lg font-medium">
+      <div className={`${chrome} bg-transparent text-teal border-teal`}>
         <CheckCircle className="w-5 h-5" />
-        Stack Imported! Redirecting...
+        Stack Imported. Redirecting...
       </div>
     )
   }
@@ -55,7 +58,7 @@ export function ImportStackButton({ stack }: ImportStackButtonProps) {
   return (
     <button
       onClick={handleImport}
-      className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] font-medium transition-colors"
+      className={`${chrome} bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange`}
     >
       <Download className="w-5 h-5" />
       Import to My Collection

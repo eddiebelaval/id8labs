@@ -51,7 +51,7 @@ export default function Module1Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-1">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -80,43 +80,43 @@ export default function Module1Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 border border-[var(--hair)] bg-[var(--paper-shadow)] px-3 py-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mb-6"
             >
               <span>Module 1</span>
-              <span className="text-id8-orange/50">•</span>
+              <span className="text-[var(--hair-hard)]">·</span>
               <span>~60 minutes</span>
             </m.div>
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               The AI Infrastructure Stack
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "We need GPUs, but I have no idea how many or what kind. And why is everyone talking about H100s?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">The Infrastructure Iceberg</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">The Infrastructure Iceberg</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Everyone sees the AI model. Few see the infrastructure underneath. For every impressive demo, there's a GPU cluster humming somewhere, a model serving layer handling requests, and a compute bill that would make your CFO nervous.
@@ -138,15 +138,15 @@ export default function Module1Page() {
 
             <div className="not-prose my-8 space-y-3">
               {[
-                { layer: "7", name: "Application Layer", desc: "User-facing interfaces, APIs, integrations", color: "bg-purple-500/20 border-purple-500/30" },
-                { layer: "6", name: "Orchestration Layer", desc: "Load balancing, request routing, auto-scaling", color: "bg-blue-500/20 border-blue-500/30" },
-                { layer: "5", name: "Model Serving Layer", desc: "Inference servers, model versioning, caching", color: "bg-cyan-500/20 border-cyan-500/30" },
-                { layer: "4", name: "Training Layer", desc: "Distributed training, hyperparameter tuning", color: "bg-green-500/20 border-green-500/30" },
-                { layer: "3", name: "Data Layer", desc: "Feature stores, data pipelines, storage", color: "bg-yellow-500/20 border-yellow-500/30" },
-                { layer: "2", name: "Compute Layer", desc: "GPUs, TPUs, specialized accelerators", color: "bg-orange-500/20 border-orange-500/30" },
-                { layer: "1", name: "Foundation Layer", desc: "Networking, storage, container orchestration", color: "bg-red-500/20 border-red-500/30" },
+                { layer: "7", name: "Application Layer", desc: "User-facing interfaces, APIs, integrations", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
+                { layer: "6", name: "Orchestration Layer", desc: "Load balancing, request routing, auto-scaling", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
+                { layer: "5", name: "Model Serving Layer", desc: "Inference servers, model versioning, caching", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
+                { layer: "4", name: "Training Layer", desc: "Distributed training, hyperparameter tuning", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
+                { layer: "3", name: "Data Layer", desc: "Feature stores, data pipelines, storage", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
+                { layer: "2", name: "Compute Layer", desc: "GPUs, TPUs, specialized accelerators", color: "border-id8-orange bg-[var(--paper-shadow)]" },
+                { layer: "1", name: "Foundation Layer", desc: "Networking, storage, container orchestration", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
               ].map((item, i) => (
-                <div key={i} className={`p-4 rounded-lg border ${item.color}`}>
+                <div key={i} className={`p-4 border ${item.color}`}>
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-mono font-bold text-id8-orange">{item.layer}</span>
                     <div>
@@ -219,7 +219,7 @@ export default function Module1Page() {
               The single biggest constraint in AI infrastructure isn't compute speed — it's memory. Here's why:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-bold text-id8-orange mb-2">Model Size vs GPU Memory</h4>
@@ -258,7 +258,7 @@ export default function Module1Page() {
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Workload</th>
                     <th className="text-left py-3 px-4">Volume</th>
-                    <th className="text-left py-3 px-4 text-green-400">Recommended</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Recommended</th>
                     <th className="text-left py-3 px-4 text-id8-orange">Why</th>
                   </tr>
                 </thead>
@@ -326,10 +326,10 @@ export default function Module1Page() {
                   metric: "2-4x memory reduction"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">{item.desc}</p>
-                  <p className="text-xs font-mono text-green-400">{item.metric}</p>
+                  <p className="text-xs font-mono text-id8-teal">{item.metric}</p>
                 </div>
               ))}
             </div>
@@ -340,24 +340,24 @@ export default function Module1Page() {
               Let's run real numbers on what AI infrastructure costs at scale:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <h3 className="text-xl font-bold mb-4">Scenario: 100K LLM requests per day</h3>
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
+              <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Scenario: 100K LLM requests per day</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-2 border-b border-[var(--border)]">
                   <span className="text-[var(--text-secondary)]">API Approach (GPT-4 equivalent)</span>
-                  <span className="font-mono text-red-400">~$3,000-5,000/month</span>
+                  <span className="font-mono text-[var(--muted)]">~$3,000-5,000/month</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-[var(--border)]">
                   <span className="text-[var(--text-secondary)]">Managed GPU (70B model)</span>
-                  <span className="font-mono text-yellow-400">~$2,000-3,500/month</span>
+                  <span className="font-mono text-[var(--muted)]">~$2,000-3,500/month</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-[var(--border)]">
                   <span className="text-[var(--text-secondary)]">Self-hosted (2x A100)</span>
-                  <span className="font-mono text-green-400">~$1,500-2,500/month</span>
+                  <span className="font-mono text-id8-teal">~$1,500-2,500/month</span>
                 </div>
                 <div className="flex justify-between items-center py-2">
                   <span className="text-[var(--text-secondary)]">Self-hosted + Quantization (1x A100)</span>
-                  <span className="font-mono text-green-400">~$800-1,200/month</span>
+                  <span className="font-mono text-id8-teal">~$800-1,200/month</span>
                 </div>
               </div>
               <p className="text-sm text-[var(--text-tertiary)] mt-4 italic">
@@ -371,38 +371,38 @@ export default function Module1Page() {
               When does self-hosting make sense? Use this framework:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Calculate your monthly API spend</p>
                     <p className="text-sm text-[var(--text-secondary)]">If it's under $5K/month, self-hosting rarely makes economic sense.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Estimate equivalent GPU cost</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use our table above. Include 24/7 operation, not just peak hours.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Add engineering overhead</p>
                     <p className="text-sm text-[var(--text-secondary)]">0.25-0.5 FTE minimum for maintenance. More for custom features.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Consider non-cost factors</p>
                     <p className="text-sm text-[var(--text-secondary)]">Data privacy, latency requirements, customization needs.</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-6 p-4 bg-id8-orange/10 border border-id8-orange/30 rounded-lg">
+              <div className="mt-6 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
                 <p className="text-sm font-bold text-id8-orange">The Breakeven Rule</p>
                 <p className="text-sm text-[var(--text-secondary)]">Self-hosting typically breaks even at $10-15K/month API spend — assuming you have ML engineering capacity.</p>
               </div>
@@ -412,39 +412,39 @@ export default function Module1Page() {
             <h2>Five Infrastructure Mistakes That Kill Projects</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #1</p>
                 <p className="font-bold">"We'll optimize later"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Infrastructure decisions compound. A naive serving setup can cost 10x more than an optimized one. Design for efficiency from day one.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #2</p>
                 <p className="font-bold">"We need the biggest GPU"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: H100s are overkill for most inference workloads. Match hardware to actual needs. A100s or L4s often provide better cost-performance.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #3</p>
                 <p className="font-bold">"Our model needs to run locally"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Unless you have specific compliance or latency requirements, cloud GPUs are almost always more cost-effective than on-prem.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #4</p>
                 <p className="font-bold">"We'll just use Kubernetes"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: GPU scheduling in K8s is complex. Without expertise, you'll waste 50%+ of your GPU capacity. Consider managed ML platforms first.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #5</p>
                 <p className="font-bold">"We don't need monitoring"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: GPU utilization, memory usage, request latency — if you can't measure it, you can't optimize it. Monitoring should be day-one infrastructure.</p>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Infrastructure Requirements Document</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Infrastructure Requirements Document</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Your current or planned AI workload specifications
@@ -452,28 +452,28 @@ export default function Module1Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map your workload (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List every AI task: inference types, training needs, request volumes. Be specific about model sizes.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Calculate memory requirements (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the formula: params x 2 bytes (FP16) + 50% overhead for KV cache and activations.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Apply the Compute Decision Matrix (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each workload, determine: API vs Managed GPU vs Self-hosted.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Price it out (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use real pricing from AWS, GCP, or your preferred cloud. Include all seven stack layers.</p>
@@ -481,7 +481,7 @@ export default function Module1Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A one-page infrastructure requirements document with workload mapping, compute recommendations, and monthly cost estimates.
                 </p>
@@ -489,7 +489,7 @@ export default function Module1Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

@@ -60,7 +60,7 @@ export default function Module7Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-7">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -88,7 +88,7 @@ export default function Module7Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 7
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -98,34 +98,34 @@ export default function Module7Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Workflow Integration
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "AI is great... when I remember to use it. How do I make it part of how I actually work?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Scenario */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Meet Jordan Kim</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Meet Jordan Kim</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Jordan is a product manager at a fast-growing SaaS company. She's been through every module of this course. She's built frameworks, created QA checklists, practiced decomposition. She knows the techniques work.
@@ -160,8 +160,8 @@ export default function Module7Page() {
               The result? AI use stays episodic. You use it for big tasks when you're intentional, but miss 80% of the opportunities in your daily flow.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-bold text-red-400 mb-2">The Integration Gap</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-bold text-[var(--muted)] mb-2">The Integration Gap</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Knowing the techniques ≠ Using them automatically. Until AI is woven into your actual workflow, it stays optional. And optional means it gets dropped when you're busy.
               </p>
@@ -177,10 +177,10 @@ export default function Module7Page() {
               This framework helps you identify where AI belongs in your actual daily practice. Not aspirationally — where it actually makes sense.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <WorkflowIcon />
-                <h3 className="text-xl font-bold">The 4 Integration Points</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The 4 Integration Points</h3>
               </div>
               <div className="space-y-6">
                 <div className="border-l-4 border-id8-orange pl-4">
@@ -188,7 +188,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Moments in your workflow where using AI should be automatic
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>Example triggers:</strong></p>
                     <p>• Before responding to a complex email</p>
                     <p>• When starting to draft any document</p>
@@ -202,7 +202,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Recurring work where you reuse the same AI pattern
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>Create templates for:</strong></p>
                     <p>• Weekly status reports</p>
                     <p>• Project kickoff documents</p>
@@ -216,7 +216,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Natural moments to use AI for quality check or second opinion
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>Built-in review points:</strong></p>
                     <p>• Before hitting send on important emails</p>
                     <p>• After first draft, before sharing</p>
@@ -230,7 +230,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Systems to preserve context so you don't start from zero each time
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>What to capture:</strong></p>
                     <p>• Your best prompts and patterns</p>
                     <p>• Project-specific context docs</p>
@@ -252,7 +252,7 @@ export default function Module7Page() {
               Jordan listed every recurring task type in a typical week:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg font-mono text-xs">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-xs">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-[var(--border)] text-left">
@@ -267,25 +267,25 @@ export default function Module7Page() {
                     <td className="py-2 px-2">Customer escalations</td>
                     <td className="py-2 px-2">3-5/week</td>
                     <td className="py-2 px-2">30min each</td>
-                    <td className="py-2 px-2 text-green-400">HIGH</td>
+                    <td className="py-2 px-2 text-id8-teal">HIGH</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-2 px-2">Release notes</td>
                     <td className="py-2 px-2">1/week</td>
                     <td className="py-2 px-2">2 hours</td>
-                    <td className="py-2 px-2 text-green-400">HIGH</td>
+                    <td className="py-2 px-2 text-id8-teal">HIGH</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-2 px-2">Meeting summaries</td>
                     <td className="py-2 px-2">5/week</td>
                     <td className="py-2 px-2">15min each</td>
-                    <td className="py-2 px-2 text-green-400">HIGH</td>
+                    <td className="py-2 px-2 text-id8-teal">HIGH</td>
                   </tr>
                   <tr>
                     <td className="py-2 px-2">Feature specs</td>
                     <td className="py-2 px-2">2/month</td>
                     <td className="py-2 px-2">4 hours</td>
-                    <td className="py-2 px-2 text-yellow-400">MEDIUM</td>
+                    <td className="py-2 px-2 text-[var(--muted)]">MEDIUM</td>
                   </tr>
                 </tbody>
               </table>
@@ -297,17 +297,17 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-3">
-              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded">
+              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-sm mb-1">Customer Escalations</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>Trigger:</strong> When escalation email arrives, before typing response</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>AI Action:</strong> Analyze email, suggest response framework, identify edge cases</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded">
+              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-sm mb-1">Release Notes</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>Trigger:</strong> When opening blank release notes doc</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>AI Action:</strong> Generate first draft from feature list, then I refine</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded">
+              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-sm mb-1">Meeting Summaries</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>Trigger:</strong> Immediately after meeting, while notes are fresh</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>AI Action:</strong> Turn raw notes into structured summary with action items</p>
@@ -319,8 +319,8 @@ export default function Module7Page() {
               Jordan built prompt templates for recurring tasks and saved them where she works:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-4">Example: Customer Escalation Template</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-4">Example: Customer Escalation Template</p>
               <div className="text-[var(--text-secondary)] space-y-4 whitespace-pre-wrap">
 {`CUSTOMER ESCALATION ANALYZER
 
@@ -398,19 +398,19 @@ Help me:
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">1. Prompt Library</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Saved best prompts in a searchable doc. Tagged by task type. No more "where was that good prompt I used?"
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">2. Desktop Shortcut</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   AI tool pinned to browser toolbar. Keyboard shortcut to open it. Removed "I forgot to open it" friction.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">3. Context Docs</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Created standing context files for major projects. Copy-paste context instead of retyping every time.
@@ -424,7 +424,7 @@ Help me:
               How do you know if AI is actually integrated vs. still optional? Track these signals:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">Good Integration Looks Like:</h3>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                 <li>✓ You use AI without consciously deciding to use it</li>
@@ -444,11 +444,11 @@ Help me:
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Workflow Integration Map</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Workflow Integration Map</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll need:</strong> Your calendar/task list for a typical week
@@ -456,28 +456,28 @@ Help me:
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map Weekly Tasks (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List all recurring tasks. Note frequency, time spent, and AI potential (high/medium/low).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Define Trigger Points (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For top 3 high-potential tasks, specify the exact moment AI should activate.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Create Template Slots (20 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Build prompt templates for your most common scenarios. Save them somewhere accessible.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Set Review Checkpoints (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Identify 2-3 natural review points where AI should verify your work.</p>
@@ -485,7 +485,7 @@ Help me:
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-xs font-mono text-id8-orange mb-2">DELIVERABLE</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   A one-page Workflow Integration Map showing trigger points, templates, and checkpoints. Start with ONE task this week.
@@ -494,7 +494,7 @@ Help me:
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

@@ -103,11 +103,11 @@ export function ContractViewer({
   if (!contract) {
     return (
       <div className={`flex flex-col items-center justify-center py-12 text-center ${className}`}>
-        <FileText className="w-12 h-12 text-[var(--text-tertiary)] mb-4" />
-        <h3 className="text-lg font-medium text-[var(--text-secondary)] mb-2">
+        <FileText className="w-12 h-12 text-[var(--muted)] mb-4" />
+        <h3 className="text-lg font-medium text-[var(--muted)] mb-2">
           No Contract Available
         </h3>
-        <p className="text-sm text-[var(--text-tertiary)] max-w-sm">
+        <p className="text-sm text-[var(--muted)] max-w-sm">
           A purchase agreement will appear here once the deal is under contract.
         </p>
       </div>
@@ -122,18 +122,18 @@ export function ContractViewer({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:col-span-2 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4"
+          className="lg:col-span-2 bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4"
         >
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2">
-              <FileText className="w-4 h-4 text-[var(--text-secondary)]" />
-              <h3 className="text-sm font-medium text-[var(--text-primary)]">
+              <FileText className="w-4 h-4 text-[var(--muted)]" />
+              <h3 className="text-sm font-medium text-[var(--ink)]">
                 Purchase Agreement
               </h3>
             </div>
             <button
               onClick={openReader}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[var(--accent)] hover:bg-[var(--accent)]/10 rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[var(--accent)] hover:bg-[var(--accent)]/10  transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               Read Full Contract
@@ -142,13 +142,13 @@ export function ContractViewer({
 
           {/* Preview Content */}
           <div className="relative">
-            <div className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap max-h-40 overflow-hidden">
+            <div className="text-sm text-[var(--muted)] leading-relaxed whitespace-pre-wrap max-h-40 overflow-hidden">
               {previewText}
             </div>
 
             {/* Fade overlay for truncated content */}
             {currentVersion?.content && currentVersion.content.length > 500 && !isPreviewExpanded && (
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[var(--paper-shadow)] to-transparent" />
             )}
           </div>
 
@@ -156,7 +156,7 @@ export function ContractViewer({
           {currentVersion?.content && currentVersion.content.length > 500 && (
             <button
               onClick={() => setIsPreviewExpanded(!isPreviewExpanded)}
-              className="mt-2 text-xs text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors"
+              className="mt-2 text-xs text-[var(--muted)] hover:text-[var(--muted)] transition-colors"
             >
               {isPreviewExpanded ? 'Show less' : 'Show more preview...'}
             </button>
@@ -168,22 +168,22 @@ export function ContractViewer({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4"
+          className="bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4"
         >
-          <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+          <h3 className="text-sm font-medium text-[var(--muted)] mb-4">
             Contract Details
           </h3>
 
           <div className="space-y-4">
             {/* Version Badge */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+              <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
                 <Hash className="w-3.5 h-3.5" />
                 Version
               </div>
               {versionColors && (
                 <span
-                  className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium ${versionColors.bg} ${versionColors.text} border ${versionColors.border}`}
+                  className={`inline-flex items-center px-2 py-0.5  text-xs font-mono font-medium ${versionColors.bg} ${versionColors.text} border ${versionColors.border}`}
                 >
                   v{currentVersion?.version}
                 </span>
@@ -192,11 +192,11 @@ export function ContractViewer({
 
             {/* Created Date */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+              <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
                 <Calendar className="w-3.5 h-3.5" />
                 Created
               </div>
-              <span className="text-xs text-[var(--text-primary)]">
+              <span className="text-xs text-[var(--ink)]">
                 {contract.createdAt && new Date(contract.createdAt).toLocaleDateString('en-US', {
                   month: 'short',
                   day: 'numeric',
@@ -207,46 +207,46 @@ export function ContractViewer({
 
             {/* Total Versions */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+              <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
                 <FileText className="w-3.5 h-3.5" />
                 Total Versions
               </div>
-              <span className="text-xs text-[var(--text-primary)]">
+              <span className="text-xs text-[var(--ink)]">
                 {contract.versions?.length || 1}
               </span>
             </div>
 
             {/* Last Modified */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+              <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
                 <Clock className="w-3.5 h-3.5" />
                 Last Modified
               </div>
-              <span className="text-xs text-[var(--text-primary)]">
+              <span className="text-xs text-[var(--ink)]">
                 {contract.updatedAt && formatRelativeTime(contract.updatedAt)}
               </span>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-[var(--border)] pt-3">
+            <div className="border-t border-[var(--hair)] pt-3">
               {/* Key Terms Summary */}
               {contract.keyTerms && (
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+                    <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
                       <DollarSign className="w-3.5 h-3.5" />
                       Price
                     </div>
-                    <span className="text-xs font-medium text-[var(--text-primary)]">
+                    <span className="text-xs font-medium text-[var(--ink)]">
                       {formatCurrency(contract.keyTerms.purchasePrice)}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+                    <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
                       <Wallet className="w-3.5 h-3.5" />
                       Earnest
                     </div>
-                    <span className="text-xs font-medium text-[var(--text-primary)]">
+                    <span className="text-xs font-medium text-[var(--ink)]">
                       {formatCurrency(contract.keyTerms.earnestMoney)}
                     </span>
                   </div>
@@ -263,15 +263,15 @@ export function ContractViewer({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4"
+          className="bg-id8-orange border border-id8-orange  p-4"
         >
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <AlertTriangle className="w-5 h-5 text-id8-orange flex-shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-medium text-amber-600 dark:text-amber-400">
+              <h4 className="text-sm font-medium text-id8-orange">
                 {pendingAmendments.length} Pending Amendment{pendingAmendments.length !== 1 ? 's' : ''}
               </h4>
-              <p className="text-xs text-amber-600/80 dark:text-amber-400/80 mt-0.5">
+              <p className="text-xs text-id8-orange mt-0.5">
                 Review and approve amendments to proceed with the transaction.
               </p>
 
@@ -281,25 +281,25 @@ export function ContractViewer({
                   <button
                     key={amendment.id}
                     onClick={() => handleAmendmentClick(amendment)}
-                    className="flex items-center justify-between w-full p-2 bg-white/50 dark:bg-black/20 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors"
+                    className="flex items-center justify-between w-full p-2 bg-[var(--paper)] hover:bg-[var(--paper-shadow)] transition-colors"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-medium text-[var(--text-primary)]">
+                      <span className="text-xs font-medium text-[var(--ink)]">
                         {amendment.title}
                       </span>
-                      <span className={`px-1.5 py-0.5 text-[10px] rounded ${
+                      <span className={`px-1.5 py-0.5 text-[10px]  ${
                         amendment.status === 'pending_signature'
-                          ? 'bg-blue-500/20 text-blue-600'
-                          : 'bg-amber-500/20 text-amber-600'
+                          ? 'bg-[var(--ink)] text-[var(--paper)]'
+                          : 'bg-id8-orange text-[var(--paper)]'
                       }`}>
                         {amendment.status === 'pending_signature' ? 'Awaiting Signature' : 'Needs Review'}
                       </span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)]" />
+                    <ChevronRight className="w-4 h-4 text-[var(--muted)]" />
                   </button>
                 ))}
                 {pendingAmendments.length > 3 && (
-                  <p className="text-xs text-amber-600/70 text-center">
+                  <p className="text-xs text-id8-orange text-center">
                     +{pendingAmendments.length - 3} more
                   </p>
                 )}
@@ -314,7 +314,7 @@ export function ContractViewer({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4"
+        className="bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4"
       >
         <AmendmentHistoryTimeline
           entries={versionHistory}
@@ -331,7 +331,7 @@ export function ContractViewer({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         onClick={openWizard}
-        className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white rounded-xl font-medium hover:bg-[var(--accent)]/90 transition-colors"
+        className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-[var(--paper)]  font-medium hover:bg-[var(--accent)]/90 transition-colors"
       >
         <Plus className="w-4 h-4" />
         New Addendum

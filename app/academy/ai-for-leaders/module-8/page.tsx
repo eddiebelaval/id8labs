@@ -55,7 +55,7 @@ export default function Module8Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-8">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -83,7 +83,7 @@ export default function Module8Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 8
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -93,34 +93,34 @@ export default function Module8Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Leading the Change
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "We built the perfect AI system. Then nobody used it."
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* Why Adoption Fails */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Hard Truth
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why AI Adoption Fails</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why AI Adoption Fails</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   According to Gartner, 85% of AI projects fail to deliver business value. McKinsey reports that only 8% of companies achieve widespread AI adoption. MIT found that 71% of AI initiatives stall in the pilot phase.
@@ -166,8 +166,8 @@ export default function Module8Page() {
                   desc: "If the old way is faster for hitting quarterly goals, AI won't get adopted.",
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-3 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-sm">{i + 1}</span>
+                <div key={i} className="flex gap-3 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold text-sm">{i + 1}</span>
                   <div>
                     <p className="font-bold text-[var(--text-primary)]">{item.title}</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">{item.desc}</p>
@@ -186,12 +186,12 @@ export default function Module8Page() {
               Not everyone will react to AI the same way. Your first step is to map your stakeholders across two dimensions: <strong>Influence</strong> and <strong>Support</strong>.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="grid grid-cols-2 gap-px bg-[var(--border)]">
                 {/* Top row headers */}
                 <div className="bg-[var(--bg-secondary)] p-4">
                   <p className="text-xs text-[var(--text-tertiary)] mb-2">High Support, Low Influence</p>
-                  <p className="font-bold text-green-400 mb-2">INFORM</p>
+                  <p className="font-bold text-id8-teal mb-2">INFORM</p>
                   <p className="text-sm text-[var(--text-secondary)]">Keep them updated. They're your cheerleaders but can't drive change.</p>
                   <p className="text-xs text-[var(--text-tertiary)] mt-2 italic">Example: Junior analyst excited about AI</p>
                 </div>
@@ -210,7 +210,7 @@ export default function Module8Page() {
                 </div>
                 <div className="bg-[var(--bg-secondary)] p-4">
                   <p className="text-xs text-[var(--text-tertiary)] mb-2">Low Support, High Influence</p>
-                  <p className="font-bold text-red-400 mb-2">ENGAGE</p>
+                  <p className="font-bold text-[var(--muted)] mb-2">ENGAGE</p>
                   <p className="text-sm text-[var(--text-secondary)]">Critical. Understand their concerns. Address them directly.</p>
                   <p className="text-xs text-[var(--text-tertiary)] mt-2 italic">Example: Department head blocking adoption</p>
                 </div>
@@ -235,8 +235,8 @@ export default function Module8Page() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-3 px-4 text-red-400">DON'T Say</th>
-                    <th className="text-left py-3 px-4 text-green-400">DO Say</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">DON'T Say</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">DO Say</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -323,7 +323,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Executives & Leaders</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">What they need: Strategic understanding of AI capabilities, risks, and ROI.</p>
                 <p className="text-xs text-[var(--text-tertiary)]">
@@ -332,7 +332,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Managers & Team Leads</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">What they need: How to integrate AI into workflows and support their teams.</p>
                 <p className="text-xs text-[var(--text-tertiary)]">
@@ -341,7 +341,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Individual Contributors</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">What they need: Hands-on training with the specific tools they'll use daily.</p>
                 <p className="text-xs text-[var(--text-tertiary)]">
@@ -350,7 +350,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Technical Teams</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">What they need: Deep technical knowledge to build, deploy, and maintain AI systems.</p>
                 <p className="text-xs text-[var(--text-tertiary)]">
@@ -429,9 +429,9 @@ export default function Module8Page() {
                   ],
                 },
               ].map((pattern, i) => (
-                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-3 mb-3">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</span>
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</span>
                     <div>
                       <p className="font-bold text-lg text-[var(--text-primary)]">{pattern.title}</p>
                       <p className="text-sm italic text-[var(--text-tertiary)]">"{pattern.quote}"</p>
@@ -440,11 +440,11 @@ export default function Module8Page() {
                   <div className="ml-11">
                     <p className="text-sm font-mono text-id8-orange uppercase mb-1">How to Identify</p>
                     <p className="text-sm text-[var(--text-secondary)] mb-3">{pattern.identify}</p>
-                    <p className="text-sm font-mono text-green-400 uppercase mb-1">How to Handle</p>
+                    <p className="text-sm font-mono text-id8-teal uppercase mb-1">How to Handle</p>
                     <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                       {pattern.handle.map((item, j) => (
                         <li key={j} className="flex gap-2">
-                          <span className="text-green-400 flex-shrink-0">•</span>
+                          <span className="text-id8-teal flex-shrink-0">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -546,13 +546,13 @@ export default function Module8Page() {
             </ul>
 
             {/* Exercise Box */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <div className="flex items-start gap-3 mb-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center">
                   <TargetIcon />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-id8-orange mb-1">BUILD: Your Change Management Plan</h3>
+                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-id8-orange mb-1">BUILD: Your Change Management Plan</h3>
                   <p className="text-sm text-[var(--text-secondary)]">Your final deliverable for this course</p>
                 </div>
               </div>
@@ -592,7 +592,7 @@ export default function Module8Page() {
             </div>
 
             {/* Course Conclusion */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/20 rounded-2xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/20">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Course Conclusion
               </h2>
@@ -618,7 +618,7 @@ export default function Module8Page() {
                   "ROI Measurement Dashboard",
                   "Change Management Plan",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                  <div key={i} className="flex items-center gap-2 p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <CheckIcon />
                     <span className="text-sm font-medium text-[var(--text-primary)]">{item}</span>
                   </div>
@@ -669,8 +669,8 @@ export default function Module8Page() {
                   desc: "Foundation, Pilot, Expand, Scale. Each phase has checkpoints. If you're not hitting them, pause and diagnose before continuing.",
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-3 p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded-r-lg">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</div>
+                <div key={i} className="flex gap-3 p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange -lg">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</div>
                   <div>
                     <p className="font-bold text-[var(--text-primary)] mb-1">{item.title}</p>
                     <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>

@@ -38,26 +38,26 @@ export function NoteCard({ note, showActions = true }: NoteCardProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      className="group p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg"
+      className="group p-4 bg-[var(--paper-shadow)] border border-[var(--hair)] "
     >
       {!isEditing ? (
         <>
           {/* Note title */}
           {note.title && (
-            <h4 className="font-medium text-[var(--text-primary)] mb-2">
+            <h4 className="font-medium text-[var(--ink)] mb-2">
               {note.title}
             </h4>
           )}
 
           {/* Note content */}
-          <p className="text-sm text-[var(--text-secondary)] whitespace-pre-wrap">
+          <p className="text-sm text-[var(--muted)] whitespace-pre-wrap">
             {note.content}
           </p>
 
           {/* Actions */}
           {showActions && (
             <div className="mt-3 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
-              <span className="text-xs text-[var(--text-tertiary)]">
+              <span className="text-xs text-[var(--muted)]">
                 {new Date(note.created_at).toLocaleDateString('en-US', {
                   month: 'short',
                   day: 'numeric',
@@ -68,7 +68,7 @@ export function NoteCard({ note, showActions = true }: NoteCardProps) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="text-xs text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
+                  className="text-xs text-[var(--muted)] hover:text-[var(--muted)]"
                 >
                   Edit
                 </button>
@@ -76,7 +76,7 @@ export function NoteCard({ note, showActions = true }: NoteCardProps) {
                 {!showConfirmDelete ? (
                   <button
                     onClick={() => setShowConfirmDelete(true)}
-                    className="text-xs text-[var(--text-tertiary)] hover:text-red-500"
+                    className="text-xs text-[var(--muted)] hover:text-id8-orange"
                   >
                     Delete
                   </button>
@@ -84,7 +84,7 @@ export function NoteCard({ note, showActions = true }: NoteCardProps) {
                   <button
                     onClick={handleDelete}
                     disabled={isDeleting}
-                    className="text-xs text-red-500 hover:text-red-600 disabled:opacity-50"
+                    className="text-xs text-id8-orange hover:underline disabled:opacity-50"
                   >
                     {isDeleting ? '...' : 'Confirm'}
                   </button>
@@ -104,13 +104,13 @@ export function NoteCard({ note, showActions = true }: NoteCardProps) {
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
             placeholder="Title (optional)"
-            className="w-full px-3 py-2 text-sm bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-id8-orange/50"
+            className="w-full px-3 py-2 text-sm bg-[var(--paper)] border border-[var(--hair)]  focus:outline-none focus:border-[var(--ink)]"
           />
           <textarea
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
             placeholder="Write your note..."
-            className="w-full h-24 px-3 py-2 text-sm bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-id8-orange/50"
+            className="w-full h-24 px-3 py-2 text-sm bg-[var(--paper)] border border-[var(--hair)]  resize-none focus:outline-none focus:border-[var(--ink)]"
             autoFocus
           />
           <div className="flex justify-end gap-2">
@@ -120,14 +120,14 @@ export function NoteCard({ note, showActions = true }: NoteCardProps) {
                 setEditedTitle(note.title || '')
                 setEditedContent(note.content)
               }}
-              className="px-3 py-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              className="px-3 py-1.5 text-sm text-[var(--muted)] hover:text-[var(--ink)]"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
               disabled={!editedContent.trim()}
-              className="px-3 py-1.5 text-sm bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 text-sm bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors disabled:opacity-50"
             >
               Save
             </button>

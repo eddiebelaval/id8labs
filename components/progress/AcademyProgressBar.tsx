@@ -21,7 +21,7 @@ export default function AcademyProgressBar({
   if (loading) {
     return (
       <div className={`${className}`}>
-        <div className="h-2 bg-[var(--border)] rounded-full animate-pulse" />
+        <div className="h-2 bg-[var(--paper-mid)] rounded-full animate-pulse" />
       </div>
     )
   }
@@ -35,27 +35,27 @@ export default function AcademyProgressBar({
     <div className={`${className}`}>
       {showLabel && (
         <div className="flex items-center justify-between mb-2">
-          <p className="text-xs font-mono uppercase tracking-widest text-[var(--text-tertiary)]">
+          <p className="text-xs font-[family-name:var(--font-narrow)] uppercase tracking-widest text-[var(--muted)]">
             Academy Progress
           </p>
-          <p className="text-sm font-medium text-[var(--text-secondary)]">
+          <p className="text-sm font-medium text-[var(--muted)]">
             {completed}/{TOTAL_MODULES} modules
           </p>
         </div>
       )}
 
       {/* Progress Bar */}
-      <div className="relative h-2 bg-[var(--border)] rounded-full overflow-hidden">
+      <div className="relative h-2 bg-[var(--paper-mid)] rounded-full overflow-hidden">
         <m.div
           initial={{ width: 0 }}
           animate={{ width: `${percent}%` }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-id8-orange to-id8-orange/80 rounded-full"
+          className="absolute top-0 left-0 h-full bg-id8-orange rounded-full"
         />
       </div>
 
       {showLabel && percent > 0 && (
-        <p className="text-xs text-[var(--text-tertiary)] mt-1">
+        <p className="text-xs text-[var(--muted)] mt-1">
           {percent}% complete
         </p>
       )}

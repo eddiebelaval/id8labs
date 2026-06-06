@@ -44,14 +44,12 @@ export function SettingCard({ setting }: SettingCardProps) {
     }
   }
 
-  const glowClasses = inStack
-    ? 'ring-2 ring-emerald-500/80 shadow-[0_8px_30px_rgba(16,185,129,0.3)]'
-    : ''
+  const selectedClasses = inStack ? 'border-id8-orange' : ''
 
   return (
     <Link href={`/settings/${setting.slug}`}>
       <article
-        className={`card group relative flex flex-col h-full hover-lift ${glowClasses} transition-all duration-300`}
+        className={`card group relative flex flex-col h-full ${selectedClasses} transition-colors duration-150`}
       >
         {/* Header */}
         <div className="flex items-start gap-3 mb-3">
@@ -59,12 +57,12 @@ export function SettingCard({ setting }: SettingCardProps) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               {setting.verified && (
-                <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-500">
+                <span className="inline-flex items-center gap-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--teal)]">
                   <CheckCircle className="w-3.5 h-3.5" />
                   Verified
                 </span>
               )}
-              <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]">
+              <span className="inline-flex items-center px-2 py-0.5 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-id8-orange">
                 {setting.category}
               </span>
             </div>
@@ -73,20 +71,20 @@ export function SettingCard({ setting }: SettingCardProps) {
 
         {/* Title and description */}
         <div className="mb-3 flex-1">
-          <h3 className="font-semibold text-lg mb-1 group-hover:text-[var(--id8-orange)] transition-colors line-clamp-1">
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-lg mb-1 text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150 line-clamp-1">
             {setting.name}
           </h3>
-          <p className="text-sm text-[var(--text-secondary)] line-clamp-2 mb-3">
+          <p className="text-sm text-[var(--muted)] line-clamp-2 mb-3">
             {setting.description}
           </p>
 
           {/* Model info */}
           {setting.model && (
-            <div className="flex items-center gap-2 p-2 bg-[var(--bg-tertiary)] border border-[var(--border)] rounded text-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[var(--id8-orange)]" />
-              <span className="font-medium">{formatModelName(setting.model)}</span>
+            <div className="flex items-center gap-2 p-2 bg-[var(--paper-shadow)] border border-[var(--hair)] text-xs">
+              <Sparkles className="w-3.5 h-3.5 text-id8-orange" />
+              <span className="font-[family-name:var(--font-mono)] text-[var(--ink)]">{formatModelName(setting.model)}</span>
               {setting.max_tokens && (
-                <span className="text-[var(--text-secondary)]">
+                <span className="font-[family-name:var(--font-mono)] text-[var(--muted)]">
                   • {setting.max_tokens.toLocaleString()} tokens
                 </span>
               )}
@@ -95,8 +93,8 @@ export function SettingCard({ setting }: SettingCardProps) {
 
           {/* Use case */}
           {setting.use_case && (
-            <div className="mt-2 text-xs text-[var(--text-secondary)]">
-              <span className="font-semibold">Use case:</span> {setting.use_case}
+            <div className="mt-2 text-xs text-[var(--muted)]">
+              <span className="font-semibold text-[var(--ink)]">Use case:</span> {setting.use_case}
             </div>
           )}
         </div>
@@ -107,13 +105,13 @@ export function SettingCard({ setting }: SettingCardProps) {
             {setting.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 text-xs bg-[var(--bg-secondary)] text-[var(--text-secondary)] rounded-md"
+                className="px-2 py-0.5 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-[var(--muted)]"
               >
                 #{tag}
               </span>
             ))}
             {setting.tags.length > 3 && (
-              <span className="px-2 py-0.5 text-xs text-[var(--text-tertiary)]">
+              <span className="px-2 py-0.5 text-xs text-[var(--muted)]">
                 +{setting.tags.length - 3}
               </span>
             )}
@@ -121,8 +119,8 @@ export function SettingCard({ setting }: SettingCardProps) {
         )}
 
         {/* Stats */}
-        <div className="flex items-center justify-between pt-3 border-t border-[var(--border)]">
-          <span className="flex items-center gap-1 text-sm text-[var(--text-secondary)]">
+        <div className="flex items-center justify-between pt-3 border-t border-[var(--hair)]">
+          <span className="flex items-center gap-1 font-[family-name:var(--font-mono)] text-sm text-[var(--muted)]">
             <Download className="w-4 h-4" />
             {setting.install_count.toLocaleString()}
           </span>
@@ -130,10 +128,10 @@ export function SettingCard({ setting }: SettingCardProps) {
           {/* Add to Stack button */}
           <button
             onClick={handleAddToStack}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] border transition-colors duration-150 ${
               inStack
-                ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500'
-                : 'bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange-hover)]'
+                ? 'bg-transparent text-[var(--teal)] border-[var(--teal)]'
+                : 'bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange'
             }`}
           >
             {inStack ? (

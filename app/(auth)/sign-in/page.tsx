@@ -116,51 +116,41 @@ function SignInForm(): React.ReactElement {
     ? 'Your progress will be saved automatically.'
     : 'Sign in to continue your learning journey'
 
+  const inputClass =
+    'w-full px-4 py-3 border border-[var(--hair)] bg-[var(--paper)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)] transition-colors duration-150'
+  const labelClass =
+    'block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2'
+  const submitClass =
+    'w-full px-6 py-3.5 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 disabled:opacity-50'
+
   return (
-    <div className="bg-white dark:bg-bg-dark border border-border-light dark:border-border-dark rounded-lg p-8 shadow-lg">
+    <div className="bg-[var(--paper)] border border-[var(--hair)] p-8">
       {contextMessage && (
-        <div className="mb-6 p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
-          <div className="flex items-start gap-3">
-            <svg
-              className="w-5 h-5 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-              />
-            </svg>
-            <div>
-              <p className="font-medium text-orange-800 dark:text-orange-200">
-                {contextMessage.title}
-              </p>
-              <p className="text-sm text-orange-700 dark:text-orange-300 mt-1">
-                {contextMessage.subtitle}
-              </p>
-            </div>
-          </div>
+        <div className="mb-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
+          <p className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange mb-1.5">
+            {contextMessage.title}
+          </p>
+          <p className="text-sm text-[var(--body)] leading-[1.6]">
+            {contextMessage.subtitle}
+          </p>
         </div>
       )}
 
-      <h1 className="text-3xl font-bold text-text-light dark:text-text-dark mb-2">{title}</h1>
-      <p className="text-text-light-secondary dark:text-text-dark-secondary mb-8">{subtitle}</p>
+      <h1 className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] text-[var(--ink)] mb-2">{title}</h1>
+      <p className="text-[var(--muted)] mb-8">{subtitle}</p>
 
       <GoogleAuthButton onClick={handleGoogleSignIn} disabled={loading} />
       <AuthDivider />
 
       {/* Auth Method Toggle */}
-      <div className="flex rounded-md border border-border-light dark:border-border-dark mb-6 overflow-hidden">
+      <div className="flex border border-[var(--hair)] mb-6">
         <button
           type="button"
           onClick={() => setAuthMethod('magic-link')}
-          className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
+          className={`flex-1 px-4 py-2.5 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
             authMethod === 'magic-link'
-              ? 'bg-orange-500 text-white'
-              : 'bg-white dark:bg-bg-dark text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-800'
+              ? 'bg-[var(--ink)] text-[var(--paper)]'
+              : 'bg-transparent text-[var(--muted)] hover:text-[var(--ink)]'
           }`}
         >
           Magic Link
@@ -168,10 +158,10 @@ function SignInForm(): React.ReactElement {
         <button
           type="button"
           onClick={() => setAuthMethod('password')}
-          className={`flex-1 px-4 py-2 text-sm font-medium transition-colors ${
+          className={`flex-1 px-4 py-2.5 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
             authMethod === 'password'
-              ? 'bg-orange-500 text-white'
-              : 'bg-white dark:bg-bg-dark text-text-light dark:text-text-dark hover:bg-gray-50 dark:hover:bg-gray-800'
+              ? 'bg-[var(--ink)] text-[var(--paper)]'
+              : 'bg-transparent text-[var(--muted)] hover:text-[var(--ink)]'
           }`}
         >
           Password
@@ -181,10 +171,7 @@ function SignInForm(): React.ReactElement {
       {authMethod === 'magic-link' ? (
         <form onSubmit={handleMagicLink} className="space-y-6">
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-text-light dark:text-text-dark mb-2"
-            >
+            <label htmlFor="email" className={labelClass}>
               Email
             </label>
             <input
@@ -193,31 +180,24 @@ function SignInForm(): React.ReactElement {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-border-light dark:border-border-dark rounded-md bg-white dark:bg-bg-dark text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400"
+              className={inputClass}
               placeholder="you@example.com"
             />
-            <p className="mt-2 text-xs text-text-light-secondary dark:text-text-dark-secondary">
+            <p className="mt-2 text-xs text-[var(--muted)]">
               We'll email you a magic link for password-free sign in.
             </p>
           </div>
 
           <AuthErrorMessage error={error} />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:disabled:bg-orange-800 text-white font-medium rounded-md transition-colors"
-          >
+          <button type="submit" disabled={loading} className={submitClass}>
             {loading ? 'Sending...' : 'Send Magic Link'}
           </button>
         </form>
       ) : (
         <form onSubmit={handlePasswordSignIn} className="space-y-6">
           <div>
-            <label
-              htmlFor="email-password"
-              className="block text-sm font-medium text-text-light dark:text-text-dark mb-2"
-            >
+            <label htmlFor="email-password" className={labelClass}>
               Email
             </label>
             <input
@@ -226,16 +206,13 @@ function SignInForm(): React.ReactElement {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-border-light dark:border-border-dark rounded-md bg-white dark:bg-bg-dark text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400"
+              className={inputClass}
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-text-light dark:text-text-dark mb-2"
-            >
+            <label htmlFor="password" className={labelClass}>
               Password
             </label>
             <input
@@ -244,28 +221,24 @@ function SignInForm(): React.ReactElement {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-border-light dark:border-border-dark rounded-md bg-white dark:bg-bg-dark text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400"
+              className={inputClass}
               placeholder="************"
             />
           </div>
 
           <AuthErrorMessage error={error} />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:disabled:bg-orange-800 text-white font-medium rounded-md transition-colors"
-          >
+          <button type="submit" disabled={loading} className={submitClass}>
             {loading ? 'Signing in...' : 'Sign in'}
           </button>
         </form>
       )}
 
-      <div className="mt-6 text-center text-sm text-text-light-secondary dark:text-text-dark-secondary">
+      <div className="mt-6 text-center text-sm text-[var(--muted)]">
         Don't have an account?{' '}
         <Link
           href="/sign-up"
-          className="text-orange-500 dark:text-orange-400 hover:underline font-medium"
+          className="text-id8-orange hover:underline font-medium"
         >
           Sign up
         </Link>

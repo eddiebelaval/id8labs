@@ -66,27 +66,22 @@ export function FlipCard({ children, isFlipped, onFlipComplete }: FlipCardProps)
               WebkitBackfaceVisibility: 'hidden',
               transform: 'rotateY(180deg)',
             }}
-            className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl shadow-2xl border-4 border-emerald-400"
+            className="absolute inset-0 flex flex-col items-center justify-center bg-teal border border-teal"
           >
             <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{
-                type: 'spring',
-                stiffness: 260,
-                damping: 20,
-                delay: 0.1,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.15, delay: 0.1 }}
             >
-              <CheckCircle className="w-20 h-20 text-white drop-shadow-lg" />
+              <CheckCircle className="w-20 h-20 text-[var(--paper)]" />
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-white font-bold text-lg mt-4 drop-shadow-md"
+              className="font-[family-name:var(--font-narrow)] text-sm font-bold uppercase tracking-[0.18em] text-[var(--paper)] mt-4"
             >
-              Added to Stack!
+              Added to Stack
             </motion.p>
           </div>
         )}

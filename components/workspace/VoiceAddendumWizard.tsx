@@ -352,7 +352,7 @@ export function VoiceAddendumWizard({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Progress indicator */}
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)]">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--hair)]">
         {STEPS.map((step, index) => {
           const isActive = index === currentStepIndex
           const isCompleted = index < currentStepIndex
@@ -363,10 +363,10 @@ export function VoiceAddendumWizard({
               <div
                 className={`flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
                   isActive
-                    ? 'bg-[var(--accent)] text-white'
+                    ? 'bg-[var(--accent)] text-[var(--paper)]'
                     : isCompleted
-                    ? 'bg-emerald-500 text-white'
-                    : 'bg-[var(--bg-secondary)] text-[var(--text-tertiary)]'
+                    ? 'bg-[var(--teal)] text-[var(--paper)]'
+                    : 'bg-[var(--paper-shadow)] text-[var(--muted)]'
                 }`}
               >
                 {isCompleted ? (
@@ -377,13 +377,13 @@ export function VoiceAddendumWizard({
               </div>
               <span
                 className={`text-xs font-medium hidden sm:inline ${
-                  isActive ? 'text-[var(--text-primary)]' : 'text-[var(--text-tertiary)]'
+                  isActive ? 'text-[var(--ink)]' : 'text-[var(--muted)]'
                 }`}
               >
                 {step.label}
               </span>
               {index < STEPS.length - 1 && (
-                <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)]" />
+                <ChevronRight className="w-4 h-4 text-[var(--muted)]" />
               )}
             </div>
           )
@@ -403,10 +403,10 @@ export function VoiceAddendumWizard({
               className="space-y-4"
             >
               <div className="text-center mb-6">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                <h3 className="text-lg font-semibold text-[var(--ink)]">
                   What type of addendum?
                 </h3>
-                <p className="text-sm text-[var(--text-tertiary)] mt-1">
+                <p className="text-sm text-[var(--muted)] mt-1">
                   Say the type or click to select
                 </p>
               </div>
@@ -418,8 +418,8 @@ export function VoiceAddendumWizard({
                   disabled={!isSupported}
                   className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-colors ${
                     isListening
-                      ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                      ? 'bg-[var(--accent)] text-[var(--paper)]'
+                      : 'bg-[var(--paper-shadow)] text-[var(--muted)] hover:bg-[var(--paper-mid)]'
                   } ${!isSupported ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {isListening ? (
@@ -434,7 +434,7 @@ export function VoiceAddendumWizard({
                   </p>
                 )}
                 {interimTranscript && (
-                  <p className="text-sm text-[var(--text-secondary)] mt-2 italic">
+                  <p className="text-sm text-[var(--muted)] mt-2 italic">
                     "{interimTranscript}"
                   </p>
                 )}
@@ -442,7 +442,7 @@ export function VoiceAddendumWizard({
 
               {/* Quick access types */}
               <div className="space-y-2">
-                <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase">
+                <p className="text-xs font-medium text-[var(--muted)] uppercase">
                   Common Addendums
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -456,14 +456,14 @@ export function VoiceAddendumWizard({
                           setStep('details')
                           setCurrentFieldIndex(0)
                         }}
-                        className="flex items-center gap-3 p-3 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)] hover:border-[var(--accent)] transition-colors text-left"
+                        className="flex items-center gap-3 p-3 bg-[var(--paper-shadow)]  border border-[var(--hair)] hover:border-[var(--accent)] transition-colors text-left"
                       >
                         <Icon className="w-5 h-5 text-[var(--accent)] flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-medium text-[var(--text-primary)]">
+                          <p className="text-sm font-medium text-[var(--ink)]">
                             {typeInfo.label}
                           </p>
-                          <p className="text-xs text-[var(--text-tertiary)] line-clamp-1">
+                          <p className="text-xs text-[var(--muted)] line-clamp-1">
                             {typeInfo.description}
                           </p>
                         </div>
@@ -483,7 +483,7 @@ export function VoiceAddendumWizard({
                 </button>
               ) : (
                 <div className="space-y-2 mt-4">
-                  <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase">
+                  <p className="text-xs font-medium text-[var(--muted)] uppercase">
                     All Types
                   </p>
                   <div className="grid grid-cols-2 gap-2">
@@ -499,11 +499,11 @@ export function VoiceAddendumWizard({
                               setStep('details')
                               setCurrentFieldIndex(0)
                             }}
-                            className="flex items-center gap-3 p-3 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)] hover:border-[var(--accent)] transition-colors text-left"
+                            className="flex items-center gap-3 p-3 bg-[var(--paper-shadow)]  border border-[var(--hair)] hover:border-[var(--accent)] transition-colors text-left"
                           >
-                            <Icon className="w-5 h-5 text-[var(--text-secondary)] flex-shrink-0" />
+                            <Icon className="w-5 h-5 text-[var(--muted)] flex-shrink-0" />
                             <div>
-                              <p className="text-sm font-medium text-[var(--text-primary)]">
+                              <p className="text-sm font-medium text-[var(--ink)]">
                                 {typeInfo.label}
                               </p>
                             </div>
@@ -526,10 +526,10 @@ export function VoiceAddendumWizard({
               className="space-y-6"
             >
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                <h3 className="text-lg font-semibold text-[var(--ink)]">
                   {currentField.voicePrompt}
                 </h3>
-                <p className="text-sm text-[var(--text-tertiary)] mt-1">
+                <p className="text-sm text-[var(--muted)] mt-1">
                   Field {currentFieldIndex + 1} of {requiredFields.length}
                 </p>
               </div>
@@ -541,8 +541,8 @@ export function VoiceAddendumWizard({
                   disabled={!isSupported}
                   className={`relative w-20 h-20 rounded-full flex items-center justify-center transition-colors ${
                     isListening
-                      ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
+                      ? 'bg-[var(--accent)] text-[var(--paper)]'
+                      : 'bg-[var(--paper-shadow)] text-[var(--muted)] hover:bg-[var(--paper-mid)]'
                   }`}
                 >
                   {isListening ? (
@@ -557,7 +557,7 @@ export function VoiceAddendumWizard({
                   </p>
                 )}
                 {interimTranscript && (
-                  <p className="text-sm text-[var(--text-secondary)] mt-2 italic">
+                  <p className="text-sm text-[var(--muted)] mt-2 italic">
                     "{interimTranscript}"
                   </p>
                 )}
@@ -565,16 +565,16 @@ export function VoiceAddendumWizard({
 
               {/* Text fallback */}
               <div className="space-y-2">
-                <label className="text-sm font-medium text-[var(--text-secondary)]">
+                <label className="text-sm font-medium text-[var(--muted)]">
                   {currentField.label}
-                  {currentField.required && <span className="text-red-500 ml-1">*</span>}
+                  {currentField.required && <span className="text-id8-orange ml-1">*</span>}
                 </label>
                 <input
                   type={currentField.type === 'date' ? 'date' : currentField.type === 'currency' ? 'number' : 'text'}
                   placeholder={currentField.placeholder}
                   value={(wizard.details[currentField.key] as string) || ''}
                   onChange={(e) => handleTextInputChange(e.target.value)}
-                  className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/50 text-[var(--text-primary)]"
+                  className="w-full px-4 py-3 bg-[var(--paper-shadow)] border border-[var(--hair)]  focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/50 text-[var(--ink)]"
                 />
               </div>
 
@@ -582,7 +582,7 @@ export function VoiceAddendumWizard({
               <div className="flex gap-3">
                 <button
                   onClick={handleBack}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--bg-secondary)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--paper-shadow)] text-[var(--muted)]  hover:bg-[var(--paper-mid)] transition-colors"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Back
@@ -590,7 +590,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={handleNextField}
                   disabled={currentField.required && !wizard.details[currentField.key]}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent)]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-[var(--paper)]  hover:bg-[var(--accent)]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {currentFieldIndex < requiredFields.length - 1 ? 'Next' : 'Review'}
                   <ChevronRight className="w-4 h-4" />
@@ -609,19 +609,19 @@ export function VoiceAddendumWizard({
               className="space-y-4"
             >
               <div className="text-center mb-4">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                <h3 className="text-lg font-semibold text-[var(--ink)]">
                   Review Your Addendum
                 </h3>
-                <p className="text-sm text-[var(--text-tertiary)] mt-1">
+                <p className="text-sm text-[var(--muted)] mt-1">
                   Confirm the details before sending
                 </p>
               </div>
 
               {/* Type badge */}
               {currentTypeInfo && (
-                <div className="flex items-center gap-2 p-3 bg-[var(--bg-secondary)] rounded-lg">
+                <div className="flex items-center gap-2 p-3 bg-[var(--paper-shadow)] ">
                   <FileText className="w-5 h-5 text-[var(--accent)]" />
-                  <span className="font-medium text-[var(--text-primary)]">
+                  <span className="font-medium text-[var(--ink)]">
                     {currentTypeInfo.label}
                   </span>
                 </div>
@@ -636,12 +636,12 @@ export function VoiceAddendumWizard({
                   return (
                     <div
                       key={field.key}
-                      className="flex justify-between items-center py-2 border-b border-[var(--border)]"
+                      className="flex justify-between items-center py-2 border-b border-[var(--hair)]"
                     >
-                      <span className="text-sm text-[var(--text-tertiary)]">
+                      <span className="text-sm text-[var(--muted)]">
                         {field.label}
                       </span>
-                      <span className="text-sm font-medium text-[var(--text-primary)]">
+                      <span className="text-sm font-medium text-[var(--ink)]">
                         {field.type === 'currency' && typeof value === 'number'
                           ? `$${value.toLocaleString()}`
                           : String(value)}
@@ -653,11 +653,11 @@ export function VoiceAddendumWizard({
 
               {/* Generated content preview */}
               {wizard.generatedContent && (
-                <div className="mt-4 p-4 bg-[var(--bg-secondary)] rounded-lg">
-                  <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase mb-2">
+                <div className="mt-4 p-4 bg-[var(--paper-shadow)] ">
+                  <p className="text-xs font-medium text-[var(--muted)] uppercase mb-2">
                     Preview
                   </p>
-                  <pre className="text-sm text-[var(--text-secondary)] whitespace-pre-wrap font-sans">
+                  <pre className="text-sm text-[var(--muted)] whitespace-pre-wrap font-sans">
                     {wizard.generatedContent}
                   </pre>
                 </div>
@@ -667,14 +667,14 @@ export function VoiceAddendumWizard({
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={handleBack}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--bg-secondary)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--paper-shadow)] text-[var(--muted)]  hover:bg-[var(--paper-mid)] transition-colors"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Edit
                 </button>
                 <button
                   onClick={() => setStep('confirm')}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent)]/90 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-[var(--paper)]  hover:bg-[var(--accent)]/90 transition-colors"
                 >
                   Confirm
                   <ChevronRight className="w-4 h-4" />
@@ -693,20 +693,20 @@ export function VoiceAddendumWizard({
               className="space-y-6"
             >
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-emerald-500/10 rounded-full flex items-center justify-center">
-                  <Send className="w-8 h-8 text-emerald-500" />
+                <div className="w-16 h-16 mx-auto mb-4 bg-[var(--paper-mid)] rounded-full flex items-center justify-center">
+                  <Send className="w-8 h-8 text-[var(--teal)]" />
                 </div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                <h3 className="text-lg font-semibold text-[var(--ink)]">
                   Ready to Send
                 </h3>
-                <p className="text-sm text-[var(--text-tertiary)] mt-2 max-w-sm mx-auto">
+                <p className="text-sm text-[var(--muted)] mt-2 max-w-sm mx-auto">
                   This addendum will be sent to all parties via DocuSign for signature.
                 </p>
               </div>
 
               {/* Voice confirmation */}
               <div className="flex flex-col items-center">
-                <p className="text-sm text-[var(--text-tertiary)] mb-3">
+                <p className="text-sm text-[var(--muted)] mb-3">
                   Say "Send" to confirm, or click the button below
                 </p>
                 <button
@@ -714,8 +714,8 @@ export function VoiceAddendumWizard({
                   disabled={!isSupported}
                   className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
                     isListening
-                      ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)]'
+                      ? 'bg-[var(--accent)] text-[var(--paper)]'
+                      : 'bg-[var(--paper-shadow)] text-[var(--muted)]'
                   }`}
                 >
                   {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
@@ -727,7 +727,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={handleBack}
                   disabled={wizard.isProcessing}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--bg-secondary)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors disabled:opacity-50"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--paper-shadow)] text-[var(--muted)]  hover:bg-[var(--paper-mid)] transition-colors disabled:opacity-50"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Back
@@ -735,7 +735,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={handleSubmit}
                   disabled={wizard.isProcessing}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--teal)] text-[var(--paper)]  hover:bg-[var(--teal)] transition-colors disabled:opacity-50"
                 >
                   {wizard.isProcessing ? (
                     <>
@@ -757,18 +757,18 @@ export function VoiceAddendumWizard({
 
       {/* Error display */}
       {(wizard.error || voiceError) && (
-        <div className="mx-4 mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
-          <p className="text-sm text-red-500">{wizard.error || voiceError}</p>
+        <div className="mx-4 mb-4 p-3 bg-id8-orange border border-id8-orange  flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-id8-orange flex-shrink-0" />
+          <p className="text-sm text-id8-orange">{wizard.error || voiceError}</p>
         </div>
       )}
 
       {/* Processing overlay */}
       {wizard.isProcessing && wizard.step === 'details' && (
-        <div className="absolute inset-0 bg-[var(--bg-primary)]/80 flex items-center justify-center">
+        <div className="absolute inset-0 bg-[var(--paper)]/80 flex items-center justify-center">
           <div className="text-center">
             <Loader2 className="w-8 h-8 animate-spin text-[var(--accent)] mx-auto mb-2" />
-            <p className="text-sm text-[var(--text-secondary)]">Generating addendum...</p>
+            <p className="text-sm text-[var(--muted)]">Generating addendum...</p>
           </div>
         </div>
       )}

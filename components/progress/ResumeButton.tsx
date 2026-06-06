@@ -25,7 +25,7 @@ export default function ResumeButton({ className = '' }: ResumeButtonProps) {
   if (loading) {
     return (
       <div className={`${className}`}>
-        <div className="h-12 w-48 bg-[var(--border)] rounded-lg animate-pulse" />
+        <div className="h-12 w-48 bg-[var(--paper-mid)]  animate-pulse" />
       </div>
     )
   }
@@ -56,7 +56,7 @@ export default function ResumeButton({ className = '' }: ResumeButtonProps) {
           <PlayIcon />
           Start Learning
         </Link>
-        <p className="text-sm text-[var(--text-tertiary)] mt-2">
+        <p className="text-sm text-[var(--muted)] mt-2">
           Begin with AI Conversation Fundamentals
         </p>
       </div>
@@ -74,10 +74,10 @@ export default function ResumeButton({ className = '' }: ResumeButtonProps) {
         <PlayIcon />
         Continue Learning
       </Link>
-      <p className="text-sm text-[var(--text-tertiary)] mt-2">
+      <p className="text-sm text-[var(--muted)] mt-2">
         {resumePoint.courseTitle} - Module {resumePoint.moduleNumber}
         {stats.completed > 0 && (
-          <span className="ml-2 text-[var(--text-secondary)]">
+          <span className="ml-2 text-[var(--muted)]">
             ({stats.percent}% complete)
           </span>
         )}

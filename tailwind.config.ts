@@ -6,43 +6,62 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
+  // Dark mode retired — editorial system is paper-only.
   theme: {
     extend: {
       colors: {
-        // Light mode
-        'bg-light': '#FFFFFF',
-        'text-light': '#000000',
-        'text-light-secondary': '#666666',
-        'border-light': '#E5E5E5',
+        // Editorial palette
+        paper: '#fafaf7',
+        'paper-shadow': '#f2f0e8',
+        'paper-mid': '#ededdf',
+        ink: '#0b0b0b',
+        body: '#2a2a2a',
+        muted: '#5a5a5a',
+        hair: '#d6d3c9',
+        'hair-hard': '#b4afa0',
+        orange: '#ff6b35',
+        teal: '#2a8d83',
 
-        // Dark mode
-        'bg-dark': '#0A0A0A',
-        'text-dark': '#FFFFFF',
-        'text-dark-secondary': '#999999',
-        'border-dark': '#2A2A2A',
+        // id8-orange registered as a Tailwind color so `hover:bg-id8-orange`,
+        // `hover:text-id8-orange`, `hover:border-id8-orange` (used throughout
+        // the editorial kit) actually generate hover variants.
+        'id8-orange': '#ff6b35',
+        'id8-orange-hover': '#e85a28',
+
+        // Legacy aliases mapped to editorial values
+        'bg-light': '#fafaf7',
+        'text-light': '#0b0b0b',
+        'text-light-secondary': '#5a5a5a',
+        'border-light': '#d6d3c9',
+        'bg-dark': '#fafaf7',
+        'text-dark': '#0b0b0b',
+        'text-dark-secondary': '#5a5a5a',
+        'border-dark': '#d6d3c9',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        sans: ['var(--font-archivo)', 'Helvetica Neue', 'system-ui', 'sans-serif'],
+        narrow: ['var(--font-archivo-narrow)', 'var(--font-archivo)', 'sans-serif'],
+        mono: ['var(--font-jetbrains)', 'SF Mono', 'monospace'],
       },
       fontSize: {
-        'h1': '3.5rem',
-        'h2': '2.5rem',
-        'body': '1.125rem',
+        h1: '3.5rem',
+        h2: '2.5rem',
+        body: '1.0625rem',
+      },
+      letterSpacing: {
+        kicker: '0.22em',
       },
       maxWidth: {
-        'content': '1200px',
+        content: '1200px',
+        read: '760px',
       },
       spacing: {
-        'section': '6rem',
+        section: '6rem',
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      boxShadow: {
-        'glow-orange': '0 0 20px rgba(255, 107, 53, 0.3), 0 0 40px rgba(255, 107, 53, 0.15)',
-        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.15)',
+      borderRadius: {
+        none: '0',
       },
     },
   },

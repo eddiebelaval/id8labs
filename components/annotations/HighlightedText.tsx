@@ -10,18 +10,27 @@ interface HighlightedTextProps {
   showActions?: boolean
 }
 
+// Highlight colors mapped to the on-palette ramp (ink/orange/teal/hairline).
 const COLOR_CLASSES: Record<HighlightColor, string> = {
-  yellow: 'bg-yellow-300/50 hover:bg-yellow-300/70',
-  green: 'bg-green-300/50 hover:bg-green-300/70',
-  blue: 'bg-blue-300/50 hover:bg-blue-300/70',
-  pink: 'bg-pink-300/50 hover:bg-pink-300/70',
+  yellow: 'bg-[var(--paper-mid)] hover:bg-[var(--paper-shadow)]',
+  green: 'bg-[var(--paper-mid)] hover:bg-[var(--paper-shadow)]',
+  blue: 'bg-[var(--paper-mid)] hover:bg-[var(--paper-shadow)]',
+  pink: 'bg-[var(--paper-mid)] hover:bg-[var(--paper-shadow)]',
 }
 
 const COLOR_BORDERS: Record<HighlightColor, string> = {
-  yellow: 'border-yellow-400',
-  green: 'border-green-400',
-  blue: 'border-blue-400',
-  pink: 'border-pink-400',
+  yellow: 'border-id8-orange',
+  green: 'border-[var(--teal)]',
+  blue: 'border-[var(--ink)]',
+  pink: 'border-[var(--hair-hard)]',
+}
+
+// Solid swatch per color, for the color picker dots.
+const COLOR_SWATCHES: Record<HighlightColor, string> = {
+  yellow: 'bg-id8-orange',
+  green: 'bg-[var(--teal)]',
+  blue: 'bg-[var(--ink)]',
+  pink: 'bg-[var(--hair-hard)]',
 }
 
 export function HighlightedText({ highlight, showActions = true }: HighlightedTextProps) {
@@ -53,11 +62,11 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      className={`group relative p-3 rounded-lg border-l-4 ${COLOR_BORDERS[highlight.color]} bg-[var(--bg-secondary)]`}
+      className={`group relative p-3  border-l-4 ${COLOR_BORDERS[highlight.color]} bg-[var(--paper-shadow)]`}
     >
       {/* Highlighted text preview */}
       <div
-        className={`text-sm leading-relaxed ${COLOR_CLASSES[highlight.color]} px-2 py-1 rounded cursor-pointer`}
+        className={`text-sm leading-relaxed ${COLOR_CLASSES[highlight.color]} px-2 py-1 cursor-pointer`}
         onClick={() => setSelectedHighlight(highlight)}
       >
         "{highlight.highlighted_text}"
@@ -65,7 +74,7 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
 
       {/* Note (if exists) */}
       {highlight.note && !isEditing && (
-        <p className="mt-2 text-sm text-[var(--text-secondary)] italic">
+        <p className="mt-2 text-sm text-[var(--muted)] italic">
           {highlight.note}
         </p>
       )}
@@ -83,7 +92,7 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
               value={editedNote}
               onChange={(e) => setEditedNote(e.target.value)}
               placeholder="Add a note..."
-              className="w-full h-20 px-3 py-2 text-sm bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-id8-orange/50"
+              className="w-full h-20 px-3 py-2 text-sm bg-[var(--paper)] border border-[var(--hair)]  resize-none focus:outline-none focus:border-[var(--ink)]"
               autoFocus
             />
             <div className="flex justify-end gap-2 mt-2">
@@ -92,13 +101,13 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
                   setIsEditing(false)
                   setEditedNote(highlight.note || '')
                 }}
-                className="px-3 py-1.5 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                className="px-3 py-1.5 text-xs text-[var(--muted)] hover:text-[var(--ink)]"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveNote}
-                className="px-3 py-1.5 text-xs bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90"
+                className="px-3 py-1.5 text-xs bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange"
               >
                 Save
               </button>
@@ -116,8 +125,8 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
               <button
                 key={color}
                 onClick={() => handleColorChange(color)}
-                className={`w-5 h-5 rounded-full ${COLOR_CLASSES[color]} border ${
-                  highlight.color === color ? 'ring-2 ring-offset-1 ring-[var(--border)]' : ''
+                className={`w-5 h-5 rounded-full ${COLOR_SWATCHES[color]} ${
+                  highlight.color === color ? 'ring-2 ring-offset-1 ring-[var(--ink)]' : ''
                 }`}
                 title={`Change to ${color}`}
               />
@@ -128,7 +137,7 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsEditing(!isEditing)}
-              className="text-xs text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]"
+              className="text-xs text-[var(--muted)] hover:text-[var(--muted)]"
             >
               {isEditing ? 'Cancel' : 'Edit'}
             </button>
@@ -136,7 +145,7 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
             {!showConfirmDelete ? (
               <button
                 onClick={() => setShowConfirmDelete(true)}
-                className="text-xs text-[var(--text-tertiary)] hover:text-red-500"
+                className="text-xs text-[var(--muted)] hover:text-id8-orange"
               >
                 Delete
               </button>
@@ -144,7 +153,7 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
               <button
                 onClick={handleDelete}
                 disabled={isDeleting}
-                className="text-xs text-red-500 hover:text-red-600 disabled:opacity-50"
+                className="text-xs text-id8-orange hover:underline disabled:opacity-50"
               >
                 {isDeleting ? '...' : 'Confirm'}
               </button>
@@ -154,7 +163,7 @@ export function HighlightedText({ highlight, showActions = true }: HighlightedTe
       )}
 
       {/* Timestamp */}
-      <div className="mt-2 text-xs text-[var(--text-tertiary)]">
+      <div className="mt-2 text-xs text-[var(--muted)]">
         {new Date(highlight.created_at).toLocaleDateString('en-US', {
           month: 'short',
           day: 'numeric',

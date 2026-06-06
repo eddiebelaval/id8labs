@@ -105,7 +105,6 @@ function AnimatedStat({
   delay?: number
 }) {
   const animatedValue = useCountUp(value, 1.5, delay)
-  const [isHovered, setIsHovered] = useState(false)
 
   const formatValue = (n: number) => {
     if (format === 'compact') {
@@ -116,32 +115,12 @@ function AnimatedStat({
   }
 
   return (
-    <m.div
-      className="group p-2 rounded transition-all cursor-default relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02, backgroundColor: 'rgba(255, 107, 53, 0.1)' }}
-    >
-      {/* Pulse glow on hover */}
-      <m.div
-        className="absolute inset-0 bg-[#ff6b35]/20 rounded"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-      />
-
-      <m.div
-        className="text-[#ff6b35] text-xl font-bold relative z-10"
-        animate={{
-          textShadow: isHovered
-            ? '0 0 10px rgba(255, 107, 53, 0.5)'
-            : '0 0 0px rgba(255, 107, 53, 0)'
-        }}
-      >
+    <div className="group p-2 transition-colors duration-150 cursor-default relative hover:bg-[var(--paper-shadow)]">
+      <div className="font-[family-name:var(--font-mono)] text-id8-orange text-xl font-medium relative z-10">
         {formatValue(animatedValue)}
-      </m.div>
-      <div className="text-[#808080] text-xs relative z-10">{label}</div>
-    </m.div>
+      </div>
+      <div className="text-[var(--muted)] text-xs relative z-10">{label}</div>
+    </div>
   )
 }
 
@@ -164,24 +143,20 @@ function AnimatedToolBar({
   const animatedCount = useCountUp(count, 1.2, delay)
 
   return (
-    <m.div
-      className="flex items-center gap-2 p-1 rounded cursor-default"
-      whileHover={{ x: 4, backgroundColor: 'rgba(255, 255, 255, 0.03)' }}
-    >
-      <span className="text-[#808080] w-12 text-xs">{name}</span>
-      <div className="flex-1 h-2 bg-[#1e1e1e] rounded-full overflow-hidden">
+    <div className="flex items-center gap-2 p-1 cursor-default hover:bg-[var(--paper-shadow)] transition-colors duration-150">
+      <span className="text-[var(--muted)] w-12 text-xs">{name}</span>
+      <div className="flex-1 h-2 bg-[var(--paper-mid)] overflow-hidden">
         <m.div
           initial={{ width: 0 }}
           animate={{ width: `${(count / maxCount) * 100}%` }}
           transition={{ duration: 0.8, delay }}
-          className={`h-full ${color} rounded-full`}
-          whileHover={{ boxShadow: `0 0 8px currentColor` }}
+          className={`h-full ${color}`}
         />
       </div>
-      <span className="text-[#606060] text-xs w-12 text-right font-mono">
+      <span className="text-[var(--muted)] text-xs w-12 text-right font-[family-name:var(--font-mono)]">
         {formatNumber(animatedCount)}
       </span>
-    </m.div>
+    </div>
   )
 }
 
@@ -317,21 +292,21 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
   const [activeTab, setActiveTab] = useState<'agents' | 'plugins' | 'mcps' | 'skills'>('agents')
 
   const tabs = [
-    { id: 'agents' as const, label: 'Agents', count: ARSENAL_MANIFEST.agents.count, color: '#27c93f' },
-    { id: 'plugins' as const, label: 'Essays', count: essayCount, color: '#3b82f6' },
-    { id: 'mcps' as const, label: 'MCPs', count: ARSENAL_MANIFEST.mcpServers.count, color: '#f59e0b' },
+    { id: 'agents' as const, label: 'Agents', count: ARSENAL_MANIFEST.agents.count, color: '#2a8d83' },
+    { id: 'plugins' as const, label: 'Essays', count: essayCount, color: '#0b0b0b' },
+    { id: 'mcps' as const, label: 'MCPs', count: ARSENAL_MANIFEST.mcpServers.count, color: '#5a5a5a' },
     { id: 'skills' as const, label: 'Skills', count: ARSENAL_MANIFEST.skills.count, color: '#ff6b35' },
   ]
 
   return (
-    <div className="bg-[#252525] rounded-lg border border-[#3d3d3d] mb-4 overflow-hidden">
+    <div className="bg-[var(--paper)]  border border-[var(--hair)] mb-4 overflow-hidden">
       {/* Header with counts */}
       <div className="p-4">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-[#27c93f] text-xs">{'> '}<span className="text-[#808080]">arsenal</span></div>
+          <div className="text-[var(--teal)] text-xs">{'> '}<span className="text-[var(--muted)]">arsenal</span></div>
           <m.button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-[#606060] text-xs hover:text-[#ff6b35] transition-colors flex items-center gap-1"
+            className="text-[var(--muted)] text-xs hover:text-id8-orange transition-colors flex items-center gap-1"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -344,7 +319,7 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
           {tabs.map((tab, index) => (
             <m.div
               key={tab.id}
-              className="text-center p-2 bg-[#1e1e1e] rounded border border-[#3d3d3d] cursor-pointer"
+              className="text-center p-2 bg-[var(--paper-shadow)] rounded border border-[var(--hair)] cursor-pointer"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8 + index * 0.05 }}
@@ -352,13 +327,10 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                 setActiveTab(tab.id)
                 setIsExpanded(true)
               }}
-              whileHover={{
-                borderColor: tab.color,
-                boxShadow: `0 0 8px ${tab.color}33`
-              }}
+              whileHover={{ borderColor: tab.color }}
             >
-              <div className="text-lg font-bold" style={{ color: tab.color }}>{tab.count}</div>
-              <div className="text-[#606060] text-[10px]">{tab.label.toLowerCase()}</div>
+              <div className="font-[family-name:var(--font-mono)] text-lg font-medium" style={{ color: tab.color }}>{tab.count}</div>
+              <div className="text-[var(--muted)] text-[10px]">{tab.label.toLowerCase()}</div>
             </m.div>
           ))}
         </div>
@@ -372,18 +344,18 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="border-t border-[#3d3d3d]"
+            className="border-t border-[var(--hair)]"
           >
             {/* Tab selector */}
-            <div className="flex border-b border-[#3d3d3d]">
+            <div className="flex border-b border-[var(--hair)]">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex-1 px-3 py-2 text-xs font-mono transition-all ${
                     activeTab === tab.id
-                      ? 'bg-[#1e1e1e] border-b-2'
-                      : 'text-[#606060] hover:text-[#e0e0e0] hover:bg-[#1e1e1e]/50'
+                      ? 'bg-[var(--paper-shadow)] border-b-2'
+                      : 'text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--paper-shadow)]/50'
                   }`}
                   style={{
                     borderColor: activeTab === tab.id ? tab.color : 'transparent',
@@ -401,12 +373,12 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                 <div className="space-y-3">
                   {Object.entries(ARSENAL_MANIFEST.agents.categories).map(([category, agents]) => (
                     <div key={category}>
-                      <div className="text-[#27c93f] text-[10px] uppercase tracking-wider mb-1.5">{category}</div>
+                      <div className="text-[var(--teal)] text-[10px] uppercase tracking-wider mb-1.5">{category}</div>
                       <div className="flex flex-wrap gap-1">
                         {agents.map((agent) => (
                           <span
                             key={agent}
-                            className="px-1.5 py-0.5 bg-[#1e1e1e] rounded text-[10px] text-[#808080] border border-[#3d3d3d]"
+                            className="px-1.5 py-0.5 bg-[var(--paper-shadow)] rounded text-[10px] text-[var(--muted)] border border-[var(--hair)]"
                           >
                             {agent}
                           </span>
@@ -422,7 +394,7 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                   {ARSENAL_MANIFEST.plugins.list.map((plugin) => (
                     <span
                       key={plugin}
-                      className="px-2 py-1 bg-[#1e1e1e] rounded text-xs text-[#3b82f6] border border-[#3d3d3d]"
+                      className="px-2 py-1 bg-[var(--paper-shadow)] rounded text-xs text-[var(--ink)] border border-[var(--hair)]"
                     >
                       {plugin}
                     </span>
@@ -435,10 +407,10 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                   {ARSENAL_MANIFEST.mcpServers.list.map((mcp) => (
                     <div
                       key={mcp}
-                      className="flex items-center gap-2 p-2 bg-[#1e1e1e] rounded border border-[#3d3d3d]"
+                      className="flex items-center gap-2 p-2 bg-[var(--paper-shadow)] border border-[var(--hair)]"
                     >
-                      <span className="w-2 h-2 rounded-full bg-[#f59e0b] animate-pulse" />
-                      <span className="text-xs text-[#e0e0e0]">{mcp}</span>
+                      <span className="w-2 h-2 rounded-full bg-id8-orange" />
+                      <span className="text-xs text-[var(--ink)]">{mcp}</span>
                     </div>
                   ))}
                 </div>
@@ -448,12 +420,12 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                 <div className="space-y-3">
                   {Object.entries(ARSENAL_MANIFEST.skills.categories).map(([category, skills]) => (
                     <div key={category}>
-                      <div className="text-[#ff6b35] text-[10px] uppercase tracking-wider mb-1.5">{category}</div>
+                      <div className="text-id8-orange text-[10px] uppercase tracking-wider mb-1.5">{category}</div>
                       <div className="flex flex-wrap gap-1">
                         {skills.map((skill) => (
                           <span
                             key={skill}
-                            className="px-1.5 py-0.5 bg-[#1e1e1e] rounded text-[10px] text-[#808080] border border-[#3d3d3d] font-mono"
+                            className="px-1.5 py-0.5 bg-[var(--paper-shadow)] rounded text-[10px] text-[var(--muted)] border border-[var(--hair)] font-[family-name:var(--font-mono)]"
                           >
                             /{skill}
                           </span>
@@ -473,7 +445,7 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
 
 function ActivityHeatmap() {
   const getIntensity = (value: number) => {
-    if (value === 0) return 'bg-[#161b22]'
+    if (value === 0) return 'bg-[var(--paper-mid)]'
     if (value <= 8) return 'bg-[#ff6b35]/25'
     if (value <= 20) return 'bg-[#ff6b35]/45'
     if (value <= 40) return 'bg-[#ff6b35]/70'
@@ -485,9 +457,9 @@ function ActivityHeatmap() {
       href="https://github.com/eddiebelaval"
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-[#0d1117] rounded-lg border border-[#30363d] p-3 hover:border-[#ff6b35]/50 transition-all group"
+      className="block bg-[var(--paper)]  border border-[var(--hair)] p-3 hover:border-id8-orange transition-all group"
     >
-      <div className="flex mb-1.5 text-[9px] text-[#848d97]/80 font-mono uppercase tracking-wider">
+      <div className="flex mb-1.5 text-[9px] text-[var(--muted)] font-mono uppercase tracking-wider">
         <div className="w-6 flex-shrink-0" />
         <div className="flex-1 flex justify-between px-1">
           <span>Oct</span>
@@ -498,7 +470,7 @@ function ActivityHeatmap() {
       </div>
 
       <div className="flex gap-1">
-        <div className="flex flex-col w-6 flex-shrink-0 text-[8px] text-[#848d97]/70 font-mono justify-around">
+        <div className="flex flex-col w-6 flex-shrink-0 text-[8px] text-[var(--muted)] font-mono justify-around">
           <span>Mon</span>
           <span>Wed</span>
           <span>Fri</span>
@@ -514,7 +486,6 @@ function ActivityHeatmap() {
                   title={day === 0 ? 'No contributions' : `${day} contributions`}
                   whileHover={{
                     scale: 1.5,
-                    boxShadow: day > 0 ? '0 0 10px rgba(255, 107, 53, 0.7)' : 'none',
                     zIndex: 10
                   }}
                   transition={{ duration: 0.12, ease: 'easeOut' }}
@@ -525,17 +496,17 @@ function ActivityHeatmap() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mt-2 pt-2 border-t border-[#30363d]/50">
-        <span className="text-[9px] text-[#848d97]/70 group-hover:text-[#ff6b35] transition-colors font-mono">
+      <div className="flex items-center justify-between mt-2 pt-2 border-t border-[var(--hair)]">
+        <span className="text-[9px] text-[var(--muted)] group-hover:text-id8-orange transition-colors font-[family-name:var(--font-mono)]">
           View on GitHub →
         </span>
-        <div className="flex items-center gap-[2px] text-[8px] text-[#848d97]/60 font-mono">
+        <div className="flex items-center gap-[2px] text-[8px] text-[var(--muted)] font-[family-name:var(--font-mono)]">
           <span className="mr-1">Less</span>
           {[0, 1, 2, 3, 4].map((level) => (
             <div
               key={level}
               className={`w-[8px] h-[8px] rounded-sm ${
-                level === 0 ? 'bg-[#161b22]' :
+                level === 0 ? 'bg-[var(--paper-mid)]' :
                 level === 1 ? 'bg-[#ff6b35]/25' :
                 level === 2 ? 'bg-[#ff6b35]/45' :
                 level === 3 ? 'bg-[#ff6b35]/70' :
@@ -581,17 +552,17 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
   }
 
   return (
-    <div className="font-mono text-sm">
+    <div className="font-[family-name:var(--font-mono)] text-sm">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="text-[#27c93f]">{'> '}<span className="text-[#e0e0e0]">stats_console</span></div>
-        <div className="text-[#606060] text-xs" suppressHydrationWarning>
+        <div className="text-[var(--teal)]">{'> '}<span className="text-[var(--ink)]">stats_console</span></div>
+        <div className="text-[var(--muted)] text-xs" suppressHydrationWarning>
           synced: {lastSyncedFormatted}
         </div>
       </div>
 
       {/* Core Stats */}
-      <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
+      <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
         <div className="grid grid-cols-2 gap-3">
           <AnimatedStat
             value={stats.commits_together}
@@ -617,58 +588,54 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
         </div>
         
         {/* MULTI-BILLION TOKEN Scale Indicator */}
-        <div className="mt-3 pt-3 border-t border-[#3d3d3d]">
-          <div className="text-[#ff6b35] text-xs mb-2">{'> '}<span className="text-[#808080]">multi_billion_token_scale</span></div>
+        <div className="mt-3 pt-3 border-t border-[var(--hair)]">
+          <div className="text-id8-orange text-xs mb-2">{'> '}<span className="text-[var(--muted)]">multi_billion_token_scale</span></div>
           <div className="grid grid-cols-3 gap-2">
-            <div className="text-center p-1.5 bg-[#1e1e1e] rounded border border-[#3d3d3d]">
-              <div className="text-[#27c93f] text-sm font-bold">1.29B+</div>
-              <div className="text-[#606060] text-[9px]">total documented</div>
+            <div className="text-center p-1.5 bg-[var(--paper-shadow)] rounded border border-[var(--hair)]">
+              <div className="text-[var(--teal)] text-sm font-bold">1.29B+</div>
+              <div className="text-[var(--muted)] text-[9px]">total documented</div>
             </div>
-            <div className="text-center p-1.5 bg-[#1e1e1e] rounded border border-[#3d3d3d]">
-              <div className="text-[#3b82f6] text-sm font-bold">4.44M+</div>
-              <div className="text-[#606060] text-[9px]">total output</div>
+            <div className="text-center p-1.5 bg-[var(--paper-shadow)] rounded border border-[var(--hair)]">
+              <div className="text-[var(--ink)] text-sm font-bold">4.44M+</div>
+              <div className="text-[var(--muted)] text-[9px]">total output</div>
             </div>
-            <div className="text-center p-1.5 bg-[#1e1e1e] rounded border border-[#3d3d3d]">
-              <div className="text-[#f59e0b] text-sm font-bold">41.7M</div>
-              <div className="text-[#606060] text-[9px]">Feb daily avg</div>
+            <div className="text-center p-1.5 bg-[var(--paper-shadow)] rounded border border-[var(--hair)]">
+              <div className="text-id8-orange text-sm font-bold">41.7M</div>
+              <div className="text-[var(--muted)] text-[9px]">Feb daily avg</div>
             </div>
           </div>
-          <div className="mt-2 text-[#606060] text-[9px] text-center bg-[#1e1e1e] rounded p-1.5 border border-[#3d3d3d]">
-            <span className="text-[#ff6b35]">Jan-Feb 2026:</span> Multi-billion token infrastructure with 24% monthly acceleration
+          <div className="mt-2 text-[var(--muted)] text-[9px] text-center bg-[var(--paper-shadow)] rounded p-1.5 border border-[var(--hair)]">
+            <span className="text-id8-orange">Jan-Feb 2026:</span> Multi-billion token infrastructure with 24% monthly acceleration
           </div>
         </div>
       </div>
 
       {/* Tool Usage */}
-      <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-        <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">tool_usage</span></div>
+      <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+        <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">tool_usage</span></div>
         <div className="space-y-2">
-          <AnimatedToolBar name="Bash" count={stats.tool_bash} maxCount={stats.tool_read} color="bg-green-500" delay={0.4} formatNumber={formatNumber} />
-          <AnimatedToolBar name="Read" count={stats.tool_read} maxCount={stats.tool_read} color="bg-blue-500" delay={0.5} formatNumber={formatNumber} />
-          <AnimatedToolBar name="Edit" count={stats.tool_edit} maxCount={stats.tool_read} color="bg-purple-500" delay={0.6} formatNumber={formatNumber} />
-          <AnimatedToolBar name="Write" count={stats.tool_write} maxCount={stats.tool_read} color="bg-orange-500" delay={0.7} formatNumber={formatNumber} />
+          <AnimatedToolBar name="Bash" count={stats.tool_bash} maxCount={stats.tool_read} color="bg-[var(--ink)]" delay={0.4} formatNumber={formatNumber} />
+          <AnimatedToolBar name="Read" count={stats.tool_read} maxCount={stats.tool_read} color="bg-[var(--hair-hard)]" delay={0.5} formatNumber={formatNumber} />
+          <AnimatedToolBar name="Edit" count={stats.tool_edit} maxCount={stats.tool_read} color="bg-[var(--muted)]" delay={0.6} formatNumber={formatNumber} />
+          <AnimatedToolBar name="Write" count={stats.tool_write} maxCount={stats.tool_read} color="bg-id8-orange" delay={0.7} formatNumber={formatNumber} />
         </div>
       </div>
 
       {/* Languages */}
-      <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-        <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">languages</span></div>
+      <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+        <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">languages</span></div>
         <div className="flex flex-wrap gap-2">
           {languageStats.map((lang, index) => (
             <m.div
               key={lang.lang}
-              className="px-2 py-1 bg-[#1e1e1e] rounded text-xs border border-[#3d3d3d] cursor-default"
+              className="px-2 py-1 bg-[var(--paper-shadow)] rounded text-xs border border-[var(--hair)] cursor-default"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
-              whileHover={{
-                scale: 1.05,
-                borderColor: 'rgba(255, 107, 53, 0.5)',
-                boxShadow: '0 0 8px rgba(255, 107, 53, 0.3)'
-              }}
+              whileHover={{ borderColor: 'var(--orange)' }}
             >
-              <span className="text-[#e0e0e0]">{lang.lang}</span>
-              <span className="text-[#ff6b35] ml-1">{lang.percentage}%</span>
+              <span className="text-[var(--ink)]">{lang.lang}</span>
+              <span className="text-id8-orange ml-1">{lang.percentage}%</span>
             </m.div>
           ))}
         </div>
@@ -676,14 +643,14 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
 
       {/* Activity Heatmap */}
       <div className="mb-4">
-        <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">activity_heatmap</span></div>
+        <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">activity_heatmap</span></div>
         <ActivityHeatmap />
       </div>
 
       {/* Agents Deployed */}
       {stats.agents_used && Object.keys(stats.agents_used).length > 0 && (
-        <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-          <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">agents_deployed</span></div>
+        <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+          <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">agents_deployed</span></div>
           <div className="flex flex-wrap gap-2">
             {Object.entries(stats.agents_used)
               .sort(([,a], [,b]) => b - a)
@@ -691,19 +658,15 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
               .map(([agent, count], index) => (
                 <m.div
                   key={agent}
-                  className="px-2 py-1 bg-[#1e1e1e] rounded text-xs border border-[#3d3d3d] cursor-default flex items-center gap-1.5"
+                  className="px-2 py-1 bg-[var(--paper-shadow)] rounded text-xs border border-[var(--hair)] cursor-default flex items-center gap-1.5"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.0 + index * 0.05 }}
-                  whileHover={{
-                    scale: 1.05,
-                    borderColor: 'rgba(39, 201, 63, 0.5)',
-                    boxShadow: '0 0 8px rgba(39, 201, 63, 0.3)'
-                  }}
+                  whileHover={{ borderColor: 'var(--signal)' }}
                 >
-                  <span className="text-[#27c93f]">●</span>
-                  <span className="text-[#e0e0e0]">{agent}</span>
-                  <span className="text-[#606060]">{count}</span>
+                  <span className="text-[var(--teal)]">●</span>
+                  <span className="text-[var(--ink)]">{agent}</span>
+                  <span className="text-[var(--muted)]">{count}</span>
                 </m.div>
               ))}
           </div>
@@ -712,8 +675,8 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
 
       {/* Skills Invoked */}
       {stats.skills_used && Object.keys(stats.skills_used).length > 0 && (
-        <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-          <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">skills_invoked</span></div>
+        <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+          <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">skills_invoked</span></div>
           <div className="grid grid-cols-2 gap-2">
             {Object.entries(stats.skills_used)
               .sort(([,a], [,b]) => b - a)
@@ -728,16 +691,16 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.2 + index * 0.05 }}
                   >
-                    <span className="text-[#f59e0b] text-xs font-mono">/{skill}</span>
-                    <div className="flex-1 h-1.5 bg-[#1e1e1e] rounded-full overflow-hidden">
+                    <span className="text-id8-orange text-xs font-[family-name:var(--font-mono)]">/{skill}</span>
+                    <div className="flex-1 h-1.5 bg-[var(--paper-shadow)] rounded-full overflow-hidden">
                       <m.div
-                        className="h-full bg-[#f59e0b] rounded-full"
+                        className="h-full bg-id8-orange rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${(count / maxCount) * 100}%` }}
                         transition={{ duration: 0.6, delay: 1.2 + index * 0.05 }}
                       />
                     </div>
-                    <span className="text-[#606060] text-xs w-6 text-right">{count}</span>
+                    <span className="text-[var(--muted)] text-xs w-6 text-right">{count}</span>
                   </m.div>
                 )
               })}
@@ -747,8 +710,8 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
 
       {/* MCP Connections */}
       {stats.mcp_used && Object.keys(stats.mcp_used).length > 0 && (
-        <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-          <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">mcp_connections</span></div>
+        <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+          <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">mcp_connections</span></div>
           <div className="grid grid-cols-2 gap-3">
             {Object.entries(stats.mcp_used)
               .sort(([,a], [,b]) => b - a)
@@ -756,18 +719,15 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
               .map(([mcp, count], index) => (
                 <m.div
                   key={mcp}
-                  className="flex items-center gap-2 p-2 bg-[#1e1e1e] rounded border border-[#3d3d3d]"
+                  className="flex items-center gap-2 p-2 bg-[var(--paper-shadow)] rounded border border-[var(--hair)]"
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.4 + index * 0.05 }}
-                  whileHover={{
-                    borderColor: 'rgba(59, 130, 246, 0.5)',
-                    boxShadow: '0 0 8px rgba(59, 130, 246, 0.2)'
-                  }}
+                  whileHover={{ borderColor: 'var(--ink)' }}
                 >
-                  <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
-                  <span className="text-[#e0e0e0] text-xs capitalize flex-1">{mcp}</span>
-                  <span className="text-[#606060] text-xs">{count} calls</span>
+                  <span className="w-2 h-2 rounded-full bg-[var(--ink)]" />
+                  <span className="text-[var(--ink)] text-xs capitalize flex-1">{mcp}</span>
+                  <span className="text-[var(--muted)] text-xs">{count} calls</span>
                 </m.div>
               ))}
           </div>
@@ -776,8 +736,8 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
 
       {/* Quality Metrics */}
       {(stats.tests_written > 0 || stats.builds_succeeded > 0 || stats.bugs_fixed > 0) && (
-        <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-          <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">quality_metrics</span></div>
+        <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+          <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">quality_metrics</span></div>
           <div className="grid grid-cols-3 gap-3">
             <m.div
               className="text-center p-2"
@@ -785,8 +745,8 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6 }}
             >
-              <div className="text-[#27c93f] text-lg font-bold">{stats.tests_written}</div>
-              <div className="text-[#606060] text-[10px]">tests written</div>
+              <div className="text-[var(--teal)] text-lg font-bold">{stats.tests_written}</div>
+              <div className="text-[var(--muted)] text-[10px]">tests written</div>
             </m.div>
             <m.div
               className="text-center p-2"
@@ -794,8 +754,8 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.65 }}
             >
-              <div className="text-[#3b82f6] text-lg font-bold">{stats.builds_succeeded}%</div>
-              <div className="text-[#606060] text-[10px]">builds passed</div>
+              <div className="text-[var(--ink)] text-lg font-bold">{stats.builds_succeeded}%</div>
+              <div className="text-[var(--muted)] text-[10px]">builds passed</div>
             </m.div>
             <m.div
               className="text-center p-2"
@@ -803,85 +763,85 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.7 }}
             >
-              <div className="text-[#f59e0b] text-lg font-bold">{stats.bugs_fixed}</div>
-              <div className="text-[#606060] text-[10px]">bugs fixed</div>
+              <div className="text-id8-orange text-lg font-bold">{stats.bugs_fixed}</div>
+              <div className="text-[var(--muted)] text-[10px]">bugs fixed</div>
             </m.div>
           </div>
         </div>
       )}
 
       {/* Token Usage Patterns - BILLION-TOKEN Scale */}
-      <div className="bg-[#252525] rounded-lg p-4 border border-[#3d3d3d] mb-4">
-        <div className="text-[#27c93f] text-xs mb-3">{'> '}<span className="text-[#808080]">billion_token_infrastructure</span></div>
+      <div className="bg-[var(--paper)]  p-4 border border-[var(--hair)] mb-4">
+        <div className="text-[var(--teal)] text-xs mb-3">{'> '}<span className="text-[var(--muted)]">billion_token_infrastructure</span></div>
         
         <div className="space-y-3">
           {/* January vs February - ACCELERATION PATTERN */}
-          <div className="bg-[#1e1e1e] rounded border border-[#3d3d3d] p-3">
+          <div className="bg-[var(--paper-shadow)] rounded border border-[var(--hair)] p-3">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[#ff6b35] text-xs font-bold">Exponential Acceleration Pattern</span>
-              <span className="text-[#606060] text-xs">Anthropic Console Data</span>
+              <span className="text-id8-orange text-xs font-bold">Exponential Acceleration Pattern</span>
+              <span className="text-[var(--muted)] text-xs">Anthropic Console Data</span>
             </div>
             
             <div className="grid grid-cols-2 gap-3">
               {/* January */}
-              <div className="bg-[#252525] rounded p-2 border border-[#3d3d3d]">
-                <div className="text-[#27c93f] text-xs font-bold mb-1">January 2026</div>
+              <div className="bg-[var(--paper)] rounded p-2 border border-[var(--hair)]">
+                <div className="text-[var(--teal)] text-xs font-bold mb-1">January 2026</div>
                 <div className="space-y-1 text-[10px]">
-                  <div><span className="text-[#808080]">Input:</span> <span className="text-[#e0e0e0] font-mono">1.038B</span></div>
-                  <div><span className="text-[#808080]">Output:</span> <span className="text-[#e0e0e0] font-mono">3.84M</span></div>
-                  <div><span className="text-[#808080]">Daily avg:</span> <span className="text-[#e0e0e0] font-mono">33.5M</span></div>
+                  <div><span className="text-[var(--muted)]">Input:</span> <span className="text-[var(--ink)] font-[family-name:var(--font-mono)]">1.038B</span></div>
+                  <div><span className="text-[var(--muted)]">Output:</span> <span className="text-[var(--ink)] font-[family-name:var(--font-mono)]">3.84M</span></div>
+                  <div><span className="text-[var(--muted)]">Daily avg:</span> <span className="text-[var(--ink)] font-[family-name:var(--font-mono)]">33.5M</span></div>
                 </div>
               </div>
               
               {/* February */}
-              <div className="bg-[#252525] rounded p-2 border border-[#3d3d3d]">
-                <div className="text-[#3b82f6] text-xs font-bold mb-1">February 1-6</div>
+              <div className="bg-[var(--paper)] rounded p-2 border border-[var(--hair)]">
+                <div className="text-[var(--ink)] text-xs font-bold mb-1">February 1-6</div>
                 <div className="space-y-1 text-[10px]">
-                  <div><span className="text-[#808080]">Input:</span> <span className="text-[#e0e0e0] font-mono">250M</span></div>
-                  <div><span className="text-[#808080]">Output:</span> <span className="text-[#e0e0e0] font-mono">598K</span></div>
-                  <div><span className="text-[#808080]">Daily avg:</span> <span className="text-[#f59e0b] font-mono">41.7M</span></div>
+                  <div><span className="text-[var(--muted)]">Input:</span> <span className="text-[var(--ink)] font-[family-name:var(--font-mono)]">250M</span></div>
+                  <div><span className="text-[var(--muted)]">Output:</span> <span className="text-[var(--ink)] font-[family-name:var(--font-mono)]">598K</span></div>
+                  <div><span className="text-[var(--muted)]">Daily avg:</span> <span className="text-id8-orange font-[family-name:var(--font-mono)]">41.7M</span></div>
                 </div>
               </div>
             </div>
             
             {/* Acceleration indicator */}
             <div className="mt-2 text-center">
-              <span className="text-[#f59e0b] text-xs font-bold">📈 24% ACCELERATION</span>
-              <span className="text-[#606060] text-[10px] ml-2">Feb trajectory: 1.25B+ monthly</span>
+              <span className="text-id8-orange text-xs font-bold">📈 24% ACCELERATION</span>
+              <span className="text-[var(--muted)] text-[10px] ml-2">Feb trajectory: 1.25B+ monthly</span>
             </div>
           </div>
 
           {/* Multi-Model Enterprise Infrastructure */}
           <div className="grid grid-cols-4 gap-1">
-            <div className="bg-[#1e1e1e] rounded border border-[#3d3d3d] p-1.5 text-center">
-              <div className="text-[#27c93f] text-xs font-bold">Sonnet 4.5</div>
-              <div className="text-[#606060] text-[8px]">workhorse</div>
+            <div className="bg-[var(--paper-shadow)] rounded border border-[var(--hair)] p-1.5 text-center">
+              <div className="text-[var(--teal)] text-xs font-bold">Sonnet 4.5</div>
+              <div className="text-[var(--muted)] text-[8px]">workhorse</div>
             </div>
-            <div className="bg-[#1e1e1e] rounded border border-[#3d3d3d] p-1.5 text-center">
-              <div className="text-[#3b82f6] text-xs font-bold">Sonnet 4</div>
-              <div className="text-[#606060] text-[8px]">fallback</div>
+            <div className="bg-[var(--paper-shadow)] rounded border border-[var(--hair)] p-1.5 text-center">
+              <div className="text-[var(--ink)] text-xs font-bold">Sonnet 4</div>
+              <div className="text-[var(--muted)] text-[8px]">fallback</div>
             </div>
-            <div className="bg-[#1e1e1e] rounded border border-[#3d3d3d] p-1.5 text-center">
-              <div className="text-[#f59e0b] text-xs font-bold">Haiku 4.5</div>
-              <div className="text-[#606060] text-[8px]">speed</div>
+            <div className="bg-[var(--paper-shadow)] rounded border border-[var(--hair)] p-1.5 text-center">
+              <div className="text-id8-orange text-xs font-bold">Haiku 4.5</div>
+              <div className="text-[var(--muted)] text-[8px]">speed</div>
             </div>
-            <div className="bg-[#1e1e1e] rounded border border-[#3d3d3d] p-1.5 text-center">
-              <div className="text-[#9333ea] text-xs font-bold">Opus 4.5</div>
-              <div className="text-[#606060] text-[8px]">reasoning</div>
+            <div className="bg-[var(--paper-shadow)] rounded border border-[var(--hair)] p-1.5 text-center">
+              <div className="text-[var(--ink)] text-xs font-bold">Opus 4.5</div>
+              <div className="text-[var(--muted)] text-[8px]">reasoning</div>
             </div>
           </div>
 
           {/* Acceleration Infrastructure Note */}
-          <div className="text-[#808080] text-[10px] bg-[#1e1e1e] rounded p-2 border border-[#3d3d3d]">
-            <div className="text-[#ff6b35] font-bold mb-1">🚀 EXPONENTIAL AI INFRASTRUCTURE:</div>
+          <div className="text-[var(--muted)] text-[10px] bg-[var(--paper-shadow)] rounded p-2 border border-[var(--hair)]">
+            <div className="text-id8-orange font-bold mb-1">🚀 EXPONENTIAL AI INFRASTRUCTURE:</div>
             "1.29+ billion tokens across Jan-Feb 2026, with 24% acceleration. February trajectory suggests 1.25B+ monthly scale. This exponential growth in AI-native development is exactly what Vercel AI Accelerator infrastructure credits are designed to support."
           </div>
           
           {/* Pure AI-Native Development Indicator */}
-          <div className="mt-2 bg-[#1e1e1e] rounded p-2 border border-[#3d3d3d] text-center">
-            <div className="text-[#27c93f] text-xs font-bold mb-1">🎯 PURE AI-NATIVE WORKFLOW</div>
-            <div className="text-[#606060] text-[10px]">
-              February 2026: <span className="text-[#e0e0e0]">0 web searches</span> = 100% AI reasoning and collaboration
+          <div className="mt-2 bg-[var(--paper-shadow)] rounded p-2 border border-[var(--hair)] text-center">
+            <div className="text-[var(--teal)] text-xs font-bold mb-1">🎯 PURE AI-NATIVE WORKFLOW</div>
+            <div className="text-[var(--muted)] text-[10px]">
+              February 2026: <span className="text-[var(--ink)]">0 web searches</span> = 100% AI reasoning and collaboration
             </div>
           </div>
         </div>

@@ -177,7 +177,7 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
   return (
     <div className="space-y-6">
       {/* Tab Navigation */}
-      <div className="flex gap-1 p-1 bg-[var(--bg-secondary)] rounded-xl">
+      <div className="flex gap-1 p-1 bg-[var(--paper-shadow)] ">
         {TOOL_TYPES.map((type) => {
           const TabIcon = TOOL_ICONS[type]
           const isActive = toolType === type
@@ -191,12 +191,12 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
               }}
               disabled={state === 'generating' || state === 'saving'}
               className={`
-                flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg
+                flex-1 flex items-center justify-center gap-2 px-3 py-2 
                 text-sm font-medium transition-all
                 ${
                   isActive
-                    ? 'bg-[var(--bg-primary)] text-[var(--id8-orange)] shadow-sm'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    ? 'bg-[var(--paper)] text-[var(--orange)] shadow-sm'
+                    : 'text-[var(--muted)] hover:text-[var(--ink)]'
                 }
                 disabled:opacity-50 disabled:cursor-not-allowed
               `}
@@ -210,14 +210,14 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
 
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="p-2 bg-[var(--id8-orange)]/10 rounded-lg">
-          <Icon className="w-5 h-5 text-[var(--id8-orange)]" />
+        <div className="p-2 bg-[var(--orange)]/10 ">
+          <Icon className="w-5 h-5 text-[var(--orange)]" />
         </div>
         <div>
-          <h3 className="font-bold text-[var(--text-primary)]">
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-[var(--ink)]">
             Generate {TOOL_TYPE_LABELS[toolType]}
           </h3>
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--muted)]">
             {TOOL_TYPE_DESCRIPTIONS[toolType]}
           </p>
         </div>
@@ -244,10 +244,10 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-start gap-2 p-3 bg-red-500/10 border border-red-500/30 rounded-xl"
+                className="flex items-start gap-2 p-3 bg-[var(--orange-soft)] border border-id8-orange "
               >
-                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-400">{error}</p>
+                <AlertCircle className="w-5 h-5 text-id8-orange flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-[var(--ink)]">{error}</p>
               </motion.div>
             )}
 
@@ -255,8 +255,8 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
             <button
               onClick={handleGenerate}
               disabled={!description.trim() || description.length < 10}
-              className="w-full py-3 bg-[var(--id8-orange)] text-white rounded-xl
-                         font-semibold hover:bg-[var(--id8-orange-hover)]
+              className="w-full py-3 bg-[var(--orange)] text-[var(--paper)] 
+                         font-semibold hover:opacity-90
                          disabled:opacity-50 disabled:cursor-not-allowed
                          transition-all flex items-center justify-center gap-2"
             >
@@ -274,16 +274,16 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
           >
             {/* Status Header */}
             {generationComplete ? (
-              <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span className="text-sm font-medium text-[var(--text-primary)]">
+              <div className="flex items-center gap-3 p-4 bg-[var(--teal)] border border-[var(--teal)] ">
+                <CheckCircle className="w-5 h-5 text-[var(--teal)]" />
+                <span className="text-sm font-medium text-[var(--ink)]">
                   Generation complete! Ready to copy or preview.
                 </span>
               </div>
             ) : (
-              <div className="flex items-center gap-3 p-4 bg-[var(--id8-orange)]/10 rounded-xl">
-                <Loader2 className="w-5 h-5 text-[var(--id8-orange)] animate-spin" />
-                <span className="text-sm font-medium text-[var(--text-primary)]">
+              <div className="flex items-center gap-3 p-4 bg-[var(--orange)]/10 ">
+                <Loader2 className="w-5 h-5 text-[var(--orange)] animate-spin" />
+                <span className="text-sm font-medium text-[var(--ink)]">
                   Generating your {toolType}...
                 </span>
               </div>
@@ -292,8 +292,8 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
             {/* Streaming Preview */}
             <div className="relative">
               <pre
-                className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl
-                              text-xs text-[var(--text-secondary)] font-mono
+                className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)] 
+                              text-xs text-[var(--muted)] font-mono
                               max-h-[300px] overflow-y-auto whitespace-pre-wrap"
               >
                 {streamedContent || 'Waiting for AI response...'}
@@ -305,14 +305,14 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
                 <button
                   onClick={handleCopy}
                   className="absolute top-2 right-2 flex items-center gap-1.5 px-3 py-1.5
-                             bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg
-                             text-xs font-medium text-[var(--text-secondary)]
-                             hover:border-[var(--id8-orange)] hover:text-[var(--id8-orange)]
+                             bg-[var(--paper)] border border-[var(--hair)] 
+                             text-xs font-medium text-[var(--muted)]
+                             hover:border-[var(--orange)] hover:text-[var(--orange)]
                              transition-colors"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-green-500" />
+                      <Check className="w-3.5 h-3.5 text-[var(--teal)]" />
                       Copied!
                     </>
                   ) : (
@@ -329,17 +329,17 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
             <div className="flex gap-3">
               <button
                 onClick={handleReset}
-                className="flex-1 py-2 border border-[var(--border)] rounded-lg
-                           text-[var(--text-secondary)] hover:border-[var(--id8-orange)]
-                           hover:text-[var(--text-primary)] transition-colors"
+                className="flex-1 py-2 border border-[var(--hair)] 
+                           text-[var(--muted)] hover:border-[var(--orange)]
+                           hover:text-[var(--ink)] transition-colors"
               >
                 {generationComplete ? 'Start Over' : 'Cancel'}
               </button>
               {generationComplete && (
                 <button
                   onClick={handleContinueToPreview}
-                  className="flex-1 py-2 bg-[var(--id8-orange)] text-white rounded-lg
-                             font-semibold hover:bg-[var(--id8-orange-hover)] transition-colors"
+                  className="flex-1 py-2 bg-[var(--orange)] text-[var(--paper)] 
+                             font-semibold hover:opacity-90 transition-colors"
                 >
                   Continue to Preview
                 </button>

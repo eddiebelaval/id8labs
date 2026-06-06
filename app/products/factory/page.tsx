@@ -1,5 +1,15 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+  Pipeline,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Factory - ID8Labs',
@@ -41,186 +51,196 @@ const platforms = [
   { name: 'Gemini', strength: 'Photorealism, product shots' },
 ]
 
+const humanGates = [
+  { stage: 'After the brief', question: 'Does this creative direction match what you want?' },
+  { stage: 'After generation', question: 'Which images should we iterate on?' },
+  { stage: 'Before deploy', question: 'Ready to push to production?' },
+]
+
 export default function FactoryPage() {
   return (
-    <div className="container py-24">
-      <article className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to products
-        </Link>
-
-        {/* Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <h1>Factory</h1>
-            <span className="text-sm px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full">
-              Field Testing
-            </span>
-          </div>
-          <p className="text-2xl text-[var(--text-secondary)] mb-4">
-            AI Creative Production Pipeline
-          </p>
-          <p className="text-xl text-[var(--text-tertiary)]">
-            The AI handles logistics. You handle taste.
-          </p>
+    <div className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Creative Pipeline · Field Testing</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            The AI handles logistics. <em className="italic text-id8-orange">You handle taste.</em>
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            An AI creative production pipeline that orchestrates Midjourney, Grok, Gemini and
+            other tools into a single tracked workflow.
+          </Deck>
+          <EditorialButton href="/writing/id8factory-missing-orchestration-layer" variant="ghost">
+            Read the full essay
+          </EditorialButton>
+          <MetaRow
+            className="mt-12 border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: '5', label: 'pipeline stages' },
+              { value: '3', label: 'platforms' },
+              { value: '3', label: 'human gates' },
+              { value: 'Field testing', label: 'status' },
+            ]}
+          />
         </header>
 
-        {/* Problem Statement */}
-        <section className="mb-16 space-y-6 text-lg leading-relaxed">
-          <p>
-            Every campaign needs visuals, and every visual needs iterations. That means logging into
-            Midjourney, writing a prompt, waiting three minutes, downloading, then doing the same in
-            Grok, then Gemini, then organizing everything into folders you'll never find again.
-          </p>
-          <p>
-            I was spending more time on logistics than creativity.
-          </p>
-          <p>
-            So I built the orchestration layer that was missing. Not another AI image generator—the
-            system that makes the existing ones usable at scale.
-          </p>
+        {/* Problem */}
+        <section className="py-16 max-w-2xl">
+          <div className="space-y-6 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.65] text-[var(--body)]">
+            <p>
+              Every campaign needs visuals, and every visual needs iterations. That means logging into
+              Midjourney, writing a prompt, waiting three minutes, downloading, then doing the same in
+              Grok, then Gemini, then organizing everything into folders you&apos;ll never find again.
+            </p>
+            <p>I was spending more time on logistics than creativity.</p>
+            <p>
+              So I built the orchestration layer that was missing. Not another AI image generator&mdash;the
+              system that makes the existing ones usable at scale.
+            </p>
+          </div>
         </section>
+
+        <Rule />
 
         {/* Pipeline */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">The Pipeline</h2>
-          <div className="space-y-4">
+        <section className="py-16">
+          <SectionHead title={<>The <em className="italic text-id8-orange">pipeline</em></>} meta="5 stages" />
+          <div className="mt-10 mb-10">
+            <Pipeline
+              title="Idea to deployed asset"
+              steps={pipelineSteps.map((s) => ({ label: s.name }))}
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {pipelineSteps.map((step, index) => (
-              <div
-                key={step.name}
-                className="flex items-start gap-4 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] rounded-full font-bold">
-                  {index + 1}
-                </span>
-                <div>
-                  <h3 className="font-bold text-lg">{step.name}</h3>
-                  <p className="text-[var(--text-secondary)]">{step.description}</p>
+              <div key={step.name} className="bg-[var(--paper)] p-7">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="font-[family-name:var(--font-mono)] text-xs text-id8-orange">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">
+                    {step.name}
+                  </h3>
                 </div>
+                <p className="text-[var(--body)] leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>
         </section>
+
+        <Rule />
 
         {/* Browser Automation */}
-        <section className="mb-16 p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-          <h3 className="text-2xl font-bold mb-4">The Browser Automation Problem</h3>
-          <p className="text-[var(--text-secondary)] mb-4">
-            Most people don't realize: these AI image platforms don't have APIs. Or the APIs are
-            limited, expensive, or waitlisted.
-          </p>
-          <p className="text-[var(--text-secondary)] mb-4">
-            So Factory automates the browser. It navigates to Midjourney's web interface, finds the
-            prompt box, types your prompt, waits for generation, clicks upscale, downloads with
-            metadata tracking which prompt produced what.
-          </p>
-          <p className="text-[var(--text-secondary)]">
-            The trick is using accessibility snapshots instead of CSS selectors. "Find the textbox
-            labeled 'What will you imagine?'" survives UI updates. CSS selectors don't.
-          </p>
+        <section className="py-16">
+          <SectionHead title="The browser automation problem" meta="Under the hood" />
+          <div className="mt-10 max-w-2xl space-y-5 text-[var(--body)] leading-relaxed">
+            <p>
+              Most people don&apos;t realize: these AI image platforms don&apos;t have APIs. Or the APIs are
+              limited, expensive, or waitlisted.
+            </p>
+            <p>
+              So Factory automates the browser. It navigates to Midjourney&apos;s web interface, finds the
+              prompt box, types your prompt, waits for generation, clicks upscale, downloads with
+              metadata tracking which prompt produced what.
+            </p>
+            <p>
+              The trick is using accessibility snapshots instead of CSS selectors. &quot;Find the textbox
+              labeled &lsquo;What will you imagine?&rsquo;&quot; survives UI updates. CSS selectors don&apos;t.
+            </p>
+          </div>
         </section>
 
+        <Rule />
+
         {/* Platforms */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Platform Support</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section className="py-16">
+          <SectionHead title="Platform support" meta="3 engines" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {platforms.map((platform) => (
-              <div
-                key={platform.name}
-                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft text-center"
-              >
-                <h3 className="font-bold text-xl mb-2">{platform.name}</h3>
-                <p className="text-[var(--text-secondary)] text-sm">{platform.strength}</p>
+              <div key={platform.name} className="bg-[var(--paper)] p-7">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-1">
+                  {platform.name}
+                </h3>
+                <p className="text-sm text-[var(--muted)]">{platform.strength}</p>
               </div>
             ))}
           </div>
         </section>
 
+        <Rule />
+
         {/* Human Gates */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Human Gates</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
+        <section className="py-16">
+          <SectionHead title={<>Human <em className="italic text-id8-orange">gates</em></>} meta="Stop points" />
+          <p className="mt-8 mb-8 max-w-2xl text-lg text-[var(--muted)]">
             Not everything should be automated. Factory has explicit decision points where the AI
-            stops and waits:
+            stops and waits.
           </p>
-          <ul className="space-y-3 text-lg">
-            <li className="flex gap-3">
-              <span className="text-[var(--id8-orange)]">•</span>
-              <span><strong>After the brief:</strong> Does this creative direction match what you want?</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[var(--id8-orange)]">•</span>
-              <span><strong>After generation:</strong> Which images should we iterate on?</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[var(--id8-orange)]">•</span>
-              <span><strong>Before deploy:</strong> Ready to push to production?</span>
-            </li>
-          </ul>
+          <div className="divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+            {humanGates.map((gate) => (
+              <div key={gate.stage} className="py-6 grid md:grid-cols-[240px_1fr] gap-2 md:gap-8">
+                <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange">
+                  {gate.stage}
+                </span>
+                <p className="font-[family-name:var(--font-serif)] italic text-[var(--body)]">{gate.question}</p>
+              </div>
+            ))}
+          </div>
         </section>
+
+        <Rule />
 
         {/* Results */}
-        <section className="mb-16 p-8 bg-[var(--id8-orange)]/5 border-2 border-[var(--id8-orange)]/20 rounded-soft">
-          <h3 className="text-2xl font-bold mb-4 text-[var(--id8-orange)]">First Real Test</h3>
-          <p className="text-lg mb-4">
-            Built for our DeepStack campaign. Results:
-          </p>
-          <div className="grid grid-cols-2 gap-6 text-center">
-            <div>
-              <p className="text-4xl font-bold text-[var(--id8-orange)]">5</p>
-              <p className="text-[var(--text-secondary)]">Production-ready images</p>
+        <section className="py-16">
+          <EditorialCard featured>
+            <Kicker className="mb-6">First real test · DeepStack campaign</Kicker>
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <div className="font-[family-name:var(--font-display)] font-normal text-5xl text-[var(--ink)] mb-1">5</div>
+                <p className="text-sm text-[var(--muted)]">Production-ready images</p>
+              </div>
+              <div>
+                <div className="font-[family-name:var(--font-display)] font-normal text-5xl text-[var(--ink)] mb-1">&lt;10 min</div>
+                <p className="text-sm text-[var(--muted)]">Human attention required</p>
+              </div>
             </div>
-            <div>
-              <p className="text-4xl font-bold text-[var(--id8-orange)]">&lt;10 min</p>
-              <p className="text-[var(--text-secondary)]">Human attention required</p>
-            </div>
-          </div>
+          </EditorialCard>
         </section>
+
+        <Rule />
 
         {/* State Tracking */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">State Tracking</h2>
-          <p className="text-lg text-[var(--text-secondary)]">
-            A week later, I needed to know exactly which prompt produced the image we used. It was
-            all there—prompt, platform, timestamp, generation time, file path.
-          </p>
-          <p className="text-lg text-[var(--text-secondary)] mt-4 font-medium">
-            You will forget what made what. The system won't.
-          </p>
-        </section>
-
-        {/* Status */}
-        <section className="pt-12 border-t border-[var(--border)]">
-          <div className="space-y-4">
-            <p className="text-lg text-[var(--text-secondary)]">
-              <strong>Status:</strong> Field testing at ID8Labs
+        <section className="py-16 max-w-2xl">
+          <SectionHead title="State tracking" />
+          <div className="mt-8 space-y-5 text-[var(--body)] leading-relaxed">
+            <p>
+              A week later, I needed to know exactly which prompt produced the image we used. It was
+              all there&mdash;prompt, platform, timestamp, generation time, file path.
             </p>
-            <p className="text-lg text-[var(--text-secondary)]">
-              <strong>Built with:</strong> Claude Code, Playwright MCP, Perplexity MCP, Firecrawl MCP
+            <p className="font-[family-name:var(--font-serif)] italic text-lg text-[var(--ink)]">
+              You will forget what made what. The system won&apos;t.
             </p>
-            <div className="pt-4">
-              <Link
-                href="/writing/id8factory-missing-orchestration-layer"
-                className="inline-flex items-center gap-2 text-lg text-[var(--id8-orange)] hover:underline"
-              >
-                Read the full essay
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
-            </div>
           </div>
         </section>
-      </article>
+
+        <Rule />
+
+        {/* Status */}
+        <section className="pt-16 space-y-3">
+          <MetaRow
+            items={[
+              { value: 'Field testing', label: 'at ID8Labs' },
+              { value: 'Claude Code', label: '+ Playwright / Perplexity / Firecrawl MCP' },
+            ]}
+          />
+          <div className="pt-4">
+            <EditorialButton href="/writing/id8factory-missing-orchestration-layer" variant="ghost">
+              Read the full essay
+            </EditorialButton>
+          </div>
+        </section>
+      </Container>
     </div>
   )
 }

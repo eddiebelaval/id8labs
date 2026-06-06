@@ -55,7 +55,7 @@ export function NotesSidebar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeSidebar}
-            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            className="fixed inset-0 bg-[var(--ink)]/40 z-40 lg:hidden"
           />
 
           {/* Sidebar */}
@@ -64,14 +64,14 @@ export function NotesSidebar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[var(--bg-primary)] border-l border-[var(--border)] shadow-2xl z-50 flex flex-col"
+            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[var(--paper)] border-l border-[var(--hair)]  z-50 flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-[var(--border)]">
-              <h2 className="text-lg font-bold">My Notes</h2>
+            <div className="flex items-center justify-between p-4 border-b border-[var(--hair)]">
+              <h2 className="font-[family-name:var(--font-display)] text-lg font-normal text-[var(--ink)]">My Notes</h2>
               <button
                 onClick={closeSidebar}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors"
                 aria-label="Close sidebar"
               >
                 <CloseIcon />
@@ -79,13 +79,13 @@ export function NotesSidebar() {
             </div>
 
             {/* Tabs */}
-            <div className="flex border-b border-[var(--border)]">
+            <div className="flex border-b border-[var(--hair)]">
               <button
                 onClick={() => setActiveTab('highlights')}
                 className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
                   activeTab === 'highlights'
                     ? 'text-id8-orange border-b-2 border-id8-orange'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    : 'text-[var(--muted)] hover:text-[var(--ink)]'
                 }`}
               >
                 Highlights ({highlightCount})
@@ -95,7 +95,7 @@ export function NotesSidebar() {
                 className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
                   activeTab === 'notes'
                     ? 'text-id8-orange border-b-2 border-id8-orange'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    : 'text-[var(--muted)] hover:text-[var(--ink)]'
                 }`}
               >
                 Notes ({noteCount})
@@ -105,7 +105,7 @@ export function NotesSidebar() {
                 className={`flex-1 px-4 py-3 text-sm font-medium transition-colors flex items-center justify-center gap-1 ${
                   activeTab === 'ai'
                     ? 'text-id8-orange border-b-2 border-id8-orange'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    : 'text-[var(--muted)] hover:text-[var(--ink)]'
                 }`}
               >
                 <SparklesIcon className="w-4 h-4" />
@@ -139,7 +139,7 @@ export function NotesSidebar() {
             </div>
 
             {/* Footer - View All Notes */}
-            <div className="p-4 border-t border-[var(--border)]">
+            <div className="p-4 border-t border-[var(--hair)]">
               <a
                 href="/academy/notebook"
                 className="block text-center text-sm text-id8-orange hover:underline"
@@ -202,12 +202,12 @@ function SidebarContent({
     return (
       <div className="flex flex-col items-center justify-center h-full text-center">
         <LockIcon />
-        <p className="mt-4 text-[var(--text-secondary)]">
+        <p className="mt-4 text-[var(--muted)]">
           Sign in to save your highlights and notes
         </p>
         <a
           href="/sign-in"
-          className="mt-4 px-4 py-2 bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors"
+          className="mt-4 px-4 py-2 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors"
         >
           Sign In
         </a>
@@ -259,11 +259,11 @@ function HighlightsTab({ highlights }: { highlights: ReturnType<typeof useAnnota
   if (highlights.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-32 text-center">
-        <HighlightIcon className="w-8 h-8 text-[var(--text-tertiary)]" />
-        <p className="mt-2 text-sm text-[var(--text-secondary)]">
+        <HighlightIcon className="w-8 h-8 text-[var(--muted)]" />
+        <p className="mt-2 text-sm text-[var(--muted)]">
           No highlights yet
         </p>
-        <p className="text-xs text-[var(--text-tertiary)]">
+        <p className="text-xs text-[var(--muted)]">
           Select text in the module to highlight it
         </p>
       </div>
@@ -309,7 +309,7 @@ function NotesTab({
       {!isAddingNote ? (
         <button
           onClick={() => setIsAddingNote(true)}
-          className="w-full p-3 text-sm text-[var(--text-secondary)] border border-dashed border-[var(--border)] rounded-lg hover:border-id8-orange hover:text-id8-orange transition-colors"
+          className="w-full p-3 text-sm text-[var(--muted)] border border-dashed border-[var(--hair)]  hover:border-id8-orange hover:text-id8-orange transition-colors"
         >
           + Add a note
         </button>
@@ -317,20 +317,20 @@ function NotesTab({
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg space-y-3"
+          className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)]  space-y-3"
         >
           <input
             type="text"
             value={newNoteTitle}
             onChange={(e) => setNewNoteTitle(e.target.value)}
             placeholder="Title (optional)"
-            className="w-full px-3 py-2 text-sm bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-id8-orange/50"
+            className="w-full px-3 py-2 text-sm bg-[var(--paper)] border border-[var(--hair)]  focus:outline-none focus:border-[var(--ink)]"
           />
           <textarea
             value={newNoteContent}
             onChange={(e) => setNewNoteContent(e.target.value)}
             placeholder="Write your note..."
-            className="w-full h-24 px-3 py-2 text-sm bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-id8-orange/50"
+            className="w-full h-24 px-3 py-2 text-sm bg-[var(--paper)] border border-[var(--hair)]  resize-none focus:outline-none focus:border-[var(--ink)]"
             autoFocus
           />
           <div className="flex justify-end gap-2">
@@ -340,14 +340,14 @@ function NotesTab({
                 setNewNoteTitle('')
                 setNewNoteContent('')
               }}
-              className="px-3 py-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              className="px-3 py-1.5 text-sm text-[var(--muted)] hover:text-[var(--ink)]"
             >
               Cancel
             </button>
             <button
               onClick={onCreateNote}
               disabled={!newNoteContent.trim() || isCreating}
-              className="px-3 py-1.5 text-sm bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 text-sm bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors disabled:opacity-50"
             >
               {isCreating ? 'Saving...' : 'Save Note'}
             </button>
@@ -358,11 +358,11 @@ function NotesTab({
       {/* Existing notes */}
       {notes.length === 0 && !isAddingNote && (
         <div className="flex flex-col items-center justify-center h-32 text-center">
-          <NoteIcon className="w-8 h-8 text-[var(--text-tertiary)]" />
-          <p className="mt-2 text-sm text-[var(--text-secondary)]">
+          <NoteIcon className="w-8 h-8 text-[var(--muted)]" />
+          <p className="mt-2 text-sm text-[var(--muted)]">
             No notes yet
           </p>
-          <p className="text-xs text-[var(--text-tertiary)]">
+          <p className="text-xs text-[var(--muted)]">
             Add notes to remember key insights
           </p>
         </div>
@@ -388,11 +388,11 @@ function AITab({ courseSlug, moduleSlug, hasAnnotations, aiAction, setAiAction }
   if (!hasAnnotations) {
     return (
       <div className="flex flex-col items-center justify-center h-48 text-center">
-        <SparklesIcon className="w-10 h-10 text-[var(--text-tertiary)]" />
-        <p className="mt-4 text-sm text-[var(--text-secondary)]">
+        <SparklesIcon className="w-10 h-10 text-[var(--muted)]" />
+        <p className="mt-4 text-sm text-[var(--muted)]">
           Need at least 3 annotations
         </p>
-        <p className="text-xs text-[var(--text-tertiary)] mt-1">
+        <p className="text-xs text-[var(--muted)] mt-1">
           Add more highlights or notes to unlock AI insights
         </p>
       </div>
@@ -412,21 +412,21 @@ function AITab({ courseSlug, moduleSlug, hasAnnotations, aiAction, setAiAction }
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-[var(--text-secondary)]">
+      <p className="text-sm text-[var(--muted)]">
         Use AI to help you learn from your annotations:
       </p>
 
       <button
         onClick={() => setAiAction('summarize')}
-        className="w-full p-4 text-left bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-id8-orange transition-colors group"
+        className="w-full p-4 text-left bg-[var(--paper-shadow)] border border-[var(--hair)]  hover:border-id8-orange transition-colors group"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-id8-orange/10 rounded-lg group-hover:bg-id8-orange/20 transition-colors">
+          <div className="p-2 bg-[var(--paper-mid)] group-hover:bg-[var(--paper-shadow)] transition-colors">
             <SparklesIcon className="w-5 h-5 text-id8-orange" />
           </div>
           <div>
             <h4 className="font-medium text-sm">Summarize My Notes</h4>
-            <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+            <p className="text-xs text-[var(--muted)] mt-0.5">
               Get an AI summary of your highlights and notes for this module
             </p>
           </div>
@@ -435,25 +435,25 @@ function AITab({ courseSlug, moduleSlug, hasAnnotations, aiAction, setAiAction }
 
       <button
         onClick={() => setAiAction('connections')}
-        className="w-full p-4 text-left bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-id8-orange transition-colors group"
+        className="w-full p-4 text-left bg-[var(--paper-shadow)] border border-[var(--hair)]  hover:border-id8-orange transition-colors group"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-id8-orange/10 rounded-lg group-hover:bg-id8-orange/20 transition-colors">
+          <div className="p-2 bg-[var(--paper-mid)] group-hover:bg-[var(--paper-shadow)] transition-colors">
             <ConnectionsIcon className="w-5 h-5 text-id8-orange" />
           </div>
           <div>
             <h4 className="font-medium text-sm">Find Connections</h4>
-            <p className="text-xs text-[var(--text-secondary)] mt-0.5">
+            <p className="text-xs text-[var(--muted)] mt-0.5">
               Discover patterns and themes across your annotations
             </p>
           </div>
         </div>
       </button>
 
-      <div className="pt-4 border-t border-[var(--border)]">
+      <div className="pt-4 border-t border-[var(--hair)]">
         <a
           href="/academy/notebook"
-          className="text-xs text-[var(--text-tertiary)] hover:text-id8-orange"
+          className="text-xs text-[var(--muted)] hover:text-id8-orange"
         >
           Want a full study guide? Visit your Notebook →
         </a>
@@ -473,7 +473,7 @@ function CloseIcon() {
 
 function LockIcon() {
   return (
-    <svg className="w-12 h-12 text-[var(--text-tertiary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg className="w-12 h-12 text-[var(--muted)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
     </svg>

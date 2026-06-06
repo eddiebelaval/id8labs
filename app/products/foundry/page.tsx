@@ -1,5 +1,12 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'ID8Foundry - ID8Labs',
@@ -35,87 +42,115 @@ const patterns = [
   { name: 'ANTI_PATTERNS.md', description: 'What to avoid' },
 ]
 
+const commands = [
+  { cmd: 'pipeline status', desc: 'Report current project, phase, and next checkpoint' },
+  { cmd: 'new project [name]', desc: 'Create fresh project file from template' },
+  { cmd: 'sync project [name]', desc: 'Import existing repo into Foundry' },
+  { cmd: 'log learning', desc: 'Add entry to LEARNINGS.md' },
+  { cmd: 'extract pattern', desc: 'Move learning → pattern file' },
+  { cmd: 'update handoff', desc: 'Update session state' },
+]
+
+function FileTable({ files, title }: { files: { name: string; description: string }[]; title: string }) {
+  return (
+    <div>
+      <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-3">
+        {title}
+      </h3>
+      <div className="divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+        {files.map((file) => (
+          <div key={file.name} className="py-4 grid md:grid-cols-[220px_1fr] gap-1.5 md:gap-8">
+            <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">{file.name}</span>
+            <span className="text-[var(--body)]">{file.description}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function FoundryPage() {
   return (
-    <div className="container py-24">
-      {/* Back Link */}
-      <Link
-        href="/products"
-        className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <line x1="19" y1="12" x2="5" y2="12" />
-          <polyline points="12 19 5 12 12 5" />
-        </svg>
-        Back to products
-      </Link>
+    <div className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Internal Framework</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            The system that <em className="italic text-id8-orange">builds systems</em>.
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            A self-improving development framework that captures patterns, decisions, and failures
+            across projects. Every build makes the next one faster.
+          </Deck>
+          <MetaRow
+            className="border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: 'In production', label: 'at ID8Labs' },
+              { value: '~/.claude/pipeline/', label: 'location' },
+              { value: 'Claude Code', label: 'integrated with' },
+            ]}
+          />
+        </header>
 
-      {/* Header */}
-      <header className="max-w-4xl mb-16">
-        <div className="flex items-center gap-3 mb-6 flex-wrap">
-          <h1>ID8Foundry</h1>
-          <span className="text-sm px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full">
-            Internal Framework
-          </span>
-        </div>
-        <p className="text-2xl text-[var(--text-secondary)] mb-4">
-          The system that builds systems.
-        </p>
-        <p className="text-xl text-[var(--text-tertiary)]">
-          A self-improving development framework that captures patterns, decisions, and failures across projects.
-          Every build makes the next one faster.
-        </p>
-      </header>
-
-      {/* Philosophy */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-6">The Philosophy</h2>
-        <div className="p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-          <blockquote className="text-xl italic text-[var(--text-secondary)] mb-6">
-            "Like mycelium — the visible output (shipped code) is just the fruiting body.
-            The real intelligence is the network underneath."
+        {/* Philosophy */}
+        <section className="py-16">
+          <SectionHead title={<>The <em className="italic text-id8-orange">philosophy</em></>} />
+          <blockquote className="mt-10 font-[family-name:var(--font-serif)] italic text-2xl md:text-[1.75rem] leading-[1.4] text-[var(--ink)] max-w-3xl border-l-2 border-id8-orange pl-7">
+            &ldquo;Like mycelium &mdash; the visible output (shipped code) is just the fruiting body.
+            The real intelligence is the network underneath.&rdquo;
           </blockquote>
-          <div className="space-y-4 text-lg">
+          <div className="mt-10 max-w-2xl space-y-3 text-lg text-[var(--body)]">
             <p>Every project that passes through the Foundry:</p>
-            <ul className="list-disc list-inside space-y-2 text-[var(--text-secondary)]">
-              <li>Benefits from patterns learned in previous projects</li>
-              <li>Contributes new patterns back to the system</li>
-              <li>Compounds your ability to ship faster and cleaner</li>
+            <ul className="space-y-2">
+              {[
+                'Benefits from patterns learned in previous projects',
+                'Contributes new patterns back to the system',
+                'Compounds your ability to ship faster and cleaner',
+              ].map((item) => (
+                <li key={item} className="flex items-baseline gap-3">
+                  <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&rarr;</span>
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ID8Pipeline vs ID8Foundry */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-6">How It Works</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-            <h3 className="text-xl font-bold mb-4 text-[var(--id8-orange)]">ID8Pipeline</h3>
-            <p className="text-[var(--text-secondary)] mb-4">
-              The 11-stage build process. Concept Lock → Ship → Listen & Iterate.
-            </p>
-            <p className="text-sm text-[var(--text-tertiary)]">
-              Defines <strong>what stages</strong> a project goes through.
-            </p>
-          </div>
-          <div className="p-6 bg-[var(--bg-secondary)] border border-purple-500/30 rounded-lg">
-            <h3 className="text-xl font-bold mb-4 text-purple-400">ID8Foundry</h3>
-            <p className="text-[var(--text-secondary)] mb-4">
-              The accumulated knowledge. Patterns, decisions, failures, learnings.
-            </p>
-            <p className="text-sm text-[var(--text-tertiary)]">
-              Provides <strong>the knowledge</strong> accumulated from all projects.
-            </p>
-          </div>
-        </div>
-      </section>
+        <Rule />
 
-      {/* File Structure */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-6">The Structure</h2>
-        <div className="font-mono text-sm bg-[var(--bg-secondary)] p-6 rounded-lg border border-[var(--border)] mb-8 overflow-x-auto">
-          <pre className="text-[var(--text-secondary)]">{`~/.claude/pipeline/
+        {/* Pipeline vs Foundry */}
+        <section className="py-16">
+          <SectionHead title="How it works" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-id8-orange mb-3">ID8Pipeline</h3>
+              <p className="text-[var(--body)] mb-4 leading-relaxed">
+                The 11-stage build process. Concept Lock &rarr; Ship &rarr; Listen &amp; Iterate.
+              </p>
+              <p className="text-sm text-[var(--muted)]">
+                Defines <strong className="text-[var(--ink)]">what stages</strong> a project goes through.
+              </p>
+            </div>
+            <div className="bg-[var(--paper-shadow)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">ID8Foundry</h3>
+              <p className="text-[var(--body)] mb-4 leading-relaxed">
+                The accumulated knowledge. Patterns, decisions, failures, learnings.
+              </p>
+              <p className="text-sm text-[var(--muted)]">
+                Provides <strong className="text-[var(--ink)]">the knowledge</strong> accumulated from all projects.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <Rule />
+
+        {/* Structure */}
+        <section className="py-16">
+          <SectionHead title="The structure" meta="Filesystem" />
+          <div className="mt-10 font-[family-name:var(--font-mono)] text-sm bg-[var(--paper-shadow)] p-6 border border-[var(--hair)] mb-12 overflow-x-auto">
+            <pre className="text-[var(--body)]">{`~/.claude/pipeline/
 ├── SYSTEM.md           # Operating instructions
 ├── CONTEXT.md          # Who you are, current priorities
 ├── HANDOFF.md          # Session continuity
@@ -133,97 +168,67 @@ export default function FoundryPage() {
 │   └── [project].md    # Active project files
 └── logs/
     └── LEARNINGS.md    # Captured insights`}</pre>
-        </div>
-
-        {/* Core Files */}
-        <div className="space-y-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">Core Files</h3>
-            <div className="grid gap-3">
-              {foundryFiles.map((file) => (
-                <div key={file.name} className="flex items-center gap-4 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                  <span className="font-mono text-purple-400">{file.name}</span>
-                  <span className="text-[var(--text-secondary)]">{file.description}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold mb-4">Frameworks</h3>
-            <div className="grid gap-3">
-              {frameworks.map((file) => (
-                <div key={file.name} className="flex items-center gap-4 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                  <span className="font-mono text-[var(--id8-orange)]">{file.name}</span>
-                  <span className="text-[var(--text-secondary)]">{file.description}</span>
-                </div>
-              ))}
-            </div>
+          <div className="space-y-12">
+            <FileTable files={foundryFiles} title="Core Files" />
+            <FileTable files={frameworks} title="Frameworks" />
+            <FileTable files={patterns} title="Patterns" />
           </div>
+        </section>
 
-          <div>
-            <h3 className="text-xl font-bold mb-4">Patterns</h3>
-            <div className="grid gap-3">
-              {patterns.map((file) => (
-                <div key={file.name} className="flex items-center gap-4 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                  <span className="font-mono text-green-400">{file.name}</span>
-                  <span className="text-[var(--text-secondary)]">{file.description}</span>
-                </div>
-              ))}
-            </div>
+        <Rule />
+
+        {/* Session Startup */}
+        <section className="py-16">
+          <SectionHead title="Session startup" />
+          <div className="mt-10 max-w-2xl">
+            <p className="text-lg text-[var(--muted)] mb-6">Every session, before diving into work:</p>
+            <ol className="space-y-3 text-lg text-[var(--body)]">
+              <li className="flex items-baseline gap-3">
+                <span className="font-[family-name:var(--font-mono)] text-id8-orange text-sm">01</span>
+                <span>Read <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">HANDOFF.md</span> &mdash; Where we left off</span>
+              </li>
+              <li className="flex items-baseline gap-3">
+                <span className="font-[family-name:var(--font-mono)] text-id8-orange text-sm">02</span>
+                <span>Check active project file &mdash; Current phase, blockers, decisions</span>
+              </li>
+              <li className="flex items-baseline gap-3">
+                <span className="font-[family-name:var(--font-mono)] text-id8-orange text-sm">03</span>
+                <span>Ask: <em className="font-[family-name:var(--font-serif)] italic">&quot;What&apos;s the highest-leverage thing we can do today?&quot;</em></span>
+              </li>
+            </ol>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Session Protocol */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-6">Session Startup</h2>
-        <div className="p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
-            Every session, before diving into work:
-          </p>
-          <ol className="list-decimal list-inside space-y-3 text-lg">
-            <li>Read <span className="font-mono text-purple-400">HANDOFF.md</span> — Where we left off</li>
-            <li>Check active project file — Current phase, blockers, decisions</li>
-            <li>Ask: <em>"What's the highest-leverage thing we can do today?"</em></li>
-          </ol>
-        </div>
-      </section>
+        <Rule />
 
-      {/* Commands */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-6">Commands</h2>
-        <div className="grid gap-4">
-          {[
-            { cmd: 'pipeline status', desc: 'Report current project, phase, and next checkpoint' },
-            { cmd: 'new project [name]', desc: 'Create fresh project file from template' },
-            { cmd: 'sync project [name]', desc: 'Import existing repo into Foundry' },
-            { cmd: 'log learning', desc: 'Add entry to LEARNINGS.md' },
-            { cmd: 'extract pattern', desc: 'Move learning → pattern file' },
-            { cmd: 'update handoff', desc: 'Update session state' },
-          ].map((item) => (
-            <div key={item.cmd} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-              <span className="font-mono text-[var(--id8-orange)] shrink-0">{item.cmd}</span>
-              <span className="text-[var(--text-secondary)]">{item.desc}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* Commands */}
+        <section className="py-16">
+          <SectionHead title="Commands" meta="6 verbs" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+            {commands.map((item) => (
+              <div key={item.cmd} className="py-4 grid md:grid-cols-[220px_1fr] gap-1.5 md:gap-8">
+                <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">{item.cmd}</span>
+                <span className="text-[var(--body)]">{item.desc}</span>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* Footer */}
-      <section className="pt-12 border-t border-[var(--border)]">
-        <div className="space-y-4">
-          <p className="text-lg text-[var(--text-secondary)]">
-            <strong>Status:</strong> In production at ID8Labs
-          </p>
-          <p className="text-lg text-[var(--text-secondary)]">
-            <strong>Location:</strong> <span className="font-mono">~/.claude/pipeline/</span>
-          </p>
-          <p className="text-lg text-[var(--text-secondary)]">
-            <strong>Integrated with:</strong> Claude Code, ID8Pipeline stages
-          </p>
-        </div>
-      </section>
+        <Rule />
+
+        {/* Footer */}
+        <section className="pt-16">
+          <MetaRow
+            items={[
+              { value: 'In production', label: 'at ID8Labs' },
+              { value: '~/.claude/pipeline/', label: 'location' },
+              { value: 'Claude Code', label: '+ ID8Pipeline stages' },
+            ]}
+          />
+        </section>
+      </Container>
     </div>
   )
 }

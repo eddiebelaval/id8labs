@@ -51,7 +51,7 @@ export default function Module1Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-1">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -79,7 +79,7 @@ export default function Module1Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 1
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -89,34 +89,34 @@ export default function Module1Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               What AI Actually Does
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "Every vendor promises AI will transform our business. I just need to know what's real."
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">What AI Can and Can't Do — Right Now</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">What AI Can and Can't Do — Right Now</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've heard the claims: AI will automate everything, replace knowledge workers, and fundamentally reshape every industry within years. Some of this is true. Most of it is vendor hype designed to create urgency around purchasing decisions.
@@ -140,8 +140,8 @@ export default function Module1Page() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-3 px-4 text-red-400">What Vendors Say</th>
-                    <th className="text-left py-3 px-4 text-green-400">What's Actually True</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">What Vendors Say</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">What's Actually True</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -206,7 +206,7 @@ export default function Module1Page() {
                   examples: "Workflow triggers, data entry, routing decisions"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <span className="text-2xl">{item.icon}</span>
                   <h4 className="font-bold mt-2 text-id8-orange">{item.title}</h4>
                   <p className="text-sm text-[var(--text-primary)] mt-1">{item.desc}</p>
@@ -230,8 +230,8 @@ export default function Module1Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Archetype</th>
-                    <th className="text-left py-3 px-4 text-green-400">Handles Well</th>
-                    <th className="text-left py-3 px-4 text-red-400">Struggles With</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Handles Well</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Struggles With</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -265,38 +265,38 @@ export default function Module1Page() {
               When evaluating whether AI can handle a task, run through these five questions:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Is it pattern-based or judgment-based?</p>
                     <p className="text-sm text-[var(--text-secondary)]">AI excels at patterns. If it requires nuanced judgment, human oversight is essential.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">What's the cost of being wrong?</p>
                     <p className="text-sm text-[var(--text-secondary)]">Low-stakes tasks are ideal for AI. High-stakes decisions need human validation.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Is the input data clean and consistent?</p>
                     <p className="text-sm text-[var(--text-secondary)]">Garbage in, garbage out. AI amplifies data quality issues.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Can a human verify the output?</p>
                     <p className="text-sm text-[var(--text-secondary)]">If you can't tell good output from bad, you can't use AI safely.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Is it repetitive enough to justify automation?</p>
                     <p className="text-sm text-[var(--text-secondary)]">One-off tasks rarely justify AI investment. Volume matters.</p>
@@ -309,39 +309,39 @@ export default function Module1Page() {
             <h2>Five Myths That Lead to Failed Projects</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #1</p>
                 <p className="font-bold">"AI will figure out what we need"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: AI requires extremely specific direction. Vague goals produce vague results.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #2</p>
                 <p className="font-bold">"More data is always better"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Relevant, clean data beats volume. Most organizations have data quality issues, not data quantity issues.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #3</p>
                 <p className="font-bold">"AI will reduce headcount"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: AI reshapes roles and creates new ones. Organizations that use AI for augmentation outperform those using it for replacement.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #4</p>
                 <p className="font-bold">"We need to move fast or fall behind"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Thoughtful implementation beats rushed deployment. Most AI failures come from moving too fast, not too slow.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #5</p>
                 <p className="font-bold">"Our industry is different"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: AI capabilities are universal. Industry-specific nuance matters for implementation, not for assessing core capability.</p>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: AI Capability Assessment</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: AI Capability Assessment</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 20 minutes<br />
                 <strong>You'll need:</strong> One task or process you're considering for AI
@@ -349,28 +349,28 @@ export default function Module1Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Name the task (2 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Write it down specifically. Not "improve customer service" but "respond to tier-1 support tickets."</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify the archetype (3 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Is this Pattern Recognition, Generation, Analysis, or Automation? Be honest.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Run the 5-question checklist (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Answer each question honestly. Write down your answers.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Score your confidence (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">On a scale of 1-10, how confident are you that AI can handle this task reliably?</p>
@@ -378,7 +378,7 @@ export default function Module1Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A one-page assessment you can share with stakeholders that clearly explains what AI can and can't do for this specific use case.
                 </p>
@@ -386,7 +386,7 @@ export default function Module1Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

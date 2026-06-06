@@ -1,59 +1,6 @@
 import Link from 'next/link'
-import { Filter, Package, HelpCircle, ChevronDown, Terminal, Settings, Layers, Puzzle, Zap } from 'lucide-react'
 import type { SkillCategory, SkillCollection } from '@/lib/skill-types'
 import type { MarketplaceTab } from './MarketplaceTabs'
-
-const SKILL_CATEGORY_EMOJI: Record<string, string> = {
-  documents: '📄',
-  communication: '📬',
-  research: '🔍',
-  writing: '✍️',
-  design: '🎨',
-  code: '💻',
-  project: '📋',
-  business: '💼',
-  domain: '🏢',
-  personal: '👤',
-  meta: '⚙️',
-}
-
-const COMMAND_CATEGORY_EMOJI: Record<string, string> = {
-  git: '🔄',
-  setup: '⚡',
-  testing: '🧪',
-  deployment: '🚀',
-  database: '🗄️',
-  development: '💻',
-}
-
-const SETTING_CATEGORY_EMOJI: Record<string, string> = {
-  editor: '📝',
-  formatting: '✨',
-  linting: '🔍',
-  typescript: '📘',
-  styling: '🎨',
-  git: '🔄',
-  testing: '🧪',
-  deployment: '🚀',
-  model: '🤖',
-  permissions: '🔐',
-  context: '📚',
-  budget: '💰',
-  optimization: '⚡',
-  safety: '🛡️',
-}
-
-const PLUGIN_CATEGORY_EMOJI: Record<string, string> = {
-  'code-quality': '✨',
-  automation: '🔄',
-  development: '💻',
-  productivity: '⚡',
-  'output-style': '📝',
-  lsp: '🔧',
-  integration: '🔗',
-  framework: '📦',
-  testing: '🧪',
-}
 
 interface MarketplaceSidebarProps {
   activeTab: MarketplaceTab
@@ -73,6 +20,21 @@ interface MarketplaceSidebarProps {
   currentType?: string
   currentCategory?: string | null
 }
+
+const headingCls =
+  'font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]'
+
+function filterRowCls(active: boolean): string {
+  return (
+    'flex items-center gap-3 px-3 py-2 border-l-2 transition-colors duration-150 ' +
+    (active
+      ? 'border-id8-orange text-id8-orange bg-[var(--paper-shadow)]'
+      : 'border-transparent text-[var(--body)] hover:bg-[var(--paper-shadow)]')
+  )
+}
+
+const labelCls = 'font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] flex-1 truncate'
+const countCls = 'font-[family-name:var(--font-mono)] text-[10px] text-[var(--muted)]'
 
 export function MarketplaceSidebar({
   activeTab,
@@ -109,19 +71,14 @@ export function MarketplaceSidebar({
 
   return (
     <aside className="hidden lg:block w-64 flex-shrink-0">
-      <div className="sticky top-24 space-y-6 max-h-[calc(100vh-120px)] overflow-y-auto pr-2">
-        <div className="space-y-6">
+      <div className="sticky top-20 space-y-7 max-h-[calc(100vh-120px)] overflow-y-auto pr-2">
+        <div className="space-y-7">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-[var(--text-secondary)]" />
-              <h3 className="font-semibold text-sm uppercase tracking-wide text-[var(--text-secondary)]">
-                Filters
-              </h3>
-            </div>
+            <h3 className={headingCls}>Filters</h3>
             {hasActiveFilters && (
               <Link
                 href={clearUrl}
-                className="text-xs text-[var(--id8-orange)] hover:text-[var(--id8-orange-hover)] flex items-center gap-1"
+                className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange"
               >
                 Clear
               </Link>
@@ -131,75 +88,45 @@ export function MarketplaceSidebar({
           {activeTab === 'skills' && skillCounts && (
             <>
               <div>
-                <h4 className="text-sm font-medium mb-3">Categories</h4>
-                <div className="space-y-1">
-                  <Link
-                    href={buildFilterUrl(currentType, null)}
-                    className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                      (!currentCategory
-                        ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                        : 'hover:bg-[var(--bg-secondary)]')}
-                  >
-                    <Zap className="w-4 h-4" />
-                    <span className="text-sm flex-1">All Skills</span>
-                    <span className="text-xs text-[var(--text-tertiary)] font-medium">{skillCounts.total}</span>
+                <h4 className={`${headingCls} mb-3`}>Categories</h4>
+                <div className="space-y-0.5">
+                  <Link href={buildFilterUrl(currentType, null)} className={filterRowCls(!currentCategory)}>
+                    <span className={labelCls}>All Skills</span>
+                    <span className={countCls}>{skillCounts.total}</span>
                   </Link>
                   {skillCategories
                     .filter(cat => (skillCounts.byCategory[cat.id] || 0) > 0)
                     .map((category) => {
-                      const emoji = SKILL_CATEGORY_EMOJI[category.id] || '📦'
                       const count = skillCounts.byCategory[category.id] || 0
                       const isSelected = currentCategory === category.id
                       return (
                         <Link
                           key={category.id}
                           href={isSelected ? buildFilterUrl(currentType, null) : buildFilterUrl(currentType, category.id)}
-                          className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                            (isSelected
-                              ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                              : 'hover:bg-[var(--bg-secondary)]')}
+                          className={filterRowCls(isSelected)}
                         >
-                          <span className="text-lg">{emoji}</span>
-                          <span className="text-sm flex-1 truncate">{category.name}</span>
-                          <span className="text-xs text-[var(--text-tertiary)] font-medium">{count}</span>
+                          <span className={labelCls}>{category.name}</span>
+                          <span className={countCls}>{count}</span>
                         </Link>
                       )
                     })}
                 </div>
               </div>
-              <div className="border-t border-[var(--border)]" />
+              <div className="border-t border-[var(--hair)]" />
               <div>
-                <h4 className="text-sm font-medium mb-3">Type</h4>
-                <div className="space-y-1">
-                  <Link
-                    href={buildFilterUrl('all', currentCategory)}
-                    className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                      (currentType === 'all'
-                        ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                        : 'hover:bg-[var(--bg-secondary)]')}
-                  >
-                    <span className="text-sm flex-1">All Items</span>
-                    <span className="text-xs text-[var(--text-tertiary)] font-medium">{skillCounts.total}</span>
+                <h4 className={`${headingCls} mb-3`}>Type</h4>
+                <div className="space-y-0.5">
+                  <Link href={buildFilterUrl('all', currentCategory)} className={filterRowCls(currentType === 'all')}>
+                    <span className={labelCls}>All Items</span>
+                    <span className={countCls}>{skillCounts.total}</span>
                   </Link>
-                  <Link
-                    href={buildFilterUrl('skills', currentCategory)}
-                    className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                      (currentType === 'skills'
-                        ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                        : 'hover:bg-[var(--bg-secondary)]')}
-                  >
-                    <span className="text-sm flex-1">Skills Only</span>
-                    <span className="text-xs text-[var(--text-tertiary)] font-medium">{skillCounts.skills}</span>
+                  <Link href={buildFilterUrl('skills', currentCategory)} className={filterRowCls(currentType === 'skills')}>
+                    <span className={labelCls}>Skills Only</span>
+                    <span className={countCls}>{skillCounts.skills}</span>
                   </Link>
-                  <Link
-                    href={buildFilterUrl('agents', currentCategory)}
-                    className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                      (currentType === 'agents'
-                        ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                        : 'hover:bg-[var(--bg-secondary)]')}
-                  >
-                    <span className="text-sm flex-1">Agents Only</span>
-                    <span className="text-xs text-[var(--text-tertiary)] font-medium">{skillCounts.agents}</span>
+                  <Link href={buildFilterUrl('agents', currentCategory)} className={filterRowCls(currentType === 'agents')}>
+                    <span className={labelCls}>Agents Only</span>
+                    <span className={countCls}>{skillCounts.agents}</span>
                   </Link>
                 </div>
               </div>
@@ -208,38 +135,26 @@ export function MarketplaceSidebar({
 
           {activeTab === 'commands' && (
             <div>
-              <h4 className="text-sm font-medium mb-3">Categories</h4>
-              <div className="space-y-1">
-                <Link
-                  href={basePath + '?tab=commands'}
-                  className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                    (!currentCategory
-                      ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                      : 'hover:bg-[var(--bg-secondary)]')}
-                >
-                  <Terminal className="w-4 h-4" />
-                  <span className="text-sm flex-1">All Commands</span>
-                  <span className="text-xs text-[var(--text-tertiary)] font-medium">
+              <h4 className={`${headingCls} mb-3`}>Categories</h4>
+              <div className="space-y-0.5">
+                <Link href={basePath + '?tab=commands'} className={filterRowCls(!currentCategory)}>
+                  <span className={labelCls}>All Commands</span>
+                  <span className={countCls}>
                     {Object.values(commandCategories).reduce((a, b) => a + b, 0)}
                   </span>
                 </Link>
                 {Object.entries(commandCategories)
                   .sort(([a], [b]) => a.localeCompare(b))
                   .map(([category, count]) => {
-                    const emoji = COMMAND_CATEGORY_EMOJI[category] || '⚡'
                     const isSelected = currentCategory === category
                     return (
                       <Link
                         key={category}
                         href={isSelected ? basePath + '?tab=commands' : basePath + '?tab=commands&category=' + category}
-                        className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                          (isSelected
-                            ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                            : 'hover:bg-[var(--bg-secondary)]')}
+                        className={filterRowCls(isSelected)}
                       >
-                        <span className="text-lg">{emoji}</span>
-                        <span className="text-sm flex-1 capitalize">{category}</span>
-                        <span className="text-xs text-[var(--text-tertiary)] font-medium">{count}</span>
+                        <span className={labelCls}>{category}</span>
+                        <span className={countCls}>{count}</span>
                       </Link>
                     )
                   })}
@@ -249,38 +164,26 @@ export function MarketplaceSidebar({
 
           {activeTab === 'settings' && (
             <div>
-              <h4 className="text-sm font-medium mb-3">Categories</h4>
-              <div className="space-y-1">
-                <Link
-                  href={basePath + '?tab=settings'}
-                  className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                    (!currentCategory
-                      ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                      : 'hover:bg-[var(--bg-secondary)]')}
-                >
-                  <Settings className="w-4 h-4" />
-                  <span className="text-sm flex-1">All Settings</span>
-                  <span className="text-xs text-[var(--text-tertiary)] font-medium">
+              <h4 className={`${headingCls} mb-3`}>Categories</h4>
+              <div className="space-y-0.5">
+                <Link href={basePath + '?tab=settings'} className={filterRowCls(!currentCategory)}>
+                  <span className={labelCls}>All Settings</span>
+                  <span className={countCls}>
                     {Object.values(settingCategories).reduce((a, b) => a + b, 0)}
                   </span>
                 </Link>
                 {Object.entries(settingCategories)
                   .sort(([a], [b]) => a.localeCompare(b))
                   .map(([category, count]) => {
-                    const emoji = SETTING_CATEGORY_EMOJI[category] || '⚙️'
                     const isSelected = currentCategory === category
                     return (
                       <Link
                         key={category}
                         href={isSelected ? basePath + '?tab=settings' : basePath + '?tab=settings&category=' + category}
-                        className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                          (isSelected
-                            ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                            : 'hover:bg-[var(--bg-secondary)]')}
+                        className={filterRowCls(isSelected)}
                       >
-                        <span className="text-lg">{emoji}</span>
-                        <span className="text-sm flex-1 capitalize">{category}</span>
-                        <span className="text-xs text-[var(--text-tertiary)] font-medium">{count}</span>
+                        <span className={labelCls}>{category}</span>
+                        <span className={countCls}>{count}</span>
                       </Link>
                     )
                   })}
@@ -290,27 +193,18 @@ export function MarketplaceSidebar({
 
           {activeTab === 'plugins' && (
             <div>
-              <h4 className="text-sm font-medium mb-3">Categories</h4>
-              <div className="space-y-1">
-                <Link
-                  href={basePath + '?tab=plugins'}
-                  className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                    (!currentCategory
-                      ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                      : 'hover:bg-[var(--bg-secondary)]')}
-                >
-                  <Puzzle className="w-4 h-4" />
-                  <span className="text-sm flex-1">All Plugins</span>
-                  <span className="text-xs text-[var(--text-tertiary)] font-medium">
+              <h4 className={`${headingCls} mb-3`}>Categories</h4>
+              <div className="space-y-0.5">
+                <Link href={basePath + '?tab=plugins'} className={filterRowCls(!currentCategory)}>
+                  <span className={labelCls}>All Plugins</span>
+                  <span className={countCls}>
                     {Object.values(pluginCategories).reduce((a, b) => a + b, 0)}
                   </span>
                 </Link>
                 {Object.entries(pluginCategories)
                   .sort(([a], [b]) => a.localeCompare(b))
                   .map(([category, count]) => {
-                    const emoji = PLUGIN_CATEGORY_EMOJI[category] || '🔌'
                     const isSelected = currentCategory === category
-                    // Format category name: code-quality -> Code Quality
                     const displayName = category.split('-').map(word =>
                       word.charAt(0).toUpperCase() + word.slice(1)
                     ).join(' ')
@@ -318,14 +212,10 @@ export function MarketplaceSidebar({
                       <Link
                         key={category}
                         href={isSelected ? basePath + '?tab=plugins' : basePath + '?tab=plugins&category=' + category}
-                        className={'flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ' +
-                          (isSelected
-                            ? 'bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]'
-                            : 'hover:bg-[var(--bg-secondary)]')}
+                        className={filterRowCls(isSelected)}
                       >
-                        <span className="text-lg">{emoji}</span>
-                        <span className="text-sm flex-1">{displayName}</span>
-                        <span className="text-xs text-[var(--text-tertiary)] font-medium">{count}</span>
+                        <span className={labelCls}>{displayName}</span>
+                        <span className={countCls}>{count}</span>
                       </Link>
                     )
                   })}
@@ -335,49 +225,36 @@ export function MarketplaceSidebar({
 
           {activeTab === 'kits' && (
             <div>
-              <h4 className="text-sm font-medium mb-3">Browse</h4>
-              <div className="space-y-1">
-                <Link
-                  href={basePath + '?tab=kits'}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[var(--id8-orange)]/10 text-[var(--id8-orange)]"
-                >
-                  <Package className="w-4 h-4" />
-                  <span className="text-sm flex-1">All Starter Kits</span>
-                  <span className="text-xs text-[var(--text-tertiary)] font-medium">{kitsCount}</span>
+              <h4 className={`${headingCls} mb-3`}>Browse</h4>
+              <div className="space-y-0.5">
+                <Link href={basePath + '?tab=kits'} className={filterRowCls(true)}>
+                  <span className={labelCls}>All Starter Kits</span>
+                  <span className={countCls}>{kitsCount}</span>
                 </Link>
               </div>
-              <p className="mt-4 text-xs text-[var(--text-tertiary)]">
-                Pre-configured tool bundles to supercharge your workflow.
+              <p className="mt-4 text-xs text-[var(--muted)]">
+                Pre-configured tool bundles for common workflows.
               </p>
             </div>
           )}
         </div>
 
-        <div className="border-t border-[var(--border)]" />
-
         {activeTab === 'skills' && collections.length > 0 && (
           <>
+            <div className="border-t border-[var(--hair)]" />
             <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Package className="w-4 h-4 text-purple-500" />
-                <h3 className="font-semibold text-sm uppercase tracking-wide text-[var(--text-secondary)]">
-                  Starter Kits
-                </h3>
-              </div>
+              <h3 className={`${headingCls} mb-3`}>Starter Kits</h3>
               <div className="space-y-2">
                 {collections.slice(0, 3).map((collection) => (
                   <Link
                     key={collection.id}
                     href={`${basePath}/starter-kits#${collection.id}`}
-                    className="block p-3 rounded-lg border border-[var(--border)] hover:border-purple-500/30 hover:bg-purple-500/5 transition-colors group"
+                    className="block border border-[var(--hair)] p-3 transition-colors duration-150 hover:bg-[var(--paper-shadow)] hover:border-[var(--hair-hard)]"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg">{collection.emoji || '📦'}</span>
-                      <span className="font-medium text-sm group-hover:text-purple-500 transition-colors">
-                        {collection.name}
-                      </span>
-                    </div>
-                    <p className="text-xs text-[var(--text-tertiary)] mt-1 line-clamp-1">
+                    <span className="font-[family-name:var(--font-display)] font-normal text-sm text-[var(--ink)]">
+                      {collection.name}
+                    </span>
+                    <p className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--muted)] mt-1 line-clamp-1">
                       {collection.skill_count || 0} skills included
                     </p>
                   </Link>
@@ -385,29 +262,24 @@ export function MarketplaceSidebar({
               </div>
               <Link
                 href={`${basePath}/starter-kits`}
-                className="block mt-3 text-sm text-[var(--id8-orange)] hover:text-[var(--id8-orange-hover)] font-medium"
+                className="block mt-3 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange"
               >
-                Browse all kits →
+                Browse all kits &rarr;
               </Link>
             </div>
-            <div className="border-t border-[var(--border)]" />
           </>
         )}
 
+        <div className="border-t border-[var(--hair)]" />
+
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <HelpCircle className="w-4 h-4 text-[var(--text-secondary)]" />
-            <h3 className="font-semibold text-sm uppercase tracking-wide text-[var(--text-secondary)]">
-              Help
-            </h3>
-          </div>
-          <div className="space-y-2 text-sm text-[var(--text-secondary)]">
+          <h3 className={`${headingCls} mb-3`}>Help</h3>
+          <div className="space-y-2 text-sm text-[var(--body)]">
             <details className="group">
-              <summary className="cursor-pointer flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors">
-                <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+              <summary className="cursor-pointer font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
                 How to Install
               </summary>
-              <div className="mt-2 ml-6 text-xs space-y-2 text-[var(--text-tertiary)]">
+              <div className="mt-2 text-xs space-y-2 text-[var(--muted)]">
                 <p>1. Click any item to view details</p>
                 <p>2. Copy the install command</p>
                 <p>3. Run in your Claude Code project</p>
@@ -415,25 +287,23 @@ export function MarketplaceSidebar({
             </details>
             {activeTab === 'skills' && (
               <details className="group">
-                <summary className="cursor-pointer flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors">
-                  <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                <summary className="cursor-pointer font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
                   Skills vs Agents
                 </summary>
-                <div className="mt-2 ml-6 text-xs space-y-2 text-[var(--text-tertiary)]">
-                  <p><strong>Skills:</strong> Single-purpose tools for specific tasks</p>
-                  <p><strong>Agents:</strong> Multi-step workflows with decision-making</p>
+                <div className="mt-2 text-xs space-y-2 text-[var(--muted)]">
+                  <p><strong className="text-[var(--ink)]">Skills:</strong> Single-purpose tools for specific tasks</p>
+                  <p><strong className="text-[var(--ink)]">Agents:</strong> Multi-step workflows with decision-making</p>
                 </div>
               </details>
             )}
             {activeTab === 'kits' && (
               <details className="group">
-                <summary className="cursor-pointer flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors">
-                  <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                <summary className="cursor-pointer font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
                   About Starter Kits
                 </summary>
-                <div className="mt-2 ml-6 text-xs space-y-2 text-[var(--text-tertiary)]">
-                  <p><strong>Kits:</strong> Pre-configured tool bundles</p>
-                  <p><strong>Install:</strong> Paste prompt into Claude Code</p>
+                <div className="mt-2 text-xs space-y-2 text-[var(--muted)]">
+                  <p><strong className="text-[var(--ink)]">Kits:</strong> Pre-configured tool bundles</p>
+                  <p><strong className="text-[var(--ink)]">Install:</strong> Paste prompt into Claude Code</p>
                 </div>
               </details>
             )}

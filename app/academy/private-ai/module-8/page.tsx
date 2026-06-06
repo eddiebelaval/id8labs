@@ -81,7 +81,7 @@ export default function Module8Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-8">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -109,7 +109,7 @@ export default function Module8Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 8
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -119,34 +119,34 @@ export default function Module8Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Maintenance & Updates
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "Our private AI is live. Now what? How do we keep it current, secure, and running smoothly as models and threats evolve?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Maintenance Reality
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Deployment Is Day One, Not the Finish Line</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Deployment Is Day One, Not the Finish Line</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Launching your private AI is an achievement. But the real work starts now. Models become outdated. New vulnerabilities are discovered. Business requirements change. Without a maintenance strategy, your system will degrade.
@@ -167,7 +167,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <RefreshIcon />
                   <div>
@@ -179,7 +179,7 @@ export default function Module8Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
@@ -191,7 +191,7 @@ export default function Module8Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <CalendarIcon />
                   <div>
@@ -203,7 +203,7 @@ export default function Module8Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <ShieldIcon />
                   <div>
@@ -238,34 +238,34 @@ export default function Module8Page() {
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Security patch</td>
-                    <td className="py-3 px-4 text-red-400">Critical</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Critical</td>
                     <td className="py-3 px-4">Immediately after testing. Don't wait for next cycle.</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Bug fix</td>
-                    <td className="py-3 px-4 text-yellow-400">High</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">High</td>
                     <td className="py-3 px-4">If bug affects your use case, prioritize. Otherwise, batch with other updates.</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Performance improvement</td>
-                    <td className="py-3 px-4 text-blue-400">Medium</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Medium</td>
                     <td className="py-3 px-4">Test in staging, compare metrics, update during maintenance window.</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">New capabilities</td>
-                    <td className="py-3 px-4 text-green-400">Low</td>
+                    <td className="py-3 px-4 text-id8-teal">Low</td>
                     <td className="py-3 px-4">Only if you need the new features. New != better for your use case.</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Major version</td>
-                    <td className="py-3 px-4 text-purple-400">Varies</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Varies</td>
                     <td className="py-3 px-4">Significant testing required. May need prompt rewrites. Plan a project, not a patch.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Warning:</strong> Model updates can change behavior in subtle ways. A "better" model might not be better for your specific prompts. Always test with your actual use cases before production deployment.
               </p>
@@ -277,11 +277,11 @@ export default function Module8Page() {
               Follow this process for every model update:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h4 className="font-bold mb-4">Model Update Checklist</h4>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">1</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">1</span>
                   <div>
                     <p className="font-bold">Read the release notes</p>
                     <p className="text-sm text-[var(--text-secondary)]">Understand what changed. Breaking changes? New parameters? Deprecated features?</p>
@@ -289,7 +289,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">2</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">2</span>
                   <div>
                     <p className="font-bold">Deploy to staging environment</p>
                     <p className="text-sm text-[var(--text-secondary)]">Never test in production. Use identical config to production.</p>
@@ -297,7 +297,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">3</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">3</span>
                   <div>
                     <p className="font-bold">Run evaluation suite</p>
                     <p className="text-sm text-[var(--text-secondary)]">Test with your prompts, your data, your expected outputs. Automated tests catch regressions.</p>
@@ -305,7 +305,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">4</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">4</span>
                   <div>
                     <p className="font-bold">Compare performance metrics</p>
                     <p className="text-sm text-[var(--text-secondary)]">TTFT, TPS, memory usage. New version should meet or exceed baseline.</p>
@@ -313,7 +313,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">5</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">5</span>
                   <div>
                     <p className="font-bold">Manual spot-check</p>
                     <p className="text-sm text-[var(--text-secondary)]">Human review of critical prompts. Automated tests miss nuance.</p>
@@ -321,7 +321,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">6</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">6</span>
                   <div>
                     <p className="font-bold">Schedule production deployment</p>
                     <p className="text-sm text-[var(--text-secondary)]">During low-traffic window. Have rollback ready. Monitor closely for 24-48 hours.</p>
@@ -329,7 +329,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">7</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">7</span>
                   <div>
                     <p className="font-bold">Document the change</p>
                     <p className="text-sm text-[var(--text-secondary)]">Record what changed, why, any issues encountered. Future you will thank you.</p>
@@ -345,7 +345,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Monitor Security Feeds</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Subscribe to CVE feeds for your dependencies (NVIDIA, PyTorch, etc.)</li>
@@ -355,7 +355,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Regular Security Reviews</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li><strong>Weekly:</strong> Review access logs for anomalies</li>
@@ -365,7 +365,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Prompt Injection Defense Updates</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>New attack techniques emerge constantly</li>
@@ -426,7 +426,7 @@ export default function Module8Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Pro tip:</strong> Use Dependabot, Renovate, or similar tools to automate dependency update PRs. Review and test before merging, but automation ensures you don't miss critical updates.
               </p>
@@ -439,7 +439,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Performance Metrics</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Response latency (p50, p95, p99)</li>
@@ -449,7 +449,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Quality Metrics</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Output quality scores (if automated)</li>
@@ -459,7 +459,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Security Metrics</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Failed authentication attempts</li>
@@ -469,7 +469,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Infrastructure Metrics</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Disk usage / growth rate</li>
@@ -486,8 +486,8 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                <h4 className="font-bold text-yellow-400 mb-2">Warning (Investigate)</h4>
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+                <h4 className="font-bold text-[var(--muted)] mb-2">Warning (Investigate)</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Latency p95 &gt; 2x baseline</li>
                   <li>Error rate &gt; 1%</li>
@@ -496,8 +496,8 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <h4 className="font-bold text-red-400 mb-2">Critical (Immediate Action)</h4>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <h4 className="font-bold text-[var(--muted)] mb-2">Critical (Immediate Action)</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Latency p95 &gt; 5x baseline</li>
                   <li>Error rate &gt; 5%</li>
@@ -558,7 +558,7 @@ export default function Module8Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h4 className="font-bold mb-2">Recovery Testing</h4>
               <p className="text-sm text-[var(--text-secondary)]">
                 Backups are useless if you can't restore from them. Test recovery quarterly:
@@ -578,7 +578,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">What to Document</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li><strong>Architecture:</strong> How components connect, data flows</li>
@@ -589,7 +589,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">When to Update</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Every configuration change</li>
@@ -667,11 +667,11 @@ export default function Module8Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Maintenance Runbook</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Maintenance Runbook</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 25 minutes<br />
                 <strong>You'll need:</strong> Your deployment documentation, calendar access
@@ -679,7 +679,7 @@ export default function Module8Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Inventory Your Components (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -689,7 +689,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Define Update Criteria (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -699,7 +699,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Schedule Recurring Tasks (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -709,7 +709,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Create First Runbook (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -719,7 +719,7 @@ export default function Module8Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A maintenance runbook with component inventory, update criteria, scheduled tasks, and at least one detailed procedure. This becomes your operational foundation.
                 </p>
@@ -727,7 +727,7 @@ export default function Module8Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">
@@ -751,8 +751,8 @@ export default function Module8Page() {
             </div>
 
             {/* Course Conclusion */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
-              <h2 className="text-2xl font-bold mb-4">Course Complete: Private AI Mastery</h2>
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
+              <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Course Complete: Private AI Mastery</h2>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Congratulations. You've completed the Private AI course. You now understand:

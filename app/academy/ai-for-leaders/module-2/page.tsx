@@ -59,7 +59,7 @@ export default function Module2Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-2">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -87,7 +87,7 @@ export default function Module2Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 2
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -97,34 +97,34 @@ export default function Module2Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Finding the Opportunities
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "I see the potential everywhere. I need a framework to identify where AI creates the most value."
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Challenge */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Challenge
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Every Department Has Ideas. Not All Are Worth Pursuing.</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Every Department Has Ideas. Not All Are Worth Pursuing.</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You now understand what AI can do. The next question is: where should you apply it? In a typical organization, there are hundreds of potential use cases. Most will produce marginal gains. A few will transform outcomes.
@@ -175,12 +175,12 @@ export default function Module2Page() {
                   example: "Predictive analytics reduce inventory stockouts by 35%"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <span className="text-3xl">{item.icon}</span>
                   <h4 className="font-bold mt-3 text-id8-orange text-sm">{item.zone}</h4>
                   <p className="text-sm text-[var(--text-primary)] mt-2 font-medium">{item.desc}</p>
                   <p className="text-xs text-[var(--text-tertiary)] mt-3 italic">{item.question}</p>
-                  <p className="text-xs text-green-400 mt-2 bg-green-400/10 p-2 rounded border border-green-400/20">{item.example}</p>
+                  <p className="text-xs text-id8-teal mt-2 bg-[var(--paper-shadow)] p-2 border border-[var(--hair-hard)]">{item.example}</p>
                 </div>
               ))}
             </div>
@@ -200,8 +200,8 @@ export default function Module2Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Dimension</th>
-                    <th className="text-left py-3 px-4 text-blue-400">Cost Reduction</th>
-                    <th className="text-left py-3 px-4 text-green-400">Revenue Growth</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Cost Reduction</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Revenue Growth</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -250,7 +250,7 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-6">
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-lg font-bold mb-3 text-id8-orange">Process Automation</h3>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   AI executes predefined workflows without human intervention
@@ -277,15 +277,15 @@ export default function Module2Page() {
                     </ul>
                   </div>
 
-                  <div className="mt-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded">
-                    <p className="text-xs text-blue-400">
+                  <div className="mt-4 p-3 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+                    <p className="text-xs text-[var(--muted)]">
                       <strong>Key Metric:</strong> Time saved per transaction
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-lg font-bold mb-3 text-id8-orange">Decision Augmentation</h3>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   AI provides insights to help humans make better decisions
@@ -312,8 +312,8 @@ export default function Module2Page() {
                     </ul>
                   </div>
 
-                  <div className="mt-4 p-3 bg-green-500/10 border border-green-500/20 rounded">
-                    <p className="text-xs text-green-400">
+                  <div className="mt-4 p-3 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                    <p className="text-xs text-id8-teal">
                       <strong>Key Metric:</strong> Quality improvement in outcomes
                     </p>
                   </div>
@@ -332,7 +332,7 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Financial Services</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
@@ -346,7 +346,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Healthcare</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
@@ -360,7 +360,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Retail & E-commerce</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
@@ -374,7 +374,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Manufacturing</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
@@ -388,7 +388,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Professional Services</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
@@ -402,7 +402,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Marketing & Media</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
@@ -473,39 +473,39 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Red Flag #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Red Flag #1</p>
                 <p className="font-bold">"We need AI to compete"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: FOMO-driven projects rarely succeed. Define the specific problem AI solves, not just "keeping up."</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Red Flag #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Red Flag #2</p>
                 <p className="font-bold">"This will eliminate the need for [entire department]"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Massive displacement is rare and politically toxic. Focus on augmentation, not replacement.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Red Flag #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Red Flag #3</p>
                 <p className="font-bold">"We can solve this once we clean up our data"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Data cleanup projects take years and rarely finish. Find opportunities that work with messy data.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Red Flag #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Red Flag #4</p>
                 <p className="font-bold">"The vendor said they could customize it for us"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Customization means delays, cost overruns, and vendor lock-in. Prefer configurable over customizable.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Red Flag #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Red Flag #5</p>
                 <p className="font-bold">"ROI is hard to measure, but we know it's valuable"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: If you can't measure success before you start, you can't prove success after. Define metrics upfront.</p>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your AI Opportunity Map</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your AI Opportunity Map</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Whiteboard or spreadsheet, 2-3 stakeholders from different functions
@@ -513,35 +513,35 @@ export default function Module2Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Brainstorm opportunities (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List 10-15 potential AI use cases across your organization. Don't filter yet — just capture ideas.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Classify each by value zone (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Tag each opportunity: Cost Reduction, Revenue Growth, Speed to Market, or Decision Quality.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Classify by capability type (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Tag each: Process Automation, Decision Augmentation, or Both.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Score using the framework (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Rate each opportunity 1-5 on Impact, Feasibility, Speed, Risk, and Strategic Fit. Calculate total scores.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Prioritize top 3 (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Identify your highest-scoring opportunities. These become your AI roadmap.</p>
@@ -549,7 +549,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A prioritized Opportunity Map showing 10-15 use cases, classified by value zone and capability type, with scores and a clear top 3 for immediate action.
                 </p>
@@ -557,7 +557,7 @@ export default function Module2Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

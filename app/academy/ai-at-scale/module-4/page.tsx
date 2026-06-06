@@ -57,7 +57,7 @@ export default function Module4Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-4">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -86,43 +86,43 @@ export default function Module4Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 border border-[var(--hair)] bg-[var(--paper-shadow)] px-3 py-1.5 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mb-6"
             >
               <span>Module 4</span>
-              <span className="text-id8-orange/50">•</span>
+              <span className="text-[var(--hair-hard)]">·</span>
               <span>~45 minutes</span>
             </m.div>
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Model Governance
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "Which version of the model is in production? Who approved it? When was it last evaluated?"
             </m.p>
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">The Governance Gap</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">The Governance Gap</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your model is making 100,000 decisions per day. Regulators want to know how it works. Legal wants audit trails. Finance wants to understand the risk. The data scientist who built it left six months ago.
@@ -143,22 +143,22 @@ export default function Module4Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-3 gap-4">
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 mb-3">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   <ShieldIcon />
                 </div>
                 <h4 className="font-bold text-id8-orange mb-2">LINEAGE</h4>
                 <p className="text-sm text-[var(--text-secondary)]">Where did this model come from? What data trained it? What code produced it?</p>
               </div>
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500/20 text-green-400 mb-3">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-id8-teal/20 text-id8-teal mb-3">
                   <ShieldIcon />
                 </div>
                 <h4 className="font-bold text-id8-orange mb-2">ACCOUNTABILITY</h4>
                 <p className="text-sm text-[var(--text-secondary)]">Who owns it? Who approved it? Who is responsible when it fails?</p>
               </div>
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 mb-3">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   <ShieldIcon />
                 </div>
                 <h4 className="font-bold text-id8-orange mb-2">REPRODUCIBILITY</h4>
@@ -172,65 +172,65 @@ export default function Module4Page() {
               Governance isn't a one-time checkbox. It's embedded throughout the model lifecycle:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-6">
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">1</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Development Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Track experiments, log hyperparameters, version datasets, document assumptions</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Experiment tracking</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Data versioning</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Code review</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Experiment tracking</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Data versioning</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Code review</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-teal/20 text-id8-teal flex items-center justify-center font-bold">2</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Validation Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Test on held-out data, validate fairness, assess risk, document limitations</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Model cards</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Bias testing</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Risk assessment</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Model cards</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Bias testing</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Risk assessment</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 text-yellow-400 flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">3</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Approval Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Stakeholder sign-off, compliance review, deployment authorization</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Approval workflow</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Compliance checklist</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Audit trail</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Approval workflow</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Compliance checklist</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Audit trail</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">4</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Production Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Monitor performance, track drift, maintain audit logs, plan retraining</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Monitoring</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Drift detection</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Incident logging</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Monitoring</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Drift detection</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Incident logging</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">5</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Retirement Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Archive model artifacts, document lessons learned, transition to replacement</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Archival</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Deprecation notice</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Retrospective</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Archival</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Deprecation notice</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Retrospective</span>
                     </div>
                   </div>
                 </div>
@@ -287,8 +287,8 @@ export default function Module4Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-              <p className="text-sm font-mono text-blue-400 mb-2">The Reproducibility Test</p>
+            <div className="not-prose my-8 p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+              <p className="text-sm font-mono text-[var(--muted)] mb-2">The Reproducibility Test</p>
               <p className="text-sm text-[var(--text-primary)]">
                 Can a new team member recreate the exact model from artifacts alone? If not, your versioning is incomplete. Run this test before every production deployment.
               </p>
@@ -300,7 +300,7 @@ export default function Module4Page() {
               A model card is a standardized document that describes a model's capabilities, limitations, and intended use. Here's a practical template:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="text-lg font-bold mb-4">Model Card Template</h3>
               <div className="space-y-4 text-sm">
                 <div>
@@ -390,11 +390,11 @@ export default function Module4Page() {
                   note: "Postmortem documentation, root cause analysis"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">{item.desc}</p>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="px-2 py-1 bg-yellow-500/20 rounded">Retention: {item.retention}</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)]">Retention: {item.retention}</span>
                   </div>
                   <p className="text-xs text-[var(--text-tertiary)] mt-2 italic">{item.note}</p>
                 </div>
@@ -413,27 +413,27 @@ export default function Module4Page() {
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Risk Level</th>
                     <th className="text-left py-3 px-4">Criteria</th>
-                    <th className="text-left py-3 px-4 text-green-400">Governance Required</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Governance Required</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4 font-bold text-green-400">Low Risk</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Low Risk</td>
                     <td className="py-3 px-4">Internal tools, recommendations, no financial/legal impact</td>
                     <td className="py-3 px-4">Basic versioning, simple model card, quarterly review</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4 font-bold text-yellow-400">Medium Risk</td>
+                    <td className="py-3 px-4 font-bold text-[var(--muted)]">Medium Risk</td>
                     <td className="py-3 px-4">Customer-facing, moderate financial impact, no protected classes</td>
                     <td className="py-3 px-4">Full versioning, detailed model card, monthly monitoring, approval workflow</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4 font-bold text-orange-400">High Risk</td>
+                    <td className="py-3 px-4 font-bold text-id8-orange">High Risk</td>
                     <td className="py-3 px-4">Significant financial impact, affects employment/credit/housing</td>
                     <td className="py-3 px-4">All above + fairness testing, external audit, explainability, legal review</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-red-400">Critical Risk</td>
+                    <td className="py-3 px-4 font-bold text-[var(--muted)]">Critical Risk</td>
                     <td className="py-3 px-4">Life safety, legal liability, regulatory mandate</td>
                     <td className="py-3 px-4">All above + real-time monitoring, human-in-the-loop, regulator approval</td>
                   </tr>
@@ -445,39 +445,39 @@ export default function Module4Page() {
             <h2>Five Governance Mistakes That Invite Disaster</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #1</p>
                 <p className="font-bold">"We'll document it later"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Later never comes. The person who built it leaves. Knowledge is lost. Document as you build, not after.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #2</p>
                 <p className="font-bold">"The data scientist owns governance"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Governance is a team sport. Legal, compliance, business, and engineering all have roles. DS alone can't assess legal risk or business impact.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #3</p>
                 <p className="font-bold">"One governance process for all models"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: A content recommendation model doesn't need the same rigor as a loan approval model. Risk-based classification prevents over- and under-governance.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #4</p>
                 <p className="font-bold">"Governance is a gate, not a process"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: A one-time approval before deployment isn't governance. Continuous monitoring, periodic review, and lifecycle management are essential.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #5</p>
                 <p className="font-bold">"We don't have compliance requirements"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Even without formal regulation, you have liability. When a model fails and causes harm, you'll wish you had governance. Build it before you need it.</p>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Model Governance Framework</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Model Governance Framework</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> List of your current or planned models in production
@@ -485,28 +485,28 @@ export default function Module4Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Classify your models by risk (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List every model in production or planned. Use the risk classification framework to assign Low, Medium, High, or Critical.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Assess current governance (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each model, note: Is there versioning? A model card? An owner? Monitoring? Audit trail? Identify gaps.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Define governance requirements (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Map each risk level to specific requirements. What artifacts? What approvals? What monitoring? Be concrete.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Create your first model card (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Pick your highest-risk model. Draft a model card using the template. This becomes your standard.</p>
@@ -514,7 +514,7 @@ export default function Module4Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A governance framework document with model inventory, risk classifications, governance requirements by risk level, and one complete model card as a template.
                 </p>
@@ -522,7 +522,7 @@ export default function Module4Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

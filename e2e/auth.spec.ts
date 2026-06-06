@@ -235,9 +235,9 @@ test.describe('Auth - Mobile', () => {
     await expect(signInPage.emailInput).toBeVisible();
     await expect(signInPage.googleButton).toBeVisible();
 
-    // Should fit on mobile screen
-    const formCard = page.locator('.rounded-lg').first();
-    const box = await formCard.boundingBox();
+    // Should fit on mobile screen. The reface uses sharp corners (no .rounded-lg),
+    // so assert the email input itself fits within the mobile viewport width.
+    const box = await signInPage.emailInput.boundingBox();
     if (box) {
       expect(box.width).toBeLessThanOrEqual(375);
     }

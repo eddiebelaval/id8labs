@@ -71,7 +71,7 @@ export default function ModuleComplete({
   }
 
   return (
-    <div className="mt-12 pt-8 border-t border-[var(--border)]">
+    <div className="mt-12 pt-8 border-t border-[var(--hair)]">
       <AnimatePresence mode="wait">
         {justCompleted ? (
           <m.div
@@ -85,12 +85,12 @@ export default function ModuleComplete({
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 200, damping: 10 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 text-green-400 mb-4"
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--paper-mid)] text-[var(--teal)] mb-4"
             >
               <CheckIcon />
             </m.div>
-            <h3 className="text-xl font-semibold mb-2">Module Complete!</h3>
-            <p className="text-[var(--text-secondary)]">
+            <h3 className="font-[family-name:var(--font-display)] text-xl font-normal mb-2 text-[var(--ink)]">Module Complete!</h3>
+            <p className="text-[var(--muted)]">
               Great work. Keep going!
             </p>
           </m.div>
@@ -103,7 +103,7 @@ export default function ModuleComplete({
           >
             <div className="flex items-center gap-2">
               {isComplete && (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-sm">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--paper-mid)] text-[var(--teal)] text-sm">
                   <CheckIcon />
                   Completed
                 </span>
