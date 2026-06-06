@@ -232,7 +232,7 @@ export default function Module7Page() {
 
             <div className="not-prose my-8 space-y-6">
               {/* Efficiency Zone */}
-              <div className="p-5 bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">⚡</span>
                   <h4 className="font-bold text-[var(--muted)]">Efficiency Zone Metrics</h4>
@@ -257,7 +257,7 @@ export default function Module7Page() {
               </div>
 
               {/* Intelligence Zone */}
-              <div className="p-5 bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/20">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🧠</span>
                   <h4 className="font-bold text-[var(--muted)]">Intelligence Zone Metrics</h4>
@@ -282,7 +282,7 @@ export default function Module7Page() {
               </div>
 
               {/* Experience Zone */}
-              <div className="p-5 bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">✨</span>
                   <h4 className="font-bold text-id8-teal">Experience Zone Metrics</h4>

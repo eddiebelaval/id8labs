@@ -148,7 +148,7 @@ export default function Module7Page() {
             <div className="not-prose my-8 space-y-6">
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 1</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 1</span>
                   <h4 className="font-bold text-id8-orange">The Lone Experimenter (0-1 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -176,7 +176,7 @@ export default function Module7Page() {
 
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 2</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 2</span>
                   <h4 className="font-bold text-id8-orange">The Research + Engineering Split (2-4 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -204,7 +204,7 @@ export default function Module7Page() {
 
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 3</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 3</span>
                   <h4 className="font-bold text-id8-orange">The Platform Team (5-12 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -232,7 +232,7 @@ export default function Module7Page() {
 
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 4</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 4</span>
                   <h4 className="font-bold text-id8-orange">The Distributed Model (12+ people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -314,7 +314,7 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20">
+            <div className="not-prose my-8 p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm font-mono text-[var(--muted)] mb-2">Hiring Priority Rule</p>
               <p className="text-sm text-[var(--text-primary)]">
                 Hire for bottlenecks, not resumes. If models are great but nothing ships, hire ML engineer before another data scientist. If production is stable but you're out of ideas, hire data scientist. Let pain points guide hiring, not org charts.

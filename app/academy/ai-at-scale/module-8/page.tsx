@@ -391,7 +391,7 @@ export default function Module8Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20">
+            <div className="not-prose my-8 p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm font-mono text-[var(--muted)] mb-2">The 80/20 Rule for AI Architecture</p>
               <p className="text-sm text-[var(--text-primary)]">
                 80% of your architecture should use proven, boring technology. The 20% you build custom should be where you have genuine differentiation. Everything else is overhead that distracts from your core value.

@@ -271,7 +271,7 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Recommendation:</strong> Start with INT8 quantization. It gives significant speedup with minimal quality loss. Only go to INT4 if you need to fit a larger model in limited VRAM.
               </p>
@@ -461,7 +461,7 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Starting point:</strong> Use vLLM for production GPU deployment. It offers the best balance of performance and ease of use. Only move to TensorRT-LLM if you need every last bit of performance and have the engineering resources.
               </p>

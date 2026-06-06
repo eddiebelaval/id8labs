@@ -143,7 +143,7 @@ export default function ShippedDashboard() {
 
         {/* Recent Subscribers */}
         <div className="p-6 bg-[var(--paper)] border border-[var(--hair)] ">
-          <h3 className="font-semibold text-[var(--ink)] mb-4">Latest 10 signups</h3>
+          <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] mb-4">Latest 10 signups</h3>
           {loading ? (
             <p className="text-sm text-[var(--muted)]">Loading...</p>
           ) : recent.length === 0 ? (

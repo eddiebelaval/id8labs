@@ -165,7 +165,7 @@ export default function Module3Page() {
             <div className="not-prose my-8 space-y-4">
               <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 bg-red-500/20 text-[var(--muted)] flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center">
                     <BoxIcon />
                   </span>
                   <div>
@@ -175,9 +175,9 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 bg-yellow-500/20 text-[var(--muted)] flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center">
                     <BoxIcon />
                   </span>
                   <div>
@@ -223,7 +223,7 @@ export default function Module3Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Llama 3</td>
                     <td className="py-3 px-4">8B, 70B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Community</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Community</span></td>
                     <td className="py-3 px-4">Best overall, strong reasoning</td>
                     <td className="py-3 px-4">16GB RAM (8B)</td>
                   </tr>
@@ -237,7 +237,7 @@ export default function Module3Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Qwen 2</td>
                     <td className="py-3 px-4">0.5B-72B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Qwen License</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Qwen License</span></td>
                     <td className="py-3 px-4">Multilingual, long context</td>
                     <td className="py-3 px-4">8GB RAM (1.8B)</td>
                   </tr>
@@ -251,14 +251,14 @@ export default function Module3Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Gemma 2</td>
                     <td className="py-3 px-4">2B, 9B, 27B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Gemma Terms</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Gemma Terms</span></td>
                     <td className="py-3 px-4">Strong benchmarks, Google quality</td>
                     <td className="py-3 px-4">8GB RAM (2B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">CodeLlama</td>
                     <td className="py-3 px-4">7B, 13B, 34B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Llama 2</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Llama 2</span></td>
                     <td className="py-3 px-4">Code generation, completion</td>
                     <td className="py-3 px-4">16GB RAM (7B)</td>
                   </tr>
@@ -305,7 +305,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-orange-400">13-14B</span>
+                      <span className="text-2xl font-bold text-id8-orange">13-14B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
                       <p className="font-bold">Enhanced Reasoning</p>
@@ -405,7 +405,7 @@ export default function Module3Page() {
             <div className="not-prose my-8 space-y-4">
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 bg-blue-500/20 text-[var(--muted)] flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center">
                     <CodeIcon />
                   </span>
                   <div>
@@ -416,7 +416,7 @@ export default function Module3Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 bg-purple-500/20 text-[var(--muted)] flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center">
                     <ScaleIcon />
                   </span>
                   <div>

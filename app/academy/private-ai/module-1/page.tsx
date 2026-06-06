@@ -211,31 +211,31 @@ export default function Module1Page() {
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Internal Operations</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Medium</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Medium</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">With Controls</td>
                     <td className="py-3 px-4">Meeting summaries, internal docs, project plans</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Competitive Intelligence</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-orange-500/20 text-orange-400 rounded text-xs">High</span></td>
-                    <td className="py-3 px-4 text-orange-400">Risky</td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange rounded text-xs">High</span></td>
+                    <td className="py-3 px-4 text-id8-orange">Risky</td>
                     <td className="py-3 px-4">Roadmaps, strategy docs, financial projections</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Customer Data (PII)</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-red-500/20 text-[var(--muted)] rounded text-xs">Critical</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Critical</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">No</td>
                     <td className="py-3 px-4">Client records, customer support logs, user analytics</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Regulated Data</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-red-500/20 text-[var(--muted)] rounded text-xs">Critical</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Critical</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">No</td>
                     <td className="py-3 px-4">Healthcare (HIPAA), financial (SOX), legal (attorney-client)</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Trade Secrets</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-red-500/20 text-[var(--muted)] rounded text-xs">Critical</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Critical</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">No</td>
                     <td className="py-3 px-4">Source code, proprietary algorithms, R&D data</td>
                   </tr>

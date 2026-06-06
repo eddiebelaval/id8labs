@@ -239,7 +239,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">1. Data Pipeline</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">Extract-Transform-Load</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Extract-Transform-Load</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Moves data from sources (databases, APIs, files) to your training environment. Handles cleaning, validation, and transformation.
@@ -255,7 +255,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">2. Feature Store</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-purple-500/20 text-[var(--muted)] rounded">Feature Management</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Feature Management</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Centralized repository of features used for training and serving. Ensures training-serving consistency and enables feature reuse.
@@ -287,7 +287,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">4. Model Registry</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-yellow-500/20 text-[var(--muted)] rounded">Model Versioning</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Model Versioning</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Central repository for trained models. Stores model artifacts, metadata, lineage, and manages promotion between environments.
@@ -303,7 +303,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">5. Serving Infrastructure</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-red-500/20 text-[var(--muted)] rounded">Deployment</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Deployment</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Exposes models as APIs or batch jobs. Handles autoscaling, load balancing, A/B testing, and canary deployments.
@@ -492,7 +492,7 @@ export default function Module2Page() {
               <h2 className="text-2xl font-bold mb-6">Five MLOps Mistakes That Kill Production Systems</h2>
 
               <div className="space-y-4">
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                   <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">1. Training-Serving Skew</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Different feature computation code for training vs. serving. Looks fine in testing, breaks silently in production.
@@ -502,7 +502,7 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                   <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">2. Ignoring Data Versioning</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     You can reproduce the model code but not the training data. "The model trained differently this time" with no idea why.
@@ -512,7 +512,7 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                   <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">3. No Rollback Strategy</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     New model ships, predictions go bad, and nobody knows how to go back. Panic ensues.
@@ -522,7 +522,7 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                   <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">4. Monitoring Only Accuracy</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Accuracy requires ground truth, which often arrives with a delay. By the time accuracy drops, users have been affected for days.
@@ -532,7 +532,7 @@ export default function Module2Page() {
                   </p>
                 </div>
 
-                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                   <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">5. Manual Retraining</h3>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Someone has to remember to retrain the model. They get busy. Model decays. Months pass.

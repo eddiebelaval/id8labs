@@ -144,7 +144,7 @@ export default function Module4Page() {
 
             <div className="not-prose my-8 grid md:grid-cols-3 gap-4">
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-[var(--muted)] mb-3">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   <ShieldIcon />
                 </div>
                 <h4 className="font-bold text-id8-orange mb-2">LINEAGE</h4>
@@ -158,7 +158,7 @@ export default function Module4Page() {
                 <p className="text-sm text-[var(--text-secondary)]">Who owns it? Who approved it? Who is responsible when it fails?</p>
               </div>
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-[var(--muted)] mb-3">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   <ShieldIcon />
                 </div>
                 <h4 className="font-bold text-id8-orange mb-2">REPRODUCIBILITY</h4>
@@ -175,7 +175,7 @@ export default function Module4Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-6">
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500/20 text-[var(--muted)] flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">1</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Development Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Track experiments, log hyperparameters, version datasets, document assumptions</p>
@@ -199,7 +199,7 @@ export default function Module4Page() {
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 text-[var(--muted)] flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">3</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Approval Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Stakeholder sign-off, compliance review, deployment authorization</p>
@@ -211,7 +211,7 @@ export default function Module4Page() {
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 text-[var(--muted)] flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">4</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Production Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Monitor performance, track drift, maintain audit logs, plan retraining</p>
@@ -223,7 +223,7 @@ export default function Module4Page() {
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-[var(--muted)] flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold">5</span>
                   <div>
                     <h4 className="font-bold text-id8-orange">Retirement Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Archive model artifacts, document lessons learned, transition to replacement</p>
@@ -287,7 +287,7 @@ export default function Module4Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20">
+            <div className="not-prose my-8 p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm font-mono text-[var(--muted)] mb-2">The Reproducibility Test</p>
               <p className="text-sm text-[var(--text-primary)]">
                 Can a new team member recreate the exact model from artifacts alone? If not, your versioning is incomplete. Run this test before every production deployment.
@@ -394,7 +394,7 @@ export default function Module4Page() {
                   <h4 className="font-bold text-id8-orange mb-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">{item.desc}</p>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="px-2 py-1 bg-yellow-500/20 rounded">Retention: {item.retention}</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] rounded">Retention: {item.retention}</span>
                   </div>
                   <p className="text-xs text-[var(--text-tertiary)] mt-2 italic">{item.note}</p>
                 </div>
@@ -428,7 +428,7 @@ export default function Module4Page() {
                     <td className="py-3 px-4">Full versioning, detailed model card, monthly monitoring, approval workflow</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4 font-bold text-orange-400">High Risk</td>
+                    <td className="py-3 px-4 font-bold text-id8-orange">High Risk</td>
                     <td className="py-3 px-4">Significant financial impact, affects employment/credit/housing</td>
                     <td className="py-3 px-4">All above + fairness testing, external audit, explainability, legal review</td>
                   </tr>

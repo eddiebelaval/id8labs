@@ -236,19 +236,19 @@ export default function Module4Page() {
                     <td className="py-3 px-4">Any endpoint (cloud OK)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Internal</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Internal</span></td>
                     <td className="py-3 px-4">Non-sensitive business information</td>
                     <td className="py-3 px-4">Meeting notes, project plans, internal docs</td>
                     <td className="py-3 px-4">Private cloud with controls</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-orange-500/20 text-orange-400 rounded text-xs">Confidential</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange rounded text-xs">Confidential</span></td>
                     <td className="py-3 px-4">Competitive or strategic information</td>
                     <td className="py-3 px-4">Roadmaps, financials, customer lists</td>
                     <td className="py-3 px-4">Local deployment only</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-red-500/20 text-[var(--muted)] rounded text-xs">Restricted</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Restricted</span></td>
                     <td className="py-3 px-4">Legally protected or regulated data</td>
                     <td className="py-3 px-4">PII, PHI, financial records, trade secrets</td>
                     <td className="py-3 px-4">Air-gapped local or edge only</td>

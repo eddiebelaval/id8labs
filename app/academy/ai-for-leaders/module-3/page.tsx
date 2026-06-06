@@ -145,8 +145,8 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose grid md:grid-cols-3 gap-4 my-8">
-              <div className="p-5 bg-blue-500/10 border border-blue-500/30">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-blue-500/20 text-[var(--muted)] rounded mb-3">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] rounded mb-3">
                   Build
                 </div>
                 <h4 className="font-bold text-lg mb-2">Custom Development</h4>
@@ -181,7 +181,7 @@ export default function Module3Page() {
                 </div>
               </div>
 
-              <div className="p-5 bg-id8-teal/10 border border-green-500/30">
+              <div className="p-5 bg-id8-teal/10 border border-[var(--hair-hard)]">
                 <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-id8-teal/20 text-id8-teal rounded mb-3">
                   Buy
                 </div>
@@ -217,8 +217,8 @@ export default function Module3Page() {
                 </div>
               </div>
 
-              <div className="p-5 bg-purple-500/10 border border-purple-500/30">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-purple-500/20 text-[var(--muted)] rounded mb-3">
+              <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] rounded mb-3">
                   Partner
                 </div>
                 <h4 className="font-bold text-lg mb-2">Strategic Partnership</h4>
@@ -437,25 +437,25 @@ export default function Module3Page() {
                 {/* Grid background */}
                 <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2">
                   {/* Low Capability / Low Criticality - BUY */}
-                  <div className="bg-id8-teal/10 border border-green-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-id8-teal/10 border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-id8-teal mb-2">BUY</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Off-the-shelf solution</div>
                   </div>
 
                   {/* High Capability / Low Criticality - EXPERIMENT */}
-                  <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-[var(--muted)] mb-2">EXPERIMENT</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Build internally to learn</div>
                   </div>
 
                   {/* Low Capability / High Criticality - PARTNER */}
-                  <div className="bg-purple-500/10 border border-purple-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-[var(--muted)] mb-2">PARTNER</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Strategic partnership</div>
                   </div>
 
                   {/* High Capability / High Criticality - BUILD */}
-                  <div className="bg-blue-500/10 border border-blue-500/30 rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-[var(--muted)] mb-2">BUILD</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Custom development</div>
                   </div>
@@ -508,7 +508,7 @@ export default function Module3Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Healthcare Analytics Startup</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">BUILD</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">BUILD</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Predictive patient risk scoring
@@ -524,7 +524,7 @@ export default function Module3Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Regional Bank</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-purple-500/20 text-[var(--muted)] rounded">PARTNER</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">PARTNER</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Fraud detection system

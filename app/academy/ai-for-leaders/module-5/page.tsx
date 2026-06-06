@@ -447,7 +447,7 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-6 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <div className="flex items-start gap-3">
                 <AlertIcon />
                 <div>
@@ -557,7 +557,7 @@ export default function Module5Page() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-3 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-[var(--muted)] flex items-center justify-center font-bold text-sm">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold text-sm">
                     {i + 1}
                   </span>
                   <div>

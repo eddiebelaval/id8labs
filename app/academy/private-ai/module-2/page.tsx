@@ -363,25 +363,25 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <p className="font-bold mb-2">Parent Company Jurisdiction</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Even if your data is physically in Germany on AWS servers, Amazon is a US company subject to US law. The Cloud Act allows US authorities to compel access regardless of data location.
                 </p>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <p className="font-bold mb-2">Cross-Region Backups</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Many providers replicate data across regions for disaster recovery. Your "EU-only" data may have replicas in US data centers. Read the fine print.
                 </p>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <p className="font-bold mb-2">Support & Engineering Access</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Cloud provider support teams (often US-based) can access your data for troubleshooting. This access creates a cross-border data flow you didn't explicitly authorize.
                 </p>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <p className="font-bold mb-2">Model Training & Improvement</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   AI providers may aggregate anonymized data across regions to improve models. Your data leaves its original jurisdiction in anonymized form (which may not satisfy regulations).

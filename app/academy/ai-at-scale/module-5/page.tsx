@@ -363,7 +363,7 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20">
+            <div className="not-prose my-8 p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm font-mono text-[var(--muted)] mb-2">Pro Tip</p>
               <p className="text-sm text-[var(--text-primary)]">
                 <strong>Shadow mode is your safety net.</strong> Run predictions in parallel with your existing system without impacting users. Compare outputs. Measure performance. Find surprises before they become incidents. Organizations that skip shadow mode almost always regret it.
@@ -380,19 +380,19 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Business Impact Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-id8-teal mb-1">Revenue Impact</p>
                     <p className="text-sm">Incremental revenue attributed to AI vs baseline</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-id8-teal mb-1">Cost Savings</p>
                     <p className="text-sm">Automation savings minus infrastructure costs</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-id8-teal mb-1">Time Savings</p>
                     <p className="text-sm">Hours saved per week per user</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-green-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-id8-teal mb-1">User Adoption</p>
                     <p className="text-sm">Active users, frequency, retention rate</p>
                   </div>
@@ -402,19 +402,19 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Technical Health Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Inference Latency</p>
                     <p className="text-sm">p50, p95, p99 response times</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Error Rate</p>
                     <p className="text-sm">Failures per 10,000 predictions</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Cost per Prediction</p>
                     <p className="text-sm">Compute + data + model serving costs</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-blue-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Model Freshness</p>
                     <p className="text-sm">Time since last training update</p>
                   </div>
@@ -424,19 +424,19 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Model Performance Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Accuracy Trends</p>
                     <p className="text-sm">Weekly accuracy vs baseline (detect drift)</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Prediction Distribution</p>
                     <p className="text-sm">Output distribution vs training (detect skew)</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Feature Drift</p>
                     <p className="text-sm">Input data distribution changes</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-purple-500 rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Human Override Rate</p>
                     <p className="text-sm">How often users reject predictions</p>
                   </div>

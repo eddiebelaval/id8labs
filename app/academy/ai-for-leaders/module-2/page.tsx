@@ -180,7 +180,7 @@ export default function Module2Page() {
                   <h4 className="font-bold mt-3 text-id8-orange text-sm">{item.zone}</h4>
                   <p className="text-sm text-[var(--text-primary)] mt-2 font-medium">{item.desc}</p>
                   <p className="text-xs text-[var(--text-tertiary)] mt-3 italic">{item.question}</p>
-                  <p className="text-xs text-id8-teal mt-2 bg-green-400/10 p-2 rounded border border-green-400/20">{item.example}</p>
+                  <p className="text-xs text-id8-teal mt-2 bg-[var(--paper-shadow)] p-2 rounded border border-[var(--hair-hard)]">{item.example}</p>
                 </div>
               ))}
             </div>
@@ -277,7 +277,7 @@ export default function Module2Page() {
                     </ul>
                   </div>
 
-                  <div className="mt-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded">
+                  <div className="mt-4 p-3 bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded">
                     <p className="text-xs text-[var(--muted)]">
                       <strong>Key Metric:</strong> Time saved per transaction
                     </p>

@@ -217,7 +217,7 @@ export default function Module3Page() {
                     <li>Your tone and communication style</li>
                   </ul>
                 </div>
-                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+                <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                   <p className="font-bold text-[var(--muted)] mb-2">What gets fuzzy over time:</p>
                   <ul className="text-[var(--text-secondary)] space-y-1 text-sm list-disc list-inside">
                     <li>Details from 30+ messages ago</li>
@@ -306,19 +306,19 @@ What would that look like?`}
             </p>
 
             <div className="not-prose my-8 space-y-3 text-sm">
-              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-blue-500">
+              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                 <p className="text-[var(--muted)] mb-1">Messages 1-4: Exploration</p>
                 <p className="text-[var(--text-secondary)]">Marcus shares the problem. AI suggests surveys. Marcus explains why that won't work. They agree on the core tension.</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-purple-500">
+              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                 <p className="text-[var(--muted)] mb-1">Messages 5-11: Branching</p>
                 <p className="text-[var(--text-secondary)]">AI offers 4 different approaches. Marcus picks one (progressive disclosure) and they go deep on it. Try a few variations.</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-yellow-500">
+              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                 <p className="text-[var(--muted)] mb-1">Messages 12-18: Tangent</p>
                 <p className="text-[var(--text-secondary)]">Marcus asks about how games handle this. Productive detour into motivation design. Surfaces a key insight about "showing not asking."</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-green-500">
+              <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                 <p className="text-id8-teal mb-1">Messages 19-27: Convergence</p>
                 <p className="text-[var(--text-secondary)]">They synthesize everything. Land on the template approach. Marcus asks for wireframe suggestions. AI helps structure them. Done.</p>
               </div>

@@ -276,9 +276,9 @@ export default function Module6Page() {
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-2xl">{item.icon}</span>
                     <span className={`text-xs font-mono px-2 py-1 rounded ${
-                      item.severity === 'Critical' ? 'bg-red-500/20 text-[var(--muted)]' :
-                      item.severity === 'High' ? 'bg-orange-500/20 text-orange-400' :
-                      'bg-yellow-500/20 text-[var(--muted)]'
+                      item.severity === 'Critical' ? 'bg-[var(--paper-shadow)] text-[var(--muted)]' :
+                      item.severity === 'High' ? 'bg-[var(--paper-shadow)] text-id8-orange' :
+                      'bg-[var(--paper-shadow)] text-[var(--muted)]'
                     }`}>
                       {item.severity}
                     </span>
@@ -479,8 +479,8 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-orange-500/10 border border-orange-500/20">
-                <p className="font-mono text-sm text-orange-400 mb-1">Real Incident</p>
+              <div className="p-4 bg-[var(--paper-shadow)] border border-id8-orange">
+                <p className="font-mono text-sm text-id8-orange mb-1">Real Incident</p>
                 <p className="font-bold">Legal Brief Cited Fake Cases</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   A lawyer used ChatGPT to research case law. The AI generated six legal citations that sounded legitimate — complete with case names, dates, and holdings. All six were fabrications. The brief was filed in federal court. The lawyer faced sanctions.
@@ -488,8 +488,8 @@ export default function Module6Page() {
                 <p className="text-xs text-[var(--text-tertiary)] mt-2"><strong>Root cause:</strong> No verification step. The user trusted confident output without checking primary sources.</p>
               </div>
 
-              <div className="p-4 bg-orange-500/10 border border-orange-500/20">
-                <p className="font-mono text-sm text-orange-400 mb-1">Real Incident</p>
+              <div className="p-4 bg-[var(--paper-shadow)] border border-id8-orange">
+                <p className="font-mono text-sm text-id8-orange mb-1">Real Incident</p>
                 <p className="font-bold">Financial Analysis Used Wrong Numbers</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   An AI-powered financial analysis tool generated a market report with specific revenue figures for competitors. The numbers were plausible, formatted professionally, and completely fabricated. A company made strategic decisions based on this false data.
@@ -735,7 +735,7 @@ export default function Module6Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-6 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="font-bold mb-2">Risk Register Anti-Patterns</p>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                 <li className="flex gap-2">

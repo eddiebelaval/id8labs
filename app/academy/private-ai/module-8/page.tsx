@@ -265,7 +265,7 @@ export default function Module8Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Warning:</strong> Model updates can change behavior in subtle ways. A "better" model might not be better for your specific prompts. Always test with your actual use cases before production deployment.
               </p>
@@ -426,7 +426,7 @@ export default function Module8Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Pro tip:</strong> Use Dependabot, Renovate, or similar tools to automate dependency update PRs. Review and test before merging, but automation ensures you don't miss critical updates.
               </p>
@@ -486,7 +486,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+              <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <h4 className="font-bold text-[var(--muted)] mb-2">Warning (Investigate)</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Latency p95 &gt; 2x baseline</li>

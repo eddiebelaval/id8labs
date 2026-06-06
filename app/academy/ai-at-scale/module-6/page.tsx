@@ -373,7 +373,7 @@ export default function Module6Page() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-yellow-500/20 text-[var(--muted)] rounded">TIER 2: Balanced</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">TIER 2: Balanced</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.001 - $0.01 per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -386,7 +386,7 @@ export default function Module6Page() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-red-500/20 text-[var(--muted)] rounded">TIER 3: Premium</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">TIER 3: Premium</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.01 - $0.10+ per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -398,7 +398,7 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20">
+              <div className="mt-6 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                 <p className="text-sm font-mono text-[var(--muted)] mb-2">Implementation Pattern</p>
                 <p className="text-sm text-[var(--text-primary)]">
                   Use a cheap classifier (Tier 1) to route requests: simple → Tier 1, moderate → Tier 2, complex → Tier 3. A well-tuned router can save 40-60% on inference costs with minimal accuracy loss.

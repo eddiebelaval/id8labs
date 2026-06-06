@@ -335,7 +335,7 @@ export default function Module6Page() {
               </div>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Critical challenge:</strong> The "Right to Erasure" is particularly difficult for AI. Once data is in a trained model, removing it requires retraining without that data. Many organizations maintain separate training datasets precisely for this reason.
               </p>

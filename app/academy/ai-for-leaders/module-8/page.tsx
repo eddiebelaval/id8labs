@@ -167,7 +167,7 @@ export default function Module8Page() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-3 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-[var(--muted)] flex items-center justify-center font-bold text-sm">{i + 1}</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-[var(--muted)] flex items-center justify-center font-bold text-sm">{i + 1}</span>
                   <div>
                     <p className="font-bold text-[var(--text-primary)]">{item.title}</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">{item.desc}</p>

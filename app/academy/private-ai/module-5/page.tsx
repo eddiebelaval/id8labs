@@ -373,7 +373,7 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
+            <div className="not-prose my-8 p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
               <p className="text-sm">
                 <strong>Real-world example:</strong> A financial services company discovered employees were using prompts like "Create a CSV of all client account balances" to extract data they shouldn't have access to. Their solution: implement output filtering that blocks structured data formats unless explicitly authorized.
               </p>

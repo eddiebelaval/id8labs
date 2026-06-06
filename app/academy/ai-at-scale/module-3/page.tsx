@@ -175,28 +175,28 @@ export default function Module3Page() {
                         <p className="text-sm text-[var(--text-secondary)]">Production models serving predictions to users and systems</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-purple-500">
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-[var(--hair-hard)]">
                       <div className="font-mono text-[var(--muted)]">L4</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Feature Store</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Computed, versioned features ready for training and serving</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-blue-500">
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-[var(--hair-hard)]">
                       <div className="font-mono text-[var(--muted)]">L3</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Analytics Layer</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Clean, modeled data optimized for analysis and aggregation</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-green-500">
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-[var(--hair-hard)]">
                       <div className="font-mono text-id8-teal">L2</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Data Warehouse</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Structured, schema-validated data with quality guarantees</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-yellow-500">
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-[var(--hair-hard)]">
                       <div className="font-mono text-[var(--muted)]">L1</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Data Lake</h4>
@@ -299,7 +299,7 @@ export default function Module3Page() {
                   </table>
                 </div>
 
-                <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded">
+                <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded">
                   <p className="text-sm font-mono text-[var(--muted)] mb-2">Tool Recommendations</p>
                   <p className="text-sm text-[var(--text-primary)]">
                     <strong>Open source:</strong> Feast, Feathr <br/>
@@ -414,28 +414,28 @@ export default function Module3Page() {
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">2</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-[var(--muted)] font-mono text-sm">2</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Business Rule Validation</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Domain-specific constraints. Revenue greater than 0, age in valid range, date sequences logical. Encodes business knowledge.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">3</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-[var(--muted)] font-mono text-sm">3</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Statistical Monitoring</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Distribution shifts, outliers, anomalies. Catches drift before it impacts models. Tools: Evidently, WhyLabs, Monte Carlo</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">4</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-[var(--muted)] font-mono text-sm">4</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Freshness Monitoring</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Data arriving on time? Stale features cause silent model degradation. Track data timestamp vs. wall clock.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">5</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-[var(--muted)] font-mono text-sm">5</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Lineage Tracking</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Where did this data come from? What transformations were applied? Critical for debugging and compliance.</p>
@@ -445,7 +445,7 @@ export default function Module3Page() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-green-500">
+                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                     <h3 className="text-lg font-bold mb-2 text-id8-teal">Good Data Quality Practices</h3>
                     <ul className="space-y-2 text-[var(--text-secondary)] text-sm">
                       <li>+ Fail pipelines on schema violations</li>
@@ -456,7 +456,7 @@ export default function Module3Page() {
                     </ul>
                   </div>
 
-                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
                     <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">Common Data Quality Failures</h3>
                     <ul className="space-y-2 text-[var(--text-secondary)] text-sm">
                       <li>- Silently filling nulls with zeros</li>
