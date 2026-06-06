@@ -11,11 +11,11 @@ export default function NotFound() {
   return (
     <div className="container min-h-[70vh] flex items-center justify-center py-20">
       <div className="text-center max-w-2xl">
-        <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
+        <p className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.22em] text-id8-orange mb-4">
           404 Error
         </p>
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">Page not found</h1>
-        <p className="text-xl mb-12 text-[var(--text-secondary)]">
+        <h1 className="font-[family-name:var(--font-display)] text-5xl md:text-6xl font-normal tracking-[-0.02em] mb-6 text-[var(--ink)]">Page not found</h1>
+        <p className="text-xl mb-12 text-[var(--muted)]">
           The page you're looking for doesn't exist or has been moved.
         </p>
 
@@ -25,12 +25,12 @@ export default function NotFound() {
             <Link
               key={link.href}
               href={link.href}
-              className="p-4 border border-[var(--border)] rounded-lg hover:border-id8-orange hover:bg-[var(--bg-secondary)] transition-all duration-200 group"
+              className="p-4 border border-[var(--hair)] hover:border-id8-orange hover:bg-[var(--paper-shadow)] transition-colors duration-150 group"
             >
-              <p className="font-semibold group-hover:text-id8-orange transition-colors">
+              <p className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
                 {link.label}
               </p>
-              <p className="text-sm text-[var(--text-tertiary)]">
+              <p className="text-sm text-[var(--muted)]">
                 {link.description}
               </p>
             </Link>
@@ -39,7 +39,7 @@ export default function NotFound() {
 
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-lg px-8 py-4 bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-90 transition-all duration-200"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="19" y1="12" x2="5" y2="12" />
