@@ -23,7 +23,7 @@ export function GenerateToolButton({
   }
 
   const baseClasses =
-    'inline-flex items-center gap-2 px-4 py-2 -full font-semibold transition-all'
+    'inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold transition-all'
   const variantClasses =
     variant === 'primary'
       ? 'bg-[var(--orange)] text-[var(--paper)] hover:bg-[var(--id8-orange-hover)] shadow-[var(--orange)]/20'

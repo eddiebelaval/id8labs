@@ -117,7 +117,7 @@ export function VerificationPanel({
           </span>
         </div>
         <span
-          className={`px-3 py-1 text-sm font-bold -full border ${getBadgeColor()}`}
+          className={`px-3 py-1 text-sm font-bold rounded-full border ${getBadgeColor()}`}
         >
           {score}/100
         </span>

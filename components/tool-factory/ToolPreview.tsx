@@ -142,7 +142,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-8 space-y-4"
       >
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--teal)] -full">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--teal)] rounded-full">
           <CheckCircle className="w-8 h-8 text-[var(--teal)]" />
         </div>
         <h3 className="text-xl font-bold text-[var(--ink)]">
@@ -267,7 +267,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
                 {((toolType === 'skill' ? generatedSkill?.triggers : generatedAgent?.triggers) || []).map((trigger, idx) => (
                   <span
                     key={idx}
-                    className="px-2 py-1 text-xs bg-[var(--paper-shadow)] border border-[var(--hair)] -full text-[var(--muted)]"
+                    className="px-2 py-1 text-xs bg-[var(--paper-shadow)] border border-[var(--hair)] rounded-full text-[var(--muted)]"
                   >
                     "{trigger}"
                   </span>
@@ -297,7 +297,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
               {(data.tags || []).map((tag, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-[var(--orange)]/10 text-[var(--orange)] -full"
+                  className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-[var(--orange)]/10 text-[var(--orange)] rounded-full"
                 >
                   <Tag className="w-3 h-3" />
                   {tag}

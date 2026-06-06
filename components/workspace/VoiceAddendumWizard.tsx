@@ -361,7 +361,7 @@ export function VoiceAddendumWizard({
           return (
             <div key={step.id} className="flex items-center gap-2">
               <div
-                className={`flex items-center justify-center w-8 h-8 -full transition-colors ${
+                className={`flex items-center justify-center w-8 h-8 rounded-full transition-colors ${
                   isActive
                     ? 'bg-[var(--accent)] text-[var(--paper)]'
                     : isCompleted
@@ -416,7 +416,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={isListening ? stopListening : startListening}
                   disabled={!isSupported}
-                  className={`relative w-16 h-16 -full flex items-center justify-center transition-colors ${
+                  className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-colors ${
                     isListening
                       ? 'bg-[var(--accent)] text-[var(--paper)]'
                       : 'bg-[var(--paper-shadow)] text-[var(--muted)] hover:bg-[var(--paper-mid)]'
@@ -539,7 +539,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={isListening ? stopListening : startListening}
                   disabled={!isSupported}
-                  className={`relative w-20 h-20 -full flex items-center justify-center transition-colors ${
+                  className={`relative w-20 h-20 rounded-full flex items-center justify-center transition-colors ${
                     isListening
                       ? 'bg-[var(--accent)] text-[var(--paper)]'
                       : 'bg-[var(--paper-shadow)] text-[var(--muted)] hover:bg-[var(--paper-mid)]'
@@ -693,7 +693,7 @@ export function VoiceAddendumWizard({
               className="space-y-6"
             >
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-[var(--teal)] -full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-[var(--teal)] rounded-full flex items-center justify-center">
                   <Send className="w-8 h-8 text-[var(--teal)]" />
                 </div>
                 <h3 className="text-lg font-semibold text-[var(--ink)]">
@@ -712,7 +712,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={isListening ? stopListening : startListening}
                   disabled={!isSupported}
-                  className={`w-12 h-12 -full flex items-center justify-center transition-colors ${
+                  className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
                     isListening
                       ? 'bg-[var(--accent)] text-[var(--paper)]'
                       : 'bg-[var(--paper-shadow)] text-[var(--muted)]'

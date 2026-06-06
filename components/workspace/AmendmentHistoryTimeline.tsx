@@ -73,7 +73,7 @@ export function AmendmentHistoryTimeline({
         <h3 className="text-sm font-medium text-[var(--muted)]">
           Amendment History
         </h3>
-        <span className="text-xs text-[var(--muted)] bg-[var(--paper-shadow)] px-2 py-0.5 -full">
+        <span className="text-xs text-[var(--muted)] bg-[var(--paper-shadow)] px-2 py-0.5 rounded-full">
           {entries.length} version{entries.length !== 1 ? 's' : ''}
         </span>
       </div>
@@ -100,7 +100,7 @@ export function AmendmentHistoryTimeline({
               >
                 {/* Timeline dot */}
                 <div
-                  className={`relative z-10 w-4 h-4 -full border-2 flex-shrink-0 transition-colors ${
+                  className={`relative z-10 w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${
                     entry.isCurrentVersion
                       ? 'bg-[var(--accent)] border-[var(--accent)]'
                       : `${colors.bg} ${colors.border}`
@@ -108,7 +108,7 @@ export function AmendmentHistoryTimeline({
                 >
                   {entry.isCurrentVersion && (
                     <motion.div
-                      className="absolute inset-0 -full bg-[var(--accent)]"
+                      className="absolute inset-0 rounded-full bg-[var(--accent)]"
                       animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />

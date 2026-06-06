@@ -240,7 +240,7 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
               ].map((item, index) => (
                 <div key={index} className="relative flex items-start gap-4 pb-4 last:pb-0">
                   <div
-                    className={`relative z-10 w-4 h-4 -full border-2 flex-shrink-0 ${
+                    className={`relative z-10 w-4 h-4 rounded-full border-2 flex-shrink-0 ${
                       item.status === 'complete'
                         ? 'bg-[var(--teal)] border-[var(--teal)]'
                         : item.status === 'active'
