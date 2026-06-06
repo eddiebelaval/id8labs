@@ -12,14 +12,14 @@ interface ChatPanelProps {
   userId: string
 }
 
-const WELCOME_MESSAGE = `Welcome to the Lab Assistant. I'm a lightweight version of Claude, here to answer questions about ID8Labs.
+const WELCOME_MESSAGE = `Welcome to the Lab Assistant. I'm a lightweight version of Claude, here to answer questions about id8Labs.
 
 Ask me about:
 - Products (MILO, Composer, DeepStack...)
 - Services (Workshop, Sprint, Build...)
 - Essays and insights
 - The partnership with Eddie
-- Anything else ID8Labs-related
+- Anything else id8Labs-related
 
 > `
 
@@ -119,29 +119,29 @@ export default function ChatPanel({ userId }: ChatPanelProps) {
   }, [])
 
   return (
-    <div className="font-mono text-sm">
+    <div className="font-[family-name:var(--font-mono)] text-sm">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="text-[#27c93f]">
+        <div className="text-[var(--teal)]">
           {'> '}
-          <span className="text-[#e0e0e0]">lab_assistant</span>
-          <span className="text-[#808080]"> (claude-3-haiku)</span>
+          <span className="text-[var(--ink)]">lab_assistant</span>
+          <span className="text-[var(--muted)]"> (claude-3-haiku)</span>
         </div>
-        <div className="text-[#606060] text-xs">
+        <div className="text-[var(--muted)] text-xs">
           ⌘K to focus
         </div>
       </div>
 
       {/* Chat Container */}
-      <div className="bg-[#252525] rounded-lg border border-[#3d3d3d] flex flex-col h-80">
+      <div className="bg-[var(--paper)]  border border-[var(--hair)] flex flex-col h-80">
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-[#3d3d3d] hover:scrollbar-thumb-[#ff6b35]/50">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-[var(--hair)] hover:scrollbar-thumb-[var(--hair-hard)]">
           {/* Welcome Message */}
           {messages.length === 0 && (
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-[#808080] text-xs whitespace-pre-wrap"
+              className="text-[var(--muted)] text-xs whitespace-pre-wrap"
             >
               {WELCOME_MESSAGE}
               <span className={cursorVisible ? 'opacity-100' : 'opacity-0'}>▌</span>
@@ -161,13 +161,13 @@ export default function ChatPanel({ userId }: ChatPanelProps) {
               >
                 <span
                   className={`flex-shrink-0 ${
-                    msg.role === 'user' ? 'text-[#ff6b35]' : 'text-[#f59e0b]'
+                    msg.role === 'user' ? 'text-id8-orange' : 'text-id8-orange'
                   }`}
                 >
                   {msg.role === 'user' ? 'you:' : 'claude:'}
                 </span>
                 <span className={`whitespace-pre-wrap break-words ${
-                  msg.role === 'user' ? 'text-[#c0c0c0]' : 'text-[#fcd34d]'
+                  msg.role === 'user' ? 'text-[var(--body)]' : 'text-[var(--body)]'
                 }`}>
                   {msg.content}
                   {/* Streaming cursor */}
@@ -184,7 +184,7 @@ export default function ChatPanel({ userId }: ChatPanelProps) {
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-red-400 text-xs"
+              className="text-id8-orange text-xs"
             >
               [error] {error}
             </m.div>
@@ -194,24 +194,24 @@ export default function ChatPanel({ userId }: ChatPanelProps) {
         </div>
 
         {/* Input Area */}
-        <form onSubmit={handleSubmit} className="border-t border-[#3d3d3d] p-3">
+        <form onSubmit={handleSubmit} className="border-t border-[var(--hair)] p-3">
           <div className="flex items-center gap-2">
-            <span className="text-[#27c93f] flex-shrink-0">{'>'}</span>
+            <span className="text-[var(--teal)] flex-shrink-0">{'>'}</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-1 bg-transparent text-[#c0c0c0] outline-none placeholder-[#505050]"
+              className="flex-1 bg-transparent text-[var(--body)] outline-none placeholder-[var(--muted)]"
               placeholder={isStreaming ? 'Thinking...' : 'Ask me anything...'}
               disabled={isStreaming}
               autoComplete="off"
               spellCheck={false}
             />
             {isStreaming ? (
-              <span className="text-[#27c93f] animate-pulse">●</span>
+              <span className="text-[var(--teal)] animate-pulse">●</span>
             ) : (
-              <span className={`text-[#27c93f] ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}>
+              <span className={`text-[var(--teal)] ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}>
                 ▌
               </span>
             )}
@@ -220,7 +220,7 @@ export default function ChatPanel({ userId }: ChatPanelProps) {
       </div>
 
       {/* Footer */}
-      <div className="mt-2 flex items-center justify-between text-[10px] text-[#404040]">
+      <div className="mt-2 flex items-center justify-between text-[10px] text-[var(--muted)]">
         <span>Powered by Claude 3 Haiku</span>
         <span>Conversations are not stored</span>
       </div>
