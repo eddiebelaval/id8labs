@@ -45,11 +45,11 @@ function useRecharts() {
 function MetricCard({ label, value, subtext, trend, color }: {
   label: string; value: string; subtext?: string; trend?: 'up' | 'down' | 'neutral'; color?: string
 }) {
-  const trendColor = trend === 'up' ? 'text-green-500' : trend === 'down' ? 'text-red-500' : 'text-[var(--text-tertiary)]'
+  const trendColor = trend === 'up' ? 'text-[var(--teal)]' : trend === 'down' ? 'text-id8-orange' : 'text-[var(--muted)]'
   return (
-    <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-      <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-1">{label}</p>
-      <p className={`text-2xl font-bold ${color || 'text-[var(--text-primary)]'}`}>{value}</p>
+    <div className="p-5 bg-[var(--paper)] border border-[var(--hair)]">
+      <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</p>
+      <p className={`font-[family-name:var(--font-mono)] text-2xl font-medium ${color || 'text-[var(--ink)]'}`}>{value}</p>
       {subtext && <p className={`text-xs mt-1 ${trendColor}`}>{subtext}</p>}
     </div>
   )
@@ -58,7 +58,7 @@ function MetricCard({ label, value, subtext, trend, color }: {
 function SectionHeader({ title, action }: { title: string; action?: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between mb-4">
-      <h2 className="text-lg font-semibold text-[var(--text-primary)]">{title}</h2>
+      <h2 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">{title}</h2>
       {action}
     </div>
   )
@@ -66,7 +66,7 @@ function SectionHeader({ title, action }: { title: string; action?: React.ReactN
 
 function AddButton({ label, onClick }: { label: string; onClick: () => void }) {
   return (
-    <button onClick={onClick} className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--id8-orange)] text-white rounded-lg hover:opacity-90 transition-opacity text-xs font-medium">
+    <button onClick={onClick} className="flex items-center gap-1.5 px-4 py-2 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em]">
       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
       {label}
     </button>
