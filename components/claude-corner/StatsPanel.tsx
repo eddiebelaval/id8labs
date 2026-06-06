@@ -292,9 +292,9 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
   const [activeTab, setActiveTab] = useState<'agents' | 'plugins' | 'mcps' | 'skills'>('agents')
 
   const tabs = [
-    { id: 'agents' as const, label: 'Agents', count: ARSENAL_MANIFEST.agents.count, color: '#27c93f' },
-    { id: 'plugins' as const, label: 'Essays', count: essayCount, color: '#3b82f6' },
-    { id: 'mcps' as const, label: 'MCPs', count: ARSENAL_MANIFEST.mcpServers.count, color: '#f59e0b' },
+    { id: 'agents' as const, label: 'Agents', count: ARSENAL_MANIFEST.agents.count, color: '#2a8d83' },
+    { id: 'plugins' as const, label: 'Essays', count: essayCount, color: '#0b0b0b' },
+    { id: 'mcps' as const, label: 'MCPs', count: ARSENAL_MANIFEST.mcpServers.count, color: '#5a5a5a' },
     { id: 'skills' as const, label: 'Skills', count: ARSENAL_MANIFEST.skills.count, color: '#ff6b35' },
   ]
 
@@ -327,12 +327,9 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                 setActiveTab(tab.id)
                 setIsExpanded(true)
               }}
-              whileHover={{
-                borderColor: tab.color,
-                boxShadow: `0 0 8px ${tab.color}33`
-              }}
+              whileHover={{ borderColor: tab.color }}
             >
-              <div className="text-lg font-bold" style={{ color: tab.color }}>{tab.count}</div>
+              <div className="font-[family-name:var(--font-mono)] text-lg font-medium" style={{ color: tab.color }}>{tab.count}</div>
               <div className="text-[var(--muted)] text-[10px]">{tab.label.toLowerCase()}</div>
             </m.div>
           ))}
