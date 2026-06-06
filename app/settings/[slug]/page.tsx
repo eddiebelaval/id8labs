@@ -106,18 +106,18 @@ export default async function SettingDetailPage({ params }: PageProps) {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-3 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
                       <span className="text-sm text-[var(--muted)]">Model</span>
-                      <span className="font-semibold">{formatModelName(setting.model)}</span>
+                      <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">{formatModelName(setting.model)}</span>
                     </div>
                     {setting.max_tokens && (
                       <div className="flex items-center justify-between p-3 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
                         <span className="text-sm text-[var(--muted)]">Max Tokens</span>
-                        <span className="font-semibold">{setting.max_tokens.toLocaleString()}</span>
+                        <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">{setting.max_tokens.toLocaleString()}</span>
                       </div>
                     )}
                     {setting.temperature !== undefined && (
                       <div className="flex items-center justify-between p-3 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
                         <span className="text-sm text-[var(--muted)]">Temperature</span>
-                        <span className="font-semibold">{setting.temperature}</span>
+                        <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">{setting.temperature}</span>
                       </div>
                     )}
                   </div>
@@ -231,7 +231,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
               </div>
 
               {/* Help */}
-              <div className="card bg-[var(--paper-shadow)] border-[var(--id8-orange)]/20">
+              <div className="card bg-[var(--paper-shadow)] border-[var(--hair)]">
                 <h3 className="font-semibold mb-2">Need Help?</h3>
                 <p className="text-sm text-[var(--muted)] mb-4">
                   Check our documentation or reach out to the community.
