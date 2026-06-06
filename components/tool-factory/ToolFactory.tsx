@@ -214,7 +214,7 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
           <Icon className="w-5 h-5 text-[var(--orange)]" />
         </div>
         <div>
-          <h3 className="font-bold text-[var(--ink)]">
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-[var(--ink)]">
             Generate {TOOL_TYPE_LABELS[toolType]}
           </h3>
           <p className="text-sm text-[var(--muted)]">
