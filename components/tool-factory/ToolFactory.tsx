@@ -244,10 +244,10 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-start gap-2 p-3 bg-id8-orange border border-id8-orange "
+                className="flex items-start gap-2 p-3 bg-[var(--orange-soft)] border border-id8-orange "
               >
                 <AlertCircle className="w-5 h-5 text-id8-orange flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-id8-orange">{error}</p>
+                <p className="text-sm text-[var(--ink)]">{error}</p>
               </motion.div>
             )}
 

@@ -289,8 +289,8 @@ export function ContractViewer({
                       </span>
                       <span className={`px-1.5 py-0.5 text-[10px]  ${
                         amendment.status === 'pending_signature'
-                          ? 'bg-[var(--ink)] text-[var(--ink)]'
-                          : 'bg-id8-orange text-id8-orange'
+                          ? 'bg-[var(--ink)] text-[var(--paper)]'
+                          : 'bg-id8-orange text-[var(--paper)]'
                       }`}>
                         {amendment.status === 'pending_signature' ? 'Awaiting Signature' : 'Needs Review'}
                       </span>

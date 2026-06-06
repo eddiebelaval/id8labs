@@ -51,9 +51,9 @@ export function VerificationPanel({
 
   // Get badge color based on score
   const getBadgeColor = () => {
-    if (score >= 90) return 'text-[var(--teal)] bg-[var(--teal)] border-[var(--teal)]'
-    if (score >= 70) return 'text-id8-orange bg-id8-orange border-id8-orange'
-    return 'text-id8-orange bg-id8-orange border-id8-orange'
+    if (score >= 90) return 'text-[var(--paper)] bg-[var(--teal)] border-[var(--teal)]'
+    if (score >= 70) return 'text-[var(--paper)] bg-id8-orange border-id8-orange'
+    return 'text-[var(--paper)] bg-id8-orange border-id8-orange'
   }
 
   // Get icon for check status
