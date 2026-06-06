@@ -306,8 +306,8 @@ export default function FinanceDashboard() {
   const filteredExpenses = expenseFilter === 'all' ? expenses : expenses.filter(e => e.frequency === expenseFilter)
 
   const tabClass = (t: Tab) =>
-    `px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-      tab === t ? 'bg-[var(--id8-orange)] text-white' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-primary)]'
+    `px-4 py-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
+      tab === t ? 'bg-[var(--ink)] text-[var(--paper)]' : 'text-[var(--muted)] hover:text-[var(--ink)]'
     }`
 
   const s = summary
@@ -315,12 +315,12 @@ export default function FinanceDashboard() {
   return (
     <div className="p-8 max-w-[1400px]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 border-b border-[var(--rule)] pb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--text-primary)]">Finance</h1>
-          <p className="text-sm text-[var(--text-secondary)]">id8Labs LLC Financial Dashboard</p>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Finance</h1>
+          <p className="text-sm text-[var(--muted)]">id8Labs LLC Ops Financial Dashboard</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex border border-[var(--hair)]">
           <button className={tabClass('overview')} onClick={() => setTab('overview')}>Overview</button>
           <button className={tabClass('expenses')} onClick={() => setTab('expenses')}>Expenses</button>
           <button className={tabClass('assets')} onClick={() => setTab('assets')}>Assets</button>
