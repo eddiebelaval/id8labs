@@ -281,7 +281,7 @@ export function ContractViewer({
                   <button
                     key={amendment.id}
                     onClick={() => handleAmendmentClick(amendment)}
-                    className="flex items-center justify-between w-full p-2 bg-white/50  hover:bg-white/80 transition-colors"
+                    className="flex items-center justify-between w-full p-2 bg-[var(--paper)] hover:bg-[var(--paper-shadow)] transition-colors"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-medium text-[var(--ink)]">
