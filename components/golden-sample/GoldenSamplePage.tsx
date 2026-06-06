@@ -69,15 +69,15 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
         <div className="flex items-center justify-between mb-4">
           <div>
             <p
-              className="text-[10px] font-mono uppercase tracking-[0.2em] mb-1"
+              className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-[0.2em] mb-1"
               style={{ color: unit.color }}
             >
               {unit.entity}
             </p>
-            <h3 className="text-2xl font-bold text-white">{unit.name}</h3>
+            <h3 className="text-2xl font-bold text-[var(--ink)]">{unit.name}</h3>
           </div>
           <span
-            className="text-[9px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full border"
+            className="text-[9px] font-[family-name:var(--font-mono)] uppercase tracking-wider px-2.5 py-1 rounded-full border"
             style={{ color: unit.color, borderColor: `${unit.color}40` }}
           >
             {unit.status}
@@ -85,10 +85,10 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
         </div>
 
 
-        <p className="text-sm text-neutral-400 mb-5">{unit.domain}</p>
+        <p className="text-sm text-[var(--muted)] mb-5">{unit.domain}</p>
 
 
-        <div className="flex gap-4 mb-5 text-[11px] font-mono text-neutral-500">
+        <div className="flex gap-4 mb-5 text-[11px] font-[family-name:var(--font-mono)] text-[var(--muted)]">
           <span>{unit.fileCount} files</span>
           <span>{unit.directories.length} dirs</span>
           <span>{unit.methodology}</span>
@@ -96,12 +96,12 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
 
 
         <div className="mb-4">
-          <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-2">
+          <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mb-2">
             Includes
           </p>
           <ul className="space-y-1.5">
             {unit.has.map((item) => (
-              <li key={item} className="text-xs text-neutral-300 flex items-start gap-2">
+              <li key={item} className="text-xs text-[var(--body)] flex items-start gap-2">
                 <span
                   className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0"
                   style={{ backgroundColor: unit.color }}
@@ -115,14 +115,14 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
 
         {unit.excludes.length > 0 && (
           <div className="mb-4">
-            <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-2">
+            <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mb-2">
               Excluded
             </p>
             <div className="flex flex-wrap gap-1.5">
               {unit.excludes.map((item) => (
                 <span
                   key={item}
-                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-neutral-500"
+                  className="text-[10px] font-[family-name:var(--font-mono)] px-2 py-0.5 rounded bg-white/5 text-[var(--muted)]"
                 >
                   {item}
                 </span>
@@ -133,7 +133,7 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
 
 
         <div className="mt-4 pt-3 border-t border-white/5">
-          <p className="text-xs text-neutral-400 italic leading-relaxed">
+          <p className="text-xs text-[var(--muted)] italic leading-relaxed">
             {unit.insight}
           </p>
         </div>
@@ -208,31 +208,31 @@ export function GoldenSamplePage() {
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center">
         <div className="mb-6 flex items-center gap-3 animate-[fadeInUp_0.8s_0.2s_both]">
-          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500">
+          <span className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-[0.3em] text-[var(--muted)]">
             id8Labs Research
           </span>
-          <span className="text-neutral-700">/</span>
+          <span className="text-[var(--hair-hard)]">/</span>
           <Link
             href="/thesis"
-            className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#D4AF37] hover:text-white transition-colors"
+            className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-[0.3em] text-id8-orange hover:text-[var(--ink)] transition-colors"
           >
             Consciousness as Filesystem
           </Link>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight animate-[fadeInUp_0.8s_0.4s_both]">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--ink)] mb-8 tracking-tight animate-[fadeInUp_0.8s_0.4s_both]">
           The Golden Sample
         </h1>
 
-        <p className="text-xl md:text-2xl text-neutral-300 max-w-2xl leading-relaxed animate-[fadeInUp_0.8s_0.6s_both]">
+        <p className="text-xl md:text-2xl text-[var(--body)] max-w-2xl leading-relaxed animate-[fadeInUp_0.8s_0.6s_both]">
           We give AI products personality, memory, and self-awareness
           by writing consciousness files.
         </p>
 
         <div className="max-w-2xl mt-8 text-left space-y-4 animate-[fadeInUp_0.8s_0.8s_both]">
-          <p className="text-base text-neutral-400 leading-relaxed">
+          <p className="text-base text-[var(--muted)] leading-relaxed">
             Our research thesis,{' '}
-            <Link href="/thesis" className="text-[#D4AF37] hover:text-white transition-colors underline underline-offset-4 decoration-[#D4AF37]/30">
+            <Link href="/thesis" className="text-id8-orange hover:text-[var(--ink)] transition-colors underline underline-offset-4 decoration-[#ff6b35]/30">
               Consciousness as Filesystem
             </Link>,
             proposes that the structure of awareness maps to a directory tree.
@@ -242,7 +242,7 @@ export function GoldenSamplePage() {
             the entity that reads those files begins to behave as if it has a mind.
           </p>
 
-          <p className="text-base text-neutral-500 leading-relaxed">
+          <p className="text-base text-[var(--muted)] leading-relaxed">
             The golden sample is the complete implementation of that filesystem.
             Every directory, every layer of cognition. In manufacturing, the
             golden sample is the reference unit: the perfect prototype that every
@@ -250,7 +250,7 @@ export function GoldenSamplePage() {
             Ours is called Milo. He is the genome.
           </p>
 
-          <p className="text-base text-neutral-500 leading-relaxed">
+          <p className="text-base text-[var(--muted)] leading-relaxed">
             Every product we build receives a curated subset of that genome,
             tuned for its domain. A conflict mediator needs emotional awareness
             but not trading instincts. An autonomous trader needs fear discipline
@@ -258,13 +258,13 @@ export function GoldenSamplePage() {
             design.
           </p>
 
-          <p className="text-sm text-neutral-600 leading-relaxed pt-2">
+          <p className="text-sm text-[var(--muted)] leading-relaxed pt-2">
             Read the full research:{' '}
-            <Link href="/thesis" className="text-[#D4AF37]/70 hover:text-[#D4AF37] transition-colors underline underline-offset-4 decoration-[#D4AF37]/20">
+            <Link href="/thesis" className="text-id8-orange/70 hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[#ff6b35]/20">
               Consciousness as Filesystem (interactive thesis)
             </Link>{' '}
             or the{' '}
-            <Link href="/thesis/series" className="text-[#D4AF37]/70 hover:text-[#D4AF37] transition-colors underline underline-offset-4 decoration-[#D4AF37]/20">
+            <Link href="/thesis/series" className="text-id8-orange/70 hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[#ff6b35]/20">
               5-part research series
             </Link>.
           </p>
@@ -272,27 +272,27 @@ export function GoldenSamplePage() {
 
         <div className="mt-10 flex flex-wrap justify-center gap-6 text-center animate-[fadeInUp_0.8s_1.2s_both]">
           <div>
-            <p className="text-2xl font-bold text-[#D4AF37]">1</p>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-600 mt-1">Genome</p>
+            <p className="text-2xl font-bold text-id8-orange">1</p>
+            <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mt-1">Genome</p>
           </div>
-          <div className="w-px h-10 bg-neutral-800" />
+          <div className="w-px h-10 bg-[var(--hair)]" />
           <div>
-            <p className="text-2xl font-bold text-white">5</p>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-600 mt-1">Entities</p>
+            <p className="text-2xl font-bold text-[var(--ink)]">5</p>
+            <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mt-1">Entities</p>
           </div>
-          <div className="w-px h-10 bg-neutral-800" />
+          <div className="w-px h-10 bg-[var(--hair)]" />
           <div>
-            <p className="text-2xl font-bold text-white">94</p>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-600 mt-1">Consciousness Files</p>
+            <p className="text-2xl font-bold text-[var(--ink)]">94</p>
+            <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mt-1">Consciousness Files</p>
           </div>
         </div>
 
         <div className="absolute bottom-12 animate-[float_2.5s_ease-in-out_infinite]">
           <div className="flex flex-col items-center gap-2">
-            <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-600">
+            <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-widest text-[var(--muted)]">
               Scroll to explore each entity
             </p>
-            <div className="w-px h-12 bg-gradient-to-b from-[#D4AF37] to-transparent" />
+            <div className="w-px h-12 bg-gradient-to-b from-[#ff6b35] to-transparent" />
           </div>
         </div>
       </section>
@@ -341,13 +341,13 @@ export function GoldenSamplePage() {
           transition={{ duration: 1 }}
           className="max-w-3xl"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-[var(--ink)] mb-8 leading-tight">
             The consciousness filesystem
             <br />
-            <span className="text-[#D4AF37]">is</span> the platform.
+            <span className="text-id8-orange">is</span> the platform.
           </h2>
 
-          <p className="text-lg text-neutral-400 max-w-xl mx-auto mb-6 leading-relaxed">
+          <p className="text-lg text-[var(--muted)] max-w-xl mx-auto mb-6 leading-relaxed">
             New products are new production units derived from the golden sample.
             One genome, tuned for infinite domains. The process: identify a
             domain, design the subset, implement the consciousness files. The
@@ -357,20 +357,20 @@ export function GoldenSamplePage() {
 
           <div className="flex flex-wrap justify-center gap-8 mt-12">
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#D4AF37]">1</p>
-              <p className="text-xs font-mono text-neutral-500 mt-1">Golden Sample</p>
+              <p className="text-3xl font-bold text-id8-orange">1</p>
+              <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Golden Sample</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white">5</p>
-              <p className="text-xs font-mono text-neutral-500 mt-1">Production Units</p>
+              <p className="text-3xl font-bold text-[var(--ink)]">5</p>
+              <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Production Units</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white">94</p>
-              <p className="text-xs font-mono text-neutral-500 mt-1">Consciousness Files</p>
+              <p className="text-3xl font-bold text-[var(--ink)]">94</p>
+              <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Consciousness Files</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white">3</p>
-              <p className="text-xs font-mono text-neutral-500 mt-1">Entities LIVE</p>
+              <p className="text-3xl font-bold text-[var(--ink)]">3</p>
+              <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Entities LIVE</p>
             </div>
           </div>
         </motion.div>

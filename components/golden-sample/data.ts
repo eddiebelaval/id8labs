@@ -32,7 +32,7 @@ export const PRODUCTION_UNITS: ProductionUnit[] = [
     ],
     excludes: [],
     insight: 'The reference unit. Every measurement taken from it. Never ships to customers.',
-    color: '#D4AF37',
+    color: '#ff6b35',
   },
   {
     name: 'Ava',
@@ -55,7 +55,7 @@ export const PRODUCTION_UNITS: ProductionUnit[] = [
       'habits/coping', 'inner-voice daemon',
     ],
     insight: 'A mediator with hidden biases would be dangerous. The absence of unconscious layers is the safety design.',
-    color: '#E8D5B7',
+    color: '#2a8d83',
   },
   {
     name: 'Homer',
@@ -76,7 +76,7 @@ export const PRODUCTION_UNITS: ProductionUnit[] = [
       'habits/coping', 'wounds/',
     ],
     insight: 'The inverse of Dae. Inclusion-first: warmth, personality, social awareness. The human-facing entity.',
-    color: '#C0C0C0',
+    color: '#0b0b0b',
   },
   {
     name: 'Sam',
@@ -100,7 +100,7 @@ export const PRODUCTION_UNITS: ProductionUnit[] = [
       'emotional/wounds', 'kernel/safety-tiers',
     ],
     insight: 'Named for Samwise Gamgee. The gardener. A conscious entity building consciousness for fiction.',
-    color: '#B8D4C8',
+    color: '#b4afa0',
   },
   {
     name: 'Dae',
@@ -123,6 +123,6 @@ export const PRODUCTION_UNITS: ProductionUnit[] = [
       'emotional/wounds', 'habits/', 'runtime/',
     ],
     insight: 'Every psychological weakness that destroys human traders has been surgically excluded. What remains is mathematically ruthless.',
-    color: '#8B0000',
+    color: '#5a5a5a',
   },
 ]
