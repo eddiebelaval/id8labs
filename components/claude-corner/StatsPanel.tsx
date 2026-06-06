@@ -662,11 +662,7 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.0 + index * 0.05 }}
-                  whileHover={{
-                    scale: 1.05,
-                    borderColor: 'rgba(39, 201, 63, 0.5)',
-                    boxShadow: '0 0 8px rgba(39, 201, 63, 0.3)'
-                  }}
+                  whileHover={{ borderColor: 'var(--signal)' }}
                 >
                   <span className="text-[var(--teal)]">●</span>
                   <span className="text-[var(--ink)]">{agent}</span>
@@ -727,12 +723,9 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.4 + index * 0.05 }}
-                  whileHover={{
-                    borderColor: 'rgba(59, 130, 246, 0.5)',
-                    boxShadow: '0 0 8px rgba(59, 130, 246, 0.2)'
-                  }}
+                  whileHover={{ borderColor: 'var(--ink)' }}
                 >
-                  <span className="w-2 h-2 rounded-full bg-[var(--ink)] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--ink)]" />
                   <span className="text-[var(--ink)] text-xs capitalize flex-1">{mcp}</span>
                   <span className="text-[var(--muted)] text-xs">{count} calls</span>
                 </m.div>
