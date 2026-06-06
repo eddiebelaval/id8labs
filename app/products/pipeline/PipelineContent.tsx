@@ -1,24 +1,13 @@
-'use client'
-
-import Link from 'next/link'
 import {
-  FadeInSection,
-  StickySection,
-  SideNavigation,
-  useSectionObserver,
-  type Section,
-} from '@/components/products/ProductPageComponents'
-
-const sections: Section[] = [
-  { id: 'overview', title: 'Overview' },
-  { id: 'skills', title: 'The 8 Skills' },
-  { id: 'decay', title: 'Decay Mechanics' },
-  { id: 'gates', title: 'Stage Gates' },
-  { id: 'today', title: 'Daily Operations' },
-  { id: 'flow', title: 'Pipeline Flow' },
-  { id: 'philosophy', title: 'Philosophy' },
-  { id: 'stats', title: 'By the Numbers' },
-]
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  Pipeline,
+} from '@/components/editorial'
 
 const skills = [
   {
@@ -93,267 +82,219 @@ const methods = [
   'Hybrid Recipes',
 ]
 
+const gates = [
+  { from: 'CAPTURED → VALIDATING', req: 'Scout must be invoked with clear problem statement' },
+  { from: 'VALIDATING → VALIDATED', req: 'Scout must return BUILD verdict (not PIVOT or KILL)' },
+  { from: 'VALIDATED → ARCHITECTING', req: 'Architect must be invoked with validation report' },
+  { from: 'ARCHITECTING → BUILDING', req: 'Architecture doc and build roadmap must exist' },
+  { from: 'BUILDING → LAUNCHING', req: 'Product must be deployed and functional' },
+]
+
+const philosophy = [
+  { label: 'Decay mechanics', body: 'Ideas that don\'t move forward decay and freeze. This is a feature, not a bug.' },
+  { label: 'Stage gates', body: 'Quality checkpoints prevent premature advancement. You can\'t launch what isn\'t built.' },
+  { label: 'Calibration', body: 'All estimates assume AI-augmented solo builder, not enterprise dev teams with 10 meetings per feature.' },
+  { label: 'Review rituals', body: 'Daily pulse (2 min), weekly review (15 min), monthly strategy (30 min). Sustainable discipline.' },
+  { label: 'Skill chaining', body: 'Outputs from one phase feed naturally into the next. Scout\'s validation report becomes Architect\'s requirements.' },
+]
+
+const flowSteps = [
+  { label: 'Idea' },
+  { label: 'Scout' },
+  { label: 'Architect' },
+  { label: 'Build' },
+  { label: 'Launch', human: true },
+  { label: 'Growth' },
+  { label: 'Ops' },
+  { label: 'Exit' },
+]
+
+const stats = [
+  { value: '8', label: 'AI Skills' },
+  { value: '14', label: 'Productivity Methods' },
+  { value: '10', label: 'Lifecycle States' },
+  { value: '83', label: 'Framework Files' },
+]
+
 export default function PipelineContent() {
-  const activeSection = useSectionObserver(sections, 'overview')
-
   return (
-    <div className="container py-24 relative">
-      <SideNavigation sections={sections} activeSection={activeSection} />
-
-      <article className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <FadeInSection>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors rounded-gentle"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="19" y1="12" x2="5" y2="12" />
-              <polyline points="12 19 5 12 12 5" />
-            </svg>
-            Back to products
-          </Link>
-        </FadeInSection>
-
-        {/* Header */}
-        <header className="mb-16">
-          <FadeInSection>
-            <div className="flex items-center gap-3 mb-6 flex-wrap">
-              <h1>Pipeline</h1>
-              <span className="text-sm px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full">
-                Internal Tooling
-              </span>
-            </div>
-          </FadeInSection>
-          <FadeInSection delay={0.1}>
-            <p className="text-2xl text-[var(--text-secondary)] mb-4">
-              Complete Idea-to-Exit Lifecycle Management
-            </p>
-            <p className="text-xl text-[var(--text-tertiary)]">
-              Structure creates momentum. Every stage has a clear exit.
-            </p>
-          </FadeInSection>
+    <main className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Internal Tooling</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            Structure creates <em className="italic text-id8-orange">momentum</em>.
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            Complete idea-to-exit lifecycle management for solo builders. Eight interconnected AI
+            agents with decay mechanics and stage gates. Every stage has a clear exit.
+          </Deck>
+          <MetaRow
+            className="border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: '8', label: 'AI skills' },
+              { value: '10', label: 'lifecycle states' },
+              { value: '14', label: 'productivity methods' },
+              { value: 'Internal', label: 'tooling' },
+            ]}
+          />
         </header>
 
-        {/* Problem Statement */}
-        <StickySection id="overview" title="Overview">
-          <div className="space-y-6 text-lg leading-relaxed">
+        {/* Overview */}
+        <section className="py-16 max-w-2xl">
+          <SectionHead title="Overview" />
+          <div className="mt-8 space-y-6 text-lg leading-relaxed text-[var(--body)]">
             <p>
               I kept starting projects that never shipped. Great ideas would decay into guilt.
               Some projects moved too fast and launched half-baked. Others got stuck in endless
-              "research" that was really just procrastination.
+              &quot;research&quot; that was really just procrastination.
             </p>
-            <p>
-              The problem wasn't motivation. It was systems.
-            </p>
+            <p>The problem wasn&apos;t motivation. It was systems.</p>
             <p>
               So I built the operating system for building products. Not project management
-              software—a thinking framework implemented as AI agents that know what questions
+              software&mdash;a thinking framework implemented as AI agents that know what questions
               to ask at each stage, what gates to enforce, and when to push back.
             </p>
           </div>
-        </StickySection>
+        </section>
+
+        <Rule />
 
         {/* The 8 Skills */}
-        <StickySection id="skills" title="The 8 Skills">
-          <div className="space-y-4">
+        <section className="py-16">
+          <SectionHead title={<>The <em className="italic text-id8-orange">8</em> skills</>} meta="The team" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
             {skills.map((skill, index) => (
-              <div
-                key={skill.name}
-                className="flex items-start gap-4 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] rounded-full font-bold text-sm">
-                  {index + 1}
-                </span>
+              <div key={skill.name} className="py-5 grid md:grid-cols-[48px_1fr] gap-3 md:gap-6">
+                <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">{String(index + 1).padStart(2, '0')}</span>
                 <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <h3 className="font-bold text-lg">{skill.name}</h3>
-                    <span className="text-sm text-[var(--text-tertiary)]">— {skill.purpose}</span>
+                  <div className="flex items-baseline gap-3 mb-1">
+                    <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">{skill.name}</h3>
+                    <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">{skill.purpose}</span>
                   </div>
-                  <p className="text-[var(--text-secondary)]">{skill.description}</p>
+                  <p className="text-[var(--muted)]">{skill.description}</p>
                 </div>
               </div>
             ))}
           </div>
-        </StickySection>
+        </section>
+
+        <Rule />
 
         {/* Decay Mechanics */}
-        <StickySection id="decay" title="Decay Mechanics">
-          <div className="p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-            <p className="text-[var(--text-secondary)] mb-6">
-              Ideas that don't move forward decay. Each lifecycle state has a decay window. At 50%,
-              you get a warning. At 100%, the project freezes to ICE status. This isn't punishment—it's
-              forcing functions. If a project keeps decaying, maybe it shouldn't exist.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-              {lifecycleStates.slice(0, 5).map((item) => (
-                <div key={item.state} className="text-center p-3 bg-[var(--bg-primary)] rounded-soft">
-                  <p className="font-mono text-sm font-bold text-[var(--id8-orange)]">{item.state}</p>
-                  <p className="text-xs text-[var(--text-tertiary)] mt-1">{item.decay}</p>
-                </div>
-              ))}
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-3">
-              {lifecycleStates.slice(5).map((item) => (
-                <div key={item.state} className="text-center p-3 bg-[var(--bg-primary)] rounded-soft">
-                  <p className="font-mono text-sm font-bold text-[var(--id8-orange)]">{item.state}</p>
-                  <p className="text-xs text-[var(--text-tertiary)] mt-1">{item.decay}</p>
-                </div>
-              ))}
-            </div>
+        <section className="py-16">
+          <SectionHead title="Decay mechanics" meta="Forcing functions" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
+            Ideas that don&apos;t move forward decay. Each lifecycle state has a decay window. At 50%,
+            you get a warning. At 100%, the project freezes to ICE status. This isn&apos;t punishment&mdash;it&apos;s
+            forcing functions. If a project keeps decaying, maybe it shouldn&apos;t exist.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {lifecycleStates.map((item) => (
+              <div key={item.state} className="bg-[var(--paper)] p-4 text-center">
+                <p className="font-[family-name:var(--font-mono)] text-xs font-medium text-id8-orange">{item.state}</p>
+                <p className="font-[family-name:var(--font-mono)] text-[11px] text-[var(--muted)] mt-1">{item.decay}</p>
+              </div>
+            ))}
           </div>
-        </StickySection>
+        </section>
+
+        <Rule />
 
         {/* Stage Gates */}
-        <StickySection id="gates" title="Stage Gates">
-          <div className="space-y-6">
-            <p className="text-lg text-[var(--text-secondary)]">
-              You can't skip ahead. Each transition has requirements that must be met:
-            </p>
-            <ul className="space-y-3 text-lg">
-              <li className="flex gap-3">
-                <span className="text-[var(--id8-orange)]">•</span>
-                <span><strong>CAPTURED → VALIDATING:</strong> Scout must be invoked with clear problem statement</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-[var(--id8-orange)]">•</span>
-                <span><strong>VALIDATING → VALIDATED:</strong> Scout must return BUILD verdict (not PIVOT or KILL)</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-[var(--id8-orange)]">•</span>
-                <span><strong>VALIDATED → ARCHITECTING:</strong> Architect must be invoked with validation report</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-[var(--id8-orange)]">•</span>
-                <span><strong>ARCHITECTING → BUILDING:</strong> Architecture doc and build roadmap must exist</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-[var(--id8-orange)]">•</span>
-                <span><strong>BUILDING → LAUNCHING:</strong> Product must be deployed and functional</span>
-              </li>
-            </ul>
+        <section className="py-16">
+          <SectionHead title="Stage gates" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
+            You can&apos;t skip ahead. Each transition has requirements that must be met.
+          </p>
+          <div className="divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+            {gates.map((gate) => (
+              <div key={gate.from} className="py-5 grid md:grid-cols-[300px_1fr] gap-2 md:gap-8">
+                <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">{gate.from}</span>
+                <span className="text-[var(--body)]">{gate.req}</span>
+              </div>
+            ))}
           </div>
-        </StickySection>
+        </section>
 
-        {/* Today */}
-        <StickySection id="today" title="Daily Operations: 14 Productivity Methods">
-          <div className="space-y-6">
-            <p className="text-lg text-[var(--text-secondary)]">
-              Today manages tasks across three domains—projects, TV production, and life admin.
-              It suggests the right productivity method based on your current context: energy level,
-              task volume, and resistance patterns.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {methods.map((method) => (
-                <div
-                  key={method}
-                  className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft text-center text-sm"
-                >
-                  {method}
-                </div>
-              ))}
-            </div>
-          </div>
-        </StickySection>
+        <Rule />
 
-        {/* Pipeline Flow Diagram */}
-        <StickySection id="flow" title="The Pipeline Flow">
-          <div className="p-8 bg-[var(--id8-orange)]/5 border-2 border-[var(--id8-orange)]/20 rounded-soft">
-            <div className="font-mono text-sm space-y-2 text-center">
-              <p>IDEA</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p><span className="text-[var(--id8-orange)]">Scout</span> → BUILD / PIVOT / KILL</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p><span className="text-[var(--id8-orange)]">Architect</span> → Technical Design</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p>[BUILD] → 11-Stage Code Pipeline</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p><span className="text-[var(--id8-orange)]">Launch</span> → Live Product</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p><span className="text-[var(--id8-orange)]">Growth</span> → Stable Metrics</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p><span className="text-[var(--id8-orange)]">Ops</span> → Systematized Business</p>
-              <p className="text-[var(--text-tertiary)]">↓</p>
-              <p><span className="text-[var(--id8-orange)]">Exit</span> → Successful Exit</p>
-            </div>
-            <p className="text-center text-sm text-[var(--text-tertiary)] mt-6">
-              Tracker monitors all • Today manages daily execution
+        {/* Daily Operations */}
+        <section className="py-16">
+          <SectionHead title="Daily operations" meta="14 methods" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
+            Today manages tasks across three domains&mdash;projects, TV production, and life admin.
+            It suggests the right productivity method based on your current context: energy level,
+            task volume, and resistance patterns.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {methods.map((method) => (
+              <div key={method} className="bg-[var(--paper)] p-4 text-center text-sm text-[var(--body)]">
+                {method}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <Rule />
+
+        {/* Pipeline Flow */}
+        <section className="py-16">
+          <SectionHead title="The pipeline flow" />
+          <div className="mt-10">
+            <Pipeline title="Idea to exit" steps={flowSteps} />
+            <p className="mt-4 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+              Tracker monitors all &middot; Today manages daily execution
             </p>
           </div>
-        </StickySection>
+        </section>
+
+        <Rule />
 
         {/* Philosophy */}
-        <StickySection id="philosophy" title="Philosophy">
-          <div className="space-y-4 text-lg text-[var(--text-secondary)]">
-            <p>
-              <strong>Decay mechanics:</strong> Ideas that don't move forward decay and freeze.
-              This is a feature, not a bug.
-            </p>
-            <p>
-              <strong>Stage gates:</strong> Quality checkpoints prevent premature advancement.
-              You can't launch what isn't built.
-            </p>
-            <p>
-              <strong>Calibration:</strong> All estimates assume AI-augmented solo builder,
-              not enterprise dev teams with 10 meetings per feature.
-            </p>
-            <p>
-              <strong>Review rituals:</strong> Daily pulse (2 min), weekly review (15 min),
-              monthly strategy (30 min). Sustainable discipline.
-            </p>
-            <p>
-              <strong>Skill chaining:</strong> Outputs from one phase feed naturally into the next.
-              Scout's validation report becomes Architect's requirements.
-            </p>
+        <section className="py-16">
+          <SectionHead title="Philosophy" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+            {philosophy.map((p) => (
+              <div key={p.label} className="py-5 grid md:grid-cols-[220px_1fr] gap-2 md:gap-8">
+                <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--ink)]">{p.label}</span>
+                <p className="text-[var(--body)]">{p.body}</p>
+              </div>
+            ))}
           </div>
-        </StickySection>
+        </section>
+
+        <Rule />
 
         {/* Stats */}
-        <StickySection id="stats" title="By the Numbers">
-          <div className="p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <p className="text-4xl font-bold text-[var(--id8-orange)]">8</p>
-                <p className="text-[var(--text-secondary)]">AI Skills</p>
+        <section className="py-16">
+          <SectionHead title="By the numbers" />
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-[var(--paper)] p-7 text-center">
+                <p className="font-[family-name:var(--font-display)] font-normal text-4xl text-[var(--ink)]">{stat.value}</p>
+                <p className="text-sm text-[var(--muted)] mt-1">{stat.label}</p>
               </div>
-              <div>
-                <p className="text-4xl font-bold text-[var(--id8-orange)]">14</p>
-                <p className="text-[var(--text-secondary)]">Productivity Methods</p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-[var(--id8-orange)]">10</p>
-                <p className="text-[var(--text-secondary)]">Lifecycle States</p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-[var(--id8-orange)]">83</p>
-                <p className="text-[var(--text-secondary)]">Framework Files</p>
-              </div>
-            </div>
+            ))}
           </div>
-        </StickySection>
+        </section>
+
+        <Rule />
 
         {/* Status */}
-        <FadeInSection>
-          <section className="pt-12 border-t border-[var(--border)]">
-            <div className="space-y-4">
-              <p className="text-lg text-[var(--text-secondary)]">
-                <strong>Status:</strong> Internal tooling at ID8Labs. Dogfooding on every product we build.
-              </p>
-              <p className="text-lg text-[var(--text-secondary)]">
-                <strong>Built with:</strong> Claude Code skills, Memory MCP, Perplexity MCP, Firecrawl MCP,
-                Supabase MCP, GitHub MCP
-              </p>
-              <p className="text-lg text-[var(--text-secondary)]">
-                <strong>Subagents:</strong> market-intelligence-analyst, backend-architect, database-architect,
-                operations-manager, strategic-think-tank
-              </p>
-              <p className="text-sm text-[var(--text-tertiary)] mt-6">
-                The goal: Make building repeatable, teachable, and finishable.
-              </p>
-            </div>
-          </section>
-        </FadeInSection>
-      </article>
-    </div>
+        <section className="pt-16 space-y-3">
+          <MetaRow
+            items={[
+              { value: 'Internal tooling', label: 'at ID8Labs — dogfooded on every product' },
+              { value: 'Claude Code skills', label: '+ Memory / Perplexity / Firecrawl / Supabase / GitHub MCP' },
+            ]}
+          />
+          <p className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] pt-4">
+            The goal: Make building repeatable, teachable, and finishable.
+          </p>
+        </section>
+      </Container>
+    </main>
   )
 }
