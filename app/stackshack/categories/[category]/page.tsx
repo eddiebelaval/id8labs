@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { ArrowLeft } from 'lucide-react'
 import { getAllSkills, getAllCategories } from '@/lib/skills'
 import { SkillCard } from '@/components/skills/SkillCard'
 import { InlineFilters } from '@/components/skills/SkillFilters'
+import { Container, Kicker } from '@/components/editorial'
 
 type SortOption = 'newest' | 'popular' | 'rating' | 'installs'
 

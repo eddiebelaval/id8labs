@@ -3,7 +3,7 @@ import Link from 'next/link'
 const quickLinks = [
   { href: '/services', label: 'Services & Training', description: 'AI implementation and Claude Code courses' },
   { href: '/products', label: 'Products', description: 'Composer, DeepStack, and more' },
-  { href: '/lab', label: 'Lab Story', description: 'How ID8Labs started' },
+  { href: '/lab', label: 'Lab Story', description: 'How id8Labs started' },
   { href: '/contact', label: 'Contact', description: 'Get in touch' },
 ]
 
