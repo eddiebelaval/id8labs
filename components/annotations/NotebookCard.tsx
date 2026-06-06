@@ -101,17 +101,7 @@ export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
       <div className="mt-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {highlight && (
-            <span
-              className={`w-3 h-3 rounded-full ${
-                highlight.color === 'yellow'
-                  ? 'bg-yellow-400'
-                  : highlight.color === 'green'
-                  ? 'bg-green-400'
-                  : highlight.color === 'blue'
-                  ? 'bg-blue-400'
-                  : 'bg-pink-400'
-              }`}
-            />
+            <span className={`w-3 h-3 rounded-full ${COLOR_ACCENTS[highlight.color]}`} />
           )}
           <span className="text-xs text-[var(--muted)]">
             {isHighlight ? 'Highlight' : 'Note'}
@@ -149,19 +139,11 @@ export function NotebookCardCompact({ item, type }: NotebookCardProps) {
   const courseName = courseConfig?.title || item.course_slug
 
   return (
-    <div className="flex items-start gap-3 p-3 hover:bg-[var(--paper-shadow)] rounded-lg transition-colors cursor-pointer">
+    <div className="flex items-start gap-3 p-3 hover:bg-[var(--paper-shadow)] transition-colors cursor-pointer">
       {/* Type indicator */}
       <div
-        className={`flex-shrink-0 w-1 h-12 rounded-full ${
-          highlight
-            ? highlight.color === 'yellow'
-              ? 'bg-yellow-400'
-              : highlight.color === 'green'
-              ? 'bg-green-400'
-              : highlight.color === 'blue'
-              ? 'bg-blue-400'
-              : 'bg-pink-400'
-            : 'bg-[var(--border)]'
+        className={`flex-shrink-0 w-1 h-12 ${
+          highlight ? COLOR_ACCENTS[highlight.color] : 'bg-[var(--hair)]'
         }`}
       />
 
