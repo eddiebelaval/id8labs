@@ -512,7 +512,7 @@ export default function DashboardPage() {
                   previousValue={stats?.comparison?.visitors}
                   sparklineData={sparklineData}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   }
@@ -523,7 +523,7 @@ export default function DashboardPage() {
                   previousValue={stats?.comparison?.pageviews}
                   sparklineData={sparklineData}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
@@ -535,7 +535,7 @@ export default function DashboardPage() {
                   previousValue={stats?.comparison?.visits}
                   sparklineData={sparklineData}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   }
@@ -547,7 +547,7 @@ export default function DashboardPage() {
                   format={(n) => `${n.toFixed(1)}%`}
                   invertChange
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
                     </svg>
                   }
@@ -558,7 +558,7 @@ export default function DashboardPage() {
                   previousValue={prevAvgDuration}
                   format={formatDuration}
                   icon={
-                    <svg className="w-4 h-4 text-[#FF6B35]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   }
@@ -599,20 +599,17 @@ export default function DashboardPage() {
               </div>
 
               {/* Footer */}
-              <div className="mt-12 pt-8 border-t border-gray-800/50 text-center">
+              <div className="mt-12 pt-8 border-t border-[var(--rule)] text-center">
                 <div className="flex items-center justify-center gap-2 mb-2">
-                  <svg className="w-4 h-4 text-[#FF6B35]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-                  </svg>
-                  <span className="text-gray-500 font-mono text-xs">id8labs dashboard</span>
+                  <span className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">id8Labs dashboard</span>
                 </div>
-                <p className="text-gray-600 font-mono text-xs">
+                <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
                   Powered by{' '}
                   <a
                     href="https://umami.is"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#FF6B35]/60 hover:text-[#FF6B35] transition-colors"
+                    className="text-[var(--ink)] hover:text-id8-orange transition-colors"
                   >
                     Umami
                   </a>
