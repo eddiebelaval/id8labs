@@ -1,124 +1,54 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { resumeData } from "@/lib/eddie-constants";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { MapPin, Mail, Linkedin } from "lucide-react";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { Container, Kicker, Deck, Rule, EditorialButton, MetaRow } from "@/components/editorial";
 
 export function Contact() {
-  const contactLinks = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: resumeData.social.email,
-      href: `mailto:${resumeData.social.email}`,
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "Connect",
-      href: `https://${resumeData.social.linkedin}`,
-    },
-  ];
-
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   return (
-    <section className="relative py-32 px-6">
-      <div
-        className="max-w-4xl mx-auto text-center p-12 rounded-3xl backdrop-blur-md border-t border-white/20"
-        style={{
-          background: "rgba(0, 0, 0, 0.45)",
-          border: "1px solid rgba(255, 255, 255, 0.15)",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-        }}
-      >
-        {/* Location */}
+    <section className="py-20 md:py-28">
+      <Container narrow>
         <ScrollReveal>
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <MapPin
-              className="w-5 h-5"
-              style={{ color: "#00ff41" }}
-            />
-            <span
-              className="text-xl font-[family-name:var(--font-vt323)]"
-              style={{ color: "rgba(255, 255, 255, 0.7)" }}
-            >
-              {resumeData.location}
-            </span>
-          </div>
-        </ScrollReveal>
+          <Kicker dot className="mb-5">
+            {resumeData.location}
+          </Kicker>
 
-        {/* Heading */}
-        <ScrollReveal delay={0.1}>
-          <h2
-            className="text-xl md:text-2xl font-normal mb-4 font-[family-name:var(--font-press-start)]"
-            style={{ color: "#00ff41", textShadow: "0 0 5px #00ff41" }}
-          >
-            Let&apos;s Connect
+          <h2 className="mb-6 font-[family-name:var(--font-display)] font-normal leading-[1.0] tracking-[-0.03em] text-[var(--ink)] text-[clamp(2.5rem,5.5vw,4rem)]">
+            Let&apos;s <em className="italic text-id8-orange">connect.</em>
           </h2>
-          <p
-            className="text-xl mb-12 max-w-xl mx-auto font-[family-name:var(--font-vt323)]"
-            style={{ color: "rgba(255, 255, 255, 0.7)" }}
-          >
+
+          <Deck className="mb-10 max-w-xl">
             Available for cinematography, story production, and creative
             consulting work.
-          </p>
-        </ScrollReveal>
+          </Deck>
 
-        {/* Contact Links */}
-        <ScrollReveal delay={0.2}>
-          <div className="flex flex-wrap justify-center gap-4">
-            {contactLinks.map((link, index) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-4 rounded-2xl backdrop-blur-md"
-                style={{
-                  background: "rgba(0, 0, 0, 0.45)",
-                  border: "1px solid rgba(0, 255, 65, 0.3)",
-                }}
-                whileHover={
-                  prefersReducedMotion
-                    ? undefined
-                    : {
-                        scale: 1.05,
-                        boxShadow: "0 0 20px rgba(0, 255, 65, 0.3)",
-                      }
-                }
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: prefersReducedMotion ? 0 : index * 0.1 }}
-              >
-                <link.icon
-                  className="w-5 h-5"
-                  style={{ color: "#00ff41" }}
-                />
-                <span
-                  className="text-lg font-[family-name:var(--font-vt323)]"
-                  style={{ color: "rgba(255, 255, 255, 0.8)" }}
-                >
-                  {link.value}
-                </span>
-              </motion.a>
-            ))}
+          <div className="mb-12 flex flex-col gap-3.5 sm:flex-row">
+            <EditorialButton href={`mailto:${resumeData.social.email}`} external>
+              Email
+            </EditorialButton>
+            <EditorialButton
+              href={`https://${resumeData.social.linkedin}`}
+              external
+              variant="ghost"
+            >
+              LinkedIn
+            </EditorialButton>
           </div>
-        </ScrollReveal>
 
-        {/* Footer */}
-        <ScrollReveal delay={0.3} className="mt-20">
-          <p
-            className="text-lg font-[family-name:var(--font-vt323)]"
-            style={{ color: "rgba(255, 255, 255, 0.4)" }}
-          >
+          <Rule className="mb-6" />
+
+          <MetaRow
+            items={[
+              { value: "Email", label: resumeData.social.email },
+              { value: "Based in", label: resumeData.location },
+            ]}
+          />
+
+          <p className="mt-10 font-[family-name:var(--font-serif)] italic text-[var(--muted)]">
             Designed with early morning Miami light in mind.
           </p>
         </ScrollReveal>
-      </div>
+      </Container>
     </section>
   );
 }

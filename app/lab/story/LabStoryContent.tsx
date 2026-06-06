@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { m, useInView } from '@/components/motion'
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { featuredHomeProducts } from '@/lib/home-products'
+import { Container, Kicker } from '@/components/editorial'
 
 // Section data for navigation
 const sections = [
@@ -17,24 +17,7 @@ const sections = [
   { id: 'contact', title: 'Get in Touch' },
 ]
 
-// Fade-in animation component
-function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  return (
-    <m.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </m.div>
-  )
-}
-
-// Sticky section header component
+// Section wrapper with sticky, ruled header
 function StickySection({
   id,
   title,
@@ -46,12 +29,14 @@ function StickySection({
 }) {
   return (
     <section id={id} className="mb-16 scroll-mt-32">
-      <div className="sticky top-20 z-10 mb-6 -mx-4 px-4 py-4 backdrop-blur-md bg-[var(--bg-primary)]/80 rounded-subtle">
-        <h2 className="text-3xl font-bold">{title}</h2>
+      <div className="sticky top-16 z-10 -mx-4 mb-6 border-b border-[var(--rule)] bg-[var(--paper)] px-4 py-4">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.015em] text-[var(--ink)]">
+          {title}
+        </h2>
       </div>
-      <FadeInSection>
-        <div className="space-y-6 text-lg leading-relaxed">{children}</div>
-      </FadeInSection>
+      <div className="space-y-6 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+        {children}
+      </div>
     </section>
   )
 }
@@ -71,17 +56,17 @@ function SideNavigation({ activeSection }: { activeSection: string }) {
                 aria-label={`Jump to ${section.title}`}
               >
                 <div
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-px transition-all ${
                     isActive
                       ? 'w-12 bg-id8-orange'
-                      : 'w-8 bg-[var(--border)] group-hover:w-10 group-hover:bg-[var(--text-secondary)]'
+                      : 'w-8 bg-[var(--hair-hard)] group-hover:w-10 group-hover:bg-[var(--muted)]'
                   }`}
                 />
                 <span
-                  className={`transition-all ${
+                  className={`font-[family-name:var(--font-narrow)] text-[11px] uppercase tracking-[0.18em] transition-all ${
                     isActive
-                      ? 'text-id8-orange font-medium opacity-100'
-                      : 'text-[var(--text-secondary)] opacity-0 group-hover:opacity-100'
+                      ? 'font-semibold text-id8-orange opacity-100'
+                      : 'text-[var(--muted)] opacity-0 group-hover:opacity-100'
                   }`}
                 >
                   {section.title}
@@ -136,43 +121,37 @@ export default function LabStoryContent() {
   }, [])
 
   return (
-    <div className="container py-24 relative">
+    <div className="relative min-h-screen bg-[var(--paper)] pb-24 pt-16">
       <SideNavigation activeSection={activeSection} />
 
-      <article className="max-w-3xl mx-auto">
+      <Container narrow>
+      <article>
         {/* Back Link */}
-        <FadeInSection>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-id8-orange mb-12 transition-colors rounded-gentle"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="19" y1="12" x2="5" y2="12" />
-              <polyline points="12 19 5 12 12 5" />
-            </svg>
-            Back to home
-          </Link>
-        </FadeInSection>
+        <Link
+          href="/"
+          className="mb-12 inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:text-id8-orange"
+        >
+          &larr; Back to home
+        </Link>
 
         {/* Header */}
         <header className="mb-16">
-          <FadeInSection>
-            <h1 className="mb-6">The Lab Story</h1>
-          </FadeInSection>
-          <FadeInSection delay={0.1}>
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p>I started as a cameraman.</p>
-              <p>
-                First 48. Orange County Choppers. 90 Day Fiance. Twenty years of production
-                work — from hands-on camera to story development, cast management, and the invisible
-                infrastructure that turns chaos into narrative. Somewhere in there, I stopped
-                capturing footage and started architecting systems.
-              </p>
-              <p>
-                That shift is what this lab is about.
-              </p>
-            </div>
-          </FadeInSection>
+          <Kicker dot>Origin</Kicker>
+          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
+            The Lab Story
+          </h1>
+          <div className="mt-8 space-y-6 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+            <p>I started as a cameraman.</p>
+            <p>
+              First 48. Orange County Choppers. 90 Day Fiance. Twenty years of production
+              work — from hands-on camera to story development, cast management, and the invisible
+              infrastructure that turns chaos into narrative. Somewhere in there, I stopped
+              capturing footage and started architecting systems.
+            </p>
+            <p>
+              That shift is what this lab is about.
+            </p>
+          </div>
         </header>
 
         {/* Where It Started */}
@@ -187,7 +166,7 @@ export default function LabStoryContent() {
             Re-uploading documents. Re-explaining context. Rebuilding from scratch. By the third
             revision, the AI had forgotten half the project.
           </p>
-          <p className="text-2xl font-bold text-id8-orange">
+          <p className="font-[family-name:var(--font-display)] text-2xl italic text-id8-orange">
             Context rot.
           </p>
           <p>
@@ -206,26 +185,26 @@ export default function LabStoryContent() {
 
         {/* The Thesis */}
         <StickySection id="thesis" title="The Thesis">
-          <p className="text-2xl font-bold text-id8-orange mb-4">
+          <p className="mb-4 font-[family-name:var(--font-display)] text-2xl italic text-id8-orange">
             Architecture, not tools. Primitive chains with human gates, designed domain-deep.
           </p>
           <div className="mt-8 space-y-6">
             <div>
-              <p className="font-bold text-id8-orange mb-2">Chains, not tools.</p>
+              <p className="mb-2 font-bold text-id8-orange">Chains, not tools.</p>
               <p>
                 A tool sits and waits. A chain runs. Primitives wire together into architecture
                 the company operates inside.
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-2">Human gates by design.</p>
+              <p className="mb-2 font-bold text-id8-orange">Human gates by design.</p>
               <p>
                 Automation carries the drudgery. Humans carry the judgment. The gate is not a bug
                 in the automation, it is the protected seat where real work happens.
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-2">Domain-deep, not generic.</p>
+              <p className="mb-2 font-bold text-id8-orange">Domain-deep, not generic.</p>
               <p>
                 Every chain is shaped to a specific operation. The point is not to add another tool.
                 The point is to eat the drudgery a company goes through before the work, so it
@@ -250,17 +229,17 @@ export default function LabStoryContent() {
           <p>
             Every product is a specific answer to: &ldquo;What cognitive work can I offload?&rdquo;
           </p>
-          <div className="py-8 px-6 border border-[var(--border)] rounded-soft bg-[var(--bg-secondary)]">
+          <div className="border border-[var(--hair)] bg-[var(--paper-shadow)] px-6 py-8">
             <div className="grid gap-4">
               {featuredHomeProducts.map((product) => (
                 <div key={product.name} className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-[var(--accent-green)] rounded-full mt-2 flex-shrink-0" />
+                  <div className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 bg-id8-orange" />
                   <div>
-                    <span className="font-bold">{product.name}</span>
+                    <span className="font-bold text-[var(--ink)]">{product.name}</span>
                     {product.statusLabel && (
-                      <span className="text-[var(--text-tertiary)] text-sm ml-2">{product.statusLabel}</span>
+                      <span className="ml-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">{product.statusLabel}</span>
                     )}
-                    <span className="text-[var(--text-secondary)]">
+                    <span className="text-[var(--muted)]">
                       {' '}&mdash; Offloads {productOffloads[product.name] || product.description}
                     </span>
                   </div>
@@ -285,17 +264,17 @@ export default function LabStoryContent() {
             as coordinator plus 3 domain specialists), SQLite for local state, and Telegram for
             natural language control. It runs the infrastructure so I can focus on building.
           </p>
-          <div className="pl-6 border-l-4 border-id8-orange space-y-4 rounded-subtle">
+          <div className="space-y-4 border-l-2 border-id8-orange pl-6">
             <div>
-              <p className="font-bold text-id8-orange mb-1">Economics</p>
-              <p className="text-[var(--text-secondary)]">
+              <p className="mb-1 font-bold text-id8-orange">Economics</p>
+              <p className="text-[var(--muted)]">
                 $300/month. 75% cost reduction from traditional multi-agent systems. Premium
                 coordination (Claude) plus free execution (open models).
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-1">The recursion</p>
-              <p className="text-[var(--text-secondary)]">
+              <p className="mb-1 font-bold text-id8-orange">The recursion</p>
+              <p className="text-[var(--muted)]">
                 AI as cognitive leverage to build a system that provides cognitive leverage.
                 The thesis eating its own tail.
               </p>
@@ -309,7 +288,7 @@ export default function LabStoryContent() {
             The full technical breakdown is in the{' '}
             <Link
               href="/writing/building-ai-human-os-v2"
-              className="border-b-2 border-id8-orange text-id8-orange hover:opacity-70 transition-opacity"
+              className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
             >
               HYDRA essay
             </Link>
@@ -351,29 +330,29 @@ export default function LabStoryContent() {
           <p>
             What started as a workshop has grown into four pillars.
           </p>
-          <div className="pl-6 border-l-4 border-id8-orange space-y-6 rounded-subtle">
+          <div className="space-y-6 border-l-2 border-id8-orange pl-6">
             <div>
-              <p className="font-bold text-id8-orange mb-1">Products</p>
-              <p className="text-[var(--text-secondary)]">
+              <p className="mb-1 font-bold text-id8-orange">Products</p>
+              <p className="text-[var(--muted)]">
                 Composer, HOMER, DeepStack, MILO, Pipeline, LLC Ops — each targeting a different
                 category of cognitive overhead.
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-1">Education</p>
-              <p className="text-[var(--text-secondary)]">
+              <p className="mb-1 font-bold text-id8-orange">Education</p>
+              <p className="text-[var(--muted)]">
                 Academy courses on AI workflows and prompt engineering. StackShack with 228+ free
                 Claude Code skills. Learn by building, not watching.
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-1">Services</p>
-              <p className="text-[var(--text-secondary)]">
+              <p className="mb-1 font-bold text-id8-orange">Services</p>
+              <p className="text-[var(--muted)]">
                 AI implementation consulting for businesses that know AI matters but need help
                 making it operational.{' '}
                 <Link
                   href="/services"
-                  className="border-b border-id8-orange text-id8-orange hover:opacity-70 transition-opacity"
+                  className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
                 >
                   Learn more
                 </Link>
@@ -381,8 +360,8 @@ export default function LabStoryContent() {
               </p>
             </div>
             <div>
-              <p className="font-bold text-id8-orange mb-1">Writing</p>
-              <p className="text-[var(--text-secondary)]">
+              <p className="mb-1 font-bold text-id8-orange">Writing</p>
+              <p className="text-[var(--muted)]">
                 49+ essays on building in public — technical breakdowns, product thinking, and the
                 philosophy behind the tools.
               </p>
@@ -404,7 +383,7 @@ export default function LabStoryContent() {
             The{' '}
             <Link
               href="/writing/building-ai-human-os-v2"
-              className="border-b-2 border-id8-orange text-id8-orange hover:opacity-70 transition-opacity"
+              className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
             >
               HYDRA article
             </Link>
@@ -418,24 +397,22 @@ export default function LabStoryContent() {
         </StickySection>
 
         {/* Signature */}
-        <FadeInSection>
-          <section className="mb-16 text-center">
-            <p className="text-xl font-bold">Eddie Belaval</p>
-            <p className="text-[var(--text-secondary)]">Miami, 2026</p>
-          </section>
-        </FadeInSection>
+        <section className="mb-16 text-center">
+          <p className="font-[family-name:var(--font-display)] text-xl font-medium text-[var(--ink)]">Eddie Belaval</p>
+          <p className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)]">Miami, 2026</p>
+        </section>
 
         {/* Get in Touch */}
         <StickySection id="contact" title="Get in Touch">
-          <div className="pt-8 space-y-6">
-            <p className="text-[var(--text-secondary)]">
+          <div className="space-y-6 pt-8">
+            <p className="text-[var(--muted)]">
               Questions? Feedback? Want to collaborate?
             </p>
             <p>
               Email me at{' '}
               <a
                 href="mailto:eb@id8labs.tech"
-                className="border-b-2 border-id8-orange text-id8-orange hover:opacity-70 transition-opacity rounded-gentle"
+                className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
               >
                 eb@id8labs.tech
               </a>
@@ -444,17 +421,17 @@ export default function LabStoryContent() {
               Want to work together?{' '}
               <Link
                 href="/services"
-                className="border-b-2 border-id8-orange text-id8-orange hover:opacity-70 transition-opacity rounded-gentle"
+                className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
               >
                 Book a call
               </Link>
             </p>
-            <div className="flex items-center gap-6 pt-4 text-sm text-[var(--text-tertiary)]">
+            <div className="flex items-center gap-6 pt-4 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
               <a
                 href="https://twitter.com/eddiebe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-id8-orange transition-colors"
+                className="transition-colors hover:text-id8-orange"
               >
                 X / Twitter
               </a>
@@ -462,7 +439,7 @@ export default function LabStoryContent() {
                 href="https://github.com/eddiebelaval"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-id8-orange transition-colors"
+                className="transition-colors hover:text-id8-orange"
               >
                 GitHub
               </a>
@@ -470,6 +447,7 @@ export default function LabStoryContent() {
           </div>
         </StickySection>
       </article>
+      </Container>
     </div>
   )
 }

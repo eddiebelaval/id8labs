@@ -38,8 +38,9 @@ Big Fraunces serif headlines with italic-orange emphasis, narrow uppercase
 kickers, mono metadata, hairline rules, generous whitespace. **Light only,
 sharp corners, flat (no shadows/glows/gradients).**
 
+- **Brand DNA (HALO Genome):** `genome/` — `AGENT.md` is the enforcement contract every producing agent reads first; `DESIGN.md` / `VOICE.md` / `ETHOS.md` / `genome.json` are the genes. Assets must be on-brand *by construction*.
 - Reference: `public/shipped/` · React kit: `components/editorial/`
-- **Full contract:** `docs/EDITORIAL_SYSTEM.md` — read it before any UI work
+- **Applied design contract:** `docs/EDITORIAL_SYSTEM.md` — read it before any UI work
 - Orange is emphasis, not decoration: one or two orange moments per view
 - **Generous whitespace** - breathing room everywhere
 - **Maximum credibility** - every design decision reinforces trust

@@ -23,21 +23,21 @@ function SideNavigation({ activeSection }: { activeSection: string }) {
             <li key={section.id}>
               <a
                 href={`#${section.id}`}
-                className="group flex items-center gap-3 text-sm transition-all"
+                className="group flex items-center gap-3 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors"
                 aria-label={`Jump to ${section.title}`}
               >
-                <div
-                  className={`h-2 rounded-full transition-all ${
+                <span
+                  className={`h-px transition-all duration-150 ${
                     isActive
                       ? 'w-12 bg-id8-orange'
-                      : 'w-8 bg-[var(--border)] group-hover:w-10 group-hover:bg-[var(--text-secondary)]'
+                      : 'w-8 bg-[var(--hair-hard)] group-hover:w-10 group-hover:bg-[var(--ink)]'
                   }`}
                 />
                 <span
-                  className={`transition-all ${
+                  className={`transition-opacity duration-150 ${
                     isActive
-                      ? 'text-id8-orange font-medium opacity-100'
-                      : 'text-[var(--text-secondary)] opacity-0 group-hover:opacity-100'
+                      ? 'text-id8-orange opacity-100'
+                      : 'text-[var(--muted)] opacity-0 group-hover:opacity-100'
                   }`}
                 >
                   {section.title}

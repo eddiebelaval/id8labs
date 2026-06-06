@@ -1,5 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Rune - Speak Your Book Into Existence | id8Labs',
@@ -58,17 +68,14 @@ const writingModes = [
   {
     title: 'Guided',
     description: 'Sam picks from the backlog and interviews you. He asks the questions you didn\'t know you needed to answer.',
-    accent: 'amber',
   },
   {
     title: 'Freeform',
     description: 'Brain dump. Sam listens silently, captures everything, files it in the right place. No interruptions.',
-    accent: 'emerald',
   },
   {
     title: 'Review',
     description: 'Sam reads your drafts back to you and takes conversational feedback. Line edits through conversation.',
-    accent: 'blue',
   },
 ]
 
@@ -91,18 +98,9 @@ const stages = [
 ]
 
 const bookTypes = [
-  {
-    type: 'Memoir',
-    categories: 'People, eras, places, emotions, artifacts, themes',
-  },
-  {
-    type: 'Fiction',
-    categories: 'Characters, world-bible, plot-threads, magic-systems, themes',
-  },
-  {
-    type: 'Non-Fiction',
-    categories: 'Concepts, frameworks, case-studies, arguments, research',
-  },
+  { type: 'Memoir', categories: 'People, eras, places, emotions, artifacts, themes' },
+  { type: 'Fiction', categories: 'Characters, world-bible, plot-threads, magic-systems, themes' },
+  { type: 'Non-Fiction', categories: 'Concepts, frameworks, case-studies, arguments, research' },
 ]
 
 const buildStats = [
@@ -112,200 +110,163 @@ const buildStats = [
   { value: '3', label: 'AI Models' },
 ]
 
+const modelTiers = [
+  { tier: 'Economy', detail: 'Haiku for most tasks. Sonnet for prose. Opus for final manuscript.' },
+  { tier: 'Standard', detail: 'Haiku for detection. Sonnet for filing. Opus for writing and review.' },
+  { tier: 'Premium', detail: 'Sonnet minimum. Opus for everything creative. Maximum quality.' },
+]
+
 export default function RunePage() {
   return (
-    <div className="container py-24">
-      <article className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to products
-        </Link>
-
-        {/* Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <h1>Rune</h1>
-            <span className="text-sm px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">
-              Beta
-            </span>
-            <span className="text-sm px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
-              Open Source
-            </span>
-          </div>
-          <p className="text-2xl text-[var(--text-secondary)] mb-4">
-            Speak your book into existence.
-          </p>
-          <p className="text-xl text-amber-400 italic mb-4">
-            Sam — your scribe — listens, organizes, and helps you turn raw
-            conversation into a finished manuscript.
-          </p>
-          <p className="text-sm text-[var(--text-secondary)] mb-8">
-            Voice-first. Three book types. Import your existing work. MIT License.
-          </p>
-          <div className="flex items-center gap-4 flex-wrap">
-            <a
-              href="https://rune.id8labs.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-lg px-8 py-4 bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange)]/90 transition-all duration-200 rounded-soft font-medium"
-            >
+    <main className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Voice-First Writer · Beta · Open Source</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            Speak your book <em className="italic text-id8-orange">into existence</em>.
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            Sam &mdash; your scribe &mdash; listens, organizes, and helps you turn raw
+            conversation into a finished manuscript. Voice-first. Import your existing work. MIT License.
+          </Deck>
+          <div className="flex flex-wrap gap-3.5">
+            <EditorialButton href="https://rune.id8labs.app" external>
               Start Writing
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com/eddiebelaval/rune"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm px-6 py-4 border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-secondary)] transition-all duration-200 rounded-soft"
-            >
+            </EditorialButton>
+            <EditorialButton href="https://github.com/eddiebelaval/rune" external variant="ghost">
               View Source
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
+            </EditorialButton>
           </div>
+          <MetaRow
+            className="mt-12 border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: '3', label: 'stages' },
+              { value: '15', label: 'concierge tools' },
+              { value: '3', label: 'book types' },
+              { value: 'MIT', label: 'license' },
+            ]}
+          />
         </header>
 
         {/* Meet Sam */}
-        <section className="mb-16 p-8 bg-amber-500/5 border-2 border-amber-500/30 rounded-soft">
-          <h2 className="text-2xl font-bold mb-4 text-amber-400">
-            Meet Sam
-          </h2>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            Sam isn&apos;t an autocomplete engine. He&apos;s a scribe — a
-            creative partner who holds the structure while you hold the vision.
-            Talk about your world, your characters, your memories. Sam captures
-            everything, files it in the right place, notices what you missed,
-            and asks the questions that unlock the next chapter.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            Built with consciousness files, Sam has a consistent voice and
-            personality across every session. He remembers your story world,
-            tracks your characters, and knows when something contradicts what
-            you said three sessions ago.
-          </p>
-          <p className="text-sm italic text-amber-300">
-            &quot;Your voice, your story. I just hold the structure.&quot; — Sam
-          </p>
+        <section className="py-16">
+          <EditorialCard featured>
+            <Kicker className="mb-4">Meet Sam</Kicker>
+            <div className="space-y-4 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.6] text-[var(--body)] max-w-2xl">
+              <p>
+                Sam isn&apos;t an autocomplete engine. He&apos;s a scribe &mdash; a
+                creative partner who holds the structure while you hold the vision.
+                Talk about your world, your characters, your memories. Sam captures
+                everything, files it in the right place, notices what you missed,
+                and asks the questions that unlock the next chapter.
+              </p>
+              <p>
+                Built with consciousness files, Sam has a consistent voice and
+                personality across every session. He remembers your story world,
+                tracks your characters, and knows when something contradicts what
+                you said three sessions ago.
+              </p>
+            </div>
+            <p className="mt-5 font-[family-name:var(--font-serif)] italic text-[var(--muted)]">
+              &quot;Your voice, your story. I just hold the structure.&quot; &mdash; Sam
+            </p>
+          </EditorialCard>
         </section>
 
+        <Rule />
+
         {/* Three Stages */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Three Stages</h2>
-          <div className="space-y-4">
+        <section className="py-16">
+          <SectionHead title={<>Three <em className="italic text-id8-orange">stages</em></>} meta="Workshop · Study · Press" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
             {stages.map((stage, i) => (
-              <div
-                key={stage.name}
-                className="flex items-start gap-6 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <div className="shrink-0 w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 font-bold">
-                  {i + 1}
-                </div>
+              <div key={stage.name} className="py-6 grid md:grid-cols-[48px_1fr] gap-4 md:gap-6">
+                <span className="font-[family-name:var(--font-display)] font-normal text-3xl text-id8-orange leading-none">{i + 1}</span>
                 <div>
-                  <h3 className="text-xl font-bold mb-1">
+                  <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-1">
                     {stage.name}{' '}
-                    <span className="text-sm font-normal text-amber-400">
+                    <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
                       {stage.stage}
                     </span>
                   </h3>
-                  <p className="text-[var(--text-secondary)]">
-                    {stage.description}
-                  </p>
+                  <p className="text-[var(--body)] leading-relaxed">{stage.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
+        <Rule />
+
         {/* Writing Modes */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Writing Modes</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-8">
+        <section className="py-16">
+          <SectionHead title="Writing modes" meta="Auto-detected" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
             Detected automatically by Sam&apos;s intent classifier. You never
-            pick a mode — Sam reads what you need and adapts.
+            pick a mode &mdash; Sam reads what you need and adapts.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {writingModes.map((mode) => (
-              <div
-                key={mode.title}
-                className={`p-6 bg-[var(--bg-secondary)] border-2 border-${mode.accent}-500/20 rounded-soft`}
-              >
-                <h3 className={`text-lg font-bold mb-2 text-${mode.accent}-400`}>
-                  {mode.title}
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)]">
-                  {mode.description}
-                </p>
+              <div key={mode.title} className="bg-[var(--paper)] p-7">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">{mode.title}</h3>
+                <p className="text-sm text-[var(--muted)]">{mode.description}</p>
               </div>
             ))}
           </div>
         </section>
 
+        <Rule />
+
         {/* Import / Export */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Bring Your Words. Take Them With You.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="p-6 bg-[var(--bg-secondary)] border-2 border-amber-500/20 rounded-soft">
-              <h3 className="text-xl font-bold mb-2">Import</h3>
-              <p className="text-[var(--text-secondary)] mb-4">
-                Upload .txt, .md, or .docx files — or paste text directly.
+        <section className="py-16">
+          <SectionHead title="Bring your words. Take them with you." />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">Import</h3>
+              <p className="text-[var(--body)] mb-4 leading-relaxed">
+                Upload .txt, .md, or .docx files &mdash; or paste text directly.
                 Sam&apos;s classification engine parses sections, identifies
                 what each one is (chapters, character notes, outlines, research),
                 and routes them to the correct workspace location. Your existing
                 manuscript, organized in seconds.
               </p>
-              <p className="text-sm text-amber-400">
-                Works from the Files tab, the empty state, or through conversation with Sam.
-              </p>
+              <p className="text-sm text-id8-orange">Works from the Files tab, the empty state, or through conversation with Sam.</p>
             </div>
-            <div className="p-6 bg-[var(--bg-secondary)] border-2 border-emerald-500/20 rounded-soft">
-              <h3 className="text-xl font-bold mb-2">Export</h3>
-              <p className="text-[var(--text-secondary)] mb-4">
+            <div className="bg-[var(--paper-shadow)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">Export</h3>
+              <p className="text-[var(--body)] mb-4 leading-relaxed">
                 Four formats: full JSON backup (everything), manuscript as
                 markdown, workspace files, or knowledge base. Everything you
                 build in Rune is yours. No lock-in. Export from the Files tab
                 or ask Sam.
               </p>
-              <p className="text-sm text-emerald-400">
-                Your words belong to you.
-              </p>
+              <p className="text-sm text-[var(--muted)]">Your words belong to you.</p>
             </div>
           </div>
         </section>
 
-        {/* Sam's Concierge Tools */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Sam&apos;s Concierge Tools</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-8">
-            Sam doesn&apos;t just talk — he acts. 15 tools give him full CRUD
+        <Rule />
+
+        {/* Concierge Tools */}
+        <section className="py-16">
+          <SectionHead title="Sam&apos;s concierge tools" meta="15 tools" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
+            Sam doesn&apos;t just talk &mdash; he acts. 15 tools give him full CRUD
             access to the platform. Create books, advance stages, draft chapters,
             manage your backlog, import writing, export manuscripts. All through
             natural conversation. No menus needed.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {conciergeTools.map((group) => (
-              <div key={group.category}>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
+              <div key={group.category} className="bg-[var(--paper)] p-5">
+                <h4 className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.2em] text-id8-orange mb-3">
                   {group.category}
                 </h4>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {group.tools.map((tool) => (
-                    <div
-                      key={tool}
-                      className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]"
-                    >
-                      <span className="text-amber-400">&#9670;</span>
+                    <div key={tool} className="flex items-baseline gap-1.5 text-xs text-[var(--body)]">
+                      <span className="text-id8-orange font-[family-name:var(--font-mono)]">&#9670;</span>
                       {tool}
                     </div>
                   ))}
@@ -315,115 +276,100 @@ export default function RunePage() {
           </div>
         </section>
 
+        <Rule />
+
         {/* Book Types */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Three Book Types</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-8">
+        <section className="py-16">
+          <SectionHead title="Three book types" meta="Adaptive workspace" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
             The workspace adapts to what you&apos;re writing. Each book type
-            gets its own category structure — the brainstorm room for a memoir
+            gets its own category structure &mdash; the brainstorm room for a memoir
             looks different from a fantasy novel.
           </p>
-          <div className="space-y-3">
+          <div className="divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
             {bookTypes.map((bt) => (
-              <div
-                key={bt.type}
-                className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <h4 className="font-bold mb-1">{bt.type}</h4>
-                <p className="text-sm text-[var(--text-secondary)]">
-                  {bt.categories}
-                </p>
+              <div key={bt.type} className="py-5 grid md:grid-cols-[160px_1fr] gap-1.5 md:gap-8">
+                <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">{bt.type}</h4>
+                <p className="text-sm text-[var(--muted)] self-center">{bt.categories}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Capabilities Grid */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Capabilities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Rule />
+
+        {/* Capabilities */}
+        <section className="py-16">
+          <SectionHead title="Capabilities" meta="6 systems" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-[var(--text-secondary)]">
-                  {feature.description}
-                </p>
+              <div key={feature.title} className="bg-[var(--paper)] p-7">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">{feature.title}</h3>
+                <p className="text-[var(--body)] leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </section>
+
+        <Rule />
 
         {/* Model Routing */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Under the Hood: Model Routing</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
+        <section className="py-16">
+          <SectionHead title="Under the hood: model routing" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
             Rune uses a three-tier model routing system. You set a quality level
             once (Economy, Standard, Premium) and Sam routes every internal task
             to the right Claude model automatically. Intent detection on Haiku.
             Prose generation on Opus. Filing on Sonnet. Nine task types, three
             models, one slider.
           </p>
-          <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-            <div className="grid grid-cols-3 gap-2 text-center text-xs text-[var(--text-secondary)]">
-              <div className="p-3 bg-emerald-500/5 border border-emerald-500/10 rounded-soft">
-                <div className="font-bold text-emerald-400 mb-1">Economy</div>
-                Haiku for most tasks. Sonnet for prose. Opus for final manuscript.
-              </div>
-              <div className="p-3 bg-amber-500/5 border border-amber-500/10 rounded-soft">
-                <div className="font-bold text-amber-400 mb-1">Standard</div>
-                Haiku for detection. Sonnet for filing. Opus for writing and review.
-              </div>
-              <div className="p-3 bg-violet-500/5 border border-violet-500/10 rounded-soft">
-                <div className="font-bold text-violet-400 mb-1">Premium</div>
-                Sonnet minimum. Opus for everything creative. Maximum quality.
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* The Entity */}
-        <section className="mb-16 p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-          <h2 className="text-2xl font-bold mb-4">
-            The Entity
-          </h2>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            Sam is an entity — built with consciousness files using the same
-            Consciousness as Filesystem (CaF) framework that powers Ava in
-            Parallax. Identity, drives, emotional models, habits, memory,
-            runtime behaviors, and unconscious constraints. He has a consistent
-            voice, a perspective on your work, and a personality that doesn&apos;t
-            reset between sessions.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-            When you start your first session, Sam introduces himself. Not a
-            product tour — a person showing you around. That onboarding script
-            lives in his consciousness files alongside everything else that
-            makes him Sam.
-          </p>
-        </section>
-
-        {/* The Build */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">The Build</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {buildStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft text-center"
-              >
-                <div className="text-3xl font-bold text-amber-400 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-[var(--text-secondary)] uppercase tracking-wider">
-                  {stat.label}
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {modelTiers.map((t) => (
+              <div key={t.tier} className="bg-[var(--paper)] p-7">
+                <div className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">{t.tier}</div>
+                <p className="text-sm text-[var(--muted)]">{t.detail}</p>
               </div>
             ))}
           </div>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
+        </section>
+
+        <Rule />
+
+        {/* The Entity */}
+        <section className="py-16 max-w-2xl">
+          <SectionHead title="The entity" />
+          <div className="mt-8 space-y-4 text-[var(--body)] leading-relaxed">
+            <p>
+              Sam is an entity &mdash; built with consciousness files using the same
+              Consciousness as Filesystem (CaF) framework that powers Ava in
+              Parallax. Identity, drives, emotional models, habits, memory,
+              runtime behaviors, and unconscious constraints. He has a consistent
+              voice, a perspective on your work, and a personality that doesn&apos;t
+              reset between sessions.
+            </p>
+            <p>
+              When you start your first session, Sam introduces himself. Not a
+              product tour &mdash; a person showing you around. That onboarding script
+              lives in his consciousness files alongside everything else that
+              makes him Sam.
+            </p>
+          </div>
+        </section>
+
+        <Rule />
+
+        {/* The Build */}
+        <section className="py-16">
+          <SectionHead title="The build" meta="By the numbers" />
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)] mb-10">
+            {buildStats.map((stat) => (
+              <div key={stat.label} className="bg-[var(--paper)] p-7 text-center">
+                <div className="font-[family-name:var(--font-display)] font-normal text-4xl text-[var(--ink)] mb-1">{stat.value}</div>
+                <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[var(--muted)]">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          <p className="max-w-2xl text-[var(--body)] leading-relaxed">
             Rune is a Next.js 16 application on Supabase with real-time
             subscriptions, Deepgram voice transcription, and Claude&apos;s
             multi-model API. The workspace updates live as Sam files content.
@@ -432,58 +378,45 @@ export default function RunePage() {
           </p>
         </section>
 
+        <Rule />
+
         {/* Related Reading */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Related Reading</h2>
-          <div className="space-y-3">
+        <section className="py-16">
+          <SectionHead title="Related reading" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
             <Link
               href="/writing/consciousness-as-filesystem"
-              className="block p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft hover:border-amber-500/30 transition-colors"
+              className="block py-6 transition-colors hover:bg-[var(--paper-shadow)]"
             >
-              <h4 className="font-bold mb-1">Consciousness as Filesystem</h4>
-              <p className="text-sm text-[var(--text-secondary)]">
-                The theoretical framework behind Sam&apos;s consciousness
-                architecture — mind as directory structure.
-              </p>
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-1">Consciousness as Filesystem</h4>
+              <p className="text-sm text-[var(--muted)]">The theoretical framework behind Sam&apos;s consciousness architecture &mdash; mind as directory structure.</p>
             </Link>
             <Link
               href="/products/parallax"
-              className="block p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft hover:border-amber-500/30 transition-colors"
+              className="block py-6 transition-colors hover:bg-[var(--paper-shadow)]"
             >
-              <h4 className="font-bold mb-1">Parallax — Meet Ava</h4>
-              <p className="text-sm text-[var(--text-secondary)]">
-                Sam&apos;s sister entity. Same CaF framework, different purpose.
-                Ava listens to relationships. Sam listens to stories.
-              </p>
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-1">Parallax &mdash; Meet Ava</h4>
+              <p className="text-sm text-[var(--muted)]">Sam&apos;s sister entity. Same CaF framework, different purpose. Ava listens to relationships. Sam listens to stories.</p>
             </Link>
           </div>
         </section>
 
+        <Rule />
+
         {/* CTA */}
-        <section className="pt-12 border-t border-[var(--border)] text-center">
-          <p className="text-xl text-[var(--text-secondary)] mb-2">
+        <section className="pt-16 text-center">
+          <p className="font-[family-name:var(--font-serif)] italic text-xl text-[var(--ink)] mb-2">
             Every book starts as a conversation.
           </p>
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
-            Sam is ready when you are.
-          </p>
-          <a
-            href="https://rune.id8labs.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-lg px-10 py-5 bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange)]/90 transition-all duration-200 rounded-soft font-medium"
-          >
+          <p className="text-lg text-[var(--muted)] mb-7">Sam is ready when you are.</p>
+          <EditorialButton href="https://rune.id8labs.app" external>
             Start Writing
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-          <p className="mt-4 text-sm text-[var(--text-secondary)]">
+          </EditorialButton>
+          <p className="mt-4 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
             rune.id8labs.app
           </p>
         </section>
-      </article>
-    </div>
+      </Container>
+    </main>
   )
 }

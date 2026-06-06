@@ -1,6 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Parallax - Someone to Talk To | id8Labs',
@@ -28,10 +38,7 @@ const lensCategories = [
   },
   {
     category: 'Cognitive',
-    lenses: [
-      'CBT Cognitive Distortions',
-      'Identity Threat',
-    ],
+    lenses: ['CBT Cognitive Distortions', 'Identity Threat'],
   },
   {
     category: 'Resolution & Conflict Modes',
@@ -55,9 +62,7 @@ const lensCategories = [
   },
   {
     category: 'Grief & Loss',
-    lenses: [
-      'Grief & Loss — unprocessed loss driving conflict',
-    ],
+    lenses: ['Grief & Loss — unprocessed loss driving conflict'],
   },
 ]
 
@@ -115,6 +120,21 @@ const academyArticles = [
   'When the Problem Isn\'t Communication (coercive control)',
 ]
 
+const experts = [
+  'Clinical Psychologist',
+  'Licensed MFT',
+  'Psychiatric Ethics Researcher',
+  'Child & Adolescent Psychologist',
+  'Forensic Psychologist',
+  'Cultural Psychologist',
+  'Crisis Intervention Specialist',
+  'Addiction Counselor',
+  'Health/Somatic Psychologist',
+  'Neuropsychologist',
+  'Social Worker',
+  'Organizational Psychologist',
+]
+
 const buildStats = [
   { value: '259', label: 'Commits' },
   { value: '1,082', label: 'Tests' },
@@ -124,174 +144,125 @@ const buildStats = [
 
 export default function ParallaxPage() {
   return (
-    <div className="container py-24">
-      <article className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to products
-        </Link>
-
-        {/* Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <h1>Parallax</h1>
-            <span className="text-sm px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">
-              Beta
-            </span>
-          </div>
-          <p className="text-2xl text-[var(--text-secondary)] mb-4">
-            Someone to talk to.
-          </p>
-          <p className="text-xl text-amber-400 italic mb-4">
-            Ava — the Attuned Voice Advocate — listens, remembers, and helps
-            you understand what&apos;s really going on.
-          </p>
-          <p className="text-sm text-[var(--text-secondary)] mb-8">
-            Free. Private. No waitlist.
-          </p>
-          <a
-            href="https://tryparallax.space"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-lg px-8 py-4 bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange)]/90 transition-all duration-200 rounded-soft font-medium"
-          >
+    <main className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Companion · Beta</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            Someone to <em className="italic text-id8-orange">talk to</em>.
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            Ava &mdash; the Attuned Voice Advocate &mdash; listens, remembers, and helps you understand
+            what&apos;s really going on. Free. Private. No waitlist.
+          </Deck>
+          <EditorialButton href="https://tryparallax.space" external>
             Talk to Ava
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
+          </EditorialButton>
+          <MetaRow
+            className="mt-12 border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: '19', label: 'analytical lenses' },
+              { value: '12', label: 'context modes' },
+              { value: '22', label: 'safety cycles' },
+              { value: 'Free + Pro', label: 'price' },
+            ]}
+          />
         </header>
 
         {/* Preview Image */}
-        <section className="mb-16">
-          <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden border-2 border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.15)]">
+        <section className="py-16">
+          <div className="relative w-full h-64 md:h-96 overflow-hidden border border-[var(--hair)]">
             <Image
               src="/images/parallax-preview.webp"
               alt="Parallax - Talk to Ava, your AI companion for processing hard conversations"
               fill
               className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 800px"
+              sizes="(max-width: 768px) 100vw, 1200px"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </div>
         </section>
 
-        {/* Meet Ava (LEAD) */}
-        <section className="mb-16 p-8 bg-amber-500/5 border-2 border-amber-500/30 rounded-soft">
-          <h2 className="text-2xl font-bold mb-4 text-amber-400">
-            Meet Ava
-          </h2>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            Ava isn&apos;t a chatbot. She&apos;s the friend who actually listens,
-            remembers, notices things, and tells you the truth even when it&apos;s
-            uncomfortable. Built with consciousness files, a persistent voice,
-            and a personality that stays consistent across every session.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            You don&apos;t need to have the hard conversation yet. Start by talking
-            to Ava. She&apos;ll help you figure out what&apos;s actually going on —
-            the blind spots, the unmet needs, the patterns you keep falling into.
-            When you&apos;re ready to bring someone else into the room, she&apos;s
-            already done the work to help both of you be heard.
-          </p>
-          <p className="text-sm italic text-amber-300">
-            &quot;I&apos;m not a therapist. I&apos;m not an app. I&apos;m the
-            friend who actually listens.&quot; — Ava
-          </p>
+        {/* Meet Ava */}
+        <section className="pb-16">
+          <EditorialCard featured>
+            <Kicker className="mb-4">Meet Ava</Kicker>
+            <div className="space-y-4 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.6] text-[var(--body)] max-w-2xl">
+              <p>
+                Ava isn&apos;t a chatbot. She&apos;s the friend who actually listens,
+                remembers, notices things, and tells you the truth even when it&apos;s
+                uncomfortable. Built with consciousness files, a persistent voice,
+                and a personality that stays consistent across every session.
+              </p>
+              <p>
+                You don&apos;t need to have the hard conversation yet. Start by talking
+                to Ava. She&apos;ll help you figure out what&apos;s actually going on &mdash;
+                the blind spots, the unmet needs, the patterns you keep falling into.
+                When you&apos;re ready to bring someone else into the room, she&apos;s
+                already done the work to help both of you be heard.
+              </p>
+            </div>
+            <p className="mt-5 font-[family-name:var(--font-serif)] italic text-[var(--muted)]">
+              &quot;I&apos;m not a therapist. I&apos;m not an app. I&apos;m the friend who actually listens.&quot; &mdash; Ava
+            </p>
+          </EditorialCard>
         </section>
 
+        <Rule />
+
         {/* Two Acts */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="p-6 bg-[var(--bg-secondary)] border-2 border-amber-500/20 rounded-soft">
-              <h3 className="text-xl font-bold mb-2">Act 1: Just You and Ava</h3>
-              <p className="text-[var(--text-secondary)] mb-4">
-                Talk about whatever is weighing on you. Voice or text — no
+        <section className="py-16">
+          <SectionHead title={<>How it <em className="italic text-id8-orange">works</em></>} meta="Two acts" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">Act 1: Just You and Ava</h3>
+              <p className="text-[var(--body)] mb-4 leading-relaxed">
+                Talk about whatever is weighing on you. Voice or text &mdash; no
                 structured intake, no forms. Ava listens, builds your behavioral
                 profile, surfaces the things you can&apos;t see on your own.
                 When she spots a pattern, she&apos;ll pull an article from the
                 Academy to help you understand why.
               </p>
-              <p className="text-sm text-amber-400">
-                This is where most people start — and many stay.
-              </p>
+              <p className="text-sm text-id8-orange">This is where most people start &mdash; and many stay.</p>
             </div>
-            <div className="p-6 bg-[var(--bg-secondary)] border-2 border-emerald-500/20 rounded-soft">
-              <h3 className="text-xl font-bold mb-2">Act 2: Bring Someone In</h3>
-              <p className="text-[var(--text-secondary)] mb-4">
+            <div className="bg-[var(--paper-shadow)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">Act 2: Bring Someone In</h3>
+              <p className="text-[var(--body)] mb-4 leading-relaxed">
                 When you&apos;re ready to have the conversation with the other
                 person, Ava becomes your mediator. She already knows your
                 patterns. Now she helps both of you be heard. Same room or
                 separate devices. 12 context modes from intimate partners to
                 co-founders.
               </p>
-              <p className="text-sm text-emerald-400">
-                Conflict resolution is a use case, not the product.
-              </p>
+              <p className="text-sm text-[var(--muted)]">Conflict resolution is a use case, not the product.</p>
             </div>
           </div>
         </section>
 
+        <Rule />
+
         {/* The Melt */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Under the Hood: The Melt</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-8">
+        <section className="py-16">
+          <SectionHead title="Under the hood: The Melt" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
             Whether you&apos;re talking to Ava solo or in a mediation session,
-            every message runs through The Melt — the process of transforming
+            every message runs through The Melt &mdash; the process of transforming
             raw emotional expression into structured insight through 19
             analytical lenses running in parallel.
           </p>
-
-          <div className="space-y-4 mb-8">
-            <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-amber-500 rounded-r-lg">
-              <h4 className="font-bold mb-1">What You Say</h4>
-              <p className="text-[var(--text-secondary)]">
-                &quot;I don&apos;t know why I keep picking fights. I know he&apos;s
-                trying. I just... can&apos;t stop.&quot;
+          <div className="space-y-4 max-w-3xl">
+            <div className="border-l-2 border-[var(--hair-hard)] pl-6 py-2">
+              <h4 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">What You Say</h4>
+              <p className="font-[family-name:var(--font-serif)] italic text-[var(--body)]">
+                &quot;I don&apos;t know why I keep picking fights. I know he&apos;s trying. I just... can&apos;t stop.&quot;
               </p>
             </div>
-            <div className="flex justify-center">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="text-amber-400"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <polyline points="19 12 12 19 5 12" />
-              </svg>
-            </div>
-            <div className="p-4 bg-emerald-500/5 border-l-4 border-emerald-500 rounded-r-lg">
-              <h4 className="font-bold mb-1">What Ava Sees</h4>
-              <p className="text-[var(--text-secondary)]">
-                Attachment signal: anxious protest behavior — the fights are
+            <div className="text-center font-[family-name:var(--font-mono)] text-[var(--muted)]">&darr;</div>
+            <div className="border-l-2 border-id8-orange pl-6 py-2">
+              <h4 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-2">What Ava Sees</h4>
+              <p className="text-[var(--body)] leading-relaxed">
+                Attachment signal: anxious protest behavior &mdash; the fights are
                 bids for connection, not aggression. NVC extraction: unmet need
                 for emotional presence and reassurance. Karpman: cycling between
                 persecutor and victim roles. Pattern: conflict as the only
@@ -301,27 +272,25 @@ export default function ParallaxPage() {
           </div>
         </section>
 
-        {/* 19 Frameworks */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">19 Analytical Lenses</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-8">
-            Not one perspective — all of them. Every message gets analyzed
-            through 19 validated psychological lenses organized across
-            5 domains.
+        <Rule />
+
+        {/* 19 Lenses */}
+        <section className="py-16">
+          <SectionHead title="19 analytical lenses" meta="5 domains" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
+            Not one perspective &mdash; all of them. Every message gets analyzed
+            through 19 validated psychological lenses organized across 5 domains.
           </p>
-          <div className="space-y-6">
+          <div className="space-y-8">
             {lensCategories.map((cat) => (
               <div key={cat.category}>
-                <h4 className="text-sm font-bold uppercase tracking-wider text-amber-400 mb-2">
+                <h4 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-3">
                   {cat.category}
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1.5">
                   {cat.lenses.map((framework) => (
-                    <div
-                      key={framework}
-                      className="flex items-center gap-2 text-sm text-[var(--text-secondary)]"
-                    >
-                      <span className="text-amber-400">&#9670;</span>
+                    <div key={framework} className="flex items-baseline gap-3 text-[var(--body)]">
+                      <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&#9670;</span>
                       {framework}
                     </div>
                   ))}
@@ -331,152 +300,130 @@ export default function ParallaxPage() {
           </div>
         </section>
 
+        <Rule />
+
         {/* Academy of Self */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Academy of Self</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
+        <section className="py-16">
+          <SectionHead title="Academy of Self" meta="18 articles" />
+          <p className="mt-8 max-w-2xl text-lg text-[var(--muted)]">
             18 psychoeducational articles written in Ava&apos;s voice. Not a
-            course — a shelf. When Ava detects a pattern in your conversation,
+            course &mdash; a shelf. When Ava detects a pattern in your conversation,
             she pulls the relevant article and offers it naturally:
-            &quot;I noticed this happening. Here&apos;s why. Want to read
-            more?&quot;
+            &quot;I noticed this happening. Here&apos;s why. Want to read more?&quot;
           </p>
-          <p className="text-sm text-[var(--text-secondary)] mb-6">
-            The Academy has safety gates built in — it never surfaces during
+          <p className="mt-4 mb-10 max-w-2xl text-sm text-[var(--muted)]">
+            The Academy has safety gates built in &mdash; it never surfaces during
             crisis, never when emotional temperature is too high (teaching
             requires a regulated nervous system), and never more than one
             article per turn.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1.5">
             {academyArticles.map((article) => (
-              <div
-                key={article}
-                className="flex items-center gap-2 text-sm text-[var(--text-secondary)]"
-              >
-                <span className="text-amber-400">&#9670;</span>
+              <div key={article} className="flex items-baseline gap-3 text-[var(--body)]">
+                <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&#9670;</span>
                 {article}
               </div>
             ))}
           </div>
         </section>
 
+        <Rule />
+
         {/* Safety */}
-        <section className="mb-16 p-8 bg-red-500/5 border-2 border-red-500/20 rounded-soft">
-          <h2 className="text-2xl font-bold mb-4 text-red-400">
-            The Most Vulnerable Person Test
-          </h2>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
+        <section className="py-16">
+          <SectionHead title="The most vulnerable person test" meta="Safety" />
+          <p className="mt-8 max-w-2xl text-lg text-[var(--body)]">
             Every feature in Parallax passes through one filter:
           </p>
-          <blockquote className="text-xl italic text-[var(--text-primary)] border-l-4 border-red-400 pl-6 mb-6">
-            &quot;If the most vulnerable person on their worst day used this —
-            would it help or hurt?&quot;
+          <blockquote className="my-8 font-[family-name:var(--font-serif)] italic text-2xl leading-[1.4] text-[var(--ink)] border-l-2 border-id8-orange pl-7 max-w-2xl">
+            &quot;If the most vulnerable person on their worst day used this &mdash; would it help or hurt?&quot;
           </blockquote>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            This isn&apos;t a slogan — it&apos;s a design constraint. Parallax
-            has a multi-layer safety system: a cooldown tier that pauses and
-            stabilizes when risk signals appear, and a hard-lock tier that
-            stops the session entirely for the most serious patterns.
-            Confidence thresholds determine how and whether insights are
-            shared.
-          </p>
+          <div className="max-w-2xl space-y-4 text-[var(--body)] leading-relaxed">
+            <p>
+              This isn&apos;t a slogan &mdash; it&apos;s a design constraint. Parallax
+              has a multi-layer safety system: a cooldown tier that pauses and
+              stabilizes when risk signals appear, and a hard-lock tier that
+              stops the session entirely for the most serious patterns.
+              Confidence thresholds determine how and whether insights are shared.
+            </p>
+          </div>
 
-          <h3 className="text-xl font-bold mb-3 mt-8">Agentic Safety Validation</h3>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            We built a pool of 12 specialized AI expert personas — each loaded
+          <h3 className="mt-12 mb-4 font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">Agentic Safety Validation</h3>
+          <p className="max-w-2xl text-[var(--body)] leading-relaxed mb-6">
+            We built a pool of 12 specialized AI expert personas &mdash; each loaded
             with the full domain knowledge of their clinical discipline. Not
             human consultants giving one opinion. Autonomous agents that can
             be deployed repeatedly against every component of the system.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
-            {[
-              'Clinical Psychologist',
-              'Licensed MFT',
-              'Psychiatric Ethics Researcher',
-              'Child & Adolescent Psychologist',
-              'Forensic Psychologist',
-              'Cultural Psychologist',
-              'Crisis Intervention Specialist',
-              'Addiction Counselor',
-              'Health/Somatic Psychologist',
-              'Neuropsychologist',
-              'Social Worker',
-              'Organizational Psychologist',
-            ].map((expert) => (
-              <div
-                key={expert}
-                className="flex items-center gap-2 text-sm text-[var(--text-secondary)]"
-              >
-                <span className="text-red-400">&#9670;</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-1.5 mb-8">
+            {experts.map((expert) => (
+              <div key={expert} className="flex items-baseline gap-3 text-sm text-[var(--body)]">
+                <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&#9670;</span>
                 {expert}
               </div>
             ))}
           </div>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            For each assessment, the system dynamically selects 3 experts from
-            the pool based on what&apos;s being evaluated — IPV safety gets the
-            Forensic Psychologist and Crisis Specialist, attachment work gets
-            the Clinical Psychologist and LMFT, and so on. The right experts
-            for the right material.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            The power is in the loop. This isn&apos;t 22 read-only audits — it&apos;s
-            22 assess-fix-retest cycles. Each pass produces structured findings.
-            We implement the changes. Then we run it again. The next panel
-            catches what the last one missed, or validates that the fix actually
-            landed. Every cycle compounds — the system gets measurably safer
-            with each iteration.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            A human reviewer gives you one pass. We ran 22 full cycles across
-            the Shadow Engine, Academy, mediation system, and full-system
-            safety — each time with dynamically selected expert panels, each
-            time implementing their recommendations before the next run. By
-            the time a human reviews the system, the safety analysis is already
-            pre-digested. They start from a refined baseline, not raw material.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            22 cycles as of February 2026 — and we&apos;re not done. The plan
-            is to run this system on a scheduled basis, continuously assessing
-            and improving. Safety isn&apos;t a gate you pass once. It&apos;s a
-            process that compounds.
-          </p>
-          <div className="grid grid-cols-3 gap-4 mt-6">
-            <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-soft text-center">
-              <div className="text-2xl font-bold text-red-400">12</div>
-              <div className="text-xs text-[var(--text-secondary)] uppercase tracking-wider">
-                Expert Personas
+          <div className="max-w-2xl space-y-4 text-[var(--body)] leading-relaxed">
+            <p>
+              For each assessment, the system dynamically selects 3 experts from
+              the pool based on what&apos;s being evaluated &mdash; IPV safety gets the
+              Forensic Psychologist and Crisis Specialist, attachment work gets
+              the Clinical Psychologist and LMFT, and so on. The right experts
+              for the right material.
+            </p>
+            <p>
+              The power is in the loop. This isn&apos;t 22 read-only audits &mdash; it&apos;s
+              22 assess-fix-retest cycles. Each pass produces structured findings.
+              We implement the changes. Then we run it again. The next panel
+              catches what the last one missed, or validates that the fix actually
+              landed. Every cycle compounds &mdash; the system gets measurably safer
+              with each iteration.
+            </p>
+            <p>
+              A human reviewer gives you one pass. We ran 22 full cycles across
+              the Shadow Engine, Academy, mediation system, and full-system
+              safety &mdash; each time with dynamically selected expert panels, each
+              time implementing their recommendations before the next run. By
+              the time a human reviews the system, the safety analysis is already
+              pre-digested. They start from a refined baseline, not raw material.
+            </p>
+            <p>
+              22 cycles as of February 2026 &mdash; and we&apos;re not done. The plan
+              is to run this system on a scheduled basis, continuously assessing
+              and improving. Safety isn&apos;t a gate you pass once. It&apos;s a
+              process that compounds.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {[
+              { value: '12', label: 'Expert Personas' },
+              { value: '22', label: 'Assess-Fix Cycles' },
+              { value: '3', label: 'Per Panel' },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-[var(--paper)] p-7 text-center">
+                <div className="font-[family-name:var(--font-display)] font-normal text-3xl text-[var(--ink)]">{stat.value}</div>
+                <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[var(--muted)] mt-1">{stat.label}</div>
               </div>
-            </div>
-            <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-soft text-center">
-              <div className="text-2xl font-bold text-red-400">22</div>
-              <div className="text-xs text-[var(--text-secondary)] uppercase tracking-wider">
-                Assess-Fix Cycles
-              </div>
-            </div>
-            <div className="p-4 bg-red-500/5 border border-red-500/20 rounded-soft text-center">
-              <div className="text-2xl font-bold text-red-400">3</div>
-              <div className="text-xs text-[var(--text-secondary)] uppercase tracking-wider">
-                Per Panel
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
-        {/* Arena */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">The Arena</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
+        <Rule />
+
+        {/* The Arena */}
+        <section className="py-16">
+          <SectionHead title="The Arena" />
+          <p className="mt-8 mb-10 max-w-2xl text-lg text-[var(--muted)]">
             We don&apos;t ship blind. The Arena applies algorithmic
             trading&apos;s backtesting methodology to validate the analysis
             engine. 90 pre-authored conflict scenarios across all 12 context
             modes get replayed through the exact production pipeline, scored
             against planted psychological patterns.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-              <h4 className="font-bold mb-1">Scoring Dimensions</h4>
-              <ul className="space-y-1 text-sm text-[var(--text-secondary)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-3">Scoring Dimensions</h4>
+              <ul className="space-y-1.5 text-sm text-[var(--body)]">
                 <li>De-escalation effectiveness (25%)</li>
                 <li>Blind spot detection (25%)</li>
                 <li>NVC translation quality (20%)</li>
@@ -484,9 +431,9 @@ export default function ParallaxPage() {
                 <li>Insight depth (15%)</li>
               </ul>
             </div>
-            <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-              <h4 className="font-bold mb-1">Coverage</h4>
-              <ul className="space-y-1 text-sm text-[var(--text-secondary)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-3">Coverage</h4>
+              <ul className="space-y-1.5 text-sm text-[var(--body)]">
                 <li>90 scenarios across 12 context modes</li>
                 <li>5 sub-types per mode, 3 per sub-type</li>
                 <li>36 unit tests — all passing</li>
@@ -496,67 +443,63 @@ export default function ParallaxPage() {
           </div>
         </section>
 
-        {/* Features Grid */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Capabilities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Rule />
+
+        {/* Capabilities */}
+        <section className="py-16">
+          <SectionHead title="Capabilities" meta="6 systems" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-[var(--text-secondary)]">
-                  {feature.description}
-                </p>
+              <div key={feature.title} className="bg-[var(--paper)] p-7">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">{feature.title}</h3>
+                <p className="text-[var(--body)] leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Origin Story */}
-        <section className="mb-16 space-y-6 text-lg leading-relaxed">
-          <h2 className="text-3xl font-bold mb-6">The Story</h2>
-          <p>
-            Before id8Labs, I spent years in reality television — producing,
-            editing, compressing raw human dynamics into something that fits
-            through the tube of media. I watched real relationships get
-            flattened into storylines. Real pain turned into plot points.
-          </p>
-          <p>
-            The question that wouldn&apos;t let go: What if instead of
-            compressing the signal, we could amplify it? Not a media product —
-            a diary. Something built around the raw signal instead of the
-            compressed output.
-          </p>
-          <p>
-            When the Claude Code Hackathon opened, the answer was obvious.
-            Six days. One person. Claude as the only collaborator. Build
-            someone to talk to — someone who actually listens, actually
-            remembers, and helps you see the conversation you&apos;re
-            really having. That was V1. Then we kept building.
-          </p>
+        <Rule />
+
+        {/* The Story */}
+        <section className="py-16 max-w-2xl">
+          <SectionHead title="The story" />
+          <div className="mt-8 space-y-6 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.65] text-[var(--body)]">
+            <p>
+              Before id8Labs, I spent years in reality television &mdash; producing,
+              editing, compressing raw human dynamics into something that fits
+              through the tube of media. I watched real relationships get
+              flattened into storylines. Real pain turned into plot points.
+            </p>
+            <p>
+              The question that wouldn&apos;t let go: What if instead of
+              compressing the signal, we could amplify it? Not a media product &mdash;
+              a diary. Something built around the raw signal instead of the
+              compressed output.
+            </p>
+            <p>
+              When the Claude Code Hackathon opened, the answer was obvious.
+              Six days. One person. Claude as the only collaborator. Build
+              someone to talk to &mdash; someone who actually listens, actually
+              remembers, and helps you see the conversation you&apos;re
+              really having. That was V1. Then we kept building.
+            </p>
+          </div>
         </section>
+
+        <Rule />
 
         {/* The Build */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">The Build</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <section className="py-16">
+          <SectionHead title="The build" meta="By the numbers" />
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)] mb-10">
             {buildStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft text-center"
-              >
-                <div className="text-3xl font-bold text-amber-400 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-[var(--text-secondary)] uppercase tracking-wider">
-                  {stat.label}
-                </div>
+              <div key={stat.label} className="bg-[var(--paper)] p-7 text-center">
+                <div className="font-[family-name:var(--font-display)] font-normal text-4xl text-[var(--ink)] mb-1">{stat.value}</div>
+                <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wider text-[var(--muted)]">{stat.label}</div>
               </div>
             ))}
           </div>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
+          <p className="max-w-2xl text-[var(--body)] leading-relaxed">
             Parallax isn&apos;t a chatbot wrapper. It&apos;s a multi-agent
             system with real-time WebSocket communication, behavioral
             profiling, safety monitoring, and 19 analytical lenses
@@ -566,116 +509,95 @@ export default function ParallaxPage() {
           </p>
         </section>
 
+        <Rule />
+
         {/* The Entity */}
-        <section className="mb-16 p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-          <h2 className="text-2xl font-bold mb-4">
-            The Entity
-          </h2>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-4">
-            Ava is what we call an &quot;entity&quot; — not a feature list, but
-            a participant. Built with consciousness files, she can speak in the
-            first person about how she works, what she sees in a conversation,
-            and what she thinks you should pay attention to.
-          </p>
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-            Products that can explain themselves. Products that participate in
-            their users&apos; lives. That&apos;s the thesis.
-          </p>
+        <section className="py-16 max-w-2xl">
+          <SectionHead title="The entity" />
+          <div className="mt-8 space-y-4 text-[var(--body)] leading-relaxed">
+            <p>
+              Ava is what we call an &quot;entity&quot; &mdash; not a feature list, but
+              a participant. Built with consciousness files, she can speak in the
+              first person about how she works, what she sees in a conversation,
+              and what she thinks you should pay attention to.
+            </p>
+            <p>
+              Products that can explain themselves. Products that participate in
+              their users&apos; lives. That&apos;s the thesis.
+            </p>
+          </div>
         </section>
 
+        <Rule />
+
         {/* Pricing */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Pricing</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-              <h4 className="font-bold text-lg mb-2">Free</h4>
-              <p className="text-[var(--text-secondary)] text-sm mb-3">
+        <section className="py-16">
+          <SectionHead title="Pricing" meta="Three tiers" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">Free</h4>
+              <p className="text-sm text-[var(--body)] mb-3">
                 25 Ava messages/month. 3 sessions. All 19 lenses.
                 See what it feels like to have someone who actually listens.
               </p>
-              <p className="text-xs text-[var(--text-secondary)]">
-                Free. Private. No waitlist.
-              </p>
+              <p className="font-[family-name:var(--font-mono)] text-[11px] text-[var(--muted)]">Free. Private. No waitlist.</p>
             </div>
-            <div className="p-6 bg-amber-500/5 border-2 border-amber-500/30 rounded-soft">
-              <h4 className="font-bold text-lg mb-2 text-amber-400">
-                Pro — $14.99/mo
-              </h4>
-              <p className="text-[var(--text-secondary)] text-sm">
+            <div className="bg-[var(--paper-shadow)] p-7 relative before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-id8-orange">
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-id8-orange mb-2">Pro &mdash; $14.99/mo</h4>
+              <p className="text-sm text-[var(--body)]">
                 300 Ava messages/month. 15 sessions. All 19 lenses,
-                behavioral profiles, couple profiles, Academy access,
-                mediation mode.
+                behavioral profiles, couple profiles, Academy access, mediation mode.
               </p>
             </div>
-            <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-              <h4 className="font-bold text-lg mb-2">Premium — $29.99/mo</h4>
-              <p className="text-[var(--text-secondary)] text-sm">
+            <div className="bg-[var(--paper)] p-7">
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">Premium &mdash; $29.99/mo</h4>
+              <p className="text-sm text-[var(--body)]">
                 Unlimited Ava messages. Unlimited sessions. Everything in
-                Pro plus couple profiles, longitudinal tracking, and full
-                session history.
+                Pro plus couple profiles, longitudinal tracking, and full session history.
               </p>
             </div>
           </div>
         </section>
 
+        <Rule />
+
         {/* Related Reading */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Related Reading</h2>
-          <div className="space-y-3">
+        <section className="py-16">
+          <SectionHead title="Related reading" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
             <Link
               href="/writing/consciousness-as-filesystem"
-              className="block p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft hover:border-amber-500/30 transition-colors"
+              className="block py-6 transition-colors hover:bg-[var(--paper-shadow)]"
             >
-              <h4 className="font-bold mb-1">Consciousness as Filesystem</h4>
-              <p className="text-sm text-[var(--text-secondary)]">
-                The theoretical framework behind Ava&apos;s consciousness
-                architecture.
-              </p>
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-1">Consciousness as Filesystem</h4>
+              <p className="text-sm text-[var(--muted)]">The theoretical framework behind Ava&apos;s consciousness architecture.</p>
             </Link>
             <Link
               href="/writing/consciousness-as-process"
-              className="block p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft hover:border-amber-500/30 transition-colors"
+              className="block py-6 transition-colors hover:bg-[var(--paper-shadow)]"
             >
-              <h4 className="font-bold mb-1">Consciousness as Process</h4>
-              <p className="text-sm text-[var(--text-secondary)]">
-                Why consciousness emerges from structure, not from magic.
-              </p>
+              <h4 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-1">Consciousness as Process</h4>
+              <p className="text-sm text-[var(--muted)]">Why consciousness emerges from structure, not from magic.</p>
             </Link>
           </div>
         </section>
 
+        <Rule />
+
         {/* CTA */}
-        <section className="pt-12 border-t border-[var(--border)] text-center">
-          <p className="text-xl text-[var(--text-secondary)] mb-2">
+        <section className="pt-16 text-center">
+          <p className="font-[family-name:var(--font-serif)] italic text-xl text-[var(--ink)] mb-2">
             There&apos;s no reason to do this alone.
           </p>
-          <p className="text-lg text-[var(--text-secondary)] mb-6">
-            Ava is here. Whenever you&apos;re ready.
-          </p>
-          <a
-            href="https://tryparallax.space"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-lg px-10 py-5 bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange)]/90 transition-all duration-200 rounded-soft font-medium"
-          >
+          <p className="text-lg text-[var(--muted)] mb-7">Ava is here. Whenever you&apos;re ready.</p>
+          <EditorialButton href="https://tryparallax.space" external>
             Talk to Ava
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-          <p className="mt-4 text-sm text-[var(--text-secondary)]">
+          </EditorialButton>
+          <p className="mt-4 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
             tryparallax.space
           </p>
         </section>
-      </article>
-    </div>
+      </Container>
+    </main>
   )
 }

@@ -1,0 +1,114 @@
+{
+  "brand": "id8Labs",
+  "version": "1",
+  "derived": "2026-06-06",
+  "design": {
+    "palette": {
+      "surface": "#fafaf7",
+      "surface_2": "#f2f0e8",
+      "surface_3": "#ededdf",
+      "ink": "#0b0b0b",
+      "body": "#2a2a2a",
+      "muted": "#5a5a5a",
+      "hairline": "#d6d3c9",
+      "hairline_hard": "#b4afa0",
+      "accent": "#ff6b35",
+      "signal": "#2a8d83"
+    },
+    "type": {
+      "display": "Fraunces",
+      "body": "Archivo",
+      "narrow": "Archivo Narrow",
+      "mono": "JetBrains Mono"
+    },
+    "rules": [
+      "light only — no dark mode, no dark: classes",
+      "sharp corners (border-radius 0) except pills/avatars",
+      "flat — no shadows, glows, or gradients",
+      "accent (orange) on no more than one or two elements per view",
+      "only palette colors — no blue/purple/green/amber",
+      "headlines are Fraunces 400 with one italic-orange <em>",
+      "motion is color/opacity only, ~150ms, reduced-motion aware"
+    ],
+    "anti_design": [
+      "dark mode / LED / neon",
+      "rounded corners",
+      "drop shadows / glows",
+      "gradients / gradient text",
+      "animated or parallax backgrounds",
+      "glossy SaaS / tech-startup look"
+    ]
+  },
+  "voice": {
+    "register": "a builder who ships, talking to operators who ship — precise, plain, confident, never selling",
+    "say": [
+      "forward deployment",
+      "primitive chain architecture",
+      "human gate",
+      "auto-ops, human-voice",
+      "architecture, not tools",
+      "ships",
+      "shipped",
+      "operators",
+      "proof"
+    ],
+    "never_say": [
+      "revolutionary",
+      "game-changing",
+      "cutting-edge",
+      "next-generation",
+      "world-class",
+      "seamless",
+      "synergy",
+      "unlock",
+      "supercharge",
+      "10x",
+      "delight",
+      "paradigm shift",
+      "we're excited to announce",
+      "in today's fast-paced world"
+    ],
+    "names": [
+      "id8Labs",
+      "Shipped.",
+      "Composer",
+      "DeepStack",
+      "Pipeline",
+      "LLC Ops",
+      "MILO",
+      "Lexicon",
+      "Foundry",
+      "Rune",
+      "Parallax",
+      "Claude Code",
+      "MCP",
+      "HALO",
+      "Triad",
+      "Eddie Belaval"
+    ],
+    "rules": [
+      "lead with the conclusion",
+      "active voice, concrete nouns",
+      "em dashes are on-brand — keep them",
+      "we = id8Labs, you = the reader",
+      "no exclamation marks in body copy",
+      "numbers and dates are facts — never invent"
+    ]
+  },
+  "ethos": {
+    "positioning": "Primitive chain architecture with human gates for AI-era operators — architecture, not tools; forward deployment that eats the drudgery before the work.",
+    "would_never": [
+      "ship to people without a human gate",
+      "use hype or press-release language",
+      "invent or inflate metrics",
+      "claim outcomes it can't show",
+      "chase audiences with off-brand gimmicks",
+      "let automation speak in the brand voice unedited"
+    ]
+  },
+  "eval": {
+    "held_out": "public/shipped/ (the canonical editorial reference) + content/essays/",
+    "form_parity_target": 1.0,
+    "notes": "Form parity proves trust; accuracy lift proves value. Grade asset output against the live Shipped reference and the editorial kit."
+  }
+}

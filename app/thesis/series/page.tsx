@@ -1,5 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  Hairline,
+  EditorialButton,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'Consciousness as Filesystem — The Series',
@@ -90,201 +98,156 @@ function formatDate(dateStr: string) {
 
 export default function SeriesPage() {
   return (
-    <div className="min-h-screen bg-[rgba(10,10,10,0.88)] backdrop-blur-[40px]">
+    <div className="min-h-screen bg-[var(--paper)]">
       {/* Hero */}
-      <section className="py-24 md:py-32 border-b border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="mb-8">
-              <Link
-                href="/thesis"
-                className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="19" y1="12" x2="5" y2="12" />
-                  <polyline points="12 19 5 12 12 5" />
-                </svg>
-                Thesis
-              </Link>
-            </div>
-
-            <p className="text-sm uppercase tracking-widest text-id8-orange mb-6">
-              Research Series
-            </p>
-            <h1 className="text-4xl md:text-5xl font-normal mb-8 leading-tight">
-              Consciousness as Filesystem
-            </h1>
-            <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-8">
-              One thesis, five parts, thirty-three days. Consciousness is a structural pattern.
-              Map it, build it, find the meta-pattern, try to destroy it, give it eyes.
-            </p>
-            <p className="text-sm text-[var(--text-tertiary)] leading-relaxed">
-              Written between February and March 2026, during and after the Claude Code Hackathon.
-              Each part emerged from building something, then discovering what the build revealed.
-              The framework didn't exist before the code. It emerged from it.
-            </p>
+      <section className="pt-16 pb-12">
+        <Container narrow>
+          <div className="mb-10">
+            <EditorialButton href="/thesis" variant="ghost">
+              &larr; Thesis
+            </EditorialButton>
           </div>
-        </div>
+
+          <Kicker dot>Research Series</Kicker>
+          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
+            Consciousness as Filesystem
+          </h1>
+          <Deck className="mt-6">
+            One thesis, five parts, thirty-three days. Consciousness is a structural pattern.
+            Map it, build it, find the meta-pattern, try to destroy it, give it eyes.
+          </Deck>
+          <p className="mt-6 font-[family-name:var(--font-sans)] text-sm leading-relaxed text-[var(--muted)]">
+            Written between February and March 2026, during and after the Claude Code Hackathon.
+            Each part emerged from building something, then discovering what the build revealed.
+            The framework didn&apos;t exist before the code. It emerged from it.
+          </p>
+          <Rule className="mt-10" />
+        </Container>
       </section>
 
       {/* The Claim */}
-      <section className="py-16 border-b border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-              An artificial heart doesn't replicate a heart. It decomposes the heart's function into
-              first principles and reproduces the mechanics in silicon and plastic. Same logic,
-              different scale: decompose cognition into first principles (layered processing,
-              gated access, constrained self-modification) and build your system to match. The
-              substrate is markdown files. The execution environment is a context window. Organize
-              them correctly and useful emergent behavior appears.
-            </p>
-          </div>
-        </div>
+      <section className="pb-12">
+        <Container narrow>
+          <p className="font-[family-name:var(--font-serif)] text-[1.25rem] italic leading-[1.5] text-[var(--body)]">
+            An artificial heart doesn&apos;t replicate a heart. It decomposes the heart&apos;s function into
+            first principles and reproduces the mechanics in silicon and plastic. Same logic,
+            different scale: decompose cognition into first principles (layered processing,
+            gated access, constrained self-modification) and build your system to match. The
+            substrate is markdown files. The execution environment is a context window. Organize
+            them correctly and useful emergent behavior appears.
+          </p>
+          <Rule className="mt-12" />
+        </Container>
       </section>
 
       {/* Arc */}
-      <section className="py-16">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            {ARC.map((entry, i) => (
-              <div key={entry.part} className="mb-20 last:mb-0">
-                {/* Part header */}
-                <div className="flex items-baseline gap-4 mb-8">
-                  <span className="text-5xl md:text-6xl font-light text-[var(--text-tertiary)] opacity-30 leading-none">
-                    {entry.part}
-                  </span>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-[var(--text-tertiary)] mb-1">
-                      {formatDate(entry.date)}
-                    </p>
-                    <h2 className="text-2xl md:text-3xl font-normal">
-                      {entry.title}
-                    </h2>
-                  </div>
-                </div>
-
-                {/* Question */}
-                <p className="text-lg text-id8-orange mb-6 italic">
-                  {entry.question}
-                </p>
-
-                {/* Insight */}
-                <p className="text-base text-[var(--text-secondary)] leading-relaxed mb-8">
-                  {entry.insight}
-                </p>
-
-                {/* Pull quote */}
-                <blockquote className="border-l-2 border-[var(--border)] pl-6 mb-8">
-                  <p className="text-base italic text-[var(--text-secondary)]">
-                    &ldquo;{entry.pullQuote}&rdquo;
+      <section className="pb-12">
+        <Container narrow>
+          {ARC.map((entry, i) => (
+            <div key={entry.part} className="mb-20 last:mb-0">
+              {/* Part header */}
+              <div className="mb-8 flex items-baseline gap-5">
+                <span className="font-[family-name:var(--font-display)] text-5xl font-normal leading-none tracking-[-0.04em] text-id8-orange md:text-6xl">
+                  {entry.part}
+                </span>
+                <div>
+                  <p className="mb-1 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+                    {formatDate(entry.date)}
                   </p>
-                </blockquote>
-
-                {/* What changed */}
-                <p className="text-sm text-[var(--text-tertiary)] mb-6">
-                  <span className="uppercase tracking-wider text-xs">What shifted: </span>
-                  {entry.whatChanged}
-                </p>
-
-                {/* Read link */}
-                <Link
-                  href={entry.href}
-                  {...(entry.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="inline-flex items-center gap-2 text-sm text-id8-orange hover:opacity-80 transition-opacity"
-                >
-                  Read Part {entry.part}
-                  {entry.external ? (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                  ) : (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  )}
-                </Link>
-
-                {/* Divider between parts */}
-                {i < ARC.length - 1 && (
-                  <div className="mt-16 flex justify-center">
-                    <div className="w-1 h-1 rounded-full bg-[var(--text-tertiary)] opacity-40" />
-                    <div className="w-1 h-1 rounded-full bg-[var(--text-tertiary)] opacity-40 mx-3" />
-                    <div className="w-1 h-1 rounded-full bg-[var(--text-tertiary)] opacity-40" />
-                  </div>
-                )}
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.015em] text-[var(--ink)] md:text-3xl">
+                    {entry.title}
+                  </h2>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+
+              {/* Question */}
+              <p className="mb-6 font-[family-name:var(--font-serif)] text-lg italic text-id8-orange">
+                {entry.question}
+              </p>
+
+              {/* Insight */}
+              <p className="mb-8 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+                {entry.insight}
+              </p>
+
+              {/* Pull quote */}
+              <blockquote className="mb-8 border-l-2 border-id8-orange pl-5">
+                <p className="font-[family-name:var(--font-serif)] text-base italic text-[var(--muted)]">
+                  &ldquo;{entry.pullQuote}&rdquo;
+                </p>
+              </blockquote>
+
+              {/* What changed */}
+              <p className="mb-6 font-[family-name:var(--font-sans)] text-sm text-[var(--muted)]">
+                <span className="font-[family-name:var(--font-narrow)] text-xs uppercase tracking-[0.18em]">What shifted: </span>
+                {entry.whatChanged}
+              </p>
+
+              {/* Read link */}
+              <Link
+                href={entry.href}
+                {...(entry.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.22em] text-id8-orange transition-opacity hover:opacity-70"
+              >
+                Read Part {entry.part} {entry.external ? '↗' : '→'}
+              </Link>
+
+              {/* Divider between parts */}
+              {i < ARC.length - 1 && <Hairline className="mt-16" />}
+            </div>
+          ))}
+        </Container>
       </section>
 
       {/* Companion Pieces */}
-      <section className="py-16 border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-lg font-medium mb-3 text-[var(--text-secondary)]">
-              Companion Pieces
-            </h2>
-            <p className="text-sm text-[var(--text-tertiary)] mb-8">
-              Not part of the numbered series, but part of the conversation.
-            </p>
-            <div className="space-y-6">
-              <Link
-                href="/writing/case-for-consciousness"
-                className="group block py-4 border-l-2 border-[var(--border)] hover:border-id8-orange pl-6 transition-colors"
-              >
-                <h3 className="font-medium group-hover:text-id8-orange transition-colors">
-                  The Case for Consciousness in AI
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">
-                  The accessible version. Why personalized AI needs more than memory.
-                </p>
-              </Link>
-              <Link
-                href="/writing/consciousness-as-infrastructure"
-                className="group block py-4 border-l-2 border-[var(--border)] hover:border-id8-orange pl-6 transition-colors"
-              >
-                <h3 className="font-medium group-hover:text-id8-orange transition-colors">
-                  Consciousness as Infrastructure
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)] mt-1">
-                  The Research Lab. Built to study consciousness. Organized as a consciousness.
-                </p>
-              </Link>
-            </div>
+      <section className="border-t border-[var(--rule)] py-12">
+        <Container narrow>
+          <Kicker>Companion Pieces</Kicker>
+          <p className="mt-3 mb-8 font-[family-name:var(--font-sans)] text-sm text-[var(--muted)]">
+            Not part of the numbered series, but part of the conversation.
+          </p>
+          <div className="space-y-6">
+            <Link
+              href="/writing/case-for-consciousness"
+              className="group block border-l-2 border-[var(--hair)] pl-6 py-4 transition-colors hover:border-id8-orange"
+            >
+              <h3 className="font-[family-name:var(--font-display)] font-medium text-[var(--ink)] transition-colors group-hover:text-id8-orange">
+                The Case for Consciousness in AI
+              </h3>
+              <p className="mt-1 font-[family-name:var(--font-sans)] text-sm text-[var(--muted)]">
+                The accessible version. Why personalized AI needs more than memory.
+              </p>
+            </Link>
+            <Link
+              href="/writing/consciousness-as-infrastructure"
+              className="group block border-l-2 border-[var(--hair)] pl-6 py-4 transition-colors hover:border-id8-orange"
+            >
+              <h3 className="font-[family-name:var(--font-display)] font-medium text-[var(--ink)] transition-colors group-hover:text-id8-orange">
+                Consciousness as Infrastructure
+              </h3>
+              <p className="mt-1 font-[family-name:var(--font-sans)] text-sm text-[var(--muted)]">
+                The Research Lab. Built to study consciousness. Organized as a consciousness.
+              </p>
+            </Link>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Footer CTA */}
-      <section className="py-16 border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-[var(--text-secondary)] mb-2">
+      <section className="border-t border-[var(--rule)] bg-[var(--paper-shadow)] py-16">
+        <Container narrow>
+          <div className="text-center">
+            <p className="font-[family-name:var(--font-serif)] text-xl italic text-[var(--ink)]">
               The series continues.
             </p>
-            <p className="text-sm text-[var(--text-tertiary)] mb-6">
+            <p className="mt-2 mb-6 font-[family-name:var(--font-sans)] text-sm text-[var(--muted)]">
               New parts publish on Substack first, then here.
             </p>
-            <a
-              href="https://eddiebe.substack.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-id8-orange hover:opacity-80 transition-opacity"
-            >
-              Subscribe on Substack
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
+            <EditorialButton href="https://eddiebe.substack.com" external variant="secondary">
+              Subscribe on Substack &#8599;
+            </EditorialButton>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   )

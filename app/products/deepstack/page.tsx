@@ -1,6 +1,15 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import Link from 'next/link'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  EditorialButton,
+  EditorialCard,
+} from '@/components/editorial'
 
 export const metadata: Metadata = {
   title: 'DeepStack - ID8Labs',
@@ -13,50 +22,36 @@ export const metadata: Metadata = {
   },
 }
 
-const IconSvg = ({ d }: { d: string }) => (
-  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d={d} />
-  </svg>
-)
-
-const features: { icon: ReactNode; title: string; description: string }[] = [
+const features: { title: string; description: string }[] = [
   {
-    icon: <IconSvg d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />,
     title: 'AI Research Chat',
     description: 'Claude-powered analysis with 30+ tools for market research, thesis development, and strategy backtesting. Extended thinking mode for deep reasoning.',
   },
   {
-    icon: <IconSvg d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />,
     title: 'Professional Charts',
     description: 'TradingView-style charts with 30+ indicators, drawing tools, and multi-timeframe analysis. Real-time data streaming.',
   },
   {
-    icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" /></svg>,
     title: 'Thesis Engine',
     description: 'Develop, track, and validate trading hypotheses with live monitoring and validation scores. Connect theses to prediction markets.',
   },
   {
-    icon: <IconSvg d="M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />,
     title: 'Trade Journal',
     description: 'Log trades with emotion tracking, P&L calculation, screenshot capture, and rich text notes. AI discovers behavioral patterns.',
   },
   {
-    icon: <IconSvg d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />,
     title: 'Prediction Markets',
     description: 'Live odds from Kalshi & Polymarket with thesis linking. Event-based betting and probability tracking.',
   },
   {
-    icon: <IconSvg d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />,
     title: 'Deep Research Hub',
     description: 'Perplexity AI integration for earnings analysis, SEC filings, company profiles, and market summaries.',
   },
   {
-    icon: <IconSvg d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />,
     title: 'Emotional Firewall',
     description: 'Real-time cognitive state detection. Blocks revenge trading, overtrading patterns, and emotional exhaustion.',
   },
   {
-    icon: <IconSvg d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />,
     title: 'Options Suite',
     description: 'Full options chains, Greeks analysis, multi-leg strategy builder with visual payoff diagrams.',
   },
@@ -71,210 +66,221 @@ const additionalFeatures = [
   'Mobile-optimized with PWA support',
 ]
 
+const freeTier = [
+  '10 AI queries per 12 hours',
+  '15-minute delayed data',
+  'Basic charts with indicators',
+  '5 watchlist symbols',
+  '1 active Thesis',
+  'Unlimited journal entries',
+  'Basic Emotional Firewall',
+]
+
+const proTier = [
+  'Unlimited AI queries',
+  'Real-time market data',
+  'Advanced charts + drawing tools',
+  'Unlimited watchlists',
+  'Full Options Suite',
+  'Deep Research Hub',
+  'Prediction Markets integration',
+  'AI Pattern Learning',
+]
+
+const techStack = [
+  { name: 'Next.js 15', role: 'Frontend' },
+  { name: 'Claude AI', role: 'Analysis' },
+  { name: 'Alpaca', role: 'Market Data' },
+  { name: 'Supabase', role: 'Database' },
+]
+
+const disclaimers: { label: string; body: ReactNode }[] = [
+  { label: 'No Trade Execution', body: 'This platform does NOT execute trades on your behalf.' },
+  { label: 'Risk Warning', body: 'Trading in financial markets involves significant risk. You may lose some or all of your investment. Past performance does not guarantee future results.' },
+  { label: 'Not a Recommendation', body: 'Nothing on this platform constitutes a recommendation to buy, sell, or hold any security.' },
+  { label: 'AI Limitations', body: 'AI can hallucinate. Verify all data independently.' },
+]
+
 export default function DeepStackPage() {
   return (
-    <div className="container py-24">
-      <article className="max-w-4xl mx-auto">
-        {/* Back Link */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to products
-        </Link>
-
-        {/* Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            <h1>DeepStack</h1>
-            <span className="text-sm px-3 py-1 bg-green-500/10 text-green-400 rounded-full">
-              Live
-            </span>
-            <span className="text-sm px-3 py-1 bg-[var(--bg-secondary)] text-[var(--text-secondary)] rounded-full">
-              v2.5.0
-            </span>
+    <main className="bg-[var(--paper)] py-20 md:py-28">
+      <Container>
+        {/* Hero */}
+        <header className="border-b border-[var(--hair)] pb-14">
+          <Kicker dot className="mb-5">Trading Research · Live · v2.5.0</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
+            A research analyst <em className="italic text-id8-orange">in your pocket</em>.
+          </h1>
+          <Deck className="max-w-2xl mb-9">
+            AI-powered trading research that helps you develop, test, and track your trading ideas
+            with discipline. Research only&mdash;we never execute trades.
+          </Deck>
+          <div className="flex flex-wrap gap-3.5">
+            <EditorialButton href="https://deepstack.trade" external>
+              Launch DeepStack
+            </EditorialButton>
+            <EditorialButton href="/products" variant="ghost">
+              Back to products
+            </EditorialButton>
           </div>
-          <p className="text-2xl text-[var(--text-secondary)] mb-8">
-            AI-Powered Trading Research Platform
-          </p>
-          <a
-            href="https://deepstack.trade"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-lg px-8 py-4 bg-green-500 text-white hover:bg-green-600 transition-all duration-200 rounded-soft font-medium"
-          >
-            Launch DeepStack
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
+          <MetaRow
+            className="mt-12 border-t border-[var(--hair)] pt-6"
+            items={[
+              { value: 'Web App', label: 'platform' },
+              { value: 'Claude', label: 'ai model' },
+              { value: 'Free', label: 'price' },
+              { value: 'v2.5.0', label: 'version' },
+            ]}
+          />
         </header>
 
         {/* Disclaimer Banner */}
-        <section className="mb-16 p-6 bg-amber-500/10 border-2 border-amber-500/30 rounded-soft">
-          <p className="text-lg text-amber-300 font-medium">
-            Research Only. Not Financial Advice.
-          </p>
-          <p className="text-[var(--text-secondary)] mt-2">
-            DeepStack is a research and analysis platform. It does NOT execute trades on your behalf.
-            Trading involves significant risk. AI can hallucinate—verify all data independently.
-          </p>
+        <section className="py-16">
+          <EditorialCard featured>
+            <Kicker className="mb-3">Research only · Not financial advice</Kicker>
+            <p className="text-[var(--body)] leading-relaxed">
+              DeepStack is a research and analysis platform. It does NOT execute trades on your behalf.
+              Trading involves significant risk. AI can hallucinate&mdash;verify all data independently.
+            </p>
+          </EditorialCard>
         </section>
 
         {/* Description */}
-        <section className="mb-16 space-y-6 text-lg leading-relaxed">
-          <p>
-            Think of DeepStack as having a research analyst in your pocket. It combines conversational AI
-            with professional-grade market tools—helping you develop, test, and track your trading ideas
-            with discipline.
-          </p>
-          <p>
-            Built for traders who want to think more clearly about markets. The Emotional Firewall
-            detects revenge trading and overtrading patterns in real-time. The Thesis Engine forces
-            you to articulate your hypothesis before entering a position. The Journal tracks not just
-            P&L but your emotional state—because the data shows your losses cluster around specific
-            cognitive patterns.
-          </p>
+        <section className="pb-16 max-w-2xl">
+          <div className="space-y-6 font-[family-name:var(--font-serif)] text-[1.0625rem] leading-[1.65] text-[var(--body)]">
+            <p>
+              Think of DeepStack as having a research analyst in your pocket. It combines conversational AI
+              with professional-grade market tools&mdash;helping you develop, test, and track your trading ideas
+              with discipline.
+            </p>
+            <p>
+              Built for traders who want to think more clearly about markets. The Emotional Firewall
+              detects revenge trading and overtrading patterns in real-time. The Thesis Engine forces
+              you to articulate your hypothesis before entering a position. The Journal tracks not just
+              P&amp;L but your emotional state&mdash;because the data shows your losses cluster around specific
+              cognitive patterns.
+            </p>
+          </div>
         </section>
 
-        {/* Core Features Grid */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Core Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Rule />
+
+        {/* Core Features */}
+        <section className="py-16">
+          <SectionHead title={<>Core <em className="italic text-id8-orange">features</em></>} meta="8 systems" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
             {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft"
-              >
-                <div className="text-3xl mb-3">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-[var(--text-secondary)]">{feature.description}</p>
+              <div key={feature.title} className="bg-[var(--paper)] p-7">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-[var(--body)] leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Additional Features */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Also Included</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <Rule />
+
+        {/* Also Included */}
+        <section className="py-16">
+          <SectionHead title="Also included" meta="6 more" />
+          <ul className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8">
             {additionalFeatures.map((feature) => (
-              <li key={feature} className="flex items-center gap-3 text-lg">
-                <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+              <li key={feature} className="flex items-baseline gap-3 text-[var(--body)]">
+                <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&rarr;</span>
                 {feature}
               </li>
             ))}
           </ul>
         </section>
 
-        {/* Tiers */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Pricing</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Free Tier */}
-            <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-              <h3 className="text-2xl font-bold mb-2">Free</h3>
-              <p className="text-[var(--text-secondary)] mb-6">Learn the platform</p>
-              <ul className="space-y-3 text-[var(--text-secondary)]">
-                <li>• 10 AI queries per 12 hours</li>
-                <li>• 15-minute delayed data</li>
-                <li>• Basic charts with indicators</li>
-                <li>• 5 watchlist symbols</li>
-                <li>• 1 active Thesis</li>
-                <li>• Unlimited journal entries</li>
-                <li>• Basic Emotional Firewall</li>
+        <Rule />
+
+        {/* Pricing */}
+        <section className="py-16">
+          <SectionHead title={<>Pricing</>} meta="Two tiers" />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            <div className="bg-[var(--paper)] p-7">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-2xl text-[var(--ink)] mb-1">Free</h3>
+              <p className="text-sm text-[var(--muted)] mb-6">Learn the platform</p>
+              <ul className="space-y-2.5 text-[var(--body)]">
+                {freeTier.map((item) => (
+                  <li key={item} className="flex items-baseline gap-3">
+                    <span className="text-[var(--muted)] font-[family-name:var(--font-mono)] text-xs">&middot;</span>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
-            {/* Pro Tier */}
-            <div className="p-6 bg-green-500/5 border-2 border-green-500/30 rounded-soft">
-              <h3 className="text-2xl font-bold mb-2 text-green-400">Pro</h3>
-              <p className="text-[var(--text-secondary)] mb-6">For serious researchers</p>
-              <ul className="space-y-3 text-[var(--text-secondary)]">
-                <li>• Unlimited AI queries</li>
-                <li>• Real-time market data</li>
-                <li>• Advanced charts + drawing tools</li>
-                <li>• Unlimited watchlists</li>
-                <li>• Full Options Suite</li>
-                <li>• Deep Research Hub</li>
-                <li>• Prediction Markets integration</li>
-                <li>• AI Pattern Learning</li>
+            <div className="bg-[var(--paper-shadow)] p-7 relative before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-id8-orange">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-2xl text-id8-orange mb-1">Pro</h3>
+              <p className="text-sm text-[var(--muted)] mb-6">For serious researchers</p>
+              <ul className="space-y-2.5 text-[var(--body)]">
+                {proTier.map((item) => (
+                  <li key={item} className="flex items-baseline gap-3">
+                    <span className="text-id8-orange font-[family-name:var(--font-mono)] text-xs">&rarr;</span>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </section>
+
+        <Rule />
 
         {/* Tech Stack */}
-        <section className="mb-16 p-8 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-soft">
-          <h3 className="text-2xl font-bold mb-6">Built With</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div>
-              <p className="font-bold text-lg">Next.js 15</p>
-              <p className="text-sm text-[var(--text-secondary)]">Frontend</p>
-            </div>
-            <div>
-              <p className="font-bold text-lg">Claude AI</p>
-              <p className="text-sm text-[var(--text-secondary)]">Analysis</p>
-            </div>
-            <div>
-              <p className="font-bold text-lg">Alpaca</p>
-              <p className="text-sm text-[var(--text-secondary)]">Market Data</p>
-            </div>
-            <div>
-              <p className="font-bold text-lg">Supabase</p>
-              <p className="text-sm text-[var(--text-secondary)]">Database</p>
-            </div>
+        <section className="py-16">
+          <SectionHead title="Built with" meta="Stack" />
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)]">
+            {techStack.map((item) => (
+              <div key={item.name} className="bg-[var(--paper)] p-7 text-center">
+                <p className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">{item.name}</p>
+                <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mt-1">{item.role}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Full Disclaimer */}
-        <section className="mb-16 p-6 bg-red-500/5 border-2 border-red-500/20 rounded-soft">
-          <h3 className="text-xl font-bold mb-3 text-red-400">Risk Disclaimer</h3>
-          <div className="text-[var(--text-secondary)] leading-relaxed space-y-3">
-            <p>
-              <strong>No Trade Execution:</strong> This platform does NOT execute trades on your behalf.
-            </p>
-            <p>
-              <strong>Risk Warning:</strong> Trading in financial markets involves significant risk.
-              You may lose some or all of your investment. Past performance does not guarantee future results.
-            </p>
-            <p>
-              <strong>Not a Recommendation:</strong> Nothing on this platform constitutes a recommendation
-              to buy, sell, or hold any security.
-            </p>
-            <p>
-              <strong>AI Limitations:</strong> AI can hallucinate. Verify all data independently.
-            </p>
-            <p>
-              The developers of DeepStack are not responsible for any financial losses incurred through
-              the use of this software.
-            </p>
-          </div>
-        </section>
+        <Rule />
 
-        {/* CTA */}
-        <section className="pt-12 border-t border-[var(--border)] text-center">
-          <a
-            href="https://deepstack.trade"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-lg px-10 py-5 bg-green-500 text-white hover:bg-green-600 transition-all duration-200 rounded-soft font-medium"
-          >
-            Try DeepStack Free
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-          <p className="mt-4 text-[var(--text-secondary)]">
-            No credit card required
+        {/* Risk Disclaimer */}
+        <section className="py-16">
+          <SectionHead title="Risk disclaimer" meta="Read first" />
+          <div className="mt-10 divide-y divide-[var(--hair)] border-y border-[var(--hair)]">
+            {disclaimers.map((d) => (
+              <div key={d.label} className="py-6 grid md:grid-cols-[220px_1fr] gap-2 md:gap-8">
+                <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--ink)]">
+                  {d.label}
+                </span>
+                <p className="text-[var(--body)] leading-relaxed">{d.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-[var(--muted)]">
+            The developers of DeepStack are not responsible for any financial losses incurred through
+            the use of this software.
           </p>
         </section>
-      </article>
-    </div>
+
+        <Rule />
+
+        {/* CTA */}
+        <section className="pt-16">
+          <EditorialCard featured className="text-center">
+            <p className="font-[family-name:var(--font-serif)] italic text-xl text-[var(--muted)] mb-7 max-w-xl mx-auto">
+              Better decisions start with clearer thinking.
+            </p>
+            <EditorialButton href="https://deepstack.trade" external>
+              Try DeepStack Free
+            </EditorialButton>
+            <p className="mt-4 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+              No credit card required
+            </p>
+          </EditorialCard>
+        </section>
+      </Container>
+    </main>
   )
 }

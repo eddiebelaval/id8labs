@@ -1,96 +1,40 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { resumeData } from "@/lib/eddie-constants";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { Sparkles, ArrowRight } from "lucide-react";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { Container } from "@/components/editorial";
 
 export function CurrentWork() {
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   return (
-    <section className="relative py-32 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="border-b border-[var(--hair)] py-20 md:py-24">
+      <Container>
         <ScrollReveal>
-          <div
-            className="relative p-12 rounded-3xl overflow-hidden backdrop-blur-md border-t border-white/20"
-            style={{
-              background: "rgba(0, 0, 0, 0.45)",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-            }}
-          >
-            {/* Decorative Elements */}
-            <motion.div
-              className="absolute top-0 right-0 w-64 h-64 rounded-full"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(0, 255, 65, 0.15), transparent)",
-                filter: "blur(60px)",
-              }}
-              animate={
-                prefersReducedMotion
-                  ? { scale: 1, opacity: 0.3 }
-                  : {
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.5, 0.3],
-                    }
-              }
-              transition={{
-                duration: prefersReducedMotion ? 0 : 8,
-                repeat: prefersReducedMotion ? 0 : Infinity,
-                ease: "easeInOut",
-              }}
-            />
+          <div className="bg-[var(--ink)] p-9 md:p-14">
+            <p className="mb-6 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-id8-orange">
+              Currently
+            </p>
 
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-6">
-                <Sparkles
-                  className="w-8 h-8"
-                  style={{ color: "#00ff41" }}
-                />
-                <span
-                  className="text-sm font-[family-name:var(--font-press-start)]"
-                  style={{ color: "#00ff41" }}
-                >
-                  Currently
-                </span>
-              </div>
+            <h2 className="font-[family-name:var(--font-display)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--paper)] text-[clamp(1.875rem,4vw,2.75rem)]">
+              {resumeData.currentWork.company}
+            </h2>
 
-              <h2
-                className="text-xl md:text-2xl font-normal mb-4 font-[family-name:var(--font-press-start)]"
-                style={{ color: "#00ff41", textShadow: "0 0 5px #00ff41" }}
-              >
-                {resumeData.currentWork.company}
-              </h2>
+            <p className="mt-4 max-w-2xl font-[family-name:var(--font-serif)] text-xl italic leading-[1.45] text-[rgba(250,250,247,0.82)]">
+              {resumeData.currentWork.tagline}
+            </p>
 
-              <p
-                className="text-2xl mb-6 font-[family-name:var(--font-vt323)]"
-                style={{ color: "rgba(255, 255, 255, 0.8)" }}
-              >
-                {resumeData.currentWork.tagline}
-              </p>
+            <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-[rgba(250,250,247,0.68)]">
+              {resumeData.currentWork.description}
+            </p>
 
-              <p
-                className="text-xl leading-relaxed max-w-2xl font-[family-name:var(--font-vt323)]"
-                style={{ color: "rgba(255, 255, 255, 0.6)" }}
-              >
-                {resumeData.currentWork.description}
-              </p>
-
-              <motion.div
-                className="mt-8 inline-flex items-center gap-2 text-lg font-[family-name:var(--font-vt323)]"
-                style={{ color: "#00ff41" }}
-                whileHover={prefersReducedMotion ? undefined : { x: 5 }}
-              >
-                <span>Building in public</span>
-                <ArrowRight className="w-4 h-4" />
-              </motion.div>
-            </div>
+            <p className="mt-8 inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.22em] text-id8-orange">
+              Building in public
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </p>
           </div>
         </ScrollReveal>
-      </div>
+      </Container>
     </section>
   );
 }
