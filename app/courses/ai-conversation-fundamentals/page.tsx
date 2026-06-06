@@ -1,43 +1,16 @@
 'use client'
 
-import { m } from '@/components/motion'
-import Link from 'next/link'
 import EmailCapture from '@/components/EmailCapture'
-
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Icons
-const CheckIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-)
-
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-)
-
-const BookIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-  </svg>
-)
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  SectionHead,
+  EditorialButton,
+  IssueCard,
+} from '@/components/editorial'
 
 // Data
 const learningPoints = [
@@ -95,199 +68,151 @@ const modules = [
 
 export default function AIConversationFundamentalsPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-zone-text">
-        <div className="container">
-          <m.div
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-            className="max-w-4xl"
-          >
-            <m.p
-              variants={fadeUp}
-              className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-6"
-            >
-              Free Course • ~45 min
-            </m.p>
+    <div className="min-h-screen bg-[var(--paper)]">
+      {/* Hero */}
+      <section className="pt-20 pb-12">
+        <Container>
+          <Kicker dot>Free Course · ~45 min</Kicker>
 
-            <m.h1
-              variants={fadeUp}
-              className="text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] font-bold tracking-tight mb-6"
-            >
-              AI Conversation{' '}
-              <span className="text-gradient-orange">Fundamentals</span>
-            </m.h1>
+          <h1 className="mt-6 max-w-4xl font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.5rem,6.5vw,4.5rem)]">
+            AI Conversation <em className="italic text-id8-orange">Fundamentals</em>
+          </h1>
 
-            <m.p
-              variants={fadeUp}
-              className="text-2xl md:text-3xl text-[var(--text-secondary)] max-w-2xl mb-4 font-medium"
-            >
-              The mental models that separate frustrated users from people who get results every time.
-            </m.p>
+          <Deck className="mt-7 max-w-2xl">
+            The mental models that separate frustrated users from people who get results every time.
+          </Deck>
 
-            <m.p
-              variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] max-w-2xl mb-10 leading-relaxed"
-            >
-              You've used ChatGPT. You've tried Claude. Sometimes it's magic. Sometimes it's useless. The difference isn't luck. It's understanding how to think about the conversation.
-            </m.p>
+          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+            You&apos;ve used ChatGPT. You&apos;ve tried Claude. Sometimes it&apos;s magic. Sometimes it&apos;s useless. The difference isn&apos;t luck. It&apos;s understanding how to think about the conversation.
+          </p>
 
-            {/* What You'll Learn */}
-            <m.div
-              variants={fadeUp}
-              className="mb-10 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl"
-            >
-              <h3 className="text-lg font-bold mb-4">What you'll learn:</h3>
-              <ul className="space-y-3">
-                {learningPoints.map((point, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="text-id8-orange flex-shrink-0 mt-0.5">
-                      <CheckIcon />
-                    </span>
-                    <span className="text-[var(--text-secondary)]">{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </m.div>
-
-            {/* CTA Button */}
-            <m.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/courses/ai-conversation-fundamentals/module-1"
-                className="btn btn-primary group inline-flex items-center justify-center gap-2"
-              >
-                Start the Course
-                <ArrowRightIcon />
-              </Link>
-            </m.div>
-          </m.div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
-      </section>
-
-      {/* Email Capture Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <EmailCapture
-              source="ai-conversation-fundamentals-landing"
-              title="Get notified when we release new courses"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Course Preview Section */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="text-center mb-16">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              Course Preview
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              6 modules. 45 minutes. Zero fluff.
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Each module builds a mental model that changes how you approach AI conversations. By the end, you'll know exactly what to do when you're not getting the results you want.
-            </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
+            <EditorialButton href="/courses/ai-conversation-fundamentals/module-1" variant="primary">
+              Start the Course &rarr;
+            </EditorialButton>
           </div>
 
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="max-w-3xl mx-auto space-y-4"
-          >
-            {modules.map((module, index) => (
-              <m.div key={index} variants={fadeUp}>
-                <Link
-                  href={module.href}
-                  className="flex items-start gap-4 p-5 rounded-xl border bg-[var(--bg-secondary)] border-[var(--border)] hover:border-id8-orange/30 transition-colors"
-                >
-                  <span className="text-2xl font-mono font-bold text-[var(--text-tertiary)]">
-                    {module.number}
+          <MetaRow
+            className="mt-10"
+            items={[
+              { value: '6', label: 'modules' },
+              { value: '45', label: 'minutes' },
+              { value: 'Free', label: 'no signup' },
+            ]}
+          />
+
+          <Rule className="mt-10" />
+        </Container>
+      </section>
+
+      {/* What you'll learn */}
+      <section className="pb-16">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
+              What you&apos;ll learn
+            </p>
+            <ul className="space-y-3">
+              {learningPoints.map((point, index) => (
+                <li key={index} className="flex items-start gap-3 text-[1.0625rem] leading-[1.6] text-[var(--body)]">
+                  <span className="text-id8-orange flex-shrink-0 font-[family-name:var(--font-mono)] text-sm pt-0.5">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-lg font-bold">{module.title}</h3>
-                    </div>
-                    <p className="text-[var(--text-secondary)] text-sm">{module.description}</p>
-                  </div>
-                  <span className="text-sm font-mono text-[var(--text-tertiary)] whitespace-nowrap">
-                    {module.duration}
-                  </span>
-                </Link>
-              </m.div>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* Course Preview */}
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container>
+          <SectionHead
+            title={<>6 modules. 45 minutes. <em className="italic text-id8-orange">Zero fluff.</em></>}
+            meta="Course Preview"
+            className="mb-4"
+          />
+          <p className="mt-6 mb-2 max-w-2xl text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+            Each module builds a mental model that changes how you approach AI conversations. By the end, you&apos;ll know exactly what to do when you&apos;re not getting the results you want.
+          </p>
+
+          <div className="mt-6">
+            {modules.map((module) => (
+              <IssueCard
+                key={module.number}
+                number={module.number}
+                title={module.title}
+                deck={module.description}
+                date={module.duration}
+                href={module.href}
+              />
             ))}
-          </m.div>
-        </div>
+          </div>
+        </Container>
       </section>
 
-      {/* Instructor Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-                Your Instructor
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                Built by someone who teaches this daily
-              </h2>
-            </div>
+      {/* Email Capture */}
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container narrow>
+          <EmailCapture
+            source="ai-conversation-fundamentals-landing"
+            title="Get notified when we release new courses"
+          />
+        </Container>
+      </section>
 
-            <div className="card">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-id8-orange/20 to-id8-orange/5 flex items-center justify-center text-2xl font-bold text-id8-orange flex-shrink-0">
-                  EB
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Eddie Belaval</h3>
-                  <p className="text-[var(--text-secondary)] mb-4 leading-relaxed">
-                    I've spent hundreds of hours teaching people how to use AI tools effectively. The patterns are the same whether you're writing marketing copy, analyzing research, or processing files.
-                  </p>
-                  <p className="text-[var(--text-secondary)] leading-relaxed">
-                    This course distills those patterns into 45 minutes. It's the mental framework I wish I had when I started.
-                  </p>
-                </div>
+      {/* Instructor */}
+      <section className="py-16 border-t border-[var(--rule)]">
+        <Container>
+          <SectionHead
+            title="Built by someone who teaches this daily"
+            meta="Your Instructor"
+            className="mb-8"
+          />
+          <div className="max-w-3xl border border-[var(--hair)] p-7">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[var(--paper-mid)] font-[family-name:var(--font-mono)] text-lg text-[var(--ink)]">
+                EB
+              </div>
+              <div>
+                <h3 className="mb-2 font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">
+                  Eddie Belaval
+                </h3>
+                <p className="mb-4 text-[var(--body)] leading-[1.7]">
+                  I&apos;ve spent hundreds of hours teaching people how to use AI tools effectively. The patterns are the same whether you&apos;re writing marketing copy, analyzing research, or processing files.
+                </p>
+                <p className="text-[var(--body)] leading-[1.7]">
+                  This course distills those patterns into 45 minutes. It&apos;s the mental framework I wish I had when I started.
+                </p>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="section-spacing-lg relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] aspect-square bg-[radial-gradient(circle,var(--id8-orange-light)_0%,transparent_70%)] opacity-30 pointer-events-none" />
-
-        <div className="container relative">
-          <div className="text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-id8-orange/10 rounded-2xl mb-6">
-              <BookIcon />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Ready to understand{' '}
-              <span className="text-gradient-orange">how this actually works?</span>
+      {/* Final CTA */}
+      <section className="py-20 border-t border-[var(--rule)]">
+        <Container narrow>
+          <div className="text-center">
+            <Kicker dot className="justify-center">Ready when you are</Kicker>
+            <h2 className="mt-6 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2rem,4.5vw,3rem)]">
+              Ready to understand <em className="italic text-id8-orange">how this actually works?</em>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
+            <p className="mt-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
               45 minutes to change how you think about AI conversations. Forever.
             </p>
-            <Link
-              href="/courses/ai-conversation-fundamentals/module-1"
-              className="btn btn-primary group inline-flex items-center justify-center gap-2 text-lg py-4 px-8"
-            >
-              Start Module 1
-              <ArrowRightIcon />
-            </Link>
-            <p className="mt-4 text-sm text-[var(--text-tertiary)]">
+            <div className="mt-8 flex justify-center">
+              <EditorialButton href="/courses/ai-conversation-fundamentals/module-1" variant="primary">
+                Start Module 1 &rarr;
+              </EditorialButton>
+            </div>
+            <p className="mt-4 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
               Completely free. No signup required.
             </p>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   )

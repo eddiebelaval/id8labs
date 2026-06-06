@@ -64,12 +64,12 @@ function SignUpForm(): React.ReactElement {
   }
 
   return (
-    <div className="bg-white dark:bg-bg-dark border border-border-light dark:border-border-dark rounded-lg p-8 shadow-lg">
-      <h1 className="text-3xl font-bold text-text-light dark:text-text-dark mb-2">
+    <div className="bg-[var(--paper)] border border-[var(--hair)] p-8">
+      <h1 className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] text-[var(--ink)] mb-2">
         Create your account
       </h1>
-      <p className="text-text-light-secondary dark:text-text-dark-secondary mb-8">
-        Start learning with ID8Labs
+      <p className="text-[var(--muted)] mb-8">
+        Start learning with id8Labs
       </p>
 
       <GoogleAuthButton onClick={handleGoogleSignUp} disabled={loading} />
@@ -79,7 +79,7 @@ function SignUpForm(): React.ReactElement {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-text-light dark:text-text-dark mb-2"
+            className="block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2"
           >
             Email
           </label>
@@ -89,10 +89,10 @@ function SignUpForm(): React.ReactElement {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-border-light dark:border-border-dark rounded-md bg-white dark:bg-bg-dark text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400"
+            className="w-full px-4 py-3 border border-[var(--hair)] bg-[var(--paper)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)] transition-colors duration-150"
             placeholder="you@example.com"
           />
-          <p className="mt-2 text-xs text-text-light-secondary dark:text-text-dark-secondary">
+          <p className="mt-2 text-xs text-[var(--muted)]">
             We'll email you a magic link - no password required.
           </p>
         </div>
@@ -102,17 +102,17 @@ function SignUpForm(): React.ReactElement {
         <button
           type="submit"
           disabled={loading}
-          className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:disabled:bg-orange-800 text-white font-medium rounded-md transition-colors"
+          className="w-full px-6 py-3.5 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 disabled:opacity-50"
         >
           {loading ? 'Sending...' : 'Send Magic Link'}
         </button>
       </form>
 
-      <div className="mt-6 text-center text-sm text-text-light-secondary dark:text-text-dark-secondary">
+      <div className="mt-6 text-center text-sm text-[var(--muted)]">
         Already have an account?{' '}
         <Link
           href="/sign-in"
-          className="text-orange-500 dark:text-orange-400 hover:underline font-medium"
+          className="text-id8-orange hover:underline font-medium"
         >
           Sign in
         </Link>

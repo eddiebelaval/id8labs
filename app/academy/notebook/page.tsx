@@ -2,26 +2,19 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { m, AnimatePresence } from '@/components/motion'
+import { AnimatePresence, m } from '@/components/motion'
 import { useAnnotations } from '@/hooks/useAnnotations'
 import { NotebookCard, AIInsightsPanel } from '@/components/annotations'
 import { COURSES } from '@/lib/courses/config'
 import type { Highlight, Note } from '@/lib/courses/types'
-
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.05
-    }
-  }
-}
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  EditorialButton,
+} from '@/components/editorial'
 
 type FilterType = 'all' | 'highlights' | 'notes'
 type SortType = 'newest' | 'oldest' | 'course'
