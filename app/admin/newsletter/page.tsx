@@ -211,16 +211,16 @@ export default function NewsletterDashboard() {
       </div>
 
       {/* Info Note */}
-      <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
+      <div className="p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
         <div className="flex items-start gap-3">
-          <svg className="w-5 h-5 text-blue-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-5 h-5 text-id8-orange mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <div>
-            <p className="text-sm font-medium text-blue-600 dark:text-blue-400">CLI Access Available</p>
-            <p className="text-sm text-[var(--muted)]">
+            <p className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange mb-1">CLI Access Available</p>
+            <p className="text-sm text-[var(--body)] leading-[1.6]">
               Use the Newsletter MCP server to manage subscribers and send newsletters from Claude Code.
-              Run <code className="px-1 py-0.5 bg-[var(--bg-primary)] rounded">newsletter_stats</code> to get started.
+              Run <code className="px-1 py-0.5 bg-[var(--paper-mid)] font-[family-name:var(--font-mono)] text-[var(--ink)]">newsletter_stats</code> to get started.
             </p>
           </div>
         </div>
