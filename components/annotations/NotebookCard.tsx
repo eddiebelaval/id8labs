@@ -11,11 +11,21 @@ interface NotebookCardProps {
   onDelete?: (id: string) => void
 }
 
+// Highlight colors mapped to the on-palette ramp so the 4-way distinction
+// survives while staying ink/orange/teal/hairline only.
 const COLOR_CLASSES: Record<HighlightColor, string> = {
-  yellow: 'bg-yellow-300/30 border-yellow-400/50',
-  green: 'bg-green-300/30 border-green-400/50',
-  blue: 'bg-blue-300/30 border-blue-400/50',
-  pink: 'bg-pink-300/30 border-pink-400/50',
+  yellow: 'bg-[var(--paper-mid)] border-id8-orange',
+  green: 'bg-[var(--paper-mid)] border-[var(--teal)]',
+  blue: 'bg-[var(--paper-mid)] border-[var(--ink)]',
+  pink: 'bg-[var(--paper-mid)] border-[var(--hair-hard)]',
+}
+
+// Solid dot/bar accents per highlight color (on-palette).
+const COLOR_ACCENTS: Record<HighlightColor, string> = {
+  yellow: 'bg-id8-orange',
+  green: 'bg-[var(--teal)]',
+  blue: 'bg-[var(--ink)]',
+  pink: 'bg-[var(--hair-hard)]',
 }
 
 export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
@@ -37,27 +47,27 @@ export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className={`p-4 rounded-lg border transition-shadow hover:shadow-md ${
-        highlight ? `${COLOR_CLASSES[highlight.color]} border-l-4` : 'bg-[var(--bg-secondary)] border-[var(--border)]'
+      className={`p-4 border transition-colors ${
+        highlight ? `${COLOR_CLASSES[highlight.color]} border-l-4` : "bg-[var(--paper-shadow)] border-[var(--hair)]"
       }`}
     >
       {/* Header - Course & Module info */}
       <div className="flex items-center justify-between mb-3">
         <Link
           href={`/academy${modulePath}`}
-          className="flex items-center gap-2 text-xs font-medium text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
+          className="flex items-center gap-2 text-xs font-medium text-[var(--muted)] hover:text-id8-orange transition-colors"
         >
           <BookIcon className="w-3.5 h-3.5" />
           <span>{courseName}</span>
           {moduleNumber && (
             <>
-              <span className="text-[var(--text-tertiary)]">/</span>
+              <span className="text-[var(--muted)]">/</span>
               <span>Module {moduleNumber}</span>
             </>
           )}
         </Link>
 
-        <span className="text-xs text-[var(--text-tertiary)]">
+        <span className="text-xs text-[var(--muted)]">
           {formatRelativeTime(new Date(item.created_at))}
         </span>
       </div>
@@ -65,11 +75,11 @@ export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
       {/* Content */}
       {highlight ? (
         <>
-          <p className="text-sm leading-relaxed text-[var(--text-primary)]">
+          <p className="text-sm leading-relaxed text-[var(--ink)]">
             "{highlight.highlighted_text}"
           </p>
           {highlight.note && (
-            <p className="mt-2 text-sm text-[var(--text-secondary)] italic pl-3 border-l-2 border-[var(--border)]">
+            <p className="mt-2 text-sm text-[var(--muted)] italic pl-3 border-l-2 border-[var(--hair)]">
               {highlight.note}
             </p>
           )}
@@ -77,11 +87,11 @@ export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
       ) : note ? (
         <>
           {note.title && (
-            <h4 className="font-medium text-[var(--text-primary)] mb-2">
+            <h4 className="font-medium text-[var(--ink)] mb-2">
               {note.title}
             </h4>
           )}
-          <p className="text-sm text-[var(--text-secondary)] whitespace-pre-wrap line-clamp-4">
+          <p className="text-sm text-[var(--muted)] whitespace-pre-wrap line-clamp-4">
             {note.content}
           </p>
         </>
@@ -103,7 +113,7 @@ export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
               }`}
             />
           )}
-          <span className="text-xs text-[var(--text-tertiary)]">
+          <span className="text-xs text-[var(--muted)]">
             {isHighlight ? 'Highlight' : 'Note'}
           </span>
         </div>
@@ -118,7 +128,7 @@ export function NotebookCard({ item, type, onDelete }: NotebookCardProps) {
           {onDelete && (
             <button
               onClick={() => onDelete(item.id)}
-              className="text-xs text-[var(--text-tertiary)] hover:text-red-500 transition-colors"
+              className="text-xs text-[var(--muted)] hover:text-id8-orange transition-colors"
             >
               Delete
             </button>
@@ -139,7 +149,7 @@ export function NotebookCardCompact({ item, type }: NotebookCardProps) {
   const courseName = courseConfig?.title || item.course_slug
 
   return (
-    <div className="flex items-start gap-3 p-3 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors cursor-pointer">
+    <div className="flex items-start gap-3 p-3 hover:bg-[var(--paper-shadow)] rounded-lg transition-colors cursor-pointer">
       {/* Type indicator */}
       <div
         className={`flex-shrink-0 w-1 h-12 rounded-full ${
@@ -157,13 +167,13 @@ export function NotebookCardCompact({ item, type }: NotebookCardProps) {
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <p className="text-sm text-[var(--text-primary)] line-clamp-2">
+        <p className="text-sm text-[var(--ink)] line-clamp-2">
           {highlight ? highlight.highlighted_text : note?.content}
         </p>
         <div className="flex items-center gap-2 mt-1">
-          <span className="text-xs text-[var(--text-tertiary)]">{courseName}</span>
-          <span className="text-xs text-[var(--text-tertiary)]">•</span>
-          <span className="text-xs text-[var(--text-tertiary)]">
+          <span className="text-xs text-[var(--muted)]">{courseName}</span>
+          <span className="text-xs text-[var(--muted)]">•</span>
+          <span className="text-xs text-[var(--muted)]">
             {formatRelativeTime(new Date(item.created_at))}
           </span>
         </div>
