@@ -306,12 +306,12 @@ function TopList({
 
 // Browser/Device pie chart alternative - horizontal bars
 function DeviceBreakdown({ browsers, title }: { browsers: MetricItem[]; title: string }) {
-  const colors = ['#FF6B35', '#FF8B55', '#FFAb75', '#FFCB95', '#FFEBB5']
+  const colors = ['#0b0b0b', '#ff6b35', '#2a8d83', '#b4afa0', '#d6d3c9']
   const total = browsers.reduce((sum, b) => sum + b.y, 0)
 
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm">
-      <h3 className="text-[#FF6B35] text-sm font-bold tracking-wider mb-4 flex items-center gap-2">
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5">
+      <h3 className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--ink)] mb-4">
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
@@ -319,11 +319,11 @@ function DeviceBreakdown({ browsers, title }: { browsers: MetricItem[]; title: s
       </h3>
 
       {/* Stacked bar */}
-      <div className="h-4 flex rounded-full overflow-hidden mb-4">
+      <div className="h-4 flex overflow-hidden mb-4">
         {browsers.slice(0, 5).map((browser, i) => (
           <div
             key={i}
-            className="h-full transition-all duration-300 hover:opacity-80"
+            className="h-full transition-opacity duration-150 hover:opacity-80"
             style={{
               width: `${(browser.y / total) * 100}%`,
               backgroundColor: colors[i % colors.length]
@@ -337,18 +337,18 @@ function DeviceBreakdown({ browsers, title }: { browsers: MetricItem[]; title: s
         {browsers.slice(0, 5).map((browser, i) => (
           <div key={i} className="flex items-center gap-3">
             <div
-              className="w-3 h-3 rounded-full flex-shrink-0"
+              className="w-3 h-3 flex-shrink-0"
               style={{ backgroundColor: colors[i % colors.length] }}
             />
-            <span className="text-gray-300 text-sm flex-1 truncate">{browser.x}</span>
-            <span className="text-gray-400 text-xs">{((browser.y / total) * 100).toFixed(1)}%</span>
-            <span className="text-[#FF6B35] text-sm font-bold">{formatNumber(browser.y)}</span>
+            <span className="text-sm flex-1 truncate text-[var(--body)]">{browser.x}</span>
+            <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">{((browser.y / total) * 100).toFixed(1)}%</span>
+            <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]">{formatNumber(browser.y)}</span>
           </div>
         ))}
         {browsers.length === 0 && (
-          <div className="text-center py-8 border border-dashed border-gray-800 rounded-lg">
-            <div className="text-gray-600 font-mono text-sm mb-2">[ NO DATA ]</div>
-            <p className="text-gray-500 text-xs">No browser data yet</p>
+          <div className="text-center py-8 border border-dashed border-[var(--hair)]">
+            <div className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)] mb-2">[ NO DATA ]</div>
+            <p className="text-xs text-[var(--muted)]">No browser data yet</p>
           </div>
         )}
       </div>
