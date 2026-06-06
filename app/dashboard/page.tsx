@@ -190,49 +190,44 @@ function StatCard({
   const isPositive = invertChange ? !change?.positive : change?.positive
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm group hover:border-[#FF6B35]/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#FF6B35]/10 transition-all duration-300">
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      <div className="relative z-10">
-        <div className="flex items-center justify-between mb-2">
-          <div className="text-gray-300 text-xs uppercase tracking-wider flex items-center gap-2">
-            {icon}
-            {label}
-          </div>
-          {change && (
-            <div className={`flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ${
-              isPositive
-                ? 'bg-green-500/20 text-green-400'
-                : 'bg-red-500/20 text-red-400'
-            }`}>
-              <span className="text-[10px]">{isPositive ? '▲' : '▼'}</span>
-              {change.value.toFixed(1)}%
-            </div>
-          )}
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5 hover:bg-[var(--paper-shadow)] hover:border-[var(--hair-hard)] transition-colors duration-150">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+          {icon}
+          {label}
         </div>
-
-        <div className="text-3xl font-bold text-white mb-3">
-          <AnimatedNumber value={value} format={formatFn} />
-        </div>
-
-        {/* Mini sparkline */}
-        {sparklineData.length > 0 && (
-          <div className="h-8 flex items-end gap-0.5">
-            {sparklineData.slice(-12).map((val, i) => {
-              const max = Math.max(...sparklineData.slice(-12), 1)
-              const height = Math.max(4, (val / max) * 32)
-              return (
-                <div
-                  key={i}
-                  className="flex-1 bg-gradient-to-t from-[#FF6B35]/60 to-[#FF6B35] rounded-t transition-all duration-300"
-                  style={{ height }}
-                />
-              )
-            })}
+        {change && (
+          <div
+            className={`flex items-center gap-1 font-[family-name:var(--font-mono)] text-xs ${
+              isPositive ? 'text-[var(--teal)]' : 'text-id8-orange'
+            }`}
+          >
+            <span className="text-[10px]">{isPositive ? '▲' : '▼'}</span>
+            {change.value.toFixed(1)}%
           </div>
         )}
       </div>
+
+      <div className="font-[family-name:var(--font-mono)] text-3xl font-medium text-[var(--ink)] mb-3">
+        <AnimatedNumber value={value} format={formatFn} />
+      </div>
+
+      {/* Mini sparkline */}
+      {sparklineData.length > 0 && (
+        <div className="h-8 flex items-end gap-0.5">
+          {sparklineData.slice(-12).map((val, i) => {
+            const max = Math.max(...sparklineData.slice(-12), 1)
+            const height = Math.max(4, (val / max) * 32)
+            return (
+              <div
+                key={i}
+                className="flex-1 bg-[var(--hair-hard)]"
+                style={{ height }}
+              />
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
