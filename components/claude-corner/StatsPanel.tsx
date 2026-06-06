@@ -486,7 +486,6 @@ function ActivityHeatmap() {
                   title={day === 0 ? 'No contributions' : `${day} contributions`}
                   whileHover={{
                     scale: 1.5,
-                    boxShadow: day > 0 ? '0 0 10px rgba(255, 107, 53, 0.7)' : 'none',
                     zIndex: 10
                   }}
                   transition={{ duration: 0.12, ease: 'easeOut' }}
@@ -633,11 +632,7 @@ export default function StatsPanel({ onLiveStatusChange }: StatsPanelProps) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
-              whileHover={{
-                scale: 1.05,
-                borderColor: 'rgba(255, 107, 53, 0.5)',
-                boxShadow: '0 0 8px rgba(255, 107, 53, 0.3)'
-              }}
+              whileHover={{ borderColor: 'var(--orange)' }}
             >
               <span className="text-[var(--ink)]">{lang.lang}</span>
               <span className="text-id8-orange ml-1">{lang.percentage}%</span>
