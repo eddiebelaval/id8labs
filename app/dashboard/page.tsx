@@ -19,12 +19,11 @@ const WorldMapVisualization = dynamic(
 // Loading skeleton for charts
 function ChartSkeleton({ title }: { title: string }) {
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm animate-pulse">
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5 font-[family-name:var(--font-mono)] animate-pulse">
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-4 h-4 bg-[#FF6B35]/20 rounded" />
-        <span className="text-[#FF6B35]/50 text-sm font-bold tracking-wider">{title}</span>
+        <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">{title}</span>
       </div>
-      <div className="h-64 bg-gray-800/30 rounded-lg" />
+      <div className="h-64 bg-[var(--paper-shadow)]" />
     </div>
   )
 }
