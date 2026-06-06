@@ -1,153 +1,92 @@
 import Link from 'next/link'
 import BrandName from './BrandName'
 
+const colHead =
+  'mb-3 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]'
+
+const link =
+  'text-[var(--muted)] hover:text-id8-orange transition-colors'
+
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] mt-24 relative overflow-hidden bg-gradient-to-b from-transparent via-black/50 to-black/80">
-      {/* Subtle tropical texture in footer - reduced opacity to not compete with LED background */}
-      <div className="absolute inset-0 texture-tropical-dots opacity-20" />
-      <div className="container py-12 relative z-10">
-        {/* Five Column Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 mb-8">
-          {/* Column 1: ID8Labs */}
+    <footer className="mt-24 border-t border-[var(--rule)] bg-[var(--paper)]">
+      <div className="container relative py-12">
+        <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-8">
+          {/* Colophon */}
           <div className="col-span-2 md:col-span-1">
-            <p className="text-sm font-bold mb-2">
-              <BrandName /> © 2026
+            <p className="mb-2 text-sm">
+              <BrandName /> <span className="font-[family-name:var(--font-mono)] text-[var(--muted)]">© 2026</span>
             </p>
-            <p className="text-sm text-[var(--text-secondary)] mb-1">
-              Miami, FL
-            </p>
-            <p className="text-sm text-[var(--text-secondary)]">
-              EST (UTC-5)
-            </p>
+            <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">Miami, FL</p>
+            <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">EST (UTC-5)</p>
           </div>
 
-          {/* Column 2: Navigation */}
+          {/* Navigation */}
           <div>
-            <h3 className="text-sm font-bold mb-3">Navigation</h3>
+            <h3 className={colHead}>Navigation</h3>
             <nav className="flex flex-col gap-2 text-sm">
-              <Link href="/" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Home
-              </Link>
-              <Link href="/products" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Products
-              </Link>
-              <Link href="/services" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Services
-              </Link>
-              <Link href="/writing" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Writing
-              </Link>
-              <Link href="/lab" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Lab
-              </Link>
-              <div className="flex gap-3 mt-1">
-                <Link href="/privacy" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors text-xs">
-                  Privacy
-                </Link>
-                <Link href="/terms" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors text-xs">
-                  Terms
-                </Link>
+              <Link href="/" className={link}>Home</Link>
+              <Link href="/products" className={link}>Products</Link>
+              <Link href="/services" className={link}>Services</Link>
+              <Link href="/writing" className={link}>Writing</Link>
+              <Link href="/shipped" className={link}>Shipped.</Link>
+              <Link href="/lab" className={link}>Lab</Link>
+              <div className="mt-1 flex gap-3">
+                <Link href="/privacy" className={`${link} text-xs`}>Privacy</Link>
+                <Link href="/terms" className={`${link} text-xs`}>Terms</Link>
               </div>
             </nav>
           </div>
 
-          {/* Column 3: Products */}
+          {/* Products */}
           <div>
-            <h3 className="text-sm font-bold mb-3">Products</h3>
+            <h3 className={colHead}>Products</h3>
             <nav className="flex flex-col gap-2 text-sm">
-              <a
-                href="https://id8composer.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                Composer
-              </a>
-              <a
-                href="https://deepstack.trade"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                DeepStack
-              </a>
-              <Link href="/products/pipeline" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Pipeline
-              </Link>
-              <Link href="/products/llc-ops" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                LLC Ops
-              </Link>
-              <Link href="/products/milo" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                MILO
-              </Link>
+              <a href="https://id8composer.app" target="_blank" rel="noopener noreferrer" className={link}>Composer</a>
+              <a href="https://deepstack.trade" target="_blank" rel="noopener noreferrer" className={link}>DeepStack</a>
+              <Link href="/products/pipeline" className={link}>Pipeline</Link>
+              <Link href="/products/llc-ops" className={link}>LLC Ops</Link>
+              <Link href="/products/milo" className={link}>MILO</Link>
             </nav>
           </div>
 
-          {/* Column 4: Academy */}
+          {/* Academy */}
           <div>
-            <h3 className="text-sm font-bold mb-3">Academy</h3>
+            <h3 className={colHead}>Academy</h3>
             <nav className="flex flex-col gap-2 text-sm">
-              <Link href="/academy" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                All Courses
-              </Link>
-              <Link href="/academy/prompt-engineering-creators" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors flex items-center gap-1.5">
-                <span className="px-1 py-0.5 text-[8px] font-mono uppercase tracking-wider bg-[var(--accent-green)] text-white rounded">New</span>
+              <Link href="/academy" className={link}>All Courses</Link>
+              <Link href="/academy/prompt-engineering-creators" className={`${link} flex items-center gap-1.5`}>
+                <span className="bg-[var(--teal)] px-1 py-0.5 font-[family-name:var(--font-narrow)] text-[8px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">New</span>
                 Prompt Engineering
               </Link>
-              <Link href="/courses/ai-conversation-fundamentals" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors flex items-center gap-1.5">
-                <span className="px-1 py-0.5 text-[8px] font-mono uppercase tracking-wider bg-[var(--accent-green)] text-white rounded">Free</span>
+              <Link href="/courses/ai-conversation-fundamentals" className={`${link} flex items-center gap-1.5`}>
+                <span className="bg-[var(--teal)] px-1 py-0.5 font-[family-name:var(--font-narrow)] text-[8px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">Free</span>
                 AI Fundamentals
               </Link>
-              <Link href="/courses/claude-for-knowledge-workers" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Claude Code Course
-              </Link>
+              <Link href="/courses/claude-for-knowledge-workers" className={link}>Claude Code Course</Link>
             </nav>
           </div>
 
-          {/* Column 5: Connect */}
+          {/* Connect */}
           <div>
-            <h3 className="text-sm font-bold mb-3">Connect</h3>
+            <h3 className={colHead}>Connect</h3>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/contact" className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors">
-                Start a Conversation
-              </Link>
-              <a
-                href="https://x.com/eddiebe"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                X @eddiebe
-              </a>
-              <a
-                href="https://github.com/eddiebelaval"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/eddiebelaval"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--text-secondary)] hover:text-id8-orange transition-colors"
-              >
-                LinkedIn
-              </a>
+              <Link href="/contact" className={link}>Start a Conversation</Link>
+              <a href="https://x.com/eddiebe" target="_blank" rel="noopener noreferrer" className={link}>X @eddiebe</a>
+              <a href="https://github.com/eddiebelaval" target="_blank" rel="noopener noreferrer" className={link}>GitHub</a>
+              <a href="https://linkedin.com/in/eddiebelaval" target="_blank" rel="noopener noreferrer" className={link}>LinkedIn</a>
             </div>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="pt-8 border-t border-[var(--border)]">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="inline-block w-2 h-2 bg-[var(--accent-green)] rounded-full animate-pulse" />
-              <span className="text-[var(--text-secondary)]">Currently taking projects</span>
+        {/* Bottom */}
+        <div className="border-t border-[var(--hair)] pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+              <span className="inline-block h-2 w-2 rounded-full bg-[var(--teal)]" />
+              <span>Currently taking projects</span>
             </div>
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
               Built with Next.js + Vercel + Supabase
             </p>
           </div>

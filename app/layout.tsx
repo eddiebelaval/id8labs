@@ -1,39 +1,39 @@
 import type { Metadata } from 'next'
-import { Inter, Instrument_Serif, Fraunces, Press_Start_2P } from 'next/font/google'
+import { Fraunces, Archivo, Archivo_Narrow, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/ThemeProvider'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { NeuralNetworkBg } from '@/components/foundation/neural-network-bg'
 import { GoogleAnalytics, UmamiAnalytics } from '@/components/Analytics'
 import LeadMagnetFunnel from '@/components/LeadMagnetFunnel'
 import ContentFrost from '@/components/ContentFrost'
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: ['400'],
-  display: 'swap',
-  variable: '--font-crimson',
-})
-
+// ── Editorial type system ("Shipped." design language) ──
 const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['900'],
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
   display: 'swap',
   variable: '--font-fraunces',
 })
 
-const pressStart = Press_Start_2P({
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['400'],
   display: 'swap',
-  variable: '--font-press-start',
+  variable: '--font-archivo',
+})
+
+const archivoNarrow = Archivo_Narrow({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-archivo-narrow',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-jetbrains',
 })
 
 export const metadata: Metadata = {
@@ -112,22 +112,18 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
-      <body className={`${inter.variable} ${instrumentSerif.variable} ${fraunces.variable} ${pressStart.variable}`}>
+      <body className={`${fraunces.variable} ${archivo.variable} ${archivoNarrow.variable} ${jetbrainsMono.variable}`}>
         <GoogleAnalytics />
         <UmamiAnalytics />
-        {/* Strange Attractor Background — Lorenz system topology */}
-        <NeuralNetworkBg />
 
-        <ThemeProvider>
-          <div className="relative" style={{ zIndex: 1 }}>
-            <Header />
-            <main className="min-h-screen">
-              <ContentFrost>{children}</ContentFrost>
-            </main>
-            <Footer />
-          </div>
-          <LeadMagnetFunnel />
-        </ThemeProvider>
+        <div className="relative" style={{ zIndex: 1 }}>
+          <Header />
+          <main className="min-h-screen">
+            <ContentFrost>{children}</ContentFrost>
+          </main>
+          <Footer />
+        </div>
+        <LeadMagnetFunnel />
       </body>
     </html>
   )

@@ -5,6 +5,15 @@ import { useState, useEffect } from 'react'
 import BrandName from './BrandName'
 import { StackShackLogo } from './StackShackLogo'
 
+const navLink =
+  'font-[family-name:var(--font-narrow)] text-[13px] font-semibold uppercase tracking-[0.16em] text-[var(--ink)] hover:text-id8-orange transition-colors'
+
+const dropItem =
+  'block px-4 py-2.5 hover:bg-[var(--paper-shadow)] transition-colors'
+
+const dropKicker =
+  'px-4 pb-2 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]'
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [academyExpanded, setAcademyExpanded] = useState(false)
@@ -12,7 +21,6 @@ export default function Header() {
   const [labExpanded, setLabExpanded] = useState(false)
   const [desktopLabOpen, setDesktopLabOpen] = useState(false)
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? 'hidden' : ''
     return () => {
@@ -20,7 +28,6 @@ export default function Header() {
     }
   }, [mobileMenuOpen])
 
-  // Close desktop dropdowns on Escape
   useEffect(() => {
     if (!desktopAcademyOpen && !desktopLabOpen) return
     const handleEscape = (e: KeyboardEvent) => {
@@ -35,423 +42,320 @@ export default function Header() {
 
   return (
     <>
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-[var(--bg-primary)]/70 border-b border-white/10 shadow-lg transition-all duration-200">
-      <div className="container">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo / Wordmark */}
-          <Link href="/" className="text-3xl font-bold tracking-tight hover:opacity-70 transition-opacity">
-            <BrandName />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/products" className="text-base hover:opacity-70 transition-opacity">
-              Products
-            </Link>
-            <Link href="/services" className="text-base hover:opacity-70 transition-opacity">
-              Services
-            </Link>
-            {/* Academy Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setDesktopAcademyOpen(true)}
-              onMouseLeave={() => setDesktopAcademyOpen(false)}
+      <header className="sticky top-0 z-50 border-b border-[var(--rule)] bg-[var(--paper)]/95 backdrop-blur-sm">
+        <div className="container">
+          <div className="flex h-16 items-center justify-between md:h-[72px]">
+            {/* Wordmark */}
+            <Link
+              href="/"
+              className="text-3xl font-medium tracking-tight hover:opacity-70 transition-opacity"
             >
-              <Link
-                href="/academy"
-                className="text-base hover:opacity-70 transition-opacity flex items-center gap-1"
+              <BrandName />
+            </Link>
+
+            {/* Desktop nav */}
+            <nav className="hidden items-center gap-7 md:flex">
+              <Link href="/products" className={navLink}>
+                Products
+              </Link>
+              <Link href="/services" className={navLink}>
+                Services
+              </Link>
+
+              {/* Academy dropdown */}
+              <div
+                className="relative"
                 onMouseEnter={() => setDesktopAcademyOpen(true)}
+                onMouseLeave={() => setDesktopAcademyOpen(false)}
               >
-                Academy
-                <svg className={`w-4 h-4 transition-transform ${desktopAcademyOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M6 9l6 6 6-6"/>
-                </svg>
-              </Link>
-              <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${desktopAcademyOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg shadow-xl py-3 min-w-[380px]">
-                  {/* Foundation */}
-                  <div className="px-4 pb-2">
-                    <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">Start Here</p>
+                <Link href="/academy" className={`${navLink} flex items-center gap-1`}>
+                  Academy
+                  <svg
+                    className={`h-3.5 w-3.5 transition-transform ${desktopAcademyOpen ? 'rotate-180' : ''}`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </Link>
+                <div
+                  className={`absolute left-0 top-full pt-2 transition-all duration-150 ${desktopAcademyOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}
+                >
+                  <div className="min-w-[380px] border border-[var(--rule)] bg-[var(--paper)] py-3">
+                    <p className={dropKicker}>Start Here</p>
+                    <Link
+                      href="/courses/ai-conversation-fundamentals"
+                      className={`${dropItem} flex items-center gap-3`}
+                    >
+                      <span className="bg-id8-orange px-1.5 py-0.5 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">
+                        Foundation
+                      </span>
+                      <span>
+                        <span className="block text-sm font-medium">AI Conversation Fundamentals</span>
+                        <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                          6 modules · 45 min · Free
+                        </span>
+                      </span>
+                    </Link>
+
+                    <div className="mx-4 my-2 h-px bg-[var(--hair)]" />
+
+                    <p className={`${dropKicker} pt-1`}>For Individuals</p>
+                    <Link
+                      href="/academy/prompt-engineering-creators"
+                      className={`${dropItem} flex items-center gap-3`}
+                    >
+                      <span className="bg-[var(--teal)] px-1.5 py-0.5 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">
+                        New
+                      </span>
+                      <span>
+                        <span className="block text-sm font-medium">Prompt Engineering for Creators</span>
+                        <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                          9 modules · Better prompts &amp; outputs
+                        </span>
+                      </span>
+                    </Link>
+                    <Link href="/academy/ai-partner-mastery" className={dropItem}>
+                      <span className="block text-sm font-medium">AI Partner Mastery</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        8 modules · Work with AI daily
+                      </span>
+                    </Link>
+                    <Link href="/courses/claude-for-knowledge-workers" className={dropItem}>
+                      <span className="block text-sm font-medium">Claude Code for Knowledge Workers</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        10 modules · Full delegation course
+                      </span>
+                    </Link>
+
+                    <div className="mx-4 my-2 h-px bg-[var(--hair)]" />
+
+                    <p className={`${dropKicker} pt-1`}>For Organizations</p>
+                    <Link href="/academy/ai-for-leaders" className={dropItem}>
+                      <span className="block text-sm font-medium">AI for Leaders</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        8 modules · Strategic adoption
+                      </span>
+                    </Link>
+                    <Link href="/academy/ai-at-scale" className={dropItem}>
+                      <span className="block text-sm font-medium">AI at Scale</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        8 modules · Team adoption
+                      </span>
+                    </Link>
+                    <Link href="/academy/private-ai" className={dropItem}>
+                      <span className="block text-sm font-medium">Private AI</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        8 modules · Security &amp; compliance
+                      </span>
+                    </Link>
+
+                    <div className="mx-4 my-2 h-px bg-[var(--hair)]" />
+
+                    <Link
+                      href="/academy"
+                      className={`${dropItem} flex items-center justify-between text-id8-orange`}
+                    >
+                      <span className="text-sm font-medium">View Full Curriculum</span>
+                      <span className="font-[family-name:var(--font-mono)] text-xs">7 courses · 57 modules</span>
+                    </Link>
                   </div>
-                  <Link
-                    href="/courses/ai-conversation-fundamentals"
-                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-id8-orange text-white rounded">Foundation</span>
-                    <div>
-                      <p className="font-medium text-sm">AI Conversation Fundamentals</p>
-                      <p className="text-xs text-[var(--text-tertiary)]">6 modules • 45 min • Free</p>
-                    </div>
-                  </Link>
-
-                  <div className="my-2 mx-4 h-px bg-[var(--border)]" />
-
-                  {/* Individual Courses */}
-                  <div className="px-4 pb-2 pt-1">
-                    <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">For Individuals</p>
-                  </div>
-                  <Link
-                    href="/academy/prompt-engineering-creators"
-                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-[var(--accent-green)] text-white rounded">New</span>
-                    <div>
-                      <p className="font-medium text-sm">Prompt Engineering for Creators</p>
-                      <p className="text-xs text-[var(--text-tertiary)]">9 modules • Better prompts & outputs</p>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/academy/ai-partner-mastery"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">AI Partner Mastery</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">8 modules • Work with AI daily</p>
-                  </Link>
-                  <Link
-                    href="/courses/claude-for-knowledge-workers"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">Claude Code for Knowledge Workers</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">10 modules • Full delegation course</p>
-                  </Link>
-
-                  <div className="my-2 mx-4 h-px bg-[var(--border)]" />
-
-                  {/* Organization Courses */}
-                  <div className="px-4 pb-2 pt-1">
-                    <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)]">For Organizations</p>
-                  </div>
-                  <Link
-                    href="/academy/ai-for-leaders"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">AI for Leaders</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">8 modules • Strategic adoption</p>
-                  </Link>
-                  <Link
-                    href="/academy/ai-at-scale"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">AI at Scale</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">8 modules • Team adoption</p>
-                  </Link>
-                  <Link
-                    href="/academy/private-ai"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">Private AI</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">8 modules • Security & compliance</p>
-                  </Link>
-
-                  <div className="my-2 mx-4 h-px bg-[var(--border)]" />
-
-                  {/* View All */}
-                  <Link
-                    href="/academy"
-                    className="flex items-center justify-between px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors text-id8-orange"
-                  >
-                    <span className="font-medium text-sm">View Full Curriculum</span>
-                    <span className="text-xs">7 courses • 57 modules</span>
-                  </Link>
                 </div>
               </div>
-            </div>
-            <Link href="/writing" className="text-base hover:opacity-70 transition-opacity">
-              Writing
-            </Link>
-            <Link href="/shipped" className="text-base hover:opacity-70 transition-opacity">
-              Shipped<span className="text-[var(--id8-orange)]">.</span>
-            </Link>
-            {/* Lab Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setDesktopLabOpen(true)}
-              onMouseLeave={() => setDesktopLabOpen(false)}
-            >
-              <Link
-                href="/lab"
-                className="text-base hover:opacity-70 transition-opacity flex items-center gap-1"
+
+              <Link href="/writing" className={navLink}>
+                Writing
+              </Link>
+              <Link href="/shipped" className={navLink}>
+                Shipped<span className="text-id8-orange">.</span>
+              </Link>
+
+              {/* Lab dropdown */}
+              <div
+                className="relative"
                 onMouseEnter={() => setDesktopLabOpen(true)}
+                onMouseLeave={() => setDesktopLabOpen(false)}
               >
-                Lab
-                <svg className={`w-4 h-4 transition-transform ${desktopLabOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M6 9l6 6 6-6"/>
-                </svg>
-              </Link>
-              <div className={`absolute top-full left-0 pt-2 transition-all duration-200 ${desktopLabOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg shadow-xl py-3 min-w-[300px]">
-                  <Link
-                    href="/thesis"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
+                <Link href="/lab" className={`${navLink} flex items-center gap-1`}>
+                  Lab
+                  <svg
+                    className={`h-3.5 w-3.5 transition-transform ${desktopLabOpen ? 'rotate-180' : ''}`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
                   >
-                    <p className="font-medium text-sm">Thesis</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">Consciousness as Filestructure</p>
-                  </Link>
-                  <Link
-                    href="/thesis/series"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">CaF Series</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">The complete research series (5 parts)</p>
-                  </Link>
-                  <Link
-                    href="/lab/story"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">Lab Story</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">How we got here</p>
-                  </Link>
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </Link>
+                <div
+                  className={`absolute left-0 top-full pt-2 transition-all duration-150 ${desktopLabOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}
+                >
+                  <div className="min-w-[300px] border border-[var(--rule)] bg-[var(--paper)] py-3">
+                    <Link href="/thesis" className={dropItem}>
+                      <span className="block text-sm font-medium">Thesis</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        Consciousness as Filestructure
+                      </span>
+                    </Link>
+                    <Link href="/thesis/series" className={dropItem}>
+                      <span className="block text-sm font-medium">CaF Series</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        The complete research series (5 parts)
+                      </span>
+                    </Link>
+                    <Link href="/lab/story" className={dropItem}>
+                      <span className="block text-sm font-medium">Lab Story</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        How we got here
+                      </span>
+                    </Link>
 
-                  <div className="my-2 mx-4 h-px bg-[var(--border)]" />
+                    <div className="mx-4 my-2 h-px bg-[var(--hair)]" />
 
-                  <Link
-                    href="/writing?category=research"
-                    className="block px-4 py-2.5 hover:bg-[var(--bg-secondary)] transition-colors"
-                  >
-                    <p className="font-medium text-sm">Research</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">Published research and deep dives</p>
-                  </Link>
+                    <Link href="/writing?category=research" className={dropItem}>
+                      <span className="block text-sm font-medium">Research</span>
+                      <span className="block font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                        Published research and deep dives
+                      </span>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-            <Link href="/contact" className="text-base hover:opacity-70 transition-opacity">
-              Contact
-            </Link>
-            <Link href="/stackshack" className="hover:opacity-80 transition-opacity" aria-label="Stack Shack">
-              <div className="flex items-center">
+
+              <Link href="/contact" className={navLink}>
+                Contact
+              </Link>
+              <Link
+                href="/stackshack"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Stack Shack"
+              >
                 <StackShackLogo size="sm" />
-              </div>
-            </Link>
-            {/* Claude Corner Easter Egg */}
-            <Link
-              href="/claude-corner"
-              className="font-mono text-[var(--text-tertiary)] hover:text-[var(--id8-orange)] transition-colors flex items-center"
-              title="Claude Corner"
-            >
-              <span className="text-sm">{'>_'}</span>
-              <span className="w-[2px] h-4 bg-current ml-0.5 animate-pulse" />
-            </Link>
-          </nav>
+              </Link>
+              <Link
+                href="/claude-corner"
+                className="flex items-center font-[family-name:var(--font-mono)] text-[var(--muted)] transition-colors hover:text-id8-orange"
+                title="Claude Corner"
+              >
+                <span className="text-sm">{'>_'}</span>
+                <span className="ml-0.5 h-4 w-[2px] animate-pulse bg-current" />
+              </Link>
+            </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-3 -mr-2 hover:opacity-70 transition-opacity relative z-[70] touch-manipulation"
-            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-nav"
-          >
-            {mobileMenuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            )}
-          </button>
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="relative z-[70] -mr-2 touch-manipulation p-3 transition-opacity hover:opacity-70 md:hidden"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
+            >
+              {mobileMenuOpen ? (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              ) : (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    {/* Mobile Menu Overlay - Outside header for proper z-index stacking */}
-    {mobileMenuOpen && (
-      <nav
-        id="mobile-nav"
-        aria-label="Mobile navigation"
-        className="md:hidden fixed inset-x-0 top-16 bottom-0 bg-[var(--bg-primary)] z-[100] overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]"
-      >
-        <div className="container pb-24 space-y-4 border-t border-[var(--border)] pt-6">
-          <Link
-              href="/products"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile navigation"
+          className="fixed inset-x-0 bottom-0 top-16 z-[100] overflow-y-auto overscroll-contain bg-[var(--paper)] [-webkit-overflow-scrolling:touch] md:hidden"
+        >
+          <div className="container space-y-4 border-t border-[var(--rule)] pb-24 pt-6">
+            <Link href="/products" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Products
             </Link>
-            <Link
-              href="/services"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <Link href="/services" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Services
             </Link>
-            {/* Mobile Academy Section - Collapsible */}
+
+            {/* Mobile Academy */}
             <div className="space-y-3">
               <button
                 onClick={() => setAcademyExpanded(!academyExpanded)}
-                className="flex items-center justify-between w-full text-lg font-medium hover:text-id8-orange transition-colors py-2 -my-2"
+                className="-my-2 flex w-full items-center justify-between py-2 text-lg font-medium transition-colors hover:text-id8-orange"
                 aria-expanded={academyExpanded}
               >
                 <span>Academy</span>
-                <svg
-                  className={`w-5 h-5 transition-transform duration-200 ${academyExpanded ? 'rotate-180' : ''}`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M6 9l6 6 6-6"/>
+                <svg className={`h-5 w-5 transition-transform duration-200 ${academyExpanded ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 9l6 6 6-6" />
                 </svg>
               </button>
               {academyExpanded && (
-                <div className="space-y-3 pl-2 border-l-2 border-[var(--border)] ml-2">
-                  {/* Foundation */}
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] pl-2 pt-2">Start Here</p>
-                  <Link
-                    href="/courses/ai-conversation-fundamentals"
-                    className="flex items-center gap-2 pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider bg-id8-orange text-white rounded">Foundation</span>
+                <div className="ml-2 space-y-3 border-l border-[var(--hair)] pl-2">
+                  <p className="pl-2 pt-2 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">Start Here</p>
+                  <Link href="/courses/ai-conversation-fundamentals" className="flex items-center gap-2 pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>
+                    <span className="bg-id8-orange px-1.5 py-0.5 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">Foundation</span>
                     AI Fundamentals
                   </Link>
-                  {/* Individuals */}
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] pl-2 pt-2">For Individuals</p>
-                  <Link
-                    href="/academy/prompt-engineering-creators"
-                    className="block pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Prompt Engineering
-                  </Link>
-                  <Link
-                    href="/academy/ai-partner-mastery"
-                    className="block pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    AI Partner Mastery
-                  </Link>
-                  <Link
-                    href="/courses/claude-for-knowledge-workers"
-                    className="block pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Claude Code Course
-                  </Link>
-                  {/* Organizations */}
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-tertiary)] pl-2 pt-2">For Organizations</p>
-                  <Link
-                    href="/academy/ai-for-leaders"
-                    className="block pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    AI for Leaders
-                  </Link>
-                  <Link
-                    href="/academy/ai-at-scale"
-                    className="block pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    AI at Scale
-                  </Link>
-                  <Link
-                    href="/academy/private-ai"
-                    className="block pl-2 text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Private AI
-                  </Link>
-                  {/* View All */}
-                  <Link
-                    href="/academy"
-                    className="block pl-2 text-base text-id8-orange hover:text-[var(--id8-orange-hover)] transition-colors font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    View Full Curriculum →
-                  </Link>
+                  <p className="pl-2 pt-2 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">For Individuals</p>
+                  <Link href="/academy/prompt-engineering-creators" className="block pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>Prompt Engineering</Link>
+                  <Link href="/academy/ai-partner-mastery" className="block pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>AI Partner Mastery</Link>
+                  <Link href="/courses/claude-for-knowledge-workers" className="block pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>Claude Code Course</Link>
+                  <p className="pl-2 pt-2 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">For Organizations</p>
+                  <Link href="/academy/ai-for-leaders" className="block pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>AI for Leaders</Link>
+                  <Link href="/academy/ai-at-scale" className="block pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>AI at Scale</Link>
+                  <Link href="/academy/private-ai" className="block pl-2 text-base text-[var(--muted)] transition-colors hover:text-[var(--ink)]" onClick={() => setMobileMenuOpen(false)}>Private AI</Link>
+                  <Link href="/academy" className="block pl-2 text-base font-medium text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>View Full Curriculum →</Link>
                 </div>
               )}
             </div>
-            <Link
-              href="/writing"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+
+            <Link href="/writing" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Writing
             </Link>
-            <Link
-              href="/shipped"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Shipped<span className="text-[var(--id8-orange)]">.</span>
+            <Link href="/shipped" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
+              Shipped<span className="text-id8-orange">.</span>
             </Link>
-            {/* Lab Expandable */}
+
+            {/* Mobile Lab */}
             <div>
-              <button
-                className="text-lg hover:opacity-70 transition-opacity flex items-center gap-2 w-full"
-                onClick={() => setLabExpanded(!labExpanded)}
-              >
+              <button className="flex w-full items-center gap-2 text-lg hover:text-id8-orange transition-colors" onClick={() => setLabExpanded(!labExpanded)}>
                 Lab
-                <svg className={`w-4 h-4 transition-transform ${labExpanded ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M6 9l6 6 6-6"/>
+                <svg className={`h-4 w-4 transition-transform ${labExpanded ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M6 9l6 6 6-6" />
                 </svg>
               </button>
               {labExpanded && (
-                <div className="pl-4 mt-3 space-y-3 border-l border-[var(--border)]">
-                  <Link
-                    href="/thesis"
-                    className="block text-base hover:opacity-70 transition-opacity"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Thesis
-                  </Link>
-                  <Link
-                    href="/thesis/series"
-                    className="block text-base hover:opacity-70 transition-opacity"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    CaF Series
-                  </Link>
-                  <Link
-                    href="/lab/story"
-                    className="block text-base hover:opacity-70 transition-opacity"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Lab Story
-                  </Link>
-                  <Link
-                    href="/writing?category=research"
-                    className="block text-base hover:opacity-70 transition-opacity"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Research
-                  </Link>
+                <div className="mt-3 space-y-3 border-l border-[var(--hair)] pl-4">
+                  <Link href="/thesis" className="block text-base hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>Thesis</Link>
+                  <Link href="/thesis/series" className="block text-base hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>CaF Series</Link>
+                  <Link href="/lab/story" className="block text-base hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>Lab Story</Link>
+                  <Link href="/writing?category=research" className="block text-base hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>Research</Link>
                 </div>
               )}
             </div>
-            <Link
-              href="/contact"
-              className="block text-lg hover:opacity-70 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+
+            <Link href="/contact" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Contact
             </Link>
-            <Link
-              href="/stackshack"
-              className="hover:opacity-80 transition-opacity"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <Link href="/stackshack" className="hover:opacity-80 transition-opacity" onClick={() => setMobileMenuOpen(false)}>
               <StackShackLogo size="md" />
             </Link>
-            {/* Claude Corner Easter Egg */}
-          <Link
-            href="/claude-corner"
-            className="flex items-center gap-2 font-mono text-[var(--text-tertiary)] hover:text-[var(--id8-orange)] transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <span className="text-lg">{'>_'}</span>
-            <span className="w-[2px] h-5 bg-current animate-pulse" />
-            <span className="text-xs uppercase tracking-wider">Claude Corner</span>
-          </Link>
-        </div>
-      </nav>
-    )}
+            <Link href="/claude-corner" className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-[var(--muted)] transition-colors hover:text-id8-orange" onClick={() => setMobileMenuOpen(false)}>
+              <span className="text-lg">{'>_'}</span>
+              <span className="h-5 w-[2px] animate-pulse bg-current" />
+              <span className="text-xs uppercase tracking-wider">Claude Corner</span>
+            </Link>
+          </div>
+        </nav>
+      )}
     </>
   )
 }

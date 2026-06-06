@@ -1,16 +1,12 @@
 'use client'
 
-import { useEffect } from 'react'
-
 /**
- * Dark Mode Only Theme Provider
- * Light mode removed - LED halftone background requires dark mode
+ * Theme provider — retired.
+ *
+ * The editorial ("Shipped.") design system is paper-only; there is no
+ * dark mode. This is kept as a passthrough so any lingering imports keep
+ * compiling, but it no longer forces a theme class.
  */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    // Force dark mode always
-    document.documentElement.classList.add('dark')
-  }, [])
-
   return <>{children}</>
 }
