@@ -187,7 +187,7 @@ function CounterDot({ index, scrollProgress, total }: CounterDotProps) {
       style={{
         width: dotWidth,
         opacity: dotOpacity,
-        backgroundColor: PRODUCTION_UNITS[index]?.color ?? '#666',
+        backgroundColor: PRODUCTION_UNITS[index]?.color ?? 'var(--muted)',
       }}
       className="h-1.5 rounded-full"
     />
@@ -287,7 +287,7 @@ export function GoldenSamplePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-12 animate-[float_2.5s_ease-in-out_infinite]">
+        <div className="absolute bottom-12">
           <div className="flex flex-col items-center gap-2">
             <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-widest text-[var(--muted)]">
               Scroll to explore each entity
