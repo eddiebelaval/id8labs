@@ -71,7 +71,7 @@ function FileTable({ files, title }: { files: { name: string; description: strin
 
 export default function FoundryPage() {
   return (
-    <main className="bg-[var(--paper)] py-20 md:py-28">
+    <div className="bg-[var(--paper)] py-20 md:py-28">
       <Container>
         {/* Hero */}
         <header className="border-b border-[var(--hair)] pb-14">
@@ -229,6 +229,6 @@ export default function FoundryPage() {
           />
         </section>
       </Container>
-    </main>
+    </div>
   )
 }

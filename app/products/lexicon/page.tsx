@@ -65,7 +65,7 @@ const questions = [
 
 export default function LexiconLandingPage() {
   return (
-    <main className="bg-[var(--paper)] py-20 md:py-28">
+    <div className="bg-[var(--paper)] py-20 md:py-28">
       <Container>
         {/* Hero */}
         <header className="border-b border-[var(--hair)] pb-14">
@@ -227,6 +227,6 @@ export default function LexiconLandingPage() {
           </div>
         </section>
       </Container>
-    </main>
+    </div>
   )
 }

@@ -26,7 +26,7 @@ export default async function SettingsPage({ searchParams }: PageProps) {
   const categoryNames = Object.keys(categories).sort()
 
   return (
-    <main className="relative">
+    <div className="relative">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 border-b border-[var(--rule)]">
         <div className="container relative z-10">
@@ -133,6 +133,6 @@ export default async function SettingsPage({ searchParams }: PageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

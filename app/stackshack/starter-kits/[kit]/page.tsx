@@ -61,7 +61,7 @@ export default async function StarterKitPage({ params }: PageProps): Promise<Rea
   const isConfiguration = collection.content_type === 'configuration'
 
   return (
-    <main className="bg-[var(--paper)] min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
       <div className="border-b border-[var(--hair)]">
         <Container className="py-10 md:py-14">
@@ -149,6 +149,6 @@ export default async function StarterKitPage({ params }: PageProps): Promise<Rea
           )}
         </Container>
       )}
-    </main>
+    </div>
   )
 }

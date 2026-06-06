@@ -40,7 +40,7 @@ export default async function GalleryStackDetailPage({ params }: PageProps): Pro
   }
 
   return (
-    <main className="relative bg-[var(--paper)]">
+    <div className="relative bg-[var(--paper)]">
       {/* Back Button */}
       <section className="py-8 border-b border-[var(--hair)]">
         <Container>
@@ -116,6 +116,6 @@ export default async function GalleryStackDetailPage({ params }: PageProps): Pro
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

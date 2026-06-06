@@ -21,7 +21,7 @@ export default function StarterKitsError({
   }, [error])
 
   return (
-    <main className="bg-[var(--paper)] min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       <div className="border-b border-[var(--hair)]">
         <Container className="py-10 md:py-14">
           <Link
@@ -76,6 +76,6 @@ export default function StarterKitsError({
           </div>
         </div>
       </Container>
-    </main>
+    </div>
   )
 }

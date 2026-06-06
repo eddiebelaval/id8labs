@@ -31,7 +31,7 @@ export default async function CommandsPage({ searchParams }: PageProps) {
   const categoryNames = Object.keys(categories).sort()
 
   return (
-    <main className="relative bg-[var(--paper)]">
+    <div className="relative bg-[var(--paper)]">
       {/* Masthead */}
       <section className="border-b border-[var(--hair)] py-16 md:py-24">
         <Container>
@@ -115,6 +115,6 @@ export default async function CommandsPage({ searchParams }: PageProps) {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

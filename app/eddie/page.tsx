@@ -10,7 +10,7 @@ import { Contact } from "@/components/eddie/sections/Contact";
 
 export default function EddiePage() {
   return (
-    <main className="relative bg-[var(--paper)]">
+    <div className="relative bg-[var(--paper)]">
       <Hero />
       <Stats />
       <Evolution />
@@ -18,6 +18,6 @@ export default function EddiePage() {
       <Skills />
       <CurrentWork />
       <Contact />
-    </main>
+    </div>
   );
 }

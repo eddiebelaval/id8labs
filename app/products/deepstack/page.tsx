@@ -103,7 +103,7 @@ const disclaimers: { label: string; body: ReactNode }[] = [
 
 export default function DeepStackPage() {
   return (
-    <main className="bg-[var(--paper)] py-20 md:py-28">
+    <div className="bg-[var(--paper)] py-20 md:py-28">
       <Container>
         {/* Hero */}
         <header className="border-b border-[var(--hair)] pb-14">
@@ -281,6 +281,6 @@ export default function DeepStackPage() {
           </EditorialCard>
         </section>
       </Container>
-    </main>
+    </div>
   )
 }

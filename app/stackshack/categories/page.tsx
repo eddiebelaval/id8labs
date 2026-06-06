@@ -10,7 +10,7 @@ export default async function CategoriesPage(): Promise<React.JSX.Element> {
   ])
 
   return (
-    <main className="bg-[var(--paper)] py-16 md:py-24">
+    <div className="bg-[var(--paper)] py-16 md:py-24">
       <Container>
         <header className="border-b border-[var(--hair)] pb-12 mb-12 text-center">
           <Kicker dot className="mb-5 justify-center">Marketplace · Categories</Kicker>
@@ -44,6 +44,6 @@ export default async function CategoriesPage(): Promise<React.JSX.Element> {
           })}
         </div>
       </Container>
-    </main>
+    </div>
   )
 }

@@ -114,7 +114,7 @@ export default async function StackShackMarketplacePage({
     tabCounts.skills + tabCounts.commands + tabCounts.settings + tabCounts.plugins
 
   return (
-    <main className="relative bg-[var(--paper)]">
+    <div className="relative bg-[var(--paper)]">
       <StackBuilder />
 
       {/* Masthead */}
@@ -309,6 +309,6 @@ export default async function StackShackMarketplacePage({
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

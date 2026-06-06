@@ -44,7 +44,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
   const results = query ? await searchSkills(query, 50) : []
 
   return (
-    <main className="bg-[var(--paper)] min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
       <div className="border-b border-[var(--hair)]">
         <Container className="py-10 md:py-12">
@@ -111,6 +111,6 @@ export default async function SearchPage({ searchParams }: PageProps) {
           </div>
         </div>
       </Container>
-    </main>
+    </div>
   )
 }

@@ -12,7 +12,7 @@ export default async function ProfilePage() {
   }
 
   return (
-    <main className="relative">
+    <div className="relative">
       <section className="py-16 border-b border-[var(--rule)]">
         <div className="container">
           <div className="max-w-6xl mx-auto">
@@ -40,6 +40,6 @@ export default async function ProfilePage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

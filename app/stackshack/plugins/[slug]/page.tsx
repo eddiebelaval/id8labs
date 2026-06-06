@@ -68,7 +68,7 @@ export default async function PluginDetailPage({ params }: PageProps) {
   ).join(' ')
 
   return (
-    <main className="bg-[var(--paper)] pb-20">
+    <div className="bg-[var(--paper)] pb-20">
       {/* Track view client-side */}
       <PluginViewTracker pluginId={plugin.id} />
 
@@ -267,6 +267,6 @@ export default async function PluginDetailPage({ params }: PageProps) {
           </section>
         )}
       </Container>
-    </main>
+    </div>
   )
 }

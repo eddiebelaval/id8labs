@@ -45,7 +45,7 @@ const features = [
 
 export default function ClearPage() {
   return (
-    <main className="bg-[var(--paper)] py-20 md:py-28">
+    <div className="bg-[var(--paper)] py-20 md:py-28">
       <Container narrow>
         {/* Hero */}
         <header className="border-b border-[var(--hair)] pb-14">
@@ -110,6 +110,6 @@ export default function ClearPage() {
           </EditorialButton>
         </section>
       </Container>
-    </main>
+    </div>
   )
 }

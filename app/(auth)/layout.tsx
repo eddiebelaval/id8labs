@@ -14,11 +14,11 @@ export default function AuthLayout({
             <BrandName className="text-3xl" />
           </Link>
         </header>
-        <main className="flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <div className="w-full max-w-md">
             {children}
           </div>
-        </main>
+        </div>
       </div>
     </div>
   )

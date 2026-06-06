@@ -8,7 +8,7 @@ export const revalidate = 3600
 // Error fallback component
 function StarterKitsError({ error }: { error?: string }) {
   return (
-    <main className="bg-[var(--paper)] min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       <div className="border-b border-[var(--hair)]">
         <Container className="py-10 md:py-14">
           <Link
@@ -41,7 +41,7 @@ function StarterKitsError({ error }: { error?: string }) {
           </Link>
         </div>
       </Container>
-    </main>
+    </div>
   )
 }
 
@@ -70,7 +70,7 @@ export default async function StarterKitsPage() {
   const featuredCollection = officialCollections[0]
 
   return (
-    <main className="bg-[var(--paper)] min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
       <div className="border-b border-[var(--hair)]">
         <Container className="py-10 md:py-14">
@@ -133,6 +133,6 @@ export default async function StarterKitsPage() {
           </div>
         )}
       </Container>
-    </main>
+    </div>
   )
 }

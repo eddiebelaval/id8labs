@@ -38,7 +38,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
   const emoji = CATEGORY_EMOJI[setting.category] || '⚙️'
 
   return (
-    <main className="relative">
+    <div className="relative">
       {/* Back Button */}
       <section className="py-8 border-b border-[var(--hair)]">
         <div className="container">
@@ -263,6 +263,6 @@ export default async function SettingDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

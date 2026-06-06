@@ -57,7 +57,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   const skills = await getAllSkills({ category, sortBy })
 
   return (
-    <main className="bg-[var(--paper)] min-h-screen">
+    <div className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
       <div className="border-b border-[var(--hair)]">
         <Container className="py-10 md:py-14">
@@ -112,6 +112,6 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
           </div>
         )}
       </Container>
-    </main>
+    </div>
   )
 }

@@ -80,7 +80,7 @@ export default async function SkillDetailPage({
   const filteredRelated = relatedSkills.filter((s) => s.id !== skill.id).slice(0, 3)
 
   return (
-    <main className="bg-[var(--paper)] pb-20">
+    <div className="bg-[var(--paper)] pb-20">
       {/* Track view client-side */}
       <SkillViewTracker skillId={skill.id} />
 
@@ -289,6 +289,6 @@ export default async function SkillDetailPage({
           </section>
         )}
       </Container>
-    </main>
+    </div>
   )
 }

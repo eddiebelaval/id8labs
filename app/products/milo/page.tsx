@@ -92,7 +92,7 @@ function WaitlistForm() {
 
 export default function MILOLandingPage() {
   return (
-    <main className="bg-[var(--paper)] py-20 md:py-28">
+    <div className="bg-[var(--paper)] py-20 md:py-28">
       <Container>
         {/* Hero */}
         <header className="border-b border-[var(--hair)] pb-14">
@@ -335,6 +335,6 @@ export default function MILOLandingPage() {
           </div>
         </section>
       </Container>
-    </main>
+    </div>
   )
 }

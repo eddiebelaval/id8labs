@@ -22,7 +22,7 @@ export default async function SharedStackPage({ params }: PageProps): Promise<Re
   const stats = buildStackStats(stack.items)
 
   return (
-    <main className="relative">
+    <div className="relative">
       {/* Back Button */}
       <section className="py-8 border-b border-[var(--hair)]">
         <div className="container">
@@ -89,6 +89,6 @@ export default async function SharedStackPage({ params }: PageProps): Promise<Re
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

@@ -8,7 +8,7 @@ export default async function GalleryPage() {
   const publicStacks = await getPublicStacks(50)
 
   return (
-    <main className="relative bg-[var(--paper)]">
+    <div className="relative bg-[var(--paper)]">
       <section className="border-b border-[var(--hair)] py-16 md:py-24">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
@@ -42,6 +42,6 @@ export default async function GalleryPage() {
           )}
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

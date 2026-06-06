@@ -42,7 +42,7 @@ export default async function TrendingPage({ searchParams }: PageProps) {
   ])
 
   return (
-    <main className="relative bg-[var(--paper)]">
+    <div className="relative bg-[var(--paper)]">
       <StackBuilder />
 
       {/* Masthead */}
@@ -166,7 +166,7 @@ export default async function TrendingPage({ searchParams }: PageProps) {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }
 
