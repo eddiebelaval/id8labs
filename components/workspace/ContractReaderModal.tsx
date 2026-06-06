@@ -157,7 +157,7 @@ export function ContractReaderModal({
     const regex = new RegExp(`(${searchQuery})`, 'gi')
     return content.replace(
       regex,
-      '<mark class="bg-amber-300/50 text-[var(--ink)] px-0.5 ">$1</mark>'
+      '<mark class="bg-id8-orange text-[var(--ink)] px-0.5 ">$1</mark>'
     )
   }
 
@@ -320,7 +320,7 @@ export function ContractReaderModal({
                     </h3>
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
-                        <DollarSign className="w-4 h-4 text-emerald-500" />
+                        <DollarSign className="w-4 h-4 text-[var(--teal)]" />
                         <div>
                           <p className="text-xs text-[var(--muted)]">
                             Purchase Price
@@ -331,7 +331,7 @@ export function ContractReaderModal({
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Calendar className="w-4 h-4 text-blue-500" />
+                        <Calendar className="w-4 h-4 text-[var(--ink)]" />
                         <div>
                           <p className="text-xs text-[var(--muted)]">
                             Closing Date
@@ -342,7 +342,7 @@ export function ContractReaderModal({
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Home className="w-4 h-4 text-purple-500" />
+                        <Home className="w-4 h-4 text-[var(--ink)]" />
                         <div>
                           <p className="text-xs text-[var(--muted)]">
                             Property

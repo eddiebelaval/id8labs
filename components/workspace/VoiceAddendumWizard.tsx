@@ -363,9 +363,9 @@ export function VoiceAddendumWizard({
               <div
                 className={`flex items-center justify-center w-8 h-8 -full transition-colors ${
                   isActive
-                    ? 'bg-[var(--accent)] text-white'
+                    ? 'bg-[var(--accent)] text-[var(--paper)]'
                     : isCompleted
-                    ? 'bg-emerald-500 text-white'
+                    ? 'bg-[var(--teal)] text-[var(--paper)]'
                     : 'bg-[var(--paper-shadow)] text-[var(--muted)]'
                 }`}
               >
@@ -418,7 +418,7 @@ export function VoiceAddendumWizard({
                   disabled={!isSupported}
                   className={`relative w-16 h-16 -full flex items-center justify-center transition-colors ${
                     isListening
-                      ? 'bg-[var(--accent)] text-white'
+                      ? 'bg-[var(--accent)] text-[var(--paper)]'
                       : 'bg-[var(--paper-shadow)] text-[var(--muted)] hover:bg-[var(--paper-mid)]'
                   } ${!isSupported ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
@@ -541,7 +541,7 @@ export function VoiceAddendumWizard({
                   disabled={!isSupported}
                   className={`relative w-20 h-20 -full flex items-center justify-center transition-colors ${
                     isListening
-                      ? 'bg-[var(--accent)] text-white'
+                      ? 'bg-[var(--accent)] text-[var(--paper)]'
                       : 'bg-[var(--paper-shadow)] text-[var(--muted)] hover:bg-[var(--paper-mid)]'
                   }`}
                 >
@@ -567,7 +567,7 @@ export function VoiceAddendumWizard({
               <div className="space-y-2">
                 <label className="text-sm font-medium text-[var(--muted)]">
                   {currentField.label}
-                  {currentField.required && <span className="text-red-500 ml-1">*</span>}
+                  {currentField.required && <span className="text-id8-orange ml-1">*</span>}
                 </label>
                 <input
                   type={currentField.type === 'date' ? 'date' : currentField.type === 'currency' ? 'number' : 'text'}
@@ -590,7 +590,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={handleNextField}
                   disabled={currentField.required && !wizard.details[currentField.key]}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white  hover:bg-[var(--accent)]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-[var(--paper)]  hover:bg-[var(--accent)]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {currentFieldIndex < requiredFields.length - 1 ? 'Next' : 'Review'}
                   <ChevronRight className="w-4 h-4" />
@@ -674,7 +674,7 @@ export function VoiceAddendumWizard({
                 </button>
                 <button
                   onClick={() => setStep('confirm')}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white  hover:bg-[var(--accent)]/90 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-[var(--paper)]  hover:bg-[var(--accent)]/90 transition-colors"
                 >
                   Confirm
                   <ChevronRight className="w-4 h-4" />
@@ -693,8 +693,8 @@ export function VoiceAddendumWizard({
               className="space-y-6"
             >
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 bg-emerald-500/10 -full flex items-center justify-center">
-                  <Send className="w-8 h-8 text-emerald-500" />
+                <div className="w-16 h-16 mx-auto mb-4 bg-[var(--teal)] -full flex items-center justify-center">
+                  <Send className="w-8 h-8 text-[var(--teal)]" />
                 </div>
                 <h3 className="text-lg font-semibold text-[var(--ink)]">
                   Ready to Send
@@ -714,7 +714,7 @@ export function VoiceAddendumWizard({
                   disabled={!isSupported}
                   className={`w-12 h-12 -full flex items-center justify-center transition-colors ${
                     isListening
-                      ? 'bg-[var(--accent)] text-white'
+                      ? 'bg-[var(--accent)] text-[var(--paper)]'
                       : 'bg-[var(--paper-shadow)] text-[var(--muted)]'
                   }`}
                 >
@@ -735,7 +735,7 @@ export function VoiceAddendumWizard({
                 <button
                   onClick={handleSubmit}
                   disabled={wizard.isProcessing}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-emerald-500 text-white  hover:bg-emerald-600 transition-colors disabled:opacity-50"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[var(--teal)] text-[var(--paper)]  hover:bg-[var(--teal)] transition-colors disabled:opacity-50"
                 >
                   {wizard.isProcessing ? (
                     <>
@@ -757,9 +757,9 @@ export function VoiceAddendumWizard({
 
       {/* Error display */}
       {(wizard.error || voiceError) && (
-        <div className="mx-4 mb-4 p-3 bg-red-500/10 border border-red-500/20  flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
-          <p className="text-sm text-red-500">{wizard.error || voiceError}</p>
+        <div className="mx-4 mb-4 p-3 bg-id8-orange border border-id8-orange  flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-id8-orange flex-shrink-0" />
+          <p className="text-sm text-id8-orange">{wizard.error || voiceError}</p>
         </div>
       )}
 

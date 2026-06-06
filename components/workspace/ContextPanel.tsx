@@ -242,7 +242,7 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
                   <div
                     className={`relative z-10 w-4 h-4 -full border-2 flex-shrink-0 ${
                       item.status === 'complete'
-                        ? 'bg-emerald-500 border-emerald-500'
+                        ? 'bg-[var(--teal)] border-[var(--teal)]'
                         : item.status === 'active'
                         ? 'bg-[var(--accent)] border-[var(--accent)]'
                         : 'bg-[var(--paper-shadow)] border-[var(--hair)]'

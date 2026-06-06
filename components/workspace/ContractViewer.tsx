@@ -263,15 +263,15 @@ export function ContractViewer({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-amber-500/10 border border-amber-500/20  p-4"
+          className="bg-id8-orange border border-id8-orange  p-4"
         >
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <AlertTriangle className="w-5 h-5 text-id8-orange flex-shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-medium text-amber-600 dark:text-amber-400">
+              <h4 className="text-sm font-medium text-id8-orange">
                 {pendingAmendments.length} Pending Amendment{pendingAmendments.length !== 1 ? 's' : ''}
               </h4>
-              <p className="text-xs text-amber-600/80 dark:text-amber-400/80 mt-0.5">
+              <p className="text-xs text-id8-orange mt-0.5">
                 Review and approve amendments to proceed with the transaction.
               </p>
 
@@ -281,7 +281,7 @@ export function ContractViewer({
                   <button
                     key={amendment.id}
                     onClick={() => handleAmendmentClick(amendment)}
-                    className="flex items-center justify-between w-full p-2 bg-white/50 dark:bg-black/20  hover:bg-white/80 dark:hover:bg-black/40 transition-colors"
+                    className="flex items-center justify-between w-full p-2 bg-white/50  hover:bg-white/80 transition-colors"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-medium text-[var(--ink)]">
@@ -289,8 +289,8 @@ export function ContractViewer({
                       </span>
                       <span className={`px-1.5 py-0.5 text-[10px]  ${
                         amendment.status === 'pending_signature'
-                          ? 'bg-blue-500/20 text-blue-600'
-                          : 'bg-amber-500/20 text-amber-600'
+                          ? 'bg-[var(--ink)] text-[var(--ink)]'
+                          : 'bg-id8-orange text-id8-orange'
                       }`}>
                         {amendment.status === 'pending_signature' ? 'Awaiting Signature' : 'Needs Review'}
                       </span>
@@ -299,7 +299,7 @@ export function ContractViewer({
                   </button>
                 ))}
                 {pendingAmendments.length > 3 && (
-                  <p className="text-xs text-amber-600/70 text-center">
+                  <p className="text-xs text-id8-orange text-center">
                     +{pendingAmendments.length - 3} more
                   </p>
                 )}
@@ -331,7 +331,7 @@ export function ContractViewer({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         onClick={openWizard}
-        className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white  font-medium hover:bg-[var(--accent)]/90 transition-colors"
+        className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-[var(--paper)]  font-medium hover:bg-[var(--accent)]/90 transition-colors"
       >
         <Plus className="w-4 h-4" />
         New Addendum

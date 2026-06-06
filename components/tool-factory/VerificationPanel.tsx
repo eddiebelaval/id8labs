@@ -51,20 +51,20 @@ export function VerificationPanel({
 
   // Get badge color based on score
   const getBadgeColor = () => {
-    if (score >= 90) return 'text-green-500 bg-green-500/10 border-green-500/30'
-    if (score >= 70) return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/30'
-    return 'text-red-500 bg-red-500/10 border-red-500/30'
+    if (score >= 90) return 'text-[var(--teal)] bg-[var(--teal)] border-[var(--teal)]'
+    if (score >= 70) return 'text-id8-orange bg-id8-orange border-id8-orange'
+    return 'text-id8-orange bg-id8-orange border-id8-orange'
   }
 
   // Get icon for check status
   const getCheckIcon = (check: { passed: boolean; issues: string[] }) => {
     if (check.passed) {
-      return <CheckCircle className="w-4 h-4 text-green-500" />
+      return <CheckCircle className="w-4 h-4 text-[var(--teal)]" />
     }
     if (check.issues.length > 2) {
-      return <AlertCircle className="w-4 h-4 text-red-500" />
+      return <AlertCircle className="w-4 h-4 text-id8-orange" />
     }
-    return <AlertTriangle className="w-4 h-4 text-yellow-500" />
+    return <AlertTriangle className="w-4 h-4 text-id8-orange" />
   }
 
   const checkItems = [
@@ -108,9 +108,9 @@ export function VerificationPanel({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {passed ? (
-            <CheckCircle className="w-5 h-5 text-green-500" />
+            <CheckCircle className="w-5 h-5 text-[var(--teal)]" />
           ) : (
-            <AlertTriangle className="w-5 h-5 text-yellow-500" />
+            <AlertTriangle className="w-5 h-5 text-id8-orange" />
           )}
           <span className="text-sm font-semibold text-[var(--ink)]">
             {passed ? 'Verification Passed' : 'Verification Issues'}
@@ -151,7 +151,7 @@ export function VerificationPanel({
                       key={idx}
                       className="text-xs text-[var(--muted)] flex items-start gap-1"
                     >
-                      <span className="text-red-400">•</span>
+                      <span className="text-id8-orange">•</span>
                       {issue}
                     </li>
                   ))}

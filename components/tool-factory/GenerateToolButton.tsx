@@ -26,7 +26,7 @@ export function GenerateToolButton({
     'inline-flex items-center gap-2 px-4 py-2 -full font-semibold transition-all'
   const variantClasses =
     variant === 'primary'
-      ? 'bg-[var(--orange)] text-white hover:bg-[var(--id8-orange-hover)] shadow-[var(--orange)]/20'
+      ? 'bg-[var(--orange)] text-[var(--paper)] hover:bg-[var(--id8-orange-hover)] shadow-[var(--orange)]/20'
       : 'bg-[var(--paper)] text-[var(--ink)] border border-[var(--hair)] hover:border-[var(--orange)] hover:text-[var(--orange)]'
 
   return (
