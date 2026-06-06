@@ -14,8 +14,6 @@ import {
 } from '@/components/editorial'
 import { CopyableCode, TryThisNow, MentorNote } from '../_components'
 
-const ic = 'font-[family-name:var(--font-mono)] text-[0.9em] bg-[var(--paper-mid)] px-1.5 py-0.5'
-
 const tools = [
   { name: 'Web Browsing', description: 'Claude can visit URLs and read web pages. Research without the tab-switching.', status: 'available' as const },
   { name: 'File System', description: 'Read and write files on your computer. Process documents, save outputs, organize folders.', status: 'available' as const },
