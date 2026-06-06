@@ -189,19 +189,20 @@ export function ContractReaderModal({
         >
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/80"
+            className="fixed inset-0 bg-[var(--ink)]/40"
             onClick={onClose}
           />
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             className={`relative bg-[var(--paper)] flex flex-col overflow-hidden ${
               isFullscreen
-                ? 'fixed inset-0 -none'
-                : 'rounded-2xl w-[95vw] h-[90vh] max-w-7xl'
+                ? 'fixed inset-0'
+                : 'border border-[var(--hair-hard)] w-[95vw] h-[90vh] max-w-7xl'
             }`}
           >
             {/* Header */}

@@ -81,23 +81,23 @@ export function ToolFactoryModal({
         >
           {/* Solid backdrop layer to prevent bleed-through from sticky elements */}
           <div
-            className="fixed inset-0 bg-[#0a0a0a]"
+            className="fixed inset-0 bg-[var(--ink)]/40"
             style={{ zIndex: 9998, willChange: 'transform' }}
             onClick={handleClose}
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative bg-[var(--paper)]  max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="relative bg-[var(--paper)] border border-[var(--hair-hard)] max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             style={{ zIndex: 10000 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-[var(--hair)] flex-shrink-0">
-              <h2 className="text-xl font-bold text-[var(--ink)]">
+              <h2 className="font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
                 AI Tool Factory
               </h2>
               <button
