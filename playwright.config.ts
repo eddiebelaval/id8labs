@@ -81,9 +81,15 @@ export default defineConfig({
     },
   ],
 
-  /* Run your local dev server before starting the tests */
+  /* Serve the app before starting the tests.
+     In CI, run the production build (the workflow runs `npm run build` first)
+     so there is no per-route on-demand compilation — the full suite finishes
+     in minutes instead of timing out, and tests exercise the real output.
+     Locally, fall back to the dev server. */
   webServer: {
-    command: 'DISABLE_MARKETPLACE_REDIRECTS=true npm run dev',
+    command: process.env.CI
+      ? 'DISABLE_MARKETPLACE_REDIRECTS=true npm run start'
+      : 'DISABLE_MARKETPLACE_REDIRECTS=true npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

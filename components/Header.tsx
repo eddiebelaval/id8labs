@@ -44,7 +44,7 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-50 border-b border-[var(--rule)] bg-[var(--paper)]/95 backdrop-blur-sm">
         <div className="container">
-          <div className="flex h-16 items-center justify-between md:h-[72px]">
+          <div className="flex h-16 items-center justify-between lg:h-[72px]">
             {/* Wordmark */}
             <Link
               href="/"
@@ -54,7 +54,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden items-center gap-7 md:flex">
+            <nav className="hidden items-center gap-7 lg:flex">
               <Link href="/products" className={navLink}>
                 Products
               </Link>
@@ -248,7 +248,7 @@ export default function Header() {
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="relative z-[70] -mr-2 touch-manipulation p-3 transition-opacity hover:opacity-70 md:hidden"
+              className="relative z-[70] -mr-2 touch-manipulation p-3 transition-opacity hover:opacity-70 lg:hidden"
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav"
@@ -275,7 +275,7 @@ export default function Header() {
         <nav
           id="mobile-nav"
           aria-label="Mobile navigation"
-          className="fixed inset-x-0 bottom-0 top-16 z-[100] overflow-y-auto overscroll-contain bg-[var(--paper)] [-webkit-overflow-scrolling:touch] md:hidden"
+          className="fixed inset-x-0 bottom-0 top-16 z-[100] overflow-y-auto overscroll-contain bg-[var(--paper)] [-webkit-overflow-scrolling:touch] lg:hidden"
         >
           <div className="container space-y-4 border-t border-[var(--rule)] pb-24 pt-6">
             <Link href="/products" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
