@@ -1,430 +1,294 @@
 'use client'
 
-import { m } from '@/components/motion'
-import Link from 'next/link'
 import { ModuleComplete } from '@/components/progress'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  SectionHead,
+  Prose,
+  EditorialButton,
+} from '@/components/editorial'
 
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Icons
-const ArrowLeftIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M19 12H5M12 19l-7-7 7-7"/>
-  </svg>
-)
-
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-)
-
-const LightbulbIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/>
-  </svg>
-)
-
-const LayersIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-    <polyline points="2 17 12 22 22 17"/>
-    <polyline points="2 12 12 17 22 12"/>
-  </svg>
-)
+const tips = [
+  {
+    title: '1. Front-load what matters',
+    body: 'Put the most important information first. The AI pays more attention to what comes early.',
+    pairs: [
+      { label: 'Bad', text: '"Here\'s my entire project history... oh and I need a subject line for this email."' },
+      { label: 'Good', text: '"Write a subject line for this sales follow-up email. Context: meeting yesterday, discussed pricing, they seemed interested."', good: true },
+    ],
+  },
+  {
+    title: "2. Don't dump everything",
+    body: "More pages doesn't mean better output. Give context that's relevant to THIS task.",
+    pairs: [
+      { label: 'Ask yourself', text: '"If I were delegating this to a human, what would they actually need to know?"' },
+    ],
+  },
+  {
+    title: '3. Long conversations drift',
+    body: "After 10-15 back-and-forth messages, the AI starts losing track of what you're actually trying to do.",
+    pairs: [
+      { label: 'Solution', text: 'Start a new conversation and restate what you need with fresh context.' },
+    ],
+  },
+  {
+    title: '4. Restating helps refocus',
+    body: 'If output quality drops mid-conversation, summarize what you need again.',
+    pairs: [
+      { label: '', text: '"Let me refocus: I need three subject line options for a cold outreach email to CTOs. Keep them under 50 characters."' },
+    ],
+  },
+]
 
 export default function Module4Page() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-zone-text">
-        <div className="container">
-          <m.div
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-            className="max-w-3xl"
-          >
-            <m.div variants={fadeUp}>
-              <Link
-                href="/courses/ai-conversation-fundamentals"
-                className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors mb-6"
-              >
-                <ArrowLeftIcon />
-                Back to Course
-              </Link>
-            </m.div>
+    <article className="min-h-screen bg-[var(--paper)]">
+      {/* Masthead */}
+      <section className="pt-16 pb-10">
+        <Container narrow>
+          <div className="mb-8">
+            <EditorialButton href="/courses/ai-conversation-fundamentals" variant="ghost">
+              &larr; Back to Course
+            </EditorialButton>
+          </div>
 
-            <m.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
-            >
-              <span>Module 4</span>
-              <span className="text-id8-orange/50">•</span>
-              <span>~10 min</span>
-            </m.div>
+          <Kicker dot>Module 4 · ~10 min</Kicker>
 
-            <m.h1
-              variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
-            >
-              The Attention Budget
-            </m.h1>
+          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
+            The Attention <em className="italic text-id8-orange">Budget</em>
+          </h1>
 
-            <m.p
-              variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] mb-8 leading-relaxed"
-            >
-              Why more context often makes things worse. How to feed information strategically.
-            </m.p>
-          </m.div>
-        </div>
+          <Deck className="mt-6">
+            Why more context often makes things worse. How to feed information strategically.
+          </Deck>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+          <MetaRow
+            className="mt-8"
+            items={[
+              { label: 'Module 4 of 6' },
+              { label: '~10 min read' },
+            ]}
+          />
+
+          <Rule className="mt-8" />
+        </Container>
       </section>
 
       {/* The Concept */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-id8-orange">
-                <LayersIcon />
-              </span>
-              <h2 className="text-2xl font-bold">The Concept</h2>
-            </div>
-
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="prose prose-lg"
-            >
-              <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
-                AI has a limited context window — think of it as working memory. It can only "see" so much at once.
-              </p>
-
-              <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
-                Here's the counterintuitive part: <strong className="text-[var(--text-primary)]">more isn't always better</strong>. More context often makes output worse because attention gets diluted.
-              </p>
-
-              <div className="p-6 bg-id8-orange/5 border border-id8-orange/20 rounded-xl">
-                <p className="text-lg font-medium text-[var(--text-primary)] mb-2">The Rule:</p>
-                <p className="text-[var(--text-primary)]">
-                  Give the AI exactly what it needs to do the job. No more, no less.
-                </p>
-              </div>
-            </m.div>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="The Concept" className="mb-8" />
+          <Prose>
+            <p>
+              AI has a limited context window — think of it as working memory. It can only &quot;see&quot; so much at once.
+            </p>
+            <p>
+              Here&apos;s the counterintuitive part: <strong>more isn&apos;t always better</strong>. More context often makes output worse because attention gets diluted.
+            </p>
+          </Prose>
+          <div className="mt-6 border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-6">
+            <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-3">
+              The Rule
+            </p>
+            <p className="text-[var(--ink)] leading-[1.7]">
+              Give the AI exactly what it needs to do the job. No more, no less.
+            </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* The Desk Analogy */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">The Desk Analogy</h2>
-
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <m.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="p-5 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl"
-              >
-                <div className="mb-3">
-                  <span className="text-2xl">🗑️</span>
-                </div>
-                <h3 className="font-bold text-[var(--text-primary)] mb-2">Cluttered Desk</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-3">
-                  Important things get buried under context that doesn't matter for the current task.
-                </p>
-                <p className="text-sm text-[var(--text-primary)] font-mono bg-[var(--bg-secondary)] p-2 rounded">
-                  Result: Unfocused, generic output
-                </p>
-              </m.div>
-
-              <m.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="p-5 bg-[var(--bg-primary)] border border-id8-orange/30 rounded-xl"
-              >
-                <div className="mb-3">
-                  <span className="text-2xl">✨</span>
-                </div>
-                <h3 className="font-bold text-[var(--text-primary)] mb-2">Clean Desk</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-3">
-                  The AI sees exactly what matters. Work gets done efficiently and accurately.
-                </p>
-                <p className="text-sm text-[var(--text-primary)] font-mono bg-[var(--bg-secondary)] p-2 rounded">
-                  Result: Focused, precise output
-                </p>
-              </m.div>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="The Desk Analogy" className="mb-8" />
+          <div className="grid md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)] mb-6">
+            <div className="bg-[var(--paper)] p-5">
+              <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-3">
+                Cluttered Desk
+              </p>
+              <p className="text-sm text-[var(--body)] mb-3">
+                Important things get buried under context that doesn&apos;t matter for the current task.
+              </p>
+              <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                Result: Unfocused, generic output
+              </p>
             </div>
-
-            <p className="text-[var(--text-secondary)] text-sm">
-              When you dump everything into the conversation hoping the AI will "figure it out," you're creating a cluttered desk. It has to sift through noise to find the signal.
-            </p>
+            <div className="bg-[var(--paper)] p-5 border-t-2 md:border-t-0 md:border-l-2 border-id8-orange">
+              <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-3">
+                Clean Desk
+              </p>
+              <p className="text-sm text-[var(--body)] mb-3">
+                The AI sees exactly what matters. Work gets done efficiently and accurately.
+              </p>
+              <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--ink)]">
+                Result: Focused, precise output
+              </p>
+            </div>
           </div>
-        </div>
+          <p className="text-sm text-[var(--body)] leading-[1.7]">
+            When you dump everything into the conversation hoping the AI will &quot;figure it out,&quot; you&apos;re creating a cluttered desk. It has to sift through noise to find the signal.
+          </p>
+        </Container>
       </section>
 
       {/* Practical Tips */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-id8-orange">
-                <LightbulbIcon />
-              </span>
-              <h2 className="text-2xl font-bold">Practical Tips</h2>
-            </div>
-
-            <div className="space-y-4">
-              <m.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg"
-              >
-                <h3 className="font-bold text-[var(--text-primary)] mb-2">1. Front-load what matters</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-3">
-                  Put the most important information first. The AI pays more attention to what comes early.
-                </p>
-                <div className="bg-[var(--bg-primary)] p-3 rounded text-sm">
-                  <p className="text-[var(--text-tertiary)] mb-1">Bad:</p>
-                  <p className="text-[var(--text-primary)] mb-3 italic">
-                    "Here's my entire project history... oh and I need a subject line for this email."
-                  </p>
-                  <p className="text-[var(--text-tertiary)] mb-1">Good:</p>
-                  <p className="text-[var(--text-primary)] italic">
-                    "Write a subject line for this sales follow-up email. Context: meeting yesterday, discussed pricing, they seemed interested."
-                  </p>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="Practical Tips" className="mb-8" />
+          <div className="space-y-px bg-[var(--hair)] border border-[var(--hair)]">
+            {tips.map((tip) => (
+              <div key={tip.title} className="bg-[var(--paper)] p-5">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-2">
+                  {tip.title}
+                </h3>
+                <p className="text-sm text-[var(--body)] mb-3">{tip.body}</p>
+                <div className="border border-[var(--hair)] bg-[var(--paper-shadow)] p-3 space-y-3">
+                  {tip.pairs.map((pair, i) => (
+                    <div key={i}>
+                      {pair.label && (
+                        <p className={`font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] mb-1 ${pair.good ? 'text-id8-orange' : 'text-[var(--muted)]'}`}>
+                          {pair.label}
+                        </p>
+                      )}
+                      <p className="font-[family-name:var(--font-serif)] italic text-sm text-[var(--body)]">
+                        {pair.text}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              </m.div>
-
-              <m.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg"
-              >
-                <h3 className="font-bold text-[var(--text-primary)] mb-2">2. Don't dump everything</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-3">
-                  More pages doesn't mean better output. Give context that's relevant to THIS task.
-                </p>
-                <div className="bg-[var(--bg-primary)] p-3 rounded text-sm">
-                  <p className="text-[var(--text-tertiary)] mb-1">Ask yourself:</p>
-                  <p className="text-[var(--text-primary)] italic">
-                    "If I were delegating this to a human, what would they actually need to know?"
-                  </p>
-                </div>
-              </m.div>
-
-              <m.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg"
-              >
-                <h3 className="font-bold text-[var(--text-primary)] mb-2">3. Long conversations drift</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-3">
-                  After 10-15 back-and-forth messages, the AI starts losing track of what you're actually trying to do.
-                </p>
-                <div className="bg-[var(--bg-primary)] p-3 rounded text-sm">
-                  <p className="text-[var(--text-tertiary)] mb-1">Solution:</p>
-                  <p className="text-[var(--text-primary)] italic">
-                    Start a new conversation and restate what you need with fresh context.
-                  </p>
-                </div>
-              </m.div>
-
-              <m.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg"
-              >
-                <h3 className="font-bold text-[var(--text-primary)] mb-2">4. Restating helps refocus</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-3">
-                  If output quality drops mid-conversation, summarize what you need again.
-                </p>
-                <div className="bg-[var(--bg-primary)] p-3 rounded text-sm">
-                  <p className="text-[var(--text-primary)] italic">
-                    "Let me refocus: I need three subject line options for a cold outreach email to CTOs. Keep them under 50 characters."
-                  </p>
-                </div>
-              </m.div>
-            </div>
+              </div>
+            ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* The Right Altitude */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Finding the Right Altitude</h2>
-            <p className="text-[var(--text-secondary)] mb-8">
-              There's a sweet spot between too specific and too vague. Here's how to find it:
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="Finding the Right Altitude" className="mb-8" />
+          <Prose>
+            <p>
+              There&apos;s a sweet spot between too specific and too vague. Here&apos;s how to find it:
             </p>
+          </Prose>
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full border-collapse text-sm">
+              <thead className="border-b border-[var(--hair-hard)]">
+                <tr>
+                  <th className="py-3 px-4 text-left font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
+                    Too Specific
+                  </th>
+                  <th className="py-3 px-4 text-left font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
+                    Just Right
+                  </th>
+                  <th className="py-3 px-4 text-left font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
+                    Too Vague
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-[var(--hair)]">
+                  <td className="py-3 px-4 text-[var(--muted)]">Micromanaging every detail, leaving no room for the AI to think</td>
+                  <td className="py-3 px-4 text-[var(--ink)] bg-[var(--paper-shadow)]">Clear intent with room to execute</td>
+                  <td className="py-3 px-4 text-[var(--muted)]">&quot;Help me with this&quot;</td>
+                </tr>
+                <tr className="border-b border-[var(--hair)]">
+                  <td className="py-3 px-4 text-[var(--muted)]">Brittle — breaks if anything changes</td>
+                  <td className="py-3 px-4 text-[var(--ink)] bg-[var(--paper-shadow)]">Flexible, consistent results</td>
+                  <td className="py-3 px-4 text-[var(--muted)]">Inconsistent results every time</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full border border-[var(--border)] rounded-lg overflow-hidden">
-                <thead className="bg-[var(--bg-primary)]">
-                  <tr>
-                    <th className="px-4 py-3 text-left text-sm font-bold text-[var(--text-primary)]">Too Specific</th>
-                    <th className="px-4 py-3 text-left text-sm font-bold text-id8-orange">Just Right</th>
-                    <th className="px-4 py-3 text-left text-sm font-bold text-[var(--text-primary)]">Too Vague</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-t border-[var(--border)]">
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      Micromanaging every detail, leaving no room for the AI to think
-                    </td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-primary)] bg-id8-orange/5">
-                      Clear intent with room to execute
-                    </td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      "Help me with this"
-                    </td>
-                  </tr>
-                  <tr className="border-t border-[var(--border)]">
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      Brittle — breaks if anything changes
-                    </td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-primary)] bg-id8-orange/5">
-                      Flexible, consistent results
-                    </td>
-                    <td className="px-4 py-3 text-sm text-[var(--text-secondary)]">
-                      Inconsistent results every time
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div className="mt-6 border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-5 space-y-3 text-sm">
+            <div>
+              <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-1">Too specific</p>
+              <p className="font-[family-name:var(--font-serif)] italic text-[var(--body)]">
+                &quot;Use exactly 47 words. Start with &lsquo;The&rsquo;. Use the word &lsquo;innovative&rsquo; in sentence 3...&quot;
+              </p>
             </div>
-
-            <div className="mt-6 p-4 bg-id8-orange/5 border border-id8-orange/20 rounded-lg">
-              <p className="text-sm font-medium text-[var(--text-primary)] mb-2">Example:</p>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <p className="text-[var(--text-tertiary)] mb-1">Too specific:</p>
-                  <p className="text-[var(--text-primary)] italic">
-                    "Use exactly 47 words. Start with 'The'. Use the word 'innovative' in sentence 3..."
-                  </p>
-                </div>
-                <div>
-                  <p className="text-id8-orange mb-1">Just right:</p>
-                  <p className="text-[var(--text-primary)] italic">
-                    "Write a 50-word product description. Professional tone. Focus on time savings."
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[var(--text-tertiary)] mb-1">Too vague:</p>
-                  <p className="text-[var(--text-primary)] italic">
-                    "Make it sound good"
-                  </p>
-                </div>
-              </div>
+            <div>
+              <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-1">Just right</p>
+              <p className="font-[family-name:var(--font-serif)] italic text-[var(--ink)]">
+                &quot;Write a 50-word product description. Professional tone. Focus on time savings.&quot;
+              </p>
+            </div>
+            <div>
+              <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-1">Too vague</p>
+              <p className="font-[family-name:var(--font-serif)] italic text-[var(--body)]">&quot;Make it sound good&quot;</p>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Try This */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="p-6 bg-id8-orange/5 border-2 border-id8-orange/30 rounded-xl">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="px-2 py-1 bg-id8-orange/20 border border-id8-orange/40 rounded text-id8-orange text-xs font-mono uppercase tracking-wider">
-                  Try This
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">The Attention Budget Test</h3>
-              <p className="text-[var(--text-secondary)] mb-4">
-                Take a prompt you've used recently. Try cutting it in half. Compare the results.
+      <section className="pb-14">
+        <Container narrow>
+          <div className="border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-8">
+            <Kicker dot className="mb-6">Try This</Kicker>
+            <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">
+              The Attention Budget Test
+            </h3>
+            <p className="text-[var(--body)] mb-4">
+              Take a prompt you&apos;ve used recently. Try cutting it in half. Compare the results.
+            </p>
+            <div className="border border-[var(--hair)] bg-[var(--paper)] p-5">
+              <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-3">
+                You&apos;ll often find
               </p>
-              <div className="bg-[var(--bg-primary)] p-4 rounded-lg">
-                <p className="text-sm text-[var(--text-primary)] mb-3">You'll often find:</p>
-                <ul className="text-sm text-[var(--text-secondary)] space-y-2">
-                  <li className="flex items-start gap-2">
-                    <span className="text-id8-orange mt-0.5">•</span>
-                    <span>The shorter version is clearer</span>
+              <ul className="space-y-2">
+                {[
+                  'The shorter version is clearer',
+                  'The AI focuses on what actually matters',
+                  'Output quality goes up, not down',
+                ].map((s, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-[var(--body)]">
+                    <span className="text-id8-orange flex-shrink-0">&rarr;</span>
+                    {s}
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-id8-orange mt-0.5">•</span>
-                    <span>The AI focuses on what actually matters</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-id8-orange mt-0.5">•</span>
-                    <span>Output quality goes up, not down</span>
-                  </li>
-                </ul>
-              </div>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Key Takeaway */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Key Takeaway</h2>
-            <div className="p-5 bg-[var(--bg-primary)] border border-id8-orange/30 rounded-xl">
-              <p className="text-lg text-[var(--text-primary)] leading-relaxed">
-                The AI's attention is finite. <strong>More context ≠ better output.</strong> Give it exactly what it needs to do the job. No more, no less. Front-load what matters. Trim the rest.
-              </p>
-            </div>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="Key Takeaway" className="mb-8" />
+          <div className="border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-6">
+            <p className="text-lg text-[var(--ink)] leading-[1.7]">
+              The AI&apos;s attention is finite. <strong>More context does not equal better output.</strong> Give it exactly what it needs to do the job. No more, no less. Front-load what matters. Trim the rest.
+            </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Navigation */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <ModuleComplete
-              courseSlug="ai-conversation-fundamentals"
-              moduleSlug="module-4"
-              nextModulePath="/courses/ai-conversation-fundamentals/module-5"
-            />
+      <section className="border-t border-[var(--rule)] py-12">
+        <Container narrow>
+          <ModuleComplete
+            courseSlug="ai-conversation-fundamentals"
+            moduleSlug="module-4"
+            nextModulePath="/courses/ai-conversation-fundamentals/module-5"
+          />
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-between mt-8">
-              <Link
-                href="/courses/ai-conversation-fundamentals/module-3"
-                className="btn bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] hover:border-id8-orange/50 transition-colors inline-flex items-center gap-2"
-              >
-                <ArrowLeftIcon />
-                Previous: The Iteration Loop
-              </Link>
-              <Link
-                href="/courses/ai-conversation-fundamentals/module-5"
-                className="btn btn-primary group inline-flex items-center gap-2"
-              >
-                Next: Putting It Together
-                <ArrowRightIcon />
-              </Link>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
+            <EditorialButton href="/courses/ai-conversation-fundamentals/module-3" variant="ghost">
+              &larr; Previous: The Iteration Loop
+            </EditorialButton>
+            <EditorialButton href="/courses/ai-conversation-fundamentals/module-5" variant="primary">
+              Next: Module 5 — Putting It Together &rarr;
+            </EditorialButton>
           </div>
-        </div>
+        </Container>
       </section>
-    </div>
+    </article>
   )
 }

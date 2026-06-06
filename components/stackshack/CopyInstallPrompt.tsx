@@ -22,19 +22,19 @@ export function CopyInstallPrompt({ prompt }: CopyInstallPromptProps) {
 
   return (
     <div className="relative group">
-      <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-2 bg-[var(--bg-secondary)] border-b border-[var(--border)]">
-          <span className="text-sm font-medium text-[var(--text-secondary)]">
+      <div className="bg-[var(--paper-shadow)] border border-[var(--hair)] overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--hair)]">
+          <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
             Claude Code Install Prompt
           </span>
           <button
             onClick={handleCopy}
-            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg transition-all hover:bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--id8-orange)]"
+            className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] hover:text-id8-orange transition-colors"
           >
             {copied ? (
               <>
-                <Check className="w-4 h-4 text-emerald-500" />
-                <span className="text-emerald-500">Copied!</span>
+                <Check className="w-4 h-4 text-teal" />
+                <span className="text-teal">Copied</span>
               </>
             ) : (
               <>
@@ -44,19 +44,19 @@ export function CopyInstallPrompt({ prompt }: CopyInstallPromptProps) {
             )}
           </button>
         </div>
-        <pre className="p-4 overflow-x-auto text-sm text-[var(--text-primary)] whitespace-pre-wrap">
+        <pre className="p-4 overflow-x-auto font-[family-name:var(--font-mono)] text-sm text-[var(--body)] whitespace-pre-wrap">
           {prompt}
         </pre>
       </div>
 
       <button
         onClick={handleCopy}
-        className="mt-4 w-full btn btn-primary"
+        className="mt-4 w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange"
       >
         {copied ? (
           <>
             <Check className="w-5 h-5" />
-            Copied to Clipboard!
+            Copied to Clipboard
           </>
         ) : (
           <>

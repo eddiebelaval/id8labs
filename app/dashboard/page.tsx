@@ -461,39 +461,34 @@ export default function DashboardPage() {
   const sparklineData = pageviews.map(p => p.y)
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Subtle grid background */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-black to-black" />
-      <div className="fixed inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMTA3LDUzLDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50" />
-
-      <div className="relative z-10 p-6">
+    <div className="min-h-screen bg-[var(--paper)] text-[var(--body)]">
+      <div className="p-6">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 border-b border-[var(--rule)] pb-7">
             <div>
-              <h1 className="text-2xl font-mono font-bold text-white flex items-center gap-3">
-                <span className="text-[#FF6B35]">▸</span>
-                id8labs analytics
-                <span className="text-xs bg-[#FF6B35]/20 text-[#FF6B35] px-2 py-1 rounded-full font-normal">
-                  BETA
+              <h1 className="flex items-center gap-3 font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">
+                id8Labs <em className="not-italic text-id8-orange font-[family-name:var(--font-display)] italic">analytics</em>
+                <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.2em] text-id8-orange border border-id8-orange px-2 py-0.5">
+                  Beta
                 </span>
               </h1>
-              <p className="text-gray-400 text-sm font-mono mt-1 flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#FF6B35] rounded-full animate-pulse" />
+              <p className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mt-2">
+                <span className="inline-block w-1.5 h-1.5 bg-id8-orange rounded-full" />
                 {lastUpdated && `Last synced ${format(lastUpdated, 'HH:mm:ss')}`}
               </p>
             </div>
 
             {/* Time range selector */}
-            <div className="flex gap-1 font-mono bg-gray-900/50 p-1 rounded-lg border border-gray-800">
+            <div className="flex border border-[var(--hair)]">
               {TIME_RANGES.map((range) => (
                 <button
                   key={range.value}
                   onClick={() => setTimeRange(range.value)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:ring-offset-2 focus:ring-offset-black ${
+                  className={`px-4 py-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 focus:outline-none ${
                     timeRange === range.value
-                      ? 'bg-[#FF6B35] text-black shadow-lg shadow-[#FF6B35]/25 hover:bg-[#FF8B55]'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800/80'
+                      ? 'bg-[var(--ink)] text-[var(--paper)]'
+                      : 'text-[var(--muted)] hover:text-[var(--ink)]'
                   }`}
                 >
                   {range.label}
@@ -504,12 +499,7 @@ export default function DashboardPage() {
 
           {loading ? (
             <div className="flex flex-col items-center justify-center h-64 gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-              </div>
-              <p className="text-gray-500 font-mono text-sm animate-pulse">Loading analytics...</p>
+              <p className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)] animate-pulse">Loading analytics...</p>
             </div>
           ) : (
             <>
