@@ -27,21 +27,21 @@ export function CommandGeneratorForm() {
     <div className="space-y-4">
       {/* Description Input */}
       <div>
-        <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+        <label className="block text-sm font-medium text-[var(--ink)] mb-2">
           What command do you need?
         </label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="e.g., A command that runs tests and linting before committing changes, with an option to skip tests for quick commits..."
-          className="w-full px-4 py-3 border border-[var(--border)] rounded-xl
-                     bg-[var(--bg-secondary)] text-[var(--text-primary)]
-                     placeholder:text-[var(--text-tertiary)]
-                     focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]
+          className="w-full px-4 py-3 border border-[var(--hair)] 
+                     bg-[var(--paper-shadow)] text-[var(--ink)]
+                     placeholder:text-[var(--muted)]
+                     focus:outline-none focus:ring-2 focus:ring-[var(--orange)]
                      focus:border-transparent resize-none transition-all"
           rows={4}
         />
-        <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+        <p className="mt-1 text-xs text-[var(--muted)]">
           {description.length}/1000 characters
         </p>
       </div>
@@ -50,7 +50,7 @@ export function CommandGeneratorForm() {
       <button
         type="button"
         onClick={() => setShowAdvanced(!showAdvanced)}
-        className="text-sm text-[var(--id8-orange)] hover:underline"
+        className="text-sm text-[var(--orange)] hover:underline"
       >
         {showAdvanced ? 'Hide' : 'Show'} advanced options
       </button>
@@ -66,7 +66,7 @@ export function CommandGeneratorForm() {
           >
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              <label className="block text-sm font-medium text-[var(--ink)] mb-2">
                 Category (optional)
               </label>
               <select
@@ -76,9 +76,9 @@ export function CommandGeneratorForm() {
                     e.target.value ? (e.target.value as typeof commandCategoryHint) : null
                   )
                 }
-                className="w-full px-4 py-2 border border-[var(--border)] rounded-lg
-                           bg-[var(--bg-secondary)] text-[var(--text-primary)]
-                           focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+                className="w-full px-4 py-2 border border-[var(--hair)] 
+                           bg-[var(--paper-shadow)] text-[var(--ink)]
+                           focus:outline-none focus:ring-2 focus:ring-[var(--orange)]"
               >
                 <option value="">Auto-detect</option>
                 {COMMAND_CATEGORIES.map((cat) => (
@@ -88,18 +88,18 @@ export function CommandGeneratorForm() {
                 ))}
               </select>
               {commandCategoryHint && (
-                <p className="mt-1 text-xs text-[var(--text-tertiary)]">
+                <p className="mt-1 text-xs text-[var(--muted)]">
                   {COMMAND_CATEGORY_DESCRIPTIONS[commandCategoryHint]}
                 </p>
               )}
             </div>
 
             {/* Tips */}
-            <div className="p-3 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)]">
-              <p className="text-xs text-[var(--text-secondary)]">
+            <div className="p-3 bg-[var(--paper-shadow)]  border border-[var(--hair)]">
+              <p className="text-xs text-[var(--muted)]">
                 <strong>Tips:</strong> Include details about:
               </p>
-              <ul className="mt-1 text-xs text-[var(--text-tertiary)] list-disc list-inside">
+              <ul className="mt-1 text-xs text-[var(--muted)] list-disc list-inside">
                 <li>What tools/prerequisites are needed</li>
                 <li>Any variables the user should provide</li>
                 <li>Whether variants for different situations would be helpful</li>

@@ -157,7 +157,7 @@ export function ContractReaderModal({
     const regex = new RegExp(`(${searchQuery})`, 'gi')
     return content.replace(
       regex,
-      '<mark class="bg-amber-300/50 text-[var(--text-primary)] px-0.5 rounded">$1</mark>'
+      '<mark class="bg-amber-300/50 text-[var(--ink)] px-0.5 ">$1</mark>'
     )
   }
 
@@ -189,7 +189,7 @@ export function ContractReaderModal({
         >
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/80"
             onClick={onClose}
           />
 
@@ -198,32 +198,32 @@ export function ContractReaderModal({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className={`relative bg-[var(--bg-primary)] flex flex-col overflow-hidden ${
+            className={`relative bg-[var(--paper)] flex flex-col overflow-hidden ${
               isFullscreen
-                ? 'fixed inset-0 rounded-none'
-                : 'rounded-2xl shadow-2xl w-[95vw] h-[90vh] max-w-7xl'
+                ? 'fixed inset-0 -none'
+                : 'rounded-2xl w-[95vw] h-[90vh] max-w-7xl'
             }`}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] flex-shrink-0">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--hair)] flex-shrink-0">
               <div className="flex items-center gap-4">
-                <FileText className="w-5 h-5 text-[var(--text-secondary)]" />
+                <FileText className="w-5 h-5 text-[var(--muted)]" />
                 <div>
                   <h2
                     id="contract-reader-title"
-                    className="text-lg font-semibold text-[var(--text-primary)]"
+                    className="text-lg font-semibold text-[var(--ink)]"
                   >
                     Purchase Agreement
                   </h2>
                   <div className="flex items-center gap-2 mt-0.5">
                     {colors && (
                       <span
-                        className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium ${colors.bg} ${colors.text} border ${colors.border}`}
+                        className={`inline-flex items-center px-2 py-0.5  text-xs font-mono font-medium ${colors.bg} ${colors.text} border ${colors.border}`}
                       >
                         v{version.version}
                       </span>
                     )}
-                    <span className="text-xs text-[var(--text-tertiary)]">
+                    <span className="text-xs text-[var(--muted)]">
                       {new Date(version.createdAt).toLocaleDateString()}
                     </span>
                   </div>
@@ -233,28 +233,28 @@ export function ContractReaderModal({
               <div className="flex items-center gap-2">
                 {/* Search bar */}
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-tertiary)]" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted)]" />
                   <input
                     type="text"
                     placeholder="Search document..."
                     value={searchQuery}
                     onChange={(e) => handleSearch(e.target.value)}
-                    className="w-64 pl-9 pr-20 py-2 text-sm bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/50"
+                    className="w-64 pl-9 pr-20 py-2 text-sm bg-[var(--paper-shadow)] border border-[var(--hair)]  focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/50"
                   />
                   {searchResults.length > 0 && (
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                      <span className="text-xs text-[var(--text-tertiary)]">
+                      <span className="text-xs text-[var(--muted)]">
                         {currentResultIndex + 1}/{searchResults.length}
                       </span>
                       <button
                         onClick={() => navigateResults('prev')}
-                        className="p-1 hover:bg-[var(--bg-tertiary)] rounded"
+                        className="p-1 hover:bg-[var(--paper-mid)] "
                       >
                         <ChevronUp className="w-3 h-3" />
                       </button>
                       <button
                         onClick={() => navigateResults('next')}
-                        className="p-1 hover:bg-[var(--bg-tertiary)] rounded"
+                        className="p-1 hover:bg-[var(--paper-mid)] "
                       >
                         <ChevronDown className="w-3 h-3" />
                       </button>
@@ -265,29 +265,29 @@ export function ContractReaderModal({
                 {/* Fullscreen toggle */}
                 <button
                   onClick={() => setIsFullscreen(!isFullscreen)}
-                  className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                  className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors"
                   aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
                 >
                   {isFullscreen ? (
-                    <Minimize2 className="w-5 h-5 text-[var(--text-secondary)]" />
+                    <Minimize2 className="w-5 h-5 text-[var(--muted)]" />
                   ) : (
-                    <Maximize2 className="w-5 h-5 text-[var(--text-secondary)]" />
+                    <Maximize2 className="w-5 h-5 text-[var(--muted)]" />
                   )}
                 </button>
 
                 {/* Close */}
                 <button
                   onClick={onClose}
-                  className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                  className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors"
                   aria-label="Close"
                 >
-                  <X className="w-5 h-5 text-[var(--text-secondary)]" />
+                  <X className="w-5 h-5 text-[var(--muted)]" />
                 </button>
               </div>
             </div>
 
             {/* Progress bar */}
-            <div className="h-1 bg-[var(--bg-secondary)]">
+            <div className="h-1 bg-[var(--paper-shadow)]">
               <motion.div
                 className="h-full bg-[var(--accent)]"
                 style={{ width: `${scrollProgress}%` }}
@@ -303,7 +303,7 @@ export function ContractReaderModal({
                 className="flex-1 overflow-y-auto p-8"
               >
                 <div
-                  className="prose prose-sm max-w-none text-[var(--text-primary)]"
+                  className="prose prose-sm max-w-none text-[var(--ink)]"
                   dangerouslySetInnerHTML={{
                     __html: highlightContent(version.content || 'No content available'),
                   }}
@@ -311,21 +311,21 @@ export function ContractReaderModal({
               </div>
 
               {/* Sidebar */}
-              <div className="w-80 border-l border-[var(--border)] overflow-y-auto flex-shrink-0">
+              <div className="w-80 border-l border-[var(--hair)] overflow-y-auto flex-shrink-0">
                 {/* Key Terms */}
                 {keyTerms && (
-                  <div className="p-4 border-b border-[var(--border)]">
-                    <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+                  <div className="p-4 border-b border-[var(--hair)]">
+                    <h3 className="text-sm font-medium text-[var(--muted)] mb-3">
                       Key Terms
                     </h3>
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <DollarSign className="w-4 h-4 text-emerald-500" />
                         <div>
-                          <p className="text-xs text-[var(--text-tertiary)]">
+                          <p className="text-xs text-[var(--muted)]">
                             Purchase Price
                           </p>
-                          <p className="text-sm font-medium text-[var(--text-primary)]">
+                          <p className="text-sm font-medium text-[var(--ink)]">
                             {formatCurrency(keyTerms.purchasePrice)}
                           </p>
                         </div>
@@ -333,10 +333,10 @@ export function ContractReaderModal({
                       <div className="flex items-center gap-3">
                         <Calendar className="w-4 h-4 text-blue-500" />
                         <div>
-                          <p className="text-xs text-[var(--text-tertiary)]">
+                          <p className="text-xs text-[var(--muted)]">
                             Closing Date
                           </p>
-                          <p className="text-sm font-medium text-[var(--text-primary)]">
+                          <p className="text-sm font-medium text-[var(--ink)]">
                             {new Date(keyTerms.closingDate).toLocaleDateString()}
                           </p>
                         </div>
@@ -344,10 +344,10 @@ export function ContractReaderModal({
                       <div className="flex items-center gap-3">
                         <Home className="w-4 h-4 text-purple-500" />
                         <div>
-                          <p className="text-xs text-[var(--text-tertiary)]">
+                          <p className="text-xs text-[var(--muted)]">
                             Property
                           </p>
-                          <p className="text-sm font-medium text-[var(--text-primary)] line-clamp-2">
+                          <p className="text-sm font-medium text-[var(--ink)] line-clamp-2">
                             {keyTerms.propertyAddress}
                           </p>
                         </div>
@@ -358,7 +358,7 @@ export function ContractReaderModal({
 
                 {/* Table of Contents */}
                 <div className="p-4">
-                  <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+                  <h3 className="text-sm font-medium text-[var(--muted)] mb-3">
                     Table of Contents
                   </h3>
                   {toc.length > 0 ? (
@@ -371,7 +371,7 @@ export function ContractReaderModal({
                             const element = document.getElementById(item.id)
                             element?.scrollIntoView({ behavior: 'smooth' })
                           }}
-                          className={`block w-full text-left text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] px-2 py-1.5 rounded transition-colors ${
+                          className={`block w-full text-left text-sm text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--paper-shadow)] px-2 py-1.5  transition-colors ${
                             item.level === 1 ? 'font-medium' : 'pl-4'
                           }`}
                           style={{ paddingLeft: `${item.level * 8 + 8}px` }}
@@ -381,7 +381,7 @@ export function ContractReaderModal({
                       ))}
                     </nav>
                   ) : (
-                    <p className="text-sm text-[var(--text-tertiary)]">
+                    <p className="text-sm text-[var(--muted)]">
                       No sections detected
                     </p>
                   )}

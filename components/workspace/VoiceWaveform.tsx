@@ -81,7 +81,7 @@ export function VoiceWaveform({
       {bars.map((height, i) => (
         <motion.div
           key={i}
-          className={`${sizeMap[size].barWidth} rounded-full`}
+          className={`${sizeMap[size].barWidth} -full`}
           style={{
             height: `${height}%`,
             backgroundColor: color,
@@ -94,7 +94,7 @@ export function VoiceWaveform({
       {/* Pulse ring when active */}
       {isActive && (
         <motion.div
-          className="absolute inset-0 rounded-full"
+          className="absolute inset-0 -full"
           style={{
             boxShadow: `0 0 20px ${color}40`,
           }}

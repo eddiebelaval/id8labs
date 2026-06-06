@@ -75,9 +75,9 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
   }
 
   return (
-    <div className={`flex flex-col h-full bg-[var(--bg-primary)] ${className}`}>
+    <div className={`flex flex-col h-full bg-[var(--paper)] ${className}`}>
       {/* Tab navigation */}
-      <div className="flex items-center gap-1 px-2 py-2 border-b border-[var(--border)] overflow-x-auto">
+      <div className="flex items-center gap-1 px-2 py-2 border-b border-[var(--hair)] overflow-x-auto">
         {TABS.map((tab) => {
           const Icon = tab.icon
           const isActive = activeTab === tab.id
@@ -86,10 +86,10 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+              className={`flex items-center gap-2 px-3 py-2  text-sm font-medium whitespace-nowrap transition-colors ${
                 isActive
                   ? 'bg-[var(--accent)]/10 text-[var(--accent)]'
-                  : 'text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                  : 'text-[var(--muted)] hover:text-[var(--muted)] hover:bg-[var(--paper-shadow)]'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -109,16 +109,16 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
             className="space-y-4"
           >
             {/* Property Card */}
-            <div className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4">
+            <div className="bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-[var(--accent)]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-[var(--accent)]/10  flex items-center justify-center flex-shrink-0">
                   <Home className="w-5 h-5 text-[var(--accent)]" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-[var(--text-primary)]">
+                  <h3 className="text-sm font-medium text-[var(--ink)]">
                     {contract?.keyTerms?.propertyAddress || '123 Main Street'}
                   </h3>
-                  <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
+                  <p className="text-xs text-[var(--muted)] mt-0.5">
                     Single Family Home
                   </p>
                 </div>
@@ -127,24 +127,24 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
 
             {/* Key Metrics */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4">
-                <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)] mb-1">
+              <div className="bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4">
+                <div className="flex items-center gap-2 text-xs text-[var(--muted)] mb-1">
                   <DollarSign className="w-3.5 h-3.5" />
                   Purchase Price
                 </div>
-                <p className="text-lg font-semibold text-[var(--text-primary)]">
+                <p className="text-lg font-semibold text-[var(--ink)]">
                   {contract?.keyTerms?.purchasePrice
                     ? formatCurrency(contract.keyTerms.purchasePrice)
                     : '$485,000'}
                 </p>
               </div>
 
-              <div className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4">
-                <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)] mb-1">
+              <div className="bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4">
+                <div className="flex items-center gap-2 text-xs text-[var(--muted)] mb-1">
                   <Calendar className="w-3.5 h-3.5" />
                   Closing Date
                 </div>
-                <p className="text-lg font-semibold text-[var(--text-primary)]">
+                <p className="text-lg font-semibold text-[var(--ink)]">
                   {contract?.keyTerms?.closingDate
                     ? new Date(contract.keyTerms.closingDate).toLocaleDateString('en-US', {
                         month: 'short',
@@ -156,10 +156,10 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
             </div>
 
             {/* Parties */}
-            <div className="bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)] p-4">
+            <div className="bg-[var(--paper-shadow)]  border border-[var(--hair)] p-4">
               <div className="flex items-center gap-2 mb-3">
-                <Users className="w-4 h-4 text-[var(--text-tertiary)]" />
-                <h4 className="text-sm font-medium text-[var(--text-secondary)]">
+                <Users className="w-4 h-4 text-[var(--muted)]" />
+                <h4 className="text-sm font-medium text-[var(--muted)]">
                   Parties
                 </h4>
               </div>
@@ -167,22 +167,22 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-xs text-[var(--text-tertiary)]">Buyer</p>
-                    <p className="text-sm text-[var(--text-primary)]">
+                    <p className="text-xs text-[var(--muted)]">Buyer</p>
+                    <p className="text-sm text-[var(--ink)]">
                       {contract?.keyTerms?.buyerNames?.[0] || 'John & Jane Smith'}
                     </p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)]" />
+                  <ChevronRight className="w-4 h-4 text-[var(--muted)]" />
                 </div>
 
-                <div className="border-t border-[var(--border)] pt-3 flex justify-between items-center">
+                <div className="border-t border-[var(--hair)] pt-3 flex justify-between items-center">
                   <div>
-                    <p className="text-xs text-[var(--text-tertiary)]">Seller</p>
-                    <p className="text-sm text-[var(--text-primary)]">
+                    <p className="text-xs text-[var(--muted)]">Seller</p>
+                    <p className="text-sm text-[var(--ink)]">
                       {contract?.keyTerms?.sellerNames?.[0] || 'Robert Johnson'}
                     </p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)]" />
+                  <ChevronRight className="w-4 h-4 text-[var(--muted)]" />
                 </div>
               </div>
             </div>
@@ -191,13 +191,13 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
             <div className="flex gap-2">
               <button
                 onClick={() => setActiveTab('contract')}
-                className="flex-1 py-2 text-sm text-[var(--text-secondary)] bg-[var(--bg-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
+                className="flex-1 py-2 text-sm text-[var(--muted)] bg-[var(--paper-shadow)]  hover:bg-[var(--paper-mid)] transition-colors"
               >
                 View Contract
               </button>
               <button
                 onClick={() => setActiveTab('documents')}
-                className="flex-1 py-2 text-sm text-[var(--text-secondary)] bg-[var(--bg-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
+                className="flex-1 py-2 text-sm text-[var(--muted)] bg-[var(--paper-shadow)]  hover:bg-[var(--paper-mid)] transition-colors"
               >
                 Documents
               </button>
@@ -222,13 +222,13 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
             animate={{ opacity: 1 }}
             className="space-y-4"
           >
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--muted)]">
               Transaction Timeline
             </h3>
 
             {/* Placeholder timeline */}
             <div className="relative">
-              <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-[var(--border)]" />
+              <div className="absolute left-[7px] top-2 bottom-2 w-0.5 bg-[var(--hair)]" />
 
               {[
                 { date: 'Jan 15', title: 'Offer Accepted', status: 'complete' },
@@ -240,19 +240,19 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
               ].map((item, index) => (
                 <div key={index} className="relative flex items-start gap-4 pb-4 last:pb-0">
                   <div
-                    className={`relative z-10 w-4 h-4 rounded-full border-2 flex-shrink-0 ${
+                    className={`relative z-10 w-4 h-4 -full border-2 flex-shrink-0 ${
                       item.status === 'complete'
                         ? 'bg-emerald-500 border-emerald-500'
                         : item.status === 'active'
                         ? 'bg-[var(--accent)] border-[var(--accent)]'
-                        : 'bg-[var(--bg-secondary)] border-[var(--border)]'
+                        : 'bg-[var(--paper-shadow)] border-[var(--hair)]'
                     }`}
                   />
                   <div>
-                    <p className="text-sm font-medium text-[var(--text-primary)]">
+                    <p className="text-sm font-medium text-[var(--ink)]">
                       {item.title}
                     </p>
-                    <p className="text-xs text-[var(--text-tertiary)]">{item.date}</p>
+                    <p className="text-xs text-[var(--muted)]">{item.date}</p>
                   </div>
                 </div>
               ))}
@@ -267,7 +267,7 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
             animate={{ opacity: 1 }}
             className="space-y-4"
           >
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--muted)]">
               Documents
             </h3>
 
@@ -281,16 +281,16 @@ export function ContextPanel({ contract, className = '' }: ContextPanelProps) {
               ].map((doc, index) => (
                 <button
                   key={index}
-                  className="w-full flex items-center gap-3 p-3 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)] hover:border-[var(--accent)]/50 transition-colors text-left"
+                  className="w-full flex items-center gap-3 p-3 bg-[var(--paper-shadow)]  border border-[var(--hair)] hover:border-[var(--accent)]/50 transition-colors text-left"
                 >
-                  <FileText className="w-5 h-5 text-[var(--text-tertiary)]" />
+                  <FileText className="w-5 h-5 text-[var(--muted)]" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-[var(--text-primary)] truncate">
+                    <p className="text-sm font-medium text-[var(--ink)] truncate">
                       {doc.name}
                     </p>
-                    <p className="text-xs text-[var(--text-tertiary)]">{doc.date}</p>
+                    <p className="text-xs text-[var(--muted)]">{doc.date}</p>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-[var(--text-tertiary)]" />
+                  <ChevronRight className="w-4 h-4 text-[var(--muted)]" />
                 </button>
               ))}
             </div>

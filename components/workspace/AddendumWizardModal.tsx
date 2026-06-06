@@ -83,7 +83,7 @@ export function AddendumWizardModal({
         >
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60"
             onClick={handleClose}
           />
 
@@ -93,18 +93,18 @@ export function AddendumWizardModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative bg-[var(--bg-primary)] rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col"
+            className="relative bg-[var(--paper)]  w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--hair)] flex-shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-[var(--accent)]/10 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-[var(--accent)]/10  flex items-center justify-center">
                   <FileEdit className="w-4 h-4 text-[var(--accent)]" />
                 </div>
                 <h2
                   id="addendum-wizard-title"
-                  className="text-base font-semibold text-[var(--text-primary)]"
+                  className="text-base font-semibold text-[var(--ink)]"
                 >
                   Create Addendum
                 </h2>
@@ -112,10 +112,10 @@ export function AddendumWizardModal({
               <button
                 onClick={handleClose}
                 disabled={wizard.isProcessing}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Close"
               >
-                <X className="w-5 h-5 text-[var(--text-secondary)]" />
+                <X className="w-5 h-5 text-[var(--muted)]" />
               </button>
             </div>
 

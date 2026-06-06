@@ -91,22 +91,22 @@ export function ToolFactoryModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative bg-[var(--bg-primary)] rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+            className="relative bg-[var(--paper)]  max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             style={{ zIndex: 10000 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)] flex-shrink-0">
-              <h2 className="text-xl font-bold text-[var(--text-primary)]">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--hair)] flex-shrink-0">
+              <h2 className="text-xl font-bold text-[var(--ink)]">
                 AI Tool Factory
               </h2>
               <button
                 onClick={handleClose}
                 disabled={state === 'generating' || state === 'saving' || state === 'verifying'}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Close"
               >
-                <X className="w-5 h-5 text-[var(--text-secondary)]" />
+                <X className="w-5 h-5 text-[var(--muted)]" />
               </button>
             </div>
 
