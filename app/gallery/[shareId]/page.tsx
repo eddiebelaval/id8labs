@@ -40,41 +40,35 @@ export default async function GalleryStackDetailPage({ params }: PageProps): Pro
   }
 
   return (
-    <main className="relative">
+    <main className="relative bg-[var(--paper)]">
       {/* Back Button */}
-      <section className="py-8 border-b border-[var(--border)]">
-        <div className="container">
+      <section className="py-8 border-b border-[var(--hair)]">
+        <Container>
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--id8-orange)] transition-colors"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-id8-orange transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Gallery
+            &larr; Back to Gallery
           </Link>
-        </div>
+        </Container>
       </section>
 
-      {/* Hero Section */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
-        <div className="container">
+      {/* Masthead */}
+      <section className="py-16 border-b border-[var(--hair)]">
+        <Container>
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex p-4 bg-[var(--id8-orange)]/20 rounded-2xl mb-6">
-              <Package className="w-12 h-12 text-[var(--id8-orange)]" />
-            </div>
+            <Kicker dot className="mb-6 justify-center">Community Stack</Kicker>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{stack.name}</h1>
+            <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)] mb-4">{stack.name}</h1>
 
             {stack.description && (
-              <p className="text-xl text-[var(--text-secondary)] mb-6 max-w-2xl mx-auto">
+              <Deck className="mx-auto max-w-2xl mb-6">
                 {stack.description}
-              </p>
+              </Deck>
             )}
 
-            <div className="flex items-center justify-center gap-4 text-sm text-[var(--text-secondary)] mb-8">
-              <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                Updated {formattedDate}
-              </span>
+            <div className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mb-8">
+              Updated {formattedDate}
             </div>
 
             <StackStats stats={stats} />
@@ -83,42 +77,44 @@ export default async function GalleryStackDetailPage({ params }: PageProps): Pro
               <ImportStackButton stack={importableStack} />
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Stack Contents */}
       <section className="py-16">
-        <div className="container">
+        <Container>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">Stack Contents</h2>
+            <SectionHead title={<>Stack <em className="italic text-id8-orange">contents</em></>} className="mb-8" />
 
             {items.length === 0 ? (
-              <div className="text-center py-12 text-[var(--text-secondary)]">
+              <div className="text-center py-12 text-[var(--muted)] border border-[var(--hair)]">
                 This stack is empty.
               </div>
             ) : (
               <div className="space-y-6">
-                <StackItemSection title="Skills" emoji="🎯" items={skills} linkPrefix="/skills/" />
-                <StackItemSection title="Agents" emoji="🤖" items={agents} linkPrefix="/skills/" />
-                <StackItemSection title="Commands" emoji="⚡" items={commands} linkPrefix="/commands/" />
-                <StackItemSection title="Settings" emoji="⚙️" items={settings} linkPrefix="/settings/" />
+                <StackItemSection title="Skills" emoji="" items={skills} linkPrefix="/skills/" />
+                <StackItemSection title="Agents" emoji="" items={agents} linkPrefix="/skills/" />
+                <StackItemSection title="Commands" emoji="" items={commands} linkPrefix="/commands/" />
+                <StackItemSection title="Settings" emoji="" items={settings} linkPrefix="/settings/" />
               </div>
             )}
           </div>
-        </div>
+        </Container>
       </section>
 
+      <Rule />
+
       {/* How to Install */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Install?</h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
+      <section className="py-16 md:py-20">
+        <Container narrow>
+          <div className="text-center">
+            <SectionHead title={<>Ready to <em className="italic text-id8-orange">install?</em></>} className="border-0 pb-0 justify-center" />
+            <p className="mt-7 mb-9 text-lg text-[var(--muted)]">
               Fork this stack to your collection and install everything at once.
             </p>
             <ImportStackButton stack={importableStack} />
           </div>
-        </div>
+        </Container>
       </section>
     </main>
   )
