@@ -1,13 +1,18 @@
-import { Suspense } from 'react'
-import { Terminal, Search } from 'lucide-react'
 import { getAllCommands, getCommandCategories } from '@/lib/commands'
 import { CommandCard } from '@/components/commands/CommandCard'
+import { Container, Kicker, Deck, Rule, SectionHead } from '@/components/editorial'
 
 export const revalidate = 3600 // Revalidate every hour
 
 interface PageProps {
   searchParams: Promise<{ category?: string }>
 }
+
+const chipCls = (active: boolean) =>
+  'font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] px-3 py-2 border transition-colors duration-150 ' +
+  (active
+    ? 'border-id8-orange text-id8-orange'
+    : 'border-[var(--hair)] text-[var(--muted)] hover:border-[var(--hair-hard)] hover:text-[var(--ink)]')
 
 export default async function CommandsPage({ searchParams }: PageProps) {
   const params = await searchParams
@@ -26,80 +31,46 @@ export default async function CommandsPage({ searchParams }: PageProps) {
   const categoryNames = Object.keys(categories).sort()
 
   return (
-    <main className="relative">
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden bg-[var(--bg-secondary)]">
-        {/* Background Pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(var(--text-primary) 1px, transparent 1px)`,
-            backgroundSize: '32px 32px',
-          }}
-        />
-
-        <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 bg-[var(--bg-primary)] text-[var(--id8-orange)] rounded-full text-sm font-semibold border border-[var(--id8-orange)]/20 shadow-lg">
-              <Terminal className="w-4 h-4" />
-              <span>{allCommands.length} Workflow Commands</span>
-            </div>
-
-            {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Workflow Commands
+    <main className="relative bg-[var(--paper)]">
+      {/* Masthead */}
+      <section className="border-b border-[var(--hair)] py-16 md:py-24">
+        <Container>
+          <div className="max-w-3xl mx-auto text-center">
+            <Kicker dot className="mb-6 justify-center">Marketplace · {allCommands.length} commands</Kicker>
+            <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2.5rem,5vw,4rem)] mb-5">
+              Workflow <em className="italic text-id8-orange">commands</em>
             </h1>
-
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
-              Automate your development workflow with one-click commands
-            </p>
+            <Deck className="mx-auto max-w-2xl">
+              Automate your development workflow with one-click commands.
+            </Deck>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
-        <div className="container">
+      <section className="py-12 md:py-16">
+        <Container>
           {/* Category Filters */}
-          <div className="mb-8">
-            <div className="flex items-center gap-2 flex-wrap">
-              <a
-                href="/commands"
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  !categoryFilter
-                    ? 'bg-[var(--id8-orange)] text-white'
-                    : 'bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--id8-orange)]'
-                }`}
-              >
-                All ({allCommands.length})
+          <div className="mb-8 flex items-center gap-1.5 flex-wrap">
+            <a href="/commands" className={chipCls(!categoryFilter)}>
+              All ({allCommands.length})
+            </a>
+            {categoryNames.map((category) => (
+              <a key={category} href={`/commands?category=${category}`} className={chipCls(categoryFilter === category)}>
+                {category} ({categories[category]})
               </a>
-              {categoryNames.map((category) => (
-                <a
-                  key={category}
-                  href={`/commands?category=${category}`}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    categoryFilter === category
-                      ? 'bg-[var(--id8-orange)] text-white'
-                      : 'bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--id8-orange)]'
-                  }`}
-                >
-                  {category} ({categories[category]})
-                </a>
-              ))}
-            </div>
+            ))}
           </div>
 
           {/* Results Count */}
-          <div className="mb-6 text-[var(--text-secondary)]">
+          <div className="mb-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
             {filteredCommands.length === allCommands.length
               ? `Showing all ${allCommands.length} commands`
               : `Showing ${filteredCommands.length} ${categoryFilter} commands`}
           </div>
 
           {/* Commands Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredCommands.map((command) => (
               <CommandCard key={command.id} command={command} />
             ))}
@@ -107,40 +78,42 @@ export default async function CommandsPage({ searchParams }: PageProps) {
 
           {/* Empty State */}
           {filteredCommands.length === 0 && (
-            <div className="text-center py-12">
-              <Terminal className="w-16 h-16 mx-auto mb-4 text-[var(--text-secondary)]" />
-              <h3 className="text-xl font-semibold mb-2">No commands found</h3>
-              <p className="text-[var(--text-secondary)] mb-6">
-                Try a different category or view all commands
+            <div className="text-center py-16 border border-[var(--hair)]">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">No commands found</h3>
+              <p className="text-[var(--muted)] mb-6">
+                Try a different category or view all commands.
               </p>
               <a
                 href="/commands"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange"
               >
                 View All Commands
               </a>
             </div>
           )}
-        </div>
+        </Container>
       </section>
 
+      <Rule />
+
       {/* CTA Section */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Install with StackShack CLI
-            </h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
-              All commands available via our CLI tool
+      <section className="py-16 md:py-20">
+        <Container narrow>
+          <div className="text-center">
+            <SectionHead
+              title={<>Install with the <em className="italic text-id8-orange">StackShack CLI</em></>}
+              className="border-0 pb-0 justify-center"
+            />
+            <p className="mt-7 mb-9 text-lg text-[var(--muted)]">
+              All commands available via our CLI tool.
             </p>
-            <div className="p-6 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl text-left">
-              <code className="text-sm font-mono text-[var(--id8-orange)]">
+            <div className="p-6 bg-[var(--paper-shadow)] border border-[var(--hair)] text-left">
+              <code className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">
                 npx stackshack install git-smart-commit
               </code>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </main>
   )

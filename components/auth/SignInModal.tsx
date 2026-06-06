@@ -221,8 +221,8 @@ export default function SignInModal({
                   >
                     {/* Context Banner */}
                     {moduleName && (
-                      <div className="p-3 bg-[var(--id8-orange)]/10 border border-[var(--id8-orange)]/30 rounded-xl">
-                        <p className="text-sm text-[var(--text-secondary)]">
+                      <div className="p-3 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
+                        <p className="text-sm text-[var(--body)]">
                           Sign in to access course content and track your progress.
                         </p>
                       </div>
@@ -232,7 +232,7 @@ export default function SignInModal({
                     <button
                       onClick={handleGoogleSignIn}
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[var(--border)] rounded-xl bg-[var(--bg-primary)] hover:bg-[var(--bg-secondary)] text-[var(--text-primary)] font-medium transition-colors disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-3 px-4 py-3.5 border border-[var(--ink)] bg-transparent hover:bg-[var(--ink)] hover:text-[var(--paper)] text-[var(--ink)] font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 disabled:opacity-50"
                     >
                       <svg className="w-5 h-5" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
