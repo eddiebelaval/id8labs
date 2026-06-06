@@ -204,7 +204,7 @@ export function GoldenSamplePage() {
   })
 
   return (
-    <div className="relative" style={{ background: '#050505', isolation: 'isolate' }}>
+    <div className="relative" style={{ background: 'var(--paper)', isolation: 'isolate' }}>
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center">
         <div className="mb-6 flex items-center gap-3 animate-[fadeInUp_0.8s_0.2s_both]">
@@ -214,7 +214,7 @@ export function GoldenSamplePage() {
           <span className="text-[var(--hair-hard)]">/</span>
           <Link
             href="/thesis"
-            className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-[0.3em] text-id8-orange hover:text-[var(--ink)] transition-colors"
+            className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-[0.3em] text-id8-orange hover:text-id8-orange transition-colors"
           >
             Consciousness as Filesystem
           </Link>
@@ -232,7 +232,7 @@ export function GoldenSamplePage() {
         <div className="max-w-2xl mt-8 text-left space-y-4 animate-[fadeInUp_0.8s_0.8s_both]">
           <p className="text-base text-[var(--muted)] leading-relaxed">
             Our research thesis,{' '}
-            <Link href="/thesis" className="text-id8-orange hover:text-[var(--ink)] transition-colors underline underline-offset-4 decoration-[#ff6b35]/30">
+            <Link href="/thesis" className="text-id8-orange hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[var(--hair-hard)]">
               Consciousness as Filesystem
             </Link>,
             proposes that the structure of awareness maps to a directory tree.
@@ -260,11 +260,11 @@ export function GoldenSamplePage() {
 
           <p className="text-sm text-[var(--muted)] leading-relaxed pt-2">
             Read the full research:{' '}
-            <Link href="/thesis" className="text-id8-orange/70 hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[#ff6b35]/20">
+            <Link href="/thesis" className="text-id8-orange/70 hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[var(--hair-hard)]">
               Consciousness as Filesystem (interactive thesis)
             </Link>{' '}
             or the{' '}
-            <Link href="/thesis/series" className="text-id8-orange/70 hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[#ff6b35]/20">
+            <Link href="/thesis/series" className="text-id8-orange/70 hover:text-id8-orange transition-colors underline underline-offset-4 decoration-[var(--hair-hard)]">
               5-part research series
             </Link>.
           </p>
@@ -309,8 +309,8 @@ export function GoldenSamplePage() {
 
           {/* Top/bottom fade for readability */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#050505] to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#050505] to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[var(--paper)] to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[var(--paper)] to-transparent" />
           </div>
 
           {/* Orbiting cards (centered) */}
