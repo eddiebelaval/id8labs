@@ -144,16 +144,16 @@ function CashFlowChart({ summary }: { summary: BalanceSummary }) {
 function VendorChart({ summary }: { summary: BalanceSummary }) {
   const recharts = useRecharts()
   const vendors = summary.expense_by_vendor.filter((v: { monthly_cents: number }) => v.monthly_cents > 0)
-  if (!recharts || vendors.length === 0) return <p className="text-sm text-[var(--text-tertiary)]">No vendor data</p>
+  if (!recharts || vendors.length === 0) return <p className="text-sm text-[var(--muted)]">No vendor data</p>
 
   const { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } = recharts
   return (
     <ResponsiveContainer width="100%" height={Math.min(vendors.length * 36, 250)}>
       <BarChart data={vendors} layout="vertical" margin={{ left: 80, right: 20, top: 0, bottom: 0 }}>
-        <XAxis type="number" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} tickFormatter={(v: number) => `$${(v / 100).toFixed(0)}`} />
-        <YAxis type="category" dataKey="vendor" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} width={80} />
+        <XAxis type="number" tick={{ fill: 'var(--muted)', fontSize: 11 }} tickFormatter={(v: number) => `$${(v / 100).toFixed(0)}`} />
+        <YAxis type="category" dataKey="vendor" tick={{ fill: 'var(--muted)', fontSize: 11 }} width={80} />
         <Tooltip formatter={(value: number) => fmt(Number(value))} />
-        <Bar dataKey="monthly_cents" name="Monthly" fill="#8B5CF6" radius={[0, 4, 4, 0]} />
+        <Bar dataKey="monthly_cents" name="Monthly" fill="#0b0b0b" radius={[0, 0, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   )
@@ -176,9 +176,9 @@ function AddExpenseForm({ categories, onSave, onCancel }: {
   const ic = inputClass
   const lc = labelClass
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={onCancel}>
-      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 w-full max-w-md space-y-3">
-        <h3 className="text-lg font-semibold text-[var(--text-primary)]">Add Expense</h3>
+    <div className="fixed inset-0 bg-[var(--ink)]/40 flex items-center justify-center z-50 p-4" onClick={onCancel}>
+      <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="bg-[var(--paper)] border border-[var(--hair-hard)] p-6 w-full max-w-md space-y-3">
+        <h3 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">Add Expense</h3>
         <div><label className={lc}>Description *</label><input className={ic} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} required /></div>
         <div className="grid grid-cols-2 gap-3">
           <div><label className={lc}>Amount (USD) *</label><input className={ic} type="number" step="0.01" min="0" value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} required /></div>
