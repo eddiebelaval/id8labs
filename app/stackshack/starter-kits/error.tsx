@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
-import { ArrowLeft, Package, RefreshCw, AlertTriangle } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
+import { Container, Kicker, Deck } from '@/components/editorial'
 
 export default function StarterKitsError({
   error,
@@ -20,71 +21,61 @@ export default function StarterKitsError({
   }, [error])
 
   return (
-    <main className="min-h-screen">
-      <div className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="container py-8">
+    <main className="bg-[var(--paper)] min-h-screen">
+      <div className="border-b border-[var(--hair)]">
+        <Container className="py-10 md:py-14">
           <Link
             href="/stackshack"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--id8-orange)] mb-6 transition-colors"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-id8-orange mb-7 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Marketplace
+            &larr; Back to Marketplace
           </Link>
 
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-purple-500/10 text-purple-500 rounded-xl">
-              <Package className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Starter Kits</h1>
-              <p className="text-[var(--text-secondary)] mt-1">
-                Curated skill bundles for common workflows
-              </p>
-            </div>
-          </div>
-        </div>
+          <Kicker className="mb-4">Marketplace</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)] mb-3">
+            Starter <em className="italic text-id8-orange">kits</em>
+          </h1>
+          <Deck className="max-w-2xl">Curated skill bundles for common workflows.</Deck>
+        </Container>
       </div>
 
-      <div className="container py-12">
-        <div className="text-center py-16">
-          <div className="w-16 h-16 mx-auto mb-4 bg-red-500/10 rounded-full flex items-center justify-center">
-            <AlertTriangle className="w-8 h-8 text-red-500" />
-          </div>
-          <h3 className="text-xl font-semibold mb-2">Something went wrong</h3>
-          <p className="text-[var(--text-secondary)] max-w-md mx-auto mb-6">
+      <Container className="py-12">
+        <div className="text-center py-16 border border-[var(--hair)]">
+          <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">Something went wrong</h3>
+          <p className="text-[var(--muted)] max-w-md mx-auto mb-6">
             We encountered an unexpected error while loading the starter kits.
           </p>
-          
+
           {process.env.NODE_ENV === 'development' && (
-            <div className="mb-6 p-4 bg-red-500/5 border border-red-500/20 rounded-lg max-w-lg mx-auto">
-              <p className="text-xs text-red-500 font-mono text-left break-all">
+            <div className="mb-6 p-4 bg-[var(--paper-shadow)] border border-[var(--hair)] max-w-lg mx-auto">
+              <p className="text-xs text-[var(--body)] font-[family-name:var(--font-mono)] text-left break-all">
                 {error.message}
               </p>
               {error.digest && (
-                <p className="text-xs text-[var(--text-tertiary)] mt-2">
+                <p className="text-xs text-[var(--muted)] mt-2 font-[family-name:var(--font-mono)]">
                   Digest: {error.digest}
                 </p>
               )}
             </div>
           )}
 
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-3.5">
             <button
               onClick={reset}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange"
             >
               <RefreshCw className="w-4 h-4" />
               Try again
             </button>
             <Link
               href="/stackshack"
-              className="inline-flex items-center gap-2 px-4 py-2 border border-[var(--border)] rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 bg-transparent text-[var(--ink)] border-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]"
             >
               Browse all skills
             </Link>
           </div>
         </div>
-      </div>
+      </Container>
     </main>
   )
 }
