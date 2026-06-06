@@ -61,15 +61,15 @@ export default async function SettingDetailPage({ params }: PageProps) {
               <span className="text-5xl">{emoji}</span>
               <div className="flex flex-wrap gap-2">
                 {setting.verified && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-emerald-500/10 text-[var(--teal)] border border-emerald-500/20 rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-[var(--teal)]">
                     <CheckCircle className="w-4 h-4" />
                     Verified
                   </span>
                 )}
-                <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-full bg-[var(--id8-orange)]/10 text-id8-orange border border-[var(--id8-orange)]/20">
+                <span className="inline-flex items-center px-3 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-id8-orange">
                   {setting.category}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-[var(--paper)] text-[var(--muted)] border border-[var(--hair)] rounded-full">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] border border-[var(--hair)]">
                   <Download className="w-4 h-4" />
                   {setting.install_count.toLocaleString()} installs
                 </span>
@@ -77,7 +77,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{setting.name}</h1>
+            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-normal tracking-[-0.02em] mb-4 text-[var(--ink)]">{setting.name}</h1>
 
             {/* Description */}
             <p className="text-xl text-[var(--muted)] mb-8">{setting.description}</p>
@@ -99,7 +99,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
               {/* Model Configuration */}
               {setting.model && (
                 <div className="card">
-                  <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] mb-4 flex items-center gap-2 text-[var(--ink)]">
                     <Sparkles className="w-6 h-6 text-id8-orange" />
                     Model Configuration
                   </h2>
@@ -127,14 +127,14 @@ export default async function SettingDetailPage({ params }: PageProps) {
               {/* Use Case */}
               {setting.use_case && (
                 <div className="card">
-                  <h2 className="text-2xl font-bold mb-4">Use Case</h2>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] mb-4 text-[var(--ink)]">Use Case</h2>
                   <p className="text-[var(--muted)]">{setting.use_case}</p>
                 </div>
               )}
 
               {/* Configuration JSON */}
               <div className="card">
-                <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] mb-4 flex items-center gap-2 text-[var(--ink)]">
                   <Code2 className="w-6 h-6 text-id8-orange" />
                   Configuration
                 </h2>
@@ -147,7 +147,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
 
               {/* Installation */}
               <div className="card">
-                <h2 className="text-2xl font-bold mb-4">Installation</h2>
+                <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] mb-4 text-[var(--ink)]">Installation</h2>
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-sm font-semibold text-[var(--muted)] mb-2">
@@ -178,12 +178,12 @@ export default async function SettingDetailPage({ params }: PageProps) {
               {/* Tags */}
               {setting.tags && setting.tags.length > 0 && (
                 <div className="card">
-                  <h2 className="text-2xl font-bold mb-4">Tags</h2>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] mb-4 text-[var(--ink)]">Tags</h2>
                   <div className="flex flex-wrap gap-2">
                     {setting.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1.5 text-sm bg-[var(--paper-shadow)] text-[var(--muted)] border border-[var(--hair)] rounded-full"
+                        className="px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--paper-mid)] text-[var(--muted)]"
                       >
                         #{tag}
                       </span>
@@ -252,11 +252,11 @@ export default async function SettingDetailPage({ params }: PageProps) {
       {/* Related Settings Section */}
       <section className="py-16 bg-[var(--paper-shadow)]">
         <div className="container">
-          <h2 className="text-3xl font-bold mb-8">More {setting.category} Settings</h2>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] mb-8 text-[var(--ink)]">More {setting.category} Settings</h2>
           <div className="text-center py-8">
             <Link
               href={`/settings?category=${setting.category}`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white  hover:bg-[var(--id8-orange-hover)] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150"
             >
               Browse {setting.category} Settings
             </Link>
