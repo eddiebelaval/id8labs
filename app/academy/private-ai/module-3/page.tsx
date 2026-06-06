@@ -100,7 +100,7 @@ export default function Module3Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 3
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -223,49 +223,49 @@ export default function Module3Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Llama 3</td>
                     <td className="py-3 px-4">8B, 70B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Community</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Community</span></td>
                     <td className="py-3 px-4">Best overall, strong reasoning</td>
                     <td className="py-3 px-4">16GB RAM (8B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Mistral / Mixtral</td>
                     <td className="py-3 px-4">7B, 8x7B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">Apache 2.0</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal text-xs">Apache 2.0</span></td>
                     <td className="py-3 px-4">Best efficiency, code, MoE</td>
                     <td className="py-3 px-4">16GB RAM (7B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Qwen 2</td>
                     <td className="py-3 px-4">0.5B-72B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Qwen License</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Qwen License</span></td>
                     <td className="py-3 px-4">Multilingual, long context</td>
                     <td className="py-3 px-4">8GB RAM (1.8B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Phi-3</td>
                     <td className="py-3 px-4">3.8B, 14B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">MIT</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal text-xs">MIT</span></td>
                     <td className="py-3 px-4">Best small model, reasoning</td>
                     <td className="py-3 px-4">8GB RAM (3.8B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Gemma 2</td>
                     <td className="py-3 px-4">2B, 9B, 27B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Gemma Terms</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Gemma Terms</span></td>
                     <td className="py-3 px-4">Strong benchmarks, Google quality</td>
                     <td className="py-3 px-4">8GB RAM (2B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">CodeLlama</td>
                     <td className="py-3 px-4">7B, 13B, 34B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Llama 2</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Llama 2</span></td>
                     <td className="py-3 px-4">Code generation, completion</td>
                     <td className="py-3 px-4">16GB RAM (7B)</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">DeepSeek Coder</td>
                     <td className="py-3 px-4">1.3B-33B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">DeepSeek</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal text-xs">DeepSeek</span></td>
                     <td className="py-3 px-4">Best open code model</td>
                     <td className="py-3 px-4">8GB RAM (1.3B)</td>
                   </tr>
@@ -289,7 +289,7 @@ export default function Module3Page() {
                     <div className="w-16 text-center">
                       <span className="text-2xl font-bold text-id8-teal">1-3B</span>
                     </div>
-                    <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Edge / Mobile</p>
                       <p className="text-sm text-[var(--text-secondary)]">Fast inference, simple tasks, classification, basic chat. Can run on phones, Raspberry Pi.</p>
                     </div>
@@ -298,7 +298,7 @@ export default function Module3Page() {
                     <div className="w-16 text-center">
                       <span className="text-2xl font-bold text-[var(--muted)]">7-8B</span>
                     </div>
-                    <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Sweet Spot for Most Use Cases</p>
                       <p className="text-sm text-[var(--text-secondary)]">Good reasoning, code generation, summarization. Runs on consumer GPUs (RTX 3080+) or M1+ Macs.</p>
                     </div>
@@ -307,7 +307,7 @@ export default function Module3Page() {
                     <div className="w-16 text-center">
                       <span className="text-2xl font-bold text-id8-orange">13-14B</span>
                     </div>
-                    <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Enhanced Reasoning</p>
                       <p className="text-sm text-[var(--text-secondary)]">Better at complex tasks, nuanced responses. Needs 24GB+ VRAM or high RAM for CPU inference.</p>
                     </div>
@@ -316,7 +316,7 @@ export default function Module3Page() {
                     <div className="w-16 text-center">
                       <span className="text-2xl font-bold text-[var(--muted)]">30-70B</span>
                     </div>
-                    <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Near-GPT-4 Capability</p>
                       <p className="text-sm text-[var(--text-secondary)]">Frontier-level performance. Requires multi-GPU setup (A100s) or heavy quantization.</p>
                     </div>
@@ -387,7 +387,7 @@ export default function Module3Page() {
             <div className="not-prose my-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
               <p className="font-mono text-sm text-id8-orange mb-2">Memory Calculator</p>
               <p className="text-sm text-[var(--text-secondary)] mb-3">Rough formula for estimating model memory:</p>
-              <div className="bg-[var(--bg-primary)] p-3 rounded font-mono text-sm">
+              <div className="bg-[var(--bg-primary)] p-3 font-mono text-sm">
                 <p>Memory (GB) = Parameters (B) x Bytes per param + Overhead (2-4GB)</p>
                 <p className="text-[var(--text-tertiary)] mt-2">Examples:</p>
                 <p className="text-[var(--text-secondary)]">7B model, Q4: 7 x 0.5 + 3 = ~6.5GB</p>
@@ -514,7 +514,7 @@ export default function Module3Page() {
             <div className="not-prose my-8 space-y-4">
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
                     <p className="font-bold">Define Your Test Set</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Create 20-50 representative prompts from your actual use cases. Include edge cases and failure modes you've seen with other models.</p>
@@ -523,7 +523,7 @@ export default function Module3Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
                     <p className="font-bold">Establish Scoring Criteria</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">For each prompt, define what a "good" answer looks like. Score 1-5 on accuracy, helpfulness, safety, and format adherence.</p>
@@ -532,7 +532,7 @@ export default function Module3Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
                     <p className="font-bold">Test Multiple Models</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Run your test set through 3-5 candidate models. Keep prompts and settings identical for fair comparison.</p>
@@ -541,7 +541,7 @@ export default function Module3Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
                     <p className="font-bold">Measure Performance Metrics</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Track tokens/second, time to first token, memory usage, and cost per request. A slower but more accurate model may be better.</p>
@@ -550,7 +550,7 @@ export default function Module3Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
                     <p className="font-bold">Factor in Practical Constraints</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Can your target hardware run it? Does the license allow your use case? Is the model actively maintained?</p>
@@ -626,21 +626,21 @@ export default function Module3Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map use cases to model requirements (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each use case, determine: task type (chat, code, embeddings), required capability level, acceptable latency, and hardware constraints.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Select candidate models (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Using the comparison tables, identify 2-3 candidate models for each use case. Verify license compatibility.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Create evaluation plan (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Define your test set and scoring criteria. Plan how you'll run comparative evaluations.</p>

@@ -86,7 +86,7 @@ export default function Module4Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 4
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -193,7 +193,7 @@ export default function Module4Page() {
               ].map((item, i) => (
                 <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">
                       {item.step}
                     </div>
                     <div className="flex-1">
@@ -255,15 +255,15 @@ export default function Module4Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="text-id8-orange mb-4 font-mono text-sm font-bold">THE FEEDBACK FORMULA</div>
               <div className="space-y-4">
-                <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded">
+                <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)]">
                   <p className="font-bold mb-2">1. ACKNOWLEDGE WHAT WORKS</p>
                   <p className="text-sm text-[var(--text-secondary)]">"The structure is solid and the tone is right."</p>
                 </div>
-                <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded">
+                <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)]">
                   <p className="font-bold mb-2">2. IDENTIFY WHAT'S OFF</p>
                   <p className="text-sm text-[var(--text-secondary)]">"But paragraph 2 feels too technical for this audience."</p>
                 </div>
-                <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded">
+                <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)]">
                   <p className="font-bold mb-2">3. GIVE SPECIFIC DIRECTION</p>
                   <p className="text-sm text-[var(--text-secondary)]">"Rewrite paragraph 2 to explain the concept without jargon. Use an analogy if helpful."</p>
                 </div>
@@ -466,28 +466,28 @@ Rewrite your version to match those qualities, but keep the substance the same."
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">BUILD YOUR CHECKLIST (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Customize the refinement checklist template for your work. What do you always check? What matters most?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">PRACTICE: ROUND 1 (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Pick a real task. Get AI to generate a first draft. Don't worry if it's imperfect.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">PRACTICE: ROUNDS 2-3 (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use your checklist to evaluate. Give specific feedback. Iterate to completion.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">REFLECT (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What feedback worked best? What would you do differently next time? Update your checklist.</p>

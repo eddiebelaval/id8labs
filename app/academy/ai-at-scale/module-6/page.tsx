@@ -360,7 +360,7 @@ export default function Module6Page() {
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal rounded">TIER 1: Cheap & Fast</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal">TIER 1: Cheap & Fast</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.0001 - $0.001 per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -373,7 +373,7 @@ export default function Module6Page() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">TIER 2: Balanced</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">TIER 2: Balanced</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.001 - $0.01 per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -386,7 +386,7 @@ export default function Module6Page() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">TIER 3: Premium</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">TIER 3: Premium</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.01 - $0.10+ per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -413,7 +413,7 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-2">Daily Cost Dashboard</p>
                 <ul className="text-sm space-y-1 text-[var(--text-secondary)]">
                   <li>• Cost per service (inference, storage, training)</li>
@@ -423,7 +423,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-2">Unit Economics Tracking</p>
                 <ul className="text-sm space-y-1 text-[var(--text-secondary)]">
                   <li>• Cost per prediction</li>
@@ -433,7 +433,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-2">Budget Alerts</p>
                 <ul className="text-sm space-y-1 text-[var(--text-secondary)]">
                   <li>• Alert at 50%, 75%, 90% of monthly budget</li>
@@ -443,7 +443,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-2">Cost Attribution</p>
                 <ul className="text-sm space-y-1 text-[var(--text-secondary)]">
                   <li>• Tag by team/department</li>
@@ -501,28 +501,28 @@ export default function Module6Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map your cost drivers (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Break down current or projected costs across the 5 categories: inference, storage, processing, training, infrastructure. Be as specific as possible.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify hidden costs (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Review the 5 hidden costs. Which apply to you? Estimate the waste. Be honest about inefficiencies.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Prioritize optimization strategies (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">From the optimization playbook table, select 3-5 strategies. Estimate potential savings and implementation effort for your specific context.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Build your business case (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the Finance-Friendly Budget Template. Calculate ROI. Frame cost as investment with measurable return.</p>

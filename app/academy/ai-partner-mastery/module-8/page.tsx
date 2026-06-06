@@ -93,7 +93,7 @@ export default function Module8Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 8
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -207,7 +207,7 @@ export default function Module8Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     What's the final deliverable? Be specific about format, audience, and success criteria.
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>Example:</strong> "A 15-page board presentation on climate supply chain strategy with specific recommendations, risk analysis, and 3-year roadmap."
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function Module8Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Break the work into distinct capabilities. What different "modes" of AI do you need?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>Modes:</strong> Researcher, Analyst, Strategist, Writer, Critic, Synthesizer
                   </div>
                 </div>
@@ -227,7 +227,7 @@ export default function Module8Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     What's the sequence? Which tasks must happen first? What can run in parallel?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>Flow types:</strong> Sequential (A→B→C), Parallel (A+B→C), Iterative (A→B→A'→B')
                   </div>
                 </div>
@@ -237,7 +237,7 @@ export default function Module8Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     How does output from one stage become input to the next? Define what gets passed forward.
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>Handoff pattern:</strong> "Here's what [Role A] found. Now [Role B], use this to..."
                   </div>
                 </div>
@@ -247,7 +247,7 @@ export default function Module8Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     After each stage, verify quality and coherence before moving forward.
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>QA questions:</strong> Does this answer the question? Is it compatible with prior stages? What's missing?
                   </div>
                 </div>
@@ -261,7 +261,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-bold text-sm mb-2">Phase 1: Research Foundation</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>AI Role:</strong> Researcher</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>Task:</strong> "Analyze climate risk scenarios affecting global manufacturing supply chains over next 10 years. Focus on: water scarcity, extreme weather, regulatory changes."</p>
@@ -270,7 +270,7 @@ export default function Module8Page() {
 
               <div className="px-4 text-center text-id8-orange">↓</div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-bold text-sm mb-2">Phase 2: Current State Analysis</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>AI Role:</strong> Analyst</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>Task:</strong> "Given the risk landscape [paste Phase 1 output], analyze our current supplier network. Where are our vulnerabilities? Which locations have highest exposure?"</p>
@@ -279,7 +279,7 @@ export default function Module8Page() {
 
               <div className="px-4 text-center text-id8-orange">↓</div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-bold text-sm mb-2">Phase 3: Strategic Options</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>AI Role:</strong> Strategist</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>Task:</strong> "Based on these vulnerabilities [paste Phase 2 output], generate 3-4 strategic approaches for building supply chain resilience. Trade-offs of each?"</p>
@@ -288,7 +288,7 @@ export default function Module8Page() {
 
               <div className="px-4 text-center text-id8-orange">↓</div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-bold text-sm mb-2">Phase 4: Stakeholder Translation</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>AI Role:</strong> Communicator</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>Task:</strong> "Turn this strategy [paste Phase 3 output] into board-level presentation. Emphasize financial impact, competitive advantage, risk mitigation."</p>
@@ -297,7 +297,7 @@ export default function Module8Page() {
 
               <div className="px-4 text-center text-id8-orange">↓</div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-bold text-sm mb-2">Phase 5: Critical Review</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>AI Role:</strong> Critic</p>
                 <p className="text-xs text-[var(--text-secondary)] mb-2"><strong>Task:</strong> "Review the entire logic chain from research to presentation. What assumptions might be flawed? What will the CFO challenge? Where's the analysis weakest?"</p>
@@ -452,35 +452,35 @@ EXPECTED TIME: [Total estimated duration]`}
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Define the End State (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What's the final deliverable? Be specific about format, audience, and success criteria.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Map Component Tasks (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Break the work into distinct AI roles/capabilities. What different modes do you need?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Design the Flow (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Sketch the sequence. Which pattern fits? (Linear, Parallel, Iterative, Hub & Spoke)</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Define Handoffs (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each phase, what output moves forward? How will you pass context?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Run One Phase (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Test Phase 1 with AI. Does it produce what you need for Phase 2?</p>

@@ -87,7 +87,7 @@ export default function Module2Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 2
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -205,14 +205,14 @@ export default function Module2Page() {
               ].map((layer, i) => (
                 <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">
+                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">
                       {layer.num}
                     </span>
                     <div className="flex-1">
                       <h4 className="font-bold text-lg mb-1">{layer.title}</h4>
                       <p className="text-sm text-id8-orange mb-2">{layer.subtitle}</p>
                       <p className="text-sm text-[var(--text-secondary)] mb-3">{layer.desc}</p>
-                      <div className="p-3 bg-[var(--bg-primary)] border border-[var(--border)] rounded text-xs font-mono text-[var(--text-tertiary)]">
+                      <div className="p-3 bg-[var(--bg-primary)] border border-[var(--border)] text-xs font-mono text-[var(--text-tertiary)]">
                         {layer.example}
                       </div>
                     </div>
@@ -419,28 +419,28 @@ export default function Module2Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">IDENTITY LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Write 3-5 sentences: Who you are, what you do, your industry, what makes your work unique.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">APPROACH LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Capture your methodology, core principles, and what "quality" means in your work.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">PREFERENCES LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Define your communication style, tone, format preferences, and what to avoid.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">PATTERNS LAYER (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List recurring deliverables and the structures/formats you default to.</p>

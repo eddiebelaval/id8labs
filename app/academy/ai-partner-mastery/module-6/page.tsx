@@ -86,7 +86,7 @@ export default function Module6Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 6
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -197,7 +197,7 @@ export default function Module6Page() {
                   <p className="text-sm">Does it match what you asked for?</p>
                 </div>
               </div>
-              <p className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded mt-4">
+              <p className="text-xs font-mono bg-[var(--bg-primary)] p-3 mt-4">
                 Time: 2-5 minutes per output
               </p>
             </div>
@@ -228,7 +228,7 @@ export default function Module6Page() {
                   <p className="text-sm">Check for missing context or nuance</p>
                 </div>
               </div>
-              <p className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded mt-4">
+              <p className="text-xs font-mono bg-[var(--bg-primary)] p-3 mt-4">
                 Time: 10-20 minutes per output
               </p>
             </div>
@@ -263,7 +263,7 @@ export default function Module6Page() {
                   <p className="text-sm">Document your verification process</p>
                 </div>
               </div>
-              <p className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded mt-4">
+              <p className="text-xs font-mono bg-[var(--bg-primary)] p-3 mt-4">
                 Time: 30-60+ minutes per output
               </p>
             </div>
@@ -443,28 +443,28 @@ Compare them. Does the new version match the quality, depth, and specificity of 
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Categorize Your Work (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List the 3-5 types of work you most commonly use AI for. Categorize by stakes (low/medium/high).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify Past Failures (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Review past AI outputs. Where have you caught errors? What patterns do you see?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Build Work-Type Checklists (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each work type, create 5-7 specific verification points. Make them actionable.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Test Your Checklist (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Apply it to a recent AI output. Did it catch issues? Anything missing?</p>

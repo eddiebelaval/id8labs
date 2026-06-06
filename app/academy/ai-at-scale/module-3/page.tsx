@@ -155,7 +155,7 @@ export default function Module3Page() {
             {/* Section 1: The Data Hierarchy */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <LayersIcon />
                 </div>
                 <h2 className="text-2xl font-bold">The AI Data Hierarchy</h2>
@@ -213,7 +213,7 @@ export default function Module3Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">The critical insight:</strong> Most organizations have L0-L2 and jump straight to L5. They're missing L3-L4, which is why data scientists spend weeks instead of hours on data prep.
                   </p>
@@ -224,7 +224,7 @@ export default function Module3Page() {
             {/* Section 2: Feature Stores */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <DatabaseIcon />
                 </div>
                 <h2 className="text-2xl font-bold">Feature Stores: The Missing Layer</h2>
@@ -299,7 +299,7 @@ export default function Module3Page() {
                   </table>
                 </div>
 
-                <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded">
+                <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                   <p className="text-sm font-mono text-[var(--muted)] mb-2">Tool Recommendations</p>
                   <p className="text-sm text-[var(--text-primary)]">
                     <strong>Open source:</strong> Feast, Feathr <br/>
@@ -313,7 +313,7 @@ export default function Module3Page() {
             {/* Section 3: Feature Engineering Framework */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <ZapIcon />
                 </div>
                 <h2 className="text-2xl font-bold">Feature Engineering Framework</h2>
@@ -381,7 +381,7 @@ export default function Module3Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">Feature engineering principle:</strong> The best features encode domain knowledge. Work with business experts to identify what signals actually predict outcomes. Automated feature engineering rarely beats thoughtful domain-driven features.
                   </p>
@@ -392,7 +392,7 @@ export default function Module3Page() {
             {/* Section 4: Data Quality */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <ShieldIcon />
                 </div>
                 <h2 className="text-2xl font-bold">Data Quality for AI</h2>
@@ -483,23 +483,23 @@ export default function Module3Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">Label Sources (Best to Hardest)</h3>
                     <div className="space-y-3 text-[var(--text-secondary)]">
-                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
+                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)]">
                         <span><strong className="text-[var(--text-primary)]">Organic labels:</strong> User actions as implicit labels</span>
                         <span className="text-xs font-mono text-id8-teal">Free</span>
                       </div>
-                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
+                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)]">
                         <span><strong className="text-[var(--text-primary)]">Programmatic labels:</strong> Rule-based label generation</span>
                         <span className="text-xs font-mono text-id8-teal">Cheap</span>
                       </div>
-                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
+                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)]">
                         <span><strong className="text-[var(--text-primary)]">Model-assisted:</strong> Pre-label with model, human review</span>
                         <span className="text-xs font-mono text-[var(--muted)]">Medium</span>
                       </div>
-                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
+                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)]">
                         <span><strong className="text-[var(--text-primary)]">Crowd sourcing:</strong> Scale9AI, Amazon MTurk</span>
                         <span className="text-xs font-mono text-[var(--muted)]">Medium</span>
                       </div>
-                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
+                      <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)]">
                         <span><strong className="text-[var(--text-primary)]">Expert labeling:</strong> Domain specialists for complex tasks</span>
                         <span className="text-xs font-mono text-[var(--muted)]">Expensive</span>
                       </div>
@@ -529,7 +529,7 @@ export default function Module3Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">Reality check:</strong> The cost of bad labels is higher than the cost of good labels. A noisy label set limits model ceiling. Invest in labeling quality—it compounds.
                   </p>
@@ -551,7 +551,7 @@ export default function Module3Page() {
 
                 <div className="space-y-4">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       1
                     </div>
                     <div>
@@ -563,7 +563,7 @@ export default function Module3Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       2
                     </div>
                     <div>
@@ -575,7 +575,7 @@ export default function Module3Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       3
                     </div>
                     <div>
@@ -587,7 +587,7 @@ export default function Module3Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       4
                     </div>
                     <div>
@@ -599,7 +599,7 @@ export default function Module3Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       5
                     </div>
                     <div>

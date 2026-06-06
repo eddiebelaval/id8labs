@@ -154,7 +154,7 @@ export default function Module2Page() {
             {/* Section 1: What is MLOps */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <RefreshIcon />
                 </div>
                 <h2 className="text-2xl font-bold">What MLOps Actually Means</h2>
@@ -169,42 +169,42 @@ export default function Module2Page() {
                   <h3 className="text-lg font-bold mb-4">The MLOps Lifecycle</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">1</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">1</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Data Management</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Version, validate, and monitor your training data. Track lineage from raw sources to processed features.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">2</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">2</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Experiment Tracking</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Log every model training run with its parameters, metrics, and artifacts. Make experiments reproducible.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">3</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">3</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Model Training Pipelines</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Automate the full training workflow: data loading, preprocessing, training, evaluation, and artifact storage.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">4</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">4</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Model Registry</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Store models with metadata, version them, and manage promotion through dev/staging/prod environments.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">5</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">5</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Deployment & Serving</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Deploy models as APIs, batch jobs, or embedded services. Handle scaling, rollbacks, and A/B testing.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">6</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">6</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Monitoring & Observability</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Track model performance, detect drift, and trigger alerts when predictions degrade.</p>
@@ -213,7 +213,7 @@ export default function Module2Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">The key insight:</strong> MLOps is not about tools. It's about treating ML as a continuous process, not a one-time project. The model you ship today is not the model you'll be running in 6 months.
                   </p>
@@ -224,7 +224,7 @@ export default function Module2Page() {
             {/* Section 2: The 5 Core Pipeline Components */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <GitBranchIcon />
                 </div>
                 <h2 className="text-2xl font-bold">The 5 Core Pipeline Components</h2>
@@ -239,7 +239,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">1. Data Pipeline</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Extract-Transform-Load</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Extract-Transform-Load</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Moves data from sources (databases, APIs, files) to your training environment. Handles cleaning, validation, and transformation.
@@ -247,7 +247,7 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> Apache Airflow, Prefect, Dagster, dbt
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Schema validation. If upstream data changes shape, your pipeline should fail loudly, not silently corrupt your model.
                     </div>
                   </div>
@@ -255,7 +255,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">2. Feature Store</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Feature Management</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Feature Management</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Centralized repository of features used for training and serving. Ensures training-serving consistency and enables feature reuse.
@@ -263,7 +263,7 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> Feast, Tecton, Databricks Feature Store, AWS SageMaker Feature Store
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Point-in-time correctness. Training features must reflect what was known at prediction time, not future data.
                     </div>
                   </div>
@@ -271,7 +271,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">3. Training Orchestrator</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal rounded">Experiment Management</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal">Experiment Management</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Manages the training workflow: data prep, model training, hyperparameter tuning, validation, and artifact storage.
@@ -279,7 +279,7 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> MLflow, Kubeflow, Weights & Biases, Neptune
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Reproducibility. Any experiment should be re-runnable with identical results given the same data snapshot.
                     </div>
                   </div>
@@ -287,7 +287,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">4. Model Registry</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Model Versioning</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Model Versioning</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Central repository for trained models. Stores model artifacts, metadata, lineage, and manages promotion between environments.
@@ -295,7 +295,7 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> MLflow Model Registry, Seldon Core, BentoML
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Rollback. If a new model performs poorly, you need one-click return to the previous version.
                     </div>
                   </div>
@@ -303,7 +303,7 @@ export default function Module2Page() {
                   <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-id8-orange">5. Serving Infrastructure</h3>
-                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">Deployment</span>
+                      <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">Deployment</span>
                     </div>
                     <p className="text-[var(--text-secondary)] mb-4">
                       Exposes models as APIs or batch jobs. Handles autoscaling, load balancing, A/B testing, and canary deployments.
@@ -311,7 +311,7 @@ export default function Module2Page() {
                     <div className="text-sm text-[var(--text-tertiary)]">
                       <strong className="text-[var(--text-primary)]">Tools:</strong> Seldon Core, KServe, TensorFlow Serving, Triton Inference Server
                     </div>
-                    <div className="mt-3 p-3 bg-[var(--bg-primary)] rounded text-sm">
+                    <div className="mt-3 p-3 bg-[var(--bg-primary)] text-sm">
                       <strong className="text-[var(--text-primary)]">Critical capability:</strong> Shadow mode. Run new models alongside old ones without affecting users, compare results before switching.
                     </div>
                   </div>
@@ -322,7 +322,7 @@ export default function Module2Page() {
             {/* Section 3: MLOps Maturity Levels */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <ActivityIcon />
                 </div>
                 <h2 className="text-2xl font-bold">MLOps Maturity Levels</h2>
@@ -384,7 +384,7 @@ export default function Module2Page() {
                   </table>
                 </div>
 
-                <div className="p-4 bg-id8-orange/10 border-l-4 border-id8-orange">
+                <div className="p-4 bg-[var(--paper-shadow)] border-l-4 border-id8-orange">
                   <p className="text-sm text-[var(--text-secondary)]">
                     <strong className="text-[var(--text-primary)]">Reality check:</strong> Most companies should aim for Level 2. Level 3 requires significant investment and is only justified if ML is a core differentiator. Don't over-engineer.
                   </p>
@@ -395,7 +395,7 @@ export default function Module2Page() {
             {/* Section 4: Model Drift */}
             <div className="not-prose mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-id8-orange/20 rounded">
+                <div className="p-2 bg-[var(--paper-shadow)]">
                   <AlertIcon />
                 </div>
                 <h2 className="text-2xl font-bold">Understanding Model Drift</h2>
@@ -558,7 +558,7 @@ export default function Module2Page() {
 
                 <div className="space-y-4">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       1
                     </div>
                     <div>
@@ -570,7 +570,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       2
                     </div>
                     <div>
@@ -582,7 +582,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       3
                     </div>
                     <div>
@@ -594,7 +594,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       4
                     </div>
                     <div>
@@ -606,7 +606,7 @@ export default function Module2Page() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 flex items-center justify-center text-id8-orange font-mono text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center text-id8-orange font-mono text-sm">
                       5
                     </div>
                     <div>

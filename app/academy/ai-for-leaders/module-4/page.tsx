@@ -79,7 +79,7 @@ export default function Module4Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 4
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -183,7 +183,7 @@ export default function Module4Page() {
               {/* MVP Stage */}
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">1</span>
+                  <span className="w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">1</span>
                   <h3 className="text-xl font-bold">MVP Stage (0-6 months)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
@@ -236,7 +236,7 @@ export default function Module4Page() {
               {/* Scale Stage */}
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">2</span>
+                  <span className="w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">2</span>
                   <h3 className="text-xl font-bold">Scale Stage (6-18 months)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
@@ -301,7 +301,7 @@ export default function Module4Page() {
               {/* Production Stage */}
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">3</span>
+                  <span className="w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">3</span>
                   <h3 className="text-xl font-bold">Production Stage (18+ months)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
@@ -687,28 +687,28 @@ export default function Module4Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Identify your stage (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Are you at MVP, Scale, or Production? Be honest about where you are, not where you want to be.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">List your must-have roles (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For your stage and use cases, which roles are non-negotiable? Which are nice-to-have? Reference the stage-based team structures above.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Decide: hire vs contract vs upskill (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each must-have role, determine whether to hire full-time, contract, or train existing staff. Document your reasoning.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Estimate costs and timeline (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the comp ranges provided. Build a 6-month and 12-month budget. Be realistic about hiring timelines (3-6 months for specialized roles).</p>

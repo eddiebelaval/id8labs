@@ -109,7 +109,7 @@ export default function Module8Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 8
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -281,7 +281,7 @@ export default function Module8Page() {
               <h4 className="font-bold mb-4">Model Update Checklist</h4>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">1</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">1</span>
                   <div>
                     <p className="font-bold">Read the release notes</p>
                     <p className="text-sm text-[var(--text-secondary)]">Understand what changed. Breaking changes? New parameters? Deprecated features?</p>
@@ -289,7 +289,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">2</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">2</span>
                   <div>
                     <p className="font-bold">Deploy to staging environment</p>
                     <p className="text-sm text-[var(--text-secondary)]">Never test in production. Use identical config to production.</p>
@@ -297,7 +297,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">3</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">3</span>
                   <div>
                     <p className="font-bold">Run evaluation suite</p>
                     <p className="text-sm text-[var(--text-secondary)]">Test with your prompts, your data, your expected outputs. Automated tests catch regressions.</p>
@@ -305,7 +305,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">4</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">4</span>
                   <div>
                     <p className="font-bold">Compare performance metrics</p>
                     <p className="text-sm text-[var(--text-secondary)]">TTFT, TPS, memory usage. New version should meet or exceed baseline.</p>
@@ -313,7 +313,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">5</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">5</span>
                   <div>
                     <p className="font-bold">Manual spot-check</p>
                     <p className="text-sm text-[var(--text-secondary)]">Human review of critical prompts. Automated tests miss nuance.</p>
@@ -321,7 +321,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">6</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">6</span>
                   <div>
                     <p className="font-bold">Schedule production deployment</p>
                     <p className="text-sm text-[var(--text-secondary)]">During low-traffic window. Have rollback ready. Monitor closely for 24-48 hours.</p>
@@ -329,7 +329,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center text-sm font-bold">7</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center text-sm font-bold">7</span>
                   <div>
                     <p className="font-bold">Document the change</p>
                     <p className="text-sm text-[var(--text-secondary)]">Record what changed, why, any issues encountered. Future you will thank you.</p>
@@ -679,7 +679,7 @@ export default function Module8Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Inventory Your Components (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -689,7 +689,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Define Update Criteria (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -699,7 +699,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Schedule Recurring Tasks (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">
@@ -709,7 +709,7 @@ export default function Module8Page() {
                 </div>
 
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Create First Runbook (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">

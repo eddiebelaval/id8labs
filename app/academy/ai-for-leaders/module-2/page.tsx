@@ -87,7 +87,7 @@ export default function Module2Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 2
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -180,7 +180,7 @@ export default function Module2Page() {
                   <h4 className="font-bold mt-3 text-id8-orange text-sm">{item.zone}</h4>
                   <p className="text-sm text-[var(--text-primary)] mt-2 font-medium">{item.desc}</p>
                   <p className="text-xs text-[var(--text-tertiary)] mt-3 italic">{item.question}</p>
-                  <p className="text-xs text-id8-teal mt-2 bg-[var(--paper-shadow)] p-2 rounded border border-[var(--hair-hard)]">{item.example}</p>
+                  <p className="text-xs text-id8-teal mt-2 bg-[var(--paper-shadow)] p-2 border border-[var(--hair-hard)]">{item.example}</p>
                 </div>
               ))}
             </div>
@@ -277,7 +277,7 @@ export default function Module2Page() {
                     </ul>
                   </div>
 
-                  <div className="mt-4 p-3 bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded">
+                  <div className="mt-4 p-3 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
                     <p className="text-xs text-[var(--muted)]">
                       <strong>Key Metric:</strong> Time saved per transaction
                     </p>
@@ -312,7 +312,7 @@ export default function Module2Page() {
                     </ul>
                   </div>
 
-                  <div className="mt-4 p-3 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] rounded">
+                  <div className="mt-4 p-3 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
                     <p className="text-xs text-id8-teal">
                       <strong>Key Metric:</strong> Quality improvement in outcomes
                     </p>
@@ -513,35 +513,35 @@ export default function Module2Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Brainstorm opportunities (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List 10-15 potential AI use cases across your organization. Don't filter yet — just capture ideas.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Classify each by value zone (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Tag each opportunity: Cost Reduction, Revenue Growth, Speed to Market, or Decision Quality.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Classify by capability type (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Tag each: Process Automation, Decision Augmentation, or Both.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Score using the framework (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Rate each opportunity 1-5 on Impact, Feasibility, Speed, Risk, and Strategic Fit. Calculate total scores.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Prioritize top 3 (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Identify your highest-scoring opportunities. These become your AI roadmap.</p>

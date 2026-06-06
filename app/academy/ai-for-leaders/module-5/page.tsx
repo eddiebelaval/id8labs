@@ -87,7 +87,7 @@ export default function Module5Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 5
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -455,7 +455,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Don't just look at the sticker price. Calculate total cost of ownership:
                   </p>
-                  <div className="font-mono text-xs bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="font-mono text-xs bg-[var(--bg-primary)] p-3">
                     <p>TCO = Base License + Integration + Training + Support + Hidden Fees + Switching Cost</p>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mt-3">
@@ -580,7 +580,7 @@ export default function Module5Page() {
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 1</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 1</span>
                     <p className="font-bold">Setup & Baseline</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -593,7 +593,7 @@ export default function Module5Page() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 2</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 2</span>
                     <p className="font-bold">Testing & Tuning</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -606,7 +606,7 @@ export default function Module5Page() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 3</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 3</span>
                     <p className="font-bold">Real-World Validation</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -619,7 +619,7 @@ export default function Module5Page() {
 
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2 py-1 bg-id8-orange/20 text-id8-orange text-xs font-mono rounded">WEEK 4</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs font-mono">WEEK 4</span>
                     <p className="font-bold">Decision & Scaling Path</p>
                   </div>
                   <ul className="text-sm text-[var(--text-secondary)] space-y-1 ml-4">
@@ -684,7 +684,7 @@ export default function Module5Page() {
               ].map((item, i) => (
                 <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">
                       {i + 1}
                     </span>
                     <div className="flex-1">
@@ -714,35 +714,35 @@ export default function Module5Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Set your dimension weights (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Adjust the six dimensions based on your context. Total must equal 100%. Be honest about what matters most.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Score each dimension 1-10 (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the questions from each section. Score based on evidence, not sales pitch. Document your reasoning.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Calculate weighted score (2 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Multiply each dimension score by its weight, sum them up. This is your vendor's final score out of 10.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Identify red flags (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Review the 10 red flags list. Does this vendor trigger any? One red flag might outweigh a good score.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Make your recommendation (3 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Based on score and flags: Proceed to POC, Keep evaluating, or Pass. Write one paragraph explaining why.</p>
@@ -752,7 +752,7 @@ export default function Module5Page() {
 
               <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm font-bold mb-2">Scorecard Template</p>
-                <div className="font-mono text-xs bg-[var(--bg-secondary)] p-3 rounded space-y-1">
+                <div className="font-mono text-xs bg-[var(--bg-secondary)] p-3 space-y-1">
                   <p>Capability:     [Score 1-10] × [Weight %] = [Weighted Score]</p>
                   <p>Integration:   [Score 1-10] × [Weight %] = [Weighted Score]</p>
                   <p>Security:      [Score 1-10] × [Weight %] = [Weighted Score]</p>

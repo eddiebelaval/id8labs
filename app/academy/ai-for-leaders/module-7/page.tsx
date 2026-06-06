@@ -87,7 +87,7 @@ export default function Module7Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 7
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -544,35 +544,35 @@ export default function Module7Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Identify the Value Zone (3 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Is this primarily Efficiency, Intelligence, or Experience? This determines which metrics matter most.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Choose 1 Primary, 2 Secondary Metrics (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Don't track everything. Pick what matters most. Use the dashboard template above as a starting point.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Define Your Baseline (4 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What's the current state? Write down actual numbers, not estimates. If you don't have them, commit to gathering them before launch.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Set Success Thresholds (4 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What improvement would make this worthwhile? Be realistic. A 15% efficiency gain is excellent. Don't promise 10x unless you have extraordinary evidence.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Choose Your Attribution Method (4 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Can you A/B test? Run before/after? Use cohorts? Pick one method and commit to it. Imperfect measurement is better than no measurement.</p>

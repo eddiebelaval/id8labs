@@ -380,19 +380,19 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Business Impact Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-id8-teal mb-1">Revenue Impact</p>
                     <p className="text-sm">Incremental revenue attributed to AI vs baseline</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-id8-teal mb-1">Cost Savings</p>
                     <p className="text-sm">Automation savings minus infrastructure costs</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-id8-teal mb-1">Time Savings</p>
                     <p className="text-sm">Hours saved per week per user</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-id8-teal mb-1">User Adoption</p>
                     <p className="text-sm">Active users, frequency, retention rate</p>
                   </div>
@@ -402,19 +402,19 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Technical Health Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Inference Latency</p>
                     <p className="text-sm">p50, p95, p99 response times</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Error Rate</p>
                     <p className="text-sm">Failures per 10,000 predictions</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Cost per Prediction</p>
                     <p className="text-sm">Compute + data + model serving costs</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Model Freshness</p>
                     <p className="text-sm">Time since last training update</p>
                   </div>
@@ -424,19 +424,19 @@ export default function Module5Page() {
               <div>
                 <h4 className="font-bold text-id8-orange mb-2">Model Performance Metrics</h4>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Accuracy Trends</p>
                     <p className="text-sm">Weekly accuracy vs baseline (detect drift)</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Prediction Distribution</p>
                     <p className="text-sm">Output distribution vs training (detect skew)</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Feature Drift</p>
                     <p className="text-sm">Input data distribution changes</p>
                   </div>
-                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)] rounded">
+                  <div className="p-4 bg-[var(--bg-secondary)] border-l-2 border-[var(--hair-hard)]">
                     <p className="font-mono text-xs text-[var(--muted)] mb-1">Human Override Rate</p>
                     <p className="text-sm">How often users reject predictions</p>
                   </div>
@@ -536,28 +536,28 @@ export default function Module5Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Assess your current state (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each of the 6 categories above (Data, Performance, Cost, Observability, Reliability, Operations), rate yourself 1-5. Be brutally honest.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify your gaps (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For anything below a 4, list the specific gaps. What's missing? What's broken? What's manual that should be automated?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Build your checklist (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Customize the checklist above for your specific project. Add your gaps. Remove items that don't apply. Be specific.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Estimate timelines (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each gap, estimate effort: days, weeks, or months. Be realistic. Aggregate to get your true "time to production-ready."</p>

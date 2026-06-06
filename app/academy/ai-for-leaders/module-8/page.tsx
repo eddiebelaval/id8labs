@@ -83,7 +83,7 @@ export default function Module8Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 8
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -431,7 +431,7 @@ export default function Module8Page() {
               ].map((pattern, i) => (
                 <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-3 mb-3">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</span>
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</span>
                     <div>
                       <p className="font-bold text-lg text-[var(--text-primary)]">{pattern.title}</p>
                       <p className="text-sm italic text-[var(--text-tertiary)]">"{pattern.quote}"</p>
@@ -548,7 +548,7 @@ export default function Module8Page() {
             {/* Exercise Box */}
             <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <div className="flex items-start gap-3 mb-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--paper-shadow)] flex items-center justify-center">
                   <TargetIcon />
                 </div>
                 <div>
@@ -670,7 +670,7 @@ export default function Module8Page() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-3 p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange -lg">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</div>
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">{i + 1}</div>
                   <div>
                     <p className="font-bold text-[var(--text-primary)] mb-1">{item.title}</p>
                     <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>

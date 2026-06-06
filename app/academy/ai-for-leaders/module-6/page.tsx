@@ -116,7 +116,7 @@ export default function Module6Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 6
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -275,11 +275,7 @@ export default function Module6Page() {
                 <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-2xl">{item.icon}</span>
-                    <span className={`text-xs font-mono px-2 py-1 rounded ${
-                      item.severity === 'Critical' ? 'bg-[var(--paper-shadow)] text-[var(--muted)]' :
-                      item.severity === 'High' ? 'bg-[var(--paper-shadow)] text-id8-orange' :
-                      'bg-[var(--paper-shadow)] text-[var(--muted)]'
-                    }`}>
+                    <span className={`text-xs font-mono px-2 py-1 ${ item.severity === 'Critical' ? 'bg-[var(--paper-shadow)] text-[var(--muted)]' : item.severity === 'High' ? 'bg-[var(--paper-shadow)] text-id8-orange' : 'bg-[var(--paper-shadow)] text-[var(--muted)]' }`}>
                       {item.severity}
                     </span>
                   </div>
@@ -340,35 +336,35 @@ export default function Module6Page() {
               <h3 className="text-lg font-bold mb-4">Practical Privacy Controls for AI</h3>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
                     <p className="font-bold">Data Inventory</p>
                     <p className="text-sm text-[var(--text-secondary)]">Document exactly what data your AI systems process, where it's stored, and how long it's retained. Most privacy violations start with "we didn't know that data was there."</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
                     <p className="font-bold">Data Minimization</p>
                     <p className="text-sm text-[var(--text-secondary)]">Only send AI systems the minimum data needed. If you don't need full customer records to generate a summary, strip PII before processing. Less data in = less risk exposure.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
                     <p className="font-bold">Vendor Data Processing Agreements</p>
                     <p className="text-sm text-[var(--text-secondary)]">Every AI vendor must sign a DPA specifying they won't train on your data, how long they retain it, and their security standards. No DPA = no deployment.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
                     <p className="font-bold">Access Controls</p>
                     <p className="text-sm text-[var(--text-secondary)]">Implement role-based access to AI tools. Not everyone needs access to customer data analysis. Limit exposure by limiting access.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
                     <p className="font-bold">Audit Trails</p>
                     <p className="text-sm text-[var(--text-secondary)]">Log who accessed AI systems, what data they processed, and what outputs were generated. When regulators ask "who saw this data?", you need an answer.</p>
@@ -537,35 +533,35 @@ export default function Module6Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
                     <p className="font-bold">Never Use AI for High-Stakes Factual Claims Alone</p>
                     <p className="text-sm text-[var(--text-secondary)]">Legal, financial, medical, or compliance use cases require human verification of every factual claim. No exceptions.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
                     <p className="font-bold">Require Source Attribution</p>
                     <p className="text-sm text-[var(--text-secondary)]">Configure AI systems to cite sources for factual claims. If the AI can't provide a verifiable source, treat the claim as suspect.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
                     <p className="font-bold">Implement Confidence Scoring</p>
                     <p className="text-sm text-[var(--text-secondary)]">Flag low-confidence outputs for human review. Some AI systems provide confidence scores — use them. If confidence is below a threshold, route to human verification.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
                     <p className="font-bold">Use Retrieval-Augmented Generation (RAG)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Ground AI responses in your verified knowledge base. RAG systems retrieve relevant documents first, then generate responses based on retrieved content — reducing hallucination risk.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
                     <p className="font-bold">Train Users to Distrust</p>
                     <p className="text-sm text-[var(--text-secondary)]">The most effective control is cultural. Train your team to verify AI-generated factual claims before using them in decisions. Make verification a reflex, not an afterthought.</p>
@@ -770,35 +766,35 @@ export default function Module6Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Inventory your AI systems (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List every AI tool or implementation in use or planned. Include vendor name and use case.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Map risks to categories (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each system, identify which of the four risk categories apply. Be specific about what could go wrong.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Score likelihood and severity (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use simple High/Medium/Low ratings. Be honest about current controls — most will have gaps.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Document current controls and gaps (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What's already protecting you? What's missing? Don't sugarcoat — gaps are normal at this stage.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Assign owners and next steps (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For your top 3 risks (highest severity + likelihood), name an owner and define one specific action item with a deadline.</p>

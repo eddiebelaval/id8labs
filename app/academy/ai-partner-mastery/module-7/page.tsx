@@ -88,7 +88,7 @@ export default function Module7Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 7
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -188,7 +188,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Moments in your workflow where using AI should be automatic
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>Example triggers:</strong></p>
                     <p>• Before responding to a complex email</p>
                     <p>• When starting to draft any document</p>
@@ -202,7 +202,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Recurring work where you reuse the same AI pattern
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>Create templates for:</strong></p>
                     <p>• Weekly status reports</p>
                     <p>• Project kickoff documents</p>
@@ -216,7 +216,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Natural moments to use AI for quality check or second opinion
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>Built-in review points:</strong></p>
                     <p>• Before hitting send on important emails</p>
                     <p>• After first draft, before sharing</p>
@@ -230,7 +230,7 @@ export default function Module7Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Systems to preserve context so you don't start from zero each time
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded space-y-1">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 space-y-1">
                     <p><strong>What to capture:</strong></p>
                     <p>• Your best prompts and patterns</p>
                     <p>• Project-specific context docs</p>
@@ -297,17 +297,17 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-3">
-              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded">
+              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-sm mb-1">Customer Escalations</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>Trigger:</strong> When escalation email arrives, before typing response</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>AI Action:</strong> Analyze email, suggest response framework, identify edge cases</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded">
+              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-sm mb-1">Release Notes</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>Trigger:</strong> When opening blank release notes doc</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>AI Action:</strong> Generate first draft from feature list, then I refine</p>
               </div>
-              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded">
+              <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-sm mb-1">Meeting Summaries</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>Trigger:</strong> Immediately after meeting, while notes are fresh</p>
                 <p className="text-xs text-[var(--text-secondary)]"><strong>AI Action:</strong> Turn raw notes into structured summary with action items</p>
@@ -456,28 +456,28 @@ Help me:
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map Weekly Tasks (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List all recurring tasks. Note frequency, time spent, and AI potential (high/medium/low).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Define Trigger Points (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For top 3 high-potential tasks, specify the exact moment AI should activate.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Create Template Slots (20 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Build prompt templates for your most common scenarios. Save them somewhere accessible.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Set Review Checkpoints (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Identify 2-3 natural review points where AI should verify your work.</p>

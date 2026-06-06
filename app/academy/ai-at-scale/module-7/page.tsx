@@ -148,7 +148,7 @@ export default function Module7Page() {
             <div className="not-prose my-8 space-y-6">
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 1</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">STAGE 1</span>
                   <h4 className="font-bold text-id8-orange">The Lone Experimenter (0-1 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -176,7 +176,7 @@ export default function Module7Page() {
 
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 2</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">STAGE 2</span>
                   <h4 className="font-bold text-id8-orange">The Research + Engineering Split (2-4 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -204,7 +204,7 @@ export default function Module7Page() {
 
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 3</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">STAGE 3</span>
                   <h4 className="font-bold text-id8-orange">The Platform Team (5-12 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -232,7 +232,7 @@ export default function Module7Page() {
 
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">STAGE 4</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">STAGE 4</span>
                   <h4 className="font-bold text-id8-orange">The Distributed Model (12+ people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -328,7 +328,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Person #1</p>
                 <p className="font-bold mb-1">Senior Data Scientist or ML Engineer</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -336,7 +336,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Person #2</p>
                 <p className="font-bold mb-1">ML Engineer (if #1 was DS) or Data Scientist (if #1 was MLE)</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -344,7 +344,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Person #3</p>
                 <p className="font-bold mb-1">Data Engineer</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -352,7 +352,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">People #4-5</p>
                 <p className="font-bold mb-1">Junior-to-Mid DS or MLE + AI Product Manager</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -360,7 +360,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">People #6-8</p>
                 <p className="font-bold mb-1">MLOps Engineer + 2 more DS/MLE</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -368,7 +368,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">People #9-12</p>
                 <p className="font-bold mb-1">Specialize by Domain or Technical Area</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -376,7 +376,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">People #13+</p>
                 <p className="font-bold mb-1">Scale Based on Strategy</p>
                 <p className="text-sm text-[var(--text-secondary)]">
@@ -484,28 +484,28 @@ export default function Module7Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Assess current state (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">How many people? What roles? What stage are you in (1-4)? Be honest about capabilities vs needs.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify bottlenecks (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What's blocking progress? Data quality? Deployment? Research capacity? Prioritization? Map bottlenecks to roles that would unblock them.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Plan your next 3 hires (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the hiring roadmap as a guide. For each hire: role, why now, what they'll unlock. Include realistic timeline (hiring takes 2-4 months).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Apply 70-20-10 rule (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Which capabilities should you buy vs build vs partner? Be strategic. Not everything requires a full-time hire.</p>

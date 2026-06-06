@@ -146,7 +146,7 @@ export default function Module1Page() {
                 { layer: "2", name: "Compute Layer", desc: "GPUs, TPUs, specialized accelerators", color: "border-id8-orange bg-[var(--paper-shadow)]" },
                 { layer: "1", name: "Foundation Layer", desc: "Networking, storage, container orchestration", color: "border-[var(--hair-hard)] bg-[var(--paper-shadow)]" },
               ].map((item, i) => (
-                <div key={i} className={`p-4  border ${item.color}`}>
+                <div key={i} className={`p-4 border ${item.color}`}>
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-mono font-bold text-id8-orange">{item.layer}</span>
                     <div>
@@ -374,28 +374,28 @@ export default function Module1Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Calculate your monthly API spend</p>
                     <p className="text-sm text-[var(--text-secondary)]">If it's under $5K/month, self-hosting rarely makes economic sense.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Estimate equivalent GPU cost</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use our table above. Include 24/7 operation, not just peak hours.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Add engineering overhead</p>
                     <p className="text-sm text-[var(--text-secondary)]">0.25-0.5 FTE minimum for maintenance. More for custom features.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Consider non-cost factors</p>
                     <p className="text-sm text-[var(--text-secondary)]">Data privacy, latency requirements, customization needs.</p>
@@ -452,28 +452,28 @@ export default function Module1Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map your workload (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List every AI task: inference types, training needs, request volumes. Be specific about model sizes.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Calculate memory requirements (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use the formula: params x 2 bytes (FP16) + 50% overhead for KV cache and activations.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Apply the Compute Decision Matrix (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each workload, determine: API vs Managed GPU vs Self-hosted.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Price it out (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use real pricing from AWS, GCP, or your preferred cloud. Include all seven stack layers.</p>

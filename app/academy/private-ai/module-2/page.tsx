@@ -93,7 +93,7 @@ export default function Module2Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 2
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -153,7 +153,7 @@ export default function Module2Page() {
             <div className="not-prose my-8 space-y-4">
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
                     <p className="font-bold">Your Device (Origin)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Data originates on your computer, phone, or network. Governed by local laws (GDPR in EU, CCPA in California, etc.).</p>
@@ -162,7 +162,7 @@ export default function Module2Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
                     <p className="font-bold">ISP & Transit Networks</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Data travels through internet service providers and backbone networks. May cross international borders even before reaching the AI provider.</p>
@@ -171,7 +171,7 @@ export default function Module2Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
                     <p className="font-bold">API Gateway (Entry Point)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Provider's front door. Often geo-distributed (nearest edge server), but data is logged and may be routed to central processing.</p>
@@ -180,7 +180,7 @@ export default function Module2Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
                     <p className="font-bold">Processing Infrastructure</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">The actual AI model runs here. Could be US-based AWS, Google Cloud in Belgium, Azure in Singapore — you often don't control this.</p>
@@ -189,7 +189,7 @@ export default function Module2Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
                     <p className="font-bold">Storage & Logging (Optional)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">If the provider logs requests (for debugging, quality, compliance), data may be stored in a different region entirely.</p>
@@ -198,7 +198,7 @@ export default function Module2Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">6</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">6</span>
                   <div>
                     <p className="font-bold">Return Path</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Response travels back through the same network hops. Each step is a potential interception or logging point.</p>
@@ -451,28 +451,28 @@ export default function Module2Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Map your current AI data flows (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each AI tool, document: Where does data originate? What service processes it? Where is that service hosted? What jurisdiction governs it?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Identify jurisdictional risks (7 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Check each service against the Jurisdictional Landmines section. Flag any flows that cross sensitive borders (EU to US, within Five Eyes, etc.).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Assess "regional cloud" claims (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">If you use "EU-only" or "regional" services, verify: Is the parent company still US-based? Are backups replicated cross-region? Does support have access?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Design your ideal state (3 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each high-risk flow, propose a local processing alternative. Mark which should move to on-prem, edge, or private cloud.</p>

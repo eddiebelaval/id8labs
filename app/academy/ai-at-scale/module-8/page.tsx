@@ -228,7 +228,7 @@ export default function Module8Page() {
                     Where raw data becomes model-ready features
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Data lake (raw storage)</li>
@@ -237,7 +237,7 @@ export default function Module8Page() {
                         <li>• Vector database (embeddings)</li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Data ingestion & ETL</li>
@@ -258,7 +258,7 @@ export default function Module8Page() {
                     Where models are trained, evaluated, and served
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Training infrastructure</li>
@@ -267,7 +267,7 @@ export default function Module8Page() {
                         <li>• Experiment tracking</li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Model development</li>
@@ -288,7 +288,7 @@ export default function Module8Page() {
                     Where AI capabilities become business features
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• API gateway</li>
@@ -297,7 +297,7 @@ export default function Module8Page() {
                         <li>• User interfaces</li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Request routing</li>
@@ -318,7 +318,7 @@ export default function Module8Page() {
                     Shared services that support all layers
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Auth & authorization</li>
@@ -327,7 +327,7 @@ export default function Module8Page() {
                         <li>• CI/CD pipelines</li>
                       </ul>
                     </div>
-                    <div className="p-3 bg-[var(--bg-primary)] rounded">
+                    <div className="p-3 bg-[var(--bg-primary)]">
                       <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Security & compliance</li>
@@ -486,7 +486,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Phase 1: Inventory & Assessment (Week 1-2)</p>
                 <p className="font-bold mb-1">Know what you have</p>
                 <ul className="text-sm text-[var(--text-tertiary)] space-y-1 mt-2">
@@ -497,7 +497,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Phase 2: Define Target Architecture (Week 3-4)</p>
                 <p className="font-bold mb-1">Design your future state</p>
                 <ul className="text-sm text-[var(--text-tertiary)] space-y-1 mt-2">
@@ -508,7 +508,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Phase 3: Parallel Build (Month 2-4)</p>
                 <p className="font-bold mb-1">Build new alongside old</p>
                 <ul className="text-sm text-[var(--text-tertiary)] space-y-1 mt-2">
@@ -519,7 +519,7 @@ export default function Module8Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded">
+              <div className="p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange">
                 <p className="font-mono text-xs text-id8-orange mb-1">Phase 4: Incremental Migration (Month 5-12)</p>
                 <p className="font-bold mb-1">Move services one at a time</p>
                 <ul className="text-sm text-[var(--text-tertiary)] space-y-1 mt-2">
@@ -544,28 +544,28 @@ export default function Module8Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Identify the decision (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Pick a real architectural decision: which database, which ML platform, build vs buy, monolith vs microservices for ML, etc.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Document the context (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">What's the problem? What constraints exist (budget, timeline, skills, compliance)? What are the forces in play?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Explore alternatives (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List 2-3 viable options. For each: pros, cons, costs, risks. Be objective about trade-offs.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Make and document the decision (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Choose one option. Document the decision, rationale, and expected consequences using the ADR template.</p>

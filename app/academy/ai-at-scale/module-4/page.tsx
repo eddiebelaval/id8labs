@@ -180,9 +180,9 @@ export default function Module4Page() {
                     <h4 className="font-bold text-id8-orange">Development Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Track experiments, log hyperparameters, version datasets, document assumptions</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Experiment tracking</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Data versioning</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Code review</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Experiment tracking</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Data versioning</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Code review</span>
                     </div>
                   </div>
                 </div>
@@ -192,9 +192,9 @@ export default function Module4Page() {
                     <h4 className="font-bold text-id8-orange">Validation Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Test on held-out data, validate fairness, assess risk, document limitations</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Model cards</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Bias testing</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Risk assessment</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Model cards</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Bias testing</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Risk assessment</span>
                     </div>
                   </div>
                 </div>
@@ -204,9 +204,9 @@ export default function Module4Page() {
                     <h4 className="font-bold text-id8-orange">Approval Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Stakeholder sign-off, compliance review, deployment authorization</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Approval workflow</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Compliance checklist</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Audit trail</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Approval workflow</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Compliance checklist</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Audit trail</span>
                     </div>
                   </div>
                 </div>
@@ -216,9 +216,9 @@ export default function Module4Page() {
                     <h4 className="font-bold text-id8-orange">Production Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Monitor performance, track drift, maintain audit logs, plan retraining</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Monitoring</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Drift detection</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Incident logging</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Monitoring</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Drift detection</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Incident logging</span>
                     </div>
                   </div>
                 </div>
@@ -228,9 +228,9 @@ export default function Module4Page() {
                     <h4 className="font-bold text-id8-orange">Retirement Phase</h4>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Archive model artifacts, document lessons learned, transition to replacement</p>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Archival</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Deprecation notice</span>
-                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)] rounded">Retrospective</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Archival</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Deprecation notice</span>
+                      <span className="text-xs px-2 py-1 bg-[var(--bg-primary)]">Retrospective</span>
                     </div>
                   </div>
                 </div>
@@ -394,7 +394,7 @@ export default function Module4Page() {
                   <h4 className="font-bold text-id8-orange mb-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">{item.desc}</p>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="px-2 py-1 bg-[var(--paper-shadow)] rounded">Retention: {item.retention}</span>
+                    <span className="px-2 py-1 bg-[var(--paper-shadow)]">Retention: {item.retention}</span>
                   </div>
                   <p className="text-xs text-[var(--text-tertiary)] mt-2 italic">{item.note}</p>
                 </div>
@@ -485,28 +485,28 @@ export default function Module4Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Classify your models by risk (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List every model in production or planned. Use the risk classification framework to assign Low, Medium, High, or Critical.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Assess current governance (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each model, note: Is there versioning? A model card? An owner? Monitoring? Audit trail? Identify gaps.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Define governance requirements (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Map each risk level to specific requirements. What artifacts? What approvals? What monitoring? Be concrete.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Create your first model card (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Pick your highest-risk model. Draft a model card using the template. This becomes your standard.</p>

@@ -28,31 +28,22 @@ export default async function SettingsPage({ searchParams }: PageProps) {
   return (
     <main className="relative">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden bg-[var(--bg-secondary)]">
-        {/* Background Pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(var(--text-primary) 1px, transparent 1px)`,
-            backgroundSize: '32px 32px',
-          }}
-        />
-
+      <section className="relative py-20 md:py-32 border-b border-[var(--rule)]">
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 bg-[var(--bg-primary)] text-[var(--id8-orange)] rounded-full text-sm font-semibold border border-[var(--id8-orange)]/20 shadow-lg">
-              <Settings className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 text-id8-orange font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] border border-id8-orange">
+              <Settings className="w-3.5 h-3.5" />
               <span>{allSettings.length} Configuration Settings</span>
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-normal tracking-[-0.02em] mb-6 text-[var(--ink)]">
               Configuration Settings
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-[var(--muted)] mb-10 max-w-2xl mx-auto">
               Optimize your AI workflow with pre-configured settings
             </p>
           </div>

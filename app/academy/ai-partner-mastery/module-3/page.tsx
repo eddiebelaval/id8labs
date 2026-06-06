@@ -85,7 +85,7 @@ export default function Module3Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 3
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -370,7 +370,7 @@ What would that look like?`}
                   <p className="font-bold mb-3">Exercise 1: The 10-Turn Exploration (30 min)</p>
                   <div className="space-y-2 text-sm text-[var(--text-secondary)]">
                     <p>Pick a real problem you're working on. Have a conversation with AI where you commit to at least 10 messages before producing anything final.</p>
-                    <p className="font-mono bg-[var(--bg-secondary)] p-3 rounded">
+                    <p className="font-mono bg-[var(--bg-secondary)] p-3">
                       Track: How does message 10 compare to what you would have gotten from message 1?
                     </p>
                   </div>
@@ -388,7 +388,7 @@ What would that look like?`}
                   <p className="font-bold mb-3">Exercise 3: Build Your Flow Template (15 min)</p>
                   <div className="space-y-2 text-sm text-[var(--text-secondary)]">
                     <p>Document your natural conversation pattern. When you're solving problems with AI, what's your typical flow?</p>
-                    <div className="font-mono bg-[var(--bg-secondary)] p-3 rounded space-y-1">
+                    <div className="font-mono bg-[var(--bg-secondary)] p-3 space-y-1">
                       <p>Example template:</p>
                       <p>1. Share problem + context</p>
                       <p>2. Get initial reactions</p>
@@ -416,7 +416,7 @@ What would that look like?`}
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Every 10-15 messages, drop a summary anchor:
                   </p>
-                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3 rounded">
+                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3">
 {`"So far we've established: [3-5 key points]. Now let's focus on..."`}
                   </div>
                 </div>
@@ -426,7 +426,7 @@ What would that look like?`}
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     When stuck, ask AI to roleplay:
                   </p>
-                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3 rounded">
+                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3">
 {`"If you were a user seeing this for the first time, what would confuse you?"`}
                   </div>
                 </div>
@@ -436,7 +436,7 @@ What would that look like?`}
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Force concrete outputs mid-conversation:
                   </p>
-                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3 rounded">
+                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3">
 {`"Before we go further, write out the exact wording we'd use for this button."`}
                   </div>
                 </div>

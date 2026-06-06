@@ -87,7 +87,7 @@ export default function Module5Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 5
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -194,7 +194,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Who's involved? What does each person/group care about?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>AI's role:</strong> Help identify hidden stakeholders, map conflicting priorities, suggest engagement strategies
                   </div>
                 </div>
@@ -204,7 +204,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     What can't change? Legal requirements, technical limitations, budget realities?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>AI's role:</strong> Categorize constraints, identify which are hard vs. soft, find creative ways to work within them
                   </div>
                 </div>
@@ -214,7 +214,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     What decisions must be made, and in what order? What depends on what?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>AI's role:</strong> Map dependencies, identify critical path decisions, suggest optimal sequencing
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Which parts can be solved independently? What can run in parallel?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>AI's role:</strong> Break monolithic problems into discrete workstreams, identify quick wins vs. long-term work
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export default function Module5Page() {
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     How do we know each component is working? What does "done" look like?
                   </p>
-                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3 rounded">
+                  <div className="text-xs font-mono bg-[var(--bg-primary)] p-3">
                     <strong>AI's role:</strong> Define measurable outcomes, create validation criteria, suggest testing approaches
                   </div>
                 </div>
@@ -434,42 +434,42 @@ Then, for each condition, let's break it down further until we get to concrete, 
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Name the Problem (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Write a one-sentence description of the challenge. Be specific about the desired outcome.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Layer 1: Stakeholder Map (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Use AI to identify everyone affected. Map their priorities and conflicts.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Layer 2: Constraint Catalog (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List everything that can't change. Separate hard constraints from soft ones.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Layer 3: Decision Sequence (15 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Map the actual decision points. What must be decided, and in what order?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Layer 4: Component Isolation (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Break it into independent workstreams. What can be solved in parallel?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">6</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">6</span>
                   <div>
                     <p className="font-bold">Layer 5: Success Metrics (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Define how you'll know each component is working. Make it measurable.</p>

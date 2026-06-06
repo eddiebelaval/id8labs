@@ -87,7 +87,7 @@ export default function Module3Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 3
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -146,7 +146,7 @@ export default function Module3Page() {
 
             <div className="not-prose grid md:grid-cols-3 gap-4 my-8">
               <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] rounded mb-3">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   Build
                 </div>
                 <h4 className="font-bold text-lg mb-2">Custom Development</h4>
@@ -182,7 +182,7 @@ export default function Module3Page() {
               </div>
 
               <div className="p-5 bg-id8-teal/10 border border-[var(--hair-hard)]">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-id8-teal/20 text-id8-teal rounded mb-3">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-id8-teal/20 text-id8-teal mb-3">
                   Buy
                 </div>
                 <h4 className="font-bold text-lg mb-2">Off-the-Shelf Solution</h4>
@@ -218,7 +218,7 @@ export default function Module3Page() {
               </div>
 
               <div className="p-5 bg-[var(--paper-shadow)] border border-[var(--hair-hard)]">
-                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] rounded mb-3">
+                <div className="inline-block px-3 py-1 text-xs font-mono uppercase bg-[var(--paper-shadow)] text-[var(--muted)] mb-3">
                   Partner
                 </div>
                 <h4 className="font-bold text-lg mb-2">Strategic Partnership</h4>
@@ -437,25 +437,25 @@ export default function Module3Page() {
                 {/* Grid background */}
                 <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2">
                   {/* Low Capability / Low Criticality - BUY */}
-                  <div className="bg-id8-teal/10 border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-id8-teal/10 border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-id8-teal mb-2">BUY</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Off-the-shelf solution</div>
                   </div>
 
                   {/* High Capability / Low Criticality - EXPERIMENT */}
-                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-[var(--muted)] mb-2">EXPERIMENT</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Build internally to learn</div>
                   </div>
 
                   {/* Low Capability / High Criticality - PARTNER */}
-                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-[var(--muted)] mb-2">PARTNER</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Strategic partnership</div>
                   </div>
 
                   {/* High Capability / High Criticality - BUILD */}
-                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] rounded p-4 flex flex-col items-center justify-center text-center">
+                  <div className="bg-[var(--paper-shadow)] border border-[var(--hair-hard)] p-4 flex flex-col items-center justify-center text-center">
                     <div className="text-xs font-mono text-[var(--muted)] mb-2">BUILD</div>
                     <div className="text-xs text-[var(--text-tertiary)]">Custom development</div>
                   </div>
@@ -492,7 +492,7 @@ export default function Module3Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Mid-Market SaaS Company</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal rounded">BUY</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal">BUY</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Customer support chatbot
@@ -508,7 +508,7 @@ export default function Module3Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Healthcare Analytics Startup</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">BUILD</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">BUILD</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Predictive patient risk scoring
@@ -524,7 +524,7 @@ export default function Module3Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-bold">Regional Bank</h4>
-                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)] rounded">PARTNER</span>
+                  <span className="px-3 py-1 text-xs font-mono bg-[var(--paper-shadow)] text-[var(--muted)]">PARTNER</span>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
                   <strong>Use Case:</strong> Fraud detection system
@@ -551,35 +551,35 @@ export default function Module3Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Rate your capability (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each use case, honestly assess: do you have the technical talent, data infrastructure, and domain expertise to build this? Rate 1-10.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Rate business criticality (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">How essential is this to your competitive position? How much would failure hurt? Rate 1-10.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Plot on the framework (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Place each use case in the 2x2 matrix. Where does it land? What does the framework recommend?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Apply hidden costs filter (10 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For your recommended path, list out 3-5 hidden costs specific to your situation. How do they change the calculus?</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">5</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">5</span>
                   <div>
                     <p className="font-bold">Make your decision (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Commit to Build, Buy, or Partner for your highest-priority use case. Write down your reasoning in 3 sentences.</p>

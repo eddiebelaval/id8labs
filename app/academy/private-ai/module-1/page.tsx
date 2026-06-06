@@ -86,7 +86,7 @@ export default function Module1Page() {
             </m.div>
 
             <m.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+              <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                 Module 1
               </span>
               <span className="text-sm font-mono text-[var(--text-tertiary)]">
@@ -146,7 +146,7 @@ export default function Module1Page() {
             <div className="not-prose my-8 space-y-4">
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
                     <p className="font-bold">Transmission</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Your data leaves your network, travels through the internet (usually encrypted in transit), and arrives at the provider's servers.</p>
@@ -155,7 +155,7 @@ export default function Module1Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
                     <p className="font-bold">Processing</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">The provider's AI model processes your input. This happens on their infrastructure, under their security controls, in regions you may not control.</p>
@@ -164,7 +164,7 @@ export default function Module1Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
                     <p className="font-bold">Storage (Maybe)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Depending on terms of service, your data may be logged for debugging, quality assurance, or model improvement. "We don't train on your data" doesn't mean "we don't store it."</p>
@@ -173,7 +173,7 @@ export default function Module1Page() {
               </div>
               <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
                     <p className="font-bold">Return</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">The response comes back through the same channels. You see the result. The provider sees everything that went in and came out.</p>
@@ -205,37 +205,37 @@ export default function Module1Page() {
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Public Information</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">Low</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal text-xs">Low</span></td>
                     <td className="py-3 px-4 text-id8-teal">Yes</td>
                     <td className="py-3 px-4">Marketing copy, blog posts, public-facing content</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Internal Operations</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Medium</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Medium</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">With Controls</td>
                     <td className="py-3 px-4">Meeting summaries, internal docs, project plans</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Competitive Intelligence</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange rounded text-xs">High</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-id8-orange text-xs">High</span></td>
                     <td className="py-3 px-4 text-id8-orange">Risky</td>
                     <td className="py-3 px-4">Roadmaps, strategy docs, financial projections</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Customer Data (PII)</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Critical</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Critical</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">No</td>
                     <td className="py-3 px-4">Client records, customer support logs, user analytics</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Regulated Data</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Critical</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Critical</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">No</td>
                     <td className="py-3 px-4">Healthcare (HIPAA), financial (SOX), legal (attorney-client)</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Trade Secrets</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] rounded text-xs">Critical</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-[var(--paper-shadow)] text-[var(--muted)] text-xs">Critical</span></td>
                     <td className="py-3 px-4 text-[var(--muted)]">No</td>
                     <td className="py-3 px-4">Source code, proprietary algorithms, R&D data</td>
                   </tr>
@@ -437,28 +437,28 @@ export default function Module1Page() {
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">1</span>
                   <div>
                     <p className="font-bold">Inventory your AI use cases (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">List every way your organization currently uses or plans to use AI. Be specific: "Summarizing customer support tickets" not "AI for support."</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">2</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">2</span>
                   <div>
                     <p className="font-bold">Classify data types (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each use case, map it to the Risk Matrix categories (Public, Internal, Competitive, PII, Regulated, Trade Secrets).</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">3</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">3</span>
                   <div>
                     <p className="font-bold">Identify compliance requirements (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">Which regulations apply to your data? Check the Compliance Landscape table. Be honest about edge cases.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">4</span>
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold">4</span>
                   <div>
                     <p className="font-bold">Determine deployment requirements (5 min)</p>
                     <p className="text-sm text-[var(--text-secondary)]">For each use case, mark it as "Cloud OK," "Private Preferred," or "Private Required." Use the "When Private AI Is Essential" criteria.</p>
