@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Package, Download, Copy, CheckCircle } from 'lucide-react'
+import { Download, CheckCircle } from 'lucide-react'
 import type { DbStack } from '@/lib/stacks-db'
 import { forkStack } from '@/lib/stacks-db-client'
 import { useRouter } from 'next/navigation'

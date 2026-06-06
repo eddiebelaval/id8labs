@@ -1,73 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import { m } from '@/components/motion'
 import Link from 'next/link'
 import { FoundationGate } from '@/components/progress'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  SectionHead,
+  Hairline,
+  EditorialButton,
+  IssueCard,
+} from '@/components/editorial'
 
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Icons
-const CheckIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-)
-
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-)
-
-const FolderIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
-  </svg>
-)
-
-const MicIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
-    <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/>
-  </svg>
-)
-
-const SearchIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="11" cy="11" r="8"/>
-    <path d="M21 21l-4.35-4.35"/>
-  </svg>
-)
-
-const SettingsIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="3"/>
-    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
-  </svg>
-)
-
-const XIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M18 6L6 18M6 6l12 12"/>
-  </svg>
-)
-
-const ChevronDownIcon = () => (
-  <svg className="w-5 h-5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+const ChevronDownIcon = ({ open }: { open: boolean }) => (
+  <svg className={`w-5 h-5 transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M6 9l6 6 6-6"/>
   </svg>
 )
@@ -168,22 +117,18 @@ const modules = [
 
 const audiences = [
   {
-    icon: <MicIcon />,
     title: "Writers",
     description: "Voice memos to organized outlines to polished drafts. Research synthesis. Multi-platform content repurposing.",
   },
   {
-    icon: <SearchIcon />,
     title: "Researchers",
     description: "Competitive analysis. Interview transcript synthesis. Pattern recognition across hundreds of documents.",
   },
   {
-    icon: <FolderIcon />,
     title: "Operators",
     description: "File organization. Invoice processing. Recurring workflows. The operational grunt work that eats your day.",
   },
   {
-    icon: <SettingsIcon />,
     title: "Producers",
     description: "Complex projects with lots of moving pieces, documents, and logistics. From chaos to structure.",
   },
@@ -217,391 +162,254 @@ const faqs = [
 export default function ClaudeForKnowledgeWorkersPage() {
   return (
     <FoundationGate>
-      <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-zone-text">
-        <div className="container">
-          <m.div
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-            className="max-w-4xl"
-          >
-            <m.p
-              variants={fadeUp}
-              className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-6"
-            >
-              10-Module Course • ~7 Hours
-            </m.p>
+      <div className="min-h-screen bg-[var(--paper)]">
+        {/* Hero */}
+        <section className="pt-20 pb-12">
+          <Container>
+            <Kicker dot>10-Module Course · ~7 Hours</Kicker>
 
-            <m.h1
-              variants={fadeUp}
-              className="text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] font-bold tracking-tight mb-6"
-            >
-              Claude Code for{' '}
-              <span className="text-gradient-orange">Knowledge Workers</span>
-            </m.h1>
+            <h1 className="mt-6 max-w-4xl font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.5rem,6.5vw,4.5rem)]">
+              Claude Code for <em className="italic text-id8-orange">Knowledge Workers</em>
+            </h1>
 
-            <m.p
-              variants={fadeUp}
-              className="text-2xl md:text-3xl text-[var(--text-secondary)] max-w-2xl mb-4 font-medium"
-            >
-              From Chatbot to Operating System
-            </m.p>
+            <Deck className="mt-7 max-w-2xl">From Chatbot to Operating System</Deck>
 
-            <m.p
-              variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] max-w-2xl mb-10 leading-relaxed"
-            >
+            <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-[var(--body)]">
               Stop asking questions. Start delegating tasks. A structured course for writers, researchers, and operators who want to use Claude Code without writing code.
-            </m.p>
+            </p>
 
-            {/* CTA Buttons */}
-            <m.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/courses/claude-for-knowledge-workers/module-0"
-                className="btn btn-primary group inline-flex items-center justify-center gap-2"
-              >
-                Start Course
-                <ArrowRightIcon />
-              </Link>
-              <a
-                href="#curriculum"
-                className="btn btn-secondary group inline-flex items-center justify-center gap-2"
-              >
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <EditorialButton href="/courses/claude-for-knowledge-workers/module-0" variant="primary">
+                Start Course &rarr;
+              </EditorialButton>
+              <EditorialButton href="#curriculum" variant="secondary">
                 View Curriculum
-              </a>
-            </m.div>
-            <m.p variants={fadeUp} className="mt-4 text-sm text-[var(--text-tertiary)]">
-              <span className="text-green-400 font-semibold">100% Free</span> — All 10 modules. No credit card required.
-            </m.p>
+              </EditorialButton>
+            </div>
 
-            {/* Cross-link to free fundamentals course */}
-            <m.div variants={fadeUp} className="mt-8 pt-6 border-t border-[var(--border)]">
-              <p className="text-sm text-[var(--text-secondary)]">
+            <p className="mt-4 font-[family-name:var(--font-mono)] text-sm text-[var(--muted)]">
+              <span className="text-[var(--teal)] font-medium">100% Free</span> — All 10 modules. No credit card required.
+            </p>
+
+            <MetaRow
+              className="mt-8"
+              items={[
+                { value: '10', label: 'modules' },
+                { value: '~7', label: 'hours' },
+                { value: '0', label: 'code required' },
+              ]}
+            />
+
+            <div className="mt-8 pt-6 border-t border-[var(--hair)]">
+              <p className="text-sm text-[var(--body)]">
                 New to AI conversations?{' '}
                 <Link
                   href="/courses/ai-conversation-fundamentals"
-                  className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center gap-1"
+                  className="inline-flex items-center gap-2 text-[var(--ink)] border-b border-[var(--hair)] hover:border-id8-orange transition-colors"
                 >
-                  <span className="px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider bg-green-500 text-white rounded mr-1">Free</span>
-                  Start with AI Fundamentals
-                  <ArrowRightIcon />
+                  <span className="font-[family-name:var(--font-narrow)] text-[9px] font-bold uppercase tracking-[0.15em] text-[var(--teal)]">Free</span>
+                  Start with AI Fundamentals &rarr;
                 </Link>
               </p>
-            </m.div>
-          </m.div>
-        </div>
+            </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
-      </section>
+            <Rule className="mt-10" />
+          </Container>
+        </section>
 
-      {/* Split Tab Feature Callout */}
-      <section className="py-6 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 border-b border-[var(--border)]">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">✨</span>
+        {/* Split Tab Feature Callout */}
+        <section className="py-6 border-b border-[var(--hair)] bg-[var(--paper-shadow)]">
+          <Container>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
               <div>
-                <p className="font-bold text-[var(--text-primary)]">
+                <p className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">
                   Pro Tip: Use Split Tab for Side-by-Side Learning
                 </p>
-                <p className="text-sm text-[var(--text-secondary)]">
+                <p className="text-sm text-[var(--body)]">
                   Open Claude Code in one tab, this course in another. New Split Tab feature lets you work alongside the lessons in real-time.
                 </p>
               </div>
+              <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.2em] text-id8-orange whitespace-nowrap">
+                New Feature
+              </span>
             </div>
-            <span className="text-xs font-mono uppercase tracking-wider text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full whitespace-nowrap">
-              New Feature
-            </span>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </section>
 
-      {/* The Problem Section */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              The Naming Problem
+        {/* The Problem Section */}
+        <section className="py-16 border-t border-[var(--rule)]">
+          <Container>
+            <SectionHead
+              title={<>&quot;Claude Code&quot; scares away the people <em className="italic text-id8-orange">who need it most</em></>}
+              meta="The Naming Problem"
+              className="mb-8"
+            />
+            <p className="mt-6 mb-8 max-w-2xl text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              Most people hear &quot;Code&quot; and assume it&apos;s for developers. They&apos;re wrong. Here&apos;s what Claude Code actually is — and isn&apos;t:
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-              "Claude Code" scares away the people{' '}
-              <span className="text-gradient-orange">who need it most</span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-              Most people hear "Code" and assume it's for developers. They're wrong. Here's what Claude Code actually is — and isn't:
-            </p>
-          </div>
 
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="max-w-3xl mx-auto space-y-4"
-          >
-            {misconceptions.map((item, index) => (
-              <m.div
-                key={index}
-                variants={fadeUp}
-                className="grid md:grid-cols-2 gap-4"
-              >
-                <div className="flex items-center gap-3 px-5 py-4 bg-red-500/5 border border-red-500/20 rounded-lg">
-                  <span className="text-red-400 flex-shrink-0">
-                    <XIcon />
-                  </span>
-                  <span className="text-[var(--text-secondary)] line-through decoration-red-400/50">
-                    {item.wrong}
-                  </span>
+            <div className="max-w-3xl space-y-px bg-[var(--hair)] border border-[var(--hair)]">
+              {misconceptions.map((item, index) => (
+                <div key={index} className="grid md:grid-cols-2 gap-px bg-[var(--hair)]">
+                  <div className="flex items-center gap-3 px-5 py-4 bg-[var(--paper)]">
+                    <span className="text-[var(--muted)] flex-shrink-0">&times;</span>
+                    <span className="text-[var(--muted)] line-through">{item.wrong}</span>
+                  </div>
+                  <div className="flex items-center gap-3 px-5 py-4 bg-[var(--paper-shadow)] border-l-2 border-id8-orange">
+                    <span className="text-id8-orange flex-shrink-0">&rarr;</span>
+                    <span className="text-[var(--ink)]">{item.right}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 px-5 py-4 bg-green-500/5 border border-green-500/20 rounded-lg">
-                  <span className="text-green-400 flex-shrink-0">
-                    <CheckIcon />
-                  </span>
-                  <span className="text-[var(--text-primary)]">
-                    {item.right}
-                  </span>
-                </div>
-              </m.div>
-            ))}
-          </m.div>
-
-          <div className="max-w-3xl mx-auto mt-12 text-center">
-            <p className="text-xl text-[var(--text-primary)] font-medium">
-              The shift is from <span className="text-[var(--text-tertiary)]">assistance</span> to{' '}
-              <span className="text-id8-orange">delegation</span>.
-            </p>
-            <p className="mt-4 text-[var(--text-secondary)]">
-              "Help me write interview questions" → "Here are the cast files. Generate interview questions for each person based on their background. Save them to the prep folder."
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Who This Is For Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="text-center mb-16">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              Who This Is For
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              Not another developer tutorial
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              This course is specifically designed for knowledge workers who process information daily.
-            </p>
-          </div>
-
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-          >
-            {audiences.map((audience, index) => (
-              <m.div
-                key={index}
-                variants={fadeUp}
-                className="card"
-              >
-                <span className="text-id8-orange mb-4 block">{audience.icon}</span>
-                <h3 className="text-xl font-bold mb-2">{audience.title}</h3>
-                <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
-                  {audience.description}
-                </p>
-              </m.div>
-            ))}
-          </m.div>
-
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-sm font-mono uppercase tracking-widest text-[var(--text-tertiary)] mb-4">
-              Not for
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {notFor.map((item, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border)] rounded-full text-sm text-[var(--text-tertiary)]"
-                >
-                  {item}
-                </span>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Curriculum Section */}
-      <section className="section-spacing border-t border-[var(--border)]" id="curriculum">
-        <div className="container">
-          <div className="text-center mb-16">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              Curriculum
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              10 modules. ~7 hours. Zero code required.
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Each module builds on the last. By the end, you'll have a personal operating system that handles the work you used to do manually.
-            </p>
-          </div>
-
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="max-w-3xl mx-auto space-y-4"
-          >
-            {modules.map((module, index) => {
-              const cardContent = (
-                <>
-                  <span className="text-2xl font-mono font-bold text-id8-orange">
-                    {module.number}
-                  </span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-lg font-bold">{module.title}</h3>
-                      {(module as typeof module & { isNew?: boolean }).isNew && (
-                        <span className="text-xs font-mono uppercase tracking-wider text-green-400 bg-green-500/10 px-2 py-0.5 rounded animate-pulse">
-                          New
-                        </span>
-                      )}
-                      {!module.available && (
-                        <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] bg-[var(--bg-primary)] px-2 py-0.5 rounded">
-                          Coming Soon
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-[var(--text-secondary)] text-sm">{module.description}</p>
-                  </div>
-                  <span className="text-sm font-mono text-[var(--text-tertiary)] whitespace-nowrap">
-                    {module.duration}
-                  </span>
-                </>
-              )
-
-              const cardClass = `flex items-start gap-4 p-5 rounded-xl border transition-colors ${
-                module.available
-                  ? 'bg-[var(--bg-secondary)] border-[var(--border)] hover:border-id8-orange/30'
-                  : 'bg-[var(--bg-secondary)] border-[var(--border)] opacity-60'
-              }`
-
-              return (
-                <m.div key={index} variants={fadeUp}>
-                  {module.available ? (
-                    <Link href={module.href} className={cardClass}>
-                      {cardContent}
-                    </Link>
-                  ) : (
-                    <div className={cardClass}>
-                      {cardContent}
-                    </div>
-                  )}
-                </m.div>
-              )
-            })}
-          </m.div>
-        </div>
-      </section>
-
-      {/* Instructor Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-                Your Instructor
+            <div className="max-w-3xl mt-10">
+              <p className="text-xl text-[var(--ink)]">
+                The shift is from <span className="text-[var(--muted)]">assistance</span> to{' '}
+                <span className="text-id8-orange">delegation</span>.
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                Built by someone who uses this daily
-              </h2>
+              <p className="mt-4 font-[family-name:var(--font-serif)] italic text-[var(--muted)]">
+                &quot;Help me write interview questions&quot; → &quot;Here are the cast files. Generate interview questions for each person based on their background. Save them to the prep folder.&quot;
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* Who This Is For */}
+        <section className="py-16 border-t border-[var(--rule)]">
+          <Container>
+            <SectionHead title="Not another developer tutorial" meta="Who This Is For" className="mb-8" />
+            <p className="mt-6 mb-10 max-w-2xl text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              This course is specifically designed for knowledge workers who process information daily.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--hair)] border border-[var(--hair)] mb-12">
+              {audiences.map((audience, index) => (
+                <div key={index} className="bg-[var(--paper)] p-6">
+                  <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">{audience.title}</h3>
+                  <p className="text-sm text-[var(--body)] leading-[1.6]">{audience.description}</p>
+                </div>
+              ))}
             </div>
 
-            <div className="card">
+            <div className="max-w-2xl">
+              <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)] mb-4">
+                Not for
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {notFor.map((item, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-[var(--paper-mid)] font-[family-name:var(--font-narrow)] text-xs uppercase tracking-[0.12em] text-[var(--muted)]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* Curriculum */}
+        <section className="py-16 border-t border-[var(--rule)]" id="curriculum">
+          <Container>
+            <SectionHead
+              title={<>10 modules. ~7 hours. <em className="italic text-id8-orange">Zero code required.</em></>}
+              meta="Curriculum"
+              className="mb-4"
+            />
+            <p className="mt-6 mb-2 max-w-2xl text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              Each module builds on the last. By the end, you&apos;ll have a personal operating system that handles the work you used to do manually.
+            </p>
+
+            <div className="mt-6">
+              {modules.map((module) => (
+                <IssueCard
+                  key={module.number}
+                  number={module.number}
+                  title={
+                    <span className="inline-flex items-center gap-3 flex-wrap">
+                      {module.title}
+                      {(module as typeof module & { isNew?: boolean }).isNew && (
+                        <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--teal)]">New</span>
+                      )}
+                    </span>
+                  }
+                  deck={module.description}
+                  date={module.duration}
+                  href={module.href}
+                />
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Instructor */}
+        <section className="py-16 border-t border-[var(--rule)]">
+          <Container>
+            <SectionHead title="Built by someone who uses this daily" meta="Your Instructor" className="mb-8" />
+            <div className="max-w-3xl border border-[var(--hair)] p-7">
               <div className="flex flex-col md:flex-row gap-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-id8-orange/20 to-id8-orange/5 flex items-center justify-center text-2xl font-bold text-id8-orange flex-shrink-0">
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[var(--paper-mid)] font-[family-name:var(--font-mono)] text-lg text-[var(--ink)]">
                   EB
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Eddie Belaval</h3>
-                  <p className="text-[var(--text-secondary)] mb-4 leading-relaxed">
+                  <h3 className="mb-2 font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">Eddie Belaval</h3>
+                  <p className="mb-4 text-[var(--body)] leading-[1.7]">
                     I run two businesses — one produces reality television (90 Day Fiancé, Teen Mom), the other builds AI tools for developers. Neither requires me to write code daily. But Claude Code has become the most important tool in both.
                   </p>
-                  <p className="text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-[var(--body)] leading-[1.7]">
                     I use Claude Code to generate interview questions, grind through logistics, run web searches with Perplexity and Firecrawl, manage my LLC with AI agents, and build media pipelines. What took days now takes hours.
                   </p>
-                  <div className="mt-4 pt-4 border-t border-[var(--border)]">
+                  <div className="mt-4 pt-4 border-t border-[var(--hair)]">
                     <Link
                       href="/writing/claude-code-isnt-for-coders"
-                      className="inline-flex items-center gap-2 text-id8-orange hover:underline group text-sm"
+                      className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-id8-orange hover:underline"
                     >
-                      Read the full story
-                      <ArrowRightIcon />
+                      Read the full story &rarr;
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </Container>
+        </section>
 
-      {/* CTA Section */}
-      <section className="section-spacing-lg relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] aspect-square bg-[radial-gradient(circle,var(--id8-orange-light)_0%,transparent_70%)] opacity-30 pointer-events-none" />
+        {/* CTA */}
+        <section className="py-20 border-t border-[var(--rule)]">
+          <Container narrow>
+            <div className="text-center">
+              <Kicker dot className="justify-center">100% Free</Kicker>
+              <h2 className="mt-6 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2rem,4.5vw,3rem)]">
+                Stop asking. <em className="italic text-id8-orange">Start delegating.</em>
+              </h2>
+              <p className="mt-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+                All 10 modules. ~7 hours of content. No credit card required.
+              </p>
+              <div className="mt-8 flex justify-center">
+                <EditorialButton href="/courses/claude-for-knowledge-workers/module-0" variant="primary">
+                  Start Course &rarr;
+                </EditorialButton>
+              </div>
+              <p className="mt-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                Begin with Module 0: The Mental Model Shift
+              </p>
+            </div>
+          </Container>
+        </section>
 
-        <div className="container relative">
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-sm font-mono uppercase tracking-widest text-green-400 mb-4">
-              100% Free
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Stop asking.{' '}
-              <span className="text-gradient-orange">Start delegating.</span>
-            </h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-10">
-              All 10 modules. ~7 hours of content. No credit card required.
-            </p>
-
-            <Link
-              href="/courses/claude-for-knowledge-workers/module-0"
-              className="btn btn-primary hover-lift group inline-flex items-center gap-3 text-lg px-8 py-4"
-            >
-              Start Course
-              <ArrowRightIcon />
-            </Link>
-
-            <p className="mt-6 text-sm font-mono text-[var(--text-tertiary)]">
-              Begin with Module 0: The Mental Model Shift
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="text-center mb-16">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              FAQ
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Common questions
-            </h2>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, index) => (
-              <FAQItem key={index} question={faq.question} answer={faq.answer} />
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+        {/* FAQ */}
+        <section className="py-16 border-t border-[var(--rule)]">
+          <Container>
+            <SectionHead title="Common questions" meta="FAQ" className="mb-8" />
+            <div className="max-w-3xl border-t border-[var(--hair)]">
+              {faqs.map((faq, index) => (
+                <FAQItem key={index} question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      </div>
     </FoundationGate>
   )
 }
@@ -611,35 +419,19 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <m.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--bg-primary)]"
-    >
+    <div className="border-b border-[var(--hair)]">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-5 text-left hover:bg-[var(--bg-secondary)] transition-colors"
+        className="w-full flex items-center justify-between py-5 text-left transition-colors hover:text-id8-orange"
       >
-        <span className="font-bold text-lg pr-4">{question}</span>
-        <span className={`text-id8-orange flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
-          <ChevronDownIcon />
+        <span className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] pr-4">{question}</span>
+        <span className="text-id8-orange flex-shrink-0">
+          <ChevronDownIcon open={isOpen} />
         </span>
       </button>
-
-      <m.div
-        initial={false}
-        animate={{
-          height: isOpen ? 'auto' : 0,
-          opacity: isOpen ? 1 : 0
-        }}
-        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="overflow-hidden"
-      >
-        <div className="px-5 pb-5 pt-0 text-[var(--text-secondary)] leading-relaxed">
-          {answer}
-        </div>
-      </m.div>
-    </m.div>
+      {isOpen && (
+        <div className="pb-5 text-[var(--body)] leading-[1.7]">{answer}</div>
+      )}
+    </div>
   )
 }
