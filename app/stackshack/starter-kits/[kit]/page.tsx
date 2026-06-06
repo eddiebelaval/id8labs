@@ -61,112 +61,93 @@ export default async function StarterKitPage({ params }: PageProps): Promise<Rea
   const isConfiguration = collection.content_type === 'configuration'
 
   return (
-    <main className="min-h-screen">
+    <main className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
-      <div className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="container py-8">
+      <div className="border-b border-[var(--hair)]">
+        <Container className="py-10 md:py-14">
           <Link
             href="/stackshack/starter-kits"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--id8-orange)] mb-6 transition-colors"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-id8-orange mb-7 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            All Starter Kits
+            &larr; All Starter Kits
           </Link>
 
-          <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-start gap-8">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-5xl">{collection.emoji || '📦'}</span>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    {collection.is_official && <OfficialBadge />}
-                    {isConfiguration && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-purple-500/10 text-purple-500 border border-purple-500/20">
-                        <Wrench className="w-3 h-3" />
-                        Configuration
-                      </span>
-                    )}
-                  </div>
-                  <h1 className="text-3xl md:text-4xl font-bold">
-                    {collection.name}
-                  </h1>
-                </div>
-              </div>
-
-              {collection.description && (
-                <p className="text-lg text-[var(--text-secondary)] mb-4">
-                  {collection.description}
-                </p>
-              )}
-
-              <div className="flex flex-wrap gap-4 text-sm text-[var(--text-secondary)]">
-                {!isConfiguration && (
-                  <span className="flex items-center gap-1">
-                    <Package className="w-4 h-4" />
-                    {skillCount} skills
+                {collection.is_official ? <OfficialBadge /> : <Kicker>Starter Kit</Kicker>}
+                {isConfiguration && (
+                  <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
+                    Configuration
                   </span>
                 )}
-                <span className="flex items-center gap-1">
-                  <User className="w-4 h-4" />
-                  {collection.author}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {new Date(collection.created_at).toLocaleDateString()}
-                </span>
+              </div>
+
+              <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)] mb-4">
+                {collection.name}
+              </h1>
+
+              {collection.description && (
+                <Deck className="max-w-2xl mb-5">{collection.description}</Deck>
+              )}
+
+              <div className="flex flex-wrap gap-x-8 gap-y-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                {!isConfiguration && (
+                  <span><b className="font-medium text-[var(--ink)]">{skillCount}</b> skills</span>
+                )}
+                <span><b className="font-medium text-[var(--ink)]">{collection.author}</b> author</span>
+                <span><b className="font-medium text-[var(--ink)]">{new Date(collection.created_at).toLocaleDateString()}</b> created</span>
               </div>
             </div>
 
             {/* Install Button - only show for skill bundles */}
             {!isConfiguration && (
               <div className="lg:w-64">
-                <button className="w-full btn btn-primary">
+                <button className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange">
                   <Download className="w-5 h-5" />
                   Install All Skills
                 </button>
-                <p className="text-xs text-[var(--text-tertiary)] text-center mt-2">
+                <p className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--muted)] text-center mt-2">
                   Copies install script to clipboard
                 </p>
               </div>
             )}
           </div>
-        </div>
+        </Container>
       </div>
 
       {/* Configuration Install Prompt */}
       {isConfiguration && collection.install_prompt && (
-        <div className="container py-12">
+        <Container className="py-12">
           <div className="max-w-3xl">
-            <h2 className="text-xl font-bold mb-4">How to Install</h2>
-            <p className="text-[var(--text-secondary)] mb-6">
+            <h2 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-3">How to Install</h2>
+            <p className="text-[var(--muted)] mb-6">
               Copy the prompt below and paste it into Claude Code to install this configuration.
             </p>
             <CopyInstallPrompt prompt={collection.install_prompt} />
           </div>
-        </div>
+        </Container>
       )}
 
       {/* Skills Grid - only show for skill bundles */}
       {!isConfiguration && (
-        <div className="container py-12">
-          <h2 className="text-xl font-bold mb-6">
-            Skills in this kit ({skillCount})
-          </h2>
+        <Container className="py-12">
+          <SectionHead title={<>Skills in this <em className="italic text-id8-orange">kit</em></>} meta={`${skillCount} skills`} className="mb-8" />
 
           {collection.skills && collection.skills.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {collection.skills.map((skill) => (
                 <SkillCard key={skill.id} skill={skill} />
               ))}
             </div>
           ) : (
-            <div className="text-center py-16">
-              <p className="text-[var(--text-secondary)]">
+            <div className="text-center py-16 border border-[var(--hair)]">
+              <p className="text-[var(--muted)]">
                 No skills in this kit yet.
               </p>
             </div>
           )}
-        </div>
+        </Container>
       )}
     </main>
   )

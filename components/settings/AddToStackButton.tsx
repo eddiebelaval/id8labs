@@ -32,12 +32,12 @@ export function AddToStackButton({ setting, fullWidth = false }: AddToStackButto
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
+      className={`flex items-center justify-center gap-2 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
         fullWidth ? 'w-full' : ''
       } ${
         inStack
-          ? 'bg-emerald-500/10 text-emerald-500 border-2 border-emerald-500 hover:bg-emerald-500/20'
-          : 'bg-[var(--id8-orange)] text-white hover:bg-[var(--id8-orange-hover)]'
+          ? 'bg-transparent text-[var(--teal)] border-[var(--teal)] hover:bg-[var(--paper-shadow)]'
+          : 'bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange'
       }`}
     >
       {inStack ? (
