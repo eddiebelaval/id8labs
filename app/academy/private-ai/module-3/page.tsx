@@ -287,7 +287,7 @@ export default function Module3Page() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-teal">1-3B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-id8-teal">1-3B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Edge / Mobile</p>
@@ -296,7 +296,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-[var(--muted)]">7-8B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--muted)]">7-8B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Sweet Spot for Most Use Cases</p>
@@ -305,7 +305,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-orange">13-14B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-id8-orange">13-14B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Enhanced Reasoning</p>
@@ -314,7 +314,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-[var(--muted)]">30-70B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--muted)]">30-70B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Near-GPT-4 Capability</p>

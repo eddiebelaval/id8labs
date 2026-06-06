@@ -188,7 +188,7 @@ export default function Module1Page() {
                 { letter: "D", title: "DEVELOP", desc: "How do we iterate together? Review, redirect, refine." },
               ].map((item, i) => (
                 <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
-                  <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-orange">{item.letter}</span>
+                  <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-id8-orange">{item.letter}</span>
                   <h4 className="font-bold mt-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mt-1">{item.desc}</p>
                 </div>

@@ -552,7 +552,7 @@ export default function Module8Page() {
                   <TargetIcon />
                 </div>
                 <div>
-                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-orange mb-1">BUILD: Your Change Management Plan</h3>
+                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-id8-orange mb-1">BUILD: Your Change Management Plan</h3>
                   <p className="text-sm text-[var(--text-secondary)]">Your final deliverable for this course</p>
                 </div>
               </div>
