@@ -232,25 +232,21 @@ function StatCard({
   )
 }
 
-// Real-time pulse indicator
+// Real-time indicator
 function RealtimeIndicator({ count }: { count: number }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-[#FF6B35]/20 to-black/90 border-2 border-[#FF6B35]/50 rounded-xl p-5 font-mono backdrop-blur-sm shadow-lg shadow-[#FF6B35]/10">
-      {/* Animated pulse rings */}
-      <div className="absolute top-4 right-4">
-        <div className="relative">
-          <div className="w-3 h-3 bg-[#FF6B35] rounded-full animate-pulse" />
-          <div className="absolute inset-0 w-3 h-3 bg-[#FF6B35] rounded-full animate-ping opacity-75" />
-        </div>
+    <div className="relative border border-id8-orange bg-[var(--paper)] p-5">
+      <div className="absolute top-5 right-5">
+        <span className="inline-block w-2 h-2 bg-id8-orange rounded-full" />
       </div>
 
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-[#FF6B35] text-xs font-bold tracking-widest">● LIVE</span>
+        <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.22em] text-id8-orange">Live</span>
       </div>
-      <div className="text-4xl font-bold text-[#FF6B35] mb-1">
+      <div className="font-[family-name:var(--font-mono)] text-4xl font-medium text-[var(--ink)] mb-1">
         <AnimatedNumber value={count} />
       </div>
-      <div className="text-[#FF6B35]/60 text-xs uppercase tracking-wide">active now</div>
+      <div className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">active now</div>
     </div>
   )
 }
@@ -269,8 +265,8 @@ function TopList({
   const maxValue = Math.max(...data.map((d) => d.y), 1)
 
   return (
-    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 border border-[#FF6B35]/20 rounded-xl p-5 font-mono backdrop-blur-sm">
-      <h3 className="text-[#FF6B35] text-sm font-bold tracking-wider mb-4 flex items-center gap-2">
+    <div className="border border-[var(--hair)] bg-[var(--paper)] p-5">
+      <h3 className="flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--ink)] mb-4">
         {icon}
         {title}
       </h3>
@@ -279,28 +275,28 @@ function TopList({
         {data.slice(0, 8).map((item, i) => (
           <div key={i} className="group">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-gray-300 text-sm truncate max-w-[70%] group-hover:text-white transition-colors">
+              <span className="text-sm text-[var(--body)] truncate max-w-[70%]">
                 {item.x || '(direct)'}
               </span>
-              <div className="flex items-center gap-2">
-                <span className="text-[#FF6B35] text-sm font-bold">{formatNumber(item.y)}</span>
-                <span className="text-gray-500 text-xs">
+              <div className="flex items-center gap-2 font-[family-name:var(--font-mono)]">
+                <span className="text-sm text-[var(--ink)]">{formatNumber(item.y)}</span>
+                <span className="text-xs text-[var(--muted)]">
                   {((item.y / maxValue) * 100).toFixed(0)}%
                 </span>
               </div>
             </div>
-            <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+            <div className="h-1.5 bg-[var(--paper-mid)] overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#FF6B35]/80 to-[#FF6B35] rounded-full transition-all duration-500 group-hover:from-[#FF6B35] group-hover:to-[#FF8B55]"
+                className="h-full bg-id8-orange transition-all duration-500"
                 style={{ width: `${(item.y / maxValue) * 100}%` }}
               />
             </div>
           </div>
         ))}
         {data.length === 0 && (
-          <div className="text-center py-10 border border-dashed border-gray-800 rounded-lg">
-            <div className="text-gray-600 font-mono text-sm mb-2">[ NO DATA ]</div>
-            <p className="text-gray-500 text-xs">Waiting for traffic...</p>
+          <div className="text-center py-10 border border-dashed border-[var(--hair)]">
+            <div className="font-[family-name:var(--font-mono)] text-sm text-[var(--muted)] mb-2">[ NO DATA ]</div>
+            <p className="text-xs text-[var(--muted)]">Waiting for traffic...</p>
           </div>
         )}
       </div>
