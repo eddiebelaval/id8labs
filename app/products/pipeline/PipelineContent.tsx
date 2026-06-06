@@ -5,7 +5,6 @@ import {
   Rule,
   SectionHead,
   MetaRow,
-  EditorialButton,
   Pipeline,
 } from '@/components/editorial'
 
