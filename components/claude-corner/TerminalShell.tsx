@@ -226,7 +226,7 @@ export default function TerminalShell({ userId, userEmail }: TerminalShellProps)
                   animate="visible"
                   className="space-y-4 mt-4"
                 >
-                  {/* Stats Monitor - Orange glow */}
+                  {/* Stats Monitor */}
                   <m.div variants={panelVariants}>
                     <CRTMonitorPanel title="stats_console" glowColor="#ff6b35">
                       <div className="p-6 md:p-8">
@@ -235,18 +235,18 @@ export default function TerminalShell({ userId, userEmail }: TerminalShellProps)
                     </CRTMonitorPanel>
                   </m.div>
 
-                  {/* Field Notes Monitor - Green glow */}
+                  {/* Field Notes Monitor */}
                   <m.div variants={panelVariants}>
-                    <CRTMonitorPanel title="field_notes" glowColor="#27c93f">
+                    <CRTMonitorPanel title="field_notes" glowColor="#2a8d83">
                       <div className="p-6 md:p-8">
                         <FieldNotesPanel />
                       </div>
                     </CRTMonitorPanel>
                   </m.div>
 
-                  {/* Lab Assistant Monitor - Amber glow */}
+                  {/* Lab Assistant Monitor */}
                   <m.div variants={panelVariants}>
-                    <CRTMonitorPanel title="lab_assistant" glowColor="#f59e0b">
+                    <CRTMonitorPanel title="lab_assistant" glowColor="#0b0b0b">
                       <div className="p-6 md:p-8">
                         <ChatPanel userId={userId} />
                       </div>
@@ -256,9 +256,9 @@ export default function TerminalShell({ userId, userEmail }: TerminalShellProps)
                   {/* Footer */}
                   <m.div
                     variants={panelVariants}
-                    className="pt-4 flex items-center justify-between text-xs font-mono text-[#404040]"
+                    className="pt-4 flex items-center justify-between text-xs font-[family-name:var(--font-mono)] text-[var(--muted)]"
                   >
-                    <span>ID8Labs × Claude Partnership</span>
+                    <span>id8Labs × Claude Partnership</span>
                     <span>Since October 2025</span>
                   </m.div>
                 </m.div>
