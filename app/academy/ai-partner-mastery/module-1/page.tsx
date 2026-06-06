@@ -51,7 +51,7 @@ export default function Module1Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-1">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -103,16 +103,16 @@ export default function Module1Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing bg-[var(--bg-secondary)]">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Scenario */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
@@ -154,8 +154,8 @@ export default function Module1Page() {
               <li>Eventually give up or use something mediocre</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-mono text-sm text-red-400 mb-2">The prompt that fails:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-mono text-sm text-[var(--muted)] mb-2">The prompt that fails:</p>
               <p className="text-[var(--text-secondary)]">
                 "Write a brand strategy proposal for a fintech company targeting small business owners."
               </p>
@@ -187,7 +187,7 @@ export default function Module1Page() {
                 { letter: "D", title: "DIRECT", desc: "What specifically should AI do? The exact output, format, and approach." },
                 { letter: "D", title: "DEVELOP", desc: "How do we iterate together? Review, redirect, refine." },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <span className="text-2xl font-bold text-id8-orange">{item.letter}</span>
                   <h4 className="font-bold mt-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mt-1">{item.desc}</p>
@@ -201,8 +201,8 @@ export default function Module1Page() {
               Sarah doesn't start with "write a proposal." She starts with a conversation:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-4">Sarah's prompt using 4D:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-4">Sarah's prompt using 4D:</p>
               <div className="text-[var(--text-secondary)] space-y-4 whitespace-pre-wrap">
 {`I need help developing a brand strategy proposal for a potential client.
 
@@ -237,8 +237,8 @@ Let's think through this together before drafting anything:
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-3 px-4 text-red-400">Before (Vending Machine)</th>
-                    <th className="text-left py-3 px-4 text-green-400">After (Thinking Partner)</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Before (Vending Machine)</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">After (Thinking Partner)</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -263,7 +263,7 @@ Let's think through this together before drafting anything:
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -306,7 +306,7 @@ Let's think through this together before drafting anything:
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

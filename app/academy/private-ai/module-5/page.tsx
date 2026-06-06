@@ -57,7 +57,7 @@ export default function Module5Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-5">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -109,16 +109,16 @@ export default function Module5Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Security Reality
               </h2>
@@ -143,7 +143,7 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <ShieldIcon />
                   <div>
@@ -158,7 +158,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <ShieldIcon />
                   <div>
@@ -173,7 +173,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <ShieldIcon />
                   <div>
@@ -188,7 +188,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <ShieldIcon />
                   <div>
@@ -259,7 +259,7 @@ export default function Module5Page() {
               Your AI infrastructure should be network-isolated and accessible only through controlled entry points:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="text-lg font-bold mb-4">Network Security Checklist</h3>
               <div className="space-y-3">
                 <label className="flex items-start gap-3 cursor-pointer">
@@ -308,7 +308,7 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Role-Based Access (RBAC)</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>- <strong>Viewer:</strong> Read-only access to model outputs</li>
@@ -318,7 +318,7 @@ export default function Module5Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Authentication Controls</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>- <strong>MFA required:</strong> Mandatory for all users</li>
@@ -373,7 +373,7 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
               <p className="text-sm">
                 <strong>Real-world example:</strong> A financial services company discovered employees were using prompts like "Create a CSV of all client account balances" to extract data they shouldn't have access to. Their solution: implement output filtering that blocks structured data formats unless explicitly authorized.
               </p>
@@ -386,28 +386,28 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Encryption at Rest</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Model files encrypted using AES-256. Encryption keys stored in hardware security module (HSM) or key management service, separate from model storage.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Integrity Verification</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Cryptographic hashes (SHA-256) computed for all model files. Before loading, verify hash matches expected value. Detects tampering or corruption.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Version Control</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   All model changes tracked in version control system. Immutable audit trail of who modified what and when. Ability to roll back to known-good versions.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Model Watermarking</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Embed invisible fingerprints in model outputs. If your model is stolen and used elsewhere, watermarks prove ownership and enable detection.
@@ -421,7 +421,7 @@ export default function Module5Page() {
               Security is not set-and-forget. Continuous monitoring detects threats in real-time:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="text-lg font-bold mb-4">Essential Monitoring Capabilities</h3>
               <div className="space-y-4">
                 <div>
@@ -469,54 +469,54 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Vulnerability #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Vulnerability #1</p>
                 <p className="font-bold">Default Credentials</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Many AI platforms ship with default admin passwords. If not changed immediately, attackers can gain full system access.
                 </p>
-                <p className="text-xs text-green-400 mt-2">Fix: Force password change on first login. No default credentials allowed in production.</p>
+                <p className="text-xs text-id8-teal mt-2">Fix: Force password change on first login. No default credentials allowed in production.</p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Vulnerability #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Vulnerability #2</p>
                 <p className="font-bold">Unrestricted API Access</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   API endpoints exposed without rate limiting allow attackers to overwhelm your system or extract large amounts of data.
                 </p>
-                <p className="text-xs text-green-400 mt-2">Fix: Implement per-user rate limits. Monitor for bulk query patterns.</p>
+                <p className="text-xs text-id8-teal mt-2">Fix: Implement per-user rate limits. Monitor for bulk query patterns.</p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Vulnerability #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Vulnerability #3</p>
                 <p className="font-bold">Unencrypted Model Storage</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Model files stored as plaintext on disk can be copied by anyone with filesystem access — including compromised service accounts.
                 </p>
-                <p className="text-xs text-green-400 mt-2">Fix: Encrypt all model files at rest. Use separate key management system.</p>
+                <p className="text-xs text-id8-teal mt-2">Fix: Encrypt all model files at rest. Use separate key management system.</p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Vulnerability #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Vulnerability #4</p>
                 <p className="font-bold">Missing Audit Trails</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Without comprehensive logging, you can't detect breaches, prove compliance, or investigate incidents.
                 </p>
-                <p className="text-xs text-green-400 mt-2">Fix: Log everything. Immutable audit trail with tamper detection.</p>
+                <p className="text-xs text-id8-teal mt-2">Fix: Log everything. Immutable audit trail with tamper detection.</p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Vulnerability #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Vulnerability #5</p>
                 <p className="font-bold">Overprivileged Service Accounts</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   AI services running with admin privileges create massive blast radius if compromised. Attackers gain full system access.
                 </p>
-                <p className="text-xs text-green-400 mt-2">Fix: Principle of least privilege. Each service gets only necessary permissions.</p>
+                <p className="text-xs text-id8-teal mt-2">Fix: Principle of least privilege. Each service gets only necessary permissions.</p>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -568,7 +568,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A security checklist that documents current state, identifies gaps, and provides a remediation roadmap. This becomes your baseline for continuous security improvement.
                 </p>
@@ -576,7 +576,7 @@ export default function Module5Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

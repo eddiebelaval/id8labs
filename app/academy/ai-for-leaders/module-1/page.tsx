@@ -51,7 +51,7 @@ export default function Module1Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-1">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -103,16 +103,16 @@ export default function Module1Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
@@ -140,8 +140,8 @@ export default function Module1Page() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-3 px-4 text-red-400">What Vendors Say</th>
-                    <th className="text-left py-3 px-4 text-green-400">What's Actually True</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">What Vendors Say</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">What's Actually True</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -206,7 +206,7 @@ export default function Module1Page() {
                   examples: "Workflow triggers, data entry, routing decisions"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <span className="text-2xl">{item.icon}</span>
                   <h4 className="font-bold mt-2 text-id8-orange">{item.title}</h4>
                   <p className="text-sm text-[var(--text-primary)] mt-1">{item.desc}</p>
@@ -230,8 +230,8 @@ export default function Module1Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Archetype</th>
-                    <th className="text-left py-3 px-4 text-green-400">Handles Well</th>
-                    <th className="text-left py-3 px-4 text-red-400">Struggles With</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Handles Well</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Struggles With</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -265,7 +265,7 @@ export default function Module1Page() {
               When evaluating whether AI can handle a task, run through these five questions:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold">1</span>
@@ -309,35 +309,35 @@ export default function Module1Page() {
             <h2>Five Myths That Lead to Failed Projects</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #1</p>
                 <p className="font-bold">"AI will figure out what we need"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: AI requires extremely specific direction. Vague goals produce vague results.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #2</p>
                 <p className="font-bold">"More data is always better"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Relevant, clean data beats volume. Most organizations have data quality issues, not data quantity issues.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #3</p>
                 <p className="font-bold">"AI will reduce headcount"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: AI reshapes roles and creates new ones. Organizations that use AI for augmentation outperform those using it for replacement.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #4</p>
                 <p className="font-bold">"We need to move fast or fall behind"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: Thoughtful implementation beats rushed deployment. Most AI failures come from moving too fast, not too slow.</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Myth #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Myth #5</p>
                 <p className="font-bold">"Our industry is different"</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">Reality: AI capabilities are universal. Industry-specific nuance matters for implementation, not for assessing core capability.</p>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -378,7 +378,7 @@ export default function Module1Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A one-page assessment you can share with stakeholders that clearly explains what AI can and can't do for this specific use case.
                 </p>
@@ -386,7 +386,7 @@ export default function Module1Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

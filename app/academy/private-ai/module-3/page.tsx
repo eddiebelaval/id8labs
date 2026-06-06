@@ -72,7 +72,7 @@ export default function Module3Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-3">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -124,16 +124,16 @@ export default function Module3Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Model Landscape
               </h2>
@@ -163,39 +163,39 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-red-500/20 text-[var(--muted)] flex items-center justify-center">
                     <BoxIcon />
                   </span>
                   <div>
-                    <p className="font-bold text-red-400">Closed / Proprietary</p>
+                    <p className="font-bold text-[var(--muted)]">Closed / Proprietary</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">GPT-4, Claude, Gemini. Only accessible via API. Data must be sent to provider servers. No self-hosting option.</p>
-                    <p className="text-sm font-mono text-red-400 mt-2">Privacy: Not compatible with private deployment</p>
+                    <p className="text-sm font-mono text-[var(--muted)] mt-2">Privacy: Not compatible with private deployment</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-yellow-500/20 text-yellow-400 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-yellow-500/20 text-[var(--muted)] flex items-center justify-center">
                     <BoxIcon />
                   </span>
                   <div>
-                    <p className="font-bold text-yellow-400">Open Weights (Restricted License)</p>
+                    <p className="font-bold text-[var(--muted)]">Open Weights (Restricted License)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Llama 2/3 (Meta), Gemma (Google). Weights available for download but with usage restrictions. Can self-host, but license limits commercial use or requires attribution.</p>
-                    <p className="text-sm font-mono text-yellow-400 mt-2">Privacy: Compatible with license compliance</p>
+                    <p className="text-sm font-mono text-[var(--muted)] mt-2">Privacy: Compatible with license compliance</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-id8-teal/20 text-id8-teal flex items-center justify-center">
                     <BoxIcon />
                   </span>
                   <div>
-                    <p className="font-bold text-green-400">Fully Open (Permissive License)</p>
+                    <p className="font-bold text-id8-teal">Fully Open (Permissive License)</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">Mistral, Falcon, MPT, BLOOM. Weights and often training code available under Apache 2.0 or similar. Full commercial rights, can be modified and redistributed.</p>
-                    <p className="text-sm font-mono text-green-400 mt-2">Privacy: Fully compatible with any deployment</p>
+                    <p className="text-sm font-mono text-id8-teal mt-2">Privacy: Fully compatible with any deployment</p>
                   </div>
                 </div>
               </div>
@@ -223,49 +223,49 @@ export default function Module3Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Llama 3</td>
                     <td className="py-3 px-4">8B, 70B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Community</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Community</span></td>
                     <td className="py-3 px-4">Best overall, strong reasoning</td>
                     <td className="py-3 px-4">16GB RAM (8B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Mistral / Mixtral</td>
                     <td className="py-3 px-4">7B, 8x7B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">Apache 2.0</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">Apache 2.0</span></td>
                     <td className="py-3 px-4">Best efficiency, code, MoE</td>
                     <td className="py-3 px-4">16GB RAM (7B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Qwen 2</td>
                     <td className="py-3 px-4">0.5B-72B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Qwen License</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Qwen License</span></td>
                     <td className="py-3 px-4">Multilingual, long context</td>
                     <td className="py-3 px-4">8GB RAM (1.8B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Phi-3</td>
                     <td className="py-3 px-4">3.8B, 14B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">MIT</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">MIT</span></td>
                     <td className="py-3 px-4">Best small model, reasoning</td>
                     <td className="py-3 px-4">8GB RAM (3.8B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Gemma 2</td>
                     <td className="py-3 px-4">2B, 9B, 27B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Gemma Terms</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Gemma Terms</span></td>
                     <td className="py-3 px-4">Strong benchmarks, Google quality</td>
                     <td className="py-3 px-4">8GB RAM (2B)</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">CodeLlama</td>
                     <td className="py-3 px-4">7B, 13B, 34B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs">Llama 2</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-yellow-500/20 text-[var(--muted)] rounded text-xs">Llama 2</span></td>
                     <td className="py-3 px-4">Code generation, completion</td>
                     <td className="py-3 px-4">16GB RAM (7B)</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">DeepSeek Coder</td>
                     <td className="py-3 px-4">1.3B-33B</td>
-                    <td className="py-3 px-4"><span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs">DeepSeek</span></td>
+                    <td className="py-3 px-4"><span className="px-2 py-1 bg-id8-teal/20 text-id8-teal rounded text-xs">DeepSeek</span></td>
                     <td className="py-3 px-4">Best open code model</td>
                     <td className="py-3 px-4">8GB RAM (1.3B)</td>
                   </tr>
@@ -282,12 +282,12 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose my-8">
-              <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-xl font-bold mb-4">Model Size Guidelines</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-green-400">1-3B</span>
+                      <span className="text-2xl font-bold text-id8-teal">1-3B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
                       <p className="font-bold">Edge / Mobile</p>
@@ -296,7 +296,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-yellow-400">7-8B</span>
+                      <span className="text-2xl font-bold text-[var(--muted)]">7-8B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
                       <p className="font-bold">Sweet Spot for Most Use Cases</p>
@@ -314,7 +314,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-purple-400">30-70B</span>
+                      <span className="text-2xl font-bold text-[var(--muted)]">30-70B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)] rounded">
                       <p className="font-bold">Near-GPT-4 Capability</p>
@@ -348,35 +348,35 @@ export default function Module3Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">FP16 (None)</td>
                     <td className="py-3 px-4">2 bytes/param</td>
-                    <td className="py-3 px-4"><span className="text-green-400">None</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">None</span></td>
                     <td className="py-3 px-4">Baseline</td>
                     <td className="py-3 px-4">When hardware supports it</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">INT8</td>
                     <td className="py-3 px-4">1 byte/param</td>
-                    <td className="py-3 px-4"><span className="text-green-400">Minimal</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Minimal</span></td>
                     <td className="py-3 px-4">Faster on CPU</td>
                     <td className="py-3 px-4">Production deployments</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Q5_K_M (5-bit)</td>
                     <td className="py-3 px-4">~0.65 bytes/param</td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">Small</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Small</span></td>
                     <td className="py-3 px-4">Good balance</td>
                     <td className="py-3 px-4">General use</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Q4_K_M (4-bit)</td>
                     <td className="py-3 px-4">~0.5 bytes/param</td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">Noticeable</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Noticeable</span></td>
                     <td className="py-3 px-4">Fast</td>
                     <td className="py-3 px-4">Memory-constrained</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Q2_K (2-bit)</td>
                     <td className="py-3 px-4">~0.3 bytes/param</td>
-                    <td className="py-3 px-4"><span className="text-red-400">Significant</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Significant</span></td>
                     <td className="py-3 px-4">Fastest</td>
                     <td className="py-3 px-4">Extreme edge cases only</td>
                   </tr>
@@ -384,7 +384,7 @@ export default function Module3Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-id8-orange/10 border border-id8-orange/30 rounded-lg">
+            <div className="not-prose my-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
               <p className="font-mono text-sm text-id8-orange mb-2">Memory Calculator</p>
               <p className="text-sm text-[var(--text-secondary)] mb-3">Rough formula for estimating model memory:</p>
               <div className="bg-[var(--bg-primary)] p-3 rounded font-mono text-sm">
@@ -403,9 +403,9 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-blue-500/20 text-[var(--muted)] flex items-center justify-center">
                     <CodeIcon />
                   </span>
                   <div>
@@ -414,9 +414,9 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-purple-500/20 text-[var(--muted)] flex items-center justify-center">
                     <ScaleIcon />
                   </span>
                   <div>
@@ -425,9 +425,9 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-10 h-10 bg-id8-teal/20 text-id8-teal flex items-center justify-center">
                     <BoxIcon />
                   </span>
                   <div>
@@ -458,45 +458,45 @@ export default function Module3Page() {
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Apache 2.0</td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
                     <td className="py-3 px-4">Must include license notice</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">MIT</td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
                     <td className="py-3 px-4">None</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Llama 2/3</td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">Conditional</span></td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">With license</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Conditional</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">With license</span></td>
                     <td className="py-3 px-4">700M+ MAU needs Meta approval</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Gemma</td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">Conditional</span></td>
-                    <td className="py-3 px-4"><span className="text-green-400">Yes</span></td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">With terms</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Conditional</span></td>
+                    <td className="py-3 px-4"><span className="text-id8-teal">Yes</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">With terms</span></td>
                     <td className="py-3 px-4">Can't train competing models</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Creative ML</td>
-                    <td className="py-3 px-4"><span className="text-red-400">Check terms</span></td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">Varies</span></td>
-                    <td className="py-3 px-4"><span className="text-yellow-400">Varies</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Check terms</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Varies</span></td>
+                    <td className="py-3 px-4"><span className="text-[var(--muted)]">Varies</span></td>
                     <td className="py-3 px-4">Often non-commercial</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-mono text-sm text-red-400 mb-2">License Warning</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-mono text-sm text-[var(--muted)] mb-2">License Warning</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Fine-tuned models inherit the base model's license. A "fine-tuned Llama" model on Hugging Face
                 is still bound by Meta's Llama license, regardless of what the fine-tuner claims. Always
@@ -512,7 +512,7 @@ export default function Module3Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
@@ -521,7 +521,7 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
@@ -530,7 +530,7 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
@@ -539,7 +539,7 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
@@ -548,7 +548,7 @@ export default function Module3Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
@@ -614,7 +614,7 @@ export default function Module3Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -648,7 +648,7 @@ export default function Module3Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A model selection matrix showing: use case, candidate models, quantization level,
                   expected hardware, and license status. Ready for evaluation testing.
@@ -657,7 +657,7 @@ export default function Module3Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

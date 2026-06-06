@@ -280,12 +280,12 @@ export default function ComposePage() {
       </div>
 
       {/* Note */}
-      <div className="mt-8 p-4 bg-blue-500/5 border border-blue-500/20 ">
-        <h3 className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">
+      <div className="mt-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
+        <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange mb-2">
           Adding New Issues
         </h3>
-        <p className="text-sm text-[var(--muted)]">
-          To add new newsletter issues, update the <code className="px-1 py-0.5 bg-[var(--paper-shadow)] rounded">lib/email/templates/newsletter-template.ts</code> file
+        <p className="text-sm text-[var(--body)] leading-[1.6]">
+          To add new newsletter issues, update the <code className="px-1 py-0.5 bg-[var(--paper-mid)] font-[family-name:var(--font-mono)] text-[var(--ink)]">lib/email/templates/newsletter-template.ts</code> file
           with a new NewsletterIssue object. This ensures consistent formatting with Big Idea, Framework, Case Study,
           and automatic Academy member differentiation.
         </p>

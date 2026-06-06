@@ -73,7 +73,7 @@ export default function Module3Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-3">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -102,7 +102,7 @@ export default function Module3Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1.5 border-l-2 border-id8-orange bg-[var(--paper-shadow)] rounded-full text-id8-orange text-sm font-mono mb-6"
             >
               <span>Module 3</span>
               <span className="text-id8-orange/50">•</span>
@@ -125,16 +125,16 @@ export default function Module3Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
@@ -166,44 +166,44 @@ export default function Module3Page() {
                   AI data architecture has distinct layers. Each must be solid before the next is useful:
                 </p>
 
-                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="space-y-4">
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] rounded-lg border-l-4 border-id8-orange">
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-id8-orange">
                       <div className="font-mono text-id8-orange">L5</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">AI Applications</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Production models serving predictions to users and systems</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] rounded-lg border-l-4 border-purple-500">
-                      <div className="font-mono text-purple-400">L4</div>
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-purple-500">
+                      <div className="font-mono text-[var(--muted)]">L4</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Feature Store</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Computed, versioned features ready for training and serving</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] rounded-lg border-l-4 border-blue-500">
-                      <div className="font-mono text-blue-400">L3</div>
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-blue-500">
+                      <div className="font-mono text-[var(--muted)]">L3</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Analytics Layer</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Clean, modeled data optimized for analysis and aggregation</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] rounded-lg border-l-4 border-green-500">
-                      <div className="font-mono text-green-400">L2</div>
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-green-500">
+                      <div className="font-mono text-id8-teal">L2</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Data Warehouse</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Structured, schema-validated data with quality guarantees</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] rounded-lg border-l-4 border-yellow-500">
-                      <div className="font-mono text-yellow-400">L1</div>
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-yellow-500">
+                      <div className="font-mono text-[var(--muted)]">L1</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Data Lake</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Raw data from all sources, stored at full fidelity</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] rounded-lg border-l-4 border-gray-500">
+                    <div className="flex items-start gap-4 p-4 bg-[var(--bg-primary)] border-l-4 border-gray-500">
                       <div className="font-mono text-gray-400">L0</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Source Systems</h4>
@@ -235,28 +235,28 @@ export default function Module3Page() {
                   A feature store is a centralized repository for ML features. It solves three critical problems: feature reuse, training-serving consistency, and point-in-time correctness.
                 </p>
 
-                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h3 className="text-lg font-bold mb-4">Feature Store Components</h3>
                   <div className="grid gap-4">
-                    <div className="p-4 bg-[var(--bg-primary)] rounded-lg">
+                    <div className="p-4 bg-[var(--bg-primary)]">
                       <h4 className="font-bold text-id8-orange mb-2">Feature Registry</h4>
                       <p className="text-sm text-[var(--text-secondary)]">
                         Catalog of all features with metadata: definition, owner, data source, freshness requirements, statistics. Makes features discoverable and documented.
                       </p>
                     </div>
-                    <div className="p-4 bg-[var(--bg-primary)] rounded-lg">
+                    <div className="p-4 bg-[var(--bg-primary)]">
                       <h4 className="font-bold text-id8-orange mb-2">Offline Store</h4>
                       <p className="text-sm text-[var(--text-secondary)]">
                         Historical feature values for training. Stores time-series data enabling point-in-time lookups. Typically backed by data warehouse (BigQuery, Snowflake, Databricks).
                       </p>
                     </div>
-                    <div className="p-4 bg-[var(--bg-primary)] rounded-lg">
+                    <div className="p-4 bg-[var(--bg-primary)]">
                       <h4 className="font-bold text-id8-orange mb-2">Online Store</h4>
                       <p className="text-sm text-[var(--text-secondary)]">
                         Low-latency feature serving for real-time predictions. Stores latest feature values. Typically backed by Redis, DynamoDB, or specialized databases.
                       </p>
                     </div>
-                    <div className="p-4 bg-[var(--bg-primary)] rounded-lg">
+                    <div className="p-4 bg-[var(--bg-primary)]">
                       <h4 className="font-bold text-id8-orange mb-2">Feature Transformation Engine</h4>
                       <p className="text-sm text-[var(--text-secondary)]">
                         Computes features from raw data. Same code for batch (training) and streaming (serving) to prevent skew. Handles aggregations, joins, and transformations.
@@ -300,7 +300,7 @@ export default function Module3Page() {
                 </div>
 
                 <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded">
-                  <p className="text-sm font-mono text-blue-400 mb-2">Tool Recommendations</p>
+                  <p className="text-sm font-mono text-[var(--muted)] mb-2">Tool Recommendations</p>
                   <p className="text-sm text-[var(--text-primary)]">
                     <strong>Open source:</strong> Feast, Feathr <br/>
                     <strong>Managed:</strong> Tecton, Databricks Feature Store, AWS SageMaker Feature Store <br/>
@@ -325,7 +325,7 @@ export default function Module3Page() {
                 </p>
 
                 <div className="grid gap-4">
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">1. Entity Features</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       Static or slowly-changing attributes of your prediction entity (user, product, transaction).
@@ -336,7 +336,7 @@ export default function Module3Page() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">2. Aggregation Features</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       Summary statistics over time windows: counts, sums, averages, min/max of related events.
@@ -347,7 +347,7 @@ export default function Module3Page() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">3. Behavioral Features</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       Patterns in behavior: sequences, frequencies, trends, velocities.
@@ -358,7 +358,7 @@ export default function Module3Page() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">4. Contextual Features</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       Information about the prediction context: time, location, device, session state.
@@ -369,7 +369,7 @@ export default function Module3Page() {
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">5. Interaction Features</h3>
                     <p className="text-[var(--text-secondary)] mb-3">
                       Combinations and ratios between features that capture relationships.
@@ -403,39 +403,39 @@ export default function Module3Page() {
                   Bad data in, bad predictions out. Data quality for AI goes beyond traditional data quality—you need to catch issues that affect model performance specifically.
                 </p>
 
-                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h3 className="text-lg font-bold mb-4">The Data Quality Stack</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-mono text-sm">1</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-teal/20 flex items-center justify-center text-id8-teal font-mono text-sm">1</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Schema Validation</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Types, nullability, enums. Catches pipeline breaks immediately. Tools: Great Expectations, dbt tests, Pandera</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-mono text-sm">2</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">2</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Business Rule Validation</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Domain-specific constraints. Revenue greater than 0, age in valid range, date sequences logical. Encodes business knowledge.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-mono text-sm">3</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">3</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Statistical Monitoring</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Distribution shifts, outliers, anomalies. Catches drift before it impacts models. Tools: Evidently, WhyLabs, Monte Carlo</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-mono text-sm">4</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">4</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Freshness Monitoring</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Data arriving on time? Stale features cause silent model degradation. Track data timestamp vs. wall clock.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-mono text-sm">5</div>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-[var(--muted)] font-mono text-sm">5</div>
                       <div>
                         <h4 className="font-bold text-[var(--text-primary)]">Lineage Tracking</h4>
                         <p className="text-sm text-[var(--text-secondary)]">Where did this data come from? What transformations were applied? Critical for debugging and compliance.</p>
@@ -445,8 +445,8 @@ export default function Module3Page() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-green-500 rounded-xl">
-                    <h3 className="text-lg font-bold mb-2 text-green-400">Good Data Quality Practices</h3>
+                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-green-500">
+                    <h3 className="text-lg font-bold mb-2 text-id8-teal">Good Data Quality Practices</h3>
                     <ul className="space-y-2 text-[var(--text-secondary)] text-sm">
                       <li>+ Fail pipelines on schema violations</li>
                       <li>+ Alert on distribution shifts before training</li>
@@ -456,8 +456,8 @@ export default function Module3Page() {
                     </ul>
                   </div>
 
-                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500 rounded-xl">
-                    <h3 className="text-lg font-bold mb-2 text-red-400">Common Data Quality Failures</h3>
+                  <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-red-500">
+                    <h3 className="text-lg font-bold mb-2 text-[var(--muted)]">Common Data Quality Failures</h3>
                     <ul className="space-y-2 text-[var(--text-secondary)] text-sm">
                       <li>- Silently filling nulls with zeros</li>
                       <li>- Training on data from wrong time period</li>
@@ -480,33 +480,33 @@ export default function Module3Page() {
                 </p>
 
                 <div className="grid gap-4">
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">Label Sources (Best to Hardest)</h3>
                     <div className="space-y-3 text-[var(--text-secondary)]">
                       <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
                         <span><strong className="text-[var(--text-primary)]">Organic labels:</strong> User actions as implicit labels</span>
-                        <span className="text-xs font-mono text-green-400">Free</span>
+                        <span className="text-xs font-mono text-id8-teal">Free</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
                         <span><strong className="text-[var(--text-primary)]">Programmatic labels:</strong> Rule-based label generation</span>
-                        <span className="text-xs font-mono text-green-400">Cheap</span>
+                        <span className="text-xs font-mono text-id8-teal">Cheap</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
                         <span><strong className="text-[var(--text-primary)]">Model-assisted:</strong> Pre-label with model, human review</span>
-                        <span className="text-xs font-mono text-yellow-400">Medium</span>
+                        <span className="text-xs font-mono text-[var(--muted)]">Medium</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
                         <span><strong className="text-[var(--text-primary)]">Crowd sourcing:</strong> Scale9AI, Amazon MTurk</span>
-                        <span className="text-xs font-mono text-yellow-400">Medium</span>
+                        <span className="text-xs font-mono text-[var(--muted)]">Medium</span>
                       </div>
                       <div className="flex justify-between items-center p-3 bg-[var(--bg-primary)] rounded">
                         <span><strong className="text-[var(--text-primary)]">Expert labeling:</strong> Domain specialists for complex tasks</span>
-                        <span className="text-xs font-mono text-red-400">Expensive</span>
+                        <span className="text-xs font-mono text-[var(--muted)]">Expensive</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+                  <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
                     <h3 className="text-lg font-bold mb-3 text-id8-orange">Label Quality Practices</h3>
                     <ul className="space-y-2 text-[var(--text-secondary)]">
                       <li className="flex items-start gap-3">
@@ -538,7 +538,7 @@ export default function Module3Page() {
             </div>
 
             {/* Your Turn Exercise */}
-            <div className="not-prose mb-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose mb-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -611,7 +611,7 @@ export default function Module3Page() {
                   </div>
                 </div>
 
-                <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl mt-6">
+                <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] mt-6">
                   <h4 className="font-bold mb-2">Deliverable Template</h4>
                   <p className="text-sm font-mono text-[var(--text-tertiary)]">
                     FEATURE INVENTORY: [count by category]<br/>
@@ -627,7 +627,7 @@ export default function Module3Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Key Takeaways
               </h2>

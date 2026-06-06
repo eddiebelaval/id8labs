@@ -59,7 +59,7 @@ export default function Module8Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-8">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -88,7 +88,7 @@ export default function Module8Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1.5 border-l-2 border-id8-orange bg-[var(--paper-shadow)] rounded-full text-id8-orange text-sm font-mono mb-6"
             >
               <span>Module 8</span>
               <span className="text-id8-orange/50">•</span>
@@ -111,16 +111,16 @@ export default function Module8Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Architecture Problem
               </h2>
@@ -145,7 +145,7 @@ export default function Module8Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">1️⃣</span>
                   <h4 className="font-bold text-id8-orange">Separation of Concerns</h4>
@@ -158,7 +158,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">2️⃣</span>
                   <h4 className="font-bold text-id8-orange">API-First Design</h4>
@@ -171,7 +171,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">3️⃣</span>
                   <h4 className="font-bold text-id8-orange">Declarative Over Imperative</h4>
@@ -184,7 +184,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">4️⃣</span>
                   <h4 className="font-bold text-id8-orange">Observability by Design</h4>
@@ -197,7 +197,7 @@ export default function Module8Page() {
                 </p>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">5️⃣</span>
                   <h4 className="font-bold text-id8-orange">Graceful Degradation</h4>
@@ -217,7 +217,7 @@ export default function Module8Page() {
               Here's a proven architecture that scales from 1 model to 100+. It's opinionated but flexible. Use it as a starting point, not a straitjacket:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
@@ -229,7 +229,7 @@ export default function Module8Page() {
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-green-400 mb-1">Components</p>
+                      <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Data lake (raw storage)</li>
                         <li>• Data warehouse (structured)</li>
@@ -238,7 +238,7 @@ export default function Module8Page() {
                       </ul>
                     </div>
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-blue-400 mb-1">Responsibilities</p>
+                      <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Data ingestion & ETL</li>
                         <li>• Quality validation</li>
@@ -259,7 +259,7 @@ export default function Module8Page() {
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-green-400 mb-1">Components</p>
+                      <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Training infrastructure</li>
                         <li>• Model registry</li>
@@ -268,7 +268,7 @@ export default function Module8Page() {
                       </ul>
                     </div>
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-blue-400 mb-1">Responsibilities</p>
+                      <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Model development</li>
                         <li>• Hyperparameter tuning</li>
@@ -289,7 +289,7 @@ export default function Module8Page() {
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-green-400 mb-1">Components</p>
+                      <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• API gateway</li>
                         <li>• Business logic layer</li>
@@ -298,7 +298,7 @@ export default function Module8Page() {
                       </ul>
                     </div>
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-blue-400 mb-1">Responsibilities</p>
+                      <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Request routing</li>
                         <li>• Business rules</li>
@@ -319,7 +319,7 @@ export default function Module8Page() {
                   </p>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-green-400 mb-1">Components</p>
+                      <p className="font-mono text-xs text-id8-teal mb-1">Components</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Auth & authorization</li>
                         <li>• Logging & monitoring</li>
@@ -328,7 +328,7 @@ export default function Module8Page() {
                       </ul>
                     </div>
                     <div className="p-3 bg-[var(--bg-primary)] rounded">
-                      <p className="font-mono text-xs text-blue-400 mb-1">Responsibilities</p>
+                      <p className="font-mono text-xs text-[var(--muted)] mb-1">Responsibilities</p>
                       <ul className="text-[var(--text-tertiary)] space-y-1">
                         <li>• Security & compliance</li>
                         <li>• Observability</li>
@@ -391,8 +391,8 @@ export default function Module8Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-              <p className="text-sm font-mono text-blue-400 mb-2">The 80/20 Rule for AI Architecture</p>
+            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20">
+              <p className="text-sm font-mono text-[var(--muted)] mb-2">The 80/20 Rule for AI Architecture</p>
               <p className="text-sm text-[var(--text-primary)]">
                 80% of your architecture should use proven, boring technology. The 20% you build custom should be where you have genuine differentiation. Everything else is overhead that distracts from your core value.
               </p>
@@ -404,31 +404,31 @@ export default function Module8Page() {
               Document your architectural decisions with this simple template. It prevents amnesia and makes onboarding new team members dramatically faster:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <p className="font-bold text-id8-orange mb-3">ADR Template</p>
               <div className="space-y-4 text-sm">
                 <div>
-                  <p className="font-mono text-xs text-green-400 mb-1">Title</p>
+                  <p className="font-mono text-xs text-id8-teal mb-1">Title</p>
                   <p className="text-[var(--text-secondary)]">Short, descriptive name (e.g., "Use Postgres for Feature Store")</p>
                 </div>
                 <div>
-                  <p className="font-mono text-xs text-green-400 mb-1">Status</p>
+                  <p className="font-mono text-xs text-id8-teal mb-1">Status</p>
                   <p className="text-[var(--text-secondary)]">Proposed | Accepted | Deprecated | Superseded</p>
                 </div>
                 <div>
-                  <p className="font-mono text-xs text-green-400 mb-1">Context</p>
+                  <p className="font-mono text-xs text-id8-teal mb-1">Context</p>
                   <p className="text-[var(--text-secondary)]">What forces are at play? What are the constraints? What problem are we solving?</p>
                 </div>
                 <div>
-                  <p className="font-mono text-xs text-green-400 mb-1">Decision</p>
+                  <p className="font-mono text-xs text-id8-teal mb-1">Decision</p>
                   <p className="text-[var(--text-secondary)]">What we decided to do. Be specific and concrete.</p>
                 </div>
                 <div>
-                  <p className="font-mono text-xs text-green-400 mb-1">Consequences</p>
+                  <p className="font-mono text-xs text-id8-teal mb-1">Consequences</p>
                   <p className="text-[var(--text-secondary)]">What becomes easier? What becomes harder? Trade-offs accepted.</p>
                 </div>
                 <div>
-                  <p className="font-mono text-xs text-green-400 mb-1">Alternatives Considered</p>
+                  <p className="font-mono text-xs text-id8-teal mb-1">Alternatives Considered</p>
                   <p className="text-[var(--text-secondary)]">What else we looked at and why we didn't choose it.</p>
                 </div>
               </div>
@@ -438,40 +438,40 @@ export default function Module8Page() {
             <h2>Five Architecture Mistakes That Kill Scale</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #1</p>
                 <p className="font-bold">Tightly Coupling Models to Applications</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Embedding model logic in app code means you can't iterate on models without redeploying apps. <strong>Fix:</strong> Models behind APIs, apps consume predictions, never model internals.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #2</p>
                 <p className="font-bold">No Model Versioning Strategy</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   You deploy a new model version. It breaks 3 apps you didn't know existed. Chaos ensues. <strong>Fix:</strong> Semantic versioning, deprecation timelines, parallel deployment.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #3</p>
                 <p className="font-bold">Building a Data Monolith</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   One giant database that every model pulls from. Any schema change is a negotiation. Performance degrades as teams compete for resources. <strong>Fix:</strong> Domain-driven data architecture, clear ownership, federated approach.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #4</p>
                 <p className="font-bold">Ignoring the Cold Start Problem</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   First request takes 30 seconds because you're loading a 2GB model. Users give up. <strong>Fix:</strong> Model preloading, warm pools, caching, or smaller models.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #5</p>
                 <p className="font-bold">No Clear Data Lineage</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Model accuracy drops. You can't trace which data changed or why. Debugging is impossible. <strong>Fix:</strong> Data versioning, feature lineage tracking, reproducible pipelines.
@@ -532,7 +532,7 @@ export default function Module8Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -573,7 +573,7 @@ export default function Module8Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A complete Architecture Decision Record following the template. Store it in your repo (docs/adr/). Start a practice of documenting all significant decisions this way. Future you will be grateful.
                 </p>
@@ -581,7 +581,7 @@ export default function Module8Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

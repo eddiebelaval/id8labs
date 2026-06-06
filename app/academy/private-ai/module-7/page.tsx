@@ -73,7 +73,7 @@ export default function Module7Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-7">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -125,16 +125,16 @@ export default function Module7Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Speed Challenge
               </h2>
@@ -159,7 +159,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <CpuIcon />
                   <div>
@@ -173,7 +173,7 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <MemoryIcon />
                   <div>
@@ -187,7 +187,7 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <SpeedometerIcon />
                   <div>
@@ -201,7 +201,7 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <SpeedometerIcon />
                   <div>
@@ -271,7 +271,7 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
               <p className="text-sm">
                 <strong>Recommendation:</strong> Start with INT8 quantization. It gives significant speedup with minimal quality loss. Only go to INT4 if you need to fit a larger model in limited VRAM.
               </p>
@@ -283,7 +283,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">GPTQ (GPU-Optimized)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>How it works:</strong> Quantizes weights using calibration data, optimized for GPU inference<br />
@@ -292,7 +292,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">AWQ (Activation-Aware)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>How it works:</strong> Preserves important weights based on activation patterns<br />
@@ -301,7 +301,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">GGUF (CPU-Optimized)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>How it works:</strong> Llama.cpp format optimized for CPU inference<br />
@@ -310,7 +310,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">BitsAndBytes</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>How it works:</strong> Runtime quantization integrated with Hugging Face<br />
@@ -374,7 +374,7 @@ export default function Module7Page() {
               Traditional batching waits for all requests in a batch to complete before returning any results. Continuous batching returns results as they complete, reducing latency for faster requests:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <p className="text-sm text-[var(--text-secondary)]">
                 <strong>How it works:</strong> When one request in the batch finishes, immediately start processing a new one while others continue. Results stream back as they complete.
               </p>
@@ -390,7 +390,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">KV Cache Memory Usage</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   For a 7B parameter model with 4096 context length:<br />
@@ -399,7 +399,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Optimization Strategies</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-2 mt-2">
                   <li><strong>PagedAttention (vLLM):</strong> Manages KV cache like virtual memory, reducing waste by 60-90%</li>
@@ -461,7 +461,7 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="not-prose my-8 p-4 bg-yellow-500/10 border border-yellow-500/20">
               <p className="text-sm">
                 <strong>Starting point:</strong> Use vLLM for production GPU deployment. It offers the best balance of performance and ease of use. Only move to TensorRT-LLM if you need every last bit of performance and have the engineering resources.
               </p>
@@ -474,7 +474,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">GPU Memory Hierarchy</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li><strong>HBM (VRAM):</strong> Fast but limited — keep model weights here</li>
@@ -483,7 +483,7 @@ export default function Module7Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Multi-GPU Strategies</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li><strong>Tensor parallelism:</strong> Split model across GPUs, needed for large models</li>
@@ -492,7 +492,7 @@ export default function Module7Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">When to Offload to CPU</h4>
                 <ul className="text-sm text-[var(--text-secondary)] space-y-1">
                   <li>Model doesn't fit in VRAM even with quantization</li>
@@ -554,7 +554,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Response Cache</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>What:</strong> Cache complete responses for identical queries<br />
@@ -563,7 +563,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Semantic Cache</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>What:</strong> Cache responses for semantically similar queries<br />
@@ -572,7 +572,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Embedding Cache</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>What:</strong> Cache document embeddings for RAG<br />
@@ -581,7 +581,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Prefix Cache</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>What:</strong> Cache KV values for common system prompts<br />
@@ -598,7 +598,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Time to First Token (TTFT)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   How long until the model starts responding. Users notice latency here most.
@@ -608,7 +608,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Tokens Per Second (TPS)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Generation speed once started. Affects perceived responsiveness.
@@ -618,7 +618,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Throughput (Req/s)</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Total requests processed per second across all users.
@@ -628,7 +628,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">GPU Utilization</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Are you using your hardware effectively? Low util = optimization opportunity.
@@ -640,7 +640,7 @@ export default function Module7Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -692,7 +692,7 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A before/after comparison showing which optimizations gave the best results for your specific workload. This guides future infrastructure investments.
                 </p>
@@ -700,7 +700,7 @@ export default function Module7Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

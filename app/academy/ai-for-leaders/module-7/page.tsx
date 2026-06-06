@@ -59,7 +59,7 @@ export default function Module7Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-7">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -111,16 +111,16 @@ export default function Module7Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Measurement Problem */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Measurement Problem
               </h2>
@@ -145,19 +145,19 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Challenge #1: Time Horizons Don't Match</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Traditional ROI measures payback in quarters. AI value accrues over years. Early metrics look disappointing while teams are learning. Real gains emerge 6-12 months in, after adoption stabilizes and workflows adapt.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Challenge #2: Value Is Distributed</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   AI rarely creates value in one place. It saves time for Sarah in marketing, improves accuracy for the finance team, and accelerates onboarding for new hires. Individually, each benefit is small. Collectively, they're transformative. But no single department "owns" the ROI.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">Challenge #3: Counterfactuals Are Impossible</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   You can't run a control group. Once AI is deployed, you can't measure what would have happened without it. You're comparing to a baseline that keeps shifting as markets, teams, and expectations evolve.
@@ -179,9 +179,9 @@ export default function Module7Page() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-3 px-4 text-blue-400">Leading Indicators</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Leading Indicators</th>
                     <th className="text-left py-3 px-4 text-[var(--text-tertiary)]">What They Tell You</th>
-                    <th className="text-left py-3 px-4 text-green-400">Lagging Indicators</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Lagging Indicators</th>
                     <th className="text-left py-3 px-4 text-[var(--text-tertiary)]">What They Tell You</th>
                   </tr>
                 </thead>
@@ -232,10 +232,10 @@ export default function Module7Page() {
 
             <div className="not-prose my-8 space-y-6">
               {/* Efficiency Zone */}
-              <div className="p-5 bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20 rounded-xl">
+              <div className="p-5 bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">⚡</span>
-                  <h4 className="font-bold text-blue-400">Efficiency Zone Metrics</h4>
+                  <h4 className="font-bold text-[var(--muted)]">Efficiency Zone Metrics</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   Goal: Do the same work faster, cheaper, or with fewer errors.
@@ -257,10 +257,10 @@ export default function Module7Page() {
               </div>
 
               {/* Intelligence Zone */}
-              <div className="p-5 bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/20 rounded-xl">
+              <div className="p-5 bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">🧠</span>
-                  <h4 className="font-bold text-purple-400">Intelligence Zone Metrics</h4>
+                  <h4 className="font-bold text-[var(--muted)]">Intelligence Zone Metrics</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   Goal: Make better decisions with better information.
@@ -282,10 +282,10 @@ export default function Module7Page() {
               </div>
 
               {/* Experience Zone */}
-              <div className="p-5 bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 rounded-xl">
+              <div className="p-5 bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-2xl">✨</span>
-                  <h4 className="font-bold text-green-400">Experience Zone Metrics</h4>
+                  <h4 className="font-bold text-id8-teal">Experience Zone Metrics</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   Goal: Create better experiences for customers or employees.
@@ -318,7 +318,7 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Method #1: A/B Testing</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Split users into control (no AI) and treatment (with AI) groups. Compare outcomes.
@@ -328,7 +328,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Method #2: Before/After Comparison</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Measure performance 90 days before AI, 90 days after AI. Control for seasonality and other variables.
@@ -338,7 +338,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Method #3: Cohort Analysis</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Compare teams/regions that adopted AI early vs late. Did early adopters see different outcomes?
@@ -348,7 +348,7 @@ export default function Module7Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Method #4: Regression Analysis</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Model the relationship between AI usage intensity and outcomes. How much does each additional hour of AI use correlate with productivity?
@@ -431,11 +431,11 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Mistake #1</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #1</p>
                     <p className="font-bold">Tracking Vanity Metrics</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Celebrating "10,000 AI interactions!" when what matters is whether those interactions created value. High usage of a bad tool is not success.
@@ -444,11 +444,11 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Mistake #2</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #2</p>
                     <p className="font-bold">Using the Wrong Baseline</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Comparing AI performance to your slowest manual process instead of your current optimized workflow. This inflates ROI and sets false expectations.
@@ -457,11 +457,11 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Mistake #3</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #3</p>
                     <p className="font-bold">Measuring Too Early</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Declaring failure (or success) in week 2. AI ROI requires a 90-day minimum before meaningful patterns emerge. Patience is required.
@@ -470,11 +470,11 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Mistake #4</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #4</p>
                     <p className="font-bold">Ignoring Qualitative Benefits</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       "We can't measure morale improvement, so we won't count it." Some of AI's biggest wins — reduced burnout, faster onboarding, better decision confidence — don't fit in spreadsheets. Acknowledge them anyway.
@@ -483,11 +483,11 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertIcon />
                   <div>
-                    <p className="font-mono text-sm text-red-400 mb-1">Mistake #5</p>
+                    <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #5</p>
                     <p className="font-bold">Forgetting Total Cost</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       Calculating ROI on subscription cost alone, ignoring implementation time, training, integration work, and ongoing maintenance. True cost is 3-5x the sticker price.
@@ -498,7 +498,7 @@ export default function Module7Page() {
             </div>
 
             {/* The Total Cost Equation */}
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="text-lg font-bold mb-4">The True Cost of AI (First Year)</h3>
               <div className="space-y-2 text-sm text-[var(--text-secondary)] font-mono">
                 <div className="flex justify-between border-b border-[var(--border)] pb-2">
@@ -532,7 +532,7 @@ export default function Module7Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -580,7 +580,7 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A one-page measurement plan that specifies exactly what you'll track, how you'll track it, and what success looks like. Share this with stakeholders before launch.
                 </p>
@@ -588,7 +588,7 @@ export default function Module7Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

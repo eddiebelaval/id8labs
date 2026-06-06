@@ -59,7 +59,7 @@ export default function Module5Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-5">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -111,16 +111,16 @@ export default function Module5Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Scenario */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
@@ -159,15 +159,15 @@ export default function Module5Page() {
               <strong>The mistake most people make:</strong> They treat complex challenges as single, monolithic problems and expect AI to "figure it out." But AI works best when you break complexity into clear, solvable components.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-mono text-sm text-red-400 mb-2">What doesn't work:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-mono text-sm text-[var(--muted)] mb-2">What doesn't work:</p>
               <p className="text-[var(--text-secondary)]">
                 "Help me redesign our entire vendor onboarding process."
               </p>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-              <p className="font-mono text-sm text-green-400 mb-2">What works:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+              <p className="font-mono text-sm text-id8-teal mb-2">What works:</p>
               <p className="text-[var(--text-secondary)]">
                 "I need to break down a complex redesign project. Let's start by identifying the distinct decision points in our current process, then isolate which ones create the most delay."
               </p>
@@ -183,7 +183,7 @@ export default function Module5Page() {
               This is a structured way to break any complex problem into AI-solvable parts. It works for strategic planning, operational redesign, product development, organizational change — anything that feels "too big."
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <LayersIcon />
                 <h3 className="text-xl font-bold">The 5-Layer Breakdown</h3>
@@ -247,8 +247,8 @@ export default function Module5Page() {
               Here's how Marcus used the Decomposition Canvas with AI:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-4">Marcus's decomposition session:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-4">Marcus's decomposition session:</p>
               <div className="text-[var(--text-secondary)] space-y-4 whitespace-pre-wrap">
 {`I need to break down a complex problem. I'm redesigning our vendor onboarding process for a healthcare logistics company. Currently takes 6-9 months, involves multiple departments, lots of compliance variation.
 
@@ -355,8 +355,8 @@ For each component we just isolated, how do we know if the redesign is working? 
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-xs text-red-400 mb-2">BEFORE (Direct Approach)</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-xs text-[var(--muted)] mb-2">BEFORE (Direct Approach)</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li>"Help me with this big project"</li>
                   <li>AI gives generic framework</li>
@@ -365,8 +365,8 @@ For each component we just isolated, how do we know if the redesign is working? 
                   <li>Get stuck, give up</li>
                 </ul>
               </div>
-              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="font-mono text-xs text-green-400 mb-2">AFTER (Decomposition-First)</p>
+              <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-xs text-id8-teal mb-2">AFTER (Decomposition-First)</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li>"Let's break this down first"</li>
                   <li>AI helps map the layers</li>
@@ -383,7 +383,7 @@ For each component we just isolated, how do we know if the redesign is working? 
               When a problem feels impossibly complex, try this with AI:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg font-mono text-sm">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-sm">
               <p className="text-[var(--text-primary)] mb-4">The WWNBT prompt pattern:</p>
               <div className="text-[var(--text-secondary)] space-y-3 whitespace-pre-wrap">
 {`I have a complex goal: [state your objective]
@@ -409,7 +409,7 @@ Then, for each condition, let's break it down further until we get to concrete, 
               Sometimes the act of breaking down a problem reveals that you're solving the wrong thing entirely.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <p className="text-sm italic text-[var(--text-secondary)] mb-4">
                 Marcus discovered this during his decomposition. When he mapped decision points, he realized that 80% of the onboarding delay came from a single bottleneck: the legal compliance review that happened at the END of the process.
               </p>
@@ -422,7 +422,7 @@ Then, for each condition, let's break it down further until we get to concrete, 
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -477,7 +477,7 @@ Then, for each condition, let's break it down further until we get to concrete, 
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-xs font-mono text-id8-orange mb-2">DELIVERABLE</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   A one-page canvas with all 5 layers completed. You should be able to see your complex problem as a set of discrete, solvable components.
@@ -486,7 +486,7 @@ Then, for each condition, let's break it down further until we get to concrete, 
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

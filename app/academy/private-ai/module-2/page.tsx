@@ -65,7 +65,7 @@ export default function Module2Page() {
     <ModuleAnnotations courseSlug="private-ai" moduleSlug="module-2">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -117,16 +117,16 @@ export default function Module2Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Geography of Your Data
               </h2>
@@ -151,7 +151,7 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
                   <div>
@@ -160,7 +160,7 @@ export default function Module2Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">2</span>
                   <div>
@@ -169,7 +169,7 @@ export default function Module2Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">3</span>
                   <div>
@@ -178,7 +178,7 @@ export default function Module2Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">4</span>
                   <div>
@@ -187,7 +187,7 @@ export default function Module2Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">5</span>
                   <div>
@@ -196,7 +196,7 @@ export default function Module2Page() {
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">6</span>
                   <div>
@@ -282,7 +282,7 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPinIcon />
                   <p className="font-bold text-id8-orange">United States</p>
@@ -294,7 +294,7 @@ export default function Module2Page() {
                   <strong>Risk:</strong> If your cloud provider is a US company (OpenAI, Anthropic, AWS, Google), US authorities can compel access regardless of where data is stored.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPinIcon />
                   <p className="font-bold text-id8-orange">European Union</p>
@@ -306,7 +306,7 @@ export default function Module2Page() {
                   <strong>Risk:</strong> Transferring EU citizen data to US providers without Standard Contractual Clauses or other safeguards is illegal. Fines can reach 4% of global revenue.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPinIcon />
                   <p className="font-bold text-id8-orange">China</p>
@@ -318,7 +318,7 @@ export default function Module2Page() {
                   <strong>Risk:</strong> If operating in China, data must stay within Chinese borders. Using foreign cloud AI services may be non-compliant or blocked entirely.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPinIcon />
                   <p className="font-bold text-id8-orange">Russia</p>
@@ -330,7 +330,7 @@ export default function Module2Page() {
                   <strong>Risk:</strong> Cloud AI providers without Russian data centers cannot legally process Russian citizen data. Enforcement is strict.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPinIcon />
                   <p className="font-bold text-id8-orange">India</p>
@@ -342,7 +342,7 @@ export default function Module2Page() {
                   <strong>Risk:</strong> Rapidly evolving rules. Cloud providers scrambling to add Indian data centers. Uncertainty around enforcement.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPinIcon />
                   <p className="font-bold text-id8-orange">Five Eyes (US, UK, CA, AU, NZ)</p>
@@ -363,25 +363,25 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
                 <p className="font-bold mb-2">Parent Company Jurisdiction</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Even if your data is physically in Germany on AWS servers, Amazon is a US company subject to US law. The Cloud Act allows US authorities to compel access regardless of data location.
                 </p>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
                 <p className="font-bold mb-2">Cross-Region Backups</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Many providers replicate data across regions for disaster recovery. Your "EU-only" data may have replicas in US data centers. Read the fine print.
                 </p>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
                 <p className="font-bold mb-2">Support & Engineering Access</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Cloud provider support teams (often US-based) can access your data for troubleshooting. This access creates a cross-border data flow you didn't explicitly authorize.
                 </p>
               </div>
-              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+              <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
                 <p className="font-bold mb-2">Model Training & Improvement</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   AI providers may aggregate anonymized data across regions to improve models. Your data leaves its original jurisdiction in anonymized form (which may not satisfy regulations).
@@ -400,7 +400,7 @@ export default function Module2Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">On-Premises Servers</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Deploy AI models on your own hardware in your own data center. Maximum control, zero third-party access.
@@ -409,7 +409,7 @@ export default function Module2Page() {
                   <strong>Best for:</strong> Enterprises with existing infrastructure, regulated industries (finance, healthcare, defense)
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Edge Devices (Laptops, Workstations)</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Run models directly on user devices. Data never leaves the machine. Perfect for individual knowledge workers.
@@ -418,7 +418,7 @@ export default function Module2Page() {
                   <strong>Best for:</strong> Professionals handling sensitive client data (lawyers, accountants, consultants)
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Private Cloud (VPC with Hardware Isolation)</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Dedicated hardware within a cloud provider's data center, with contractual guarantees that no other customer or provider employee can access it.
@@ -427,7 +427,7 @@ export default function Module2Page() {
                   <strong>Best for:</strong> Organizations that need cloud scalability but require physical isolation (hybrid approach)
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold text-id8-orange mb-2">Hybrid (Local + Cloud Orchestration)</p>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   Sensitive processing happens locally; non-sensitive tasks (like model updates or aggregated analytics) use cloud. Requires careful data classification.
@@ -439,7 +439,7 @@ export default function Module2Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -480,7 +480,7 @@ export default function Module2Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A visual flow diagram showing current-state data flows with jurisdictions labeled, plus a target-state architecture with local processing for sensitive data. This becomes your data residency roadmap.
                 </p>
@@ -488,7 +488,7 @@ export default function Module2Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

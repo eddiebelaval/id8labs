@@ -88,7 +88,7 @@ export default function Module6Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-6">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -140,16 +140,16 @@ export default function Module6Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
@@ -174,11 +174,11 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertTriangleIcon />
                   <div>
-                    <p className="font-bold text-red-400">The AI exposes customer data</p>
+                    <p className="font-bold text-[var(--muted)]">The AI exposes customer data</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       A chatbot trained on customer support tickets leaks PII. A document summarizer includes sensitive information in responses. An AI assistant stores conversations that contain confidential business data.
                     </p>
@@ -187,11 +187,11 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertTriangleIcon />
                   <div>
-                    <p className="font-bold text-red-400">The AI discriminates systematically</p>
+                    <p className="font-bold text-[var(--muted)]">The AI discriminates systematically</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       A resume screening tool filters out qualified candidates based on demographic patterns in training data. A loan approval system denies applications at different rates for protected classes. A performance review assistant reinforces existing biases.
                     </p>
@@ -200,11 +200,11 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertTriangleIcon />
                   <div>
-                    <p className="font-bold text-red-400">The AI hallucinates confidently</p>
+                    <p className="font-bold text-[var(--muted)]">The AI hallucinates confidently</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       An AI generates plausible-sounding financial advice that's completely wrong. A legal research assistant cites cases that don't exist. A medical information bot provides dangerous health recommendations with absolute certainty.
                     </p>
@@ -213,11 +213,11 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
                 <div className="flex items-start gap-3">
                   <AlertTriangleIcon />
                   <div>
-                    <p className="font-bold text-red-400">The vendor changes everything</p>
+                    <p className="font-bold text-[var(--muted)]">The vendor changes everything</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-2">
                       A critical AI service raises prices 300%. A vendor pivots and sunsets the product you depend on. An API provider changes terms of service, breaking your use case. A model provider degrades performance to cut costs.
                     </p>
@@ -272,13 +272,13 @@ export default function Module6Page() {
                   examples: "Price increases, service shutdowns, API changes, model degradation"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-2xl">{item.icon}</span>
                     <span className={`text-xs font-mono px-2 py-1 rounded ${
-                      item.severity === 'Critical' ? 'bg-red-500/20 text-red-400' :
+                      item.severity === 'Critical' ? 'bg-red-500/20 text-[var(--muted)]' :
                       item.severity === 'High' ? 'bg-orange-500/20 text-orange-400' :
-                      'bg-yellow-500/20 text-yellow-400'
+                      'bg-yellow-500/20 text-[var(--muted)]'
                     }`}>
                       {item.severity}
                     </span>
@@ -312,31 +312,31 @@ export default function Module6Page() {
                     <td className="py-3 px-4 font-bold">GDPR</td>
                     <td className="py-3 px-4">EU / European residents</td>
                     <td className="py-3 px-4">Consent for processing, right to explanation, data minimization, purpose limitation</td>
-                    <td className="py-3 px-4 text-red-400">Up to €20M or 4% revenue</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Up to €20M or 4% revenue</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">CCPA/CPRA</td>
                     <td className="py-3 px-4">California / CA residents</td>
                     <td className="py-3 px-4">Disclosure of AI use, opt-out rights, data sale restrictions, automated decision-making limits</td>
-                    <td className="py-3 px-4 text-red-400">$2,500-$7,500 per violation</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">$2,500-$7,500 per violation</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">HIPAA</td>
                     <td className="py-3 px-4">US Healthcare</td>
                     <td className="py-3 px-4">PHI protection, Business Associate Agreements, encryption, audit trails, breach notification</td>
-                    <td className="py-3 px-4 text-red-400">$100-$50,000 per record</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">$100-$50,000 per record</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">SOC 2</td>
                     <td className="py-3 px-4">US (voluntary standard)</td>
                     <td className="py-3 px-4">Security controls, access management, data integrity, confidentiality measures</td>
-                    <td className="py-3 px-4 text-yellow-400">Customer trust / sales impact</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Customer trust / sales impact</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="text-lg font-bold mb-4">Practical Privacy Controls for AI</h3>
               <div className="space-y-4">
                 <div className="flex gap-3">
@@ -386,7 +386,7 @@ export default function Module6Page() {
             <h3>The Three Types of AI Bias</h3>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">1. Training Data Bias</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   The AI learns from historical data that reflects past discrimination.
@@ -399,7 +399,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">2. Proxy Bias</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   The AI uses seemingly neutral factors that correlate with protected characteristics.
@@ -412,7 +412,7 @@ export default function Module6Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold text-id8-orange mb-2">3. Feedback Loop Bias</h4>
                 <p className="text-sm text-[var(--text-secondary)] mb-2">
                   The AI's decisions influence future data, which reinforces the original bias.
@@ -479,7 +479,7 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+              <div className="p-4 bg-orange-500/10 border border-orange-500/20">
                 <p className="font-mono text-sm text-orange-400 mb-1">Real Incident</p>
                 <p className="font-bold">Legal Brief Cited Fake Cases</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
@@ -488,7 +488,7 @@ export default function Module6Page() {
                 <p className="text-xs text-[var(--text-tertiary)] mt-2"><strong>Root cause:</strong> No verification step. The user trusted confident output without checking primary sources.</p>
               </div>
 
-              <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+              <div className="p-4 bg-orange-500/10 border border-orange-500/20">
                 <p className="font-mono text-sm text-orange-400 mb-1">Real Incident</p>
                 <p className="font-bold">Financial Analysis Used Wrong Numbers</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
@@ -514,17 +514,17 @@ export default function Module6Page() {
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4 font-bold text-green-400">Low Risk</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Low Risk</td>
                     <td className="py-3 px-4">Brainstorming, first drafts, internal summaries</td>
                     <td className="py-3 px-4">User awareness, clear labeling as AI-generated</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
-                    <td className="py-3 px-4 font-bold text-yellow-400">Medium Risk</td>
+                    <td className="py-3 px-4 font-bold text-[var(--muted)]">Medium Risk</td>
                     <td className="py-3 px-4">Customer-facing content, data analysis, reports</td>
                     <td className="py-3 px-4">Human review, fact-checking process, citations required</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-bold text-red-400">High Risk</td>
+                    <td className="py-3 px-4 font-bold text-[var(--muted)]">High Risk</td>
                     <td className="py-3 px-4">Legal, medical, financial, compliance decisions</td>
                     <td className="py-3 px-4">Expert verification, multiple review layers, audit trail</td>
                   </tr>
@@ -534,7 +534,7 @@ export default function Module6Page() {
 
             <h3>Hallucination Risk Mitigation</h3>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div className="flex gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">1</span>
@@ -624,35 +624,35 @@ export default function Module6Page() {
             <h3>Dependency Risk Controls</h3>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">1. Critical Path Assessment</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Map which business processes depend on external AI services. If the vendor disappears tomorrow, what breaks? Categorize as: nice-to-have, important, or critical. Critical paths need redundancy.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">2. Multi-Vendor Strategy</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   For critical AI applications, architect for vendor interchangeability. Use abstraction layers. Test fallback vendors quarterly. Don't optimize so heavily for one vendor that switching becomes impossible.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">3. Usage Monitoring & Caps</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Set spending caps on AI services. Monitor usage trends. An unexpected 10x increase in API calls means either a success (scale) or a problem (runaway automation). Know which before the bill arrives.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">4. Performance Baselines</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Establish quality benchmarks for vendor AI services. Run automated tests monthly. If performance degrades beyond threshold, you need to know before users complain.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">5. Exit Strategy Documentation</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Document how you'd migrate away from each AI vendor. What data needs to be extracted? What prompts need to be adapted? What code needs to change? Write this down before you need it.
@@ -735,30 +735,30 @@ export default function Module6Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
+            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20">
               <p className="font-bold mb-2">Risk Register Anti-Patterns</p>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                 <li className="flex gap-2">
-                  <span className="text-yellow-400">•</span>
+                  <span className="text-[var(--muted)]">•</span>
                   <span><strong>Creating it once and never updating:</strong> The register is worthless if it's not a living document. Schedule quarterly reviews.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-yellow-400">•</span>
+                  <span className="text-[var(--muted)]">•</span>
                   <span><strong>Making it too comprehensive:</strong> A 50-row spreadsheet no one reads is worse than a 10-row document everyone uses.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-yellow-400">•</span>
+                  <span className="text-[var(--muted)]">•</span>
                   <span><strong>No clear ownership:</strong> "The team" is not an owner. Name names. Assign accountability.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-yellow-400">•</span>
+                  <span className="text-[var(--muted)]">•</span>
                   <span><strong>Treating all risks equally:</strong> Prioritize. Focus mitigation effort on high-severity, high-likelihood risks first.</span>
                 </li>
               </ul>
             </div>
 
             {/* Exercise */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -806,7 +806,7 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A risk register you can present to leadership or your board. It should answer "what are our AI risks?" and "who's managing them?" with clarity.
                 </p>
@@ -814,7 +814,7 @@ export default function Module6Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

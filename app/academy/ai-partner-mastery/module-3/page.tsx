@@ -57,7 +57,7 @@ export default function Module3Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-3">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -109,16 +109,16 @@ export default function Module3Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Scenario */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
@@ -158,8 +158,8 @@ export default function Module3Page() {
               Both are wrong. The real power unlocks when you <em>stay in the conversation</em>.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-mono text-sm text-red-400 mb-2">What starting over loses:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-mono text-sm text-[var(--muted)] mb-2">What starting over loses:</p>
               <ul className="text-[var(--text-secondary)] space-y-1 list-disc list-inside">
                 <li>All the context you've built</li>
                 <li>The AI's understanding of what you actually want</li>
@@ -189,7 +189,7 @@ export default function Module3Page() {
                   desc: "Synthesize insights, make decisions, produce output"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <h4 className="font-bold text-id8-orange mb-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
                 </div>
@@ -208,8 +208,8 @@ export default function Module3Page() {
 
             <div className="not-prose my-8">
               <div className="grid gap-4">
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                  <p className="font-bold text-green-400 mb-2">What AI is good at remembering:</p>
+                <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                  <p className="font-bold text-id8-teal mb-2">What AI is good at remembering:</p>
                   <ul className="text-[var(--text-secondary)] space-y-1 text-sm list-disc list-inside">
                     <li>Facts you've stated ("Our users are primarily mobile")</li>
                     <li>Decisions you've made ("We're going with Option B")</li>
@@ -217,8 +217,8 @@ export default function Module3Page() {
                     <li>Your tone and communication style</li>
                   </ul>
                 </div>
-                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                  <p className="font-bold text-yellow-400 mb-2">What gets fuzzy over time:</p>
+                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20">
+                  <p className="font-bold text-[var(--muted)] mb-2">What gets fuzzy over time:</p>
                   <ul className="text-[var(--text-secondary)] space-y-1 text-sm list-disc list-inside">
                     <li>Details from 30+ messages ago</li>
                     <li>Which option was "Option A" vs "Option B"</li>
@@ -233,8 +233,8 @@ export default function Module3Page() {
               When you feel the AI losing track, do a quick recap:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-2">Marcus, Message 16:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-2">Marcus, Message 16:</p>
               <div className="text-[var(--text-secondary)] whitespace-pre-wrap">
 {`Quick recap so we're aligned:
 - We're designing for first-time users, mostly mobile
@@ -261,12 +261,12 @@ Now let's look at...`}
               Borrowed from improv. Take AI's idea and extend it:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg font-mono text-sm">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-sm">
               <p className="text-id8-orange mb-2">AI suggests:</p>
               <p className="text-[var(--text-secondary)] mb-4">
                 "You could track which features they explore first and use that to infer their goals."
               </p>
-              <p className="text-green-400 mb-2">You respond:</p>
+              <p className="text-id8-teal mb-2">You respond:</p>
               <div className="text-[var(--text-secondary)] whitespace-pre-wrap">
 {`I like this. And what if we made those first interactions deliberately open-ended?
 Like instead of a tutorial, we give them 3 starter templates that represent different use cases.
@@ -279,8 +279,8 @@ Whichever they pick becomes the implied goal. Could we prototype what those temp
               AI goes somewhere interesting but off-track. Steer it back:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg font-mono text-sm">
-              <p className="text-yellow-400 mb-2">You respond:</p>
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-sm">
+              <p className="text-[var(--muted)] mb-2">You respond:</p>
               <div className="text-[var(--text-secondary)] whitespace-pre-wrap">
 {`That's a solid approach for power users, but I want to stay focused on first-time users.
 Let's table the advanced personalization for now. Back to the template idea...`}
@@ -292,7 +292,7 @@ Let's table the advanced personalization for now. Back to the template idea...`}
               Ask AI to show you the opposite or alternative:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg font-mono text-sm">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-sm">
               <div className="text-[var(--text-secondary)] whitespace-pre-wrap">
 {`Show me the opposite approach: What if we DID ask directly but made it feel natural and conversational?
 What would that look like?`}
@@ -307,19 +307,19 @@ What would that look like?`}
 
             <div className="not-prose my-8 space-y-3 text-sm">
               <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-blue-500">
-                <p className="text-blue-400 mb-1">Messages 1-4: Exploration</p>
+                <p className="text-[var(--muted)] mb-1">Messages 1-4: Exploration</p>
                 <p className="text-[var(--text-secondary)]">Marcus shares the problem. AI suggests surveys. Marcus explains why that won't work. They agree on the core tension.</p>
               </div>
               <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-purple-500">
-                <p className="text-purple-400 mb-1">Messages 5-11: Branching</p>
+                <p className="text-[var(--muted)] mb-1">Messages 5-11: Branching</p>
                 <p className="text-[var(--text-secondary)]">AI offers 4 different approaches. Marcus picks one (progressive disclosure) and they go deep on it. Try a few variations.</p>
               </div>
               <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-yellow-500">
-                <p className="text-yellow-400 mb-1">Messages 12-18: Tangent</p>
+                <p className="text-[var(--muted)] mb-1">Messages 12-18: Tangent</p>
                 <p className="text-[var(--text-secondary)]">Marcus asks about how games handle this. Productive detour into motivation design. Surfaces a key insight about "showing not asking."</p>
               </div>
               <div className="p-3 bg-[var(--bg-secondary)] border-l-2 border-green-500">
-                <p className="text-green-400 mb-1">Messages 19-27: Convergence</p>
+                <p className="text-id8-teal mb-1">Messages 19-27: Convergence</p>
                 <p className="text-[var(--text-secondary)]">They synthesize everything. Land on the template approach. Marcus asks for wireframe suggestions. AI helps structure them. Done.</p>
               </div>
             </div>
@@ -333,29 +333,29 @@ What would that look like?`}
 
             <div className="not-prose my-8">
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                  <p className="font-bold text-green-400 mb-3">Keep the conversation going when:</p>
+                <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                  <p className="font-bold text-id8-teal mb-3">Keep the conversation going when:</p>
                   <ul className="text-[var(--text-secondary)] space-y-2 text-sm">
-                    <li className="flex gap-2"><span className="text-green-400">✓</span> You're building on previous ideas</li>
-                    <li className="flex gap-2"><span className="text-green-400">✓</span> The context is still relevant</li>
-                    <li className="flex gap-2"><span className="text-green-400">✓</span> You're in a productive flow</li>
-                    <li className="flex gap-2"><span className="text-green-400">✓</span> The tangent connects to the main thread</li>
+                    <li className="flex gap-2"><span className="text-id8-teal">✓</span> You're building on previous ideas</li>
+                    <li className="flex gap-2"><span className="text-id8-teal">✓</span> The context is still relevant</li>
+                    <li className="flex gap-2"><span className="text-id8-teal">✓</span> You're in a productive flow</li>
+                    <li className="flex gap-2"><span className="text-id8-teal">✓</span> The tangent connects to the main thread</li>
                   </ul>
                 </div>
-                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                  <p className="font-bold text-red-400 mb-3">Start fresh when:</p>
+                <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                  <p className="font-bold text-[var(--muted)] mb-3">Start fresh when:</p>
                   <ul className="text-[var(--text-secondary)] space-y-2 text-sm">
-                    <li className="flex gap-2"><span className="text-red-400">✗</span> You're pivoting to a totally different problem</li>
-                    <li className="flex gap-2"><span className="text-red-400">✗</span> Earlier context is now misleading</li>
-                    <li className="flex gap-2"><span className="text-red-400">✗</span> The conversation is truly stuck</li>
-                    <li className="flex gap-2"><span className="text-red-400">✗</span> You want a totally fresh perspective</li>
+                    <li className="flex gap-2"><span className="text-[var(--muted)]">✗</span> You're pivoting to a totally different problem</li>
+                    <li className="flex gap-2"><span className="text-[var(--muted)]">✗</span> Earlier context is now misleading</li>
+                    <li className="flex gap-2"><span className="text-[var(--muted)]">✗</span> The conversation is truly stuck</li>
+                    <li className="flex gap-2"><span className="text-[var(--muted)]">✗</span> You want a totally fresh perspective</li>
                   </ul>
                 </div>
               </div>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -403,7 +403,7 @@ What would that look like?`}
             </div>
 
             {/* Advanced Techniques */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Advanced Techniques
               </h2>
@@ -416,7 +416,7 @@ What would that look like?`}
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Every 10-15 messages, drop a summary anchor:
                   </p>
-                  <div className="font-mono text-sm bg-green-500/10 border border-green-500/20 p-3 rounded">
+                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3 rounded">
 {`"So far we've established: [3-5 key points]. Now let's focus on..."`}
                   </div>
                 </div>
@@ -426,7 +426,7 @@ What would that look like?`}
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     When stuck, ask AI to roleplay:
                   </p>
-                  <div className="font-mono text-sm bg-green-500/10 border border-green-500/20 p-3 rounded">
+                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3 rounded">
 {`"If you were a user seeing this for the first time, what would confuse you?"`}
                   </div>
                 </div>
@@ -436,7 +436,7 @@ What would that look like?`}
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
                     Force concrete outputs mid-conversation:
                   </p>
-                  <div className="font-mono text-sm bg-green-500/10 border border-green-500/20 p-3 rounded">
+                  <div className="font-mono text-sm border border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-3 rounded">
 {`"Before we go further, write out the exact wording we'd use for this button."`}
                   </div>
                 </div>
@@ -444,7 +444,7 @@ What would that look like?`}
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

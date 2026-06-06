@@ -65,7 +65,7 @@ export default function Module8Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-8">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -117,16 +117,16 @@ export default function Module8Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Scenario */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
@@ -164,13 +164,13 @@ export default function Module8Page() {
               This is orchestration: coordinating different AI roles and capabilities like you'd coordinate a team.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <p className="font-bold mb-2">Orchestration vs. Individual Tasks</p>
               <table className="w-full text-sm mt-3">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-2 text-red-400">Individual Tasks</th>
-                    <th className="text-left py-2 text-green-400">Orchestrated Workflow</th>
+                    <th className="text-left py-2 text-[var(--muted)]">Individual Tasks</th>
+                    <th className="text-left py-2 text-id8-teal">Orchestrated Workflow</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -196,7 +196,7 @@ export default function Module8Page() {
               Here's a framework for coordinating multiple AI capabilities:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <NetworkIcon />
                 <h3 className="text-xl font-bold">The 5-Stage Orchestration Pattern</h3>
@@ -355,8 +355,8 @@ export default function Module8Page() {
               Use this template to plan multi-stage AI workflows:
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-4">Orchestration Planning Template:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-4">Orchestration Planning Template:</p>
               <div className="text-[var(--text-secondary)] space-y-4 whitespace-pre-wrap">
 {`PROJECT: [Name]
 END GOAL: [Specific deliverable]
@@ -392,25 +392,25 @@ EXPECTED TIME: [Total estimated duration]`}
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Option 1: Single Session</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Keep all stages in one continuous AI conversation. Context stays intact automatically. Best for shorter workflows (2-4 stages).
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Option 2: Documented Handoffs</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Start fresh sessions but explicitly pass context: "Here's what we established in prior stages: [paste summary]." Best for longer workflows.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Option 3: Context Document</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Maintain a running context doc that grows with each stage. Paste relevant sections as needed. Best for complex multi-day projects.
                 </p>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h4 className="font-bold mb-2">Option 4: Role Switching</h4>
                 <p className="text-sm text-[var(--text-secondary)]">
                   In same session, explicitly tell AI to switch roles: "Now take on the role of [Critic] and review what we just created." Maintains all context.
@@ -432,15 +432,15 @@ EXPECTED TIME: [Total estimated duration]`}
               <li><strong>The stakes are high enough:</strong> The extra setup time pays off in quality</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-bold text-red-400 mb-2">When NOT to orchestrate:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-bold text-[var(--muted)] mb-2">When NOT to orchestrate:</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Simple, one-shot tasks. Quick edits or drafts. Anything where the overhead of orchestration outweighs the benefit. Start simple, orchestrate when you hit the limits of single-task AI use.
               </p>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -488,7 +488,7 @@ EXPECTED TIME: [Total estimated duration]`}
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-xs font-mono text-id8-orange mb-2">DELIVERABLE</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   An Orchestration Playbook: one-page map showing phases, roles, handoffs, and QA checkpoints. Use this as your template for complex AI workflows.
@@ -497,7 +497,7 @@ EXPECTED TIME: [Total estimated duration]`}
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">
@@ -526,7 +526,7 @@ EXPECTED TIME: [Total estimated duration]`}
             </p>
 
             {/* Course Complete */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border-2 border-id8-orange rounded-xl text-center">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border-2 border-id8-orange text-center">
               <h2 className="text-3xl font-bold mb-4">You've Completed AI Partner Mastery</h2>
               <p className="text-lg text-[var(--text-secondary)] mb-6">
                 You've moved from treating AI as a tool to orchestrating it as a thinking partner. You have frameworks, patterns, and systems that compound over time.

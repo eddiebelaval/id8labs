@@ -58,7 +58,7 @@ export default function Module4Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-4">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -110,16 +110,16 @@ export default function Module4Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Truth */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Truth
               </h2>
@@ -146,8 +146,8 @@ export default function Module4Page() {
               Most frustration with AI comes from treating it like a one-shot tool:
             </p>
 
-            <div className="not-prose my-8 p-5 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="text-red-400 mb-3 font-bold">The pattern that fails:</p>
+            <div className="not-prose my-8 p-5 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="text-[var(--muted)] mb-3 font-bold">The pattern that fails:</p>
               <div className="text-sm text-[var(--text-secondary)] space-y-3">
                 <p><strong>You:</strong> [Write detailed prompt]</p>
                 <p><strong>AI:</strong> [Generates response]</p>
@@ -191,7 +191,7 @@ export default function Module4Page() {
                   desc: "Loop until you're satisfied. Each iteration should get you 10-20% closer."
                 }
               ].map((item, i) => (
-                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">
                       {item.step}
@@ -213,7 +213,7 @@ export default function Module4Page() {
 
             <div className="not-prose my-8 space-y-6">
               {/* Round 1 */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="text-xs font-mono text-id8-orange mb-3">ROUND 1: GENERATE</p>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <p><strong>You:</strong> "Write a LinkedIn post announcing we just helped Fundbridge (a fintech client) complete a brand strategy refresh. Use my collaboration protocol for tone and style."</p>
@@ -222,7 +222,7 @@ export default function Module4Page() {
               </div>
 
               {/* Round 2 */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="text-xs font-mono text-id8-orange mb-3">ROUND 2: EVALUATE + DIRECT</p>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <p><strong>You (evaluation):</strong> "This is solid, but it's leading with our accomplishment instead of the client's problem. And it's too formal for LinkedIn."</p>
@@ -232,7 +232,7 @@ export default function Module4Page() {
               </div>
 
               {/* Round 3 */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="text-xs font-mono text-id8-orange mb-3">ROUND 3: REFINE DETAILS</p>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <p><strong>You:</strong> "Great. Now (1) Make the opening line punchier — something that stops the scroll, (2) Cut the second paragraph by 30%, (3) Change the closing question to focus on founder-led branding, not branding in general."</p>
@@ -252,7 +252,7 @@ export default function Module4Page() {
               Vague feedback gets vague results. Specific feedback gets specific results. Here's the formula:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="text-id8-orange mb-4 font-mono text-sm font-bold">THE FEEDBACK FORMULA</div>
               <div className="space-y-4">
                 <div className="p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded">
@@ -274,8 +274,8 @@ export default function Module4Page() {
             <h2>Good Feedback vs Bad Feedback</h2>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-xs text-red-400 mb-3">BAD FEEDBACK (vague)</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-xs text-[var(--muted)] mb-3">BAD FEEDBACK (vague)</p>
                 <ul className="space-y-2 text-xs text-[var(--text-secondary)]">
                   <li>"This isn't quite right."</li>
                   <li>"Make it better."</li>
@@ -284,8 +284,8 @@ export default function Module4Page() {
                   <li>"More professional."</li>
                 </ul>
               </div>
-              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="font-mono text-xs text-green-400 mb-3">GOOD FEEDBACK (specific)</p>
+              <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-xs text-id8-teal mb-3">GOOD FEEDBACK (specific)</p>
                 <ul className="space-y-2 text-xs text-[var(--text-secondary)]">
                   <li>"The intro is too long. Cut it to two sentences."</li>
                   <li>"Use active voice in paragraph 3."</li>
@@ -302,7 +302,7 @@ export default function Module4Page() {
               Most outputs reach 95% quality in three rounds:
             </p>
 
-            <div className="not-prose my-8 p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+            <div className="not-prose my-8 p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4 text-sm">
                 <div>
                   <p className="font-bold text-id8-orange mb-1">Round 1: Get the bones right</p>
@@ -319,7 +319,7 @@ export default function Module4Page() {
               </div>
             </div>
 
-            <div className="not-prose my-8 p-4 bg-id8-orange/10 border border-id8-orange/30 rounded-lg">
+            <div className="not-prose my-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
               <p className="font-bold text-id8-orange mb-2">When to stop:</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Stop when you'd be happy putting your name on it. If you're past round 5 and still not satisfied, the issue isn't refinement — you need to reset with clearer context or a different approach.
@@ -332,8 +332,8 @@ export default function Module4Page() {
               Sometimes the best feedback is showing AI what you want by comparing to something else:
             </p>
 
-            <div className="not-prose my-8 p-5 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-3">Example comparison prompt:</p>
+            <div className="not-prose my-8 p-5 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-3">Example comparison prompt:</p>
               <div className="text-[var(--text-secondary)] whitespace-pre-wrap">
 {`"Compare what you just wrote to this example I love:
 [paste example]
@@ -353,7 +353,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
               Create a reusable checklist for evaluating AI output. Here's a starting template:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl font-mono text-xs">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-xs">
               <div className="text-id8-orange mb-4 font-bold">REFINEMENT CHECKLIST</div>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <div>
@@ -420,7 +420,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
                   prompt: "Expand section 2 with more detail. Specifically, explain [what]."
                 }
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <p className="font-bold text-sm mb-1">{item.pattern}</p>
                   <p className="text-xs font-mono text-[var(--text-tertiary)]">"{item.prompt}"</p>
                 </div>
@@ -440,7 +440,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
               <li>You realize the initial approach was wrong</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-id8-orange/10 border border-id8-orange/30 rounded-lg">
+            <div className="not-prose my-8 p-4 border-l-2 border-id8-orange bg-[var(--paper-shadow)]">
               <p className="font-bold text-id8-orange mb-2">How to reset gracefully:</p>
               <p className="text-sm text-[var(--text-secondary)] mb-3">
                 "Let's start fresh. I realize the issue isn't the execution — I need to reframe the approach. Here's what I actually need..."
@@ -451,7 +451,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <div className="flex items-center gap-2 mb-4">
                 <RefreshIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">
@@ -495,7 +495,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)] border border-[var(--border)]">
                 <p className="text-sm font-bold mb-2">Pro tip:</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   Save your best refinement prompts. If "cut this by 30% without losing key points" works great, reuse it. Build a library of proven feedback patterns.
@@ -504,7 +504,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

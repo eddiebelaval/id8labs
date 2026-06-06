@@ -57,7 +57,7 @@ export default function Module6Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-6">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -86,7 +86,7 @@ export default function Module6Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1.5 border-l-2 border-id8-orange bg-[var(--paper-shadow)] rounded-full text-id8-orange text-sm font-mono mb-6"
             >
               <span>Module 6</span>
               <span className="text-id8-orange/50">•</span>
@@ -109,16 +109,16 @@ export default function Module6Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Cost Reality
               </h2>
@@ -146,7 +146,7 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-3">
                   <DollarIcon />
                   <h4 className="font-bold text-id8-orange">1. MODEL INFERENCE</h4>
@@ -162,7 +162,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-3">
                   <DollarIcon />
                   <h4 className="font-bold text-id8-orange">2. DATA STORAGE</h4>
@@ -178,7 +178,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-3">
                   <DollarIcon />
                   <h4 className="font-bold text-id8-orange">3. DATA PROCESSING</h4>
@@ -194,7 +194,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-2 mb-3">
                   <DollarIcon />
                   <h4 className="font-bold text-id8-orange">4. MODEL TRAINING</h4>
@@ -210,7 +210,7 @@ export default function Module6Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg col-span-full">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] col-span-full">
                 <div className="flex items-center gap-2 mb-3">
                   <DollarIcon />
                   <h4 className="font-bold text-id8-orange">5. INFRASTRUCTURE & TOOLING</h4>
@@ -234,40 +234,40 @@ export default function Module6Page() {
             </p>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Hidden Cost #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Hidden Cost #1</p>
                 <p className="font-bold">Prompt Token Bloat</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   You send 500 tokens to get 50 back. But you pay for 550. Multiply by 100,000 calls/day and suddenly your context window is a budget line item. <strong>Fix:</strong> Compress prompts, cache system messages, use cheaper models for simple tasks.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Hidden Cost #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Hidden Cost #2</p>
                 <p className="font-bold">Duplicate Predictions</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Users refresh pages. Retry logic fires twice. Webhooks trigger redundantly. You're making the same prediction multiple times for the same input. <strong>Fix:</strong> Cache predictions with TTL, deduplicate requests, implement idempotency.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Hidden Cost #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Hidden Cost #3</p>
                 <p className="font-bold">Embedding Storage Explosion</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   1 million documents × 1536 dimensions × 4 bytes = 6GB of embeddings. Seems manageable. Now add versioning, backups, and indexes. You're at 50GB. Vector databases are not cheap at scale. <strong>Fix:</strong> Dimensionality reduction, prune old embeddings, compress with quantization.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Hidden Cost #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Hidden Cost #4</p>
                 <p className="font-bold">Development Environment Sprawl</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   Every data scientist spins up a GPU instance for experiments. Half are left running overnight. Some are forgotten entirely. You're paying for idle compute. <strong>Fix:</strong> Auto-shutdown policies, shared dev environments, spot instances for experiments.
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Hidden Cost #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Hidden Cost #5</p>
                 <p className="font-bold">Logging Everything Forever</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   You log every prediction for debugging. Good idea. But you never expire the logs. After a year, you have terabytes of logs costing thousands per month in storage. <strong>Fix:</strong> Retention policies, sample logs in production, move to cold storage after 30 days.
@@ -294,55 +294,55 @@ export default function Module6Page() {
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Caching</td>
-                    <td className="py-3 px-4 text-green-400">High (30-60% savings)</td>
+                    <td className="py-3 px-4 text-id8-teal">High (30-60% savings)</td>
                     <td className="py-3 px-4">Low</td>
                     <td className="py-3 px-4">Cache identical requests for 5-60 min TTL</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Model Tiering</td>
-                    <td className="py-3 px-4 text-green-400">High (40-70% savings)</td>
+                    <td className="py-3 px-4 text-id8-teal">High (40-70% savings)</td>
                     <td className="py-3 px-4">Medium</td>
                     <td className="py-3 px-4">Route simple tasks to smaller/cheaper models</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Batch Processing</td>
-                    <td className="py-3 px-4 text-green-400">Medium (20-40% savings)</td>
+                    <td className="py-3 px-4 text-id8-teal">Medium (20-40% savings)</td>
                     <td className="py-3 px-4">Medium</td>
                     <td className="py-3 px-4">Batch non-urgent predictions, run off-peak</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Prompt Optimization</td>
-                    <td className="py-3 px-4 text-green-400">Medium (15-30% savings)</td>
+                    <td className="py-3 px-4 text-id8-teal">Medium (15-30% savings)</td>
                     <td className="py-3 px-4">Low</td>
                     <td className="py-3 px-4">Compress prompts, remove verbose examples</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Rate Limiting</td>
-                    <td className="py-3 px-4 text-yellow-400">Medium (prevents spikes)</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Medium (prevents spikes)</td>
                     <td className="py-3 px-4">Low</td>
                     <td className="py-3 px-4">Cap requests per user/API key, queue excess</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Model Quantization</td>
-                    <td className="py-3 px-4 text-green-400">High (50-75% compute)</td>
+                    <td className="py-3 px-4 text-id8-teal">High (50-75% compute)</td>
                     <td className="py-3 px-4">High</td>
                     <td className="py-3 px-4">Use int8/int4 quantized models where accuracy allows</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Autoscaling</td>
-                    <td className="py-3 px-4 text-yellow-400">Medium (20-40% savings)</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Medium (20-40% savings)</td>
                     <td className="py-3 px-4">Medium</td>
                     <td className="py-3 px-4">Scale to zero during low traffic, scale up on demand</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Spot Instances</td>
-                    <td className="py-3 px-4 text-green-400">High (60-80% on training)</td>
+                    <td className="py-3 px-4 text-id8-teal">High (60-80% on training)</td>
                     <td className="py-3 px-4">Medium</td>
                     <td className="py-3 px-4">Use spot/preemptible for batch jobs and training</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Data Sampling</td>
-                    <td className="py-3 px-4 text-yellow-400">Low-Medium (10-25%)</td>
+                    <td className="py-3 px-4 text-[var(--muted)]">Low-Medium (10-25%)</td>
                     <td className="py-3 px-4">Low</td>
                     <td className="py-3 px-4">Sample logs/metrics instead of storing all</td>
                   </tr>
@@ -356,11 +356,11 @@ export default function Module6Page() {
               Not every task needs your most powerful (and expensive) model. Smart organizations use a tiered approach:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-green-500/20 text-green-400 rounded">TIER 1: Cheap & Fast</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-id8-teal/20 text-id8-teal rounded">TIER 1: Cheap & Fast</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.0001 - $0.001 per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -373,7 +373,7 @@ export default function Module6Page() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-yellow-500/20 text-yellow-400 rounded">TIER 2: Balanced</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-yellow-500/20 text-[var(--muted)] rounded">TIER 2: Balanced</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.001 - $0.01 per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -386,7 +386,7 @@ export default function Module6Page() {
 
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="px-2 py-1 text-xs font-mono bg-red-500/20 text-red-400 rounded">TIER 3: Premium</span>
+                    <span className="px-2 py-1 text-xs font-mono bg-red-500/20 text-[var(--muted)] rounded">TIER 3: Premium</span>
                     <span className="text-sm text-[var(--text-tertiary)]">$0.01 - $0.10+ per call</span>
                   </div>
                   <p className="text-sm text-[var(--text-secondary)] mb-2">
@@ -398,8 +398,8 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                <p className="text-sm font-mono text-blue-400 mb-2">Implementation Pattern</p>
+              <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20">
+                <p className="text-sm font-mono text-[var(--muted)] mb-2">Implementation Pattern</p>
                 <p className="text-sm text-[var(--text-primary)]">
                   Use a cheap classifier (Tier 1) to route requests: simple → Tier 1, moderate → Tier 2, complex → Tier 3. A well-tuned router can save 40-60% on inference costs with minimal accuracy loss.
                 </p>
@@ -460,7 +460,7 @@ export default function Module6Page() {
               Eventually, you'll need to justify AI spend to people who don't understand tokens or embeddings. Here's how to frame it:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="space-y-4">
                 <div>
                   <p className="font-bold text-id8-orange mb-2">Don't Say:</p>
@@ -469,7 +469,7 @@ export default function Module6Page() {
                   </p>
                 </div>
                 <div>
-                  <p className="font-bold text-green-400 mb-2">Do Say:</p>
+                  <p className="font-bold text-id8-teal mb-2">Do Say:</p>
                   <p className="text-sm text-[var(--text-secondary)]">
                     "We're spending $50K/month on AI to automate 60% of Tier 1 support tickets. This saves $120K/month in support labor costs, while improving response time from 4 hours to 30 seconds. Net savings: $70K/month. ROI: 140%."
                   </p>
@@ -489,7 +489,7 @@ export default function Module6Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -530,7 +530,7 @@ export default function Module6Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A cost optimization playbook with current cost breakdown, identified waste, prioritized optimization strategies, estimated savings, and finance-ready ROI justification. Share with leadership before costs become a crisis.
                 </p>
@@ -538,7 +538,7 @@ export default function Module6Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

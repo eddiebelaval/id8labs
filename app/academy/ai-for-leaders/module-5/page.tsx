@@ -59,7 +59,7 @@ export default function Module5Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-5">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -111,16 +111,16 @@ export default function Module5Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Problem */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Vendor Landscape
               </h2>
@@ -189,7 +189,7 @@ export default function Module5Page() {
                   questions: "Funding, team, market position, product velocity"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-2xl">{item.icon}</span>
                     <span className="text-xs font-mono text-id8-orange">{item.weight}</span>
@@ -217,7 +217,7 @@ export default function Module5Page() {
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Question</th>
                     <th className="text-left py-3 px-4">What You're Looking For</th>
-                    <th className="text-left py-3 px-4 text-red-400">Red Flag</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Red Flag</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -260,7 +260,7 @@ export default function Module5Page() {
               Integration is where hidden costs live. A tool that requires 6 months of custom engineering isn't "easy to integrate" no matter what the sales deck says.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">Integration Assessment Checklist</h3>
               <div className="space-y-3">
                 {[
@@ -304,8 +304,8 @@ export default function Module5Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Security Area</th>
-                    <th className="text-left py-3 px-4 text-green-400">Must Have</th>
-                    <th className="text-left py-3 px-4 text-yellow-400">Nice to Have</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Must Have</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">Nice to Have</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -349,53 +349,53 @@ export default function Module5Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <p className="font-mono text-sm text-green-400 mb-2">Good Support Signals</p>
+              <div className="p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-id8-teal mb-2">Good Support Signals</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Named account manager (not rotating support queue)</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>SLA includes response AND resolution time</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Technical documentation you can actually follow</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Active community or user forum</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-green-400">✓</span>
+                    <span className="text-id8-teal">✓</span>
                     <span>Regular training/onboarding for new team members</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-2">Bad Support Signals</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-2">Bad Support Signals</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>"Email us and we'll get back to you"</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>Support is offshore with no AI expertise</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>Documentation is just API reference (no examples)</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>No status page or uptime history published</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-red-400">✗</span>
+                    <span className="text-[var(--muted)]">✗</span>
                     <span>"Premium support" is an expensive add-on</span>
                   </li>
                 </ul>
@@ -447,7 +447,7 @@ export default function Module5Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
+            <div className="not-prose my-8 p-6 bg-yellow-500/10 border border-yellow-500/20">
               <div className="flex items-start gap-3">
                 <AlertIcon />
                 <div>
@@ -471,7 +471,7 @@ export default function Module5Page() {
               The AI vendor landscape is consolidating rapidly. You don't want to pick a tool that gets acqui-hired or shut down 18 months in.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">Vendor Stability Indicators</h3>
               <div className="space-y-4">
                 <div>
@@ -556,12 +556,12 @@ export default function Module5Page() {
                   why: "You're locked into their consulting rates forever. Look for partner ecosystem instead."
                 },
               ].map((item, i) => (
-                <div key={i} className="flex gap-3 p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-sm">
+                <div key={i} className="flex gap-3 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 text-[var(--muted)] flex items-center justify-center font-bold text-sm">
                     {i + 1}
                   </span>
                   <div>
-                    <p className="font-bold text-red-400">{item.flag}</p>
+                    <p className="font-bold text-[var(--muted)]">{item.flag}</p>
                     <p className="text-sm text-[var(--text-secondary)] mt-1">{item.why}</p>
                   </div>
                 </div>
@@ -574,7 +574,7 @@ export default function Module5Page() {
               Never buy without a POC. Here's how to structure one that actually proves value:
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h3 className="font-bold mb-4">The 4-Week POC Framework</h3>
 
               <div className="space-y-6">
@@ -631,7 +631,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Non-negotiable:</strong> The vendor must agree to success criteria upfront. If they won't commit to measurable outcomes, they don't believe in their product.
                 </p>
@@ -682,7 +682,7 @@ export default function Module5Page() {
                   caveat: "Better to pay slightly more and have flexibility than save 10% and be locked in"
                 },
               ].map((item, i) => (
-                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+                <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-start gap-3">
                     <span className="flex-shrink-0 w-8 h-8 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-sm">
                       {i + 1}
@@ -692,7 +692,7 @@ export default function Module5Page() {
                       <p className="text-sm text-[var(--text-secondary)] mt-1">
                         <strong>Tactic:</strong> {item.tactic}
                       </p>
-                      <p className="text-xs text-yellow-400 mt-2">
+                      <p className="text-xs text-[var(--muted)] mt-2">
                         <strong>Caveat:</strong> {item.caveat}
                       </p>
                     </div>
@@ -702,7 +702,7 @@ export default function Module5Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -750,7 +750,7 @@ export default function Module5Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm font-bold mb-2">Scorecard Template</p>
                 <div className="font-mono text-xs bg-[var(--bg-secondary)] p-3 rounded space-y-1">
                   <p>Capability:     [Score 1-10] × [Weight %] = [Weighted Score]</p>
@@ -766,7 +766,7 @@ export default function Module5Page() {
                 </p>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A scored evaluation you can present to stakeholders with clear recommendation and supporting evidence. This becomes your template for all future vendor evaluations.
                 </p>
@@ -774,7 +774,7 @@ export default function Module5Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

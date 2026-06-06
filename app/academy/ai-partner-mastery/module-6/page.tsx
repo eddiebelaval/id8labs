@@ -58,7 +58,7 @@ export default function Module6Page() {
     <ModuleAnnotations courseSlug="ai-partner-mastery" moduleSlug="module-6">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -110,16 +110,16 @@ export default function Module6Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Scenario */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
@@ -158,8 +158,8 @@ export default function Module6Page() {
               <li><strong>Subtly biased</strong> (patterns from training data you didn't intend)</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="font-bold text-red-400 mb-2">The Trust Trap</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+              <p className="font-bold text-[var(--muted)] mb-2">The Trust Trap</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 The better you get at using AI, the more you trust it. The more you trust it, the less you verify. The less you verify, the more likely something critical slips through.
               </p>
@@ -175,7 +175,7 @@ export default function Module6Page() {
               Not all AI outputs need the same level of scrutiny. The key is matching verification intensity to stakes and risk.
             </p>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <ShieldCheckIcon />
                 <h3 className="text-xl font-bold">Tier 1: Spot Check (Low Stakes)</h3>
@@ -202,7 +202,7 @@ export default function Module6Page() {
               </p>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <ShieldCheckIcon />
                 <h3 className="text-xl font-bold">Tier 2: Structured Review (Medium Stakes)</h3>
@@ -233,7 +233,7 @@ export default function Module6Page() {
               </p>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <ShieldCheckIcon />
                 <h3 className="text-xl font-bold">Tier 3: Full Validation (High Stakes)</h3>
@@ -319,8 +319,8 @@ export default function Module6Page() {
               One powerful technique: <strong>Use AI to verify its own work.</strong> This doesn't replace human review, but it catches many issues before you even look.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg font-mono text-sm">
-              <p className="text-green-400 mb-4">The Self-Critique Prompt:</p>
+            <div className="not-prose my-8 p-4 border border-[var(--hair-hard)] bg-[var(--paper-shadow)] font-mono text-sm">
+              <p className="text-id8-teal mb-4">The Self-Critique Prompt:</p>
               <div className="text-[var(--text-secondary)] space-y-4 whitespace-pre-wrap">
 {`You just generated the following content for me:
 
@@ -342,7 +342,7 @@ Be brutally honest. I need to know where this might fail.`}
               For recurring work types (reports, analysis, proposals), create reference examples of your best work. Then use them as benchmarks.
             </p>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg font-mono text-sm">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-sm">
               <p className="text-[var(--text-primary)] mb-4">The Comparison Prompt:</p>
               <div className="text-[var(--text-secondary)] space-y-3 whitespace-pre-wrap">
 {`Here's a report I wrote last quarter that represents my quality standard:
@@ -368,7 +368,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-3">For Strategic Documents</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li>☐ Verify all competitive data</li>
@@ -378,7 +378,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
                   <li>☐ Ensure strategic coherence</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-3">For Technical Content</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li>☐ Verify technical accuracy</li>
@@ -388,7 +388,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
                   <li>☐ Ensure current best practices</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-3">For Client Communications</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li>☐ Tone matches relationship</li>
@@ -398,7 +398,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
                   <li>☐ Clear next steps</li>
                 </ul>
               </div>
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <p className="font-bold mb-3">For Research/Analysis</p>
                 <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   <li>☐ Sources are credible</li>
@@ -424,14 +424,14 @@ Compare them. Does the new version match the quality, depth, and specificity of 
               <li><strong>Trust your gut:</strong> If something feels off but you can't pinpoint why, don't ship it.</li>
             </ul>
 
-            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+            <div className="not-prose my-8 p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <p className="text-sm italic text-[var(--text-secondary)]">
                 Remember: AI is here to accelerate your work, not replace your judgment. If reviewing and fixing the output takes longer than doing it yourself, that's data. Adjust your approach.
               </p>
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -472,7 +472,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-xs font-mono text-id8-orange mb-2">DELIVERABLE</p>
                 <p className="text-sm text-[var(--text-secondary)]">
                   A one-page QA Checklist document with work types, stakes levels, and specific verification steps. Keep this accessible for every AI session.
@@ -481,7 +481,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

@@ -60,7 +60,7 @@ export default function Module7Page() {
     <ModuleAnnotations courseSlug="ai-at-scale" moduleSlug="module-7">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -89,7 +89,7 @@ export default function Module7Page() {
 
             <m.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1.5 border-l-2 border-id8-orange bg-[var(--paper-shadow)] rounded-full text-id8-orange text-sm font-mono mb-6"
             >
               <span>Module 7</span>
               <span className="text-id8-orange/50">•</span>
@@ -112,16 +112,16 @@ export default function Module7Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Team Scaling Problem
               </h2>
@@ -146,9 +146,9 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 space-y-6">
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-blue-400 rounded">STAGE 1</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 1</span>
                   <h4 className="font-bold text-id8-orange">The Lone Experimenter (0-1 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -156,7 +156,7 @@ export default function Module7Page() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="font-mono text-xs text-green-400 mb-1">Good For:</p>
+                    <p className="font-mono text-xs text-id8-teal mb-1">Good For:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• Initial POCs and exploration</li>
                       <li>• Learning what's possible</li>
@@ -164,7 +164,7 @@ export default function Module7Page() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-mono text-xs text-red-400 mb-1">Breaks At:</p>
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Breaks At:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• 2+ concurrent projects</li>
                       <li>• First production deployment</li>
@@ -174,9 +174,9 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-blue-400 rounded">STAGE 2</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 2</span>
                   <h4 className="font-bold text-id8-orange">The Research + Engineering Split (2-4 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -184,7 +184,7 @@ export default function Module7Page() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="font-mono text-xs text-green-400 mb-1">Good For:</p>
+                    <p className="font-mono text-xs text-id8-teal mb-1">Good For:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• 2-5 projects in flight</li>
                       <li>• First production models</li>
@@ -192,7 +192,7 @@ export default function Module7Page() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-mono text-xs text-red-400 mb-1">Breaks At:</p>
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Breaks At:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• 5+ production models</li>
                       <li>• Complex data pipelines</li>
@@ -202,9 +202,9 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-blue-400 rounded">STAGE 3</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 3</span>
                   <h4 className="font-bold text-id8-orange">The Platform Team (5-12 people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -212,7 +212,7 @@ export default function Module7Page() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="font-mono text-xs text-green-400 mb-1">Good For:</p>
+                    <p className="font-mono text-xs text-id8-teal mb-1">Good For:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• 10+ production models</li>
                       <li>• Reusable ML infrastructure</li>
@@ -220,7 +220,7 @@ export default function Module7Page() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-mono text-xs text-red-400 mb-1">Breaks At:</p>
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Breaks At:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• 20+ models across divisions</li>
                       <li>• Competing priorities</li>
@@ -230,9 +230,9 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-blue-400 rounded">STAGE 4</span>
+                  <span className="px-2 py-1 text-xs font-mono bg-blue-500/20 text-[var(--muted)] rounded">STAGE 4</span>
                   <h4 className="font-bold text-id8-orange">The Distributed Model (12+ people)</h4>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-3">
@@ -240,7 +240,7 @@ export default function Module7Page() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="font-mono text-xs text-green-400 mb-1">Good For:</p>
+                    <p className="font-mono text-xs text-id8-teal mb-1">Good For:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• AI as core competency</li>
                       <li>• Enterprise-wide deployment</li>
@@ -248,7 +248,7 @@ export default function Module7Page() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-mono text-xs text-red-400 mb-1">Watch Out For:</p>
+                    <p className="font-mono text-xs text-[var(--muted)] mb-1">Watch Out For:</p>
                     <ul className="text-[var(--text-tertiary)] space-y-1">
                       <li>• Fragmentation and duplication</li>
                       <li>• Inconsistent quality</li>
@@ -314,8 +314,8 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-              <p className="text-sm font-mono text-blue-400 mb-2">Hiring Priority Rule</p>
+            <div className="not-prose my-8 p-5 bg-blue-500/10 border border-blue-500/20">
+              <p className="text-sm font-mono text-[var(--muted)] mb-2">Hiring Priority Rule</p>
               <p className="text-sm text-[var(--text-primary)]">
                 Hire for bottlenecks, not resumes. If models are great but nothing ships, hire ML engineer before another data scientist. If production is stable but you're out of ideas, hire data scientist. Let pain points guide hiring, not org charts.
               </p>
@@ -425,7 +425,7 @@ export default function Module7Page() {
               </table>
             </div>
 
-            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <p className="font-bold text-id8-orange mb-3">The 70-20-10 Rule for AI Capabilities</p>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                 <li><strong>70% Buy:</strong> Use third-party APIs for commoditized AI (OpenAI, Google Vision, etc.)</li>
@@ -444,8 +444,8 @@ export default function Module7Page() {
             </p>
 
             <div className="not-prose my-8 grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                <h4 className="font-bold text-green-400 mb-2">Do This</h4>
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
+                <h4 className="font-bold text-id8-teal mb-2">Do This</h4>
                 <ul className="text-sm space-y-2 text-[var(--text-secondary)]">
                   <li>✓ Weekly model review: what shipped, what's blocked</li>
                   <li>✓ Bi-weekly paper/tool review: share learnings</li>
@@ -457,8 +457,8 @@ export default function Module7Page() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                <h4 className="font-bold text-red-400 mb-2">Avoid This</h4>
+              <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
+                <h4 className="font-bold text-[var(--muted)] mb-2">Avoid This</h4>
                 <ul className="text-sm space-y-2 text-[var(--text-secondary)]">
                   <li>✗ Research with no deployment path</li>
                   <li>✗ Models in production with no owner</li>
@@ -472,7 +472,7 @@ export default function Module7Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -513,7 +513,7 @@ export default function Module7Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A 12-month hiring roadmap with current state, identified bottlenecks, prioritized roles, hiring timeline, and build/buy/partner strategy. Share with leadership to align on team growth and budget.
                 </p>
@@ -521,7 +521,7 @@ export default function Module7Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">

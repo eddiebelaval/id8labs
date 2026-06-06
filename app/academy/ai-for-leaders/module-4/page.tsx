@@ -51,7 +51,7 @@ export default function Module4Page() {
     <ModuleAnnotations courseSlug="ai-for-leaders" moduleSlug="module-4">
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 bg-zone-text">
+      <section className="pt-16 pb-10">
         <div className="container">
           <m.div
             initial="initial"
@@ -103,16 +103,16 @@ export default function Module4Page() {
           </m.div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+        
       </section>
 
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
 
             {/* The Reality Check */}
-            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
@@ -140,8 +140,8 @@ export default function Module4Page() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-[var(--border)]">
-                    <th className="text-left py-3 px-4 text-red-400">What Organizations Do</th>
-                    <th className="text-left py-3 px-4 text-green-400">What Actually Works</th>
+                    <th className="text-left py-3 px-4 text-[var(--muted)]">What Organizations Do</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">What Actually Works</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
@@ -181,7 +181,7 @@ export default function Module4Page() {
 
             <div className="not-prose my-8 space-y-6">
               {/* MVP Stage */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">1</span>
                   <h3 className="text-xl font-bold">MVP Stage (0-6 months)</h3>
@@ -225,7 +225,7 @@ export default function Module4Page() {
                     </ul>
                   </div>
                 </div>
-                <div className="p-3 bg-[var(--bg-primary)] rounded-lg">
+                <div className="p-3 bg-[var(--bg-primary)]">
                   <p className="text-xs text-[var(--text-tertiary)]">
                     <strong>Cost estimate:</strong> $80K-$150K/month (mix of FTE + contractors)<br/>
                     <strong>Key risk:</strong> Hiring too many people before proving the use case works
@@ -234,7 +234,7 @@ export default function Module4Page() {
               </div>
 
               {/* Scale Stage */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">2</span>
                   <h3 className="text-xl font-bold">Scale Stage (6-18 months)</h3>
@@ -290,7 +290,7 @@ export default function Module4Page() {
                     </ul>
                   </div>
                 </div>
-                <div className="p-3 bg-[var(--bg-primary)] rounded-lg">
+                <div className="p-3 bg-[var(--bg-primary)]">
                   <p className="text-xs text-[var(--text-tertiary)]">
                     <strong>Cost estimate:</strong> $200K-$400K/month (mostly FTE, selective contractors)<br/>
                     <strong>Key risk:</strong> Scaling team faster than infrastructure can support
@@ -299,7 +299,7 @@ export default function Module4Page() {
               </div>
 
               {/* Production Stage */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-full bg-id8-orange/20 text-id8-orange flex items-center justify-center font-bold text-lg">3</span>
                   <h3 className="text-xl font-bold">Production Stage (18+ months)</h3>
@@ -355,7 +355,7 @@ export default function Module4Page() {
                     </ul>
                   </div>
                 </div>
-                <div className="p-3 bg-[var(--bg-primary)] rounded-lg">
+                <div className="p-3 bg-[var(--bg-primary)]">
                   <p className="text-xs text-[var(--text-tertiary)]">
                     <strong>Cost estimate:</strong> $500K-$1M+/month (fully-staffed AI function)<br/>
                     <strong>Key risk:</strong> Becoming too centralized; losing connection to business needs
@@ -384,49 +384,49 @@ export default function Module4Page() {
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Head of AI</td>
                     <td className="py-3 px-4 text-center">Balanced</td>
-                    <td className="py-3 px-4 text-center text-blue-400">Strategic</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Strategic</td>
                     <td className="py-3 px-4">Vision, roadmap, stakeholder alignment</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">AI Product Manager</td>
-                    <td className="py-3 px-4 text-center text-green-400">Business-leaning</td>
+                    <td className="py-3 px-4 text-center text-id8-teal">Business-leaning</td>
                     <td className="py-3 px-4 text-center">Balanced</td>
                     <td className="py-3 px-4">Define use cases, success metrics, prioritization</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">ML Engineer</td>
-                    <td className="py-3 px-4 text-center text-red-400">Technical</td>
-                    <td className="py-3 px-4 text-center text-purple-400">Operational</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Technical</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Operational</td>
                     <td className="py-3 px-4">Build, train, and tune models</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Data Scientist</td>
-                    <td className="py-3 px-4 text-center text-red-400">Technical</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Technical</td>
                     <td className="py-3 px-4 text-center">Balanced</td>
                     <td className="py-3 px-4">Exploratory analysis, hypothesis testing, insights</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">MLOps Engineer</td>
-                    <td className="py-3 px-4 text-center text-red-400">Technical</td>
-                    <td className="py-3 px-4 text-center text-purple-400">Operational</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Technical</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Operational</td>
                     <td className="py-3 px-4">Deployment, monitoring, infrastructure reliability</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">Data Engineer</td>
-                    <td className="py-3 px-4 text-center text-red-400">Technical</td>
-                    <td className="py-3 px-4 text-center text-purple-400">Operational</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Technical</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Operational</td>
                     <td className="py-3 px-4">Data pipelines, quality, transformation</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4 font-bold">AI Ethics Lead</td>
                     <td className="py-3 px-4 text-center">Balanced</td>
-                    <td className="py-3 px-4 text-center text-blue-400">Strategic</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Strategic</td>
                     <td className="py-3 px-4">Risk assessment, governance, compliance frameworks</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-bold">Research Scientist</td>
-                    <td className="py-3 px-4 text-center text-red-400">Technical</td>
-                    <td className="py-3 px-4 text-center text-blue-400">Strategic</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Technical</td>
+                    <td className="py-3 px-4 text-center text-[var(--muted)]">Strategic</td>
                     <td className="py-3 px-4">Novel approaches, R&D, algorithm innovation</td>
                   </tr>
                 </tbody>
@@ -445,7 +445,7 @@ export default function Module4Page() {
 
             <div className="not-prose my-8 space-y-6">
               {/* Data Scientist */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-lg font-bold mb-3 text-id8-orange">Data Scientist</h3>
                 <div className="space-y-3 text-sm">
                   <div>
@@ -474,7 +474,7 @@ export default function Module4Page() {
               </div>
 
               {/* ML Engineer */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-lg font-bold mb-3 text-id8-orange">ML Engineer / Applied Scientist</h3>
                 <div className="space-y-3 text-sm">
                   <div>
@@ -503,7 +503,7 @@ export default function Module4Page() {
               </div>
 
               {/* AI Product Manager */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-lg font-bold mb-3 text-id8-orange">AI Product Manager</h3>
                 <div className="space-y-3 text-sm">
                   <div>
@@ -532,7 +532,7 @@ export default function Module4Page() {
               </div>
 
               {/* AI Ethics Lead */}
-              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+              <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <h3 className="text-lg font-bold mb-3 text-id8-orange">AI Ethics / Governance Lead</h3>
                 <div className="space-y-3 text-sm">
                   <div>
@@ -572,39 +572,39 @@ export default function Module4Page() {
                 <thead>
                   <tr className="border-b border-[var(--border)]">
                     <th className="text-left py-3 px-4">Scenario</th>
-                    <th className="text-left py-3 px-4 text-green-400">Recommended Approach</th>
+                    <th className="text-left py-3 px-4 text-id8-teal">Recommended Approach</th>
                     <th className="text-left py-3 px-4">Why</th>
                   </tr>
                 </thead>
                 <tbody className="text-[var(--text-secondary)]">
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4">First AI project, unclear ROI</td>
-                    <td className="py-3 px-4 font-bold text-green-400">Contract specialists</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Contract specialists</td>
                     <td className="py-3 px-4">Minimize commitment until value is proven</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4">Multiple use cases validated</td>
-                    <td className="py-3 px-4 font-bold text-green-400">Hire core team</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Hire core team</td>
                     <td className="py-3 px-4">Consistent workload justifies full-time staff</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4">Specialized, one-time need</td>
-                    <td className="py-3 px-4 font-bold text-green-400">Contract expert</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Contract expert</td>
                     <td className="py-3 px-4">Expensive to hire and retain for rare skillset</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4">Strong software team, new to AI</td>
-                    <td className="py-3 px-4 font-bold text-green-400">Upskill + hire 1-2 specialists</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Upskill + hire 1-2 specialists</td>
                     <td className="py-3 px-4">Leverage existing talent with targeted expertise</td>
                   </tr>
                   <tr className="border-b border-[var(--border)]">
                     <td className="py-3 px-4">Strategic capability long-term</td>
-                    <td className="py-3 px-4 font-bold text-green-400">Build in-house team</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Build in-house team</td>
                     <td className="py-3 px-4">Core competency requires ownership and control</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4">Governance and risk management</td>
-                    <td className="py-3 px-4 font-bold text-green-400">Hybrid (internal lead + external audit)</td>
+                    <td className="py-3 px-4 font-bold text-id8-teal">Hybrid (internal lead + external audit)</td>
                     <td className="py-3 px-4">Need both internal advocacy and third-party validation</td>
                   </tr>
                 </tbody>
@@ -619,8 +619,8 @@ export default function Module4Page() {
             <h2>Six Expensive Mistakes (And How to Avoid Them)</h2>
 
             <div className="not-prose my-8 space-y-4">
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #1</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #1</p>
                 <p className="font-bold">Hiring a "Head of AI" before you know what you're building</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   <strong>Why it fails:</strong> Senior leaders need direction. Without a validated use case, they'll spend months "strategizing" instead of shipping.<br/>
@@ -628,8 +628,8 @@ export default function Module4Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #2</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #2</p>
                 <p className="font-bold">Assuming software engineers can "pick up" ML on the job</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   <strong>Why it fails:</strong> ML engineering is a distinct discipline with different mental models, tools, and best practices.<br/>
@@ -637,8 +637,8 @@ export default function Module4Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #3</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #3</p>
                 <p className="font-bold">Building a centralized "AI Lab" disconnected from business units</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   <strong>Why it fails:</strong> Labs produce impressive demos that don't solve real problems. Business units don't adopt what they didn't help build.<br/>
@@ -646,8 +646,8 @@ export default function Module4Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #4</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #4</p>
                 <p className="font-bold">Hiring only for technical skills and ignoring communication ability</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   <strong>Why it fails:</strong> AI projects live or die on stakeholder buy-in. Brilliant engineers who can't explain their work create friction and mistrust.<br/>
@@ -655,8 +655,8 @@ export default function Module4Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #5</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #5</p>
                 <p className="font-bold">Skipping the AI Product Manager role</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   <strong>Why it fails:</strong> Without a dedicated product owner, engineers build what's technically interesting instead of what's business-critical.<br/>
@@ -664,8 +664,8 @@ export default function Module4Page() {
                 </p>
               </div>
 
-              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                <p className="font-mono text-sm text-red-400 mb-1">Mistake #6</p>
+              <div className="p-4 border border-[var(--hair)] bg-[var(--paper-shadow)]">
+                <p className="font-mono text-sm text-[var(--muted)] mb-1">Mistake #6</p>
                 <p className="font-bold">Treating AI governance as an afterthought</p>
                 <p className="text-sm text-[var(--text-secondary)] mt-2">
                   <strong>Why it fails:</strong> Retrofitting ethics and compliance is expensive and slow. You'll delay launches and create technical debt.<br/>
@@ -675,7 +675,7 @@ export default function Module4Page() {
             </div>
 
             {/* Your Turn */}
-            <div className="not-prose my-12 p-8 bg-gradient-to-br from-id8-orange/10 to-id8-orange/5 border border-id8-orange/30 rounded-xl">
+            <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
@@ -716,13 +716,13 @@ export default function Module4Page() {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-[var(--bg-primary)] rounded-lg">
+              <div className="mt-6 p-4 bg-[var(--bg-primary)]">
                 <p className="text-sm text-[var(--text-secondary)]">
                   <strong>Deliverable:</strong> A one-page team structure plan showing roles, timing (months 0-6 vs 6-12), hire/contract/upskill decisions, and budget by quarter. This becomes your hiring roadmap.
                 </p>
               </div>
 
-              <div className="mt-4 p-4 border border-id8-orange/30 rounded-lg">
+              <div className="mt-4 p-4 border border-id8-orange/30">
                 <p className="text-xs font-mono uppercase tracking-wider text-id8-orange mb-2">Template Structure</p>
                 <div className="text-sm space-y-2 text-[var(--text-secondary)]">
                   <p><strong>Section 1:</strong> Current State (team size, skills, gaps)</p>
@@ -734,7 +734,7 @@ export default function Module4Page() {
             </div>
 
             {/* Key Takeaways */}
-            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
+            <div className="not-prose my-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-4">
                 <LightbulbIcon />
                 <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange">
