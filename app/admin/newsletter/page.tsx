@@ -134,77 +134,77 @@ export default function NewsletterDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Link
           href="/admin/newsletter/compose"
-          className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)]/50 transition-colors group"
+          className="p-6 bg-[var(--paper)] border border-[var(--hair)] hover:border-id8-orange transition-colors duration-150 group"
         >
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-[var(--id8-orange)]/10 rounded-lg text-[var(--id8-orange)]">
+            <div className="p-3 bg-[var(--paper-shadow)] text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--id8-orange)] transition-colors">
+              <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
                 Compose Issue
               </h3>
-              <p className="text-sm text-[var(--text-secondary)]">Write and send a new newsletter</p>
+              <p className="text-sm text-[var(--muted)]">Write and send a new newsletter</p>
             </div>
           </div>
         </Link>
 
         <Link
           href="/admin/newsletter/subscribers"
-          className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)]/50 transition-colors group"
+          className="p-6 bg-[var(--paper)] border border-[var(--hair)] hover:border-id8-orange transition-colors duration-150 group"
         >
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-500/10 rounded-lg text-blue-500">
+            <div className="p-3 bg-[var(--paper-shadow)] text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--id8-orange)] transition-colors">
+              <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
                 Subscribers
               </h3>
-              <p className="text-sm text-[var(--text-secondary)]">View and manage your audience</p>
+              <p className="text-sm text-[var(--muted)]">View and manage your audience</p>
             </div>
           </div>
         </Link>
 
         <Link
           href="/newsletter"
-          className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)]/50 transition-colors group"
+          className="p-6 bg-[var(--paper)] border border-[var(--hair)] hover:border-id8-orange transition-colors duration-150 group"
         >
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-green-500/10 rounded-lg text-green-500">
+            <div className="p-3 bg-[var(--paper-shadow)] text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--id8-orange)] transition-colors">
+              <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
                 View Archive
               </h3>
-              <p className="text-sm text-[var(--text-secondary)]">See public newsletter page</p>
+              <p className="text-sm text-[var(--muted)]">See public newsletter page</p>
             </div>
           </div>
         </Link>
 
         <Link
           href="/admin/newsletter/shipped"
-          className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl hover:border-[var(--id8-orange)]/50 transition-colors group"
+          className="p-6 bg-[var(--paper)] border border-[var(--hair)] hover:border-id8-orange transition-colors duration-150 group"
         >
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-[var(--id8-orange)]/10 rounded-lg text-[var(--id8-orange)]">
+            <div className="p-3 bg-[var(--paper-shadow)] text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2M9 11h4M9 15h4" />
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--id8-orange)] transition-colors">
+              <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] group-hover:text-id8-orange transition-colors duration-150">
                 Shipped. Dashboard
               </h3>
-              <p className="text-sm text-[var(--text-secondary)]">Magazine subscribers, by issue</p>
+              <p className="text-sm text-[var(--muted)]">Magazine subscribers, by issue</p>
             </div>
           </div>
         </Link>
@@ -218,7 +218,7 @@ export default function NewsletterDashboard() {
           </svg>
           <div>
             <p className="text-sm font-medium text-blue-600 dark:text-blue-400">CLI Access Available</p>
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-sm text-[var(--muted)]">
               Use the Newsletter MCP server to manage subscribers and send newsletters from Claude Code.
               Run <code className="px-1 py-0.5 bg-[var(--bg-primary)] rounded">newsletter_stats</code> to get started.
             </p>

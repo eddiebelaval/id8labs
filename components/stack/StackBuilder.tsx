@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Package, Trash2, X, ChevronDown, ChevronUp } from 'lucide-react'
+import { Trash2, ChevronDown, ChevronUp } from 'lucide-react'
 import { useStackStore } from '@/lib/stores/stack-store'
 import { StackItem } from './StackItem'
 import { GeneratedCommand } from './GeneratedCommand'
