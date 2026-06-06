@@ -123,7 +123,7 @@ export default function Module6Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Meet Dr. Amara Patel</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Meet Dr. Amara Patel</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Amara is a research director at BioSynth, a biotech startup developing next-gen antibiotics. She's preparing a grant proposal worth $4.2M. The deadline is in 48 hours.
@@ -178,7 +178,7 @@ export default function Module6Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <ShieldCheckIcon />
-                <h3 className="text-xl font-bold">Tier 1: Spot Check (Low Stakes)</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Tier 1: Spot Check (Low Stakes)</h3>
               </div>
               <p className="text-sm text-[var(--text-secondary)] mb-4">
                 For drafts, brainstorms, internal notes — work that won't leave your desk yet.
@@ -205,7 +205,7 @@ export default function Module6Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <ShieldCheckIcon />
-                <h3 className="text-xl font-bold">Tier 2: Structured Review (Medium Stakes)</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Tier 2: Structured Review (Medium Stakes)</h3>
               </div>
               <p className="text-sm text-[var(--text-secondary)] mb-4">
                 For client deliverables, team presentations, published content — work others will see.
@@ -236,7 +236,7 @@ export default function Module6Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <ShieldCheckIcon />
-                <h3 className="text-xl font-bold">Tier 3: Full Validation (High Stakes)</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Tier 3: Full Validation (High Stakes)</h3>
               </div>
               <p className="text-sm text-[var(--text-secondary)] mb-4">
                 For legal documents, regulatory submissions, financial analysis, public statements — work with real consequences.
@@ -435,7 +435,7 @@ Compare them. Does the new version match the quality, depth, and specificity of 
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Personal QA Checklist</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Personal QA Checklist</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 45 minutes<br />
                 <strong>You'll need:</strong> Recent AI outputs you've used + examples of your best work

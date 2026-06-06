@@ -122,7 +122,7 @@ export default function Module4Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Keep Sensitive Data Where It Belongs</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Keep Sensitive Data Where It Belongs</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've chosen your deployment architecture and selected your model. But private AI isn't just about where the model runs — it's about how data flows through your entire system. A single misconfigured endpoint or overlooked log file can expose everything you worked to protect.
@@ -517,7 +517,7 @@ export default function Module4Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Data Flow Diagram</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Data Flow Diagram</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 25 minutes<br />
                 <strong>You'll need:</strong> Your AI use cases, deployment architecture, model selection

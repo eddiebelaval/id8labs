@@ -122,7 +122,7 @@ export default function Module6Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Cost Reality
               </h2>
-              <h3 className="text-2xl font-bold mb-4">When Your AI Budget Becomes the CFO's Problem</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">When Your AI Budget Becomes the CFO's Problem</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Month 1: $2,000 in API costs. Finance barely notices.<br />
@@ -493,7 +493,7 @@ export default function Module6Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Cost Optimization Playbook</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Cost Optimization Playbook</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 40 minutes<br />
                 <strong>You'll need:</strong> Current AI cost breakdown (or estimates for planned deployment)

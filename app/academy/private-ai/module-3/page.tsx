@@ -137,7 +137,7 @@ export default function Module3Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Model Landscape
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Choosing Models That Respect Your Constraints</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Choosing Models That Respect Your Constraints</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Not all AI models are created equal — especially when it comes to private deployment.
@@ -283,11 +283,11 @@ export default function Module3Page() {
 
             <div className="not-prose my-8">
               <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
-                <h3 className="text-xl font-bold mb-4">Model Size Guidelines</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Model Size Guidelines</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-id8-teal">1-3B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-teal">1-3B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Edge / Mobile</p>
@@ -296,7 +296,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-[var(--muted)]">7-8B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-[var(--muted)]">7-8B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Sweet Spot for Most Use Cases</p>
@@ -305,7 +305,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-id8-orange">13-14B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-orange">13-14B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Enhanced Reasoning</p>
@@ -314,7 +314,7 @@ export default function Module3Page() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-16 text-center">
-                      <span className="text-2xl font-bold text-[var(--muted)]">30-70B</span>
+                      <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-[var(--muted)]">30-70B</span>
                     </div>
                     <div className="flex-1 p-3 bg-[var(--bg-primary)]">
                       <p className="font-bold">Near-GPT-4 Capability</p>
@@ -618,7 +618,7 @@ export default function Module3Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Model Selection Matrix</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Model Selection Matrix</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> List of your AI use cases from Module 1, deployment architecture from Module 2

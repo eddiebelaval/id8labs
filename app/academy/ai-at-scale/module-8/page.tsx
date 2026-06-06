@@ -124,7 +124,7 @@ export default function Module8Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Architecture Problem
               </h2>
-              <h3 className="text-2xl font-bold mb-4">When Your "Temporary" AI Solution Becomes Permanent Infrastructure</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">When Your "Temporary" AI Solution Becomes Permanent Infrastructure</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You built an MVP. It worked. So you built another one. And another. Now you have 15 AI services, each architected differently, none talking to each other, all maintained by different teams.
@@ -536,7 +536,7 @@ export default function Module8Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Architecture Decision Record</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Architecture Decision Record</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 45 minutes<br />
                 <strong>You'll need:</strong> One significant architectural decision you're facing (or have made recently)

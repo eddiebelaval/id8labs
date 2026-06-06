@@ -125,7 +125,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Meet Jordan Kim</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Meet Jordan Kim</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Jordan is a product manager at a fast-growing SaaS company. She's been through every module of this course. She's built frameworks, created QA checklists, practiced decomposition. She knows the techniques work.
@@ -180,7 +180,7 @@ export default function Module7Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <WorkflowIcon />
-                <h3 className="text-xl font-bold">The 4 Integration Points</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The 4 Integration Points</h3>
               </div>
               <div className="space-y-6">
                 <div className="border-l-4 border-id8-orange pl-4">
@@ -448,7 +448,7 @@ Help me:
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Workflow Integration Map</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Workflow Integration Map</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll need:</strong> Your calendar/task list for a typical week

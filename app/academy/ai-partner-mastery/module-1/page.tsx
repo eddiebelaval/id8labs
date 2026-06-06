@@ -116,7 +116,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Meet Sarah Chen</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Meet Sarah Chen</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Sarah runs Spark Creative, a 12-person marketing agency in Austin. She built it from nothing over eight years. Tonight, she's staring at her laptop at 9 PM, trying to write a proposal for her biggest potential client yet — a Series C fintech startup looking to completely overhaul their brand.
@@ -173,7 +173,7 @@ export default function Module1Page() {
             <p>
               Here's what separates people who get magic from people who get mush:
             </p>
-            <p className="text-xl font-bold text-[var(--text-primary)]">
+            <p className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-[var(--text-primary)]">
               They don't ask AI for answers. They think with AI.
             </p>
             <p>
@@ -188,7 +188,7 @@ export default function Module1Page() {
                 { letter: "D", title: "DEVELOP", desc: "How do we iterate together? Review, redirect, refine." },
               ].map((item, i) => (
                 <div key={i} className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)]">
-                  <span className="text-2xl font-bold text-id8-orange">{item.letter}</span>
+                  <span className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-orange">{item.letter}</span>
                   <h4 className="font-bold mt-2">{item.title}</h4>
                   <p className="text-sm text-[var(--text-secondary)] mt-1">{item.desc}</p>
                 </div>
@@ -267,7 +267,7 @@ Let's think through this together before drafting anything:
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: A First Draft Using 4D</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: A First Draft Using 4D</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 45 minutes<br />
                 <strong>You'll need:</strong> A real project you're working on (proposal, strategy doc, plan, etc.)

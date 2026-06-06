@@ -130,7 +130,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Geography of Your Data
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why Location Matters More Than You Think</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why Location Matters More Than You Think</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You type a prompt into ChatGPT from your office in London. Where does that data go? The answer isn't "the cloud" — it's specific physical servers in specific countries, governed by specific laws.
@@ -443,7 +443,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Data Flow Mapping Template</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Data Flow Mapping Template</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 25 minutes<br />
                 <strong>You'll need:</strong> List of AI tools you use, basic understanding of your data types

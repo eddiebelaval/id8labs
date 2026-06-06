@@ -116,7 +116,7 @@ export default function Module4Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why AI Projects Fail on People, Not Technology</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why AI Projects Fail on People, Not Technology</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've been to the vendor presentations. The technology is dazzling. The demos are flawless. The implementation timeline looks aggressive but doable. Six months later, your AI project is behind schedule, over budget, and struggling to deliver value.
@@ -184,7 +184,7 @@ export default function Module4Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">1</span>
-                  <h3 className="text-xl font-bold">MVP Stage (0-6 months)</h3>
+                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">MVP Stage (0-6 months)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   <strong>Goal:</strong> Prove value with one use case. Ship something that works.
@@ -237,7 +237,7 @@ export default function Module4Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">2</span>
-                  <h3 className="text-xl font-bold">Scale Stage (6-18 months)</h3>
+                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Scale Stage (6-18 months)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   <strong>Goal:</strong> Expand to 3-5 use cases. Build reusable infrastructure.
@@ -302,7 +302,7 @@ export default function Module4Page() {
               <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-10 h-10 rounded-full bg-[var(--paper-shadow)] text-id8-orange flex items-center justify-center font-bold text-lg">3</span>
-                  <h3 className="text-xl font-bold">Production Stage (18+ months)</h3>
+                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Production Stage (18+ months)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   <strong>Goal:</strong> AI is core to operations. Focus on reliability, compliance, and continuous improvement.
@@ -679,7 +679,7 @@ export default function Module4Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Exercise: Design Your Team Structure</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Exercise: Design Your Team Structure</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Your prioritized use case list (from Module 2) and realistic budget constraints

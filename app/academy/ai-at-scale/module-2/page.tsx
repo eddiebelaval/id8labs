@@ -137,7 +137,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why ML Models Die in Production</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why ML Models Die in Production</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your data science team built a model that's 95% accurate. Six months later, it's making wrong predictions. The model code didn't change. The data did—slowly, invisibly, until one day customers started complaining.
@@ -157,7 +157,7 @@ export default function Module2Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <RefreshIcon />
                 </div>
-                <h2 className="text-2xl font-bold">What MLOps Actually Means</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">What MLOps Actually Means</h2>
               </div>
 
               <div className="space-y-6">
@@ -227,7 +227,7 @@ export default function Module2Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <GitBranchIcon />
                 </div>
-                <h2 className="text-2xl font-bold">The 5 Core Pipeline Components</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The 5 Core Pipeline Components</h2>
               </div>
 
               <div className="space-y-6">
@@ -325,7 +325,7 @@ export default function Module2Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <ActivityIcon />
                 </div>
-                <h2 className="text-2xl font-bold">MLOps Maturity Levels</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">MLOps Maturity Levels</h2>
               </div>
 
               <div className="space-y-6">
@@ -398,7 +398,7 @@ export default function Module2Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <AlertIcon />
                 </div>
-                <h2 className="text-2xl font-bold">Understanding Model Drift</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Understanding Model Drift</h2>
               </div>
 
               <div className="space-y-6">
@@ -489,7 +489,7 @@ export default function Module2Page() {
 
             {/* Section 5: Common MLOps Mistakes */}
             <div className="not-prose mb-12">
-              <h2 className="text-2xl font-bold mb-6">Five MLOps Mistakes That Kill Production Systems</h2>
+              <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">Five MLOps Mistakes That Kill Production Systems</h2>
 
               <div className="space-y-4">
                 <div className="p-5 bg-[var(--bg-secondary)] border-l-4 border-[var(--hair-hard)]">
@@ -549,7 +549,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-6">Build: MLOps Pipeline Design</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">Build: MLOps Pipeline Design</h3>
 
               <div className="space-y-6 text-[var(--text-secondary)]">
                 <p className="text-lg">

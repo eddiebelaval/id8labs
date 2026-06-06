@@ -146,7 +146,7 @@ export default function Module8Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Maintenance Reality
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Deployment Is Day One, Not the Finish Line</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Deployment Is Day One, Not the Finish Line</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Launching your private AI is an achievement. But the real work starts now. Models become outdated. New vulnerabilities are discovered. Business requirements change. Without a maintenance strategy, your system will degrade.
@@ -671,7 +671,7 @@ export default function Module8Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Maintenance Runbook</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Maintenance Runbook</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 25 minutes<br />
                 <strong>You'll need:</strong> Your deployment documentation, calendar access
@@ -752,7 +752,7 @@ export default function Module8Page() {
 
             {/* Course Conclusion */}
             <div className="not-prose my-12 p-8 bg-[var(--paper-shadow)] border border-id8-orange/30">
-              <h2 className="text-2xl font-bold mb-4">Course Complete: Private AI Mastery</h2>
+              <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Course Complete: Private AI Mastery</h2>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Congratulations. You've completed the Private AI course. You now understand:

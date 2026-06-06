@@ -122,7 +122,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Valley of Death
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why 87% of AI Projects Never Make It to Production</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why 87% of AI Projects Never Make It to Production</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your pilot worked. The demo impressed executives. The ROI projections look incredible. Everyone is excited to scale this thing.
@@ -528,7 +528,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Production Readiness Checklist</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Production Readiness Checklist</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 45 minutes<br />
                 <strong>You'll need:</strong> Details of your current AI pilot or planned deployment

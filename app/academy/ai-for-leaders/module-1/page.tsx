@@ -116,7 +116,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">What AI Can and Can't Do — Right Now</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">What AI Can and Can't Do — Right Now</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've heard the claims: AI will automate everything, replace knowledge workers, and fundamentally reshape every industry within years. Some of this is true. Most of it is vendor hype designed to create urgency around purchasing decisions.
@@ -341,7 +341,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: AI Capability Assessment</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: AI Capability Assessment</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 20 minutes<br />
                 <strong>You'll need:</strong> One task or process you're considering for AI

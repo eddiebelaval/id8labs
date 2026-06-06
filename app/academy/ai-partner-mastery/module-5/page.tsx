@@ -124,7 +124,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Meet Marcus Okafor</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Meet Marcus Okafor</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Marcus is the VP of Operations at MedFlow, a healthcare logistics company managing supply chains for 200+ hospitals across the Southeast. He's three weeks into a massive project: redesigning their entire vendor onboarding process.
@@ -186,7 +186,7 @@ export default function Module5Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <LayersIcon />
-                <h3 className="text-xl font-bold">The 5-Layer Breakdown</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The 5-Layer Breakdown</h3>
               </div>
               <div className="space-y-6">
                 <div className="border-l-4 border-id8-orange pl-4">
@@ -426,7 +426,7 @@ Then, for each condition, let's break it down further until we get to concrete, 
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Problem Decomposition Canvas</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Problem Decomposition Canvas</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll need:</strong> A complex problem you're currently facing (strategic, operational, organizational, or creative)

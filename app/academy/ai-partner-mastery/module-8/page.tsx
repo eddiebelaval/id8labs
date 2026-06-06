@@ -130,7 +130,7 @@ export default function Module8Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Meet Elena Rodriguez</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Meet Elena Rodriguez</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Elena runs strategic initiatives at a global manufacturing company. She's working on a project that feels impossible: redesigning their entire supply chain strategy to account for climate risk over the next decade.
@@ -199,7 +199,7 @@ export default function Module8Page() {
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
               <div className="flex items-center gap-2 mb-6">
                 <NetworkIcon />
-                <h3 className="text-xl font-bold">The 5-Stage Orchestration Pattern</h3>
+                <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The 5-Stage Orchestration Pattern</h3>
               </div>
               <div className="space-y-6">
                 <div className="border-l-4 border-id8-orange pl-4">
@@ -444,7 +444,7 @@ EXPECTED TIME: [Total estimated duration]`}
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Orchestration Playbook</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Orchestration Playbook</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll need:</strong> A complex project you're currently working on (or planning)

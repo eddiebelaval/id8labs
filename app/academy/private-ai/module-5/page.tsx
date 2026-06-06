@@ -122,7 +122,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Security Reality
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Privacy Doesn't Equal Security</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Privacy Doesn't Equal Security</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've deployed private AI. Your data stays on-premises. No cloud provider can access your information. That's privacy — and it's essential.
@@ -520,7 +520,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Security Checklist</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Security Checklist</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Access to your AI infrastructure documentation

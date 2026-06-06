@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { ArrowLeft, Package, Download, User, Calendar, Copy, Wrench } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { getCollectionBySlug, getAllCollections } from '@/lib/skills'
 import { SkillCard } from '@/components/skills/SkillCard'
 import { OfficialBadge } from '@/components/skills/TrustBadges'
 import { CopyInstallPrompt } from '@/components/stackshack/CopyInstallPrompt'
+import { Container, Kicker, Deck, SectionHead } from '@/components/editorial'
 
 interface PageProps {
   params: Promise<{ kit: string }>

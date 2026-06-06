@@ -120,7 +120,7 @@ export default function Module8Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Hard Truth
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why AI Adoption Fails</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why AI Adoption Fails</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   According to Gartner, 85% of AI projects fail to deliver business value. McKinsey reports that only 8% of companies achieve widespread AI adoption. MIT found that 71% of AI initiatives stall in the pilot phase.
@@ -552,7 +552,7 @@ export default function Module8Page() {
                   <TargetIcon />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-id8-orange mb-1">BUILD: Your Change Management Plan</h3>
+                  <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] text-id8-orange mb-1">BUILD: Your Change Management Plan</h3>
                   <p className="text-sm text-[var(--text-secondary)]">Your final deliverable for this course</p>
                 </div>
               </div>

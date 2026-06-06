@@ -123,7 +123,7 @@ export default function Module4Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Truth
               </h2>
-              <h3 className="text-2xl font-bold mb-4">AI Doesn't Get It Right The First Time</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">AI Doesn't Get It Right The First Time</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Here's what beginners expect: "I'll write the perfect prompt, and AI will deliver perfect output."
@@ -458,7 +458,7 @@ Rewrite your version to match those qualities, but keep the substance the same."
                   Your Turn
                 </h2>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Refinement Workflow</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Refinement Workflow</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 45 minutes<br />
                 <strong>You'll create:</strong> A personal refinement checklist and practice the 3-round loop

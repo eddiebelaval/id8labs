@@ -124,7 +124,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Challenge
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Every Department Has Ideas. Not All Are Worth Pursuing.</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Every Department Has Ideas. Not All Are Worth Pursuing.</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You now understand what AI can do. The next question is: where should you apply it? In a typical organization, there are hundreds of potential use cases. Most will produce marginal gains. A few will transform outcomes.
@@ -505,7 +505,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your AI Opportunity Map</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your AI Opportunity Map</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Whiteboard or spreadsheet, 2-3 stakeholders from different functions

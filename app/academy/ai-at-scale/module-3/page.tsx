@@ -138,7 +138,7 @@ export default function Module3Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why Most AI Projects Are Actually Data Projects</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why Most AI Projects Are Actually Data Projects</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your data scientists spend 80% of their time finding, cleaning, and preparing data. Not because they're bad at their jobs—because your data architecture wasn't designed for AI. It was designed for reports.
@@ -158,7 +158,7 @@ export default function Module3Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <LayersIcon />
                 </div>
-                <h2 className="text-2xl font-bold">The AI Data Hierarchy</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">The AI Data Hierarchy</h2>
               </div>
 
               <div className="space-y-6">
@@ -227,7 +227,7 @@ export default function Module3Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <DatabaseIcon />
                 </div>
-                <h2 className="text-2xl font-bold">Feature Stores: The Missing Layer</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Feature Stores: The Missing Layer</h2>
               </div>
 
               <div className="space-y-6">
@@ -316,7 +316,7 @@ export default function Module3Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <ZapIcon />
                 </div>
-                <h2 className="text-2xl font-bold">Feature Engineering Framework</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Feature Engineering Framework</h2>
               </div>
 
               <div className="space-y-6">
@@ -395,7 +395,7 @@ export default function Module3Page() {
                 <div className="p-2 bg-[var(--paper-shadow)]">
                   <ShieldIcon />
                 </div>
-                <h2 className="text-2xl font-bold">Data Quality for AI</h2>
+                <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)]">Data Quality for AI</h2>
               </div>
 
               <div className="space-y-6">
@@ -472,7 +472,7 @@ export default function Module3Page() {
 
             {/* Section 5: Labeling at Scale */}
             <div className="not-prose mb-12">
-              <h2 className="text-2xl font-bold mb-6">Labeling: The Hidden Bottleneck</h2>
+              <h2 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">Labeling: The Hidden Bottleneck</h2>
 
               <div className="space-y-6">
                 <p className="text-[var(--text-secondary)]">
@@ -542,7 +542,7 @@ export default function Module3Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-6">Build: Feature Store Design Document</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">Build: Feature Store Design Document</h3>
 
               <div className="space-y-6 text-[var(--text-secondary)]">
                 <p className="text-lg">

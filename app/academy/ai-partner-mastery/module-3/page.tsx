@@ -122,7 +122,7 @@ export default function Module3Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Scenario
               </h2>
-              <h3 className="text-2xl font-bold mb-4">The 27-Message Breakthrough</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">The 27-Message Breakthrough</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Marcus is a product designer at a Series A SaaS company. They're redesigning their onboarding flow, and he's stuck on a critical question: How do they collect user goals without making the signup process feel like an interrogation?
@@ -359,7 +359,7 @@ What would that look like?`}
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Conversation Flow Templates</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Conversation Flow Templates</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll need:</strong> Access to ChatGPT, Claude, or similar AI

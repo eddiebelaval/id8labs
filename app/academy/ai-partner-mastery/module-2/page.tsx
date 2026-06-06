@@ -124,7 +124,7 @@ export default function Module2Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Problem
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Every Conversation Starts From Zero</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Every Conversation Starts From Zero</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You've had the same conversation with AI five times this month. Each time, you start over:
@@ -411,7 +411,7 @@ export default function Module2Page() {
                   Your Turn
                 </h2>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Collaboration Protocol v1.0</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Collaboration Protocol v1.0</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 60 minutes<br />
                 <strong>You'll create:</strong> A 1-2 page protocol document you can use in every AI conversation

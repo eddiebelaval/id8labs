@@ -153,7 +153,7 @@ export default function Module6Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">What Actually Goes Wrong With AI</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">What Actually Goes Wrong With AI</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Most AI risk frameworks are academic exercises — comprehensive, theoretically sound, and completely useless when you're facing a real decision about deploying AI in your organization.
@@ -758,7 +758,7 @@ export default function Module6Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your Risk Register</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your Risk Register</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> List of current or planned AI implementations, spreadsheet or document tool

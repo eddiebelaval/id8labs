@@ -123,7 +123,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why Data Privacy Matters More Than You Think</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why Data Privacy Matters More Than You Think</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You're using ChatGPT to draft client emails. Your team is uploading contracts to Claude for review. Marketing is feeding customer data into AI-powered analytics. Every day, your organization sends proprietary information to third-party AI providers.
@@ -429,7 +429,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Privacy Needs Assessment</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Privacy Needs Assessment</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 20 minutes<br />
                 <strong>You'll need:</strong> List of current or planned AI use cases, basic understanding of your data types

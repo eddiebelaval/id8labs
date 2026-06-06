@@ -125,7 +125,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Team Scaling Problem
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why Your First Data Scientist Can't Be Your Entire AI Team</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why Your First Data Scientist Can't Be Your Entire AI Team</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   You hired a brilliant data scientist. She built a proof-of-concept that wowed leadership. Now the roadmap has 12 more AI projects and suddenly she's expected to be researcher, engineer, product manager, and on-call support.
@@ -476,7 +476,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: 12-Month Hiring Roadmap</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: 12-Month Hiring Roadmap</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Current team state, project roadmap, budget constraints

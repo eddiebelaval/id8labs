@@ -138,7 +138,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Speed Challenge
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Private AI Can Be Fast — If You Know Where to Optimize</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Private AI Can Be Fast — If You Know Where to Optimize</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   The biggest complaint about private AI: "It's slow." Cloud providers have spent billions optimizing their inference infrastructure. Can you match that on your own hardware?
@@ -644,7 +644,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Performance Benchmark</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Performance Benchmark</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 20 minutes<br />
                 <strong>You'll need:</strong> Running model, test prompts, monitoring tools

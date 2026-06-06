@@ -124,7 +124,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Measurement Problem
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Why Traditional ROI Doesn't Work for AI</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Why Traditional ROI Doesn't Work for AI</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Your CFO wants a number. Your board wants proof. Your team wants validation that the AI investment was worth it. But when you try to measure AI ROI the traditional way — dollars spent versus dollars saved — the numbers rarely tell the full story.
@@ -536,7 +536,7 @@ export default function Module7Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Your AI KPIs</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Your AI KPIs</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 20 minutes<br />
                 <strong>You'll need:</strong> One AI use case you're measuring (or planning to)

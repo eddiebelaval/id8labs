@@ -124,7 +124,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Vendor Landscape
               </h2>
-              <h3 className="text-2xl font-bold mb-4">500+ Tools, Same Pitch Deck</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">500+ Tools, Same Pitch Deck</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   The AI vendor market is overwhelming. Over 500 "enterprise AI solutions" launched in the last 18 months. Most have identical marketing: "AI-powered," "10x productivity," "seamless integration," "enterprise-ready."
@@ -706,7 +706,7 @@ export default function Module5Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build Your Vendor Evaluation Scorecard</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build Your Vendor Evaluation Scorecard</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> One vendor you're actively evaluating (or pick one from your research)

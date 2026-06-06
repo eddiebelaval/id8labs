@@ -116,7 +116,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 The Reality Check
               </h2>
-              <h3 className="text-2xl font-bold mb-4">The Infrastructure Iceberg</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">The Infrastructure Iceberg</h3>
               <div className="space-y-4 text-[var(--text-secondary)]">
                 <p>
                   Everyone sees the AI model. Few see the infrastructure underneath. For every impressive demo, there's a GPU cluster humming somewhere, a model serving layer handling requests, and a compute bill that would make your CFO nervous.
@@ -341,7 +341,7 @@ export default function Module1Page() {
             </p>
 
             <div className="not-prose my-8 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">
-              <h3 className="text-xl font-bold mb-4">Scenario: 100K LLM requests per day</h3>
+              <h3 className="text-xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Scenario: 100K LLM requests per day</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-2 border-b border-[var(--border)]">
                   <span className="text-[var(--text-secondary)]">API Approach (GPT-4 equivalent)</span>
@@ -444,7 +444,7 @@ export default function Module1Page() {
               <h2 className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
                 Your Turn
               </h2>
-              <h3 className="text-2xl font-bold mb-4">Build: Infrastructure Requirements Document</h3>
+              <h3 className="text-2xl font-[family-name:var(--font-display)] font-normal tracking-[-0.01em] text-[var(--ink)] mb-4">Build: Infrastructure Requirements Document</h3>
               <p className="text-[var(--text-secondary)] mb-6">
                 <strong>Time needed:</strong> 30 minutes<br />
                 <strong>You'll need:</strong> Your current or planned AI workload specifications
