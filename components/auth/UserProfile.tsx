@@ -10,13 +10,13 @@ export async function UserProfile() {
       <div className="flex gap-4">
         <Link
           href="/sign-in"
-          className="px-4 py-2 text-text-light dark:text-text-dark hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+          className="px-4 py-2 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--ink)] hover:text-id8-orange transition-colors duration-150"
         >
           Sign in
         </Link>
         <Link
           href="/sign-up"
-          className="px-4 py-2 bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 text-white rounded-md transition-colors"
+          className="px-4 py-2 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150"
         >
           Sign up
         </Link>
@@ -27,11 +27,11 @@ export async function UserProfile() {
   return (
     <div className="flex items-center gap-4">
       <div className="text-sm">
-        <p className="text-text-light dark:text-text-dark font-medium">
+        <p className="font-[family-name:var(--font-mono)] text-[var(--ink)]">
           {user.email}
         </p>
       </div>
-      <SignOutButton className="px-4 py-2 text-sm text-text-light-secondary dark:text-text-dark-secondary hover:text-text-light dark:hover:text-text-dark transition-colors">
+      <SignOutButton className="px-4 py-2 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-[var(--ink)] transition-colors duration-150">
         Sign out
       </SignOutButton>
     </div>

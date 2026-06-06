@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Copy, Check, Plus, CheckCircle, Puzzle } from 'lucide-react'
+import { Copy, Check, Plus, CheckCircle } from 'lucide-react'
 import type { Plugin } from '@/lib/plugin-types'
 import { useStackStore } from '@/lib/stores/stack-store'
 
