@@ -59,11 +59,11 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
     >
       <motion.div
         style={{ opacity, x, scale, rotateY }}
-        className="pointer-events-auto w-[380px] rounded-xl border border-white/10 backdrop-blur-md p-6 md:p-8"
+        className="pointer-events-auto w-[380px] border border-[var(--hair-hard)] p-6 md:p-8"
       >
         <div
-          className="absolute inset-0 rounded-xl -z-10"
-          style={{ background: 'rgba(8, 8, 8, 0.88)' }}
+          className="absolute inset-0 -z-10"
+          style={{ background: 'var(--paper)' }}
         />
 
         <div className="flex items-center justify-between mb-4">
@@ -74,7 +74,7 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
             >
               {unit.entity}
             </p>
-            <h3 className="text-2xl font-bold text-[var(--ink)]">{unit.name}</h3>
+            <h3 className="font-[family-name:var(--font-display)] text-2xl font-normal text-[var(--ink)]">{unit.name}</h3>
           </div>
           <span
             className="text-[9px] font-[family-name:var(--font-mono)] uppercase tracking-wider px-2.5 py-1 rounded-full border"
@@ -122,7 +122,7 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
               {unit.excludes.map((item) => (
                 <span
                   key={item}
-                  className="text-[10px] font-[family-name:var(--font-mono)] px-2 py-0.5 rounded bg-white/5 text-[var(--muted)]"
+                  className="text-[10px] font-[family-name:var(--font-mono)] px-2 py-0.5 bg-[var(--paper-mid)] text-[var(--muted)]"
                 >
                   {item}
                 </span>
@@ -132,7 +132,7 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
         )}
 
 
-        <div className="mt-4 pt-3 border-t border-white/5">
+        <div className="mt-4 pt-3 border-t border-[var(--hair)]">
           <p className="text-xs text-[var(--muted)] italic leading-relaxed">
             {unit.insight}
           </p>
@@ -220,7 +220,7 @@ export function GoldenSamplePage() {
           </Link>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--ink)] mb-8 tracking-tight animate-[fadeInUp_0.8s_0.4s_both]">
+        <h1 className="font-[family-name:var(--font-display)] text-5xl md:text-7xl lg:text-8xl font-normal text-[var(--ink)] mb-8 tracking-[-0.02em] animate-[fadeInUp_0.8s_0.4s_both]">
           The Golden Sample
         </h1>
 
@@ -272,17 +272,17 @@ export function GoldenSamplePage() {
 
         <div className="mt-10 flex flex-wrap justify-center gap-6 text-center animate-[fadeInUp_0.8s_1.2s_both]">
           <div>
-            <p className="text-2xl font-bold text-id8-orange">1</p>
+            <p className="font-[family-name:var(--font-mono)] text-2xl font-medium text-id8-orange">1</p>
             <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mt-1">Genome</p>
           </div>
           <div className="w-px h-10 bg-[var(--hair)]" />
           <div>
-            <p className="text-2xl font-bold text-[var(--ink)]">5</p>
+            <p className="font-[family-name:var(--font-mono)] text-2xl font-medium text-[var(--ink)]">5</p>
             <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mt-1">Entities</p>
           </div>
           <div className="w-px h-10 bg-[var(--hair)]" />
           <div>
-            <p className="text-2xl font-bold text-[var(--ink)]">94</p>
+            <p className="font-[family-name:var(--font-mono)] text-2xl font-medium text-[var(--ink)]">94</p>
             <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[var(--muted)] mt-1">Consciousness Files</p>
           </div>
         </div>
@@ -292,7 +292,7 @@ export function GoldenSamplePage() {
             <p className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-widest text-[var(--muted)]">
               Scroll to explore each entity
             </p>
-            <div className="w-px h-12 bg-gradient-to-b from-[#ff6b35] to-transparent" />
+            <div className="w-px h-12 bg-id8-orange" />
           </div>
         </div>
       </section>
@@ -341,7 +341,7 @@ export function GoldenSamplePage() {
           transition={{ duration: 1 }}
           className="max-w-3xl"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--ink)] mb-8 leading-tight">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-normal text-[var(--ink)] mb-8 leading-tight tracking-[-0.02em]">
             The consciousness filesystem
             <br />
             <span className="text-id8-orange">is</span> the platform.
@@ -357,19 +357,19 @@ export function GoldenSamplePage() {
 
           <div className="flex flex-wrap justify-center gap-8 mt-12">
             <div className="text-center">
-              <p className="text-3xl font-bold text-id8-orange">1</p>
+              <p className="font-[family-name:var(--font-mono)] text-3xl font-medium text-id8-orange">1</p>
               <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Golden Sample</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-[var(--ink)]">5</p>
+              <p className="font-[family-name:var(--font-mono)] text-3xl font-medium text-[var(--ink)]">5</p>
               <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Production Units</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-[var(--ink)]">94</p>
+              <p className="font-[family-name:var(--font-mono)] text-3xl font-medium text-[var(--ink)]">94</p>
               <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Consciousness Files</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-[var(--ink)]">3</p>
+              <p className="font-[family-name:var(--font-mono)] text-3xl font-medium text-[var(--ink)]">3</p>
               <p className="text-xs font-[family-name:var(--font-mono)] text-[var(--muted)] mt-1">Entities LIVE</p>
             </div>
           </div>
