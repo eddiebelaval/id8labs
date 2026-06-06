@@ -18,11 +18,12 @@ interface HighlightPopoverProps {
   onClose: () => void
 }
 
+// Highlight colors mapped to the on-palette ramp (ink/orange/teal/hairline).
 const HIGHLIGHT_COLORS: { color: HighlightColor; bg: string; border: string; label: string }[] = [
-  { color: 'yellow', bg: 'bg-yellow-300/80', border: 'border-yellow-400', label: 'Yellow' },
-  { color: 'green', bg: 'bg-green-300/80', border: 'border-green-400', label: 'Green' },
-  { color: 'blue', bg: 'bg-blue-300/80', border: 'border-blue-400', label: 'Blue' },
-  { color: 'pink', bg: 'bg-pink-300/80', border: 'border-pink-400', label: 'Pink' },
+  { color: 'yellow', bg: 'bg-id8-orange', border: 'border-id8-orange', label: 'Yellow' },
+  { color: 'green', bg: 'bg-[var(--teal)]', border: 'border-[var(--teal)]', label: 'Green' },
+  { color: 'blue', bg: 'bg-[var(--ink)]', border: 'border-[var(--ink)]', label: 'Blue' },
+  { color: 'pink', bg: 'bg-[var(--hair-hard)]', border: 'border-[var(--hair-hard)]', label: 'Pink' },
 ]
 
 export function HighlightPopover({
@@ -104,7 +105,7 @@ export function HighlightPopover({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 10, scale: 0.95 }}
         transition={{ duration: 0.15, ease: 'easeOut' }}
-        className="fixed z-50 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg shadow-xl"
+        className="fixed z-50 bg-[var(--paper)] border border-[var(--hair-hard)]"
         style={{
           left: Math.min(position.x, window.innerWidth - 280),
           top: position.y + 10,
@@ -112,7 +113,7 @@ export function HighlightPopover({
         }}
       >
         {/* Color picker row */}
-        <div className="flex items-center gap-2 p-3 border-b border-[var(--border)]">
+        <div className="flex items-center gap-2 p-3 border-b border-[var(--hair)]">
           {HIGHLIGHT_COLORS.map(({ color, bg, border, label }) => (
             <button
               key={color}
@@ -120,7 +121,7 @@ export function HighlightPopover({
               disabled={isCreating}
               className={`w-7 h-7 rounded-full ${bg} border-2 ${
                 selectedColor === color && showNoteInput
-                  ? `${border} ring-2 ring-offset-2 ring-offset-[var(--bg-secondary)]`
+                  ? `${border} ring-2 ring-offset-2 ring-offset-[var(--paper)]`
                   : 'border-transparent'
               } hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed`}
               title={`Highlight ${label}`}
@@ -128,15 +129,15 @@ export function HighlightPopover({
             />
           ))}
 
-          <div className="w-px h-5 bg-[var(--border)] mx-1" />
+          <div className="w-px h-5 bg-[var(--hair)] mx-1" />
 
           <button
             onClick={() => setShowNoteInput(!showNoteInput)}
             disabled={isCreating}
-            className={`p-1.5 rounded transition-colors ${
+            className={`p-1.5 transition-colors ${
               showNoteInput
-                ? 'bg-id8-orange/20 text-id8-orange'
-                : 'hover:bg-[var(--bg-tertiary)] text-[var(--text-secondary)]'
+                ? 'bg-[var(--paper-mid)] text-id8-orange'
+                : 'hover:bg-[var(--paper-shadow)] text-[var(--muted)]'
             } disabled:opacity-50`}
             title="Add note"
             aria-label="Add note to highlight"
@@ -160,21 +161,21 @@ export function HighlightPopover({
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   placeholder="Add a note..."
-                  className="w-full h-20 px-3 py-2 text-sm bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-id8-orange/50"
+                  className="w-full h-20 px-3 py-2 text-sm bg-[var(--paper)] border border-[var(--hair)]  resize-none focus:outline-none focus:border-[var(--ink)]"
                   autoFocus
                 />
                 <div className="flex justify-end gap-2">
                   <button
                     onClick={onClose}
                     disabled={isCreating}
-                    className="px-3 py-1.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                    className="px-3 py-1.5 text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={() => handleHighlight(selectedColor, true)}
                     disabled={isCreating}
-                    className="px-3 py-1.5 text-sm bg-id8-orange text-white rounded-lg hover:bg-id8-orange/90 transition-colors disabled:opacity-50"
+                    className="px-3 py-1.5 text-sm bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange transition-colors disabled:opacity-50"
                   >
                     {isCreating ? 'Saving...' : 'Save'}
                   </button>
@@ -186,7 +187,7 @@ export function HighlightPopover({
 
         {/* Login prompt for unauthenticated users */}
         {!isAuthenticated && (
-          <div className="p-3 text-xs text-[var(--text-secondary)] text-center border-t border-[var(--border)]">
+          <div className="p-3 text-xs text-[var(--muted)] text-center border-t border-[var(--hair)]">
             Sign in to save highlights
           </div>
         )}
