@@ -154,7 +154,7 @@ export function StackManager() {
             setStackDescription(currentStack?.description || '')
             setShowDialog(true)
           }}
-          className="flex items-center gap-2 px-3 py-2 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-3 py-2 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-id8-orange hover:border-id8-orange transition-colors duration-150"
           disabled={items.length === 0}
         >
           <Save className="w-4 h-4" />
@@ -166,7 +166,7 @@ export function StackManager() {
             setDialogMode('load')
             setShowDialog(true)
           }}
-          className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-3 py-2 border border-[var(--hair)] text-[var(--body)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] hover:border-[var(--hair-hard)] transition-colors duration-150"
           disabled={savedStacks.length === 0}
         >
           <FolderOpen className="w-4 h-4" />
@@ -175,7 +175,7 @@ export function StackManager() {
 
         <button
           onClick={() => handleExport(currentStackId || undefined)}
-          className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-3 py-2 border border-[var(--hair)] text-[var(--body)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] hover:border-[var(--hair-hard)] transition-colors duration-150"
           disabled={items.length === 0}
         >
           <Download className="w-4 h-4" />
@@ -187,7 +187,7 @@ export function StackManager() {
             setDialogMode('import')
             setShowDialog(true)
           }}
-          className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-3 py-2 border border-[var(--hair)] text-[var(--body)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] hover:border-[var(--hair-hard)] transition-colors duration-150"
         >
           <Upload className="w-4 h-4" />
           Import
@@ -195,7 +195,7 @@ export function StackManager() {
 
         <button
           onClick={() => handleShare(currentStackId || undefined)}
-          className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-3 py-2 border border-[var(--hair)] text-[var(--body)] font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.15em] hover:border-[var(--hair-hard)] transition-colors duration-150"
           disabled={items.length === 0}
         >
           <Share2 className="w-4 h-4" />
@@ -205,11 +205,11 @@ export function StackManager() {
 
       {/* Dialog */}
       {showDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--ink)]/60">
+          <div className="bg-[var(--paper)] border border-[var(--hair-hard)] w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
-              <h2 className="text-2xl font-bold">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--hair)]">
+              <h2 className="font-[family-name:var(--font-display)] font-normal text-2xl text-[var(--ink)]">
                 {dialogMode === 'save' && (currentStackId ? 'Update Stack' : 'Save Stack')}
                 {dialogMode === 'load' && 'Load Stack'}
                 {dialogMode === 'export' && 'Export Stack'}
@@ -218,7 +218,7 @@ export function StackManager() {
               </h2>
               <button
                 onClick={() => setShowDialog(false)}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                className="p-2 text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -230,33 +230,33 @@ export function StackManager() {
               {dialogMode === 'save' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Stack Name *</label>
+                    <label className="block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] mb-2">Stack Name *</label>
                     <input
                       type="text"
                       value={stackName}
                       onChange={(e) => setStackName(e.target.value)}
                       placeholder="My Awesome Stack"
-                      className="w-full px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:outline-none focus:border-[var(--id8-orange)]"
+                      className="w-full px-4 py-2 bg-[var(--paper)] border border-[var(--hair)] text-[var(--ink)] focus:outline-none focus:border-id8-orange"
                       autoFocus
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Description (optional)</label>
+                    <label className="block font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] mb-2">Description (optional)</label>
                     <textarea
                       value={stackDescription}
                       onChange={(e) => setStackDescription(e.target.value)}
                       placeholder="What's this stack for?"
                       rows={3}
-                      className="w-full px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:outline-none focus:border-[var(--id8-orange)] resize-none"
+                      className="w-full px-4 py-2 bg-[var(--paper)] border border-[var(--hair)] text-[var(--ink)] focus:outline-none focus:border-id8-orange resize-none"
                     />
                   </div>
-                  <div className="text-sm text-[var(--text-secondary)]">
+                  <div className="text-sm text-[var(--muted)]">
                     {items.length} items in current stack
                   </div>
                   <button
                     onClick={handleSave}
                     disabled={!stackName.trim()}
-                    className="w-full py-3 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                    className="w-full py-3 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] hover:bg-id8-orange hover:border-id8-orange disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
                   >
                     {currentStackId ? 'Update' : 'Save'} Stack
                   </button>
@@ -334,7 +334,7 @@ export function StackManager() {
                               )}
                             </div>
                             <div className="flex items-center justify-between">
-                              <span className="text-sm text-[var(--text-secondary)]" suppressHydrationWarning>
+                              <span className="text-sm text-[var(--muted)]" suppressHydrationWarning>
                                 {stack.items.length} items • Updated{' '}
                                 {new Date(stack.updatedAt).toLocaleDateString()}
                               </span>
@@ -380,7 +380,7 @@ export function StackManager() {
               {/* Export Mode */}
               {dialogMode === 'export' && (
                 <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-secondary)]">
+                  <p className="text-sm text-[var(--muted)]">
                     Copy this JSON or download it as a file to backup or share your stack.
                   </p>
                   <textarea
@@ -412,7 +412,7 @@ export function StackManager() {
               {/* Import Mode */}
               {dialogMode === 'import' && (
                 <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-secondary)]">
+                  <p className="text-sm text-[var(--muted)]">
                     Paste a previously exported stack JSON to import it.
                   </p>
                   <textarea
@@ -426,7 +426,7 @@ export function StackManager() {
                   <button
                     onClick={handleImport}
                     disabled={!importJson.trim()}
-                    className="w-full py-3 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                    className="w-full py-3 border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] hover:bg-id8-orange hover:border-id8-orange disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
                   >
                     Import Stack
                   </button>
@@ -436,7 +436,7 @@ export function StackManager() {
               {/* Share Mode */}
               {dialogMode === 'share' && (
                 <div className="space-y-4">
-                  <p className="text-sm text-[var(--text-secondary)]">
+                  <p className="text-sm text-[var(--muted)]">
                     Share this URL with anyone. They can view and import your stack without signing in.
                   </p>
                   <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">

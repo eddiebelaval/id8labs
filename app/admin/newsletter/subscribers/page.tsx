@@ -186,10 +186,10 @@ export default function SubscribersPage() {
                   </td>
                   <td className="px-6 py-4">
                     <span
-                      className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                      className={`inline-flex px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] ${
                         subscriber.status === 'active'
-                          ? 'bg-green-500/10 text-green-500'
-                          : 'bg-gray-500/10 text-gray-500'
+                          ? 'bg-[var(--paper-mid)] text-[var(--teal)]'
+                          : 'bg-[var(--paper-mid)] text-[var(--muted)]'
                       }`}
                     >
                       {subscriber.status}

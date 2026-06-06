@@ -133,22 +133,22 @@ export default function ComposePage() {
       <div className="flex items-center gap-4 mb-8">
         <Link
           href="/admin/newsletter"
-          className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="p-2 text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-[var(--text-primary)]">Compose Newsletter</h1>
-          <p className="text-[var(--text-secondary)]">Write and send signal:noise</p>
+          <h1 className="text-2xl font-bold text-[var(--ink)]">Compose Newsletter</h1>
+          <p className="text-[var(--muted)]">Write and send signal:noise</p>
         </div>
       </div>
 
       {/* Message */}
       {message && (
         <div
-          className={`mb-6 p-4 rounded-lg ${
+          className={`mb-6 p-4  ${
             message.type === 'success'
               ? 'bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400'
               : 'bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400'
@@ -162,13 +162,13 @@ export default function ComposePage() {
       <div className="space-y-6">
         {/* Issue Selection */}
         <div>
-          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+          <label className="block text-sm font-medium text-[var(--ink)] mb-2">
             Select Issue to Send
           </label>
           {loading ? (
-            <div className="p-4 text-center text-[var(--text-secondary)]">Loading issues...</div>
+            <div className="p-4 text-center text-[var(--muted)]">Loading issues...</div>
           ) : issues.length === 0 ? (
-            <div className="p-4 text-center text-[var(--text-secondary)] border border-dashed border-[var(--border)] rounded-lg">
+            <div className="p-4 text-center text-[var(--muted)] border border-dashed border-[var(--hair)] ">
               No issues available. Add issues in the newsletter template file.
             </div>
           ) : (
@@ -176,10 +176,10 @@ export default function ComposePage() {
               {issues.map((issue) => (
                 <label
                   key={issue.issueNumber}
-                  className={`flex items-start gap-4 p-4 border rounded-lg cursor-pointer transition-colors ${
+                  className={`flex items-start gap-4 p-4 border  cursor-pointer transition-colors ${
                     selectedIssue === issue.issueNumber
-                      ? 'border-[var(--id8-orange)] bg-[var(--id8-orange)]/5'
-                      : 'border-[var(--border)] hover:border-[var(--id8-orange)]/50'
+                      ? 'border-id8-orange bg-[var(--paper-shadow)]'
+                      : 'border-[var(--hair)] hover:border-id8-orange'
                   }`}
                 >
                   <input
@@ -192,12 +192,12 @@ export default function ComposePage() {
                   />
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-[var(--id8-orange)]">
+                      <span className="text-sm font-medium text-id8-orange">
                         Issue #{issue.issueNumber}
                       </span>
-                      <span className="text-sm text-[var(--text-tertiary)]">{issue.date}</span>
+                      <span className="text-sm text-[var(--muted)]">{issue.date}</span>
                     </div>
-                    <p className="text-[var(--text-primary)] font-medium">{issue.subject}</p>
+                    <p className="text-[var(--ink)] font-medium">{issue.subject}</p>
                   </div>
                 </label>
               ))}
@@ -207,7 +207,7 @@ export default function ComposePage() {
 
         {/* Audience Filter */}
         <div>
-          <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
+          <label className="block text-sm font-medium text-[var(--ink)] mb-2">
             Audience
           </label>
           <div className="flex gap-4">
@@ -218,10 +218,10 @@ export default function ComposePage() {
             ].map((option) => (
               <label
                 key={option.value}
-                className={`flex items-center gap-2 px-4 py-2 border rounded-lg cursor-pointer transition-colors ${
+                className={`flex items-center gap-2 px-4 py-2 border  cursor-pointer transition-colors ${
                   audienceFilter === option.value
-                    ? 'border-[var(--id8-orange)] bg-[var(--id8-orange)]/5'
-                    : 'border-[var(--border)] hover:border-[var(--id8-orange)]/50'
+                    ? 'border-id8-orange bg-[var(--paper-shadow)]'
+                    : 'border-[var(--hair)] hover:border-id8-orange'
                 }`}
               >
                 <input
@@ -231,30 +231,30 @@ export default function ComposePage() {
                   checked={audienceFilter === option.value}
                   onChange={() => setAudienceFilter(option.value as 'all' | 'academy' | 'free')}
                 />
-                <span className="text-sm text-[var(--text-primary)]">{option.label}</span>
+                <span className="text-sm text-[var(--ink)]">{option.label}</span>
               </label>
             ))}
           </div>
-          <p className="mt-2 text-sm text-[var(--text-tertiary)]">
+          <p className="mt-2 text-sm text-[var(--muted)]">
             Academy members receive exclusive content sections. Free subscribers see upgrade CTAs.
           </p>
         </div>
 
         {/* Test Send */}
-        <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-          <h3 className="text-sm font-medium text-[var(--text-primary)] mb-3">Send Test Email</h3>
+        <div className="p-4 bg-[var(--paper)] border border-[var(--hair)] ">
+          <h3 className="text-sm font-medium text-[var(--ink)] mb-3">Send Test Email</h3>
           <div className="flex gap-3">
             <input
               type="email"
               value={testEmail}
               onChange={(e) => setTestEmail(e.target.value)}
               placeholder="your@email.com"
-              className="flex-1 px-4 py-2 border border-[var(--border)] rounded-lg bg-[var(--bg-primary)] text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:ring-2 focus:ring-[var(--id8-orange)]"
+              className="flex-1 px-4 py-2 border border-[var(--hair)]  bg-[var(--paper-shadow)] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--ink)]"
             />
             <button
               onClick={handleTestSend}
               disabled={sending}
-              className="px-4 py-2 border border-[var(--border)] rounded-lg hover:bg-[var(--bg-primary)] transition-colors disabled:opacity-50"
+              className="px-4 py-2 border border-[var(--hair)]  hover:bg-[var(--paper-shadow)] transition-colors disabled:opacity-50"
             >
               {sending ? 'Sending...' : 'Send Test'}
             </button>
@@ -262,7 +262,7 @@ export default function ComposePage() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4 pt-4 border-t border-[var(--border)]">
+        <div className="flex items-center gap-4 pt-4 border-t border-[var(--hair)]">
           <button
             onClick={handleSendToAll}
             disabled={sending || !selectedIssue}
@@ -272,7 +272,7 @@ export default function ComposePage() {
           </button>
           <Link
             href="/admin/newsletter"
-            className="px-6 py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="px-6 py-3 text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
           >
             Cancel
           </Link>
@@ -280,12 +280,12 @@ export default function ComposePage() {
       </div>
 
       {/* Note */}
-      <div className="mt-8 p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
+      <div className="mt-8 p-4 bg-blue-500/5 border border-blue-500/20 ">
         <h3 className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">
           Adding New Issues
         </h3>
-        <p className="text-sm text-[var(--text-secondary)]">
-          To add new newsletter issues, update the <code className="px-1 py-0.5 bg-[var(--bg-primary)] rounded">lib/email/templates/newsletter-template.ts</code> file
+        <p className="text-sm text-[var(--muted)]">
+          To add new newsletter issues, update the <code className="px-1 py-0.5 bg-[var(--paper-shadow)] rounded">lib/email/templates/newsletter-template.ts</code> file
           with a new NewsletterIssue object. This ensures consistent formatting with Big Idea, Framework, Case Study,
           and automatic Academy member differentiation.
         </p>
