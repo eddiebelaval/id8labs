@@ -37,29 +37,29 @@ export default function LearningRoadmap() {
       >
         <Link
           href={foundation.path}
-          className={`relative px-6 py-4 rounded-xl border-2 transition-all ${
+          className={`relative px-6 py-4 border-2 transition-all ${
             foundationComplete
-              ? 'bg-green-500/10 border-green-500/50 hover:border-green-500'
-              : 'bg-id8-orange/10 border-id8-orange/50 hover:border-id8-orange'
+              ? 'bg-[var(--paper-shadow)] border-[var(--teal)] hover:border-[var(--teal)]'
+              : 'bg-[var(--paper-shadow)] border-id8-orange hover:border-id8-orange'
           }`}
         >
           <div className="flex items-center gap-3">
             {foundationComplete ? (
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-500/20 text-green-400">
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[var(--paper-mid)] text-[var(--teal)]">
                 <CheckIcon />
               </span>
             ) : (
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-id8-orange/20 text-id8-orange text-xs font-bold">
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[var(--paper-mid)] text-id8-orange text-xs font-bold">
                 1
               </span>
             )}
             <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-0.5">
+              <p className="text-xs font-[family-name:var(--font-narrow)] uppercase tracking-wider text-[var(--muted)] mb-0.5">
                 Start Here
               </p>
               <p className="font-semibold">{foundation.title}</p>
               {foundationStats && (
-                <p className="text-xs text-[var(--text-tertiary)]">
+                <p className="text-xs text-[var(--muted)]">
                   {foundationStats.completed}/{foundationStats.total} modules
                 </p>
               )}
@@ -70,12 +70,12 @@ export default function LearningRoadmap() {
 
       {/* Connecting Line */}
       <div className="flex justify-center mb-4">
-        <div className="w-px h-8 bg-gradient-to-b from-[var(--border)] to-transparent" />
+        <div className="w-px h-8 bg-[var(--hair)]" />
       </div>
 
       {/* Unlock Message */}
       {!isFoundationComplete && (
-        <p className="text-center text-sm text-[var(--text-tertiary)] mb-4">
+        <p className="text-center text-sm text-[var(--muted)] mb-4">
           Complete foundation to unlock all courses below
         </p>
       )}
@@ -93,31 +93,31 @@ export default function LearningRoadmap() {
           return (
             <div key={course.slug}>
               {isLocked ? (
-                <div className="p-3 rounded-lg bg-[var(--bg-secondary)]/50 border border-[var(--border)] opacity-50 text-center">
-                  <span className="flex items-center justify-center w-6 h-6 mx-auto rounded-full bg-[var(--border)] text-[var(--text-tertiary)] mb-2">
+                <div className="p-3   bg-[var(--paper-shadow)] border border-[var(--hair)] opacity-50 text-center">
+                  <span className="flex items-center justify-center w-6 h-6 mx-auto rounded-full bg-[var(--paper-mid)] text-[var(--muted)] mb-2">
                     <LockIcon />
                   </span>
                   <p className="text-xs font-medium truncate">{course.title}</p>
-                  <p className="text-xs text-[var(--text-tertiary)]">
+                  <p className="text-xs text-[var(--muted)]">
                     {course.modules} modules
                   </p>
                 </div>
               ) : (
                 <Link
                   href={course.path}
-                  className={`block p-3 rounded-lg border transition-all text-center ${
+                  className={`block p-3   border transition-all text-center ${
                     isComplete
-                      ? 'bg-green-500/10 border-green-500/30 hover:border-green-500/50'
+                      ? 'bg-[var(--paper-shadow)] border-[var(--teal)] hover:border-[var(--teal)]'
                       : hasStarted
-                      ? 'bg-id8-orange/5 border-id8-orange/30 hover:border-id8-orange/50'
-                      : 'bg-[var(--bg-secondary)] border-[var(--border)] hover:border-[var(--text-tertiary)]'
+                      ? 'bg-[var(--paper-shadow)] border-id8-orange hover:border-id8-orange'
+                      : 'bg-[var(--paper)] border-[var(--hair)] hover:border-[var(--hair-hard)]'
                   }`}
                 >
                   <span
                     className={`flex items-center justify-center w-6 h-6 mx-auto rounded-full mb-2 ${
                       isComplete
-                        ? 'bg-green-500/20 text-green-400'
-                        : 'bg-[var(--border)] text-[var(--text-secondary)]'
+                        ? 'bg-[var(--paper-mid)] text-[var(--teal)]'
+                        : 'bg-[var(--paper-mid)] text-[var(--muted)]'
                     }`}
                   >
                     {isComplete ? (
@@ -130,7 +130,7 @@ export default function LearningRoadmap() {
                   </span>
                   <p className="text-xs font-medium truncate">{course.title}</p>
                   {stats && (
-                    <p className="text-xs text-[var(--text-tertiary)]">
+                    <p className="text-xs text-[var(--muted)]">
                       {stats.completed}/{stats.total}
                     </p>
                   )}
@@ -145,7 +145,7 @@ export default function LearningRoadmap() {
       <div className="mt-6 text-center">
         <Link
           href="#anthropic-courses"
-          className="text-sm text-[var(--text-tertiary)] hover:text-id8-orange transition-colors"
+          className="text-sm text-[var(--muted)] hover:text-id8-orange transition-colors"
         >
           + {Object.keys(EXTERNAL_COURSES).length} official Anthropic courses available below
         </Link>
