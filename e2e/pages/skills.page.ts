@@ -124,7 +124,7 @@ export class SkillsPage extends BasePage {
       // Use direct navigation instead of clicking - more reliable
       await this.page.goto(`/skills?type=${type}`);
     }
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   /**
@@ -132,7 +132,7 @@ export class SkillsPage extends BasePage {
    */
   async filterByCategory(categoryId: string) {
     await this.page.goto(`/skills?category=${categoryId}`);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   /**
@@ -141,7 +141,7 @@ export class SkillsPage extends BasePage {
   async clearFilters() {
     // Navigate directly to /skills to clear all filters - most reliable
     await this.page.goto('/skills');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   /**

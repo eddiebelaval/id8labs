@@ -124,7 +124,7 @@ test.describe('StackShack - Sidebar Filters', () => {
   test('should combine type and category filters', async ({ page }) => {
     // Navigate with both filters
     await page.goto('/skills?type=skills&category=code');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
     expect(page.url()).toContain('type=skills');
     expect(page.url()).toContain('category=code');
   });
