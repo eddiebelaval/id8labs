@@ -143,32 +143,33 @@ export default function SignInModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          transition={{ duration: 0.15 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--ink)]/40"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-[var(--bg-primary)] rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="bg-[var(--paper)] border border-[var(--hair-hard)] max-w-md w-full max-h-[90vh] overflow-auto"
             onClick={e => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--hair)]">
               <div>
-                <h2 className="text-xl font-bold text-[var(--text-primary)]">
+                <h2 className="font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
                   {magicLinkSent ? 'Check your email' : 'Sign in to continue'}
                 </h2>
                 {moduleName && !magicLinkSent && (
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">
+                  <p className="text-sm text-[var(--muted)] mt-1">
                     {moduleName} requires sign-in
                   </p>
                 )}
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+                className="p-2 hover:bg-[var(--paper-shadow)] transition-colors duration-150 text-[var(--ink)]"
                 aria-label="Close"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -189,23 +190,23 @@ export default function SignInModal({
                     exit={{ opacity: 0, y: -10 }}
                     className="text-center space-y-4"
                   >
-                    <div className="w-16 h-16 bg-[var(--id8-orange)]/10 rounded-full flex items-center justify-center mx-auto">
-                      <svg className="w-8 h-8 text-[var(--id8-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-16 h-16 bg-[var(--paper-shadow)] rounded-full flex items-center justify-center mx-auto">
+                      <svg className="w-8 h-8 text-id8-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-[var(--text-primary)] font-medium">
+                      <p className="text-[var(--ink)] font-medium">
                         We sent a magic link to
                       </p>
-                      <p className="text-[var(--id8-orange)] font-semibold">{email}</p>
+                      <p className="font-[family-name:var(--font-mono)] text-id8-orange">{email}</p>
                     </div>
-                    <p className="text-sm text-[var(--text-secondary)]">
+                    <p className="text-sm text-[var(--muted)]">
                       Click the link in the email to sign in. No password needed.
                     </p>
                     <button
                       onClick={resetForm}
-                      className="text-sm text-[var(--id8-orange)] hover:underline"
+                      className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange hover:underline"
                     >
                       Use a different email
                     </button>

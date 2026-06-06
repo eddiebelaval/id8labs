@@ -54,16 +54,12 @@ export function PluginInstallButton({ plugin }: PluginInstallButtonProps) {
       {/* Copy Install Command */}
       <button
         onClick={handleCopy}
-        className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold transition-all ${
-          plugin.official
-            ? 'bg-amber-500 hover:bg-amber-600 text-white'
-            : 'bg-[var(--id8-orange)] hover:bg-[var(--id8-orange-hover)] text-white'
-        }`}
+        className="w-full flex items-center justify-center gap-2 py-3.5 px-4 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange"
       >
         {copied ? (
           <>
             <Check className="w-5 h-5" />
-            Copied to Clipboard!
+            Copied to Clipboard
           </>
         ) : (
           <>
@@ -74,12 +70,11 @@ export function PluginInstallButton({ plugin }: PluginInstallButtonProps) {
       </button>
 
       {/* Install command preview */}
-      <div className="p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-        <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)] mb-1">
-          <Puzzle className="w-3 h-3" />
-          <span>Install Command</span>
+      <div className="p-3 bg-[var(--paper)] border border-[var(--hair)]">
+        <div className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)] mb-1.5">
+          Install Command
         </div>
-        <code className="text-sm font-mono text-[var(--text-secondary)] break-all">
+        <code className="text-sm font-[family-name:var(--font-mono)] text-[var(--body)] break-all">
           {plugin.install_command}
         </code>
       </div>
@@ -87,10 +82,10 @@ export function PluginInstallButton({ plugin }: PluginInstallButtonProps) {
       {/* Add to Stack */}
       <button
         onClick={handleStackToggle}
-        className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-medium transition-all border ${
+        className={`w-full flex items-center justify-center gap-2 py-3 px-4 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
           inStack
-            ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500'
-            : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border)] hover:border-[var(--id8-orange)] hover:text-[var(--id8-orange)]'
+            ? 'bg-transparent text-teal border-teal'
+            : 'bg-transparent text-[var(--ink)] border-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]'
         }`}
       >
         {inStack ? (
