@@ -68,7 +68,7 @@ export function NotesSidebar() {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-[var(--hair)]">
-              <h2 className="text-lg font-bold">My Notes</h2>
+              <h2 className="font-[family-name:var(--font-display)] text-lg font-normal text-[var(--ink)]">My Notes</h2>
               <button
                 onClick={closeSidebar}
                 className="p-2 hover:bg-[var(--paper-shadow)]  transition-colors"
