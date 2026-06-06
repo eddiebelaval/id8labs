@@ -14,7 +14,6 @@ import {
   Rule,
   MetaRow,
   SectionHead,
-  Prose,
   EditorialButton,
 } from '@/components/editorial'
 

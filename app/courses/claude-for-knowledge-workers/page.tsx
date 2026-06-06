@@ -10,7 +10,6 @@ import {
   Rule,
   MetaRow,
   SectionHead,
-  Hairline,
   EditorialButton,
   IssueCard,
 } from '@/components/editorial'

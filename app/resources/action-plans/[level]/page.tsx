@@ -6,9 +6,7 @@ import {
   Kicker,
   Deck,
   Rule,
-  MetaRow,
   SectionHead,
-  Prose,
   EditorialButton,
 } from '@/components/editorial'
 
