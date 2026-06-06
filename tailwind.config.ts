@@ -22,6 +22,12 @@ const config: Config = {
         orange: '#ff6b35',
         teal: '#2a8d83',
 
+        // id8-orange registered as a Tailwind color so `hover:bg-id8-orange`,
+        // `hover:text-id8-orange`, `hover:border-id8-orange` (used throughout
+        // the editorial kit) actually generate hover variants.
+        'id8-orange': '#ff6b35',
+        'id8-orange-hover': '#e85a28',
+
         // Legacy aliases mapped to editorial values
         'bg-light': '#fafaf7',
         'text-light': '#0b0b0b',

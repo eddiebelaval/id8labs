@@ -105,7 +105,6 @@ function AnimatedStat({
   delay?: number
 }) {
   const animatedValue = useCountUp(value, 1.5, delay)
-  const [isHovered, setIsHovered] = useState(false)
 
   const formatValue = (n: number) => {
     if (format === 'compact') {
@@ -116,32 +115,12 @@ function AnimatedStat({
   }
 
   return (
-    <m.div
-      className="group p-2 rounded transition-all cursor-default relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02, backgroundColor: 'rgba(255, 107, 53, 0.1)' }}
-    >
-      {/* Pulse glow on hover */}
-      <m.div
-        className="absolute inset-0 bg-[#ff6b35]/20 rounded"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-      />
-
-      <m.div
-        className="text-id8-orange text-xl font-bold relative z-10"
-        animate={{
-          textShadow: isHovered
-            ? '0 0 10px rgba(255, 107, 53, 0.5)'
-            : '0 0 0px rgba(255, 107, 53, 0)'
-        }}
-      >
+    <div className="group p-2 transition-colors duration-150 cursor-default relative hover:bg-[var(--paper-shadow)]">
+      <div className="font-[family-name:var(--font-mono)] text-id8-orange text-xl font-medium relative z-10">
         {formatValue(animatedValue)}
-      </m.div>
+      </div>
       <div className="text-[var(--muted)] text-xs relative z-10">{label}</div>
-    </m.div>
+    </div>
   )
 }
 
@@ -164,24 +143,20 @@ function AnimatedToolBar({
   const animatedCount = useCountUp(count, 1.2, delay)
 
   return (
-    <m.div
-      className="flex items-center gap-2 p-1 rounded cursor-default"
-      whileHover={{ x: 4, backgroundColor: 'rgba(255, 255, 255, 0.03)' }}
-    >
+    <div className="flex items-center gap-2 p-1 cursor-default hover:bg-[var(--paper-shadow)] transition-colors duration-150">
       <span className="text-[var(--muted)] w-12 text-xs">{name}</span>
-      <div className="flex-1 h-2 bg-[var(--paper-shadow)] rounded-full overflow-hidden">
+      <div className="flex-1 h-2 bg-[var(--paper-mid)] overflow-hidden">
         <m.div
           initial={{ width: 0 }}
           animate={{ width: `${(count / maxCount) * 100}%` }}
           transition={{ duration: 0.8, delay }}
-          className={`h-full ${color} rounded-full`}
-          whileHover={{ boxShadow: `0 0 8px currentColor` }}
+          className={`h-full ${color}`}
         />
       </div>
       <span className="text-[var(--muted)] text-xs w-12 text-right font-[family-name:var(--font-mono)]">
         {formatNumber(animatedCount)}
       </span>
-    </m.div>
+    </div>
   )
 }
 
