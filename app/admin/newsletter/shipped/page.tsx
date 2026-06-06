@@ -68,15 +68,15 @@ export default function ShippedDashboard() {
         <div className="flex items-center gap-4">
           <Link
             href="/admin/newsletter"
-            className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="p-2 text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
           <div>
-            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Shipped. Subscribers</h1>
-            <p className="text-[var(--text-secondary)]">
+            <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Shipped<span className="text-id8-orange">.</span> Subscribers</h1>
+            <p className="text-[var(--muted)]">
               {loading
                 ? 'Loading...'
                 : `${totalShipped.toLocaleString()} subscribers across ${issueCount} issue${issueCount === 1 ? '' : 's'}`}
@@ -85,7 +85,7 @@ export default function ShippedDashboard() {
         </div>
         <Link
           href={`/admin/newsletter/subscribers?source=${SHIPPED_PREFIX}*`}
-          className="text-sm text-[var(--text-secondary)] hover:text-[var(--id8-orange)] transition-colors"
+          className="text-sm text-[var(--muted)] hover:text-id8-orange transition-colors"
         >
           View all →
         </Link>
@@ -103,12 +103,12 @@ export default function ShippedDashboard() {
       {/* By issue + Recent */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Signups by Issue */}
-        <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-          <h3 className="font-semibold text-[var(--text-primary)] mb-4">Signups by issue</h3>
+        <div className="p-6 bg-[var(--paper)] border border-[var(--hair)] ">
+          <h3 className="font-[family-name:var(--font-display)] text-base font-normal text-[var(--ink)] mb-4">Signups by issue</h3>
           {loading ? (
-            <p className="text-sm text-[var(--text-secondary)]">Loading...</p>
+            <p className="text-sm text-[var(--muted)]">Loading...</p>
           ) : shippedSources.length === 0 ? (
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-sm text-[var(--muted)]">
               No Shipped. subscribers yet. Every signup from a <code>/shipped/*</code> page will land here.
             </p>
           ) : (
@@ -120,17 +120,17 @@ export default function ShippedDashboard() {
                     <div className="flex items-baseline justify-between mb-1">
                       <Link
                         href={`/admin/newsletter/subscribers?source=${encodeURIComponent(s.source)}`}
-                        className="text-sm text-[var(--text-primary)] hover:text-[var(--id8-orange)] transition-colors"
+                        className="text-sm text-[var(--ink)] hover:text-id8-orange transition-colors"
                       >
                         {formatIssueName(s.source)}
                       </Link>
-                      <span className="text-sm font-medium text-[var(--text-secondary)]">
+                      <span className="text-sm font-medium text-[var(--muted)]">
                         {s.count.toLocaleString()}
                       </span>
                     </div>
-                    <div className="h-1.5 bg-[var(--bg-primary)] rounded overflow-hidden">
+                    <div className="h-1.5 bg-[var(--paper-mid)] overflow-hidden">
                       <div
-                        className="h-full bg-[var(--id8-orange)]"
+                        className="h-full bg-id8-orange"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
@@ -142,23 +142,23 @@ export default function ShippedDashboard() {
         </div>
 
         {/* Recent Subscribers */}
-        <div className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-          <h3 className="font-semibold text-[var(--text-primary)] mb-4">Latest 10 signups</h3>
+        <div className="p-6 bg-[var(--paper)] border border-[var(--hair)] ">
+          <h3 className="font-semibold text-[var(--ink)] mb-4">Latest 10 signups</h3>
           {loading ? (
-            <p className="text-sm text-[var(--text-secondary)]">Loading...</p>
+            <p className="text-sm text-[var(--muted)]">Loading...</p>
           ) : recent.length === 0 ? (
-            <p className="text-sm text-[var(--text-secondary)]">No signups yet.</p>
+            <p className="text-sm text-[var(--muted)]">No signups yet.</p>
           ) : (
-            <div className="divide-y divide-[var(--border)]">
+            <div className="divide-y divide-[var(--hair)]">
               {recent.map((s) => (
                 <div key={s.id} className="py-2 flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-[var(--text-primary)]">{s.email}</p>
-                    <p className="text-xs text-[var(--text-tertiary)]">
+                    <p className="text-sm text-[var(--ink)]">{s.email}</p>
+                    <p className="text-xs text-[var(--muted)]">
                       {formatIssueName(s.source)}
                     </p>
                   </div>
-                  <span className="text-xs text-[var(--text-tertiary)]">
+                  <span className="text-xs text-[var(--muted)]">
                     {formatDate(s.subscribed_at)}
                   </span>
                 </div>
