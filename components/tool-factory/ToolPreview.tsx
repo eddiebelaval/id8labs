@@ -197,9 +197,9 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
         className="border border-[var(--hair)]  overflow-hidden"
       >
         {/* Card Header */}
-        <div className="p-4 bg-gradient-to-r from-[var(--orange)]/10 to-transparent border-b border-[var(--hair)]">
+        <div className="p-4 bg-[var(--paper-shadow)] border-b border-[var(--hair)]">
           <div className="flex items-start gap-3">
-            <div className="p-2 bg-[var(--orange)]/20 ">
+            <div className="p-2 bg-[var(--paper-mid)] ">
               <Icon className="w-5 h-5 text-[var(--orange)]" />
             </div>
             <div className="flex-1 min-w-0">
