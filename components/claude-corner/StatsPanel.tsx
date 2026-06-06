@@ -407,9 +407,9 @@ function ArsenalSection({ essayCount }: { essayCount: number }) {
                   {ARSENAL_MANIFEST.mcpServers.list.map((mcp) => (
                     <div
                       key={mcp}
-                      className="flex items-center gap-2 p-2 bg-[var(--paper-shadow)] rounded border border-[var(--hair)]"
+                      className="flex items-center gap-2 p-2 bg-[var(--paper-shadow)] border border-[var(--hair)]"
                     >
-                      <span className="w-2 h-2 rounded-full bg-id8-orange animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-id8-orange" />
                       <span className="text-xs text-[var(--ink)]">{mcp}</span>
                     </div>
                   ))}
