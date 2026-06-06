@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, type FormEvent } from 'react'
-import Link from 'next/link'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 // ─── Cal.com Script Loader ──────────────────────────────────
@@ -134,26 +133,26 @@ const problems = [
   },
 ]
 
-const openclawCapabilities = [
+const architectureCapabilities = [
   {
     icon: <ServerIcon />,
     title: 'Runs on your infrastructure',
-    desc: 'Your Mac Mini or VPS. Your data stays on your hardware. No third-party cloud you don\'t control.',
+    desc: 'Your Mac Mini or VPS. Your data and your keys stay on your hardware. No third-party cloud you don\'t control.',
   },
   {
     icon: <LinkIcon />,
     title: 'Plugs into your real tools',
-    desc: 'Email, calendar, Slack, CRM, file systems, databases — connected on day one.',
+    desc: 'Email, calendar, Slack, CRM, file systems, databases — wired in on day one.',
   },
   {
     icon: <WrenchIcon />,
-    title: 'Custom skills for your workflow',
-    desc: 'We map your actual workflow and build skills that automate it. Not templates.',
+    title: 'Built around your workflow',
+    desc: 'We map how you actually work and build the chain that automates it. Not templates.',
   },
   {
     icon: <LockIcon />,
-    title: 'Security hardened from day one',
-    desc: 'Locked down before it goes live. Permissions scoped. Access controlled.',
+    title: 'Human gates, not black boxes',
+    desc: 'You approve the decisions that matter; the chain handles the drudgery. Permission-scoped and hardened from day one.',
   },
 ]
 
@@ -161,12 +160,12 @@ const steps = [
   {
     step: '01',
     title: 'Kickoff call — we map your pain',
-    desc: 'What\'s eating your hours? We identify the highest-leverage automations and spec the agents you need. If we can\'t scope a meaningful improvement, we\'ll tell you — no charge.',
+    desc: 'What\'s eating your hours? We identify the highest-leverage automations and spec the chain you need. If we can\'t scope a meaningful improvement, we\'ll tell you — no charge.',
   },
   {
     step: '02',
-    title: 'Build + deploy — your agents go live',
-    desc: 'We deploy OpenClaw on your hardware, build custom skills for your tools, wire integrations, and harden security. You don\'t touch a terminal.',
+    title: 'Build + deploy — your system goes live',
+    desc: 'We design your chain, build custom skills for your tools, wire integrations, set the human gates, and harden security. You don\'t touch a terminal.',
   },
   {
     step: '03',
@@ -195,7 +194,7 @@ const tiers = [
     price: '$1,497',
     priceNote: 'one-time',
     features: [
-      '1 OpenClaw agent deployed on your hardware',
+      'One automation chain deployed on your hardware',
       'Core integrations (email, calendar, Slack)',
       '14-day white-glove hypercare',
       'Async support throughout',
@@ -209,7 +208,7 @@ const tiers = [
     price: '$3,497',
     priceNote: 'one-time',
     features: [
-      'Up to 3 OpenClaw agents with custom skills',
+      'Up to 3 automation chains with custom skills',
       'Full workflow mapping + automation build',
       '30-day white-glove hypercare',
       'Async support throughout',
@@ -223,7 +222,7 @@ const tiers = [
     price: '$6,997',
     priceNote: 'one-time',
     features: [
-      'Up to 6 OpenClaw agents — full automation suite',
+      'Full automation suite — coordinator + execution agents',
       'Multi-agent coordination + routing logic',
       '60-day white-glove hypercare',
       'Retainer option available',
@@ -242,7 +241,7 @@ const audiences = [
 ]
 
 const notFor = [
-  'Teams who want to tinker themselves — OpenClaw is free, docs are public',
+  'DIY builders who want to architect their own systems from scratch',
   'Enterprises needing 6-month procurement cycles',
   'Anyone looking for a chatbot widget on their website',
 ]
@@ -276,24 +275,24 @@ const testimonials = [
 
 const faqs = [
   {
-    q: 'Is OpenClaw really free?',
-    a: 'Yes — the framework is open source and free. You bring your own AI API key or subscription (Claude, GPT, etc.), which typically runs $20-100/month depending on usage. What you\'re paying for with our services is the deployment, customization, integration, security hardening, and ongoing hypercare — the work that turns a free tool into a running system.',
+    q: 'What does the price actually cover?',
+    a: 'The architecture, build, integration, security hardening, and ongoing hypercare — the work that turns raw AI models into a running system wired into your operation. The AI model and token costs are separate and stay yours (typically $20-100/month depending on volume). We help you pick the right models and optimize cost during hypercare.',
   },
   {
-    q: 'What if I want to self-deploy?',
-    a: 'Go for it. The docs are public. Our services exist for people who\'d rather be running their business than configuring agents at 2 AM.',
+    q: 'Can I build this myself?',
+    a: 'Sure — the models and tools are all public. Our service exists for operators who\'d rather run their business than architect agent systems at 2 AM. We\'ve already made the mistakes so you don\'t have to.',
   },
   {
     q: 'What happens after hypercare ends?',
-    a: 'Your agents keep running — they\'re deployed on your hardware, not ours. If you want ongoing support, the Operator tier includes a retainer option. Otherwise, you own the system.',
+    a: 'Your system keeps running — it\'s deployed on your hardware, not ours. If you want ongoing support, the Operator tier includes a retainer option. Otherwise, you own the whole thing.',
   },
   {
     q: 'How fast can I be up and running?',
-    a: 'First agent deployed within 24 hours of kickoff. Full setup depends on complexity — most Starter deployments are fully tuned within a week. Studio and Operator take 2-3 weeks for full automation suites.',
+    a: 'First automation live within 24 hours of kickoff. Full setup depends on complexity — most Starter deployments are fully tuned within a week. Studio and Operator take 2-3 weeks for full automation suites.',
   },
   {
     q: 'What\'s the difference between the Workshop and the deployment tiers?',
-    a: 'The Workshop is a 2-hour learning session — you leave with knowledge and templates. The deployment tiers (Starter, Studio, Operator) mean we build and deploy actual running agents on your infrastructure. One is education, the other is execution.',
+    a: 'The Workshop is a 2-hour learning session — you leave with knowledge and templates. The deployment tiers (Starter, Studio, Operator) mean we design and deploy an actual running system on your infrastructure. One is education, the other is execution.',
   },
   {
     q: 'What if the agents aren\'t saving me time?',
@@ -342,7 +341,7 @@ export default function ServicesPage() {
         body: JSON.stringify({ ...rest, message: timeDrain }),
       })
 
-      // TODO: replace with OpenClaw inbound webhook URL
+      // TODO: replace with agent inbound webhook URL
       // fetch('https://your-telegram-webhook-url.com', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -424,22 +423,22 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 3. MEET OPENCLAW ───────────────────────────── */}
-      <section id="openclaw" className="py-24 border-t border-[var(--border)]">
+      {/* ── 3. THE ARCHITECTURE ────────────────────────── */}
+      <section id="architecture" className="py-24 border-t border-[var(--border)]">
         <div className="container">
           <SectionHeader
-            label="The Engine"
-            title="OpenClaw: agents that actually do the work"
+            label="The Architecture"
+            title="Primitive chains: architecture that does the work"
           />
 
           <div className="max-w-3xl mb-16">
             <ScrollReveal>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                <Link href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--id8-orange)] hover:underline">OpenClaw</Link> is an open-source agent framework. It runs on your hardware, connects to your real tools, and executes tasks autonomously. Email, calendar, Slack, CRM, file management — whatever your operation runs on, OpenClaw plugs into it.
+                Most AI is a single model in a chat window. We build <span className="text-[var(--text-primary)] font-semibold">primitive chains</span> — small, reliable steps wired together, with human gates at the decisions that matter. A coordinator routes the work, cheaper agents handle the grunt tasks, and you approve the moments that need judgment. It runs on your hardware, connects to your real tools, and keeps working while you focus elsewhere.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                The difference between an AI tool and an AI agent is simple:{' '}
-                <span className="text-[var(--text-primary)] font-semibold">tools wait for you to type. Agents do the work while you focus on something else.</span>
+                The leverage was never in the tools. It&apos;s in the architecture between them:{' '}
+                <span className="text-[var(--text-primary)] font-semibold">tools wait for you to type. A chain does the work while you focus on something else.</span>
               </p>
             </ScrollReveal>
 
@@ -447,17 +446,17 @@ export default function ServicesPage() {
               <div className="p-6 border border-[var(--border)] border-l-2 border-l-[var(--id8-orange)] rounded-lg bg-[var(--bg-secondary)] max-w-3xl">
                 <h3 className="font-bold mb-3 text-xs font-mono uppercase tracking-widest text-[var(--id8-orange)]">How it works under the hood</h3>
                 <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-3">
-                  OpenClaw is free and open source — the framework costs nothing. Agents run on AI models (Claude, GPT, etc.), and you bring your own API key or subscription. Think of it like email: the protocol is free, but you pay your provider for the service.
+                  We build on the models and tools you already trust — Claude, Claude Code, and the rest. The thinking layer (the expensive part) coordinates; cheaper models and scripts handle the execution. No proprietary lock-in: it&apos;s your hardware, your keys, your system.
                 </p>
                 <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
-                  Our setup service covers deployment, custom skills, integrations, and hypercare. Token costs for the AI models are yours — typically $20-100/month depending on usage. We help you pick the right model and optimize costs during hypercare.
+                  You pay us for the architecture, build, integrations, and hypercare. The AI model and token costs stay yours — typically $20-100/month depending on volume — and we tune for cost during hypercare.
                 </p>
               </div>
             </ScrollReveal>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
-            {openclawCapabilities.map((item, i) => (
+            {architectureCapabilities.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
                 <div className="flex gap-5 p-6 border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-all duration-300">
                   <div className="text-[var(--id8-orange)] shrink-0 mt-1">
@@ -480,17 +479,17 @@ export default function ServicesPage() {
           <div className="max-w-3xl">
             <ScrollReveal>
               <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">
-                Free to use.{' '}
-                <span className="text-[var(--id8-orange)]">Hard to deploy right.</span>
+                The models are commoditized.{' '}
+                <span className="text-[var(--id8-orange)]">The architecture isn&apos;t.</span>
               </h2>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                You could install OpenClaw yourself. Read the docs, write the plugins, configure the integrations, harden the security, debug it when something breaks at 2 AM.
+                The models get cheaper and better every month. That&apos;s not the hard part. The hard part is the chain between them — the architecture that turns a smart model into a system that runs your operation, with the right human gates so it never goes off the rails.
               </p>
               <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                Or you could be running by tomorrow.
+                You could spend months designing it, wiring integrations, and debugging at 2 AM. Or you could be running by tomorrow.
               </p>
               <p className="text-lg text-[var(--text-primary)] leading-relaxed font-semibold mb-12">
-                We do the entire build for you. Your workflow, your tools, your hardware — we deploy OpenClaw, build the custom skills, wire the integrations, and stay on for hypercare until the system is genuinely saving you time.
+                We do the entire build for you. Your workflow, your tools, your hardware — we design the chain, build the custom skills, wire the integrations, and stay on for hypercare until the system is genuinely saving you time.
               </p>
             </ScrollReveal>
 
