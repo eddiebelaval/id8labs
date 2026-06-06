@@ -1,6 +1,5 @@
 'use client'
 
-import { m } from '@/components/motion'
 import Link from 'next/link'
 import MiniAudioPlayer from '@/components/MiniAudioPlayer'
 import MiniVideoPlayer from '@/components/MiniVideoPlayer'
@@ -8,59 +7,16 @@ import EmailCapture from '@/components/EmailCapture'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ModuleComplete } from '@/components/progress'
-
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Icons
-const DownloadIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-  </svg>
-)
-
-const PlayIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polygon points="5 3 19 12 5 21 5 3"/>
-  </svg>
-)
-
-const CheckIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-)
-
-const ArrowLeftIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M19 12H5M12 19l-7-7 7-7"/>
-  </svg>
-)
-
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-)
-
-const TerminalIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <polyline points="4 17 10 11 4 5"/>
-    <line x1="12" y1="19" x2="20" y2="19"/>
-  </svg>
-)
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  SectionHead,
+  Prose,
+  EditorialButton,
+} from '@/components/editorial'
 
 const CopyIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -75,7 +31,7 @@ const CheckIconSmall = () => (
   </svg>
 )
 
-// Copyable code block component
+// Copyable code block — editorial
 function CopyableCode({ code, label }: { code: string; label?: string }) {
   const [copied, setCopied] = useState(false)
 
@@ -88,14 +44,14 @@ function CopyableCode({ code, label }: { code: string; label?: string }) {
   return (
     <div className="relative group">
       {label && (
-        <div className="text-xs font-mono text-id8-orange mb-2">{label}</div>
+        <div className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-2">{label}</div>
       )}
-      <div className="bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg p-4 font-mono text-sm overflow-x-auto">
-        <pre className="text-[var(--text-secondary)] whitespace-pre-wrap">{code}</pre>
+      <div className="border border-[var(--hair-hard)] bg-[var(--paper-mid)] p-4 font-[family-name:var(--font-mono)] text-sm overflow-x-auto">
+        <pre className="text-[var(--ink)] whitespace-pre-wrap">{code}</pre>
       </div>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 p-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:border-id8-orange/50"
+        className="absolute top-2 right-2 p-2 border border-[var(--hair)] bg-[var(--paper)] text-[var(--muted)] opacity-0 group-hover:opacity-100 transition-opacity hover:border-id8-orange hover:text-id8-orange"
       >
         {copied ? <CheckIconSmall /> : <CopyIcon />}
       </button>
@@ -103,32 +59,23 @@ function CopyableCode({ code, label }: { code: string; label?: string }) {
   )
 }
 
-// "Try This Now" interactive section
+// "Try This Now" interactive section — editorial
 function TryThisNow({ children, title }: { children: React.ReactNode; title: string }) {
   return (
-    <div className="my-8 p-6 bg-id8-orange/5 border-2 border-id8-orange/30 rounded-xl">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-id8-orange/20 rounded-full flex items-center justify-center">
-          <TerminalIcon />
-        </div>
-        <div>
-          <span className="text-xs font-mono text-id8-orange uppercase tracking-wider">Hands-On Exercise</span>
-          <h3 className="text-lg font-bold text-[var(--text-primary)]">{title}</h3>
-        </div>
-      </div>
+    <div className="my-8 border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-6">
+      <span className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-id8-orange">Hands-On Exercise</span>
+      <h3 className="mt-1 mb-4 font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">{title}</h3>
       {children}
     </div>
   )
 }
 
-// Mentor aside component
+// Mentor aside component — editorial
 function MentorNote({ children }: { children: React.ReactNode }) {
   return (
-    <div className="my-6 p-4 bg-[var(--bg-secondary)] border-l-4 border-id8-orange rounded-r-lg">
-      <div className="flex items-start gap-3">
-        <div className="text-2xl">💡</div>
-        <div className="text-[var(--text-secondary)] italic">{children}</div>
-      </div>
+    <div className="my-6 border-l-2 border-[var(--hair-hard)] bg-[var(--paper-shadow)] p-4">
+      <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">Mentor Note</p>
+      <div className="font-[family-name:var(--font-serif)] italic text-[var(--muted)]">{children}</div>
     </div>
   )
 }
@@ -141,337 +88,243 @@ const outcomes = [
 ]
 
 const quickStart = [
-  { step: "1", command: "curl -fsSL https://claude.ai/install.sh | bash", description: "Install Claude Code" },
-  { step: "2", command: "claude", description: "Start a session" },
-  { step: "3", command: "cd ~/Downloads", description: "Navigate to a folder" },
-  { step: "4", command: '"Organize this folder by file type"', description: "Your first delegation" },
+  { step: "1", code: "curl -fsSL https://claude.ai/install.sh | bash", description: "Install Claude Code" },
+  { step: "2", code: "claude", description: "Start a session" },
+  { step: "3", code: "cd ~/Downloads", description: "Navigate to a folder" },
+  { step: "4", code: '"Organize this folder by file type"', description: "Your first delegation" },
+]
+
+const tryThisSteps = [
+  'Scans your Downloads folder',
+  'Creates subfolders (PDFs, Images, Documents, etc.)',
+  'Moves files into the right places',
+  'Reports back what it did',
 ]
 
 export default function Module0Page() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-zone-text">
-        <div className="container">
-          <m.div
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-            className="max-w-3xl"
-          >
-            <m.div variants={fadeUp}>
-              <Link
-                href="/courses/claude-for-knowledge-workers"
-                className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors mb-6"
-              >
-                <ArrowLeftIcon />
-                Back to Course
-              </Link>
-            </m.div>
+    <article className="min-h-screen bg-[var(--paper)]">
+      {/* Masthead */}
+      <section className="pt-16 pb-10">
+        <Container narrow>
+          <div className="mb-8">
+            <EditorialButton href="/courses/claude-for-knowledge-workers" variant="ghost">
+              &larr; Back to Course
+            </EditorialButton>
+          </div>
 
-            <m.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-id8-orange/10 border border-id8-orange/30 rounded-full text-id8-orange text-sm font-mono mb-6"
+          <Kicker dot>Module 0 · Free</Kicker>
+
+          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
+            The Mental <em className="italic text-id8-orange">Model Shift</em>
+          </h1>
+
+          <Deck className="mt-6">
+            15 minutes to understand what Claude Code actually is — and complete your first real delegation.
+          </Deck>
+
+          <MetaRow
+            className="mt-8"
+            items={[
+              { label: 'Module 0' },
+              { label: '~15 min' },
+            ]}
+          />
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <EditorialButton
+              href="/courses/module-0/module-0-the-mental-model-shift.pdf"
+              variant="primary"
+              external
             >
-              <span>Module 0</span>
-              <span className="text-id8-orange/50">•</span>
-              <span>Free</span>
-            </m.div>
+              Download Guide (PDF)
+            </EditorialButton>
+            <EditorialButton href="#media" variant="ghost">
+              Watch or Listen
+            </EditorialButton>
+          </div>
 
-            <m.h1
-              variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
-            >
-              The Mental Model Shift
-            </m.h1>
-
-            <m.p
-              variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] mb-8 leading-relaxed"
-            >
-              15 minutes to understand what Claude Code actually is — and complete your first real delegation.
-            </m.p>
-
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <a
-                href="/courses/module-0/module-0-the-mental-model-shift.pdf"
-                download="Module-0-The-Mental-Model-Shift.pdf"
-                className="btn btn-primary group inline-flex items-center gap-2"
-              >
-                <DownloadIcon />
-                Download Guide (PDF)
-              </a>
-              <a
-                href="#media"
-                className="btn bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] hover:border-id8-orange/50 transition-colors inline-flex items-center gap-2"
-              >
-                <PlayIcon />
-                Watch or Listen
-              </a>
-            </m.div>
-          </m.div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+          <Rule className="mt-8" />
+        </Container>
       </section>
 
       {/* Split Tab Callout */}
-      <section className="py-4 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 border-b border-[var(--border)]">
-        <div className="container">
-          <div className="flex items-center justify-center gap-3 text-center">
-            <span className="text-lg">✨</span>
-            <p className="text-sm text-[var(--text-secondary)]">
-              <span className="font-medium text-[var(--text-primary)]">Pro Tip:</span> Use your browser's Split Tab feature to follow along side-by-side with Claude Code open.
+      <section className="py-4 border-b border-[var(--hair)] bg-[var(--paper-shadow)]">
+        <Container narrow>
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-sm text-[var(--body)]">
+              <span className="font-medium text-[var(--ink)]">Pro Tip:</span> Use your browser&apos;s Split Tab feature to follow along side-by-side with Claude Code open.
             </p>
-            <span className="text-xs font-mono uppercase tracking-wider text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full">
+            <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.2em] text-id8-orange whitespace-nowrap">
               New
             </span>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Media Section */}
-      <section id="media" className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-2">Watch or Listen</h2>
-            <p className="text-[var(--text-secondary)] mb-8">
-              Choose your format — same content, different experience.
-            </p>
+      {/* Media */}
+      <section id="media" className="pb-14 pt-14">
+        <Container narrow>
+          <SectionHead title="Watch or Listen" className="mb-4" />
+          <p className="mt-6 mb-8 text-[var(--body)]">
+            Choose your format — same content, different experience.
+          </p>
 
-            <div className="space-y-6">
-              {/* Video Player */}
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+          <div className="space-y-6">
+            <MiniVideoPlayer
+              src="/courses/module-0/media/module-0-the-mental-model-shift.mp4"
+              title="The Mental Model Shift (Video)"
+              downloadName="Module-0-The-Mental-Model-Shift.mp4"
+            />
+            <MiniAudioPlayer
+              src="/courses/module-0/media/module-0-the-mental-model-shift.m4a"
+              title="The Mental Model Shift (Podcast)"
+              downloadName="Module-0-The-Mental-Model-Shift.m4a"
+            />
+            <div className="border border-[var(--hair)] p-4">
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] mb-3">Module Mindmap</h3>
+              <a
+                href="/courses/module-0/media/module-0-mindmap.webp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
-                <MiniVideoPlayer
-                  src="/courses/module-0/media/module-0-the-mental-model-shift.mp4"
-                  title="The Mental Model Shift (Video)"
-                  downloadName="Module-0-The-Mental-Model-Shift.mp4"
+                <Image
+                  src="/courses/module-0/media/module-0-mindmap.webp"
+                  alt="Module 0 Mindmap - The Mental Model Shift"
+                  width={800}
+                  height={600}
+                  className="w-full border border-[var(--hair)] hover:border-id8-orange transition-colors cursor-pointer"
                 />
-              </m.div>
-
-              {/* Audio Player */}
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              >
-                <MiniAudioPlayer
-                  src="/courses/module-0/media/module-0-the-mental-model-shift.m4a"
-                  title="The Mental Model Shift (Podcast)"
-                  downloadName="Module-0-The-Mental-Model-Shift.m4a"
-                />
-              </m.div>
-
-              {/* Mindmap */}
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="p-4 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border)]"
-              >
-                <h3 className="font-semibold mb-3">Module Mindmap</h3>
-                <a
-                  href="/courses/module-0/media/module-0-mindmap.webp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Image
-                    src="/courses/module-0/media/module-0-mindmap.webp"
-                    alt="Module 0 Mindmap - The Mental Model Shift"
-                    width={800}
-                    height={600}
-                    className="w-full rounded-lg border border-[var(--border)] hover:border-id8-orange/50 transition-colors cursor-pointer"
-                  />
-                </a>
-                <p className="text-sm text-[var(--text-tertiary)] mt-2">Click to view full size</p>
-              </m.div>
+              </a>
+              <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] mt-2">Click to view full size</p>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* What You'll Learn */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">What You'll Learn</h2>
-
-            <div className="space-y-4">
-              {outcomes.map((outcome, index) => (
-                <m.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 p-4 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)]"
-                >
-                  <span className="text-id8-orange flex-shrink-0 mt-0.5">
-                    <CheckIcon />
-                  </span>
-                  <span className="text-[var(--text-primary)]">{outcome}</span>
-                </m.div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="What You&apos;ll Learn" className="mb-8" />
+          <ol className="space-y-4">
+            {outcomes.map((outcome, index) => (
+              <li key={index} className="flex gap-4">
+                <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange flex-shrink-0 pt-0.5">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <p className="text-[var(--body)] flex-1">{outcome}</p>
+              </li>
+            ))}
+          </ol>
+        </Container>
       </section>
 
       {/* Quick Start */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-id8-orange">
-                <TerminalIcon />
-              </span>
-              <h2 className="text-2xl font-bold">Quick Start</h2>
-            </div>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="Quick Start" className="mb-8" />
 
-            <MentorNote>
-              Don't just read these commands — actually run them. The mental shift happens when you experience it firsthand.
-            </MentorNote>
+          <MentorNote>
+            Don&apos;t just read these commands — actually run them. The mental shift happens when you experience it firsthand.
+          </MentorNote>
 
-            <div className="space-y-6">
-              <div>
+          <div className="space-y-6">
+            {quickStart.map((item) => (
+              <div key={item.step}>
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-id8-orange/10 border border-id8-orange/30 flex items-center justify-center text-id8-orange font-mono text-sm flex-shrink-0">1</span>
-                  <p className="text-sm text-[var(--text-tertiary)]">Install Claude Code</p>
+                  <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange flex-shrink-0">
+                    {String(item.step).padStart(2, '0')}
+                  </span>
+                  <p className="text-sm text-[var(--muted)]">{item.description}</p>
                 </div>
-                <CopyableCode code="curl -fsSL https://claude.ai/install.sh | bash" />
+                <CopyableCode code={item.code} />
               </div>
-
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-id8-orange/10 border border-id8-orange/30 flex items-center justify-center text-id8-orange font-mono text-sm flex-shrink-0">2</span>
-                  <p className="text-sm text-[var(--text-tertiary)]">Start a session</p>
-                </div>
-                <CopyableCode code="claude" />
-              </div>
-
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-id8-orange/10 border border-id8-orange/30 flex items-center justify-center text-id8-orange font-mono text-sm flex-shrink-0">3</span>
-                  <p className="text-sm text-[var(--text-tertiary)]">Navigate to a folder</p>
-                </div>
-                <CopyableCode code="cd ~/Downloads" />
-              </div>
-
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-id8-orange/10 border border-id8-orange/30 flex items-center justify-center text-id8-orange font-mono text-sm flex-shrink-0">4</span>
-                  <p className="text-sm text-[var(--text-tertiary)]">Your first delegation</p>
-                </div>
-                <CopyableCode code={`"Organize this folder by file type"`} />
-              </div>
-            </div>
-
-            <TryThisNow title="Complete Your First Delegation">
-              <p className="text-[var(--text-secondary)] mb-4">
-                Right now, open your terminal and try this exact sequence. Watch as Claude Code:
-              </p>
-              <ul className="space-y-2 text-[var(--text-secondary)] mb-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-id8-orange mt-1">•</span>
-                  <span>Scans your Downloads folder</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-id8-orange mt-1">•</span>
-                  <span>Creates subfolders (PDFs, Images, Documents, etc.)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-id8-orange mt-1">•</span>
-                  <span>Moves files into the right places</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-id8-orange mt-1">•</span>
-                  <span>Reports back what it did</span>
-                </li>
-              </ul>
-              <p className="text-sm text-[var(--text-tertiary)]">
-                This is delegation. You stated a goal. Claude Code delivered a result.
-              </p>
-            </TryThisNow>
+            ))}
           </div>
-        </div>
+
+          <TryThisNow title="Complete Your First Delegation">
+            <p className="text-[var(--body)] mb-4">
+              Right now, open your terminal and try this exact sequence. Watch as Claude Code:
+            </p>
+            <ul className="space-y-2 mb-4">
+              {tryThisSteps.map((s, i) => (
+                <li key={i} className="flex gap-3 text-[var(--body)]">
+                  <span className="text-id8-orange flex-shrink-0">&rarr;</span>
+                  {s}
+                </li>
+              ))}
+            </ul>
+            <p className="font-[family-name:var(--font-serif)] italic text-sm text-[var(--muted)]">
+              This is delegation. You stated a goal. Claude Code delivered a result.
+            </p>
+          </TryThisNow>
+        </Container>
       </section>
 
       {/* The Key Insight */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">The Key Insight</h2>
-
-            <div className="p-6 bg-id8-orange/5 border border-id8-orange/20 rounded-xl">
-              <p className="text-xl text-[var(--text-primary)] mb-4 font-medium">
-                The shift is from <span className="text-[var(--text-tertiary)]">assistance</span> to{' '}
-                <span className="text-id8-orange">delegation</span>.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-4 mt-6">
-                <div className="p-4 bg-[var(--bg-secondary)] rounded-lg">
-                  <p className="text-xs font-mono uppercase tracking-wider text-[var(--text-tertiary)] mb-2">Old Way</p>
-                  <p className="text-[var(--text-secondary)]">"Help me write interview questions"</p>
-                </div>
-                <div className="p-4 bg-[var(--bg-primary)] rounded-lg border border-id8-orange/30">
-                  <p className="text-xs font-mono uppercase tracking-wider text-id8-orange mb-2">New Way</p>
-                  <p className="text-[var(--text-primary)]">"Generate 15 interview questions based on this guest's bio. Save to /Prep/[Name].md"</p>
-                </div>
+      <section className="pb-14">
+        <Container narrow>
+          <SectionHead title="The Key Insight" className="mb-8" />
+          <div className="border-l-2 border-id8-orange bg-[var(--paper-shadow)] p-6">
+            <p className="text-xl text-[var(--ink)] mb-4">
+              The shift is from <span className="text-[var(--muted)]">assistance</span> to{' '}
+              <span className="text-id8-orange">delegation</span>.
+            </p>
+            <div className="grid md:grid-cols-2 gap-px bg-[var(--hair)] border border-[var(--hair)] mt-6">
+              <div className="bg-[var(--paper)] p-4">
+                <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] mb-2">Old Way</p>
+                <p className="text-[var(--body)]">&quot;Help me write interview questions&quot;</p>
               </div>
-
-              <p className="text-[var(--text-secondary)] mt-6">
-                One gives you <strong>suggestions</strong>. The other gives you <strong>deliverables</strong>.
-              </p>
+              <div className="bg-[var(--paper)] p-4 border-t-2 md:border-t-0 md:border-l-2 border-id8-orange">
+                <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-id8-orange mb-2">New Way</p>
+                <p className="text-[var(--ink)]">&quot;Generate 15 interview questions based on this guest&apos;s bio. Save to /Prep/[Name].md&quot;</p>
+              </div>
             </div>
-
-            <MentorNote>
-              This isn't about Claude being "smarter." It's about you thinking differently. When you delegate instead of ask, you get outcomes instead of options. That's the mental model shift.
-            </MentorNote>
+            <p className="text-[var(--body)] mt-6">
+              One gives you <strong>suggestions</strong>. The other gives you <strong>deliverables</strong>.
+            </p>
           </div>
-        </div>
+
+          <MentorNote>
+            This isn&apos;t about Claude being &quot;smarter.&quot; It&apos;s about you thinking differently. When you delegate instead of ask, you get outcomes instead of options. That&apos;s the mental model shift.
+          </MentorNote>
+        </Container>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready for More?</h2>
-            <p className="text-lg text-[var(--text-secondary)] mb-8">
+      {/* CTA */}
+      <section className="pb-14">
+        <Container narrow>
+          <div className="text-center">
+            <h2 className="font-[family-name:var(--font-display)] font-normal text-3xl text-[var(--ink)] mb-4">Ready for More?</h2>
+            <p className="text-[1.0625rem] leading-[1.7] text-[var(--body)] mb-8">
               Module 0 is just the beginning. The full course covers file organization, writing workflows, research automation, and building your personal operating system.
             </p>
-
-            <Link
-              href="/courses/claude-for-knowledge-workers"
-              className="btn btn-primary group inline-flex items-center gap-2 mb-12"
-            >
-              View Full Course
-              <ArrowRightIcon />
-            </Link>
-
-            {/* Email Capture */}
-            <div className="pt-8 border-t border-[var(--border)]">
+            <div className="flex justify-center mb-12">
+              <EditorialButton href="/courses/claude-for-knowledge-workers" variant="primary">
+                View Full Course &rarr;
+              </EditorialButton>
+            </div>
+            <div className="pt-8 border-t border-[var(--hair)]">
               <EmailCapture
                 source="module-0-cta"
                 title="Get notified about new modules and tips"
               />
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Module Complete */}
-      <ModuleComplete
-        courseSlug="claude-for-knowledge-workers"
-        moduleSlug="module-0"
-        nextModulePath="/courses/claude-for-knowledge-workers/module-1"
-      />
-    </div>
+      <section className="border-t border-[var(--rule)] py-12">
+        <Container narrow>
+          <ModuleComplete
+            courseSlug="claude-for-knowledge-workers"
+            moduleSlug="module-0"
+            nextModulePath="/courses/claude-for-knowledge-workers/module-1"
+          />
+        </Container>
+      </section>
+    </article>
   )
 }

@@ -46,8 +46,8 @@ export default function NewsletterDashboard() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-500/10',
+      color: 'text-[var(--ink)]',
+      bgColor: 'bg-[var(--paper-shadow)]',
     },
     {
       label: 'Active Subscribers',
@@ -57,8 +57,8 @@ export default function NewsletterDashboard() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      color: 'text-green-500',
-      bgColor: 'bg-green-500/10',
+      color: 'text-[var(--teal)]',
+      bgColor: 'bg-[var(--paper-shadow)]',
     },
     {
       label: 'New This Week',
@@ -68,8 +68,8 @@ export default function NewsletterDashboard() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
-      color: 'text-[var(--id8-orange)]',
-      bgColor: 'bg-[var(--id8-orange)]/10',
+      color: 'text-id8-orange',
+      bgColor: 'bg-[var(--paper-shadow)]',
     },
     {
       label: 'Total Sends',
@@ -79,8 +79,8 @@ export default function NewsletterDashboard() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
         </svg>
       ),
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-500/10',
+      color: 'text-[var(--ink)]',
+      bgColor: 'bg-[var(--paper-shadow)]',
     },
   ]
 
