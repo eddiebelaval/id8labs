@@ -87,10 +87,10 @@ export default function NewsletterDashboard() {
   return (
     <div className="p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 border-b border-[var(--rule)] pb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--text-primary)]">Newsletter</h1>
-          <p className="text-[var(--text-secondary)]">Manage signal:noise</p>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Newsletter</h1>
+          <p className="text-[var(--muted)]">Manage signal:noise</p>
         </div>
         <Link
           href="/admin/newsletter/compose"
@@ -108,17 +108,17 @@ export default function NewsletterDashboard() {
         {statCards.map((stat) => (
           <div
             key={stat.label}
-            className="p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl"
+            className="p-6 bg-[var(--paper)] border border-[var(--hair)]"
           >
             <div className="flex items-center gap-4">
-              <div className={`p-3 rounded-lg ${stat.bgColor}`}>
+              <div className={`p-3 ${stat.bgColor}`}>
                 <div className={stat.color}>{stat.icon}</div>
               </div>
               <div>
-                <p className="text-2xl font-bold text-[var(--text-primary)]">
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-medium text-[var(--ink)]">
                   {loading ? '...' : stat.value.toLocaleString()}
                 </p>
-                <p className="text-sm text-[var(--text-secondary)]">{stat.label}</p>
+                <p className="text-sm text-[var(--muted)]">{stat.label}</p>
               </div>
             </div>
           </div>

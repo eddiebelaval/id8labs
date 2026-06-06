@@ -1,42 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { m } from '@/components/motion'
 import { FoundationGate } from '@/components/progress'
-
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Icons
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-)
-
-const CheckIcon = () => (
-  <svg className="w-5 h-5 text-green-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-)
-
-const PlayIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M8 5v14l11-7z"/>
-  </svg>
-)
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  SectionHead,
+  MetaRow,
+  Tag,
+  EditorialButton,
+} from '@/components/editorial'
 
 // Module data with real-world creator examples
 const modules = [
@@ -156,252 +131,188 @@ const targetAudience = [
 export default function PromptEngineeringCreatorsPage() {
   return (
     <FoundationGate>
-      <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[75vh] flex items-center bg-zone-text">
-        <div className="container">
-          <m.div
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-            className="max-w-4xl"
-          >
-            <m.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-              <span className="px-3 py-1 text-sm font-mono uppercase tracking-wider bg-green-500 text-white rounded">
-                Free Course
-              </span>
-              <span className="px-3 py-1 text-sm font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
-                New
-              </span>
-            </m.div>
-
-            <m.h1
-              variants={fadeUp}
-              className="text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.05] font-bold tracking-tight mb-8"
-            >
-              Prompt Engineering
-              <br />
-              <span className="text-gradient-orange">for Creators</span>
-            </m.h1>
-
-            <m.p
-              variants={fadeUp}
-              className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-2xl mb-6 leading-relaxed"
-            >
-              Learn the 9 techniques that make every AI conversation more effective — through real examples from writers, content creators, and indie makers.
-            </m.p>
-
-            <m.p
-              variants={fadeUp}
-              className="text-lg text-[var(--text-tertiary)] mb-10"
-            >
-              Based on Anthropic's official tutorial. Translated for non-technical creators.
-            </m.p>
-
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <Link
-                href="/academy/prompt-engineering-creators/module-1"
-                className="btn btn-primary hover-lift group inline-flex items-center gap-3"
-              >
-                <PlayIcon />
-                Start Module 1
-              </Link>
-              <Link
-                href="#modules"
-                className="btn bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] hover:border-id8-orange/50"
-              >
-                View All 9 Modules
-              </Link>
-            </m.div>
-          </m.div>
-        </div>
-
-        {/* Bottom border */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
-      </section>
-
-      {/* What Makes This Different */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-                The ID8Labs Approach
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-                Real examples,
-                <br />
-                <span className="text-gradient-orange">not abstract concepts.</span>
-              </h2>
-              <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-                Anthropic's tutorial teaches the techniques. We show you how a newsletter writer, a YouTuber, or an indie maker actually uses them.
-              </p>
-              <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                Every module includes before/after prompt comparisons and practice exercises with your own content.
-              </p>
-            </div>
-
-            <m.ul
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={stagger}
-              className="space-y-4"
-            >
-              {learningOutcomes.map((outcome, index) => (
-                <m.li
-                  key={index}
-                  variants={fadeUp}
-                  className="flex items-start gap-3"
-                >
-                  <CheckIcon />
-                  <span className="text-lg text-[var(--text-secondary)]">{outcome}</span>
-                </m.li>
-              ))}
-            </m.ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Modules Section */}
-      <section className="section-spacing bg-[var(--bg-secondary)]" id="modules">
-        <div className="container">
-          <div className="text-center mb-16">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              9 Modules
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              The complete curriculum
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-lg mx-auto">
-              Each module takes 15-20 minutes. Finish the whole course in under 3 hours.
-            </p>
-          </div>
-
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="max-w-4xl mx-auto space-y-4"
-          >
-            {modules.map((module, index) => (
-              <m.div
-                key={module.number}
-                variants={fadeUp}
-              >
-                <Link
-                  href={module.href}
-                  className="block card hover:border-id8-orange/50 transition-all group"
-                >
-                  <div className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-id8-orange/10 text-id8-orange flex items-center justify-center font-mono font-bold">
-                      {module.number}
-                    </span>
-                    <div className="flex-grow">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-lg font-bold group-hover:text-id8-orange transition-colors">
-                          {module.title}
-                        </h3>
-                        <span className="text-xs font-mono text-[var(--text-tertiary)]">
-                          {module.duration}
-                        </span>
-                      </div>
-                      <p className="text-[var(--text-secondary)] mb-2">
-                        {module.description}
-                      </p>
-                      <p className="text-sm text-id8-orange">
-                        <span className="font-medium">Creator example:</span> {module.creatorExample}
-                      </p>
-                    </div>
-                    <ArrowRightIcon />
-                  </div>
-                </Link>
-              </m.div>
-            ))}
-          </m.div>
-        </div>
-      </section>
-
-      {/* Who This Is For */}
-      <section className="section-spacing border-t border-[var(--border)]">
-        <div className="container">
-          <div className="text-center mb-12">
-            <p className="text-sm font-mono uppercase tracking-widest text-id8-orange mb-4">
-              Who This Is For
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Built for creators who make things
-            </h2>
-          </div>
-
-          <m.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto"
-          >
-            {targetAudience.map((audience, index) => (
-              <m.div
-                key={index}
-                variants={fadeUp}
-                className="card text-center"
-              >
-                <h3 className="font-bold mb-2">{audience.title}</h3>
-                <p className="text-sm text-[var(--text-secondary)]">{audience.description}</p>
-              </m.div>
-            ))}
-          </m.div>
-        </div>
-      </section>
-
-      {/* Source Attribution */}
-      <section className="py-12 bg-[var(--bg-secondary)] border-t border-[var(--border)]">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-sm text-[var(--text-tertiary)] mb-2">
-              Content based on
-            </p>
-            <p className="text-lg font-medium text-[var(--text-secondary)]">
-              Anthropic's Prompt Engineering Tutorial
-            </p>
-            <p className="text-sm text-[var(--text-tertiary)] mt-2">
-              Adapted and expanded with real-world creator examples by ID8Labs
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section-spacing-lg relative">
-        {/* Glow effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] aspect-square bg-[radial-gradient(circle,var(--id8-orange-light)_0%,transparent_70%)] opacity-30 pointer-events-none" />
-
-        <div className="container relative">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Ready to level up your prompts?
-            </h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-10">
-              Start with Module 1 and work through at your own pace. Each module builds on the last.
-            </p>
-
+      <div className="min-h-screen bg-[var(--paper)]">
+        {/* Hero */}
+        <section className="pt-16 pb-12">
+          <Container>
             <Link
-              href="/academy/prompt-engineering-creators/module-1"
-              className="btn btn-primary hover-lift group inline-flex items-center gap-3 text-lg px-8 py-4"
+              href="/academy"
+              className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)] transition-colors hover:text-id8-orange"
             >
-              <PlayIcon />
-              Start Module 1
+              &larr; Back to Academy
             </Link>
 
-            <p className="mt-6 text-sm font-mono text-[var(--text-tertiary)]">
-              Free. 9 modules. ~2.5 hours total.
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Kicker>New · Free</Kicker>
+              <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">id8Labs Academy</span>
+            </div>
+
+            <h1 className="mt-5 max-w-4xl font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[0.95] text-[var(--ink)] text-[clamp(2.5rem,7vw,4.5rem)]">
+              Prompt Engineering <em className="italic text-id8-orange">for Creators</em>
+            </h1>
+
+            <Deck className="mt-6 max-w-2xl">
+              Learn the 9 techniques that make every AI conversation more effective — through real examples from writers, content creators, and indie makers.
+            </Deck>
+
+            <p className="mt-5 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+              Based on Anthropic&apos;s official tutorial. Translated for non-technical creators.
             </p>
-          </div>
-        </div>
-      </section>
-    </div>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <EditorialButton href="/academy/prompt-engineering-creators/module-1" variant="primary">
+                Start Module 1
+              </EditorialButton>
+              <EditorialButton href="#modules" variant="ghost">
+                View All 9 Modules
+              </EditorialButton>
+            </div>
+
+            <MetaRow
+              className="mt-10"
+              items={[
+                { value: '9', label: 'modules' },
+                { value: '~2.5', label: 'hours' },
+                { label: 'Completely free' },
+              ]}
+            />
+          </Container>
+        </section>
+
+        <Rule />
+
+        {/* What Makes This Different */}
+        <section className="py-16">
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-2">
+              <div>
+                <Kicker>The id8Labs Approach</Kicker>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-tight text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
+                  Real examples, <em className="italic text-id8-orange">not abstract concepts</em>.
+                </h2>
+                <p className="mt-6 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                  Anthropic&apos;s tutorial teaches the techniques. We show you how a newsletter writer, a YouTuber, or an indie maker actually uses them.
+                </p>
+                <p className="mt-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                  Every module includes before/after prompt comparisons and practice exercises with your own content.
+                </p>
+              </div>
+
+              <ul className="space-y-3 self-center">
+                {learningOutcomes.map((outcome, index) => (
+                  <li key={index} className="flex items-start gap-3 border-b border-[var(--hair)] pb-3 font-[family-name:var(--font-sans)] text-[1.0625rem] text-[var(--body)]">
+                    <span className="text-id8-orange">—</span>
+                    <span>{outcome}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </section>
+
+        <Rule />
+
+        {/* Modules */}
+        <section className="py-16" id="modules">
+          <Container>
+            <SectionHead title="The complete curriculum" meta="9 modules · ~2.5 hours" />
+            <p className="mt-6 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+              Each module takes 15-20 minutes. Finish the whole course in under 3 hours.
+            </p>
+
+            <div className="mt-8">
+              {modules.map((module) => (
+                <Link
+                  key={module.number}
+                  href={module.href}
+                  className="group grid grid-cols-[44px_1fr_auto] items-start gap-5 border-b border-[var(--hair)] py-6 transition-colors hover:bg-[var(--paper-shadow)]"
+                >
+                  <span className="font-[family-name:var(--font-display)] text-3xl leading-none text-[var(--ink)]">
+                    {module.number}
+                  </span>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)] transition-colors group-hover:text-id8-orange">
+                      {module.title}
+                    </h3>
+                    <p className="mt-1 font-[family-name:var(--font-sans)] text-sm text-[var(--body)]">
+                      {module.description}
+                    </p>
+                    <p className="mt-2 font-[family-name:var(--font-mono)] text-xs text-id8-orange">
+                      Creator example: {module.creatorExample}
+                    </p>
+                  </div>
+                  <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] whitespace-nowrap">
+                    {module.duration}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <Rule />
+
+        {/* Who This Is For */}
+        <section className="py-16">
+          <Container>
+            <SectionHead title="Built for creators who make things" meta="Who this is for" />
+            <div className="mt-10 grid gap-px bg-[var(--hair)] md:grid-cols-2 lg:grid-cols-4">
+              {targetAudience.map((audience, index) => (
+                <div key={index} className="bg-[var(--paper)] p-6">
+                  <h3 className="font-[family-name:var(--font-display)] font-normal text-lg text-[var(--ink)]">
+                    {audience.title}
+                  </h3>
+                  <p className="mt-1.5 font-[family-name:var(--font-sans)] text-sm text-[var(--body)]">
+                    {audience.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <Rule />
+
+        {/* Source Attribution */}
+        <section className="py-12">
+          <Container narrow>
+            <div className="text-center">
+              <Tag>Source</Tag>
+              <p className="mt-4 font-[family-name:var(--font-serif)] text-lg italic text-[var(--ink)]">
+                Anthropic&apos;s Prompt Engineering Tutorial
+              </p>
+              <p className="mt-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                Adapted and expanded with real-world creator examples by id8Labs
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        <Rule />
+
+        {/* CTA */}
+        <section className="py-24">
+          <Container narrow>
+            <div className="text-center">
+              <Kicker className="justify-center" dot>Start here</Kicker>
+              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-tight text-[var(--ink)] text-[clamp(2rem,5vw,3rem)]">
+                Ready to level up your <em className="italic text-id8-orange">prompts</em>?
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                Start with Module 1 and work through at your own pace. Each module builds on the last.
+              </p>
+              <div className="mt-9 flex justify-center">
+                <EditorialButton href="/academy/prompt-engineering-creators/module-1" variant="primary">
+                  Start Module 1
+                </EditorialButton>
+              </div>
+              <p className="mt-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                Free. 9 modules. ~2.5 hours total.
+              </p>
+            </div>
+          </Container>
+        </section>
+      </div>
     </FoundationGate>
   )
 }
