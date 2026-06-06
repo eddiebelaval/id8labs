@@ -9,33 +9,33 @@ export default function TestFoundation() {
   const [wireActive, setWireActive] = useState(false)
 
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary p-8">
+    <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)] p-8">
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">
+          <h1 className="font-[family-name:var(--font-display)] text-4xl font-normal tracking-[-0.02em] mb-4">
             Living Circuit Board Foundation Test
           </h1>
-          <p className="text-text-secondary">
+          <p className="text-[var(--muted)]">
             Testing RaisedDot, DotMatrix, and BorderWire components
           </p>
         </div>
 
         {/* RaisedDot Tests */}
-        <section className="bg-bg-secondary p-8 rounded-lg">
-          <h2 className="text-2xl font-bold mb-6">1. RaisedDot Component</h2>
+        <section className="bg-[var(--paper)] border border-[var(--hair)] p-8">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">1. RaisedDot Component</h2>
 
           <div className="space-y-6">
             {/* Size Variations */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Size Variations
               </h3>
               <div className="flex items-center gap-4">
                 <RaisedDot size="sm" />
                 <RaisedDot size="md" />
                 <RaisedDot size="lg" />
-                <span className="text-sm text-text-secondary ml-2">
+                <span className="text-sm text-[var(--muted)] ml-2">
                   (sm, md, lg)
                 </span>
               </div>
@@ -43,7 +43,7 @@ export default function TestFoundation() {
 
             {/* Glow Intensity */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Glow Intensity
               </h3>
               <div className="flex items-center gap-4">
@@ -52,7 +52,7 @@ export default function TestFoundation() {
                 <RaisedDot glowIntensity={60} />
                 <RaisedDot glowIntensity={80} />
                 <RaisedDot glowIntensity={100} />
-                <span className="text-sm text-text-secondary ml-2">
+                <span className="text-sm text-[var(--muted)] ml-2">
                   (20% → 100%)
                 </span>
               </div>
@@ -60,7 +60,7 @@ export default function TestFoundation() {
 
             {/* Color Variations */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Color Variations
               </h3>
               <div className="flex items-center gap-4">
@@ -69,7 +69,7 @@ export default function TestFoundation() {
                 <RaisedDot color="rgb-green" />
                 <RaisedDot color="rgb-blue" />
                 <RaisedDot color="text-primary" />
-                <span className="text-sm text-text-secondary ml-2">
+                <span className="text-sm text-[var(--muted)] ml-2">
                   (accent, red, green, blue, primary)
                 </span>
               </div>
@@ -77,21 +77,21 @@ export default function TestFoundation() {
 
             {/* Animation States */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Animation States
               </h3>
               <div className="flex items-center gap-6">
                 <div className="flex flex-col items-center gap-2">
                   <RaisedDot animated="static" />
-                  <span className="text-xs text-text-secondary">Static</span>
+                  <span className="text-xs text-[var(--muted)]">Static</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <RaisedDot animated="breathing" />
-                  <span className="text-xs text-text-secondary">Breathing</span>
+                  <span className="text-xs text-[var(--muted)]">Breathing</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <RaisedDot animated="pulse" />
-                  <span className="text-xs text-text-secondary">Pulse</span>
+                  <span className="text-xs text-[var(--muted)]">Pulse</span>
                 </div>
               </div>
             </div>
@@ -99,13 +99,13 @@ export default function TestFoundation() {
         </section>
 
         {/* DotMatrix Tests */}
-        <section className="bg-bg-secondary p-8 rounded-lg">
-          <h2 className="text-2xl font-bold mb-6">2. DotMatrix Component</h2>
+        <section className="bg-[var(--paper)] border border-[var(--hair)] p-8">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">2. DotMatrix Component</h2>
 
           <div className="space-y-6">
             {/* Pattern Variations */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Pattern Variations
               </h3>
               <div className="space-y-4">
@@ -118,7 +118,7 @@ export default function TestFoundation() {
 
             {/* With Animation */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Animated States
               </h3>
               <div className="space-y-4">
@@ -138,7 +138,7 @@ export default function TestFoundation() {
 
             {/* As Section Headers */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Section Header Usage
               </h3>
               <div className="space-y-6">
@@ -149,7 +149,7 @@ export default function TestFoundation() {
                     color="accent"
                     className="text-3xl font-bold"
                   />
-                  <p className="mt-2 text-text-secondary">
+                  <p className="mt-2 text-[var(--muted)]">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
@@ -160,7 +160,7 @@ export default function TestFoundation() {
                     color="rgb-blue"
                     className="text-3xl font-bold"
                   />
-                  <p className="mt-2 text-text-secondary">
+                  <p className="mt-2 text-[var(--muted)]">
                     Sed do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua.
                   </p>
@@ -171,16 +171,16 @@ export default function TestFoundation() {
         </section>
 
         {/* BorderWire Tests */}
-        <section className="bg-bg-secondary p-8 rounded-lg">
-          <h2 className="text-2xl font-bold mb-6">3. BorderWire Component</h2>
+        <section className="bg-[var(--paper)] border border-[var(--hair)] p-8">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">3. BorderWire Component</h2>
 
           <div className="space-y-6">
             {/* Interactive Wire Demo */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Interactive Data Highway
               </h3>
-              <div className="relative h-64 bg-bg-primary rounded-lg">
+              <div className="relative h-64 bg-[var(--paper-shadow)] border border-[var(--hair)]">
                 {/* Connection Points */}
                 <div
                   className="absolute top-8 left-8 w-4 h-4 rounded-full bg-accent"
@@ -206,23 +206,23 @@ export default function TestFoundation() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <button
                     onClick={() => setWireActive(!wireActive)}
-                    className="px-6 py-3 bg-accent text-bg-primary font-mono font-semibold rounded-md hover:scale-105 transition-transform"
+                    className="px-6 py-3.5 bg-[var(--ink)] text-[var(--paper)] border border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150"
                   >
                     {wireActive ? 'Deactivate' : 'Activate'} Data Flow
                   </button>
                 </div>
               </div>
-              <p className="mt-2 text-sm text-text-secondary text-center">
+              <p className="mt-2 text-sm text-[var(--muted)] text-center">
                 Click button to see particle flow animation
               </p>
             </div>
 
             {/* Multiple Wires */}
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-text-secondary">
+              <h3 className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] mb-3 text-[var(--muted)]">
                 Multiple Connection Points
               </h3>
-              <div className="relative h-64 bg-bg-primary rounded-lg">
+              <div className="relative h-64 bg-[var(--paper-shadow)] border border-[var(--hair)]">
                 {/* Top Center */}
                 <div
                   className="absolute top-4 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-rgb-green"
@@ -257,7 +257,7 @@ export default function TestFoundation() {
                   width={1.5}
                 />
               </div>
-              <p className="mt-2 text-sm text-text-secondary text-center">
+              <p className="mt-2 text-sm text-[var(--muted)] text-center">
                 Data flowing from central hub to multiple endpoints
               </p>
             </div>
@@ -265,8 +265,8 @@ export default function TestFoundation() {
         </section>
 
         {/* Combined Example */}
-        <section className="bg-bg-secondary p-8 rounded-lg">
-          <h2 className="text-2xl font-bold mb-6">
+        <section className="bg-[var(--paper)] border border-[var(--hair)] p-8">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.01em] text-[var(--ink)] mb-6">
             4. Combined Foundation Example
           </h2>
 
@@ -291,7 +291,7 @@ export default function TestFoundation() {
                   animated="breathing"
                   className="mx-auto mb-4"
                 />
-                <h3 className="font-mono text-sm text-text-secondary">
+                <h3 className="font-mono text-sm text-[var(--muted)]">
                   Core Active
                 </h3>
               </div>
@@ -305,7 +305,7 @@ export default function TestFoundation() {
                   animated="breathing"
                   className="mx-auto mb-4"
                 />
-                <h3 className="font-mono text-sm text-text-secondary">
+                <h3 className="font-mono text-sm text-[var(--muted)]">
                   Processing
                 </h3>
               </div>
@@ -319,13 +319,13 @@ export default function TestFoundation() {
                   animated="breathing"
                   className="mx-auto mb-4"
                 />
-                <h3 className="font-mono text-sm text-text-secondary">
+                <h3 className="font-mono text-sm text-[var(--muted)]">
                   Output Ready
                 </h3>
               </div>
             </div>
 
-            <p className="mt-8 text-center text-text-secondary">
+            <p className="mt-8 text-center text-[var(--muted)]">
               All foundation components working together to visualize system
               state
             </p>
