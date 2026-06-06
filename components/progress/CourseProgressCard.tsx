@@ -56,32 +56,32 @@ export default function CourseProgressCard({ course, index = 0 }: CourseProgress
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className={`relative p-6 rounded-xl border transition-all ${
+      className={`relative p-6 border transition-all ${
         isLocked
-          ? 'bg-[var(--bg-secondary)]/50 border-[var(--border)] opacity-60'
-          : 'bg-[var(--bg-secondary)] border-[var(--border)] hover:border-[var(--text-tertiary)]'
+          ? 'bg-[var(--paper-shadow)] border-[var(--hair)] opacity-60'
+          : 'bg-[var(--paper)] border-[var(--hair)] hover:border-[var(--hair-hard)]'
       }`}
     >
       {/* Badges */}
       <div className="flex items-center gap-2 mb-3">
         {course.isFoundation && (
-          <span className="px-2 py-0.5 text-xs font-mono uppercase tracking-wider bg-id8-orange/20 text-id8-orange rounded">
+          <span className="px-2 py-0.5 text-xs font-[family-name:var(--font-narrow)] uppercase tracking-wider bg-[var(--paper-mid)] text-id8-orange rounded">
             Start Here
           </span>
         )}
         {isRecommendedNext && !course.isFoundation && !isLocked && (
-          <span className="px-2 py-0.5 text-xs font-mono uppercase tracking-wider bg-blue-500/20 text-blue-400 rounded">
+          <span className="px-2 py-0.5 text-xs font-[family-name:var(--font-narrow)] uppercase tracking-wider bg-[var(--paper-mid)] text-[var(--ink)] rounded">
             Recommended Next
           </span>
         )}
         {isComplete && (
-          <span className="px-2 py-0.5 text-xs font-mono uppercase tracking-wider bg-green-500/20 text-green-400 rounded flex items-center gap-1">
+          <span className="px-2 py-0.5 text-xs font-[family-name:var(--font-narrow)] uppercase tracking-wider bg-[var(--paper-mid)] text-[var(--teal)] rounded flex items-center gap-1">
             <CheckIcon />
             Complete
           </span>
         )}
         {isLocked && (
-          <span className="px-2 py-0.5 text-xs font-mono uppercase tracking-wider bg-[var(--border)] text-[var(--text-tertiary)] rounded flex items-center gap-1">
+          <span className="px-2 py-0.5 text-xs font-[family-name:var(--font-narrow)] uppercase tracking-wider bg-[var(--paper-mid)] text-[var(--muted)] rounded flex items-center gap-1">
             <LockIcon />
             Locked
           </span>
@@ -89,15 +89,15 @@ export default function CourseProgressCard({ course, index = 0 }: CourseProgress
       </div>
 
       {/* Course Title */}
-      <h3 className="text-lg font-semibold mb-1">{course.title}</h3>
-      <p className="text-sm text-[var(--text-secondary)] mb-4">
+      <h3 className="font-[family-name:var(--font-display)] text-lg font-normal mb-1 text-[var(--ink)]">{course.title}</h3>
+      <p className="text-sm text-[var(--muted)] mb-4">
         {course.description}
       </p>
 
       {/* Progress Bar */}
       {stats && !isLocked && (
         <div className="mb-4">
-          <div className="relative h-1.5 bg-[var(--border)] rounded-full overflow-hidden mb-1">
+          <div className="relative h-1.5 bg-[var(--paper-mid)] rounded-full overflow-hidden mb-1">
             <m.div
               initial={{ width: 0 }}
               animate={{ width: `${stats.percent}%` }}
@@ -105,7 +105,7 @@ export default function CourseProgressCard({ course, index = 0 }: CourseProgress
               className="absolute top-0 left-0 h-full bg-id8-orange rounded-full"
             />
           </div>
-          <p className="text-xs text-[var(--text-tertiary)]">
+          <p className="text-xs text-[var(--muted)]">
             {stats.completed}/{stats.total} modules
           </p>
         </div>
@@ -113,14 +113,14 @@ export default function CourseProgressCard({ course, index = 0 }: CourseProgress
 
       {/* Module count for locked courses */}
       {isLocked && (
-        <p className="text-xs text-[var(--text-tertiary)] mb-4">
+        <p className="text-xs text-[var(--muted)] mb-4">
           {course.modules} modules
         </p>
       )}
 
       {/* Action Button */}
       {isLocked ? (
-        <div className="text-sm text-[var(--text-tertiary)]">
+        <div className="text-sm text-[var(--muted)]">
           Complete{' '}
           <Link
             href={COURSES[FOUNDATION_COURSE].path}
@@ -133,7 +133,7 @@ export default function CourseProgressCard({ course, index = 0 }: CourseProgress
       ) : (
         <Link
           href={continueUrl}
-          className="inline-flex items-center gap-2 text-sm font-medium text-id8-orange hover:text-id8-orange/80 transition-colors group"
+          className="inline-flex items-center gap-2 text-sm font-medium text-id8-orange hover:underline transition-colors group"
         >
           {isComplete ? 'Review' : hasStarted ? 'Continue' : 'Start'}
           <ArrowRightIcon />

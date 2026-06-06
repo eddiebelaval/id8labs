@@ -57,14 +57,14 @@ export default function FoundationGate({ children, fallback }: FoundationGatePro
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-tertiary)] mb-6"
+          className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[var(--paper-shadow)] border border-[var(--hair)] text-[var(--muted)] mb-6"
         >
           <LockIcon />
         </m.div>
 
-        <h2 className="text-2xl font-semibold mb-3">Course Locked</h2>
+        <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal mb-3 text-[var(--ink)]">Course Locked</h2>
 
-        <p className="text-[var(--text-secondary)] mb-6">
+        <p className="text-[var(--muted)] mb-6">
           Complete the foundation course first to unlock this content.
           It provides the essential skills you&apos;ll need for everything that follows.
         </p>
@@ -77,7 +77,7 @@ export default function FoundationGate({ children, fallback }: FoundationGatePro
           <ArrowRightIcon />
         </Link>
 
-        <p className="text-xs text-[var(--text-tertiary)] mt-4">
+        <p className="text-xs text-[var(--muted)] mt-4">
           6 modules &middot; ~45 minutes
         </p>
       </div>
