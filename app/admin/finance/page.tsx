@@ -122,19 +122,19 @@ function CashFlowChart({ summary }: { summary: BalanceSummary }) {
 
   const { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, Legend } = recharts
   return (
-    <div className="p-5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-      <p className="text-xs font-medium text-[var(--text-tertiary)] uppercase tracking-wider mb-4">Monthly Cash Flow</p>
+    <div className="p-5 bg-[var(--paper)] border border-[var(--hair)]">
+      <p className="font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-4">Monthly Cash Flow</p>
       <ResponsiveContainer width="100%" height={280}>
         <AreaChart data={summary.monthly_timeline.map((t: { month: string; revenue_cents: number; expenses_cents: number }) => ({
           month: t.month, revenue: t.revenue_cents / 100, expenses: t.expenses_cents / 100,
         }))}>
-          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-          <XAxis dataKey="month" tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} />
-          <YAxis tick={{ fill: 'var(--text-secondary)', fontSize: 11 }} tickFormatter={(v: number) => `$${v}`} />
-          <Tooltip contentStyle={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: '8px', fontSize: '12px' }} formatter={(value: number) => `$${Number(value).toFixed(2)}`} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--hair)" />
+          <XAxis dataKey="month" tick={{ fill: 'var(--muted)', fontSize: 11 }} />
+          <YAxis tick={{ fill: 'var(--muted)', fontSize: 11 }} tickFormatter={(v: number) => `$${v}`} />
+          <Tooltip contentStyle={{ background: 'var(--paper)', border: '1px solid var(--hair)', borderRadius: '0px', fontSize: '12px' }} formatter={(value: number) => `$${Number(value).toFixed(2)}`} />
           <Legend wrapperStyle={{ fontSize: '12px' }} />
-          <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#10B981" fill="#10B981" fillOpacity={0.15} />
-          <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#EF4444" fill="#EF4444" fillOpacity={0.1} />
+          <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#2a8d83" fill="#2a8d83" fillOpacity={0.15} />
+          <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#ff6b35" fill="#ff6b35" fillOpacity={0.1} />
         </AreaChart>
       </ResponsiveContainer>
     </div>
