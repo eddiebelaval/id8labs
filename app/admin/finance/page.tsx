@@ -30,8 +30,8 @@ const ASSET_CATEGORY_LABELS: Record<AssetCategory, string> = {
 function assetCategoryLabel(c: AssetCategory): string { return ASSET_CATEGORY_LABELS[c] }
 
 // Shared form styles
-const inputClass = "w-full px-3 py-2 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--id8-orange)]"
-const labelClass = "block text-xs text-[var(--text-secondary)] mb-1"
+const inputClass = "w-full px-3 py-2 bg-[var(--paper)] border border-[var(--hair)] text-[var(--ink)] text-sm focus:outline-none focus:border-[var(--ink)] transition-colors duration-150"
+const labelClass = "block font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-1"
 
 // Shared recharts lazy loader
 function useRecharts() {
