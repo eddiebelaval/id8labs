@@ -83,7 +83,7 @@ export function AddendumWizardModal({
         >
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/60"
+            className="fixed inset-0 bg-[var(--ink)]/40"
             onClick={handleClose}
           />
 

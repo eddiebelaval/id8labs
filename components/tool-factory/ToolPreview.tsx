@@ -145,7 +145,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--paper-mid)] rounded-full">
           <CheckCircle className="w-8 h-8 text-[var(--teal)]" />
         </div>
-        <h3 className="text-xl font-bold text-[var(--ink)]">
+        <h3 className="font-[family-name:var(--font-display)] text-xl font-normal text-[var(--ink)]">
           {TOOL_TYPE_LABELS[toolType]} Saved!
         </h3>
         <p className="text-[var(--muted)]">
@@ -164,7 +164,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
             <button
               onClick={onClose}
               className="px-4 py-2 bg-[var(--orange)] text-[var(--paper)] 
-                         font-medium hover:bg-[var(--id8-orange-hover)] transition-colors"
+                         font-medium hover:opacity-90 transition-colors"
             >
               Done
             </button>
@@ -203,7 +203,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
               <Icon className="w-5 h-5 text-[var(--orange)]" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-bold text-[var(--ink)] truncate">
+              <h3 className="font-[family-name:var(--font-display)] text-lg font-normal text-[var(--ink)] truncate">
                 {data.name}
               </h3>
               <p className="text-sm text-[var(--muted)]">
@@ -358,7 +358,7 @@ export function ToolPreview({ onBack, onClose, onSaved }: ToolPreviewProps) {
           onClick={handleSave}
           disabled={state === 'saving'}
           className="flex-1 py-3 bg-[var(--orange)] text-[var(--paper)] 
-                     font-semibold hover:bg-[var(--id8-orange-hover)]
+                     font-semibold hover:opacity-90
                      disabled:opacity-50 disabled:cursor-not-allowed
                      transition-all flex items-center justify-center gap-2"
         >

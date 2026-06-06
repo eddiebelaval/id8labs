@@ -256,7 +256,7 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
               onClick={handleGenerate}
               disabled={!description.trim() || description.length < 10}
               className="w-full py-3 bg-[var(--orange)] text-[var(--paper)] 
-                         font-semibold hover:bg-[var(--id8-orange-hover)]
+                         font-semibold hover:opacity-90
                          disabled:opacity-50 disabled:cursor-not-allowed
                          transition-all flex items-center justify-center gap-2"
             >
@@ -339,7 +339,7 @@ export function ToolFactory({ onClose, onSaved }: ToolFactoryProps) {
                 <button
                   onClick={handleContinueToPreview}
                   className="flex-1 py-2 bg-[var(--orange)] text-[var(--paper)] 
-                             font-semibold hover:bg-[var(--id8-orange-hover)] transition-colors"
+                             font-semibold hover:opacity-90 transition-colors"
                 >
                   Continue to Preview
                 </button>
