@@ -54,7 +54,7 @@ export class SkillsPage extends BasePage {
     this.heroSection = page.locator('section').first();
     this.stackShackLogo = page.locator('h1').first();
     this.heroBadge = page.locator('div').filter({ hasText: /Skills & Agents/ }).first();
-    this.heroSubtitle = page.locator('p').filter({ hasText: /Free skills & agents for Claude Code/ });
+    this.heroSubtitle = page.locator('p').filter({ hasText: /Free skills, commands, and settings for Claude Code/ });
     this.searchBar = page.locator('input[type="search"], input[placeholder*="Search"]');
     this.quickStats = page.locator('div').filter({ hasText: /Categories/ }).first();
 
@@ -186,6 +186,7 @@ export class SkillsPage extends BasePage {
   async expandHelpSection(section: 'install' | 'difference') {
     const details = section === 'install' ? this.helpInstallDetails : this.helpSkillsVsAgentsDetails;
     const summary = details.locator('summary');
+    await summary.scrollIntoViewIfNeeded();
     await summary.click();
     await this.page.waitForTimeout(200);
   }

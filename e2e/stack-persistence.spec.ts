@@ -22,9 +22,9 @@ test.describe('Stack Persistence', () => {
     // Click save button
     await page.getByRole('button', { name: /Save Stack/i }).click()
     
-    // Save dialog should appear
-    await expect(page.getByText(/Save Stack/i)).toBeVisible()
-    
+    // Save dialog should appear (text also matches toolbar + submit buttons)
+    await expect(page.getByText(/Save Stack/i).first()).toBeVisible()
+
     // Enter stack name
     await page.getByPlaceholder(/My Awesome Stack/i).fill('Test Stack')
     await page.getByPlaceholder(/What's this stack for?/i).fill('Testing stack persistence')
@@ -52,7 +52,7 @@ test.describe('Stack Persistence', () => {
     await page.getByRole('button', { name: /Save Stack/i }).last().click()
     
     // Clear the current stack
-    await page.getByRole('button', { name: /Clear/i }).click()
+    await page.locator('button[aria-label="Clear all"]').click()
     
     // Stack should be empty
     await expect(page.getByText('Stack Builder')).not.toBeVisible()
@@ -76,7 +76,7 @@ test.describe('Stack Persistence', () => {
 
   test('should export stack as JSON', async ({ page }) => {
     // Create a stack
-    await page.goto('/commands')
+    await page.goto('/skills')
     await page.waitForSelector('article')
     const firstCard = page.locator('article').first()
     await firstCard.getByRole('button', { name: /Add/i }).click()
@@ -101,7 +101,7 @@ test.describe('Stack Persistence', () => {
 
   test('should delete saved stack', async ({ page }) => {
     // Create a saved stack
-    await page.goto('/settings')
+    await page.goto('/skills')
     await page.waitForSelector('article')
     const firstCard = page.locator('article').first()
     await firstCard.getByRole('button', { name: /Add/i }).click()
@@ -111,30 +111,27 @@ test.describe('Stack Persistence', () => {
     await page.getByPlaceholder(/My Awesome Stack/i).fill('Stack to Delete')
     await page.getByRole('button', { name: /Save Stack/i }).last().click()
     
-    // Open load dialog
+    // Open load dialog (scope assertions to it — the current stack's name also
+    // shows in the floating panel header)
     await page.getByRole('button', { name: /Load/i }).click()
-    
-    // Should see the saved stack
-    await expect(page.getByText('Stack to Delete')).toBeVisible()
-    
-    // Find and click delete button
-    const stackCard = page.locator('text=Stack to Delete').locator('..')
-    
-    // Note: This test might need adjustment based on actual UI structure
-    // We're simulating the delete action
-    page.on('dialog', dialog => dialog.accept()) // Auto-accept confirm dialog
-    
-    // Click the delete button (trash icon)
-    // This selector might need adjustment based on actual implementation
+    const dialog = page.locator('.fixed.inset-0.z-50')
+
+    // Should see the saved stack in the dialog list
+    await expect(dialog.getByText('Stack to Delete')).toBeVisible()
+
+    // Auto-accept the confirm dialog, then click the delete (trash) button —
+    // the last button in the saved-stack card row.
+    page.on('dialog', d => d.accept())
+    const stackCard = dialog.locator('.p-4.border').filter({ hasText: 'Stack to Delete' })
     await stackCard.getByRole('button').last().click()
-    
+
     // Stack should be removed from list
-    await expect(page.getByText('Stack to Delete')).not.toBeVisible()
+    await expect(dialog.getByText('Stack to Delete')).not.toBeVisible()
   })
 
   test('should persist stack across page reloads', async ({ page }) => {
     // Add items to stack
-    await page.goto('/commands')
+    await page.goto('/skills')
     await page.waitForSelector('article')
     const firstCard = page.locator('article').first()
     await firstCard.getByRole('button', { name: /Add/i }).click()
@@ -148,7 +145,7 @@ test.describe('Stack Persistence', () => {
     await page.reload()
     
     // Navigate back to a page where we can see the stack
-    await page.goto('/commands')
+    await page.goto('/skills')
     
     // Stack should still exist (add another item to trigger stack builder)
     await page.waitForSelector('article')
@@ -170,10 +167,10 @@ test.describe('Stack Persistence', () => {
     await page.getByRole('button', { name: /Save Stack/i }).last().click()
     
     // Clear stack
-    await page.getByRole('button', { name: /Clear/i }).click()
+    await page.locator('button[aria-label="Clear all"]').click()
     
     // Create second stack
-    await page.goto('/commands')
+    await page.goto('/skills')
     await page.waitForSelector('article')
     await page.locator('article').first().getByRole('button', { name: /Add/i }).click()
     
@@ -181,15 +178,16 @@ test.describe('Stack Persistence', () => {
     await page.getByPlaceholder(/My Awesome Stack/i).fill('Stack Two')
     await page.getByRole('button', { name: /Save Stack/i }).last().click()
     
-    // Open load dialog
+    // Open load dialog (scope to it — Stack Two's name also shows in the panel header)
     await page.getByRole('button', { name: /Load/i }).click()
-    
-    // Should see both stacks
-    await expect(page.getByText('Stack One')).toBeVisible()
-    await expect(page.getByText('Stack Two')).toBeVisible()
-    
+    const dialog = page.locator('.fixed.inset-0.z-50')
+
+    // Should see both stacks in the dialog list
+    await expect(dialog.getByText('Stack One')).toBeVisible()
+    await expect(dialog.getByText('Stack Two')).toBeVisible()
+
     // Should show "Current" indicator on Stack Two
-    const stackTwoCard = page.locator('text=Stack Two').locator('..')
+    const stackTwoCard = dialog.locator('.p-4.border').filter({ hasText: 'Stack Two' })
     await expect(stackTwoCard.getByText('Current')).toBeVisible()
   })
 
@@ -203,8 +201,8 @@ test.describe('Stack Persistence', () => {
     // Click import button
     await page.getByRole('button', { name: /Import/i }).click()
     
-    // Import dialog should appear
-    await expect(page.getByText('Import Stack')).toBeVisible()
+    // Import dialog should appear (text also matches the submit button)
+    await expect(page.getByText('Import Stack').first()).toBeVisible()
     
     // Create valid JSON
     const validJson = JSON.stringify({

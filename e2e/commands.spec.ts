@@ -6,12 +6,11 @@ test.describe('Commands Browse Page', () => {
   })
 
   test('should display commands page with header', async ({ page }) => {
-    // Check hero section
-    await expect(page.locator('h1')).toContainText('Workflow Commands')
-    // Removed ambiguous selector - h1 check is sufficient
-    
-    // Check badge showing count
-    await expect(page.getByText(/\d+ Workflow Commands/)).toBeVisible()
+    // Check hero section (refaced: "Workflow commands" with italic emphasis)
+    await expect(page.locator('h1')).toContainText(/workflow commands/i)
+
+    // Marketplace kicker shows the command count
+    await expect(page.getByText(/Marketplace · \d+ commands/i)).toBeVisible()
   })
 
   test('should display commands grid', async ({ page }) => {
@@ -26,7 +25,7 @@ test.describe('Commands Browse Page', () => {
     // Check first card has expected elements
     const firstCard = commandCards.first()
     await expect(firstCard.locator('h3')).toBeVisible()
-    await expect(firstCard.getByText(/installs?/i)).toBeVisible()
+    await expect(firstCard.getByRole('button', { name: /Add/i })).toBeVisible()
   })
 
   test('should filter by category', async ({ page }) => {
@@ -68,7 +67,7 @@ test.describe('Commands Browse Page', () => {
     
     // Detail page should show command info
     await expect(page.locator('h1')).toBeVisible()
-    await expect(page.getByText(/Installation/i)).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Installation', exact: true })).toBeVisible()
   })
 
   test('should add command to stack', async ({ page }) => {
@@ -79,15 +78,10 @@ test.describe('Commands Browse Page', () => {
     const firstCard = page.locator('article').first()
     const addButton = firstCard.getByRole('button', { name: /Add/i })
     await addButton.click()
-    
-    // Button should change to "In Stack"
+
+    // Button should change to "In Stack". (The /commands route does not mount
+    // the floating Stack Builder panel — that lives on /skills and /stackshack.)
     await expect(firstCard.getByText('In Stack')).toBeVisible()
-    
-    // Stack builder should appear
-    await expect(page.getByText('Stack Builder')).toBeVisible()
-    
-    // Stack should show 1 item
-    await expect(page.getByText(/1 item/)).toBeVisible()
   })
 })
 
@@ -103,9 +97,9 @@ test.describe('Command Detail Page', () => {
     
     // Should show command details
     await expect(page.locator('h1')).toBeVisible()
-    await expect(page.getByText(/Installation/i)).toBeVisible()
-    await expect(page.getByText(/Command/i)).toBeVisible()
-    
+    await expect(page.getByRole('heading', { name: 'Installation', exact: true })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Command', exact: true })).toBeVisible()
+
     // Should show back button
     await expect(page.getByRole('link', { name: /Back to Commands/i })).toBeVisible()
   })
@@ -120,12 +114,9 @@ test.describe('Command Detail Page', () => {
     // Click "Add to Stack" button
     const addButton = page.getByRole('button', { name: /Add to Stack/i }).first()
     await addButton.click()
-    
-    // Button should change
-    await expect(page.getByText('In Stack')).toBeVisible()
-    
-    // Stack builder should appear
-    await expect(page.getByText('Stack Builder')).toBeVisible()
+
+    // Button should change to "In Stack" (no floating panel on /commands detail)
+    await expect(page.getByText('In Stack').first()).toBeVisible()
   })
 
   test('should navigate back to commands list', async ({ page }) => {
@@ -139,6 +130,6 @@ test.describe('Command Detail Page', () => {
     
     // Should be back on commands page
     await expect(page).toHaveURL('/commands')
-    await expect(page.locator('h1')).toContainText('Workflow Commands')
+    await expect(page.locator('h1')).toContainText(/workflow commands/i)
   })
 })

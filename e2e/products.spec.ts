@@ -91,7 +91,7 @@ test.describe('Product Pages - SEO', () => {
   for (const slug of ['composer', 'deepstack', 'pause'] as const) {
     test(`${slug} should have proper meta tags`, async ({ page }) => {
       await page.goto(`/products/${slug}`);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
 
       // Should have a title
       const title = await page.title();
@@ -121,7 +121,7 @@ test.describe('Product Pages - Responsive', () => {
     test(`should display correctly on ${viewport.name}`, async ({ page }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.goto('/products/composer');
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
 
       // Page should be visible and scrollable
       const main = page.locator('main');
@@ -140,7 +140,7 @@ test.describe('Product Navigation Flow', () => {
   test('should navigate from home to product and back', async ({ page }) => {
     // Start at products page directly
     await page.goto('/products');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
     await expect(page).toHaveURL(/\/products/);
 
     // Look for any product link that includes /products/ in href
@@ -152,16 +152,16 @@ test.describe('Product Navigation Flow', () => {
       const firstProductLink = productLinks.first();
       const href = await firstProductLink.getAttribute('href');
       await firstProductLink.click();
-      await page.waitForLoadState('networkidle');
 
-      // Verify we navigated to a product page
+      // Verify we navigated to a product page (client-side nav — wait for the URL
+      // rather than a document load event, which won't fire for in-app routing)
       if (href) {
+        await page.waitForURL(new RegExp(href.replace('/', '\\/')));
         await expect(page).toHaveURL(new RegExp(href.replace('/', '\\/')));
       }
 
       // Navigate back
       await page.goBack();
-      await page.waitForLoadState('networkidle');
       await expect(page).toHaveURL(/\/products/);
     }
   });
@@ -171,7 +171,7 @@ test.describe('Product Navigation Flow', () => {
 
     for (const product of productsToVisit) {
       await page.goto(`/products/${product}`);
-      await page.waitForLoadState('networkidle');
+      await page.waitForLoadState('domcontentloaded');
 
       // Verify page loaded
       const heading = page.getByRole('heading', { level: 1 });
