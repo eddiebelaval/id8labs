@@ -40,11 +40,11 @@ export default async function SettingDetailPage({ params }: PageProps) {
   return (
     <main className="relative">
       {/* Back Button */}
-      <section className="py-8 border-b border-[var(--border)]">
+      <section className="py-8 border-b border-[var(--hair)]">
         <div className="container">
           <Link
             href="/settings"
-            className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--id8-orange)] transition-colors"
+            className="inline-flex items-center gap-2 text-[var(--muted)] hover:text-id8-orange transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Settings
@@ -53,7 +53,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
       </section>
 
       {/* Hero Section */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
+      <section className="py-16 bg-[var(--paper-shadow)]">
         <div className="container">
           <div className="max-w-4xl">
             {/* Icon and Badges */}
@@ -61,15 +61,15 @@ export default async function SettingDetailPage({ params }: PageProps) {
               <span className="text-5xl">{emoji}</span>
               <div className="flex flex-wrap gap-2">
                 {setting.verified && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-emerald-500/10 text-[var(--teal)] border border-emerald-500/20 rounded-full">
                     <CheckCircle className="w-4 h-4" />
                     Verified
                   </span>
                 )}
-                <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-full bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] border border-[var(--id8-orange)]/20">
+                <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-full bg-[var(--id8-orange)]/10 text-id8-orange border border-[var(--id8-orange)]/20">
                   {setting.category}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-[var(--bg-primary)] text-[var(--text-secondary)] border border-[var(--border)] rounded-full">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-[var(--paper)] text-[var(--muted)] border border-[var(--hair)] rounded-full">
                   <Download className="w-4 h-4" />
                   {setting.install_count.toLocaleString()} installs
                 </span>
@@ -80,7 +80,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{setting.name}</h1>
 
             {/* Description */}
-            <p className="text-xl text-[var(--text-secondary)] mb-8">{setting.description}</p>
+            <p className="text-xl text-[var(--muted)] mb-8">{setting.description}</p>
 
             {/* CTA */}
             <div className="flex flex-wrap gap-4">
@@ -100,23 +100,23 @@ export default async function SettingDetailPage({ params }: PageProps) {
               {setting.model && (
                 <div className="card">
                   <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                    <Sparkles className="w-6 h-6 text-[var(--id8-orange)]" />
+                    <Sparkles className="w-6 h-6 text-id8-orange" />
                     Model Configuration
                   </h2>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                      <span className="text-sm text-[var(--text-secondary)]">Model</span>
+                    <div className="flex items-center justify-between p-3 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
+                      <span className="text-sm text-[var(--muted)]">Model</span>
                       <span className="font-semibold">{formatModelName(setting.model)}</span>
                     </div>
                     {setting.max_tokens && (
-                      <div className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                        <span className="text-sm text-[var(--text-secondary)]">Max Tokens</span>
+                      <div className="flex items-center justify-between p-3 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
+                        <span className="text-sm text-[var(--muted)]">Max Tokens</span>
                         <span className="font-semibold">{setting.max_tokens.toLocaleString()}</span>
                       </div>
                     )}
                     {setting.temperature !== undefined && (
-                      <div className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                        <span className="text-sm text-[var(--text-secondary)]">Temperature</span>
+                      <div className="flex items-center justify-between p-3 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
+                        <span className="text-sm text-[var(--muted)]">Temperature</span>
                         <span className="font-semibold">{setting.temperature}</span>
                       </div>
                     )}
@@ -128,18 +128,18 @@ export default async function SettingDetailPage({ params }: PageProps) {
               {setting.use_case && (
                 <div className="card">
                   <h2 className="text-2xl font-bold mb-4">Use Case</h2>
-                  <p className="text-[var(--text-secondary)]">{setting.use_case}</p>
+                  <p className="text-[var(--muted)]">{setting.use_case}</p>
                 </div>
               )}
 
               {/* Configuration JSON */}
               <div className="card">
                 <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <Code2 className="w-6 h-6 text-[var(--id8-orange)]" />
+                  <Code2 className="w-6 h-6 text-id8-orange" />
                   Configuration
                 </h2>
-                <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono text-[var(--text-primary)]">
+                <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)]  overflow-x-auto">
+                  <pre className="text-sm font-mono text-[var(--ink)]">
                     {JSON.stringify(setting.settings, null, 2)}
                   </pre>
                 </div>
@@ -150,24 +150,24 @@ export default async function SettingDetailPage({ params }: PageProps) {
                 <h2 className="text-2xl font-bold mb-4">Installation</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-sm font-semibold text-[var(--text-secondary)] mb-2">
+                    <h3 className="text-sm font-semibold text-[var(--muted)] mb-2">
                       Via StackShack CLI
                     </h3>
-                    <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg">
-                      <code className="text-sm font-mono text-[var(--id8-orange)]">
+                    <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)] ">
+                      <code className="text-sm font-mono text-id8-orange">
                         npx stackshack install {setting.slug}
                       </code>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-[var(--text-secondary)] mb-2">
+                    <h3 className="text-sm font-semibold text-[var(--muted)] mb-2">
                       Manual Configuration
                     </h3>
-                    <p className="text-sm text-[var(--text-secondary)] mb-2">
+                    <p className="text-sm text-[var(--muted)] mb-2">
                       Add this configuration to your claude_settings file:
                     </p>
-                    <div className="p-4 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg overflow-x-auto">
-                      <pre className="text-sm font-mono text-[var(--text-primary)]">
+                    <div className="p-4 bg-[var(--paper-shadow)] border border-[var(--hair)]  overflow-x-auto">
+                      <pre className="text-sm font-mono text-[var(--ink)]">
                         {JSON.stringify(setting.settings, null, 2)}
                       </pre>
                     </div>
@@ -183,7 +183,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
                     {setting.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1.5 text-sm bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border)] rounded-full"
+                        className="px-3 py-1.5 text-sm bg-[var(--paper-shadow)] text-[var(--muted)] border border-[var(--hair)] rounded-full"
                       >
                         #{tag}
                       </span>
@@ -202,7 +202,7 @@ export default async function SettingDetailPage({ params }: PageProps) {
                   <AddToStackButton setting={setting} fullWidth />
                   <Link
                     href="/settings"
-                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg hover:border-[var(--id8-orange)] transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-[var(--paper-shadow)] border border-[var(--hair)]  hover:border-id8-orange transition-colors"
                   >
                     Browse All Settings
                   </Link>
@@ -214,16 +214,16 @@ export default async function SettingDetailPage({ params }: PageProps) {
                 <h3 className="font-semibold mb-4">Stats</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-[var(--text-secondary)]">Installs</span>
+                    <span className="text-sm text-[var(--muted)]">Installs</span>
                     <span className="font-semibold">{setting.install_count.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-[var(--text-secondary)]">Category</span>
+                    <span className="text-sm text-[var(--muted)]">Category</span>
                     <span className="font-semibold capitalize">{setting.category}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-[var(--text-secondary)]">Status</span>
-                    <span className="font-semibold capitalize text-emerald-500">
+                    <span className="text-sm text-[var(--muted)]">Status</span>
+                    <span className="font-semibold capitalize text-[var(--teal)]">
                       {setting.status}
                     </span>
                   </div>
@@ -231,14 +231,14 @@ export default async function SettingDetailPage({ params }: PageProps) {
               </div>
 
               {/* Help */}
-              <div className="card bg-[var(--bg-secondary)] border-[var(--id8-orange)]/20">
+              <div className="card bg-[var(--paper-shadow)] border-[var(--id8-orange)]/20">
                 <h3 className="font-semibold mb-2">Need Help?</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-4">
+                <p className="text-sm text-[var(--muted)] mb-4">
                   Check our documentation or reach out to the community.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 text-sm text-[var(--id8-orange)] hover:underline"
+                  className="inline-flex items-center gap-2 text-sm text-id8-orange hover:underline"
                 >
                   Get Support
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -250,13 +250,13 @@ export default async function SettingDetailPage({ params }: PageProps) {
       </section>
 
       {/* Related Settings Section */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
+      <section className="py-16 bg-[var(--paper-shadow)]">
         <div className="container">
           <h2 className="text-3xl font-bold mb-8">More {setting.category} Settings</h2>
           <div className="text-center py-8">
             <Link
               href={`/settings?category=${setting.category}`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white rounded-lg hover:bg-[var(--id8-orange-hover)] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--id8-orange)] text-white  hover:bg-[var(--id8-orange-hover)] transition-colors"
             >
               Browse {setting.category} Settings
             </Link>
