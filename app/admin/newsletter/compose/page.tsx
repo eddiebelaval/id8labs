@@ -140,7 +140,7 @@ export default function ComposePage() {
           </svg>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-[var(--ink)]">Compose Newsletter</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Compose Newsletter</h1>
           <p className="text-[var(--muted)]">Write and send signal:noise</p>
         </div>
       </div>
@@ -148,10 +148,10 @@ export default function ComposePage() {
       {/* Message */}
       {message && (
         <div
-          className={`mb-6 p-4  ${
+          className={`mb-6 p-4 border-l-2 bg-[var(--paper-shadow)] ${
             message.type === 'success'
-              ? 'bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400'
-              : 'bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400'
+              ? 'border-[var(--teal)] text-[var(--teal)]'
+              : 'border-id8-orange text-id8-orange'
           }`}
         >
           {message.text}
