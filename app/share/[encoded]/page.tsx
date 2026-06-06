@@ -65,7 +65,7 @@ export default async function SharedStackPage({ params }: PageProps): Promise<Re
       <section className="py-16">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">Stack Contents</h2>
+            <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] mb-8 text-[var(--ink)]">Stack Contents</h2>
 
             <div className="space-y-6">
               <StackItemSection title="Skills" emoji="🎯" items={skills} />
@@ -78,11 +78,11 @@ export default async function SharedStackPage({ params }: PageProps): Promise<Re
       </section>
 
       {/* How to Install */}
-      <section className="py-16 bg-[var(--bg-secondary)]">
+      <section className="py-16 border-t border-[var(--rule)] bg-[var(--paper-shadow)]">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Install?</h2>
-            <p className="text-xl text-[var(--text-secondary)] mb-8">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] mb-6 text-[var(--ink)]">Ready to Install?</h2>
+            <p className="text-xl text-[var(--muted)] mb-8">
               Import this stack to your collection and install everything at once.
             </p>
             <ImportStackButton stack={stack} />

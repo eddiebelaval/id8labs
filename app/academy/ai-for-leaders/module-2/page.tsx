@@ -97,14 +97,14 @@ export default function Module2Page() {
 
             <m.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+              className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.0] text-[var(--ink)] text-[clamp(2rem,5vw,3.25rem)] mb-6"
             >
               Finding the Opportunities
             </m.h1>
 
             <m.p
               variants={fadeUp}
-              className="text-xl text-[var(--text-secondary)] italic"
+              className="font-[family-name:var(--font-serif)] italic text-[var(--muted)] text-xl md:text-[1.375rem] leading-[1.45]"
             >
               "I see the potential everywhere. I need a framework to identify where AI creates the most value."
             </m.p>
@@ -117,7 +117,7 @@ export default function Module2Page() {
       {/* Content */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto prose-essay max-w-[760px] mx-auto">
+          <div className="prose-essay mx-auto max-w-[760px]">
 
             {/* The Challenge */}
             <div className="not-prose mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)]">

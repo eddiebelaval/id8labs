@@ -57,67 +57,61 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   const skills = await getAllSkills({ category, sortBy })
 
   return (
-    <main className="min-h-screen">
+    <main className="bg-[var(--paper)] min-h-screen">
       {/* Header */}
-      <div className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="container py-8">
+      <div className="border-b border-[var(--hair)]">
+        <Container className="py-10 md:py-14">
           <Link
             href="/stackshack/categories"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--id8-orange)] mb-6 transition-colors"
+            className="inline-flex items-center gap-2 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-id8-orange mb-7 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            All Categories
+            &larr; All Categories
           </Link>
 
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl">{currentCategory.emoji || '📦'}</span>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">
-                {currentCategory.name}
-              </h1>
-              {currentCategory.description && (
-                <p className="text-[var(--text-secondary)] mt-1">
-                  {currentCategory.description}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <p className="text-sm text-[var(--text-tertiary)]">
+          <Kicker className="mb-4">Category</Kicker>
+          <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.05] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)] mb-3">
+            {currentCategory.name}
+          </h1>
+          {currentCategory.description && (
+            <p className="font-[family-name:var(--font-serif)] italic text-lg text-[var(--muted)] max-w-2xl mb-3">
+              {currentCategory.description}
+            </p>
+          )}
+          <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
             {skills.length} skill{skills.length !== 1 ? 's' : ''}
           </p>
-        </div>
+        </Container>
       </div>
 
       {/* Skills Grid */}
-      <div className="container py-12">
+      <Container className="py-12">
         <div className="flex items-center justify-between mb-8">
-          <p className="text-[var(--text-secondary)]">
-            Showing {skills.length} skills
+          <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+            Showing <span className="text-[var(--ink)]">{skills.length}</span> skills
           </p>
           <InlineFilters />
         </div>
 
         {skills.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {skills.map((skill) => (
               <SkillCard key={skill.id} skill={skill} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-[var(--text-secondary)]">
+          <div className="text-center py-16 border border-[var(--hair)]">
+            <p className="text-[var(--muted)]">
               No skills in this category yet.
             </p>
             <Link
               href="/stackshack"
-              className="mt-4 inline-block text-[var(--id8-orange)] hover:text-[var(--id8-orange-hover)]"
+              className="mt-4 inline-block font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange"
             >
               Browse all skills
             </Link>
           </div>
         )}
-      </div>
+      </Container>
     </main>
   )
 }
