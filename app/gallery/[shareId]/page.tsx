@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Package, ArrowLeft, Clock } from 'lucide-react'
 import { getStackByShareId } from '@/lib/stacks-db'
 import { ImportStackButton } from '@/components/stack/ImportStackButton'
 import { StackStats, buildStackStats, groupItemsByType } from '@/components/stack/StackStats'
 import { StackItemSection } from '@/components/stack/StackItemSection'
+import { Container, Kicker, Deck, Rule, SectionHead } from '@/components/editorial'
 
 interface PageProps {
   params: Promise<{ shareId: string }>
