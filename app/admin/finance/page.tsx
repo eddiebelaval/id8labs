@@ -80,7 +80,8 @@ function Charts({ summary }: { summary: BalanceSummary }) {
   if (!recharts) return <p className="text-sm text-[var(--text-tertiary)] p-4">Loading charts...</p>
 
   const { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } = recharts
-  const PIE_COLORS = ['#3B82F6', '#8B5CF6', '#F59E0B', '#10B981', '#EF4444', '#6366F1', '#EC4899', '#6B7280']
+  // On-palette ramp only — ink, orange, teal, hairline tones.
+  const PIE_COLORS = ['#0b0b0b', '#ff6b35', '#2a8d83', '#5a5a5a', '#b4afa0', '#d6d3c9', '#2a2a2a', '#ededdf']
   const s = summary
 
   return (
@@ -91,21 +92,21 @@ function Charts({ summary }: { summary: BalanceSummary }) {
           <ResponsiveContainer width={140} height={140}>
             <PieChart>
               <Pie data={s.expense_by_category} dataKey="total_cents" nameKey="name" cx="50%" cy="50%" outerRadius={60} innerRadius={35}>
-                {s.expense_by_category.map((entry: { name: string; color: string }, i: number) => (
-                  <Cell key={entry.name} fill={entry.color || PIE_COLORS[i % PIE_COLORS.length]} />
+                {s.expense_by_category.map((entry: { name: string }, i: number) => (
+                  <Cell key={entry.name} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip formatter={(value: number) => fmt(Number(value))} />
             </PieChart>
           </ResponsiveContainer>
           <div className="flex-1 space-y-1.5">
-            {s.expense_by_category.map((cat: { name: string; color: string; total_cents: number }, i: number) => (
+            {s.expense_by_category.map((cat: { name: string; total_cents: number }, i: number) => (
               <div key={cat.name} className="flex items-center justify-between text-xs">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: cat.color || PIE_COLORS[i % PIE_COLORS.length] }} />
-                  <span className="text-[var(--text-secondary)]">{cat.name}</span>
+                  <span className="w-2 h-2" style={{ backgroundColor: PIE_COLORS[i % PIE_COLORS.length] }} />
+                  <span className="text-[var(--body)]">{cat.name}</span>
                 </span>
-                <span className="text-[var(--text-primary)] font-medium">{fmtCompact(cat.total_cents)}</span>
+                <span className="font-[family-name:var(--font-mono)] text-[var(--ink)]">{fmtCompact(cat.total_cents)}</span>
               </div>
             ))}
           </div>
