@@ -1,9 +1,17 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import Link from 'next/link'
 import { getIssueBySlug, getAllIssues, isEssay } from '@/lib/newsletter/issues'
 import { NewsletterSubscribe } from '@/components/newsletter'
+import {
+  Container,
+  Kicker,
+  Deck,
+  Rule,
+  MetaRow,
+  Prose,
+  EditorialButton,
+} from '@/components/editorial'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -63,7 +71,7 @@ function renderContent(content: string): React.ReactNode[] {
     })
 
     return (
-      <p key={idx} className="mb-4">
+      <p key={idx}>
         {rendered}
       </p>
     )
@@ -99,7 +107,7 @@ function renderEssayContent(content: string): React.ReactNode[] {
       const text = currentParagraph.join(' ')
       if (text.trim()) {
         elements.push(
-          <p key={elements.length} className="mb-6 text-[var(--text-secondary)] leading-relaxed">
+          <p key={elements.length}>
             {renderMarkdownInline(text)}
           </p>
         )
@@ -111,12 +119,9 @@ function renderEssayContent(content: string): React.ReactNode[] {
   const flushList = () => {
     if (listItems.length > 0) {
       elements.push(
-        <ul key={elements.length} className="mb-6 space-y-2 text-[var(--text-secondary)]">
+        <ul key={elements.length}>
           {listItems.map((item, idx) => (
-            <li key={idx} className="flex gap-2">
-              <span className="text-[var(--id8-orange)]">-</span>
-              <span>{renderMarkdownInline(item)}</span>
-            </li>
+            <li key={idx}>{renderMarkdownInline(item)}</li>
           ))}
         </ul>
       )
@@ -130,7 +135,7 @@ function renderEssayContent(content: string): React.ReactNode[] {
     if (line.match(/^-{3,}$/)) {
       flushParagraph()
       flushList()
-      elements.push(<hr key={elements.length} className="border-[var(--border)] my-10" />)
+      elements.push(<hr key={elements.length} />)
       continue
     }
 
@@ -139,9 +144,7 @@ function renderEssayContent(content: string): React.ReactNode[] {
       flushParagraph()
       flushList()
       elements.push(
-        <h2 key={elements.length} className="text-2xl font-bold text-[var(--text-primary)] mt-10 mb-4">
-          {line.substring(3)}
-        </h2>
+        <h2 key={elements.length}>{line.substring(3)}</h2>
       )
       continue
     }
@@ -150,9 +153,7 @@ function renderEssayContent(content: string): React.ReactNode[] {
       flushParagraph()
       flushList()
       elements.push(
-        <h3 key={elements.length} className="text-xl font-bold text-[var(--text-primary)] mt-8 mb-3">
-          {line.substring(4)}
-        </h3>
+        <h3 key={elements.length}>{line.substring(4)}</h3>
       )
       continue
     }
@@ -204,7 +205,7 @@ function renderMarkdownInline(text: string): React.ReactNode[] {
   const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g)
   return parts.map((part, idx) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={idx} className="text-[var(--text-primary)] font-semibold">{part.slice(2, -2)}</strong>
+      return <strong key={idx}>{part.slice(2, -2)}</strong>
     }
     if (part.startsWith('*') && part.endsWith('*') && !part.startsWith('**')) {
       return <em key={idx}>{part.slice(1, -1)}</em>
@@ -224,261 +225,226 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
   // Essay format
   if (isEssay(issue)) {
     return (
-      <div className="min-h-screen bg-[var(--bg-primary)]">
-        {/* Header */}
-        <header className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-          <div className="max-w-4xl mx-auto px-6 py-4">
-            <Link
-              href="/newsletter"
-              className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Archive
-            </Link>
-          </div>
-        </header>
-
-        {/* Essay Content */}
-        <article className="max-w-3xl mx-auto px-6 py-12">
-          {/* Essay Header */}
-          <header className="mb-12">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-sm font-medium text-[var(--id8-orange)]">
-                Issue #{issue.issueNumber}
-              </span>
-              <span className="text-sm text-[var(--text-tertiary)]">
-                {issue.date}
-              </span>
+      <article className="min-h-screen bg-[var(--paper)]">
+        {/* Masthead */}
+        <section className="pt-16 pb-10">
+          <Container narrow>
+            <div className="mb-10">
+              <EditorialButton href="/newsletter" variant="ghost">
+                &larr; Back to Archive
+              </EditorialButton>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
+
+            <Kicker dot>Signal:Noise · Issue {issue.issueNumber}</Kicker>
+
+            <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
               {issue.title}
             </h1>
-            {issue.subtitle && (
-              <p className="text-lg text-[var(--text-secondary)] italic">
-                {issue.subtitle}
-              </p>
-            )}
-            <p className="mt-4 text-sm text-[var(--text-tertiary)]">
-              by {issue.author}
-            </p>
-          </header>
 
-          {issue.heroImage && (
-            <div className="mb-10">
-              <Image
-                src={issue.heroImage}
-                alt={issue.heroAlt || issue.title}
-                width={1200}
-                height={675}
-                sizes="(min-width: 1024px) 768px, 100vw"
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
-          )}
+            {issue.subtitle && <Deck className="mt-6">{issue.subtitle}</Deck>}
 
-          <hr className="border-[var(--border)] mb-10" />
+            <MetaRow
+              className="mt-8"
+              items={[
+                { label: issue.date },
+                { label: `by ${issue.author}` },
+              ]}
+            />
 
-          {/* Essay Body */}
-          <div className="prose-custom">
-            {renderEssayContent(issue.content)}
-          </div>
+            <Rule className="mt-8" />
+          </Container>
+        </section>
 
-          {/* Author Bio */}
-          {issue.authorBio && (
-            <section className="mt-12 pt-8 border-t border-[var(--border)]">
-              <p className="text-sm text-[var(--text-tertiary)] italic">
+        {issue.heroImage && (
+          <section className="pb-4">
+            <Container narrow>
+              <div className="relative w-full overflow-hidden border border-[var(--hair)]">
+                <Image
+                  src={issue.heroImage}
+                  alt={issue.heroAlt || issue.title}
+                  width={1200}
+                  height={675}
+                  sizes="(min-width: 1024px) 768px, 100vw"
+                  className="h-auto w-full"
+                />
+              </div>
+            </Container>
+          </section>
+        )}
+
+        {/* Essay Body */}
+        <section className="pb-16 pt-8">
+          <Container narrow>
+            <Prose>{renderEssayContent(issue.content)}</Prose>
+
+            {/* Author Bio */}
+            {issue.authorBio && (
+              <div className="mt-12 border-t border-[var(--hair)] pt-8 font-[family-name:var(--font-serif)] text-[var(--muted)] italic">
                 {issue.authorBio}
-              </p>
-            </section>
-          )}
-        </article>
+              </div>
+            )}
+          </Container>
+        </section>
 
         {/* Subscribe CTA */}
-        <section className="py-16 bg-[var(--bg-secondary)] border-t border-[var(--border)]">
-          <div className="max-w-2xl mx-auto px-6 text-center">
-            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-4">
-              Want more essays like this?
-            </h2>
-            <p className="text-[var(--text-secondary)] mb-8">
-              Subscribe to Signal:Noise for essays on building, thinking, and the patterns that transfer.
-            </p>
-            <NewsletterSubscribe
-              variant="inline"
-              source={`newsletter-issue-${issue.issueNumber}`}
-              title=""
-              description=""
-              buttonText="Subscribe"
-            />
-          </div>
+        <section className="border-t border-[var(--rule)] bg-[var(--paper-shadow)] py-20">
+          <Container narrow>
+            <div className="text-center">
+              <Kicker dot className="justify-center">Subscribe</Kicker>
+              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
+                Want more essays like this?
+              </h2>
+              <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
+                Subscribe to Signal:Noise for essays on building, thinking, and the patterns that transfer.
+              </p>
+              <div className="mx-auto max-w-md">
+                <NewsletterSubscribe
+                  variant="inline"
+                  source={`newsletter-issue-${issue.issueNumber}`}
+                  title=""
+                  description=""
+                  buttonText="Subscribe"
+                />
+              </div>
+            </div>
+          </Container>
         </section>
-      </div>
+      </article>
     )
   }
 
   // Legacy structured format
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)]">
-      {/* Header */}
-      <header className="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <Link
-            href="/newsletter"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Archive
-          </Link>
-        </div>
-      </header>
-
-      {/* Issue Content */}
-      <article className="max-w-3xl mx-auto px-6 py-12">
-        {/* Issue Header */}
-        <header className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-sm font-medium text-[var(--id8-orange)]">
-              Issue #{issue.issueNumber}
-            </span>
-            <span className="text-sm text-[var(--text-tertiary)]">
-              {issue.date}
-            </span>
+    <article className="min-h-screen bg-[var(--paper)]">
+      {/* Masthead */}
+      <section className="pt-16 pb-10">
+        <Container narrow>
+          <div className="mb-10">
+            <EditorialButton href="/newsletter" variant="ghost">
+              &larr; Back to Archive
+            </EditorialButton>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
+
+          <Kicker dot>Signal:Noise · Issue {issue.issueNumber}</Kicker>
+
+          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
             {issue.subject}
           </h1>
-        </header>
 
-        {/* The Big Idea */}
-        <section className="mb-12">
-          <span className="text-xs font-semibold text-[var(--id8-orange)] uppercase tracking-wide">
-            The Big Idea
-          </span>
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mt-2 mb-4">
+          <MetaRow className="mt-8" items={[{ label: issue.date }]} />
+
+          <Rule className="mt-8" />
+        </Container>
+      </section>
+
+      {/* Issue Content */}
+      <section className="pb-16 pt-8">
+        <Container narrow>
+          {/* The Big Idea */}
+          <Kicker>The Big Idea</Kicker>
+          <h2 className="mt-3 mb-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.5rem,3vw,2rem)]">
             {issue.bigIdea.title}
           </h2>
-          <div className="text-[var(--text-secondary)] leading-relaxed">
-            {renderContent(issue.bigIdea.content)}
-          </div>
-        </section>
+          <Prose>{renderContent(issue.bigIdea.content)}</Prose>
 
-        <hr className="border-[var(--border)] my-10" />
+          <Rule className="my-12" />
 
-        {/* Framework */}
-        <section className="mb-12">
-          <span className="text-xs font-semibold text-[var(--id8-orange)] uppercase tracking-wide">
-            Framework
-          </span>
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mt-2 mb-4">
+          {/* Framework */}
+          <Kicker>Framework</Kicker>
+          <h2 className="mt-3 mb-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.5rem,3vw,2rem)]">
             {issue.framework.name}
           </h2>
-          <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
-            {issue.framework.description}
-          </p>
-          {issue.framework.steps && (
-            <ol className="list-decimal list-inside space-y-2 text-[var(--text-secondary)]">
-              {issue.framework.steps.map((step: string, idx: number) => (
-                <li key={idx} className="leading-relaxed">
-                  {renderListItem(step)}
-                </li>
-              ))}
-            </ol>
-          )}
-        </section>
+          <Prose>
+            <p>{issue.framework.description}</p>
+            {issue.framework.steps && (
+              <ol>
+                {issue.framework.steps.map((step: string, idx: number) => (
+                  <li key={idx}>{renderListItem(step)}</li>
+                ))}
+              </ol>
+            )}
+          </Prose>
 
-        <hr className="border-[var(--border)] my-10" />
+          <Rule className="my-12" />
 
-        {/* Case Study */}
-        <section className="mb-12">
-          <span className="text-xs font-semibold text-[var(--id8-orange)] uppercase tracking-wide">
-            Case Study
-          </span>
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mt-2 mb-4">
+          {/* Case Study */}
+          <Kicker>Case Study</Kicker>
+          <h2 className="mt-3 mb-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.5rem,3vw,2rem)]">
             {issue.caseStudy.title}
           </h2>
-          <div className="space-y-4 text-[var(--text-secondary)]">
+          <Prose>
             <p>
-              <strong className="text-[var(--text-primary)]">The problem:</strong>{' '}
-              {issue.caseStudy.problem}
+              <strong>The problem:</strong> {issue.caseStudy.problem}
             </p>
             <p>
-              <strong className="text-[var(--text-primary)]">What worked:</strong>{' '}
-              {issue.caseStudy.solution}
+              <strong>What worked:</strong> {issue.caseStudy.solution}
             </p>
-            <p className="text-[var(--id8-orange)] font-medium">
+            <p className="font-medium text-id8-orange">
               <strong>Result:</strong> {issue.caseStudy.result}
             </p>
-          </div>
-        </section>
+          </Prose>
 
-        {/* MILO Tip (Academy Only Preview) */}
-        {issue.miloTip && (
-          <>
-            <hr className="border-[var(--border)] my-10" />
-            <section className="mb-12 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-xs font-semibold text-[var(--id8-orange)] uppercase tracking-wide">
-                  Academy Exclusive
-                </span>
-                <span className="px-2 py-0.5 text-xs bg-[var(--id8-orange)]/10 text-[var(--id8-orange)] rounded">
+          {/* MILO Tip (Academy Only Preview) */}
+          {issue.miloTip && (
+            <div className="mt-12 border border-[var(--hair)] p-7">
+              <div className="mb-4 flex flex-wrap items-center gap-3">
+                <Kicker>Academy Exclusive</Kicker>
+                <span className="bg-[var(--paper-mid)] px-2 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.15em] text-id8-orange">
                   MILO Tip
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">
+              <h3 className="mb-2 font-[family-name:var(--font-display)] text-lg font-medium text-[var(--ink)]">
                 {issue.miloTip.title}
               </h3>
-              <p className="text-[var(--text-secondary)] text-sm mb-4">
+              <p className="mb-4 font-[family-name:var(--font-sans)] text-sm text-[var(--body)] leading-relaxed">
                 {issue.miloTip.explanation}
               </p>
-              <div className="p-4 bg-[var(--bg-primary)] rounded-lg border border-[var(--border)] font-mono text-sm text-[var(--text-secondary)]">
+              <div className="border border-[var(--hair)] bg-[var(--paper-shadow)] p-4 font-[family-name:var(--font-mono)] text-sm text-[var(--body)]">
                 &ldquo;{issue.miloTip.prompt}&rdquo;
               </div>
-              <Link
-                href="/academy"
-                className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--id8-orange)] hover:underline"
-              >
-                Join the Academy to unlock all tips
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </section>
-          </>
-        )}
+              <EditorialButton href="/academy" variant="ghost" className="mt-5">
+                Join the Academy to unlock all tips &rarr;
+              </EditorialButton>
+            </div>
+          )}
 
-        {/* Closing Note */}
-        <section className="mt-12 pt-8 border-t border-[var(--border)]">
-          <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
-            {issue.closingNote}
-          </p>
-          <p className="text-[var(--text-primary)]">
-            See you next month,<br />
-            <strong>Eddie</strong>
-          </p>
-        </section>
-      </article>
+          {/* Closing Note */}
+          <div className="mt-12 border-t border-[var(--hair)] pt-8">
+            <Prose>
+              <p>{issue.closingNote}</p>
+              <p>
+                See you next month,
+                <br />
+                <strong>Eddie</strong>
+              </p>
+            </Prose>
+          </div>
+        </Container>
+      </section>
 
       {/* Subscribe CTA */}
-      <section className="py-16 bg-[var(--bg-secondary)] border-t border-[var(--border)]">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-4">
-            Want more insights like this?
-          </h2>
-          <p className="text-[var(--text-secondary)] mb-8">
-            Subscribe to Signal:Noise for essays on building, thinking, and the patterns that transfer.
-          </p>
-          <NewsletterSubscribe
-            variant="inline"
-            source={`newsletter-issue-${issue.issueNumber}`}
-            title=""
-            description=""
-            buttonText="Subscribe"
-          />
-        </div>
+      <section className="border-t border-[var(--rule)] bg-[var(--paper-shadow)] py-20">
+        <Container narrow>
+          <div className="text-center">
+            <Kicker dot className="justify-center">Subscribe</Kicker>
+            <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
+              Want more insights like this?
+            </h2>
+            <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
+              Subscribe to Signal:Noise for essays on building, thinking, and the patterns that transfer.
+            </p>
+            <div className="mx-auto max-w-md">
+              <NewsletterSubscribe
+                variant="inline"
+                source={`newsletter-issue-${issue.issueNumber}`}
+                title=""
+                description=""
+                buttonText="Subscribe"
+              />
+            </div>
+          </div>
+        </Container>
       </section>
-    </div>
+    </article>
   )
 }
