@@ -59,7 +59,7 @@ function UnitCard({ unit, index, scrollProgress, total }: UnitCardProps) {
     >
       <motion.div
         style={{ opacity, x, scale, rotateY }}
-        className="pointer-events-auto w-[380px] border border-[var(--hair-hard)] p-6 md:p-8"
+        className="pointer-events-auto w-[380px] max-w-[calc(100vw-2rem)] border border-[var(--hair-hard)] p-6 md:p-8"
       >
         <div
           className="absolute inset-0 -z-10"

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Fraunces, Archivo, Archivo_Narrow, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
@@ -35,6 +35,15 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
   variable: '--font-jetbrains',
 })
+
+// Explicit viewport so mobile scaling + browser UI tint are intentional.
+// The site is light-only (editorial paper), so themeColor matches --paper.
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#fafaf7',
+  colorScheme: 'light',
+}
 
 export const metadata: Metadata = {
   title: {
