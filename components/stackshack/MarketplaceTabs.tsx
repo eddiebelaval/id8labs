@@ -1,12 +1,10 @@
 import Link from 'next/link'
-import { Zap, Terminal, Settings, Package, Puzzle } from 'lucide-react'
 
 export type MarketplaceTab = 'skills' | 'commands' | 'settings' | 'plugins' | 'kits'
 
 interface TabConfig {
   id: MarketplaceTab
   label: string
-  icon: React.ReactNode
   count?: number
 }
 

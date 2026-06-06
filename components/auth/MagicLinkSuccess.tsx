@@ -5,8 +5,8 @@ interface MagicLinkSuccessProps {
 }
 
 export function MagicLinkSuccess({ email, onReset, variant = 'sign-in' }: MagicLinkSuccessProps): React.ReactElement {
-  const bgColor = variant === 'sign-up' ? 'bg-green-100 dark:bg-green-900/20' : 'bg-orange-100 dark:bg-orange-900/20'
-  const iconColor = variant === 'sign-up' ? 'text-green-600 dark:text-green-400' : 'text-orange-600 dark:text-orange-400'
+  const bgColor = 'bg-[var(--paper-shadow)]'
+  const iconColor = 'text-id8-orange'
   const description = variant === 'sign-up'
     ? 'Click the link to create your account and sign in. No password needed.'
     : 'Click the link in the email to sign in. No password needed.'
@@ -27,23 +27,23 @@ export function MagicLinkSuccess({ email, onReset, variant = 'sign-in' }: MagicL
   )
 
   return (
-    <div className="bg-white dark:bg-bg-dark border border-border-light dark:border-border-dark rounded-lg p-8 shadow-lg">
+    <div className="bg-[var(--paper)] border border-[var(--hair)] p-8">
       <div className="text-center">
         <div className={`mx-auto w-12 h-12 ${bgColor} rounded-full flex items-center justify-center mb-4`}>
           {icon}
         </div>
-        <h1 className="text-2xl font-bold text-text-light dark:text-text-dark mb-2">
+        <h1 className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] text-[var(--ink)] mb-2">
           Check your email
         </h1>
-        <p className="text-text-light-secondary dark:text-text-dark-secondary mb-6">
-          We sent a magic link to <strong>{email}</strong>
+        <p className="text-[var(--muted)] mb-6">
+          We sent a magic link to <strong className="text-[var(--ink)]">{email}</strong>
         </p>
-        <p className="text-sm text-text-light-secondary dark:text-text-dark-secondary">
+        <p className="text-sm text-[var(--muted)]">
           {description}
         </p>
         <button
           onClick={onReset}
-          className="mt-6 text-sm text-orange-500 dark:text-orange-400 hover:underline"
+          className="mt-6 font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.18em] text-id8-orange hover:underline"
         >
           Use a different email
         </button>

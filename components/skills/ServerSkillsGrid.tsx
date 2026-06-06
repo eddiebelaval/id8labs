@@ -13,10 +13,9 @@ interface ServerSkillsGridProps {
 export function ServerSkillsGrid({ skills, totalCount }: ServerSkillsGridProps) {
     if (skills.length === 0) {
         return (
-            <div className="text-center py-16">
-                <div className="text-6xl mb-4">🔍</div>
-                <h3 className="text-xl font-semibold mb-2">No skills found</h3>
-                <p className="text-[var(--text-secondary)]">
+            <div className="text-center py-16 border border-[var(--hair)]">
+                <h3 className="font-[family-name:var(--font-display)] font-normal text-xl mb-2 text-[var(--ink)]">No skills found</h3>
+                <p className="text-[var(--muted)]">
                     Try adjusting your filters or search terms
                 </p>
             </div>
@@ -26,10 +25,10 @@ export function ServerSkillsGrid({ skills, totalCount }: ServerSkillsGridProps) 
     return (
         <div>
             {/* Results count */}
-            <div className="mb-6 text-sm text-[var(--text-secondary)]">
-                Showing <span className="font-semibold text-[var(--text-primary)]">{skills.length}</span>
+            <div className="mb-6 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                Showing <span className="text-[var(--ink)]">{skills.length}</span>
                 {skills.length !== totalCount && (
-                    <> of <span className="font-semibold text-[var(--text-primary)]">{totalCount}</span></>
+                    <> of <span className="text-[var(--ink)]">{totalCount}</span></>
                 )} items
             </div>
 
