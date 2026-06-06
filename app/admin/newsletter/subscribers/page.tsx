@@ -91,7 +91,7 @@ export default function SubscribersPage() {
             </svg>
           </Link>
           <div>
-            <h1 className="text-2xl font-bold text-[var(--ink)]">Subscribers</h1>
+            <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Subscribers</h1>
             <p className="text-[var(--muted)]">
               {data ? `${data.total} total subscribers` : 'Loading...'}
             </p>
