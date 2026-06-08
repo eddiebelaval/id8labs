@@ -1,13 +1,20 @@
 /**
- * Shipped. — Magazine Issue Manifest
+ * Shipped. — Magazine Issue Manifest (API)
  *
  * Each weekly issue lives at /public/shipped/{NN}/index.html as a self-contained
- * static HTML file. This manifest mirrors that listing so the magazine appears
- * alongside Essays / Newsletter / Research / Releases in the unified /writing feed.
+ * static HTML file and is listed on the hub archive at /shipped. This module is
+ * the typed API the rest of the site consumes; the issue *data* lives in the
+ * AUTO-GENERATED sibling `./issues.data`, which the publish pipeline rewrites
+ * from the hub archive so the unified /writing feed can never drift from the
+ * magazine's own archive page.
  *
- * When a new issue ships (next Friday's /publish-shipped run), append to this array.
- * Future enhancement: have the renderer's archive step append automatically.
+ * Canonical home of record: https://id8labs.app/shipped
+ *
+ * To add an issue: run `/publish-shipped` (renders the issue, updates the hub,
+ * and regenerates issues.data.ts). Do not hand-edit issues.data.ts.
  */
+
+import { SHIPPED_ISSUES } from './issues.data'
 
 export interface ShippedIssuePreview {
   /** Two-digit issue number, e.g. "01" */
@@ -31,24 +38,6 @@ export interface ShippedIssuePreview {
 }
 
 /**
- * The canonical Shipped. issue list. Append on each weekly publish.
- */
-const SHIPPED_ISSUES: ShippedIssuePreview[] = [
-  {
-    issueNumber: '01',
-    title: 'The chart that wasn\u2019t about Opus 4.7.',
-    subtitle: 'Three weeks of Anthropic, in one read. Plus: the model you can\u2019t have.',
-    date: '2026-04-17',
-    period: '2026-03-27 \u2192 2026-04-17',
-    excerpt:
-      'The Founding Issue covers Opus 4.7, Project Glasswing, the Mythos shadow, and 56 releases over three weeks. Front-of-book editorial plus a comprehensive Release Log catalogued by category.',
-    readTime: '25\u201340 min read',
-    tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code'],
-    featured: true,
-  },
-]
-
-/**
  * Returns all Shipped. issues, newest first.
  */
 export function getAllShippedIssues(): ShippedIssuePreview[] {
@@ -58,9 +47,22 @@ export function getAllShippedIssues(): ShippedIssuePreview[] {
 }
 
 /**
- * Build the public URL for an issue. Pages live in /public/shipped/{NN}/index.html
- * which Vercel serves at id8labs.app/shipped/{NN}.
+ * Build the public (relative) URL for an issue. Pages live in
+ * /public/shipped/{NN}/index.html which Vercel serves at id8labs.app/shipped/{NN}.
+ * This is the single canonical link builder — every internal reference should
+ * route through it so all links point to the same place.
  */
 export function getShippedIssueHref(issueNumber: string): string {
   return `/shipped/${issueNumber}`
 }
+
+/**
+ * Absolute canonical URL for an issue, for use in emails / outbound messages
+ * where a relative path will not resolve.
+ */
+export function getShippedIssueUrl(issueNumber: string): string {
+  return `${SHIPPED_HUB_URL}/${issueNumber}`
+}
+
+/** Absolute canonical URL for the Shipped. hub (all issues, newest first). */
+export const SHIPPED_HUB_URL = 'https://id8labs.app/shipped'
