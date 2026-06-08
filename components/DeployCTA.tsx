@@ -3,7 +3,7 @@ import { Container, Kicker, Deck, EditorialButton, Rule } from '@/components/edi
 /**
  * DeployCTA
  * Closing call-to-action before the footer. Drives toward the
- * forward-deployment offering — the lab's core business.
+ * forward-deployment offering, the lab's core business.
  */
 export default function DeployCTA() {
   return (

@@ -52,6 +52,7 @@
       "agents with depth and breadth",
       "presence, not a chatbot",
       "HALO",
+      "the Genome",
       "custodians, not vendors",
       "architecture, not tools",
       "ships",
@@ -60,7 +61,6 @@
       "proof"
     ],
     "internal_terms_not_public": [
-      "the Genome",
       "the Spiral",
       "the Membrane",
       "Attunement",
@@ -101,6 +101,8 @@
       "Foundry",
       "Rune",
       "Parallax",
+      "HOMER",
+      "StackShack",
       "Claude Code",
       "MCP",
       "Federation"

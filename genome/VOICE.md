@@ -22,10 +22,10 @@ The default frame is the client-facing twin: lead with the plain outcome, name t
 
 ## Lexicon
 
-- **Say (public-safe):** AI system architecture, forward deployment, primitive chains, human gates, AI harnesses, intelligence layers, agents with depth and breadth, presence not a chatbot, HALO, custodians not vendors, operators, the work, proof, architecture not tools, ships / shipped, the drudgery before the work.
-- **Internal terms of art (not for public surfaces):** the Genome, the Spiral, the Membrane, Attunement, the Fit gate / the Commit gate, the commitment ladder. These name how the method works. Per the public disclosure discipline (ETHOS.md, AGENT.md) they live in internal and engagement docs, never on the marketing site or in a client-facing deck.
+- **Say (public-safe):** AI system architecture, forward deployment, primitive chains, human gates, AI harnesses, intelligence layers, agents with depth and breadth, presence not a chatbot, HALO, the Genome, custodians not vendors, operators, the work, proof, architecture not tools, ships / shipped, the drudgery before the work. ("the Genome" graduated to public-safe 2026-06-08; the live /services page names and explains it as the product's DNA core, without exposing the method mechanics.)
+- **Internal terms of art (not for public surfaces):** the Spiral, the Membrane, Attunement, the Fit gate / the Commit gate, the commitment ladder. These name how the method works. Per the public disclosure discipline (ETHOS.md, AGENT.md) they live in internal and engagement docs, never on the marketing site or in a client-facing deck.
 - **Never say:** revolutionary, game-changing, cutting-edge, next-generation, world-class, seamless, synergy, unlock, supercharge, 10x, delight, paradigm shift, "we're excited to announce," "in today's fast-paced world," and other press-release filler.
-- **Names and terms of art (exact spelling and caps):** id8Labs (lowercase `id8` plus `Labs`, one word), Shipped. (with the orange period), AI System Architect (Eddie's title), Eddie Belaval, Miami FL, HALO, the Genome, Composer, DeepStack, Pipeline, LLC Ops, MILO, Lexicon, Foundry, Rune, Parallax, Claude Code, MCP, Federation.
+- **Names and terms of art (exact spelling and caps):** id8Labs (lowercase `id8` plus `Labs`, one word), Shipped. (with the orange period), AI System Architect (Eddie's title), Eddie Belaval, Miami FL, HALO, the Genome, Composer, DeepStack, Pipeline, LLC Ops, MILO, Lexicon, Foundry, Rune, Parallax, HOMER, StackShack, Claude Code, MCP, Federation.
 
 ## Rules
 

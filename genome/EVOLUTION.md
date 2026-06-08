@@ -63,4 +63,6 @@ First scheduled monthly drift check after the founding and completeness passes. 
 
 **Proposed for ratification:** (1) VOICE.md lexicon: move "the Genome" from "Internal terms of art (not for public surfaces)" to "Say (public-safe)." (2) VOICE.md lexicon names: add "HOMER" and "StackShack" (both ship live on the homepage nav and product grid; neither is in the names list). No DESIGN or ETHOS edits proposed.
 
-**Status:** evolved (one VOICE shift proposed, pending Eddie's ratification; one drift to correct in live copy).
+**Status:** evolved and ratified.
+
+**Ratified / corrected 2026-06-08 (Eddie approved):** (1) Moved "the Genome" to the public-safe lexicon in VOICE.md and genome.json. (2) Added HOMER and StackShack to the names lexicon. (3) Corrected the live em-dash drift: scrubbed the homepage copy (ForwardDeployment, the Parallax and Rune product descriptions) and, while there, replaced the stale OpenClaw section copy that still ran on the homepage (the ForwardDeployment steps and stats were "white-glove hypercare / 24h to first deploy / agents on your hardware / never touch a terminal"; rewritten to the workshop-audit-build-custodianship arc). (4) Deleted the stale `app/services/ai-setup/layout.tsx` (old OpenClaw metadata). (5) Tightened `/services`: folded the duplicate pricing section into the engagement steps, one sequence with a price on each step.

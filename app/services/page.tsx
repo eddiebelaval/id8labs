@@ -136,17 +136,10 @@ const movements = [
 ]
 
 const arc = [
-  { step: '01', title: 'Workshop', desc: 'A short working session that shows your team what the work could look like, and tells us both whether there is a fit.' },
-  { step: '02', title: 'Audit', desc: 'A paid, full read of your operation. You leave with the findings, the recommended approach, and a quote to build it.' },
-  { step: '03', title: 'Build and install', desc: 'We build the system and install it inside your operation, wired to your tools, with your data posture set from day one.' },
-  { step: '04', title: 'Custodianship', desc: 'We stay on after launch. The system stays healthy and keeps improving as your work changes.' },
-]
-
-const ladder = [
-  { name: 'Workshop', price: 'A small ticket', desc: 'A short, low-cost session to start and find the fit.' },
-  { name: 'Audit', price: 'Paid', desc: 'A full read of your operation. The findings and the plan are the deliverable.' },
-  { name: 'Build', price: 'Quoted to the work', desc: 'Priced to the build, with the handoff included.' },
-  { name: 'Custodianship', price: 'Ongoing', desc: 'A retainer that keeps the system healthy and improving after launch.' },
+  { step: '01', title: 'Workshop', price: 'A small ticket', desc: 'A short working session that shows your team what the work could look like, and tells us both whether there is a fit.' },
+  { step: '02', title: 'Audit', price: 'Paid', desc: 'A full read of your operation. You leave with the findings, the recommended approach, and a quote to build it.' },
+  { step: '03', title: 'Build and install', price: 'Quoted to the work', desc: 'We build the system and install it inside your operation, wired to your tools, with your data posture set from day one. The handoff is included.' },
+  { step: '04', title: 'Custodianship', price: 'Ongoing', desc: 'We stay on after launch. The system stays healthy and keeps improving as your work changes.' },
 ]
 
 const engagements = [
@@ -386,7 +379,7 @@ export default function ServicesPage() {
             meta="How it works"
           />
           <Deck className="mt-6 max-w-2xl">
-            It starts with a workshop and an audit, moves into a build, and continues as an ongoing partnership. Each engagement builds on the last.
+            It starts with a workshop and an audit, moves into a build, and continues as an ongoing partnership. Each engagement builds on the last, and each step is priced to its value, so you always know what you are paying for.
           </Deck>
 
           <div className="mt-12 mb-12">
@@ -401,21 +394,28 @@ export default function ServicesPage() {
             />
           </div>
 
-          <div className="max-w-3xl">
+          <div className="max-w-3xl border-t border-[var(--hair)]">
             {arc.map((item) => (
-              <div key={item.step} className="flex gap-6 border-b border-[var(--hair)] py-7 last:border-b-0 md:gap-8">
+              <div key={item.step} className="flex gap-6 border-b border-[var(--hair)] py-7 md:gap-8">
                 <span className="shrink-0 font-[family-name:var(--font-mono)] text-sm font-medium tabular-nums text-id8-orange">
                   {item.step}
                 </span>
-                <div>
-                  <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
-                    {item.title}
-                  </h3>
+                <div className="flex-1">
+                  <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
+                      {item.title}
+                    </h3>
+                    <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">{item.price}</span>
+                  </div>
                   <p className="text-[1.0625rem] leading-[1.65] text-[var(--body)]">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+
+          <p className="mt-8 max-w-3xl font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
+            Transparent, and scoped to the work. No surprise line items, and the handoff is included, never a separate charge.
+          </p>
 
           <div className="mt-10 max-w-3xl">
             <EditorialButton href="/method" variant="ghost">
@@ -471,40 +471,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* ── 6. THE COMMITMENT LADDER ───────────────────── */}
-      <section id="pricing" className="border-t border-[var(--hair)] py-20 md:py-24">
-        <Container>
-          <SectionHead
-            title={<>Transparent, and <em className="italic">scoped to the work.</em></>}
-            meta="Pricing"
-          />
-          <Deck className="mt-6 max-w-2xl">
-            A few clear steps, priced to the value at each one. You always know what you are paying for.
-          </Deck>
-
-          <div className="mt-12 max-w-4xl border-t border-[var(--hair)]">
-            {ladder.map((row) => (
-              <div
-                key={row.name}
-                className="grid gap-2 border-b border-[var(--hair)] py-7 md:grid-cols-[260px_1fr] md:gap-10"
-              >
-                <div>
-                  <h3 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">
-                    {row.name}
-                  </h3>
-                  <p className="mt-1.5 font-[family-name:var(--font-mono)] text-sm text-id8-orange">{row.price}</p>
-                </div>
-                <p className="text-[15px] leading-relaxed text-[var(--body)] md:pt-0.5">{row.desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-8 max-w-3xl font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
-            No surprise line items. The handoff is included, never a separate charge.
-          </p>
-        </Container>
-      </section>
-
-      {/* ── 7. WHO THIS IS FOR / ISN'T FOR ─────────────── */}
+      {/* ── 6. WHO THIS IS FOR / ISN'T FOR ─────────────── */}
       <section className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
           <div className="grid max-w-5xl gap-10 lg:grid-cols-2 lg:gap-16">

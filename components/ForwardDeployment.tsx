@@ -10,25 +10,25 @@ import {
 const steps = [
   {
     step: '01',
-    title: 'Map your pain',
-    desc: 'A kickoff call to find what is eating your hours. We spec the agents and the human gates worth building. If we cannot scope a meaningful win, we say so — no charge.',
+    title: 'We learn how you work',
+    desc: 'A workshop and a paid audit read your operation and name where it leaks. You leave with the findings, the approach, and a quote to build it.',
   },
   {
     step: '02',
-    title: 'Build & deploy',
-    desc: 'Agents go live on your hardware, wired to your real tools — email, calendar, CRM, files. Custom skills for your workflow, security hardened from day one. You never touch a terminal.',
+    title: 'We build and install',
+    desc: 'We design the primitive chains, install the system inside your operation, wire your tools, and set your data posture from day one. You do not touch a terminal.',
   },
   {
     step: '03',
-    title: 'White-glove hypercare',
-    desc: 'We stay on, monitoring and tuning until the system is genuinely saving you time. If it is not delivering by the end of hypercare, we extend until it does.',
+    title: 'We stay on as custodians',
+    desc: 'After launch the system stays healthy and keeps improving as your work changes, so the brand is still true long after we hand you the keys.',
   },
 ]
 
 const stats = [
-  { value: '24h', label: 'To first deploy' },
-  { value: '14–60', label: 'Days of hypercare' },
-  { value: '0', label: 'Config you touch' },
+  { value: 'Inside', label: 'your operation' },
+  { value: 'Human gates', label: 'by design' },
+  { value: 'Custodians', label: 'not vendors' },
 ]
 
 export default function ForwardDeployment() {
@@ -57,12 +57,12 @@ export default function ForwardDeployment() {
                 <span className="text-id8-orange">
                   primitive chain architectures with human gates
                 </span>{' '}
-                and deploys them inside your business. Your hardware, your tools, your domain.
+                and deploys them inside your business. Your operation, your tools, your judgment.
               </p>
               <p className="text-[var(--muted)]">
                 The difference between an AI tool and an AI agent is simple: tools wait for you to
                 type. Agents do the work while you focus on something else. We build the chain that
-                eats the drudgery before the work — so you reach scale tools alone cannot deliver.
+                eats the drudgery before the work, so you reach a scale tools alone cannot deliver.
               </p>
             </div>
 
@@ -99,10 +99,10 @@ export default function ForwardDeployment() {
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-3.5 pt-2">
               <EditorialButton href="/services">
-                See how deployment works
+                See how we work
               </EditorialButton>
               <EditorialButton href="/services#apply-form" variant="ghost">
-                Apply for a setup
+                Start the conversation
               </EditorialButton>
             </div>
           </div>
