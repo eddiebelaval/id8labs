@@ -28,6 +28,7 @@ Operators and companies putting AI to real work: founders, principals, and teams
 - **Proof over pitch.** Shipped products and public metrics are the argument. Show the work.
 - **Architecture over tooling.** Design the chain of primitives; don't sell a feature.
 - **Credibility is the product.** Every pixel and sentence either earns trust or spends it.
+- **Inform, do not reveal the shape.** Public surfaces convey what the work is and what the client gets. They never expose the operating mechanics, the commercial choreography, or the moat strategy. Depth is shown through outcomes, not blueprints.
 
 ## The stake
 
@@ -40,3 +41,4 @@ The reputation rides on every artifact reading as serious, true, and made by som
 - Claim outcomes it can't show or stand behind.
 - Chase audiences with off-brand gimmicks (RGB, dark-mode neon, glossy SaaS tropes).
 - Let automation speak in the brand's voice unedited.
+- Reveal the method's mechanics, pricing tactics, or moat strategy on a public surface. A competitor should not be able to rebuild the method from a page, and a client should not see the commercial gears.

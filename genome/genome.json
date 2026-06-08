@@ -103,8 +103,10 @@
       "invent or inflate metrics",
       "claim outcomes it can't show",
       "chase audiences with off-brand gimmicks",
-      "let automation speak in the brand voice unedited"
-    ]
+      "let automation speak in the brand voice unedited",
+      "reveal the method's mechanics, pricing tactics, or moat strategy on a public surface"
+    ],
+    "public_disclosure": "inform, do not reveal the shape: public surfaces convey the product and the outcome, never the operating mechanics, commercial choreography, or moat strategy"
   },
   "eval": {
     "held_out": "public/shipped/ (the canonical editorial reference) + content/essays/",

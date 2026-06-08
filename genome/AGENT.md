@@ -36,5 +36,15 @@ Before an asset is "done," verify against the Genome, not your own intent:
 - Built from `@/components/editorial`; you did NOT edit `app/globals.css`, `tailwind.config.ts`, `app/layout.tsx`, `components/Header.tsx`, `components/Footer.tsx`, or `components/editorial/*`.
 - Copy passes `VOICE.md`: lexicon respected, every rule held, nothing on the anti-voice list, proper nouns spelled exactly.
 - Nothing violates the `ETHOS.md` "would never" list.
+- For any PUBLIC asset, the public disclosure discipline below holds.
 
 A failure is a fix-ticket, not a shrug. Report what failed and why, plus any shared component or kit gap you noticed but did not change.
+
+## Public disclosure discipline (inform, do not reveal the shape)
+
+When the asset is public facing (the marketing site, decks, posts, anything a prospect or competitor can see), apply the ETHOS rule "inform, do not reveal the shape":
+
+- **Inform.** Name the product and the outcome. Use the distinctive vocabulary (HALO, the Genome, forward deployment, primitive chains, AI harnesses, intelligence layers, presence not a chatbot). Convey rigor and depth.
+- **Do not reveal the shape.** Keep off public surfaces: the engagement gate names and step sequence, pricing tactics or rates, the post-launch gate mechanics, the tuning/Attunement loop, eval and golden-dataset internals, and any "how we keep you, why you cannot leave" framing.
+- **The test.** A competitor should not be able to reconstruct the method from a public page, and a client should not see the commercial gears. Show what they get, not how the machine works.
+- **Internal stays full.** This genome, the playbooks, and engagement docs keep the complete mechanics. That is where they belong. This discipline governs public surfaces only.
