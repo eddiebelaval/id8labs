@@ -1,7 +1,8 @@
 {
   "brand": "id8Labs",
-  "version": "1",
+  "version": "2",
   "derived": "2026-06-06",
+  "updated": "2026-06-08",
   "design": {
     "palette": {
       "surface": "#fafaf7",
@@ -22,11 +23,11 @@
       "mono": "JetBrains Mono"
     },
     "rules": [
-      "light only — no dark mode, no dark: classes",
+      "light only, no dark mode, no dark: classes",
       "sharp corners (border-radius 0) except pills/avatars",
-      "flat — no shadows, glows, or gradients",
+      "flat, no shadows, glows, or gradients",
       "accent (orange) on no more than one or two elements per view",
-      "only palette colors — no blue/purple/green/amber",
+      "only palette colors, no blue/purple/green/amber",
       "headlines are Fraunces 400 with one italic-orange <em>",
       "motion is color/opacity only, ~150ms, reduced-motion aware"
     ],
@@ -40,17 +41,32 @@
     ]
   },
   "voice": {
-    "register": "a builder who ships, talking to operators who ship — precise, plain, confident, never selling",
+    "register": "a builder who ships, talking to operators who ship: precise, plain, confident, never selling. Client-facing twin: plain outcome first, terms of art one layer down.",
     "say": [
+      "AI system architecture",
       "forward deployment",
-      "primitive chain architecture",
-      "human gate",
-      "auto-ops, human-voice",
+      "primitive chains",
+      "human gates",
+      "AI harnesses",
+      "intelligence layers",
+      "agents with depth and breadth",
+      "presence, not a chatbot",
+      "HALO",
+      "custodians, not vendors",
       "architecture, not tools",
       "ships",
       "shipped",
       "operators",
       "proof"
+    ],
+    "internal_terms_not_public": [
+      "the Genome",
+      "the Spiral",
+      "the Membrane",
+      "Attunement",
+      "the Fit gate",
+      "the Commit gate",
+      "the commitment ladder"
     ],
     "never_say": [
       "revolutionary",
@@ -71,6 +87,11 @@
     "names": [
       "id8Labs",
       "Shipped.",
+      "AI System Architect",
+      "Eddie Belaval",
+      "Miami, FL",
+      "HALO",
+      "the Genome",
       "Composer",
       "DeepStack",
       "Pipeline",
@@ -82,29 +103,48 @@
       "Parallax",
       "Claude Code",
       "MCP",
-      "HALO",
-      "Triad",
-      "Eddie Belaval"
+      "Federation"
     ],
     "rules": [
       "lead with the conclusion",
       "active voice, concrete nouns",
-      "em dashes are on-brand — keep them",
+      "no em dashes or en dashes, anywhere, internal or published (ruling 2026-06-08)",
+      "no emojis on any surface",
+      "never fabricate names, quotes, origins, or metrics",
       "we = id8Labs, you = the reader",
       "no exclamation marks in body copy",
-      "numbers and dates are facts — never invent"
+      "numbers and dates are facts, never invent"
     ]
   },
   "ethos": {
-    "positioning": "Primitive chain architecture with human gates for AI-era operators — architecture, not tools; forward deployment that eats the drudgery before the work.",
+    "positioning": "A builder studio working in AI system architecture and forward deployment. Architecture, not tools. We design primitive chains with human gates, deploy them inside the company, and stay on as custodians.",
+    "what_we_build": "Agents with depth and breadth that create presence, not a chatbot: primitive chains, AI harnesses, and intelligence layers, installed as a HALO.",
+    "model": "A custodianship studio, not a vendor. Install a system and stay its custodian; the human in the loop is the load-bearing column, by design.",
+    "serves": "B2B operators putting AI to real work: professional-services and regulated firms (legal, advisory), studios and agencies, founders who ship but cannot scale ops.",
+    "founder": "Eddie Belaval, AI System Architect, Miami. Twenty years on set reading human systems, now pointed at the architecture between the tools.",
+    "values": [
+      "the human gate is structural",
+      "auto-ops, human-voice",
+      "systems beat hustle",
+      "proof over pitch",
+      "architecture over tooling",
+      "custodianship over handoff",
+      "hold price, add value",
+      "build in public",
+      "credibility is the product",
+      "inform, do not reveal the shape"
+    ],
     "would_never": [
       "ship to people without a human gate",
+      "ship a client-facing surface unauthenticated or over-privileged",
       "use hype or press-release language",
       "invent or inflate metrics",
       "claim outcomes it can't show",
+      "fabricate proof, names, origins, or quotes",
       "chase audiences with off-brand gimmicks",
       "let automation speak in the brand voice unedited",
-      "reveal the method's mechanics, pricing tactics, or moat strategy on a public surface"
+      "reveal the method's mechanics, pricing tactics, or moat strategy on a public surface",
+      "use em dashes, en dashes, or emojis on any surface"
     ],
     "public_disclosure": "inform, do not reveal the shape: public surfaces convey the product and the outcome, never the operating mechanics, commercial choreography, or moat strategy"
   },

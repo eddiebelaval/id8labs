@@ -6,12 +6,12 @@ date: "2026-06-06"
 derived-from: ["public/shipped/", "app/globals.css", "docs/EDITORIAL_SYSTEM.md"]
 ---
 
-# DESIGN.md — Visual Gene
+# DESIGN.md, Visual Gene
 ## id8Labs
 
 > The visual DNA every asset conforms to. Read by the Build and Taste loops so output is on-brand by construction. The full React kit + usage rules live in `docs/EDITORIAL_SYSTEM.md`; this file is the gene.
 
-The brand looks like a **print magazine on warm paper** — the "Shipped." editorial language. Restrained, credible, high-craft. Light only. Sharp corners. Flat.
+The brand looks like a **print magazine on warm paper**, the "Shipped." editorial language. Restrained, credible, high-craft. Light only. Sharp corners. Flat.
 
 ---
 
@@ -30,7 +30,7 @@ The brand looks like a **print magazine on warm paper** — the "Shipped." edito
 | Accent | `#ff6b35` (orange) | emphasis only |
 | Signal | `#2a8d83` (teal) | sparingly: success, "new/free" |
 
-**Discipline:** orange is emphasis, not decoration — one or two orange moments per view. No other colors: no blues/purples/greens/ambers, no gradients.
+**Discipline:** orange is emphasis, not decoration, one or two orange moments per view. No other colors: no blues/purples/greens/ambers, no gradients.
 
 ## Type
 
