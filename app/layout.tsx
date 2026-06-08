@@ -112,7 +112,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${archivo.variable} ${archivoNarrow.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FF6B35" />
@@ -121,7 +121,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
-      <body className={`${fraunces.variable} ${archivo.variable} ${archivoNarrow.variable} ${jetbrainsMono.variable}`}>
+      <body>
         <GoogleAnalytics />
         <UmamiAnalytics />
 
