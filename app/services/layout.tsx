@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Services | ID8Labs',
+  title: 'Services',
   description: 'We install HALO, your operating DNA, inside your business and stay its custodian. Primitive chains with human gates, forward-deployed. A workshop opens it, an audit confirms the fit, we build and tend.',
   keywords: [
     'forward deployment',

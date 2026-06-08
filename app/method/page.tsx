@@ -14,11 +14,11 @@ import {
 export const metadata: Metadata = {
   title: 'The Method',
   description:
-    'How id8Labs works: AI system architecture and forward deployment. Primitive chains, AI harnesses, and intelligence layers, installed as a HALO and tended through the Spiral.',
+    'How id8Labs works: AI system architecture and forward deployment. We build primitive chains, AI harnesses, and intelligence layers, installed as a HALO and tended as your work changes.',
   openGraph: {
     title: 'The Method | id8Labs',
     description:
-      'AI system architecture and forward deployment. Primitive chains, AI harnesses, intelligence layers, HALO, the Spiral, the Membrane, and Attunement.',
+      'AI system architecture and forward deployment. Primitive chains, AI harnesses, intelligence layers, agents with depth and breadth that create presence, not a chatbot.',
   },
 }
 
@@ -75,11 +75,10 @@ export default function MethodPage() {
             </Deck>
             <MetaRow
               items={[
+                { label: 'AI system architecture' },
+                { label: 'Forward deployment' },
                 { label: 'HALO' },
-                { label: 'Genome' },
-                { label: 'Spiral' },
-                { label: 'Membrane' },
-                { label: 'Attunement' },
+                { label: 'Presence, not a chatbot' },
               ]}
             />
           </div>
@@ -129,14 +128,14 @@ export default function MethodPage() {
               HALO is the whole system we install inside your operation, versioned and handed off as one unit. It carries the Genome at its core, the chains and harnesses that run your work, and the post-launch governance that keeps it on brand.
             </p>
             <p>
-              At the center is the <span className="text-[var(--ink)] font-medium">Genome</span>, the DNA of how you work in three parts. <span className="text-[var(--ink)] font-medium">Design</span> is how the work looks and the standard it must meet. <span className="text-[var(--ink)] font-medium">Voice</span> is how your business sounds. <span className="text-[var(--ink)] font-medium">Ethos</span> is the judgment underneath both. Everything HALO produces reads the Genome before it acts, so the work is on brand by construction, not by reminder. The Genome is held by the studio. That is deliberate.
+              At the center is the <span className="text-[var(--ink)] font-medium">Genome</span>, the DNA of how you work in three parts. <span className="text-[var(--ink)] font-medium">Design</span> is how the work looks and the standard it must meet. <span className="text-[var(--ink)] font-medium">Voice</span> is how your business sounds. <span className="text-[var(--ink)] font-medium">Ethos</span> is the judgment underneath both. Everything HALO produces reads the Genome before it acts, so the work is on brand by construction, not by reminder. We hold and maintain the Genome as your custodian.
             </p>
           </div>
           <div className="mt-10 max-w-4xl">
-            <Movement step="Attune" title="We learn how you actually work" desc="We mine your real corpus in place, the finished work, the way decisions get made, the exceptions. We tune the system to your form and take its facts from your own sources." />
+            <Movement step="Attune" title="We learn how you actually work" desc="From your real work and the way your team actually decides. We tune the system to your standards, not a template." />
             <Movement step="Build" title="We compose the chains" desc="Primitive chains and harnesses built domain-deep, with a person in the loop wherever judgment belongs." />
-            <Movement step="Verify" title="We grade against your own work" desc="Checked for form-parity against real output from your team. It ships because it matches the bar you set, not because it runs." />
-            <Movement step="Tend" title="It keeps matching you" desc="After launch the system keeps tuning to how the work actually arrives, so it never drifts from a frozen opening-day snapshot. Tend is Attune coming back around." />
+            <Movement step="Verify" title="We check it against your work" desc="Checked against your team’s real work before it ships. It ships because it meets your bar, not because it runs." />
+            <Movement step="Tend" title="It keeps matching you" desc="After launch it keeps improving as your work changes, so it never goes stale. The system gets better with use, not worse." />
           </div>
         </Container>
       </section>
@@ -144,13 +143,13 @@ export default function MethodPage() {
       {/* THE SPIRAL */}
       <section className="py-14 md:py-16">
         <Container>
-          <SectionHead title={<>The <em className="italic text-id8-orange">Spiral</em></>} meta="How we engage" />
+          <SectionHead title={<>How we <em className="italic text-id8-orange">engage</em></>} meta="The work" />
           <div className="mt-8 max-w-3xl space-y-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
             <p>
-              The shape of an engagement. Not a funnel, which is wide at the top, leaks out the bottom, and ends. A loop that closes on itself and climbs: a workshop opens it, a workshop closes it, and the close seeds the next turn. It re-enters higher because four things compound, the system, the trust, your team starting already tuned, and our knowledge of your operation.
+              An engagement runs in clear steps. A workshop to start and find the fit, a paid audit that reads your operation and names the approach, a build, then an ongoing partnership. Each engagement builds on the last, so the work compounds instead of starting over.
             </p>
             <p>
-              Two decision points sit before any build, both made real by payment. The <span className="text-[var(--ink)] font-medium">Fit gate</span>, an interview, both directions. The <span className="text-[var(--ink)] font-medium">Commit gate</span>, the implementation quote, delivered inside the paid audit. A no at either is a clean stop, not a failure.
+              There are two honest decision points before any build, and a no at either is a clean stop, not a failure. We would rather find the wrong fit early than sell you a build that will not land.
             </p>
           </div>
         </Container>
@@ -159,29 +158,29 @@ export default function MethodPage() {
       {/* THE MEMBRANE */}
       <section className="py-14 md:py-16">
         <Container>
-          <SectionHead title={<>The <em className="italic text-id8-orange">Membrane</em></>} meta="After launch" />
+          <SectionHead title={<>After <em className="italic text-id8-orange">launch</em></>} meta="Custodianship" />
           <div className="mt-8 mb-10 max-w-3xl space-y-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
             <p>
-              Once HALO is live, you run it, and every change passes through a membrane, not a wall. Reversible, on-brand edits flow freely. Anything that would touch the DNA routes back to us. You get autonomy and an anchor at once. Two gates, one DNA.
+              Once the system is live, you run it. The everyday, on-brand work happens on your side. Anything structural comes back to us. You get autonomy and an anchor at once.
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             <EditorialCard>
-              <p className="mb-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">Gate One, the agent</p>
+              <p className="mb-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">Day to day</p>
               <p className="font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.6] text-[var(--body)]">
-                Reversible, on-brand changes pass freely, checked against your DNA the way we check our own work. The retainer keeps it running. The agent never acts beyond what is reversible.
+                The everyday, on-brand changes happen on your side, fast and on standard. Nothing irreversible happens without a person.
               </p>
             </EditorialCard>
             <EditorialCard featured>
-              <p className="mb-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange">Gate Two, the studio</p>
+              <p className="mb-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange">Structural</p>
               <p className="font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.6] text-[var(--body)]">
-                Anything structural, a new look, a shift in voice, a change to the judgment underneath, routes to us as a clean ticket. The system never changes its own DNA on its own.
+                A new look, a shift in voice, a change in the judgment underneath, that is our work. The system never reshapes itself on its own.
               </p>
             </EditorialCard>
           </div>
           <div className="mt-10 max-w-3xl space-y-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
             <p>
-              The retainer is custodianship, not support hours. Through <span className="text-[var(--ink)] font-medium">Attunement</span> we take golden examples from the actual workers, the corrections they make, the cases that escalate, and turn them into an eval rubric and a golden dataset, so the system keeps matching how the work really arrives. The loop eats human signal, never its own output. The human in the loop is the load-bearing column, placed there by design. It is the thing everyone else races to remove, and the thing we build the position on.
+              We stay on as custodians. The system keeps improving as your work changes, and there is always a person in the loop, by design. Most studios hand off and the work drifts within a month. We stay, so the brand is still true a year after launch.
             </p>
           </div>
         </Container>

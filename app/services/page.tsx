@@ -116,59 +116,54 @@ const movements = [
   {
     step: 'Attune',
     title: 'We learn how you actually work',
-    desc: 'We mine your real corpus in place, the finished work, the way decisions get made, the exceptions. Not a survey. We tune the system to your form and take its facts from your own sources.',
+    desc: 'From your real work, not a survey. We tune the system to your standards and the way your team actually decides.',
   },
   {
     step: 'Build',
-    title: 'We compose the chains',
-    desc: 'Primitive chains with human gates, built domain-deep for your operation. Each one automates a real piece of the work, with a person in the loop wherever judgment belongs.',
+    title: 'We build the system',
+    desc: 'Primitive chains with human gates, built deep for your operation. A person stays in the loop wherever judgment belongs.',
   },
   {
     step: 'Verify',
-    title: 'We grade against your own work',
-    desc: 'The system is checked for form-parity against real human output from your team. It does not ship because it runs. It ships because it matches the bar you set.',
+    title: 'We check it against your work',
+    desc: 'Graded against your team’s real output before it ships. It ships because it meets your bar, not because it runs.',
   },
   {
     step: 'Tend',
     title: 'It keeps matching you',
-    desc: 'After launch the system keeps tuning to how the work actually arrives, so it never drifts from a frozen opening-day snapshot. We call this Attunement. It is the loop, not the finish line.',
+    desc: 'After launch it keeps improving as your work changes, so it never goes stale.',
   },
 ]
 
 const arc = [
-  { step: '01', title: 'Open workshop', desc: 'A short, paid session. We strike a new tone and show your team what the work could look like. It also filters: the ticket signals you are serious.' },
-  { step: '02', title: 'The Fit gate', desc: 'An interview, both directions. Is this the right fit for you, and for us. A no here is a clean stop, not a failure.' },
-  { step: '03', title: 'The audit', desc: 'A paid, full read of your operation. The package is the product: results, the leak we found, the recommended approach, and a quote to build it.' },
-  { step: '04', title: 'The Commit gate', desc: 'You see the implementation quote inside the audit. A yes is a yes to the build. We never leak the recommendation before the audit is paid.' },
-  { step: '05', title: 'Build and install', desc: 'We build the chains, install HALO inside your operation, wire your tools, and set the data posture. Quoted to the work, handoff included.' },
-  { step: '06', title: 'Shadow', desc: 'For 30 to 60 days we run alongside your team as they operate the system, tuning against real use. The retainer begins here.' },
-  { step: '07', title: 'Close and handoff', desc: 'A handoff session that demos what is live and seeds what is next. Never a separate charge. The close of one turn is the open of the next.' },
-  { step: '08', title: 'Custodianship', desc: 'We stay on as custodians of your DNA. The system stays healthy and keeps tuning to your work. Each turn after this one starts higher than the last.' },
+  { step: '01', title: 'Workshop', desc: 'A short working session that shows your team what the work could look like, and tells us both whether there is a fit.' },
+  { step: '02', title: 'Audit', desc: 'A paid, full read of your operation. You leave with the findings, the recommended approach, and a quote to build it.' },
+  { step: '03', title: 'Build and install', desc: 'We build the system and install it inside your operation, wired to your tools, with your data posture set from day one.' },
+  { step: '04', title: 'Custodianship', desc: 'We stay on after launch. The system stays healthy and keeps improving as your work changes.' },
 ]
 
 const ladder = [
-  { name: 'Workshop', price: 'A small ticket', desc: 'Priced just high enough to filter for fit and signal alignment. Not for revenue.' },
-  { name: 'Audit', price: 'Paid', desc: 'The deliverable is the product: full results, the recommendation, and the build quote. We never leak the recommendation before it is paid.' },
-  { name: 'Implementation', price: 'Quoted to the build', desc: 'Build, install, and hand off the HALO system. The handoff is delivery, never a separate line item.' },
-  { name: 'Retainer', price: 'A generous floor', desc: 'HALO stays healthy and keeps tuning to your work. Normal upkeep is never metered.' },
-  { name: 'Structural work', price: '$400/hr', desc: 'Transparent, for genuine structural asks beyond the floor. Substantial work graduates to a quoted job.' },
+  { name: 'Workshop', price: 'A small ticket', desc: 'A short, low-cost session to start and find the fit.' },
+  { name: 'Audit', price: 'Paid', desc: 'A full read of your operation. The findings and the plan are the deliverable.' },
+  { name: 'Build', price: 'Quoted to the work', desc: 'Priced to the build, with the handoff included.' },
+  { name: 'Custodianship', price: 'Ongoing', desc: 'A retainer that keeps the system healthy and improving after launch.' },
 ]
 
 const engagements = [
   {
     tag: 'Legal',
     title: 'A chat-first operations system for a law firm',
-    desc: "First paid engagement. Built around the firm's matter intake and a data posture a regulated practice can stand behind. A front door their team actually talks to.",
+    desc: 'Built around the firm’s intake and a data posture a regulated practice can stand behind. A front door their team actually talks to.',
   },
   {
     tag: 'Data',
-    title: 'A full HALO, built through a Federation pod',
-    desc: 'A data company, delivered with a partner pod. The complete envelope: Genome, chains, and the custodianship retainer behind it.',
+    title: 'A full system for a data company',
+    desc: 'The complete envelope, from the brand’s operating DNA to the chains that run the work, with us on as custodians.',
   },
   {
     tag: 'Workshop',
-    title: 'A workshop shipped to a working team',
-    desc: 'The open-workshop instrument, run live with a professional team. The tuning fork that opens an engagement, proven in the field.',
+    title: 'A working session, delivered live',
+    desc: 'Run with a professional team to show what the work could look like. Proven in the field.',
   },
 ]
 
@@ -188,15 +183,15 @@ const notFor = [
 const faqs = [
   {
     q: 'What is HALO, exactly?',
-    a: 'HALO is the system we install inside your operation: your operating DNA (we call it the Genome, your design sense, your voice, your judgment) plus the primitive chains that run your work on brand and on standard by construction, not by reminder. It is the unit we build, version, and hand off.',
+    a: 'HALO is the system we install inside your operation: your operating DNA, your design sense, your voice, your judgment, plus the chains that run your work on brand by construction, not by reminder. It is the unit we build, version, and hand off.',
   },
   {
     q: 'Do I own the system, or do you?',
-    a: 'You run it, and it lives in your operation. We hold the DNA and stay its custodian. That is the point: autonomy and an anchor at once. Most studios hand off and watch the work drift inside a month. We do not hand off the DNA, so the brand stays true long after launch.',
+    a: 'You run it, and it lives in your operation. We stay on as its custodian so it keeps matching your standards. Most studios hand off and the work drifts within a month. We do not, so the brand stays true long after launch.',
   },
   {
     q: 'How is this priced?',
-    a: 'As commitment, not papercuts. A small workshop ticket, a paid audit where the deliverable is the product, then implementation quoted to the build. After launch, a generous retainer floor keeps the system healthy and tuned. Structural work beyond the floor is $400/hr or a quoted job. No surprise line items, and the handoff is never a separate charge.',
+    a: 'Transparently, and scoped to the work. A small workshop to start, a paid audit, then a build quoted to scope. After launch, a retainer keeps the system healthy. No surprise line items.',
   },
   {
     q: 'We are regulated. What about our data?',
@@ -204,11 +199,11 @@ const faqs = [
   },
   {
     q: 'How fast can we be running?',
-    a: 'The workshop opens it. The audit and build are quoted to scope. Most first builds install within a few weeks of the Commit gate, and the system keeps improving from there.',
+    a: 'The workshop and audit come first. Most first builds install within a few weeks of a signed scope, and the system keeps improving from there.',
   },
   {
     q: 'What happens after you hand off?',
-    a: 'The retainer begins. Through Attunement, the system keeps tuning to how your team actually works, so it gets better with tenure instead of decaying from an opening-day snapshot. The thing everyone else races to remove, the human in the loop, is the thing we build the position on.',
+    a: 'The retainer begins. The system keeps tuning to how your team actually works, so it improves over time instead of going stale. There is always a person in the loop, by design.',
   },
 ]
 
@@ -388,24 +383,20 @@ export default function ServicesPage() {
         <Container>
           <SectionHead
             title={<>An engagement that compounds, <em className="italic">not a project that ends.</em></>}
-            meta="The Spiral"
+            meta="How it works"
           />
           <Deck className="mt-6 max-w-2xl">
-            The work is a loop, not a funnel. A workshop opens it and a workshop closes it, and the close seeds the next turn. Each pass starts higher than the last.
+            It starts with a workshop and an audit, moves into a build, and continues as an ongoing partnership. Each engagement builds on the last.
           </Deck>
 
           <div className="mt-12 mb-12">
             <Pipeline
-              title="The Spiral · one turn"
+              title="How an engagement runs"
               steps={[
-                { label: '01 Open workshop', human: true },
-                { label: '02 Fit gate', human: true },
-                { label: '03 Audit' },
-                { label: '04 Commit gate', human: true },
-                { label: '05 Build + install' },
-                { label: '06 Shadow' },
-                { label: '07 Close + handoff', human: true },
-                { label: '08 Custodianship' },
+                { label: '01 Workshop', human: true },
+                { label: '02 Audit' },
+                { label: '03 Build + install' },
+                { label: '04 Custodianship', human: true },
               ]}
             />
           </div>
@@ -439,41 +430,41 @@ export default function ServicesPage() {
       <section className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
           <SectionHead
-            title={<>Two gates, <em className="italic">one DNA.</em></>}
-            meta="The Membrane"
+            title={<>You run it. <em className="italic">We keep it true.</em></>}
+            meta="After launch"
           />
           <div className="mt-12 max-w-3xl">
             <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-              When HALO is live, you run it. Day-to-day, on-brand changes pass freely through an agent that reads your DNA before every edit. Anything structural routes back to us. You get autonomy and an anchor at once.
+              When the system is live, you run it. The everyday, on-brand work happens freely on your side. Anything structural comes back to us. You get autonomy and an anchor at once.
             </p>
             <p className="mb-12 font-[family-name:var(--font-serif)] text-xl italic leading-[1.5] text-[var(--ink)]">
-              Most studios hand off and watch the work drift inside a month. We do not hand off the DNA. We stay its custodian, which is why the brand is still true a year after we hand you the keys.
+              Most studios hand off and the work drifts within a month. We stay on as custodians, so the brand is still true a year after launch.
             </p>
           </div>
 
           <div className="grid max-w-4xl gap-6 md:grid-cols-2">
             <EditorialCard>
               <div className="mb-5 flex items-center gap-3">
-                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--muted)]">Gate One</span>
+                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--muted)]">Day to day</span>
                 <span className="h-px flex-1 bg-[var(--hair)]" />
               </div>
               <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
-                The agent
+                You and the system
               </h3>
               <p className="text-[15px] leading-relaxed text-[var(--body)]">
-                Reversible, on-brand changes pass freely, checked against your DNA the same way we check our own work. The retainer keeps it running. The agent never acts beyond what is reversible.
+                The everyday, on-brand changes happen on your side, fast and on standard. Nothing irreversible happens without a person.
               </p>
             </EditorialCard>
             <EditorialCard featured>
               <div className="mb-5 flex items-center gap-3">
-                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-id8-orange">Gate Two</span>
+                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-id8-orange">Structural</span>
                 <span className="h-px flex-1 bg-[var(--hair)]" />
               </div>
               <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
-                The studio
+                Comes to us
               </h3>
               <p className="text-[15px] leading-relaxed text-[var(--body)]">
-                Anything structural, a new look, a shift in voice, a change to the judgment underneath, routes to us as a clean ticket. The system never changes its own DNA on its own.
+                A new look, a shift in voice, a change in the judgment underneath, that is our work. The system never reshapes itself on its own.
               </p>
             </EditorialCard>
           </div>
@@ -484,11 +475,11 @@ export default function ServicesPage() {
       <section id="pricing" className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
           <SectionHead
-            title={<>Priced as commitment, <em className="italic">not papercuts.</em></>}
-            meta="The ladder"
+            title={<>Transparent, and <em className="italic">scoped to the work.</em></>}
+            meta="Pricing"
           />
           <Deck className="mt-6 max-w-2xl">
-            A few clean thresholds you cross on purpose, never a stack of small charges that bleed the relationship. We hold price and add value.
+            A few clear steps, priced to the value at each one. You always know what you are paying for.
           </Deck>
 
           <div className="mt-12 max-w-4xl border-t border-[var(--hair)]">
@@ -508,7 +499,7 @@ export default function ServicesPage() {
             ))}
           </div>
           <p className="mt-8 max-w-3xl font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
-            No surprise line items. The handoff is never a separate charge. Wealth is the compound of value delivered over time, never the yield of bleeding a client out.
+            No surprise line items. The handoff is included, never a separate charge.
           </p>
         </Container>
       </section>
