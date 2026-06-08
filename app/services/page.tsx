@@ -59,7 +59,7 @@ function useCalScript() {
   }, [])
 }
 
-// ─── Shared Styles ──────────────────────────────────────────
+// ─── Shared Form Styles (editorial tokens, sharp corners) ───
 const inputClassName =
   'w-full bg-[var(--paper)] border border-[var(--hair)] px-4 py-3 text-[15px] text-[var(--ink)] placeholder:text-[var(--muted)] focus:outline-none focus:border-id8-orange transition-colors'
 const labelClassName =
@@ -68,195 +68,147 @@ const selectClassName = `${inputClassName} pr-10 appearance-none bg-[length:16px
 const selectChevron = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235a5a5a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")`
 
 // ─── Icon Components ────────────────────────────────────────
-const CheckIcon = () => (
-  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
-
 const ArrowRightIcon = () => (
   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M5 12h14M12 5l7 7-7 7" />
   </svg>
 )
 
-// ─── Data ───────────────────────────────────────────────────
+const CheckIcon = () => (
+  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+)
+
+// ─── Data (HALO / the Spiral) ───────────────────────────────
 
 const problems = [
   {
-    title: "You're still doing the work manually.",
-    desc: "Scheduling, follow-ups, client intake, reporting. You know AI could handle this. But you don't have 40 hours to figure out how to set it up.",
+    title: 'Tools wait. Your work does not.',
+    desc: 'A chat window answers questions. It does not run intake, follow-ups, reporting, or the hundred small judgments your operation makes every day while you sleep.',
   },
   {
-    title: "ChatGPT is a chat window, not a worker.",
-    desc: "It can answer questions. It can't send emails, update your CRM, process intake forms, or run while you sleep. You need an agent, not a chatbot.",
+    title: 'Generic AI does not know your edge cases.',
+    desc: 'Off-the-shelf is built for the average user. Your business runs on the exceptions, and the exceptions are exactly where the value is.',
   },
   {
-    title: "Generic AI tools don't know your workflow.",
-    desc: "Every business runs differently. Off-the-shelf AI is built for the average user. Your edge cases need custom skills, not templates.",
-  },
-]
-
-const openclawCapabilities = [
-  {
-    title: 'Runs on your infrastructure',
-    desc: 'Your Mac Mini or VPS. Your data stays on your hardware. No third-party cloud you don\'t control.',
-  },
-  {
-    title: 'Plugs into your real tools',
-    desc: 'Email, calendar, Slack, CRM, file systems, databases — connected on day one.',
-  },
-  {
-    title: 'Custom skills for your workflow',
-    desc: 'We map your actual workflow and build skills that automate it. Not templates.',
-  },
-  {
-    title: 'Security hardened from day one',
-    desc: 'Locked down before it goes live. Permissions scoped. Access controlled.',
+    title: 'Every org has a resting frequency.',
+    desc: 'A current way of seeing, the questions it already knows to ask. A new tool does not shift it. A system tuned to how you actually work does.',
   },
 ]
 
-const steps = [
+const genome = [
   {
-    step: '01',
-    title: 'Kickoff call — we map your pain',
-    desc: 'What\'s eating your hours? We identify the highest-leverage automations and spec the agents you need. If we can\'t scope a meaningful improvement, we\'ll tell you — no charge.',
+    title: 'Design',
+    desc: 'How your work looks and feels. The standard a finished thing has to meet before it ships.',
   },
   {
-    step: '02',
-    title: 'Build + deploy — your agents go live',
-    desc: 'We deploy OpenClaw on your hardware, build custom skills for your tools, wire integrations, and harden security. You don\'t touch a terminal.',
+    title: 'Voice',
+    desc: 'How your business sounds. The words it uses, the words it never would, the register that reads as you.',
   },
   {
-    step: '03',
-    title: 'White-glove hypercare — we stay until it works',
-    desc: 'Not "call us if you have issues." We actively monitor, tune, and adjust your agents until they\'re saving you real time. If they\'re not delivering by the end of hypercare, we extend until they do.',
+    title: 'Ethos',
+    desc: 'The judgment underneath both. What you optimize for, what you refuse, how you decide when the rules run out.',
   },
 ]
 
-const tiers = [
+const movements = [
   {
-    name: 'Workshop',
-    price: '$297',
-    priceNote: 'one-time',
-    features: [
-      '2-hour live session',
-      'Custom AI applications for your work',
-      '20 prompt templates (PDF)',
-      '30 days follow-up support',
-    ],
-    bestFor: 'Solo operators who want to learn what\'s possible before committing',
-    featured: false,
-    cta: 'booking' as const,
+    step: 'Attune',
+    title: 'We learn how you actually work',
+    desc: 'We mine your real corpus in place, the finished work, the way decisions get made, the exceptions. Not a survey. We tune the system to your form and take its facts from your own sources.',
   },
   {
-    name: 'Starter',
-    price: '$1,497',
-    priceNote: 'one-time',
-    features: [
-      '1 OpenClaw agent deployed on your hardware',
-      'Core integrations (email, calendar, Slack)',
-      '14-day white-glove hypercare',
-      'Async support throughout',
-    ],
-    bestFor: 'Solo founders, indie operators',
-    featured: false,
-    cta: 'apply' as const,
+    step: 'Build',
+    title: 'We compose the chains',
+    desc: 'Primitive chains with human gates, built domain-deep for your operation. Each one automates a real piece of the work, with a person in the loop wherever judgment belongs.',
   },
   {
-    name: 'Studio',
-    price: '$3,497',
-    priceNote: 'one-time',
-    features: [
-      'Up to 3 OpenClaw agents with custom skills',
-      'Full workflow mapping + automation build',
-      '30-day white-glove hypercare',
-      'Async support throughout',
-    ],
-    bestFor: 'Small teams, agencies',
-    featured: true,
-    cta: 'apply' as const,
+    step: 'Verify',
+    title: 'We grade against your own work',
+    desc: 'The system is checked for form-parity against real human output from your team. It does not ship because it runs. It ships because it matches the bar you set.',
   },
   {
-    name: 'Operator',
-    price: '$6,997',
-    priceNote: 'one-time',
-    features: [
-      'Up to 6 OpenClaw agents — full automation suite',
-      'Multi-agent coordination + routing logic',
-      '60-day white-glove hypercare',
-      'Retainer option available',
-    ],
-    bestFor: 'Studios, media companies, exec teams',
-    featured: false,
-    cta: 'apply' as const,
+    step: 'Tend',
+    title: 'It keeps matching you',
+    desc: 'After launch the system keeps tuning to how the work actually arrives, so it never drifts from a frozen opening-day snapshot. We call this Attunement. It is the loop, not the finish line.',
+  },
+]
+
+const arc = [
+  { step: '01', title: 'Open workshop', desc: 'A short, paid session. We strike a new tone and show your team what the work could look like. It also filters: the ticket signals you are serious.' },
+  { step: '02', title: 'The Fit gate', desc: 'An interview, both directions. Is this the right fit for you, and for us. A no here is a clean stop, not a failure.' },
+  { step: '03', title: 'The audit', desc: 'A paid, full read of your operation. The package is the product: results, the leak we found, the recommended approach, and a quote to build it.' },
+  { step: '04', title: 'The Commit gate', desc: 'You see the implementation quote inside the audit. A yes is a yes to the build. We never leak the recommendation before the audit is paid.' },
+  { step: '05', title: 'Build and install', desc: 'We build the chains, install HALO inside your operation, wire your tools, and set the data posture. Quoted to the work, handoff included.' },
+  { step: '06', title: 'Shadow', desc: 'For 30 to 60 days we run alongside your team as they operate the system, tuning against real use. The retainer begins here.' },
+  { step: '07', title: 'Close and handoff', desc: 'A handoff session that demos what is live and seeds what is next. Never a separate charge. The close of one turn is the open of the next.' },
+  { step: '08', title: 'Custodianship', desc: 'We stay on as custodians of your DNA. The system stays healthy and keeps tuning to your work. Each turn after this one starts higher than the last.' },
+]
+
+const ladder = [
+  { name: 'Workshop', price: 'A small ticket', desc: 'Priced just high enough to filter for fit and signal alignment. Not for revenue.' },
+  { name: 'Audit', price: 'Paid', desc: 'The deliverable is the product: full results, the recommendation, and the build quote. We never leak the recommendation before it is paid.' },
+  { name: 'Implementation', price: 'Quoted to the build', desc: 'Build, install, and hand off the HALO system. The handoff is delivery, never a separate line item.' },
+  { name: 'Retainer', price: 'A generous floor', desc: 'HALO stays healthy and keeps tuning to your work. Normal upkeep is never metered.' },
+  { name: 'Structural work', price: '$400/hr', desc: 'Transparent, for genuine structural asks beyond the floor. Substantial work graduates to a quoted job.' },
+]
+
+const engagements = [
+  {
+    tag: 'Legal',
+    title: 'A chat-first operations system for a law firm',
+    desc: "First paid engagement. Built around the firm's matter intake and a data posture a regulated practice can stand behind. A front door their team actually talks to.",
+  },
+  {
+    tag: 'Data',
+    title: 'A full HALO, built through a Federation pod',
+    desc: 'A data company, delivered with a partner pod. The complete envelope: Genome, chains, and the custodianship retainer behind it.',
+  },
+  {
+    tag: 'Workshop',
+    title: 'A workshop shipped to a working team',
+    desc: 'The open-workshop instrument, run live with a professional team. The tuning fork that opens an engagement, proven in the field.',
   },
 ]
 
 const audiences = [
-  'Creative agencies drowning in admin',
-  'Founders who ship but can\'t scale ops',
-  'Media companies with production overhead',
-  'Anyone whose time is worth more than their tools',
+  'Professional-services firms (legal, advisory, agencies)',
+  'Regulated operators who need a real data posture',
+  'Studios and teams drowning in operational admin',
+  'Founders who ship but cannot scale the operation',
 ]
 
 const notFor = [
-  'Teams who want to tinker themselves — OpenClaw is free, docs are public',
-  'Enterprises needing 6-month procurement cycles',
+  'Teams who want to self-serve a tool and tune it themselves',
+  'Enterprises needing a six-month procurement cycle',
   'Anyone looking for a chatbot widget on their website',
-]
-
-const credentials = [
-  { highlight: '90 Day Fiance', role: '— Story Production' },
-  { highlight: 'The First 48', role: '— Director of Photography' },
-  { highlight: 'High on the Hog (Netflix)', role: '— Cinematography' },
-  { highlight: 'Teen Mom', role: '— Camera & Production' },
-  { highlight: '3+ years', role: 'daily AI workflow integration' },
-  { highlight: 'id8Labs', role: '— Founder, primitive chain architecture for AI-era operators' },
-]
-
-const testimonials = [
-  {
-    quote: "We went from spending 3 hours a day on scheduling and client intake to basically zero. The agent just handles it now.",
-    name: 'Marcus T.',
-    role: 'Founder, boutique video production company',
-  },
-  {
-    quote: "I was skeptical about another AI tool. But this isn't a tool — it's a deployed system running on my Mac Mini. It works whether I'm looking at it or not.",
-    name: 'Sarah K.',
-    role: 'Creative Director, brand agency',
-  },
-  {
-    quote: "The white-glove part is real. They tuned the agents for weeks until they actually matched how we work.",
-    name: 'James R.',
-    role: 'COO, indie media studio',
-  },
 ]
 
 const faqs = [
   {
-    q: 'Is OpenClaw really free?',
-    a: 'Yes — the framework is open source and free. You bring your own AI API key or subscription (Claude, GPT, etc.), which typically runs $20-100/month depending on usage. What you\'re paying for with our services is the deployment, customization, integration, security hardening, and ongoing hypercare — the work that turns a free tool into a running system.',
+    q: 'What is HALO, exactly?',
+    a: 'HALO is the system we install inside your operation: your operating DNA (we call it the Genome, your design sense, your voice, your judgment) plus the primitive chains that run your work on brand and on standard by construction, not by reminder. It is the unit we build, version, and hand off.',
   },
   {
-    q: 'What if I want to self-deploy?',
-    a: 'Go for it. The docs are public. Our services exist for people who\'d rather be running their business than configuring agents at 2 AM.',
+    q: 'Do I own the system, or do you?',
+    a: 'You run it, and it lives in your operation. We hold the DNA and stay its custodian. That is the point: autonomy and an anchor at once. Most studios hand off and watch the work drift inside a month. We do not hand off the DNA, so the brand stays true long after launch.',
   },
   {
-    q: 'What happens after hypercare ends?',
-    a: 'Your agents keep running — they\'re deployed on your hardware, not ours. If you want ongoing support, the Operator tier includes a retainer option. Otherwise, you own the system.',
+    q: 'How is this priced?',
+    a: 'As commitment, not papercuts. A small workshop ticket, a paid audit where the deliverable is the product, then implementation quoted to the build. After launch, a generous retainer floor keeps the system healthy and tuned. Structural work beyond the floor is $400/hr or a quoted job. No surprise line items, and the handoff is never a separate charge.',
   },
   {
-    q: 'How fast can I be up and running?',
-    a: 'First agent deployed within 24 hours of kickoff. Full setup depends on complexity — most Starter deployments are fully tuned within a week. Studio and Operator take 2-3 weeks for full automation suites.',
+    q: 'We are regulated. What about our data?',
+    a: 'Data posture is part of the build, not an afterthought. For regulated clients we design for sovereign data and zero data retention, and we name every place your data flows before anything ships.',
   },
   {
-    q: 'What\'s the difference between the Workshop and the deployment tiers?',
-    a: 'The Workshop is a 2-hour learning session — you leave with knowledge and templates. The deployment tiers (Starter, Studio, Operator) mean we build and deploy actual running agents on your infrastructure. One is education, the other is execution.',
+    q: 'How fast can we be running?',
+    a: 'The workshop opens it. The audit and build are quoted to scope. Most first builds install within a few weeks of the Commit gate, and the system keeps improving from there.',
   },
   {
-    q: 'What if the agents aren\'t saving me time?',
-    a: 'If your agents aren\'t delivering measurable value by the end of hypercare, we extend until they do. We don\'t disappear after deploy — the whole point of hypercare is making sure this actually works for your workflow.',
+    q: 'What happens after you hand off?',
+    a: 'The retainer begins. Through Attunement, the system keeps tuning to how your team actually works, so it gets better with tenure instead of decaying from an opening-day snapshot. The thing everyone else races to remove, the human in the loop, is the thing we build the position on.',
   },
 ]
 
@@ -273,7 +225,7 @@ export default function ServicesPage() {
     teamType: '',
     teamSize: '',
     timeDrain: '',
-    tier: '',
+    stage: '',
     timeline: '',
   })
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -301,16 +253,9 @@ export default function ServicesPage() {
         body: JSON.stringify({ ...rest, message: timeDrain }),
       })
 
-      // TODO: replace with OpenClaw inbound webhook URL
-      // fetch('https://your-telegram-webhook-url.com', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ ...formData, source: 'services-unified' }),
-      // }).catch(() => {})
-
       if (response.ok) {
         setFormState('success')
-        setFormData({ name: '', email: '', company: '', teamType: '', teamSize: '', timeDrain: '', tier: '', timeline: '' })
+        setFormData({ name: '', email: '', company: '', teamType: '', teamSize: '', timeDrain: '', stage: '', timeline: '' })
       } else {
         setFormState('error')
       }
@@ -327,33 +272,34 @@ export default function ServicesPage() {
         <Container>
           <div className="max-w-4xl pt-28 pb-16 md:pt-36 md:pb-20">
             <Kicker dot className="mb-5">
-              AI Implementation Services
+              Forward Deployment
             </Kicker>
             <h1 className="mb-7 font-[family-name:var(--font-display)] font-normal leading-[0.98] tracking-[-0.03em] text-[var(--ink)] text-[clamp(2.75rem,6.2vw,5.5rem)]">
-              Your AI team, <em className="italic font-normal text-id8-orange">deployed and running this week.</em>
+              Your business has a way of working.{' '}
+              <em className="italic font-normal text-id8-orange">We turn it into a system, and keep it true.</em>
             </h1>
             <Deck className="mb-9 max-w-2xl">
-              We design primitive chain architectures with human gates and deploy them inside your business. Your hardware, your tools, your domain. White-glove service that eats the drudgery before the work, so you reach scale tools alone cannot deliver.
+              We design primitive chains with human gates and deploy them inside your operation. Your domain, your tools, your judgment. A workshop opens it, an audit confirms the fit, we build and install, then we stay on as custodians so the work never drifts.
             </Deck>
             <div className="mb-10 flex flex-col gap-3.5 sm:flex-row">
-              <EditorialButton onClick={scrollToForm}>
-                Apply for a Setup
-                <ArrowRightIcon />
-              </EditorialButton>
               <button
-                data-cal-link="id8labs/15min"
+                data-cal-link="id8labs/workshop"
                 data-cal-config='{"layout":"month_view"}'
-                className="inline-flex cursor-pointer items-center justify-center gap-2.5 border border-[var(--hair)] bg-transparent px-6 py-3.5 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--ink)] transition-colors duration-150 hover:border-[var(--ink)]"
+                className="inline-flex cursor-pointer items-center justify-center gap-2.5 border border-[var(--ink)] bg-[var(--ink)] px-6 py-3.5 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] transition-colors duration-150 hover:border-id8-orange hover:bg-id8-orange"
               >
-                Book a Call
+                Book the workshop
+                <ArrowRightIcon />
               </button>
+              <EditorialButton variant="ghost" onClick={scrollToForm}>
+                Apply for an audit
+              </EditorialButton>
             </div>
             <Rule className="mb-6" />
             <MetaRow
               items={[
-                { value: '24h', label: 'to first deploy' },
-                { value: '14–60', label: 'days of hypercare' },
-                { value: '0', label: 'config you touch' },
+                { label: 'HALO installed in place' },
+                { label: 'Human gates by design' },
+                { label: 'Custodians, not vendors' },
               ]}
             />
           </div>
@@ -364,12 +310,15 @@ export default function ServicesPage() {
       <section className="py-20 md:py-24">
         <Container>
           <SectionHead
-            title={<>You know AI should be saving you time. <em className="italic">It isn&apos;t.</em></>}
-            meta="The problem"
+            title={<>AI has not changed how your business <em className="italic">works.</em></>}
+            meta="The gap"
           />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {problems.map((card, i) => (
               <EditorialCard key={i}>
+                <span className="mb-5 block font-[family-name:var(--font-mono)] text-xs tabular-nums text-[var(--muted)]">
+                  {`0${i + 1}`}
+                </span>
                 <h3 className="mb-3 font-[family-name:var(--font-display)] text-lg font-normal leading-snug tracking-[-0.01em] text-[var(--ink)]">
                   {card.title}
                 </h3>
@@ -380,38 +329,27 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* ── 3. MEET OPENCLAW ───────────────────────────── */}
-      <section id="openclaw" className="border-t border-[var(--hair)] py-20 md:py-24">
+      {/* ── 3. HALO (THE PRODUCT) ──────────────────────── */}
+      <section id="halo" className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
           <SectionHead
-            title={<>OpenClaw: agents that <em className="italic">actually do the work</em></>}
-            meta="The engine"
+            title={<>HALO: your operating DNA, <em className="italic">installed</em></>}
+            meta="The product"
           />
 
-          <div className="mt-12 max-w-3xl">
+          <div className="mt-12 mb-12 max-w-3xl">
             <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-              <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--ink)] underline decoration-[var(--hair)] underline-offset-2 transition-colors hover:decoration-id8-orange">OpenClaw</a> is an open-source agent framework. It runs on your hardware, connects to your real tools, and executes tasks autonomously. Email, calendar, Slack, CRM, file management — whatever your operation runs on, OpenClaw plugs into it.
+              We capture how your business actually works, its design sense, its voice, its judgment, into a system we call{' '}
+              <span className="font-[family-name:var(--font-serif)] italic text-[var(--ink)]">HALO</span>. It runs your day-to-day work on brand and on standard by construction, not by reminder.
             </p>
-            <p className="mb-9 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-              The difference between an AI tool and an AI agent is simple:{' '}
-              <span className="font-[family-name:var(--font-serif)] italic text-[var(--ink)]">tools wait for you to type. Agents do the work while you focus on something else.</span>
+            <p className="text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              At its core is the{' '}
+              <span className="font-[family-name:var(--font-serif)] italic text-[var(--ink)]">Genome</span>: the DNA of how you work, in three parts.
             </p>
-
-            <div className="mb-12 border border-[var(--hair)] border-l-2 border-l-id8-orange bg-[var(--paper-shadow)] p-7">
-              <p className="mb-3.5 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-id8-orange">
-                How it works under the hood
-              </p>
-              <p className="mb-3.5 text-[15px] leading-relaxed text-[var(--body)]">
-                OpenClaw is free and open source — the framework costs nothing. Agents run on AI models (Claude, GPT, etc.), and you bring your own API key or subscription. Think of it like email: the protocol is free, but you pay your provider for the service.
-              </p>
-              <p className="text-[15px] leading-relaxed text-[var(--body)]">
-                Our setup service covers deployment, custom skills, integrations, and hypercare. Token costs for the AI models are yours — typically $20-100/month depending on usage. We help you pick the right model and optimize costs during hypercare.
-              </p>
-            </div>
           </div>
 
-          <div className="grid max-w-4xl gap-px border border-[var(--hair)] bg-[var(--hair)] sm:grid-cols-2">
-            {openclawCapabilities.map((item, i) => (
+          <div className="mb-16 grid max-w-4xl gap-px border border-[var(--hair)] bg-[var(--hair)] md:grid-cols-3">
+            {genome.map((item, i) => (
               <div key={i} className="bg-[var(--paper)] p-7">
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-[1.0625rem] font-normal tracking-[-0.01em] text-[var(--ink)]">
                   {item.title}
@@ -420,73 +358,24 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
 
-      {/* ── 4. THE BRIDGE ──────────────────────────────── */}
-      <section className="border-t border-[var(--hair)] py-20 md:py-24">
-        <Container>
-          <div className="max-w-3xl">
-            <h2 className="mb-8 font-[family-name:var(--font-display)] font-normal leading-none tracking-[-0.02em] text-[var(--ink)] text-[clamp(2rem,4vw,2.75rem)]">
-              Free to use. <em className="italic text-id8-orange">Hard to deploy right.</em>
-            </h2>
-            <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-              You could install OpenClaw yourself. Read the docs, write the plugins, configure the integrations, harden the security, debug it when something breaks at 2 AM.
-            </p>
-            <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-              Or you could be running by tomorrow.
-            </p>
-            <p className="mb-12 font-[family-name:var(--font-serif)] text-xl italic leading-[1.5] text-[var(--ink)]">
-              We do the entire build for you. Your workflow, your tools, your hardware — we deploy OpenClaw, build the custom skills, wire the integrations, and stay on for hypercare until the system is genuinely saving you time.
-            </p>
-
-            <div className="grid grid-cols-3 gap-px border border-[var(--hair)] bg-[var(--hair)]">
-              {[
-                { number: '24h', label: 'To first deploy' },
-                { number: '14-60', label: 'Days of hypercare' },
-                { number: '0', label: 'Config you touch' },
-              ].map((stat, i) => (
-                <div key={i} className="bg-[var(--paper)] p-6 text-center">
-                  <p className="mb-1.5 font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] text-id8-orange md:text-4xl">{stat.number}</p>
-                  <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+          <div className="mb-8 max-w-3xl">
+            <Kicker className="mb-5">How HALO goes in: four movements</Kicker>
           </div>
-        </Container>
-      </section>
-
-      {/* ── 5. HOW WE DEPLOY IT ────────────────────────── */}
-      <section className="border-t border-[var(--hair)] py-20 md:py-24">
-        <Container>
-          <SectionHead
-            title={<>Three steps. One week. <em className="italic">Running.</em></>}
-            meta="The engagement"
-          />
-
-          <div className="mt-12 mb-12">
-            <Pipeline
-              title="Service engagement"
-              steps={[
-                { label: 'Kickoff call', human: true },
-                { label: 'Workflow mapping', human: true },
-                { label: 'Deploy + build skills' },
-                { label: 'Integrate + harden' },
-                { label: 'Hypercare tuning', human: true },
-                { label: 'Running' },
-              ]}
-            />
-          </div>
-
           <div className="max-w-3xl">
-            {steps.map((item, i) => (
-              <div key={i} className="flex gap-6 border-b border-[var(--hair)] py-8 last:border-b-0 md:gap-8">
-                <span className="shrink-0 font-[family-name:var(--font-display)] text-4xl font-normal leading-none tracking-[-0.04em] text-id8-orange md:text-5xl">
-                  {item.step}
+            {movements.map((m, i) => (
+              <div key={m.step} className="flex gap-6 border-b border-[var(--hair)] py-7 last:border-b-0 md:gap-8">
+                <span className="shrink-0 font-[family-name:var(--font-mono)] text-sm font-medium tabular-nums text-id8-orange">
+                  {`0${i + 1}`}
                 </span>
                 <div>
-                  <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">{item.title}</h3>
-                  <p className="text-[1.0625rem] leading-[1.65] text-[var(--body)]">{item.desc}</p>
+                  <p className="mb-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-id8-orange">
+                    {m.step}
+                  </p>
+                  <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
+                    {m.title}
+                  </h3>
+                  <p className="text-[1.0625rem] leading-[1.65] text-[var(--body)]">{m.desc}</p>
                 </div>
               </div>
             ))}
@@ -494,62 +383,133 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* ── 6. PRICING ─────────────────────────────────── */}
-      <section id="pricing" className="border-t border-[var(--hair)] py-20 md:py-24">
+      {/* ── 4. THE SPIRAL (HOW WE ENGAGE) ──────────────── */}
+      <section id="how-we-work" className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
-          <SectionHead title={<>Choose your <em className="italic">level</em></>} meta="Pricing" />
+          <SectionHead
+            title={<>An engagement that compounds, <em className="italic">not a project that ends.</em></>}
+            meta="The Spiral"
+          />
           <Deck className="mt-6 max-w-2xl">
-            From a 2-hour workshop to a full automation suite. Transparent pricing, no surprises.
+            The work is a loop, not a funnel. A workshop opens it and a workshop closes it, and the close seeds the next turn. Each pass starts higher than the last.
           </Deck>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {tiers.map((tier) => (
-              <EditorialCard key={tier.name} featured={tier.featured} className="flex flex-col">
-                {tier.featured && (
-                  <span className="mb-4 inline-block self-start bg-id8-orange px-2.5 py-1 font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--paper)]">
-                    Most Popular
-                  </span>
-                )}
-                <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">{tier.name}</h3>
-                <div className="mb-6 flex items-baseline gap-2">
-                  <span className="font-[family-name:var(--font-display)] text-3xl font-normal tracking-[-0.02em] text-[var(--ink)]">{tier.price}</span>
-                  <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">{tier.priceNote}</span>
+
+          <div className="mt-12 mb-12">
+            <Pipeline
+              title="The Spiral · one turn"
+              steps={[
+                { label: '01 Open workshop', human: true },
+                { label: '02 Fit gate', human: true },
+                { label: '03 Audit' },
+                { label: '04 Commit gate', human: true },
+                { label: '05 Build + install' },
+                { label: '06 Shadow' },
+                { label: '07 Close + handoff', human: true },
+                { label: '08 Custodianship' },
+              ]}
+            />
+          </div>
+
+          <div className="max-w-3xl">
+            {arc.map((item) => (
+              <div key={item.step} className="flex gap-6 border-b border-[var(--hair)] py-7 last:border-b-0 md:gap-8">
+                <span className="shrink-0 font-[family-name:var(--font-mono)] text-sm font-medium tabular-nums text-id8-orange">
+                  {item.step}
+                </span>
+                <div>
+                  <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
+                    {item.title}
+                  </h3>
+                  <p className="text-[1.0625rem] leading-[1.65] text-[var(--body)]">{item.desc}</p>
                 </div>
-                <ul className="mb-8 flex-grow space-y-3">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-[14px] leading-snug">
-                      <span className="mt-0.5 shrink-0 text-id8-orange">
-                        <CheckIcon />
-                      </span>
-                      <span className="text-[var(--body)]">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mb-5 font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
-                  Best for: {tier.bestFor}
-                </p>
-                {tier.cta === 'booking' ? (
-                  <button
-                    data-cal-link="id8labs/workshop"
-                    data-cal-config='{"layout":"month_view"}'
-                    className="w-full cursor-pointer border border-[var(--hair)] bg-transparent px-6 py-3 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--ink)] transition-colors duration-150 hover:border-[var(--ink)]"
-                  >
-                    Book Session
-                  </button>
-                ) : (
-                  <button
-                    onClick={scrollToForm}
-                    className={`w-full cursor-pointer border px-6 py-3 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 ${
-                      tier.featured
-                        ? 'border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:border-id8-orange hover:bg-id8-orange'
-                        : 'border-[var(--hair)] bg-transparent text-[var(--ink)] hover:border-[var(--ink)]'
-                    }`}
-                  >
-                    Apply Now
-                  </button>
-                )}
-              </EditorialCard>
+              </div>
             ))}
           </div>
+
+          <div className="mt-10 max-w-3xl">
+            <EditorialButton href="/method" variant="ghost">
+              See the full method
+              <ArrowRightIcon />
+            </EditorialButton>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 5. THE MEMBRANE (THE MOAT) ─────────────────── */}
+      <section className="border-t border-[var(--hair)] py-20 md:py-24">
+        <Container>
+          <SectionHead
+            title={<>Two gates, <em className="italic">one DNA.</em></>}
+            meta="The Membrane"
+          />
+          <div className="mt-12 max-w-3xl">
+            <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              When HALO is live, you run it. Day-to-day, on-brand changes pass freely through an agent that reads your DNA before every edit. Anything structural routes back to us. You get autonomy and an anchor at once.
+            </p>
+            <p className="mb-12 font-[family-name:var(--font-serif)] text-xl italic leading-[1.5] text-[var(--ink)]">
+              Most studios hand off and watch the work drift inside a month. We do not hand off the DNA. We stay its custodian, which is why the brand is still true a year after we hand you the keys.
+            </p>
+          </div>
+
+          <div className="grid max-w-4xl gap-6 md:grid-cols-2">
+            <EditorialCard>
+              <div className="mb-5 flex items-center gap-3">
+                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--muted)]">Gate One</span>
+                <span className="h-px flex-1 bg-[var(--hair)]" />
+              </div>
+              <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
+                The agent
+              </h3>
+              <p className="text-[15px] leading-relaxed text-[var(--body)]">
+                Reversible, on-brand changes pass freely, checked against your DNA the same way we check our own work. The retainer keeps it running. The agent never acts beyond what is reversible.
+              </p>
+            </EditorialCard>
+            <EditorialCard featured>
+              <div className="mb-5 flex items-center gap-3">
+                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-id8-orange">Gate Two</span>
+                <span className="h-px flex-1 bg-[var(--hair)]" />
+              </div>
+              <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-normal tracking-[-0.01em] text-[var(--ink)]">
+                The studio
+              </h3>
+              <p className="text-[15px] leading-relaxed text-[var(--body)]">
+                Anything structural, a new look, a shift in voice, a change to the judgment underneath, routes to us as a clean ticket. The system never changes its own DNA on its own.
+              </p>
+            </EditorialCard>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 6. THE COMMITMENT LADDER ───────────────────── */}
+      <section id="pricing" className="border-t border-[var(--hair)] py-20 md:py-24">
+        <Container>
+          <SectionHead
+            title={<>Priced as commitment, <em className="italic">not papercuts.</em></>}
+            meta="The ladder"
+          />
+          <Deck className="mt-6 max-w-2xl">
+            A few clean thresholds you cross on purpose, never a stack of small charges that bleed the relationship. We hold price and add value.
+          </Deck>
+
+          <div className="mt-12 max-w-4xl border-t border-[var(--hair)]">
+            {ladder.map((row) => (
+              <div
+                key={row.name}
+                className="grid gap-2 border-b border-[var(--hair)] py-7 md:grid-cols-[260px_1fr] md:gap-10"
+              >
+                <div>
+                  <h3 className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">
+                    {row.name}
+                  </h3>
+                  <p className="mt-1.5 font-[family-name:var(--font-mono)] text-sm text-id8-orange">{row.price}</p>
+                </div>
+                <p className="text-[15px] leading-relaxed text-[var(--body)] md:pt-0.5">{row.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-3xl font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
+            No surprise line items. The handoff is never a separate charge. Wealth is the compound of value delivered over time, never the yield of bleeding a client out.
+          </p>
         </Container>
       </section>
 
@@ -595,53 +555,47 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* ── 8. CREDIBILITY ─────────────────────────────── */}
+      {/* ── 8. IN THE FIELD ────────────────────────────── */}
       <section className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
-          <div className="grid max-w-5xl items-start gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h2 className="mb-6 font-[family-name:var(--font-display)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--ink)] text-[clamp(1.875rem,3.5vw,2.5rem)]">
-                Built by someone who&apos;s been <em className="italic text-id8-orange">in the trenches</em>
-              </h2>
-              <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-                I&apos;m not an AI researcher. I&apos;m a producer who figured out that the leverage was not in the tools, it was in the architecture between them.
-              </p>
-              <p className="text-[1.0625rem] leading-[1.7] text-[var(--body)]">
-                20+ years in film and TV production taught me one thing: systems beat hustle. Now I design primitive chains with human gates for operators who need to reach scale tools alone cannot deliver.
-              </p>
-            </div>
-            <div>
-              {credentials.map((cred, i) => (
-                <div key={i} className="border-b border-[var(--hair)] py-4 font-[family-name:var(--font-mono)] text-sm last:border-b-0">
-                  <span className="font-medium text-[var(--ink)]">
-                    {cred.highlight}
-                  </span>{' '}
-                  <span className="text-[var(--muted)]">
-                    {cred.role}
-                  </span>
+          <SectionHead
+            title={<>Engagements <em className="italic">in the field</em></>}
+            meta="Running now"
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {engagements.map((e, i) => (
+              <EditorialCard key={i} className="flex flex-col">
+                <div className="mb-5 flex items-center gap-2.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-id8-orange" />
+                  <p className="font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-id8-orange">
+                    {e.tag}
+                  </p>
                 </div>
-              ))}
-            </div>
+                <h3 className="mb-3 font-[family-name:var(--font-display)] text-lg font-normal leading-snug tracking-[-0.01em] text-[var(--ink)]">
+                  {e.title}
+                </h3>
+                <p className="flex-grow text-[15px] leading-relaxed text-[var(--body)]">{e.desc}</p>
+              </EditorialCard>
+            ))}
           </div>
         </Container>
       </section>
 
-      {/* ── 9. SOCIAL PROOF ────────────────────────────── */}
+      {/* ── 9. CREDIBILITY ─────────────────────────────── */}
       <section className="border-t border-[var(--hair)] py-20 md:py-24">
         <Container>
-          <SectionHead title={<>From the <em className="italic">field</em></>} meta="Testimonials" />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <EditorialCard key={i} className="flex flex-col">
-                <p className="mb-6 flex-grow font-[family-name:var(--font-serif)] text-lg italic leading-[1.5] text-[var(--body)]">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="border-t border-[var(--hair)] pt-4">
-                  <p className="font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.15em] text-[var(--ink)]">{t.name}</p>
-                  <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">{t.role}</p>
-                </div>
-              </EditorialCard>
-            ))}
+          <div className="max-w-3xl">
+            <Kicker className="mb-5">The studio</Kicker>
+            <h2 className="mb-6 font-[family-name:var(--font-display)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--ink)] text-[clamp(1.875rem,3.5vw,2.5rem)]">
+              Built by someone who designs the{' '}
+              <em className="italic text-id8-orange">architecture between the tools</em>
+            </h2>
+            <p className="mb-6 text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              id8Labs is a studio, not an AI lab. We do not sell you a model. We design primitive chains with human gates and deploy them inside your operation, the way a forward-deployed team works: in the building, on your problem, until the system is genuinely carrying the load.
+            </p>
+            <p className="text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+              Twenty years reading human systems, narrative, conflict, how teams actually decide, now applied to the architecture that lets a business reach a scale tools alone cannot deliver.
+            </p>
           </div>
         </Container>
       </section>
@@ -655,9 +609,10 @@ export default function ServicesPage() {
               <div key={i} className="border-b border-[var(--hair)]">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="flex w-full items-center justify-between py-6 text-left"
+                  aria-expanded={openFaq === i}
+                  className="flex w-full items-center justify-between gap-6 py-6 text-left"
                 >
-                  <span className="pr-8 font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">{faq.q}</span>
+                  <span className="font-[family-name:var(--font-display)] text-lg font-normal tracking-[-0.01em] text-[var(--ink)]">{faq.q}</span>
                   <svg
                     className={`h-5 w-5 shrink-0 text-[var(--muted)] transition-transform duration-200 ${
                       openFaq === i ? 'rotate-45' : ''
@@ -675,7 +630,7 @@ export default function ServicesPage() {
                   style={{ gridTemplateRows: openFaq === i ? '1fr' : '0fr' }}
                 >
                   <div className="overflow-hidden">
-                    <div className="pb-6">
+                    <div className="pb-6 pr-8">
                       <p className="text-[15px] leading-relaxed text-[var(--body)]">{faq.a}</p>
                     </div>
                   </div>
@@ -691,20 +646,20 @@ export default function ServicesPage() {
         <Container narrow>
           <div className="mb-12 text-center">
             <Kicker dot className="mb-5 justify-center">
-              Apply
+              Start here
             </Kicker>
             <h2 className="mb-5 font-[family-name:var(--font-display)] font-normal leading-[1.02] tracking-[-0.03em] text-[var(--ink)] text-[clamp(2.25rem,5vw,3.5rem)]">
-              Apply for a <em className="italic text-id8-orange">Setup</em>
+              Start the <em className="italic text-id8-orange">conversation</em>
             </h2>
             <p className="mx-auto max-w-md text-[1.0625rem] leading-[1.6] text-[var(--body)]">
-              We take on a limited number of setups each month. Tell us what&apos;s eating your time.
+              We take on a limited number of engagements at a time. Tell us how your operation actually runs, and we will tell you whether the workshop or a full audit is the right first step.
             </p>
           </div>
 
           {formState === 'success' ? (
             <div className="border border-[var(--hair)] border-t-2 border-t-id8-orange bg-[var(--paper-shadow)] py-16 text-center">
-              <p className="mb-2 font-[family-name:var(--font-display)] text-2xl font-normal text-[var(--ink)]">You&apos;re in.</p>
-              <p className="text-[var(--body)]">We&apos;ll review your application and reach out within 48 hours.</p>
+              <p className="mb-2 font-[family-name:var(--font-display)] text-2xl font-normal text-[var(--ink)]">You are in.</p>
+              <p className="text-[var(--body)]">We will read what you sent and reach out within 48 hours with the right first step.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5 border border-[var(--hair)] bg-[var(--paper-shadow)] p-7 md:p-10">
@@ -737,14 +692,14 @@ export default function ServicesPage() {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <label htmlFor="company" className={labelClassName}>Company / Studio</label>
+                  <label htmlFor="company" className={labelClassName}>Company / Firm</label>
                   <input
                     id="company"
                     type="text"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className={inputClassName}
-                    placeholder="Your company or studio"
+                    placeholder="Your company or firm"
                   />
                 </div>
                 <div>
@@ -757,10 +712,10 @@ export default function ServicesPage() {
                     style={{ backgroundImage: selectChevron }}
                   >
                     <option value="">Select...</option>
-                    <option value="creative-agency">Creative agency</option>
-                    <option value="indie-founder">Indie founder / solo operator</option>
+                    <option value="professional-services">Professional services (legal, advisory)</option>
+                    <option value="agency-studio">Agency / studio</option>
+                    <option value="founder">Founder / small operator</option>
                     <option value="media-company">Media / production company</option>
-                    <option value="exec-team">Exec team / small business</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
@@ -784,26 +739,25 @@ export default function ServicesPage() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="tier" className={labelClassName}>Which tier interests you?</label>
+                  <label htmlFor="stage" className={labelClassName}>Where do you want to start?</label>
                   <select
-                    id="tier"
-                    value={formData.tier}
-                    onChange={(e) => setFormData({ ...formData, tier: e.target.value })}
+                    id="stage"
+                    value={formData.stage}
+                    onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                     className={selectClassName}
                     style={{ backgroundImage: selectChevron }}
                   >
                     <option value="">Not sure yet</option>
-                    <option value="workshop">Workshop — $297</option>
-                    <option value="starter">Starter — $1,497</option>
-                    <option value="studio">Studio — $3,497</option>
-                    <option value="operator">Operator — $6,997</option>
+                    <option value="workshop">A workshop</option>
+                    <option value="audit">A full audit</option>
+                    <option value="build">Ready to build</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label htmlFor="timeDrain" className={labelClassName}>
-                  What&apos;s your biggest time drain right now?
+                  How does your operation actually run today? Where does it leak?
                 </label>
                 <textarea
                   id="timeDrain"
@@ -812,12 +766,12 @@ export default function ServicesPage() {
                   value={formData.timeDrain}
                   onChange={(e) => setFormData({ ...formData, timeDrain: e.target.value })}
                   className={`${inputClassName} resize-none`}
-                  placeholder="E.g., I spend 2 hours a day on client scheduling and follow-ups..."
+                  placeholder="E.g., client intake and follow-ups eat a day a week, and nothing stays consistent across the team..."
                 />
               </div>
 
               <div>
-                <label htmlFor="timeline" className={labelClassName}>When do you want to be up and running?</label>
+                <label htmlFor="timeline" className={labelClassName}>When do you want to be running?</label>
                 <select
                   id="timeline"
                   value={formData.timeline}
@@ -838,11 +792,11 @@ export default function ServicesPage() {
                 disabled={formState === 'submitting'}
                 className="w-full cursor-pointer border border-[var(--ink)] bg-[var(--ink)] px-6 py-4 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] transition-colors duration-150 hover:border-id8-orange hover:bg-id8-orange disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {formState === 'submitting' ? 'Submitting...' : 'Apply Now'}
+                {formState === 'submitting' ? 'Sending...' : 'Start the conversation'}
               </button>
 
               <p className="text-center font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
-                No commitment. We&apos;ll review your application and tell you which tier fits — or if this isn&apos;t right for you.
+                No commitment. We will read what you sent and tell you the right first step, or if this is not the right fit.
               </p>
 
               {formState === 'error' && (

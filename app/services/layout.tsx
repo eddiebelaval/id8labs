@@ -1,29 +1,29 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Agent Deployment Services | ID8Labs',
-  description: 'White-glove AI agent deployment. We build, deploy, and tune OpenClaw agents on your hardware — wired into your tools, customized to your workflow. Running in 24 hours.',
+  title: 'Services | ID8Labs',
+  description: 'We install HALO, your operating DNA, inside your business and stay its custodian. Primitive chains with human gates, forward-deployed. A workshop opens it, an audit confirms the fit, we build and tend.',
   keywords: [
-    'AI agent deployment',
-    'OpenClaw setup',
-    'AI implementation services',
-    'AI workflow automation',
-    'white-glove AI setup',
-    'AI consulting',
-    'AI agents for business',
-    'custom AI agents',
+    'forward deployment',
+    'primitive chain architecture',
+    'AI operations',
+    'HALO',
+    'AI for professional services',
+    'AI for law firms',
+    'custom AI systems',
+    'AI custodianship retainer',
   ],
   openGraph: {
-    title: 'AI Agent Deployment Services | ID8Labs',
-    description: 'White-glove AI agent deployment. We build, deploy, and tune OpenClaw agents on your hardware — wired into your tools, customized to your workflow.',
+    title: 'Services | ID8Labs',
+    description: 'We install HALO, your operating DNA, inside your business and stay its custodian. Forward deployment for AI-era operators.',
     url: 'https://id8labs.app/services',
     siteName: 'ID8Labs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Agent Deployment | ID8Labs',
-    description: 'White-glove AI agent deployment. OpenClaw agents on your hardware, running in 24 hours.',
+    title: 'Services | ID8Labs',
+    description: 'We install your operating DNA inside your business and stay its custodian. Forward deployment, primitive chains, human gates.',
   },
 }
 
