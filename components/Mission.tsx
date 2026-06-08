@@ -24,7 +24,7 @@ const principles = [
         >
           DeepStack&apos;s emotion detection
         </a>
-        . Problems are never abstract&mdash;they&apos;re personally painful.
+        . Problems are never abstract, they&apos;re personally painful.
       </>
     ),
   },
@@ -60,7 +60,7 @@ const principles = [
     title: 'Build to Learn',
     body: (
       <>
-        Don&apos;t wait until you understand&mdash;build something, watch it break, build it better.
+        Don&apos;t wait until you understand. Build something, watch it break, build it better.
         Composer started simple. Now it has canvas, sandbox, persistent story memory. The first version
         teaches what the real version needs.
       </>

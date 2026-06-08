@@ -18,7 +18,7 @@ export default function DeployCTA() {
           </h2>
           <Deck className="mx-auto mb-9 max-w-xl">
             We take on a limited number of setups each month. Tell us what is eating your time, and we
-            will tell you which agents to build &mdash; or if this is not right for you.
+            will tell you which agents to build, or if this is not right for you.
           </Deck>
           <div className="flex flex-col sm:flex-row justify-center gap-3.5">
             <EditorialButton href="/services#apply-form">Apply for a setup</EditorialButton>
