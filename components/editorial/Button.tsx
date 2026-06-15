@@ -3,14 +3,14 @@ import Link from 'next/link'
 
 /**
  * Editorial button — ink fill that flips to orange on hover (primary),
- * or ghost outline that fills ink (secondary). Sharp corners, narrow
- * uppercase label. Renders as a Next <Link> when `href` is provided.
+ * or ghost outline that fills ink (secondary). Cut top-right corner,
+ * narrow uppercase label. Renders as a Next <Link> when `href` is provided.
  */
 
 type Variant = 'primary' | 'secondary' | 'ghost'
 
 const base =
-  'inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 cursor-pointer no-underline'
+  'cut-tr inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-150 cursor-pointer no-underline'
 
 const variants: Record<Variant, string> = {
   primary:

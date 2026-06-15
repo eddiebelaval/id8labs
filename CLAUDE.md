@@ -36,7 +36,8 @@
 The site is a **print magazine on warm paper** — restrained, credible, high-craft.
 Big Fraunces serif headlines with italic-orange emphasis, narrow uppercase
 kickers, mono metadata, hairline rules, generous whitespace. **Light only,
-sharp corners, flat (no shadows/glows/gradients).**
+cut corners (chamfer — never a literal right angle on the box/chip/button
+family; rounded is still out), flat (no shadows/glows/gradients).**
 
 - **Brand DNA (HALO Genome):** `genome/` — `AGENT.md` is the enforcement contract every producing agent reads first; `DESIGN.md` / `VOICE.md` / `ETHOS.md` / `genome.json` are the genes. Assets must be on-brand *by construction*.
 - Reference: `public/shipped/` · React kit: `components/editorial/`
@@ -74,7 +75,7 @@ aliased to these so existing markup renders correctly.
 
 ## Layout Standards
 - **Max width:** 1200px (container) · 760px (reading measure)
-- **Shape:** sharp corners (radius 0); separation via 1px hairlines + ink rules
+- **Shape:** cut corners (chamfer, radius 0) — boxes/chips/buttons get a 45° top-right cut via `.cut-tr`, or the hairline-preserving `.cut-frame > .cut-fill` for paper boxes. Never a literal right angle on that family; rounded corners still out. Separation via 1px hairlines + ink rules (a hairline rule is a line, not a cornered box, so it stays straight)
 - **Section spacing:** 6rem (96px) vertical
 - **Component spacing:** 2rem-4rem depending on hierarchy
 - **Mobile breakpoints:** sm:640px, md:768px, lg:1024px, xl:1280px
@@ -131,7 +132,7 @@ export default function PageName() {
 ### **Design Violations**
 - **NO colors** except the editorial palette (paper/ink/body/muted/hair + orange + teal)
 - **NO dark mode**, no `dark:` classes — the system is paper-only
-- **NO rounded corners** (except pills/avatars), **no shadows, glows, or gradients**
+- **NO rounded corners** (except pills/avatars) and **NO square right-angle boxes** — the box/chip/button family is chamfered (cut top-right corner); **no shadows, glows, or gradients**
 - **NO heavy animations** - subtle color/opacity transitions only
 - **NO feature creep** - every addition must justify its existence
 - **NO decorative elements** that don't serve function

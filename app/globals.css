@@ -10,8 +10,11 @@
 
    Warm paper, ink, hairline rules. Fraunces display with
    italic-orange emphasis. Archivo / Archivo Narrow UI.
-   JetBrains Mono metadata. Sharp corners. No shadows,
-   no glows, no gradients, restrained motion. Light only.
+   JetBrains Mono metadata. Cut corners (chamfer) — never a
+   literal right angle on the box/chip/button family; the
+   bevel is a clean 45 degree cut, hairlines run the straight
+   edges. No shadows, no glows, no gradients, restrained
+   motion. Light only.
 
    See docs/EDITORIAL_SYSTEM.md for the full contract.
    ============================================ */
@@ -77,6 +80,13 @@
   --radius-2xl: 0;
   --radius-full: 9999px; /* pills/avatars only */
 
+  /* ── Chamfer: the cut-corner signature. Replaces the literal
+     right angle on the box/chip/button family. One consistent
+     direction (top-right) reads as intentional, not random. ── */
+  --cut: 9px;
+  --cut-md: 13px;
+  --cut-lg: 18px;
+
   /* ── Depth: flat. Shadows neutralized to hairlines / none. ── */
   --shadow-sm: none;
   --shadow-md: none;
@@ -85,6 +95,62 @@
   --shadow-2xl: none;
   --glow-orange: none;
   --glow-blue: none;
+}
+
+/* ============================================
+   CHAMFER — the cut-corner signature.
+   No literal right angle on boxes/chips/buttons. Two tools:
+   1. .cut-tr / .cut-trbl  — single-element clip. Use on SOLID
+      fills (ink buttons, orange chips) where fill == border, so
+      the bevel has nothing to shear.
+   2. .cut-frame > .cut-fill — two-layer chamfer that PRESERVES the
+      hairline along the bevel. Use on paper boxes with a 1px rule.
+   ============================================ */
+.cut-tr {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    0 100%
+  );
+}
+.cut-trbl {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
+  );
+}
+/* Hairline-preserving chamfer: the frame paints the rule, the fill
+   sits 1px inside and re-clips, leaving the rule running the bevel. */
+.cut-frame {
+  background: var(--hair);
+  padding: 1px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cut-lg)) 0,
+    100% var(--cut-lg),
+    100% 100%,
+    var(--cut-lg) 100%,
+    0 calc(100% - var(--cut-lg))
+  );
+}
+.cut-frame.cut-frame-hard {
+  background: var(--hair-hard);
+}
+.cut-frame > .cut-fill {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cut-lg)) 0,
+    100% var(--cut-lg),
+    100% 100%,
+    var(--cut-lg) 100%,
+    0 calc(100% - var(--cut-lg))
+  );
 }
 
 /* Dark mode retired. If a stray .dark class lands, it inherits paper. */

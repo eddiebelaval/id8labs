@@ -1,5 +1,7 @@
 import Script from 'next/script'
 import Hero from '@/components/Hero'
+import TheThesis from '@/components/TheThesis'
+import TheRamp from '@/components/TheRamp'
 import Builder from '@/components/Builder'
 import ProductGrid from '@/components/ProductGrid'
 import Education from '@/components/Education'
@@ -132,6 +134,7 @@ export default function Home() {
       ))}
       <HomeNavigation />
       <Hero />
+      <TheThesis />
       <SocialProofStrip
         essayCount={essayCount}
         productsShipping={productsShipping}
@@ -139,6 +142,7 @@ export default function Home() {
         startYear={2024}
       />
       <ForwardDeployment />
+      <TheRamp />
       <ProductGrid />
       <LatestFromLab items={writingItems} />
       <Mission />

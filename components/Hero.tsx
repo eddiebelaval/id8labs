@@ -10,14 +10,15 @@ export default function Hero() {
           </Kicker>
 
           <h1 className="mb-7 max-w-[980px] font-[family-name:var(--font-display)] font-normal leading-[1] tracking-[-0.03em] text-[var(--ink)] text-[clamp(2.75rem,6.2vw,6rem)]">
-            Architecture, not tools. Primitive chains for{' '}
-            <em className="italic font-normal text-id8-orange">AI-era operators.</em>
+            Every business is a graph of{' '}
+            <em className="italic font-normal text-id8-orange">triggers</em> wired to{' '}
+            <em className="italic font-normal text-id8-orange">primitives.</em>
           </h1>
 
-          <Deck className="mb-9 max-w-[720px]">
-            Robust primitive chains with human gates, designed domain-deep. They eat the
-            drudgery before the work, so companies reach scale they could not have reached
-            otherwise.
+          <Deck className="mb-9 max-w-[760px]">
+            Most run on unnamed primitives, half-composed chains, and people doing the
+            mechanical work. We name them, compose them, and free your people for the
+            judgment and taste only they can bring.
           </Deck>
 
           <div className="mb-12 flex flex-wrap gap-3.5">
