@@ -16,9 +16,9 @@ const variants: Record<Variant, string> = {
   primary:
     'bg-[var(--ink)] text-[var(--paper)] border-[var(--ink)] hover:bg-id8-orange hover:border-id8-orange hover:text-[var(--paper)]',
   secondary:
-    'bg-transparent text-[var(--ink)] border-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]',
+    'cut-tr-line [--cut-line:var(--ink)] bg-transparent text-[var(--ink)] border-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]',
   ghost:
-    'bg-transparent text-[var(--ink)] border-[var(--hair)] hover:border-[var(--ink)]',
+    'cut-tr-line [--cut-line:var(--hair)] hover:[--cut-line:var(--ink)] bg-transparent text-[var(--ink)] border-[var(--hair)] hover:border-[var(--ink)]',
 }
 
 function cx(...parts: Array<string | false | undefined>): string {

@@ -125,6 +125,22 @@
     0 calc(100% - var(--cut))
   );
 }
+/* Bevel hairline for OUTLINED chamfer (no extra DOM). clip-path cuts the
+   top-right corner but shears the border there; this paints the 1px diagonal
+   that closes the cut so the outline reads as one continuous chamfered edge.
+   --cut-line lets each element match its own border colour (default hairline). */
+.cut-tr-line {
+  background-image: linear-gradient(
+    to bottom left,
+    transparent calc(50% - 0.5px),
+    var(--cut-line, var(--hair-hard)) calc(50% - 0.5px),
+    var(--cut-line, var(--hair-hard)) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px)
+  );
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: var(--cut) var(--cut);
+}
 /* Hairline-preserving chamfer: the frame paints the rule, the fill
    sits 1px inside and re-clips, leaving the rule running the bevel. */
 .cut-frame {

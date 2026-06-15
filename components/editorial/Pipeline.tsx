@@ -33,7 +33,7 @@ export function Pipeline({
                 className={
                   step.human
                     ? 'cut-tr whitespace-nowrap bg-id8-orange px-3.5 py-2 font-semibold text-[var(--paper)]'
-                    : 'cut-tr whitespace-nowrap border border-[var(--hair-hard)] bg-[var(--paper)] px-3.5 py-2 text-[var(--ink)]'
+                    : 'cut-tr cut-tr-line whitespace-nowrap border border-[var(--hair-hard)] bg-[var(--paper)] px-3.5 py-2 text-[var(--ink)]'
                 }
               >
                 {step.label}
