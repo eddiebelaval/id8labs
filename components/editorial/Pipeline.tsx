@@ -19,8 +19,8 @@ export function Pipeline({
   steps: PipelineStep[]
 }) {
   return (
-    <div className="cut-frame">
-      <div className="cut-fill bg-[var(--paper-shadow)] p-7 md:p-9">
+    <div className="rounded-[14px] border border-[var(--hair)]">
+      <div className="rounded-[13px] bg-[var(--paper-shadow)] p-7 md:p-9">
         {title && (
           <div className="mb-4 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
             {title}
@@ -32,8 +32,8 @@ export function Pipeline({
               <span
                 className={
                   step.human
-                    ? 'cut-tr whitespace-nowrap bg-id8-orange px-3.5 py-2 font-semibold text-[var(--paper)]'
-                    : 'cut-tr cut-tr-line whitespace-nowrap border border-[var(--hair-hard)] bg-[var(--paper)] px-3.5 py-2 text-[var(--ink)]'
+                    ? 'rounded-[7px] whitespace-nowrap bg-id8-orange px-3.5 py-2 font-semibold text-[var(--paper)]'
+                    : 'rounded-[7px] whitespace-nowrap border border-[var(--hair-hard)] bg-[var(--paper)] px-3.5 py-2 text-[var(--ink)]'
                 }
               >
                 {step.label}

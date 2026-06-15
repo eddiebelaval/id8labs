@@ -80,12 +80,10 @@
   --radius-2xl: 0;
   --radius-full: 9999px; /* pills/avatars only */
 
-  /* ── Chamfer: the cut-corner signature. Replaces the literal
-     right angle on the box/chip/button family. One consistent
-     direction (top-right) reads as intentional, not random. ── */
-  --cut: 9px;
-  --cut-md: 13px;
-  --cut-lg: 18px;
+  /* ── Corners: soft rounded on the box/chip/button family. No literal
+     90-degree corners; the chamfer/cut-corner experiment was retired
+     2026-06-15. Components use explicit radii (buttons ~10px, chips ~7px,
+     frames ~13–14px) so legacy routes that read --radius-* stay flat. ── */
 
   /* ── Depth: flat. Shadows neutralized to hairlines / none. ── */
   --shadow-sm: none;
@@ -95,78 +93,6 @@
   --shadow-2xl: none;
   --glow-orange: none;
   --glow-blue: none;
-}
-
-/* ============================================
-   CHAMFER — the cut-corner signature.
-   No literal right angle on boxes/chips/buttons. Two tools:
-   1. .cut-tr / .cut-trbl  — single-element clip. Use on SOLID
-      fills (ink buttons, orange chips) where fill == border, so
-      the bevel has nothing to shear.
-   2. .cut-frame > .cut-fill — two-layer chamfer that PRESERVES the
-      hairline along the bevel. Use on paper boxes with a 1px rule.
-   ============================================ */
-.cut-tr {
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cut)) 0,
-    100% var(--cut),
-    100% 100%,
-    0 100%
-  );
-}
-.cut-trbl {
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cut)) 0,
-    100% var(--cut),
-    100% 100%,
-    var(--cut) 100%,
-    0 calc(100% - var(--cut))
-  );
-}
-/* Bevel hairline for OUTLINED chamfer (no extra DOM). clip-path cuts the
-   top-right corner but shears the border there; this paints the 1px diagonal
-   that closes the cut so the outline reads as one continuous chamfered edge.
-   --cut-line lets each element match its own border colour (default hairline). */
-.cut-tr-line {
-  background-image: linear-gradient(
-    to bottom left,
-    transparent calc(50% - 0.5px),
-    var(--cut-line, var(--hair-hard)) calc(50% - 0.5px),
-    var(--cut-line, var(--hair-hard)) calc(50% + 0.5px),
-    transparent calc(50% + 0.5px)
-  );
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: var(--cut) var(--cut);
-}
-/* Hairline-preserving chamfer: the frame paints the rule, the fill
-   sits 1px inside and re-clips, leaving the rule running the bevel. */
-.cut-frame {
-  background: var(--hair);
-  padding: 1px;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cut-lg)) 0,
-    100% var(--cut-lg),
-    100% 100%,
-    var(--cut-lg) 100%,
-    0 calc(100% - var(--cut-lg))
-  );
-}
-.cut-frame.cut-frame-hard {
-  background: var(--hair-hard);
-}
-.cut-frame > .cut-fill {
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cut-lg)) 0,
-    100% var(--cut-lg),
-    100% 100%,
-    var(--cut-lg) 100%,
-    0 calc(100% - var(--cut-lg))
-  );
 }
 
 /* Dark mode retired. If a stray .dark class lands, it inherits paper. */

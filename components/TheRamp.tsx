@@ -49,8 +49,8 @@ export default function TheRamp() {
                   <span
                     className={
                       isEntry
-                        ? 'cut-tr relative z-10 grid h-12 w-12 place-items-center bg-id8-orange font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--paper)]'
-                        : 'cut-tr cut-tr-line relative z-10 grid h-12 w-12 place-items-center border border-[var(--hair-hard)] bg-[var(--paper)] font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]'
+                        ? 'rounded-[10px] relative z-10 grid h-12 w-12 place-items-center bg-id8-orange font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--paper)]'
+                        : 'rounded-[10px] relative z-10 grid h-12 w-12 place-items-center border border-[var(--hair-hard)] bg-[var(--paper)] font-[family-name:var(--font-mono)] text-sm text-[var(--ink)]'
                     }
                   >
                     0{i + 1}
