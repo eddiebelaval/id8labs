@@ -125,12 +125,12 @@ function WritingListInner({ items }: WritingListProps) {
           </h1>
           <Deck className="mt-6 max-w-[640px]">
             {isMagazineView ? (
-              <>The weekly magazine on what Anthropic ships — three weeks of hindsight in one read.</>
+              <>The weekly magazine on what the AI labs ship — three weeks of hindsight in one read.</>
             ) : (
               <>
                 Essays, research, release notes, the{' '}
                 <span className="not-italic font-[family-name:var(--font-display)]">Shipped<span className="text-id8-orange">.</span></span>{' '}
-                newsletter, and the weekly magazine on what Anthropic ships.
+                newsletter, and the weekly magazine on what the AI labs ship.
               </>
             )}
           </Deck>

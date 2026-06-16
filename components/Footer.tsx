@@ -29,7 +29,7 @@ export default function Footer() {
               <Link href="/products" className={link}>Products</Link>
               <Link href="/services" className={link}>Services</Link>
               <Link href="/writing" className={link}>Writing</Link>
-              <Link href="/writing?filter=magazine" className={link}>Shipped.</Link>
+              <Link href="/shipped" className={link}>Shipped.</Link>
               <Link href="/lab" className={link}>Lab</Link>
               <div className="mt-1 flex gap-3">
                 <Link href="/privacy" className={`${link} text-xs`}>Privacy</Link>
