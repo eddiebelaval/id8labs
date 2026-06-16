@@ -110,6 +110,10 @@ const genome = [
     title: 'Ethos',
     desc: 'The judgment underneath both. What you optimize for, what you refuse, how you decide when the rules run out.',
   },
+  {
+    title: 'Lexicon',
+    desc: 'The language your business owns. Its terms of art, used exactly the way you use them, never renamed or paraphrased.',
+  },
 ]
 
 const movements = [
@@ -138,7 +142,7 @@ const movements = [
 const arc = [
   { step: '01', title: 'Workshop', price: 'A small ticket', desc: 'A short working session that shows your team what the work could look like, and tells us both whether there is a fit.' },
   { step: '02', title: 'Audit', price: 'Paid', desc: 'A full read of your operation. You leave with the findings, the recommended approach, and a quote to build it.' },
-  { step: '03', title: 'Build and install', price: 'Quoted to the work', desc: 'We build the system and install it inside your operation, wired to your tools, with your data posture set from day one. The handoff is included.' },
+  { step: '03', title: 'Build and install', price: 'Quoted to the work', desc: 'We build the system and install it inside your operation, wired to your tools, with your data posture set from day one. Going live is included.' },
   { step: '04', title: 'Custodianship', price: 'Ongoing', desc: 'We stay on after launch. The system stays healthy and keeps improving as your work changes.' },
 ]
 
@@ -176,11 +180,11 @@ const notFor = [
 const faqs = [
   {
     q: 'What is HALO, exactly?',
-    a: 'HALO is the system we install inside your operation: your operating DNA, your design sense, your voice, your judgment, plus the chains that run your work on brand by construction, not by reminder. It is the unit we build, version, and hand off.',
+    a: 'HALO is the system we install inside your operation: your operating DNA, your design sense, your voice, your judgment, plus the chains that run your work on brand by construction, not by reminder. It is the system we build, version, and operate for you. We do not hand it off. HALO is ours to run, tuned to your DNA, and we stay its custodian.',
   },
   {
     q: 'Do I own the system, or do you?',
-    a: 'You run it, and it lives in your operation. We stay on as its custodian so it keeps matching your standards. Most studios hand off and the work drifts within a month. We do not, so the brand stays true long after launch.',
+    a: 'You own the outcome; we own the engine. HALO is ours. We build it to your DNA and operate it as your custodian, running inside your operation so you never have to. What is yours is the result: the work it produces, your data, and a system that stays true. Most studios hand off and the work drifts within a month. We stay, by design.',
   },
   {
     q: 'How is this priced?',
@@ -195,7 +199,7 @@ const faqs = [
     a: 'The workshop and audit come first. Most first builds install within a few weeks of a signed scope, and the system keeps improving from there.',
   },
   {
-    q: 'What happens after you hand off?',
+    q: 'What happens after launch?',
     a: 'The retainer begins. The system keeps tuning to how your team actually works, so it improves over time instead of going stale. There is always a person in the loop, by design.',
   },
 ]
@@ -332,11 +336,11 @@ export default function ServicesPage() {
             </p>
             <p className="text-[1.0625rem] leading-[1.7] text-[var(--body)]">
               At its core is the{' '}
-              <span className="font-[family-name:var(--font-serif)] italic text-[var(--ink)]">Genome</span>: the DNA of how you work, in three parts.
+              <span className="font-[family-name:var(--font-serif)] italic text-[var(--ink)]">Genome</span>: the DNA of how you work, in four parts.
             </p>
           </div>
 
-          <div className="mb-16 grid max-w-4xl gap-px border border-[var(--hair)] bg-[var(--hair)] md:grid-cols-3">
+          <div className="mb-16 grid max-w-4xl gap-px border border-[var(--hair)] bg-[var(--hair)] sm:grid-cols-2 md:grid-cols-4">
             {genome.map((item, i) => (
               <div key={i} className="bg-[var(--paper)] p-7">
                 <h3 className="mb-2 font-[family-name:var(--font-display)] text-[1.0625rem] font-normal tracking-[-0.01em] text-[var(--ink)]">
@@ -414,7 +418,7 @@ export default function ServicesPage() {
           </div>
 
           <p className="mt-8 max-w-3xl font-[family-name:var(--font-mono)] text-xs leading-relaxed text-[var(--muted)]">
-            Transparent, and scoped to the work. No surprise line items, and the handoff is included, never a separate charge.
+            Transparent, and scoped to the work. No surprise line items, and going live is included, never a separate charge.
           </p>
 
           <div className="mt-10 max-w-3xl">
