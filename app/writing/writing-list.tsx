@@ -52,6 +52,19 @@ function formatDate(dateStr: string): string {
   return dateStr
 }
 
+/**
+ * Folio mark for un-numbered pieces (essays / research / release notes).
+ * Uses the title's first letter — leading article (The / A / An) stripped —
+ * uppercased, so the index column reads as a deliberate editorial drop-cap
+ * (e.g. "P." "C." "T.") that mirrors magazine issue folios ("01.") instead of
+ * a missing-number placeholder.
+ */
+function folioInitial(title: string): string {
+  const cleaned = title.replace(/^(the|a|an)\s+/i, '').trim()
+  const match = cleaned.match(/[A-Za-z0-9]/)
+  return (match ? match[0] : title.charAt(0) || '·').toUpperCase()
+}
+
 type FilterKey = 'all' | WritingCategory
 
 const FILTERS: Array<{ key: FilterKey; label: string }> = [
@@ -89,6 +102,10 @@ function WritingListInner({ items }: WritingListProps) {
     ? items
     : items.filter(item => item.category === filter)
 
+  // The navbar "Shipped." link lands here as ?filter=magazine. In that view the
+  // masthead wears the Shipped identity, not the generic Writing one.
+  const isMagazineView = filter === 'magazine'
+
   const categoryLabels: Record<WritingCategory, string> = {
     essay: 'Essay',
     research: 'Research',
@@ -102,14 +119,20 @@ function WritingListInner({ items }: WritingListProps) {
       {/* Masthead */}
       <section className="pt-16 pb-12">
         <Container>
-          <Kicker dot>Index · Field Notes</Kicker>
+          <Kicker dot>{isMagazineView ? 'The Weekly Magazine' : 'Index · Field Notes'}</Kicker>
           <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[0.95] text-[var(--ink)] text-[clamp(2.75rem,7vw,4.5rem)]">
-            Writing<span className="text-id8-orange">.</span>
+            {isMagazineView ? 'Shipped' : 'Writing'}<span className="text-id8-orange">.</span>
           </h1>
           <Deck className="mt-6 max-w-[640px]">
-            Essays, research, release notes, the signal:noise newsletter, and{' '}
-            <span className="not-italic font-[family-name:var(--font-display)]">Shipped<span className="text-id8-orange">.</span></span>{' '}
-            — the weekly magazine on what Anthropic ships.
+            {isMagazineView ? (
+              <>The weekly magazine on what Anthropic ships — three weeks of hindsight in one read.</>
+            ) : (
+              <>
+                Essays, research, release notes, the{' '}
+                <span className="not-italic font-[family-name:var(--font-display)]">Shipped<span className="text-id8-orange">.</span></span>{' '}
+                newsletter, and the weekly magazine on what Anthropic ships.
+              </>
+            )}
           </Deck>
         </Container>
       </section>
@@ -144,7 +167,7 @@ function WritingListInner({ items }: WritingListProps) {
               <div>
                 <Kicker dot>The id8Labs Newsletter</Kicker>
                 <p className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium italic tracking-[-0.01em] text-[var(--ink)]">
-                  Signal:Noise
+                  Shipped<span className="text-id8-orange">.</span>
                 </p>
               </div>
               <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
@@ -173,6 +196,8 @@ function WritingListInner({ items }: WritingListProps) {
             const number = (isNewsletter || isMagazine) && item.issueNumber != null
               ? String(item.issueNumber).padStart(2, '0')
               : null
+            // Un-numbered pieces get a title drop-cap folio, not a placeholder dash.
+            const folio = number ?? folioInitial(item.title)
 
             const label = isNewsletter
               ? 'Newsletter'
@@ -186,7 +211,7 @@ function WritingListInner({ items }: WritingListProps) {
               <IssueCard
                 key={item.slug}
                 href={linkHref}
-                number={number ?? '—'}
+                number={folio}
                 title={item.title}
                 deck={item.subtitle || item.excerpt}
                 tags={tags}
@@ -204,7 +229,7 @@ function WritingListInner({ items }: WritingListProps) {
           <div className="text-center">
             <Kicker dot className="justify-center">Subscribe</Kicker>
             <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
-              Get signal:noise delivered
+              Get Shipped<span className="text-id8-orange">.</span> delivered
             </h2>
             <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
               Weekly insights on AI, automation, and building the future. Join 1,000+ builders.
@@ -212,7 +237,7 @@ function WritingListInner({ items }: WritingListProps) {
             <div className="mx-auto max-w-md">
               <NewsletterSubscribe
                 variant="inline"
-                source="writing-page"
+                source="shipped-writing"
                 title=""
                 description=""
                 buttonText="Subscribe to Newsletter"

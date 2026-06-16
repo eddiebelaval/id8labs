@@ -4,7 +4,7 @@ import { WritingList } from './writing-list'
 
 export const metadata: Metadata = {
   title: 'Writing | ID8Labs',
-  description: 'Essays, research, release notes, and the signal:noise newsletter on AI, automation, and building the future.',
+  description: 'Essays, research, release notes, and the Shipped. newsletter on AI, automation, and building the future.',
 }
 
 // Revalidate every hour to pick up new content

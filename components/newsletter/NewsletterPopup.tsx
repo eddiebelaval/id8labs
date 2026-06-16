@@ -153,7 +153,7 @@ export default function NewsletterPopup({
               <div className="p-6 pt-2">
                 <NewsletterSubscribe
                   variant="inline"
-                  source="popup"
+                  source="shipped-popup"
                   title=""
                   description="Get weekly insights on AI, automation, and building the future delivered to your inbox."
                   buttonText="Subscribe"

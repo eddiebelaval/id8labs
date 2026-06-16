@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!issue) {
     return {
-      title: 'Issue Not Found | Signal:Noise',
+      title: 'Issue Not Found | Shipped.',
     }
   }
 
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = isEssay(issue) ? issue.title : issue.subject
 
   return {
-    title: `${title} | Signal:Noise`,
+    title: `${title} | Shipped.`,
     description,
     openGraph: {
       title,
@@ -235,7 +235,7 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
               </EditorialButton>
             </div>
 
-            <Kicker dot>Signal:Noise · Issue {issue.issueNumber}</Kicker>
+            <Kicker dot>Shipped. · Issue {issue.issueNumber}</Kicker>
 
             <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
               {issue.title}
@@ -295,12 +295,12 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
                 Want more essays like this?
               </h2>
               <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
-                Subscribe to Signal:Noise for essays on building, thinking, and the patterns that transfer.
+                Subscribe to Shipped. for essays on building, thinking, and the patterns that transfer.
               </p>
               <div className="mx-auto max-w-md">
                 <NewsletterSubscribe
                   variant="inline"
-                  source={`newsletter-issue-${issue.issueNumber}`}
+                  source={`shipped-issue-${issue.issueNumber}`}
                   title=""
                   description=""
                   buttonText="Subscribe"
@@ -325,7 +325,7 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
             </EditorialButton>
           </div>
 
-          <Kicker dot>Signal:Noise · Issue {issue.issueNumber}</Kicker>
+          <Kicker dot>Shipped. · Issue {issue.issueNumber}</Kicker>
 
           <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
             {issue.subject}
@@ -431,12 +431,12 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
               Want more insights like this?
             </h2>
             <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
-              Subscribe to Signal:Noise for essays on building, thinking, and the patterns that transfer.
+              Subscribe to Shipped. for essays on building, thinking, and the patterns that transfer.
             </p>
             <div className="mx-auto max-w-md">
               <NewsletterSubscribe
                 variant="inline"
-                source={`newsletter-issue-${issue.issueNumber}`}
+                source={`shipped-issue-${issue.issueNumber}`}
                 title=""
                 description=""
                 buttonText="Subscribe"

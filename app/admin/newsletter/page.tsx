@@ -90,7 +90,7 @@ export default function NewsletterDashboard() {
       <div className="flex items-center justify-between mb-8 border-b border-[var(--rule)] pb-6">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Newsletter</h1>
-          <p className="text-[var(--muted)]">Manage signal:noise</p>
+          <p className="text-[var(--muted)]">Manage Shipped.</p>
         </div>
         <Link
           href="/admin/newsletter/compose"

@@ -83,7 +83,7 @@ function RecentArticleItem({ item }: { item: WritingItem }) {
 function NewsletterCTA() {
   return (
     <div className="border border-[var(--hair)] bg-[var(--paper-shadow)] p-6">
-      <Kicker className="mb-2">Signal:Noise Newsletter</Kicker>
+      <Kicker className="mb-2">Shipped. Newsletter</Kicker>
       <p className="mb-3 text-sm text-[var(--body)]">
         Thoughts on AI, building, and working through problems in public.
       </p>

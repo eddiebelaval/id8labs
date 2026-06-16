@@ -141,7 +141,7 @@ export default function ComposePage() {
         </Link>
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Compose Newsletter</h1>
-          <p className="text-[var(--muted)]">Write and send signal:noise</p>
+          <p className="text-[var(--muted)]">Write and send Shipped.</p>
         </div>
       </div>
 
