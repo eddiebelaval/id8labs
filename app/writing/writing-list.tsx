@@ -129,6 +129,7 @@ function WritingListInner({ items }: WritingListProps) {
     magazine: 'Magazine'
   }
 
+
   return (
     <div className="min-h-screen bg-[var(--paper)]">
       {/* Masthead */}
@@ -208,16 +209,21 @@ function WritingListInner({ items }: WritingListProps) {
                 ? `/${item.slug}`
                 : `/writing/${item.slug}`
 
-            const number = (isNewsletter || isMagazine) && item.issueNumber != null
-              ? toRoman(item.issueNumber)
-              : null
-            // Un-numbered pieces get a title drop-cap folio, not a placeholder dash.
-            const folio = number ?? folioInitial(item.title)
+            // Corpus: every piece's folio is its permanent accession number (No. NNN),
+            // baked into the data server-side (lib/writing.ts + corpus-register.ts).
+            const folio = item.corpusNumber != null
+              ? String(item.corpusNumber).padStart(3, '0')
+              : folioInitial(item.title)
 
+            // The chip names the type; Shipped/Newsletter keep their issue identity
+            // here in Roman (the folio is now the corpus number, not the issue number).
+            const issue = (isNewsletter || isMagazine) && item.issueNumber != null
+              ? ` · ${toRoman(item.issueNumber)}`
+              : ''
             const label = isNewsletter
-              ? 'Newsletter'
+              ? `Newsletter${issue}`
               : isMagazine
-                ? 'Shipped.'
+                ? `Shipped.${issue}`
                 : categoryLabels[item.category]
 
             const tags = [label, ...(item.subtitle ? [] : [])]

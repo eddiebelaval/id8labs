@@ -11,6 +11,7 @@ import {
   getShippedIssueHref,
   type ShippedIssuePreview,
 } from './shipped/issues'
+import { CORPUS_REGISTER } from './corpus-register'
 
 export type WritingCategory =
   | 'essay'
@@ -31,6 +32,9 @@ export interface WritingItem {
   featured?: boolean
   // Newsletter-specific fields
   issueNumber?: number
+  /** Permanent corpus accession number (the folio on /writing). Assigned from
+   *  the append-only CORPUS_REGISTER; new pieces get the next number by date. */
+  corpusNumber?: number
   /** Optional explicit href. When present, the writing list links to this URL
    *  directly rather than the default /writing/{slug} pattern. Used for
    *  Magazine items that live at /shipped/{NN}. */
@@ -93,6 +97,30 @@ function shippedToWritingItem(issue: ShippedIssuePreview): WritingItem {
 }
 
 /**
+ * Assign the permanent corpus accession number to every item.
+ * Registered slugs keep their frozen number (CORPUS_REGISTER). Any slug not yet
+ * registered is assigned the next number (max + 1) in date order (oldest first),
+ * so new work always lands on top with a fresh number and existing numbers never
+ * shift. Computed server-side, so the number is baked into the data the client
+ * receives (no client recompute, no hydration drift).
+ */
+function assignCorpusNumbers(items: WritingItem[]): WritingItem[] {
+  let maxNum = 0
+  for (const n of Object.values(CORPUS_REGISTER)) if (n > maxNum) maxNum = n
+
+  const assigned: Record<string, number> = {}
+  items
+    .filter((it) => CORPUS_REGISTER[it.slug] == null)
+    .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.slug < b.slug ? -1 : 1))
+    .forEach((it, i) => { assigned[it.slug] = maxNum + i + 1 })
+
+  return items.map((it) => ({
+    ...it,
+    corpusNumber: CORPUS_REGISTER[it.slug] ?? assigned[it.slug],
+  }))
+}
+
+/**
  * Get all writing content (essays + newsletters + magazine issues)
  */
 export function getAllWriting(): WritingItem[] {
@@ -100,8 +128,8 @@ export function getAllWriting(): WritingItem[] {
   const newsletters = getAllIssues().map(newsletterToWritingItem)
   const magazine = getAllShippedIssues().map(shippedToWritingItem)
 
-  // Combine and sort by date (newest first)
-  const allContent = [...essays, ...newsletters, ...magazine]
+  // Combine, stamp permanent corpus numbers, then sort by date (newest first).
+  const allContent = assignCorpusNumbers([...essays, ...newsletters, ...magazine])
   return allContent.sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   )
