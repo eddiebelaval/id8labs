@@ -10,13 +10,23 @@
  * unified /writing feed and the homepage featured slot can never drift from the
  * magazine's own archive page.
  *
- * Last generated: 2026-06-16 (issues 09, 08, 07, 06, 05, 04, 03, 02, 01)
+ * Last generated: 2026-06-16 (issues 10, 09, 08, 07, 06, 05, 04, 03, 02, 01)
  */
 
 import type { ShippedIssuePreview } from './issues'
 
 /** The canonical Shipped. issue list, newest first. Mirrors the hub archive. */
 export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
+  {
+    issueNumber: '10',
+    title: 'The letter that turned off the frontier.',
+    subtitle: 'Seventy-two hours after Fable 5 and Mythos 5 went public, a letter from Commerce took them offline for every customer on earth.',
+    date: '2026-06-16',
+    excerpt: 'Seventy-two hours after Fable 5 and Mythos 5 went public, a letter from Commerce took them offline for every customer on earth.',
+    readTime: '12 min read',
+    tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
+    featured: true,
+  },
   {
     issueNumber: '09',
     title: 'The unlock.',
@@ -25,7 +35,6 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     excerpt: 'The first Mythos-class model went public, priced, and free for three weeks. Anthropic narrated the danger in the same breath.',
     readTime: '16 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
-    featured: true,
   },
   {
     issueNumber: '08',
