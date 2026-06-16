@@ -235,14 +235,6 @@ export default function Header() {
               >
                 <StackShackLogo size="sm" />
               </Link>
-              <Link
-                href="/claude-corner"
-                className="flex items-center font-[family-name:var(--font-mono)] text-[var(--muted)] transition-colors hover:text-id8-orange"
-                title="Claude Corner"
-              >
-                <span className="text-sm">{'>_'}</span>
-                <span className="ml-0.5 h-4 w-[2px] animate-pulse bg-current" />
-              </Link>
             </nav>
 
             {/* Mobile toggle */}
@@ -347,11 +339,6 @@ export default function Header() {
             </Link>
             <Link href="/stackshack" className="hover:opacity-80 transition-opacity" onClick={() => setMobileMenuOpen(false)}>
               <StackShackLogo size="md" />
-            </Link>
-            <Link href="/claude-corner" className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-[var(--muted)] transition-colors hover:text-id8-orange" onClick={() => setMobileMenuOpen(false)}>
-              <span className="text-lg">{'>_'}</span>
-              <span className="h-5 w-[2px] animate-pulse bg-current" />
-              <span className="text-xs uppercase tracking-wider">Claude Corner</span>
             </Link>
           </div>
         </nav>

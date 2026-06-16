@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  The lab-log chain schedule. Monthly, the 13th at 9am (the portfolio-review window).
+  Runs draft.mjs, which STAGES a pending entry. It never publishes — approve.mjs +
+  the founder's commit/deploy is the gate.
+
+  Install (after approval):
+    cp scripts/lab-log/com.id8labs.lab-log.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.id8labs.lab-log.plist
+  NOTE: the node path below is nvm-versioned; re-point it if node is upgraded.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.id8labs.lab-log</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/eddiebelaval/.nvm/versions/node/v22.21.1/bin/node</string>
+    <string>/Users/eddiebelaval/Development/id8/id8labs/scripts/lab-log/draft.mjs</string>
+  </array>
+
+  <!-- launchd PATH is minimal; include ~/.local/bin so the pinned claude resolves
+       (the exact omission that killed the auto-journal reconciler for 6 weeks). -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/eddiebelaval/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/Users/eddiebelaval/.nvm/versions/node/v22.21.1/bin</string>
+    <key>HOME</key>
+    <string>/Users/eddiebelaval</string>
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/eddiebelaval/Development/id8/id8labs</string>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Day</key>
+    <integer>13</integer>
+    <key>Hour</key>
+    <integer>9</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/id8labs-lab-log.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/id8labs-lab-log.err.log</string>
+</dict>
+</plist>

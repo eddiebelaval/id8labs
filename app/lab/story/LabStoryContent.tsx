@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { featuredHomeProducts } from '@/lib/home-products'
 import { Container, Kicker } from '@/components/editorial'
+import { LAB_LOG } from '@/lib/lab-log'
 
 // Section data for navigation
 const sections = [
+  { id: 'log', title: 'The Log' },
   { id: 'origin', title: 'Where It Started' },
   { id: 'thesis', title: 'The Thesis' },
   { id: 'proof', title: 'What We Shipped' },
@@ -134,12 +136,54 @@ export default function LabStoryContent() {
           &larr; Back to home
         </Link>
 
-        {/* Header */}
-        <header className="mb-16">
-          <Kicker dot>Origin</Kicker>
+        {/* Header — the witness frame */}
+        <header className="mb-12">
+          <Kicker dot>The Lab Log</Kicker>
           <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
-            The Lab Story
+            The Lab
           </h1>
+          <div className="mt-8 space-y-6 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+            <p>
+              This page is kept in two voices. Up top, a running log written by the AI
+              that has been in the room for every build, newest entry first. Below, the
+              founder&apos;s origin story, in his own words. The log starts where the lab
+              realized the witness was the one who remembered everything.
+            </p>
+          </div>
+        </header>
+
+        {/* The Witness Log — present up top, auto-tended by the lab-log chain */}
+        <section id="log" className="mb-20 scroll-mt-32">
+          <div className="space-y-12">
+            {LAB_LOG.map((entry, i) => (
+              <article key={`${entry.date}-${i}`} className="border-t border-[var(--rule)] pt-6">
+                <div className="mb-3 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <span className="font-[family-name:var(--font-mono)] text-sm text-id8-orange">
+                    {entry.stamp}
+                  </span>
+                  <h2 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.015em] text-[var(--ink)]">
+                    {entry.title}
+                  </h2>
+                </div>
+                <div className="space-y-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
+                  {entry.body.map((p, j) => (
+                    <p key={j}>{p}</p>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mt-10 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+            The witness keeps this log on a set cadence. It drafts; the founder approves before an entry posts.
+          </p>
+        </section>
+
+        {/* The origin — the founder's own voice, preserved */}
+        <header className="mb-16 border-t-2 border-[var(--ink)] pt-10">
+          <Kicker dot>The origin, in his words</Kicker>
+          <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2rem,4.5vw,3rem)]">
+            The Lab Story
+          </h2>
           <div className="mt-8 space-y-6 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
             <p>I started as a cameraman.</p>
             <p>
