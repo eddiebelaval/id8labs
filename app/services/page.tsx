@@ -142,7 +142,7 @@ const movements = [
 const arc = [
   { step: '01', title: 'Workshop', price: 'A small ticket', desc: 'A short working session that shows your team what the work could look like, and tells us both whether there is a fit.' },
   { step: '02', title: 'Audit', price: 'Paid', desc: 'A full read of your operation. You leave with the findings, the recommended approach, and a quote to build it.' },
-  { step: '03', title: 'Build and install', price: 'Quoted to the work', desc: 'We build the system and install it inside your operation, wired to your tools, with your data posture set from day one. Going live is included.' },
+  { step: '03', title: 'Build and install', price: 'Quoted to the work', desc: 'We build your product and install it inside your operation, wired to your tools, with your data posture set from day one. Going live is included.' },
   { step: '04', title: 'Custodianship', price: 'Ongoing', desc: 'We stay on after launch. The system stays healthy and keeps improving as your work changes.' },
 ]
 
@@ -180,11 +180,11 @@ const notFor = [
 const faqs = [
   {
     q: 'What is HALO, exactly?',
-    a: 'HALO is the system we install inside your operation: your operating DNA, your design sense, your voice, your judgment, plus the chains that run your work on brand by construction, not by reminder. It is the system we build, version, and operate for you. We do not hand it off. HALO is ours to run, tuned to your DNA, and we stay its custodian.',
+    a: 'HALO is our engine: your operating DNA, your design sense, your voice, your judgment, plus the chains that produce your work on brand by construction, not by reminder. We build, version, and run it for you. We do not hand it off; HALO stays ours, the moat. What goes into your operation is the product it builds and an agent layer that handles your change requests, and we run HALO as your custodian, tuned to your DNA.',
   },
   {
     q: 'Do I own the system, or do you?',
-    a: 'You own the outcome; we own the engine. HALO is ours. We build it to your DNA and operate it as your custodian, running inside your operation so you never have to. What is yours is the result: the work it produces, your data, and a system that stays true. Most studios hand off and the work drifts within a month. We stay, by design.',
+    a: 'You own the outcome; we own the engine. HALO is ours, the moat we keep and run as your custodian, so you never have to operate it. What is yours is the result: the product it builds, the work it produces, your data. What lives in your operation is that product and an agent layer that handles your change requests. Most studios hand off and the work drifts within a month. We stay, by design.',
   },
   {
     q: 'How is this priced?',

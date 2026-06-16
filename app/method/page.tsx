@@ -122,10 +122,10 @@ export default function MethodPage() {
       {/* HALO */}
       <section className="py-14 md:py-16">
         <Container>
-          <SectionHead title={<>HALO, <em className="italic text-id8-orange">the product</em></>} meta="What we install" />
+          <SectionHead title={<>HALO, <em className="italic text-id8-orange">the engine</em></>} meta="What we run" />
           <div className="mt-8 max-w-3xl space-y-4 font-[family-name:var(--font-sans)] text-[1.0625rem] leading-[1.7] text-[var(--body)]">
             <p>
-              HALO is the whole system we build and run inside your operation: the Genome at its core, the chains and harnesses that do your work, and the governance that keeps it on brand. We do not hand it off. HALO is ours to operate, tuned to your DNA, and we stay its custodian. What you get is the result, work that comes out the way you would have done it, from a system we keep true.
+              HALO is our engine: the Genome at its core, the chains and harnesses that produce your work, and the governance that keeps it on brand. We do not hand it off. HALO stays ours, the moat we build everything on, tuned to your DNA. What lives in your operation is the product it builds and an agent layer that handles your change requests. You own the outcome; we own the engine, and we run it as your custodian so the work stays true.
             </p>
             <p>
               At the center is the <span className="text-[var(--ink)] font-medium">Genome</span>, the DNA of how you work in four parts. <span className="text-[var(--ink)] font-medium">Design</span> is how the work looks and the standard it must meet. <span className="text-[var(--ink)] font-medium">Voice</span> is how your business sounds. <span className="text-[var(--ink)] font-medium">Ethos</span> is the judgment underneath both. <span className="text-[var(--ink)] font-medium">Lexicon</span> is the language you own, your terms of art used exactly the way you use them. Everything HALO produces reads the Genome before it acts, so the work is on brand by construction, not by reminder. We hold and maintain the Genome as your custodian.
