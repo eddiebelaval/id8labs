@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import {
   Container,
   Kicker,
@@ -12,52 +12,6 @@ import {
   EditorialCard,
   Pipeline,
 } from '@/components/editorial'
-
-// ─── Cal.com Script Loader ──────────────────────────────────
-function useCalScript() {
-  useEffect(() => {
-    const win = window as unknown as { Cal?: CallableFunction & { loaded?: boolean; q?: unknown[]; ns?: Record<string, unknown> } }
-    if (win.Cal?.loaded) return
-
-    ;(function (C: Window, A: string, L: string) {
-      const p = function (a: { q: unknown[] }, ar: unknown) { a.q.push(ar) }
-      const d = C.document
-      const w = C as unknown as { Cal: CallableFunction & { loaded?: boolean; q: unknown[]; ns: Record<string, CallableFunction & { q: unknown[] }> } }
-      w.Cal = w.Cal || function (...args: unknown[]) {
-        const cal = w.Cal as CallableFunction & { loaded?: boolean; q: unknown[]; ns: Record<string, CallableFunction & { q: unknown[] }> }
-        if (!cal.loaded) {
-          cal.ns = {}
-          cal.q = cal.q || []
-          d.head.appendChild(d.createElement('script')).src = A
-          cal.loaded = true
-        }
-        if (args[0] === L) {
-          const api = function (...apiArgs: unknown[]) { p(api as unknown as { q: unknown[] }, apiArgs) } as unknown as CallableFunction & { q: unknown[] }
-          const namespace = args[1]
-          api.q = api.q || []
-          if (typeof namespace === 'string') {
-            cal.ns[namespace] = cal.ns[namespace] || api
-            p(cal.ns[namespace], args)
-            p(cal as { q: unknown[] }, ['initNamespace', namespace])
-          } else {
-            p(cal as { q: unknown[] }, args)
-          }
-          return
-        }
-        p(cal as { q: unknown[] }, args)
-      }
-    })(window, 'https://app.cal.com/embed/embed.js', 'init')
-
-    const Cal = win.Cal
-    if (Cal) {
-      Cal('init', { origin: 'https://cal.com' })
-      Cal('ui', {
-        styles: { branding: { brandColor: '#FF6B35' } },
-        hideEventTypeDetails: false,
-      })
-    }
-  }, [])
-}
 
 // ─── Shared Form Styles (editorial tokens, sharp corners) ───
 const inputClassName =
@@ -207,8 +161,6 @@ const faqs = [
 // ─── Main Page Component ────────────────────────────────────
 
 export default function ServicesPage() {
-  useCalScript()
-
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [formData, setFormData] = useState({
     name: '',
@@ -274,14 +226,10 @@ export default function ServicesPage() {
               We design primitive chains with human gates and deploy them inside your operation. Your domain, your tools, your judgment. A workshop opens it, an audit confirms the fit, we build and install, then we stay on as custodians so the work never drifts.
             </Deck>
             <div className="mb-10 flex flex-col gap-3.5 sm:flex-row">
-              <button
-                data-cal-link="id8labs/workshop"
-                data-cal-config='{"layout":"month_view"}'
-                className="inline-flex cursor-pointer items-center justify-center gap-2.5 border border-[var(--ink)] bg-[var(--ink)] px-6 py-3.5 font-[family-name:var(--font-narrow)] text-xs font-bold uppercase tracking-[0.18em] text-[var(--paper)] transition-colors duration-150 hover:border-id8-orange hover:bg-id8-orange"
-              >
+              <EditorialButton href="/workshops/the-tuning-fork">
                 Book the workshop
                 <ArrowRightIcon />
-              </button>
+              </EditorialButton>
               <EditorialButton variant="ghost" onClick={scrollToForm}>
                 Apply for an audit
               </EditorialButton>
