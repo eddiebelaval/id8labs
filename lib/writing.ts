@@ -66,7 +66,7 @@ function newsletterToWritingItem(issue: NewsletterIssuePreview): WritingItem {
     category: 'newsletter',
     readTime: issue.isEssay ? '8 min read' : '5 min read',
     excerpt: issue.excerpt,
-    tags: ['newsletter', 'signal:noise'],
+    tags: ['newsletter', 'shipped'],
     issueNumber: issue.issueNumber,
   }
 }
