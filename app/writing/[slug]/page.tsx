@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
@@ -21,6 +22,31 @@ export function generateStaticParams() {
   return getAllEssays().map((essay) => ({
     slug: essay.slug,
   }))
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const essay = getEssayBySlug(params.slug)
+  if (!essay) return { title: { absolute: 'Writing · id8Labs' } }
+  const description = essay.excerpt || essay.subtitle
+  const url = `https://id8labs.app/writing/${essay.slug}`
+  return {
+    title: { absolute: `${essay.title} · id8Labs` },
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: essay.title,
+      description,
+      type: 'article',
+      url,
+      siteName: 'id8Labs',
+      ...(essay.heroImage ? { images: [{ url: essay.heroImage }] } : {}),
+    },
+    twitter: {
+      card: essay.heroImage ? 'summary_large_image' : 'summary',
+      title: essay.title,
+      description,
+    },
+  }
 }
 
 export default function EssayPage({ params }: { params: { slug: string } }) {
