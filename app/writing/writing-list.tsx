@@ -1,7 +1,8 @@
 'use client'
 
 import { type WritingItem, type WritingCategory } from '@/lib/writing'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { NewsletterSubscribe } from '@/components/newsletter'
 import {
   Container,
@@ -51,7 +52,9 @@ function formatDate(dateStr: string): string {
   return dateStr
 }
 
-const FILTERS: Array<{ key: 'all' | WritingCategory; label: string }> = [
+type FilterKey = 'all' | WritingCategory
+
+const FILTERS: Array<{ key: FilterKey; label: string }> = [
   { key: 'all', label: 'All Writing' },
   { key: 'newsletter', label: 'Newsletter' },
   { key: 'magazine', label: 'Magazine' },
@@ -60,8 +63,27 @@ const FILTERS: Array<{ key: 'all' | WritingCategory; label: string }> = [
   { key: 'release', label: 'Releases' },
 ]
 
+const VALID_FILTERS = new Set<string>(FILTERS.map(f => f.key))
+
 export function WritingList({ items }: WritingListProps) {
-  const [filter, setFilter] = useState<'all' | WritingCategory>('all')
+  return (
+    <Suspense fallback={null}>
+      <WritingListInner items={items} />
+    </Suspense>
+  )
+}
+
+function WritingListInner({ items }: WritingListProps) {
+  // Initial filter is deep-linkable via ?filter= (e.g. /writing?filter=magazine
+  // is the navbar "Shipped." destination). Validate against known keys, else 'all'.
+  const searchParams = useSearchParams()
+  const paramFilter = searchParams.get('filter')
+  const initialFilter: FilterKey =
+    paramFilter && VALID_FILTERS.has(paramFilter)
+      ? (paramFilter as FilterKey)
+      : 'all'
+
+  const [filter, setFilter] = useState<FilterKey>(initialFilter)
 
   const filteredItems = filter === 'all'
     ? items

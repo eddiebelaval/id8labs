@@ -168,7 +168,7 @@ export default function Header() {
               <Link href="/writing" className={navLink}>
                 Writing
               </Link>
-              <Link href="/shipped" className={navLink}>
+              <Link href="/writing?filter=magazine" className={navLink}>
                 Shipped<span className="text-id8-orange">.</span>
               </Link>
 
@@ -320,7 +320,7 @@ export default function Header() {
             <Link href="/writing" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Writing
             </Link>
-            <Link href="/shipped" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/writing?filter=magazine" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Shipped<span className="text-id8-orange">.</span>
             </Link>
 
