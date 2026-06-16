@@ -65,6 +65,21 @@ function folioInitial(title: string): string {
   return (match ? match[0] : title.charAt(0) || '·').toUpperCase()
 }
 
+/**
+ * Roman-numeral folio for numbered issues (Shipped / Newsletter), e.g. 9 -> IX.
+ * Classical magazine-folio feel; meaningful (it is the real issue number).
+ */
+function toRoman(n: number): string {
+  if (!Number.isFinite(n) || n <= 0) return String(n)
+  const map: [number, string][] = [
+    [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'],
+    [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
+  ]
+  let r = '', x = Math.floor(n)
+  for (const [v, s] of map) while (x >= v) { r += s; x -= v }
+  return r
+}
+
 type FilterKey = 'all' | WritingCategory
 
 const FILTERS: Array<{ key: FilterKey; label: string }> = [
@@ -194,7 +209,7 @@ function WritingListInner({ items }: WritingListProps) {
                 : `/writing/${item.slug}`
 
             const number = (isNewsletter || isMagazine) && item.issueNumber != null
-              ? String(item.issueNumber).padStart(2, '0')
+              ? toRoman(item.issueNumber)
               : null
             // Un-numbered pieces get a title drop-cap folio, not a placeholder dash.
             const folio = number ?? folioInitial(item.title)
