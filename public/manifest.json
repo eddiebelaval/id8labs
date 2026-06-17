@@ -1,11 +1,11 @@
 {
-  "name": "ID8Labs - Professional Tools for the AI Era",
-  "short_name": "ID8Labs",
-  "description": "Claude Code training and AI tools for knowledge workers",
+  "name": "id8Labs — Primitive Chain Architecture for AI-Era Operators",
+  "short_name": "id8Labs",
+  "description": "Architecture, not tools. Primitive chains with human gates, designed domain-deep, deployed inside companies.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0A0B",
-  "theme_color": "#FF6B35",
+  "background_color": "#fafaf7",
+  "theme_color": "#ff6b35",
   "orientation": "portrait-primary",
   "icons": [
     {
