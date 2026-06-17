@@ -10,7 +10,7 @@
  * unified /writing feed and the homepage featured slot can never drift from the
  * magazine's own archive page.
  *
- * Last generated: 2026-06-16 (issues 10, 09, 08, 07, 06, 05, 04, 03, 02, 01)
+ * Last generated: 2026-06-17 (issues 10, 09, 08, 07, 06, 05, 04, 03, 02, 01)
  */
 
 import type { ShippedIssuePreview } from './issues'
@@ -23,7 +23,7 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     subtitle: 'Seventy-two hours after Fable 5 and Mythos 5 went public, a letter from Commerce took them offline for every customer on earth.',
     date: '2026-06-16',
     excerpt: 'Seventy-two hours after Fable 5 and Mythos 5 went public, a letter from Commerce took them offline for every customer on earth.',
-    readTime: '12 min read',
+    readTime: '17 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
     featured: true,
   },
@@ -33,7 +33,7 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     subtitle: 'The first Mythos-class model went public, priced, and free for three weeks. Anthropic narrated the danger in the same breath.',
     date: '2026-06-12',
     excerpt: 'The first Mythos-class model went public, priced, and free for three weeks. Anthropic narrated the danger in the same breath.',
-    readTime: '16 min read',
+    readTime: '20 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
   },
   {
@@ -42,7 +42,7 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     subtitle: 'Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks.',
     date: '2026-06-05',
     excerpt: 'Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks.',
-    readTime: '14 min read',
+    readTime: '19 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
   },
   {
@@ -51,7 +51,7 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     subtitle: 'The model Anthropic held back found 10,000 bugs, flickered into Claude Code, then got a release date — the same week a $65B raise valued the company at $965B.',
     date: '2026-05-29',
     excerpt: 'The model Anthropic held back found 10,000 bugs, flickered into Claude Code, then got a release date — the same week a $65B raise valued the company at $965B.',
-    readTime: '13 min read',
+    readTime: '18 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
   },
   {
@@ -60,7 +60,7 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     subtitle: 'Anthropic bought the factory that builds SDKs for OpenAI, Google, and Meta, then announced it would close it.',
     date: '2026-05-22',
     excerpt: 'Anthropic bought the factory that builds SDKs for OpenAI, Google, and Meta, then announced it would close it.',
-    readTime: '12 min read',
+    readTime: '16 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
   },
   {
@@ -69,7 +69,7 @@ export const SHIPPED_ISSUES: ShippedIssuePreview[] = [
     subtitle: 'No new model. Claude landed in small business, the Gates Foundation, and 30,000 PwC desks the same way every time: reasoning layer in, integration surface borrowed.',
     date: '2026-05-15',
     excerpt: 'No new model. Claude landed in small business, the Gates Foundation, and 30,000 PwC desks the same way every time: reasoning layer in, integration surface borrowed.',
-    readTime: '12 min read',
+    readTime: '19 min read',
     tags: ['Opus 4.7', 'Mythos Preview', 'Project Glasswing', 'Agent SDK', 'Claude Code v2.1.85→111'],
   },
   {

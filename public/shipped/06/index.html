@@ -1463,26 +1463,32 @@ body::before{
         <span class="toc-entry-kicker">The Lead Story</span>
       </div>
     </a>
-    <a href="#also-shipped" class="toc-entry">
+    <a href="#by-the-numbers" class="toc-entry">
       <span class="toc-entry-n">03</span>
+      <div class="toc-entry-body">
+        <span class="toc-entry-kicker">By the Numbers</span>
+      </div>
+    </a>
+    <a href="#also-shipped" class="toc-entry">
+      <span class="toc-entry-n">04</span>
       <div class="toc-entry-body">
         <span class="toc-entry-kicker">Also Shipped</span>
       </div>
     </a>
     <a href="#quiet-on-the-wire" class="toc-entry">
-      <span class="toc-entry-n">04</span>
+      <span class="toc-entry-n">05</span>
       <div class="toc-entry-body">
         <span class="toc-entry-kicker">Quiet on the Wire</span>
       </div>
     </a>
     <a href="#term-of-the-issue" class="toc-entry">
-      <span class="toc-entry-n">05</span>
+      <span class="toc-entry-n">06</span>
       <div class="toc-entry-body">
         <span class="toc-entry-kicker">Term of the Issue</span>
       </div>
     </a>
     <a href="#the-close" class="toc-entry">
-      <span class="toc-entry-n">06</span>
+      <span class="toc-entry-n">07</span>
       <div class="toc-entry-body">
         <span class="toc-entry-kicker">The Close</span>
       </div>
@@ -1500,10 +1506,10 @@ body::before{
 
   <div class="open-grid">
     <div class="open-lead">
-      <p class="open-quote">Monday morning, Anthropic bought a small company most builders had never heard of and every builder had already used. Stainless generated the official SDK for Anthropic's own API. It also generated the Python, TypeScript, Go, Java, Kotlin, and Ruby libraries that OpenAI, Google, Cloudflare, and Meta ship to their developers. One startup quietly built the scaffolding under the whole frontier.</p>
+      <p class="open-quote">Monday morning, Anthropic bought a small company most builders had never heard of and every builder had already used. Stainless generated the official SDK for Anthropic's own API. It also generated the Python, TypeScript, Go, Java, Kotlin, and Ruby libraries that OpenAI, Google, Cloudflare, and Meta ship to their own developers. One startup quietly built the scaffolding under the whole frontier, and almost nobody outside the toolchain knew its name.</p>
       <div class="open-prose">
         <p>Then Anthropic said it would shut the service down.</p>
-        <p>No model shipped this week. No flagship. The headline was a $300-million-plus acquisition of a tool nobody talked about, and the decision to switch it off. The rest of the week was Claude Code patching itself in public, version after version, sometimes twice a day. The center of gravity moved from what the model can do to who owns the machinery that builds with it.</p>
+        <p>No model shipped this week. No flagship. The headline was a $300-million-plus acquisition of a tool nobody talked about, and the decision to switch it off. The rest of the week was Claude Code patching itself in public, six versions in five days, twice in one Friday. The center of gravity moved from what the model can do to who owns the machinery that builds with it.</p>
       </div>
     </div>
     <aside class="open-aside">
@@ -1529,10 +1535,13 @@ body::before{
 <div class="prose-well">
   <div class="prose drop-cap drop-cap-orange">
     <p>The frontier race had a quiet move this week, and it wasn't a benchmark. It was an acquisition most people couldn't place.</p>
-    <p>On Monday, May 18, Anthropic announced it had acquired Stainless, the startup that generates production-ready SDKs, CLIs, and MCP servers directly from API specifications (<a href="https://www.anthropic.com/news/anthropic-acquires-stainless">Anthropic</a>). Founded in 2022 by former Stripe engineer Alex Rattray and backed by Sequoia and Andreessen Horowitz, Stainless sat in a strange place in the toolchain: it generated every official Anthropic SDK since the API's earliest days, and it also generated the libraries OpenAI, Google, Cloudflare, and Meta hand their own developers (<a href="https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/">TechCrunch</a>). Terms weren't disclosed. The Information had reported, before the announcement, that talks valued the company at over $300 million, with part of the consideration potentially in Anthropic equity.</p>
+    <p>On Monday, May 18, Anthropic announced it had acquired Stainless, the startup that generates production-ready SDKs, CLIs, and MCP servers directly from API specifications (<a href="https://www.anthropic.com/news/anthropic-acquires-stainless">Anthropic</a>). Founded in 2022 by former Stripe engineer Alex Rattray and backed by Sequoia and Andreessen Horowitz, Stainless sat in a strange place in the toolchain. It generated every official Anthropic SDK since the API's earliest days. It also generated the Python, TypeScript, Go, Java, Kotlin, and Ruby libraries OpenAI, Google, Cloudflare, and Meta hand their own developers (<a href="https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/">TechCrunch</a>). Terms weren't disclosed. The Information had reported, before the announcement, that talks valued the company at over $300 million, with part of the consideration potentially in Anthropic equity.</p>
     <p>Read the headline and you'd file it as a routine dev-tools tuck-in. Read the second sentence of the press release and the story changes. Anthropic will wind down all hosted Stainless products, the SDK generator included. Existing customers keep the SDKs they've already built, with full rights to modify them. The factory closes. The parts stay where they landed.</p>
-    <p>That is the move worth naming. Anthropic didn't buy a feature. It bought the machine its rivals quietly relied on to talk to their own customers, and then it pulled the machine off the market. OpenAI and Google won't lose the SDKs they have. They lose the supplier. The next time they regenerate from a spec, they do it without the toolmaker the whole industry had been renting.</p>
-    <p>It rhymes with the spring's other Anthropic story. Capacity was about owning the compute everyone needs to run. This is about owning the tooling everyone needs to build. Same instinct, smaller check: when the constraint is a dependency you don't control, buy the dependency.</p>
+    <p>Sit with the mechanism, because the mechanism is the whole story. A spec-to-SDK generator is not a convenience. It is the thing that turns one OpenAPI document into seven idiomatic client libraries, keeps them in sync release after release, and absorbs the unglamorous labor of pagination helpers, retry logic, streaming parsers, and typed errors in six languages at once. A lab ships an API change on Tuesday; the generator re-emits libraries that match it by Wednesday. Stainless was the part of the supply chain nobody photographed because it sat below the layer anyone looks at. It was the loom under the cloth.</p>
+    <p>So name the blast radius precisely. OpenAI and Google do not lose the SDKs they have today. They keep them, with full rights to modify. What they lose is the supplier. The next time one of them ships an API change and reaches to regenerate, the hosted machine that did it for them is dark. They can fork what Stainless left behind, hire a team to maintain a generator in-house, or build their own from scratch, and any of those is a real engineering cost on a workstream they had been quietly outsourcing to a competitor. The library on disk still works. The conveyor belt that kept it current is gone. That is the difference between buying a feature and buying a chokepoint.</p>
+    <p>It rhymes with the spring's other Anthropic story. Capacity was about owning the compute everyone needs to run. This is about owning the tooling everyone needs to build. Same instinct, much smaller check: when the constraint is a dependency you don't control, buy the dependency. A $30-billion-run-rate lab paid roughly the price of a few weeks of its Colossus compute bill to take a load-bearing brick out of its rivals' foundations. The Memphis data center cost an estimated $1.25 billion a month (<a href="https://techcrunch.com/2026/05/20/anthropic-will-pay-xai-1-25-billion-per-month-for-compute/">TechCrunch</a>); Stainless reportedly cost north of $300 million once (<a href="https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/">TechCrunch</a>). One of those is a recurring tax. The other is a permanent subtraction from someone else's stack.</p>
+    <p>Read against the rest of the frontier, the move has teeth the press release declined to show. Every lab now sells agents, and agents are only as good as the SDKs and MCP servers that let them touch the world. Anthropic just bought the standard tool for generating exactly those surfaces, and then it removed that tool from the market it shares with the labs it competes against. The contrast is the read: while the field races to ship the better model, Anthropic spent the week making sure the field has a harder time shipping the better client. Nobody loses a model over this. Everybody who relied on the generator inherits a maintenance problem they didn't have on Sunday.</p>
+    <p>For a builder, the move tonight is narrow and worth making. If your pipeline pulls a Stainless-generated SDK for any provider, vendor the current output now and read the wind-down terms while the docs are still up. You keep what you have and the right to modify it; you do not keep the button that regenerated it. Pin the version, check it into a place you control, and stop assuming the upstream loom will be there next quarter.</p>
     <p>A toolmaker that closes its doors after you've moved in. That's the deal.</p>
   </div>
 </div>
@@ -1560,13 +1569,15 @@ body::before{
     <div class="prose">
 
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Anthropic names 2026 the breakaway year.</h3>
-      <p>The week opened on a Saturday with a single loud sentence. Anthropic's research team published "2028: Two scenarios for global AI leadership," a paper that puts semiconductors, not capabilities or safety, at the center of the US-China race (<a href="https://www.anthropic.com/research/2028-ai-leadership">Anthropic Research</a>). In scenario one, democracies tighten chip export controls and hold a 12-to-24-month compute lead through 2028. In scenario two, policymakers defer and the norms get written by authoritarian states. "There is a high likelihood that we will look back on 2026 as the breakaway opportunity for American AI," the paper argues. It published while Trump was in Beijing for the first time in nearly a decade. The timing was not an accident.</p>
-      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Claude Code patches a permission bypass.</h3>
-      <p>On Tuesday, Claude Code v2.1.145 shipped a fix that sat twelve bullets deep in a nineteen-item changelog: bare variable assignments to non-allowlisted environment variables in Bash commands were being auto-approved, slipping past the permission prompt entirely (<a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.145">GitHub</a>). In an agentic workflow with broad access, that's a real hole, not a cosmetic one. The same release added <code>claude agents --json</code> for scripting live sessions and put <code>agent_id</code> and <code>parent_agent_id</code> on OTEL spans. The understatement was the right call. The fix was the news.</p>
+      <p>The week opened on a Saturday with a single loud sentence. Anthropic's research team published "2028: Two scenarios for global AI leadership," a paper that puts semiconductors, not capabilities or safety, at the center of the US-China race (<a href="https://www.anthropic.com/research/2028-ai-leadership">Anthropic Research</a>). In scenario one, democracies tighten chip export controls, block adversarial-state access to American frontier models, and hold a 12-to-24-month compute lead through 2028. In scenario two, policymakers defer, China closes the gap, and the norms governing AI globally get written by authoritarian states. "There is a high likelihood that we will look back on 2026 as the breakaway opportunity for American AI," the paper argues, and the rest of it is the case for that sentence. It published on anthropic.com while Trump was in Beijing for the first time in nearly a decade (<a href="https://creati.ai/ai-news/2026-05-15/anthropic-publishes-2028-scenarios-for-global-ai-leadership/">coverage</a>). A lab that spent the week buying a tool out from under its rivals also spent a Saturday arguing that the real contest is over chips, not capabilities, and that the clock is the policy lever. The timing was not an accident.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The API quietly gained three betas.</h3>
-      <p>Three API items dated May 18 surfaced through the week, none with an announcement. Cache diagnostics (public beta) reports a <code>cache_miss_reason</code> when a prompt-cache prefix diverges from the prior turn, behind the <code>cache-diagnosis-2026-04-07</code> header (<a href="https://docs.anthropic.com/en/release-notes/api">API release notes</a>). Fast mode reached Opus 4.7 in research preview, extending the speed tier up from 4.6. And the built-in web search tool began returning richer SEC filing data, surfacing primary-source citations for financial-research and due-diligence agents. Plumbing, all of it. The kind that ships without a stage.</p>
+      <p>Three API items dated May 18 surfaced through the week, none with an announcement, none with a stage. Cache diagnostics, in public beta, reports a <code>cache_miss_reason</code> field when a prompt-cache prefix diverges from the prior turn, so you can debug multi-turn cache behavior instead of guessing where the prefix broke; it rides behind the <code>cache-diagnosis-2026-04-07</code> header (<a href="https://docs.anthropic.com/en/release-notes/api">API release notes</a>). Fast mode reached Opus 4.7 in research preview, extending the speed tier up from 4.6 at matching pricing. And the built-in web search tool began returning richer SEC filing data, surfacing primary-source citations from filings for financial-research, earnings-analysis, and due-diligence agents. None of it had a launch. All of it is the kind of plumbing that decides whether an agent built on the platform is cheap to run and easy to trust. Read against the Stainless move, it is the same week's other half: own the tooling, then quietly improve the parts of it you already own.</p>
       <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The SDKs got self-hosted sandboxes.</h3>
-      <p>The builder layer moved in lockstep all week. On May 19, Python v0.103.0 and TypeScript v0.97.0 added self-hosted sandbox support in the Compute Management API, with helper utilities for standing your own sandboxes up (<a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.103.0">GitHub</a>). Point releases the same day taught <code>SessionToolRunner</code> to skip tool calls it doesn't own, closing a dispatch conflict in multi-agent sessions. Two days later, both SDKs added <code>thinking-token-count</code>, surfacing estimated token counts in thinking-block deltas during streaming, so agentic loops that lean on extended thinking can budget context instead of guessing.</p>
+      <p>The builder layer moved in lockstep all week. On May 19, Python v0.103.0 and TypeScript v0.97.0 added self-hosted sandbox support in the Compute Management API, with helper utilities for standing your own sandboxes up (<a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.103.0">GitHub</a>). That is the surface that lets you run agent code in isolation you control rather than renting it, which matters for anyone who can't ship their code to a managed runtime. Point releases the same day taught <code>SessionToolRunner</code> to skip tool calls it doesn't own, closing a dispatch conflict that would otherwise bite multi-agent sessions where two runners fight over the same call. The TypeScript build also picked up Node 26 compatibility. The features Code with Claude London put on stage on May 20, self-hosted sandboxes and MCP tunnels for Managed Agents, had already shipped here the day before the keynote opened.</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">Both SDKs learned to count thinking tokens.</h3>
+      <p>On May 21, Python v0.104.0 (<a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.104.0">releases</a>) and TypeScript v0.98.0 (<a href="https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/sdk-v0.98.0">releases</a>) added <code>thinking-token-count</code> beta support on the same day, a parity release surfacing estimated token counts in thinking-block deltas during streaming. The point is budget. Agentic loops that lean on extended thinking have been flying blind on how much context the reasoning is eating until the bill or the context window said otherwise; now the estimate arrives as metadata mid-stream, while there is still time to act on it. A day later, Python v0.104.1 cleaned up the corner the feature exposed: <code>encrypted_content</code> wasn't being carried through the beta compaction accumulator during streaming, which bit anyone running the extended-thinking beta with context compaction on (<a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.104.1">GitHub</a>). Ship the visibility, then patch the leak it surfaced. The whole week ran on that rhythm.</p>
+      <h3 style="font-family:var(--disp);font-weight:500;font-style:italic;font-size:30px;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin:32px 0 14px">The bedrock and vertex SDKs got a CI fix.</h3>
+      <p>The least glamorous entry in the log, and worth one line for the people it unblocked. On May 19, bedrock-sdk v0.29.2 (<a href="https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/bedrock-sdk-v0.29.2">releases</a>) and vertex-sdk v0.16.1 (<a href="https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/vertex-sdk-v0.16.1">releases</a>) aligned <code>@types/node</code> across sub-packages to fix CI build failures, with no feature changes. Anyone deploying Claude through Bedrock or Vertex on a pinned TypeScript toolchain had a red pipeline until this landed. No mechanism worth a paragraph, but the blast radius was real, and the move is the obvious one: bump and move on.</p>
     </div>
   </div>
 </section>
@@ -1590,7 +1601,7 @@ body::before{
     <h3 class="quiet-title">Quiet on<br>the <em>wire.</em></h3>
   </div>
   <div class="quiet-body">
-    <p>Code with Claude London wrapped its two-day run on May 20, with MIT Technology Review and Fortune both covering it (<a href="https://www.technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-showed-off-codings-future-whether-you-like-it-or-not/">MIT Technology Review</a>). The features on stage, self-hosted sandboxes and MCP tunnels for Managed Agents, had already shipped May 19. No model announcements anywhere in the window. The docs.anthropic.com release-notes pages stayed unreachable on every sweep this week, so anything that moved there silently isn't captured here. Tokyo is next, June 10.</p>
+    <p>No models. No flagship. anthropic.com/research stayed dark after the May 15 leadership paper (<a href="https://creati.ai/ai-news/2026-05-15/anthropic-publishes-2028-scenarios-for-global-ai-leadership/">coverage</a>), and anthropic.com/news hadn't moved since the May 14 Gates Foundation partnership, $200 million over four years across global health, life sciences, education, and economic mobility, which sat just outside the window (<a href="https://www.anthropic.com/news/gates-foundation-partnership">Anthropic</a>). Code with Claude London wrapped its two-day run on May 20, with MIT Technology Review and Fortune both covering it (<a href="https://www.technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-showed-off-codings-future-whether-you-like-it-or-not/">MIT Technology Review</a>), but the features on stage had already shipped in the SDKs the day before. The docs.anthropic.com release-notes pages returned 403 on every sweep this week, so anything that moved there silently isn't captured here; the three API betas above were confirmed by web search, not by the source. Tokyo is the next stop, June 10.</p>
   </div>
 </section>
 <section class="close-section">
@@ -1598,6 +1609,7 @@ body::before{
   <div class="close-stack">
     <p class="close-line close-final close-coda-start">No new model.
 A factory bought and closed.
+Six patches to make the agent safe to hold.
 The toolmaker was the story.</p>
   </div>
   <div class="close-mark">&#10022;</div>
@@ -2070,7 +2082,7 @@ The toolmaker was the story.</p>
         <p><b>Volume</b> I</p>
         <p><b>Issue</b> 06 (The Toolmaker)</p>
         <p><b>Period</b> 2026-05-16 → 2026-05-22</p>
-        <p><b>Front of book</b> 662 words</p>
+        <p><b>Front of book</b> 1499 words</p>
         <p><b>Release log</b> 18 entries · 5 sections</p>
         <p><b>Status</b> Draft</p>
       </div>
