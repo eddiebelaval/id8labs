@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     description: 'Architecture, not tools. Primitive chains with human gates, designed domain-deep, deployed inside companies. Forward deployment that eats the drudgery before the work.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.png?v=2',
         width: 1200,
         height: 630,
         alt: 'ID8Labs - Architecture, not tools. Primitive chains for AI-era operators.',
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     title: 'ID8Labs - Primitive Chain Architecture for AI-Era Operators',
     description: 'Architecture, not tools. Primitive chains with human gates, designed domain-deep, deployed inside companies.',
     creator: '@eddiebe',
-    images: ['/og-image.png'],
+    images: ['/og-image.png?v=2'],
   },
   robots: {
     index: true,
@@ -116,8 +116,8 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FF6B35" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
