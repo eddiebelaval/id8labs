@@ -1,4 +1,4 @@
-# The Correspondent — the live journalist loop.
+# The Wire — the live journalist loop.
 #
 # Runs daily. The agent decides whether a piece is due (every 2-3 days), reports
 # a beat, writes it in the magazine's voice, and grades its own draft against the
@@ -16,7 +16,7 @@
 #
 # Kill switch: disable this workflow in the Actions tab, or delete this file.
 
-name: The Correspondent
+name: The Wire
 
 on:
   schedule:
@@ -34,7 +34,7 @@ on:
         default: ''
 
 concurrency:
-  group: correspondent
+  group: the-wire
   cancel-in-progress: false
 
 permissions:
@@ -78,10 +78,10 @@ jobs:
       - name: Publish to main
         if: steps.gen.outputs.decision == 'publish'
         run: |
-          git config user.name  "id8labs-correspondent[bot]"
+          git config user.name  "id8labs-the-wire[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add content/essays scripts/journalist/ledger.json
-          git commit -m "writing(correspondent): ${{ steps.gen.outputs.title }}
+          git commit -m "writing(the-wire): ${{ steps.gen.outputs.title }}
 
           Filed by the live journalist agent on the '${{ steps.gen.outputs.mode }}' beat.
           Cleared the editorial rubric and auto-published to /writing."
@@ -96,11 +96,11 @@ jobs:
           add-paths: |
             content/essays
             scripts/journalist
-          commit-message: "writing(correspondent): draft held for review — ${{ steps.gen.outputs.title }}"
-          title: "Correspondent draft (held): ${{ steps.gen.outputs.title }}"
+          commit-message: "writing(the-wire): draft held for review — ${{ steps.gen.outputs.title }}"
+          title: "Wire draft (held): ${{ steps.gen.outputs.title }}"
           draft: true
           body: |
-            The Correspondent filed a piece on the **${{ steps.gen.outputs.mode }}** beat but
+            The Wire filed a piece on the **${{ steps.gen.outputs.mode }}** beat but
             the Managing Editor held it below the publish bar.
 
             > ${{ steps.gen.outputs.note }}

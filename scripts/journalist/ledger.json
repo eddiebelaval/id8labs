@@ -1,5 +1,5 @@
 {
-  "_comment": "The Correspondent's memory. Committed state, updated by generate.mjs on a successful publish. lastPostedDate + intervalDays gate the 2-3 day cadence; lastMode rotates the beat; history avoids repeating recent ground. Do not hand-edit unless you know why.",
+  "_comment": "The Wire's memory. Committed state, updated by generate.mjs on a successful publish. lastPostedDate + intervalDays gate the 2-3 day cadence; lastMode rotates the beat; history avoids repeating recent ground. Do not hand-edit unless you know why.",
   "lastPostedDate": null,
   "intervalDays": 2,
   "lastMode": "field",

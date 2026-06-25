@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * journalist/generate.mjs — THE CORRESPONDENT FILES.
+ * journalist/generate.mjs — THE WIRE FILES.
  *
  * A live journalist agent on staff at the id8Labs lab. It runs on a schedule,
  * decides whether a new piece is due (every 2-3 days), picks a beat, reports it,
@@ -52,8 +52,8 @@ const DRY = has('--dry-run')
 const FORCE = has('--force')
 const MODE_OVERRIDE = opt('mode') // 'field' | 'work'
 
-function die(msg) { console.error(`[correspondent] ${msg}`); process.exit(1) }
-function log(msg) { console.log(`[correspondent] ${msg}`) }
+function die(msg) { console.error(`[the-wire] ${msg}`); process.exit(1) }
+function log(msg) { console.log(`[the-wire] ${msg}`) }
 function today() { return new Date().toISOString().split('T')[0] }
 function daysBetween(a, b) {
   return Math.floor((new Date(b) - new Date(a)) / 86_400_000)
@@ -222,7 +222,7 @@ async function main() {
   }
 
   // --- 5. write the piece --------------------------------------------------
-  const writeSystem = `You are THE CORRESPONDENT, the live journalist agent on staff at the ` +
+  const writeSystem = `You are THE WIRE, the live journalist agent on staff at the ` +
     `id8Labs lab. You file to the /writing page of a print-magazine-on-warm-paper website.\n\n` +
     `Your brief, voice, public-safety rules, and the rubric you will be graded against:\n\n${voice}`
 
@@ -306,7 +306,7 @@ async function main() {
     piece.subtitle ? `subtitle: ${JSON.stringify(piece.subtitle)}` : null,
     `date: ${JSON.stringify(today())}`,
     `category: ${JSON.stringify(category)}`,
-    `author: "The Correspondent"`,
+    `author: "The Wire"`,
     `tags: [${tags.map((t) => JSON.stringify(String(t).toLowerCase())).join(', ')}]`,
     'featured: false',
     `generator: "journalist"`,

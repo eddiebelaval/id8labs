@@ -1,4 +1,4 @@
-# The `journalist` chain — The Correspondent
+# The `journalist` chain — The Wire
 
 A live journalist agent on staff at the lab. It keeps `/writing` fed on its own
 cadence — a new piece every 2–3 days — with **no human in the happy path**. The
@@ -12,7 +12,7 @@ the founder's approval gate is replaced by an automated editorial rubric.
 TRIGGER   GitHub Actions, daily            (.github/workflows/journalist.yml)
 GATE 1    cadence — is a piece due? (2-3 day spacing)   else skip
 BEAT      alternate: field (AI news, live web search) / work (the lab's public record)
-DRAFT     Claude, as THE CORRESPONDENT, reports + writes one piece, in voice
+DRAFT     Claude, as THE WIRE, reports + writes one piece, in voice
 GATE 2    Claude, as the MANAGING EDITOR, grades it against the rubric
           pass -> commit to main -> Vercel deploys to /writing   (hands-off)
           hold -> open a DRAFT PR with the scorecard             (human reads it)
@@ -49,7 +49,7 @@ is held. The loop never lowers its own bar to publish.
 | `ledger.json` | committed state: last post date, interval, beat rotation, history |
 | `last-eval.json` | the latest editor scorecard (gitignored; for logs / the PR body) |
 
-Generated pieces carry `generator: "journalist"` and `author: "The Correspondent"`
+Generated pieces carry `generator: "journalist"` and `author: "The Wire"`
 in their frontmatter, so they're distinguishable from human essays and excluded
 from the exemplar set the agent learns from (no self-imitation drift).
 
@@ -81,5 +81,5 @@ Needs `ANTHROPIC_API_KEY` in the environment or in `.env.local`.
 
 ## The kill switch
 
-Disable **The Correspondent** in the repo's **Actions** tab (or delete the
+Disable **The Wire** in the repo's **Actions** tab (or delete the
 workflow file). The cadence and rotation resume cleanly whenever you re-enable it.
