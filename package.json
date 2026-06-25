@@ -20,7 +20,9 @@
     "queue:stats": "npx tsx scripts/content-queue.ts stats",
     "queue:process": "npx tsx scripts/content-queue.ts process",
     "queue:next": "npx tsx scripts/content-queue.ts next",
-    "import:skills": "npx tsx scripts/import-skills-from-manifest.ts"
+    "import:skills": "npx tsx scripts/import-skills-from-manifest.ts",
+    "journalist": "node scripts/journalist/generate.mjs",
+    "journalist:dry": "node scripts/journalist/generate.mjs --force --dry-run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",

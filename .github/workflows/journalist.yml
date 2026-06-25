@@ -1,0 +1,110 @@
+# The Correspondent — the live journalist loop.
+#
+# Runs daily. The agent decides whether a piece is due (every 2-3 days), reports
+# a beat, writes it in the magazine's voice, and grades its own draft against the
+# rubric in scripts/journalist/voice.md.
+#
+#   pass  -> commit straight to main; Vercel deploys it to /writing. Hands-off.
+#   hold  -> open/update a DRAFT pull request for a human, with the editor's notes.
+#   skip  -> not due yet; the run is a no-op.
+#
+# One-time activation:
+#   1. Add repo secret ANTHROPIC_API_KEY (Settings -> Secrets -> Actions).
+#   2. Settings -> Actions -> General -> Workflow permissions: "Read and write",
+#      and allow Actions to create pull requests.
+#   3. Merge this workflow to the default branch (scheduled runs only fire from it).
+#
+# Kill switch: disable this workflow in the Actions tab, or delete this file.
+
+name: The Correspondent
+
+on:
+  schedule:
+    - cron: '10 14 * * *'   # 14:10 UTC daily; the cadence gate enforces 2-3 day spacing
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Ignore the cadence gate and file now'
+        type: boolean
+        default: false
+      mode:
+        description: 'Force a beat (blank = alternate)'
+        type: choice
+        options: ['', 'field', 'work']
+        default: ''
+
+concurrency:
+  group: correspondent
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # the "work" beat reads the commit record
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: File the piece
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          JOURNALIST_MODEL: ${{ vars.JOURNALIST_MODEL }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          if [ -n "${{ github.event.inputs.mode }}" ]; then ARGS="$ARGS --mode=${{ github.event.inputs.mode }}"; fi
+          echo "Running: node scripts/journalist/generate.mjs $ARGS"
+          node scripts/journalist/generate.mjs $ARGS
+
+      - name: Validate frontmatter
+        if: steps.gen.outputs.decision == 'publish' || steps.gen.outputs.decision == 'hold'
+        run: npm run validate:essays
+
+      - name: Publish to main
+        if: steps.gen.outputs.decision == 'publish'
+        run: |
+          git config user.name  "id8labs-correspondent[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/essays scripts/journalist/ledger.json
+          git commit -m "writing(correspondent): ${{ steps.gen.outputs.title }}
+
+          Filed by the live journalist agent on the '${{ steps.gen.outputs.mode }}' beat.
+          Cleared the editorial rubric and auto-published to /writing."
+          git push origin HEAD:main
+
+      - name: Open draft PR for review
+        if: steps.gen.outputs.decision == 'hold'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: journalist/pending
+          base: main
+          add-paths: |
+            content/essays
+            scripts/journalist
+          commit-message: "writing(correspondent): draft held for review — ${{ steps.gen.outputs.title }}"
+          title: "Correspondent draft (held): ${{ steps.gen.outputs.title }}"
+          draft: true
+          body: |
+            The Correspondent filed a piece on the **${{ steps.gen.outputs.mode }}** beat but
+            the Managing Editor held it below the publish bar.
+
+            > ${{ steps.gen.outputs.note }}
+
+            Read `content/essays/${{ steps.gen.outputs.slug }}.mdx` and the full scorecard in
+            `scripts/journalist/last-eval.json`. Edit until it's right, then merge to publish —
+            or close to spike it. The cadence did not advance, so the loop will try again.
