@@ -1,0 +1,52 @@
+---
+title: "Mostly Scrubs Is a Failing Grade"
+subtitle: "We built a privacy primitive in an afternoon. It hit 84 percent, then a 100 percent that was lying to us. What an honest scorecard actually costs."
+date: "2026-06-29"
+author: "Eddie Belaval"
+category: "essay"
+tags: ["forethought", "ghost", "privacy", "regulated-ai", "claude-code", "eval", "presidio"]
+featured: false
+excerpt: "My first paying client is a law firm that cannot let data touch the cloud. So we built Ghost: find the secrets locally, swap them for fakes, send the ghost up. Then we measured it honestly, and that is where it got interesting."
+---
+
+*Written with Claude (Opus), Anthropic.*
+
+---
+
+A repo crossed my desk today called praxis-cloak. The idea is clean: run a small model on your own machine that finds the private bits in your prompt, swaps them for convincing fakes, sends the fake version up to the cloud model, then maps the real answer back when it returns. Your client's name never leaves the building. The cloud only ever sees a ghost.
+
+I have been living inside the exact problem it solves. My first paying client is a law firm. Every conversation we have about AI ends at the same wall: the firm cannot let privileged client data touch a cloud model, and until the paperwork that says otherwise is signed, the AI stays off. The cloak is a different kind of answer to that wall. Not a legal promise that the data is safe once it arrives, but a technical guarantee that it never arrives at all.
+
+So the instinct was obvious: reverse engineer it, build our own, point it at the firm. And the instinct was half right.
+
+Here is the half that was wrong. The plumbing in a thing like this is a weekend. Intercept the prompt, find the entities, swap them, call the model, swap them back. None of that is the hard part, and praxis-cloak being one commit old and barely noticed told me nobody had yet proven the part that is. The hard part is a single number nobody wants to look at: how much did you miss.
+
+Because in this domain, missing is the whole game. A tool that scrubs ninety percent of the private data in a legal document is not ninety percent good. It is a malpractice claim with a ten percent trigger, firing silently, with no alarm when it does. "Mostly scrubs" is a failing grade. The only number that matters is recall, and the only honest way to know your recall is to measure it against data where you planted the secrets yourself and can count exactly how many escaped.
+
+So we did not build a demo. We built the measurement first.
+
+We called it Ghost. We stood it on Microsoft Presidio instead of the unproven models in the original, because Presidio is mature, it is licensed for commercial use, and it is built for exactly this. We taught it to recognize the things that carry privilege in legal work and that generic tools ignore: matter numbers, parties named only as "the Borrower," deal amounts written out in words. We made it fail closed, so when it is unsure, it scrubs. And then we built the part that was always the actual product: a generator that writes synthetic legal documents with private data planted at known positions, and a scorer that runs the detector across them and counts every single thing that got through.
+
+Ghost scored 84 percent. Five hundred and twenty two of six hundred and twenty planted secrets caught. Ninety eight got away.
+
+It is perfect on social security numbers, emails, dollar amounts, dates, and company names. It catches 96 percent of person names. And it leaks. It leaks street addresses, because the model knows "Atlanta" is a place but not that "9556 Sycamore Terrace" is one. It leaks matter numbers in formats our recognizer did not anticipate. It leaks phone numbers written with dots instead of dashes. It leaks a party we hid behind a role instead of a name, and the occasional name sitting in a salutation line. Then we sent a second agent at it whose only job was to evade. It caught thirteen of sixteen tricks. One of the three that got past it was a matter number spelled out entirely in words, no digits to catch, and it sailed through untouched. That is the most dangerous miss there is: a privileged identifier passing to the cloud in plain sight.
+
+Eighty four percent is a failing grade for a law firm. I want to be the one who says that plainly, because the temptation is to round it up into a launch.
+
+But look at what that failing grade bought us. It bought us a map. We do not have a vague sense that Ghost "needs work." We have a ranked list of every category that leaks, why each one leaks, and what closes it: extend the words-to-number parser we already wrote for dollar amounts to cover matter numbers and phone numbers, add address recognizers that understand a street is not just a city. The leaks are not a verdict. They are a roadmap, and it is short.
+
+And then we closed it. Same afternoon. We pointed agents at that short roadmap and worked straight down it: the missed formats, the spelled-out numbers, the streets it kept mistaking for cities. We re-ran the eval. One hundred percent. Six hundred and twenty of six hundred and twenty. Then we ran it again on data it had never seen, to be sure it had not just memorized its own homework, and it held. For about ten minutes it felt like we had won.
+
+The hundred percent was lying to us.
+
+I ran it one more time, on a paragraph of plain legal boilerplate with no secrets in it at all. Ghost flagged eighteen things. It scrubbed "the Company." It scrubbed "the Closing," "the Effective Date," "the funds," "the laws." To reach a hundred percent recall it had quietly learned to scrub the English language. A proxy that replaces every other noun with a fake is not private. It is broken. The model on the far end cannot reason about a contract whose every term has been swapped for a stranger.
+
+Here is the part that actually taught me something. We did nothing wrong in the build. We did exactly what we set out to do, which was to make the number we were measuring go up. That was the whole problem. We were measuring one number. Recall, all by itself, is a one-sided metric, and if you point a determined optimizer at one side of a tradeoff it will walk straight off the cliff on the other side and report a victory the whole way down. The fix was not a cleverer recognizer. The fix was admitting our own scorecard was incomplete and adding the second axis to it: a precision score that runs Ghost across clean documents and counts everything it scrubbed that it never should have touched. Only once the scorecard could see the cliff could we steer off it.
+
+With both numbers in front of us, the tuning was easy. Ghost now catches essentially everything and scrubs almost nothing it shouldn't, near a hundred percent recall and zero false alarms on clean boilerplate. The number that keeps a firm safe was never either one alone. It is the two of them, held together, where neither is allowed to cheat.
+
+That is the thing I birthed today, and it is bigger than one tool. The moat in regulated AI was never the model. Everyone has the model. The moat is the measurement, and then the tuning of that measurement to one specific firm's idea of a secret. A generic cloak scrubs generic secrets. Ghost, pointed at a real firm, learns that firm's matter format, that firm's parties, that firm's privilege surface, and is graded against it before it is ever trusted. That per-firm attunement is the part the weekend-project version cannot reach, and it is the part I already know how to do.
+
+So no, Ghost is not ready to stand between a client's secrets and the open internet. Not yet. What it is, after one afternoon, is a method that works and a scorecard honest enough to tell me where it doesn't. It has only ever seen documents I invented. The version that ships will be measured at the firm, on the firm's own definition of what must never leak, on both axes at once, and it will not turn on until those two numbers are ones I would defend in front of a bar committee.
+
+The demo is the easy part. Anyone can build the ghost. The discipline is in the counting, and in being honest that there are two things to count: the secrets that got away, and the ordinary words you scrubbed in your fear of missing them. A scorecard with one number on it will always lie to you. Ours did, by three in the afternoon.
