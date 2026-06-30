@@ -4,7 +4,6 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { GoogleAnalytics, UmamiAnalytics } from '@/components/Analytics'
-import LeadMagnetFunnel from '@/components/LeadMagnetFunnel'
 import ContentFrost from '@/components/ContentFrost'
 
 // ── Editorial type system ("Shipped." design language) ──
@@ -47,20 +46,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'ID8Labs - Primitive Chain Architecture for AI-Era Operators',
-    template: '%s | ID8Labs',
+    default: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
+    template: '%s | id8Labs',
   },
-  description: 'ID8Labs designs primitive chain architectures with human gates for AI-era operators. Forward deployment that eats the drudgery before the work, so companies reach scale tools alone cannot deliver. Composer, DeepStack, Pipeline, LLC Ops, and live Claude Code training.',
+  description: 'id8Labs is an independent lab building the tools of the AI build wave, and writing its field notes every Friday. One cross-domain builder, a portfolio of real products shipped at institutional scale. Composer, DeepStack, Pipeline, LLC Ops, Shipped, and the Academy.',
   keywords: [
+    'Independent AI Lab',
+    'Build in Public',
     'Primitive Chain Architecture',
-    'Forward Deployment for AI Systems',
-    'Human-Gated Workflow Architecture',
     'Agent Systems Design',
-    'AI Architecture for Operators',
+    'Solo Builder at Institutional Scale',
     'Claude Code',
     'MCP Servers',
     'AI Agent Development',
-    'ID8Labs',
+    'id8Labs',
     'DeepStack',
   ],
   authors: [{ name: 'Eddie Belaval', url: 'https://id8labs.app' }],
@@ -70,22 +69,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://id8labs.app',
-    siteName: 'ID8Labs',
-    title: 'ID8Labs - Primitive Chain Architecture for AI-Era Operators',
-    description: 'Architecture, not tools. Primitive chains with human gates, designed domain-deep, deployed inside companies. Forward deployment that eats the drudgery before the work.',
+    siteName: 'id8Labs',
+    title: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
+    description: 'A one-person product lab. Many real products, a deep personal AI substrate, and the field notes of the build wave written every Friday. Proof that one cross-domain builder can ship at institutional scale.',
     images: [
       {
         url: '/og-image.png?v=2',
         width: 1200,
         height: 630,
-        alt: 'ID8Labs - Architecture, not tools. Primitive chains for AI-era operators.',
+        alt: 'id8Labs - An independent lab building the tools of the AI build wave.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ID8Labs - Primitive Chain Architecture for AI-Era Operators',
-    description: 'Architecture, not tools. Primitive chains with human gates, designed domain-deep, deployed inside companies.',
+    title: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
+    description: 'A one-person product lab building the tools of the AI build wave and writing its field notes every Friday.',
     creator: '@eddiebe',
     images: ['/og-image.png?v=2'],
   },
@@ -132,7 +131,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <LeadMagnetFunnel />
       </body>
     </html>
   )

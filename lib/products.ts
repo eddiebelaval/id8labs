@@ -66,7 +66,7 @@ export const PRODUCTS: Record<string, Product> = {
       '20 prompt templates (PDF)',
       '30 days follow-up support',
     ],
-    successRedirect: '/services/success?type=workshop',
+    successRedirect: '/checkout/success?type=workshop',
     accessInstructions: 'Check your email for calendar invite and prep materials.',
   },
 
@@ -90,7 +90,7 @@ export const PRODUCTS: Record<string, Product> = {
       'Daily async support',
       'Recorded sessions for reference',
     ],
-    successRedirect: '/services/success?type=sprint',
+    successRedirect: '/checkout/success?type=sprint',
     accessInstructions: 'I\'ll reach out within 24 hours to schedule our first session.',
   },
 
@@ -113,7 +113,7 @@ export const PRODUCTS: Record<string, Product> = {
       'Team training + full documentation',
       '90 days of hands-on support',
     ],
-    successRedirect: '/services/success?type=build',
+    successRedirect: '/checkout/success?type=build',
     accessInstructions: 'Let\'s start with a discovery call to scope your project.',
   },
 
@@ -139,7 +139,7 @@ export const PRODUCTS: Record<string, Product> = {
       'Prompt patterns that actually work',
       'Cheat sheet PDF included',
     ],
-    successRedirect: '/services/success?type=claude-code-basics',
+    successRedirect: '/checkout/success?type=claude-code-basics',
   },
 
   'claude-code-builders': {
@@ -163,7 +163,7 @@ export const PRODUCTS: Record<string, Product> = {
       'Context systems that persist',
       'Your own project as the curriculum',
     ],
-    successRedirect: '/services/success?type=claude-code-builders',
+    successRedirect: '/checkout/success?type=claude-code-builders',
   },
 
   'build-with-claude': {
@@ -186,7 +186,7 @@ export const PRODUCTS: Record<string, Product> = {
       'Small cohort (max 6 people)',
       'Private Discord/Slack access',
     ],
-    successRedirect: '/services/success?type=build-with-claude',
+    successRedirect: '/checkout/success?type=build-with-claude',
   },
 
   // ─────────────────────────────────────────────────────────────

@@ -9,7 +9,7 @@ export const resumeData = {
   titles: ["Cinematographer", "Story Producer", "Primitive Chain Architect"] as const,
 
   tagline: "Miami-born filmmaker. Architect of primitive chain systems. Founder of id8Labs.",
-  bio: "From capturing light behind the camera to designing architecture inside companies. Every project starts the same way: understanding what people need, what slows them down, and which human gates protect the judgment automation cannot replace.",
+  bio: "From capturing light behind the camera to designing the architecture between the tools. Every product starts the same way: a frustration in my own work, a human-glue moment worth automating, and the human gates that protect the judgment automation cannot replace.",
 
   // Career stats - the numbers that tell the story
   stats: [
@@ -74,11 +74,11 @@ export const resumeData = {
       title: "Primitive Chain Architect",
       years: "2021-Present",
       description:
-        "Every chain I design starts with a frustration in production. After 15 years solving problems on set with duct tape and creativity, I am now solving them with architecture: primitive chains with human gates, deployed inside companies that need to reach scale tools alone cannot deliver.",
+        "Every chain I design starts with a frustration in production. After 15 years solving problems on set with duct tape and creativity, I am now solving them with architecture: primitive chains with human gates, built into a portfolio of real products that ship in public.",
       highlights: [
-        "Founder of id8Labs, forward deployment of primitive chain architecture for AI-era companies",
+        "Founder of id8Labs, an independent lab building the tools of the AI build wave",
         "Applying production thinking to software: ship fast, iterate, solve real problems",
-        "Designing robust primitive chains with human gates that are domain specific, so companies reach scale tools alone cannot deliver",
+        "Designing robust primitive chains with human gates, proving one cross-domain builder can ship at institutional scale",
       ],
     },
   ],
@@ -299,7 +299,7 @@ export const resumeData = {
     company: "id8Labs",
     tagline: "Designing primitive chain architecture with human gates",
     description:
-      "From telling stories to designing architecture inside companies. Every chain starts with a frustration in production: if I am hitting the same human-glue moment again and again, there is a primitive chain that should be carrying that weight instead. id8Labs forward-deploys those chains.",
+      "From telling stories to designing the architecture between the tools. Every chain starts with a frustration in production: if I am hitting the same human-glue moment again and again, there is a primitive chain that should be carrying that weight instead. id8Labs is where those chains become products that ship in public.",
   },
 
   social: {

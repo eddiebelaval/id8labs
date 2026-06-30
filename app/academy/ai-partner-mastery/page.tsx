@@ -294,27 +294,6 @@ export default function AIPartnerMasteryPage() {
 
         <Rule />
 
-        {/* Service CTA */}
-        <section className="py-16">
-          <Container narrow>
-            <div className="text-center">
-              <Kicker className="justify-center" dot>Want hands-on help?</Kicker>
-              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-tight text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
-                Learn faster with personalized guidance
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
-                This course teaches the frameworks. Our Workshop gives you 2 hours of live, personalized implementation for your specific work.
-              </p>
-              <div className="mt-9 flex flex-wrap justify-center gap-4">
-                <EditorialButton href="/services" variant="primary">Explore Services</EditorialButton>
-                <EditorialButton href="/academy" variant="secondary">Browse All Courses</EditorialButton>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        <Rule />
-
         {/* Next Course */}
         <section className="py-12">
           <Container>

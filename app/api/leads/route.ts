@@ -383,8 +383,8 @@ function generateWelcomeEmail(
               <p style="margin: 0 0 20px; color: #737373; font-size: 15px;">
                 Ready to accelerate your AI development journey?
               </p>
-              <a href="https://id8labs.app/services" style="display: inline-block; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px;">
-                Explore Training Programs
+              <a href="https://id8labs.app/academy" style="display: inline-block; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px;">
+                Explore the Academy
               </a>
             </td>
           </tr>

@@ -4,7 +4,7 @@ const beats = [
   {
     n: '01',
     label: 'From can to are',
-    body: 'Everyone can describe an AI that does the work. We have them running: named chains carrying the mechanical load inside live operations, today, not on a roadmap.',
+    body: 'Everyone can describe an AI that does the work. We ship them: named chains carrying the mechanical load inside products that run real businesses, today, not on a roadmap.',
   },
   {
     n: '02',
@@ -30,8 +30,8 @@ export default function TheThesis() {
           <em className="italic font-normal text-id8-orange">doing it.</em>
         </h2>
         <Deck className="mb-12 max-w-[760px]">
-          The idea is the easy part. The work is running it inside a real business, every
-          day, without taking the judgment out. That is the part we do.
+          The idea is the easy part. The work is building products that run inside real
+          businesses, every day, without taking the judgment out. That is the part we ship.
         </Deck>
 
         <div className="mb-14 grid gap-10 md:grid-cols-3 md:gap-12">

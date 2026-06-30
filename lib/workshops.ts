@@ -95,7 +95,7 @@ export const THE_TUNING_FORK_I: Workshop = {
   ],
   forWhom: [
     'Founders and small operators who run on their own judgment and want it to scale',
-    'Professional services — legal, advisory — where consistency is the product',
+    'Solo builders and makers who want their own way of working to scale',
     'Agencies and studios tired of work drifting between people',
     'Media and production teams with a way of working worth keeping true',
   ],

@@ -17,12 +17,12 @@ export default function Hero() {
 
           <Deck className="mb-9 max-w-[760px]">
             Most run on unnamed primitives, half-composed chains, and people doing the
-            mechanical work. We name them, compose them, and free your people for the
+            mechanical work. We name them, compose them, and free the humans for the
             judgment and taste only they can bring.
           </Deck>
 
           <div className="mb-12 flex flex-wrap gap-3.5">
-            <EditorialButton href="/services">Work with us</EditorialButton>
+            <EditorialButton href="/shipped">Read the field notes</EditorialButton>
             <EditorialButton href="#products" variant="ghost">
               See what we&apos;ve shipped
             </EditorialButton>
