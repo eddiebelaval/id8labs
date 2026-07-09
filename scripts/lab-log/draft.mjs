@@ -98,7 +98,7 @@ ${gitlog || '(none)'}`
 // 5. Ask the witness.
 let raw
 try {
-  raw = execFileSync(claudeBin(), ['-p', prompt], { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 })
+  raw = execFileSync(claudeBin(), ['-p', '--model', 'claude-sonnet-5', prompt], { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 })
 } catch (e) {
   die(`claude call failed: ${e.message}`)
 }
