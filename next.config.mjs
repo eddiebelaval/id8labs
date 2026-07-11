@@ -27,6 +27,14 @@ const nextConfig = {
       return []
     }
     return [
+      // The Tuning Fork moved to the Hamato front door (converged 2026-07-08).
+      // Edge-level redirect so no-JS clients and crawlers follow it too; the
+      // page-level redirect() alone served a 307 with no Location header.
+      {
+        source: '/workshops/the-tuning-fork',
+        destination: 'https://hamato.systems/workshops/the-tuning-fork/',
+        permanent: true,
+      },
       // Legacy /skills routes
       {
         source: '/skills',
