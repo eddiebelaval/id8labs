@@ -3,8 +3,48 @@ import { createAdminClient } from '@/lib/supabase/server'
 import { checkRateLimit, getRateLimitKey, rateLimitHeaders, RATE_LIMITS } from '@/lib/rate-limit'
 import { notifyNewSubscriber } from '@/lib/notifications/new-subscriber'
 
+// Shipped. issue pages POST here from two origins: id8labs.app (weekly,
+// same-origin) and eddiebelaval.github.io (daily pages on GitHub Pages,
+// cross-origin — these need CORS or the browser blocks the response).
+const CORS_ORIGINS = ['https://id8labs.app', 'https://eddiebelaval.github.io']
+
+// Cadences a Shipped. subscriber can pick on the form.
+const SHIPPED_CADENCES = ['nightly', 'weekly', 'monthly']
+
+function corsHeaders(request: NextRequest): Record<string, string> {
+  const origin = request.headers.get('origin') ?? ''
+  if (!CORS_ORIGINS.includes(origin)) return { Vary: 'Origin' }
+  return {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    Vary: 'Origin',
+  }
+}
+
+function sanitizeCadences(raw: unknown): string[] | null {
+  if (!Array.isArray(raw)) return null
+  const cadences = raw.filter(
+    (c): c is string => typeof c === 'string' && SHIPPED_CADENCES.includes(c)
+  )
+  return cadences.length ? cadences : null
+}
+
+// OPTIONS - CORS preflight for the cross-origin Shipped. daily pages
+export async function OPTIONS(request: NextRequest) {
+  return new NextResponse(null, { status: 204, headers: corsHeaders(request) })
+}
+
 // POST - Subscribe to newsletter
 export async function POST(request: NextRequest) {
+  const response = await handleSubscribe(request)
+  for (const [key, value] of Object.entries(corsHeaders(request))) {
+    response.headers.set(key, value)
+  }
+  return response
+}
+
+async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
   // Rate limit check
   const rateLimitKey = getRateLimitKey(request)
   const rateLimit = checkRateLimit(rateLimitKey, RATE_LIMITS.publicForm)
@@ -17,7 +57,13 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { email, source } = await request.json()
+    const { email, source, name, cadences, website } = await request.json()
+
+    // Honeypot — hidden "website" field on the Shipped. form; humans never
+    // see it, bots fill it. Report success so the bot doesn't learn.
+    if (typeof website === 'string' && website.trim()) {
+      return NextResponse.json({ success: true, message: 'Successfully subscribed to Shipped.!', isNewSubscriber: true })
+    }
 
     // Validate email
     if (!email) {
@@ -34,6 +80,16 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
+
+    // Optional Shipped. form fields. Tolerated pre-migration: inserts and
+    // updates retry without them if the columns don't exist yet.
+    const subName = typeof name === 'string' ? name.trim().slice(0, 120) : ''
+    const subCadences = sanitizeCadences(cadences)
+    const shippedFields = {
+      ...(subName && { name: subName }),
+      ...(subCadences && { cadences: subCadences }),
+    }
+    const missingColumn = (msg?: string) => /column.*does not exist/i.test(msg || '')
 
     const supabase = createAdminClient()
     if (!supabase) {
@@ -81,10 +137,18 @@ export async function POST(request: NextRequest) {
           updateError = (
             await supabase
               .from('newsletter_subscribers')
-              .update({ ...basePayload, lists: mergedLists })
+              .update({ ...basePayload, lists: mergedLists, ...shippedFields })
               .eq('id', existing.id)
           ).error
-          if (updateError && /column.*lists.*does not exist/i.test(updateError.message || '')) {
+          if (updateError && missingColumn(updateError.message)) {
+            updateError = (
+              await supabase
+                .from('newsletter_subscribers')
+                .update({ ...basePayload, lists: mergedLists })
+                .eq('id', existing.id)
+            ).error
+          }
+          if (updateError && missingColumn(updateError.message)) {
             updateError = (
               await supabase.from('newsletter_subscribers').update(basePayload).eq('id', existing.id)
             ).error
@@ -130,10 +194,18 @@ export async function POST(request: NextRequest) {
     let insertError = (
       await supabase
         .from('newsletter_subscribers')
-        .insert({ ...baseInsert, lists })
+        .insert({ ...baseInsert, lists, ...shippedFields })
     ).error
 
-    if (insertError && /column.*lists.*does not exist/i.test(insertError.message || '')) {
+    if (insertError && missingColumn(insertError.message)) {
+      // name/cadences columns are pre-migration. Retry without them.
+      console.warn('[subscribe] name/cadences column not found; inserting without. Apply migration 20260711000000_add_name_cadences_to_subscribers.sql.')
+      insertError = (
+        await supabase.from('newsletter_subscribers').insert({ ...baseInsert, lists })
+      ).error
+    }
+
+    if (insertError && missingColumn(insertError.message)) {
       // Schema is pre-migration. Insert without lists; list segmentation
       // is recoverable from source after migration lands.
       console.warn('[subscribe] newsletter_subscribers.lists not found; inserting without. Apply migration 20260423120000_shipped_list_and_sends.sql.')
