@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory Review &middot; Data Tech</title>
+<meta name="description" content="Inventory review and site-inclusion recommendation from Savvy Gatsby with id8Labs for Data Tech Inc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,700&family=Archivo:wght@400;500;600;700;800&family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════
+   DATA TECH · WEEKLY REPORT · WEEK 29
+   Wears the Shipped. design language.
+   FROM Eddie's desk (id8Labs / Savvy Gatsby) TO Data Tech.
+   ══════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--orange);color:#fff}
+
+:root{
+  --orange:#FF6B35;
+  --orange-deep:#d8521f;
+  --ink:#1c1a17;
+  --paper:#FAF8F4;        /* warm uncoated stock */
+  --paper-shadow:#f2f0e8;
+  --card:#ffffff;
+  --body:#39352e;
+  --soft:#5d574e;
+  --line:#e7e1d6;
+  --hair:rgba(28,26,23,.14);
+  --hair-soft:rgba(28,26,23,.07);
+  --hair-hard:rgba(28,26,23,.28);
+  --disp:'Fraunces','Times New Roman',serif;
+  --sans:'Archivo',system-ui,sans-serif;
+  --narrow:'Archivo Narrow','Archivo',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+
+/* paper grain, ~3% felt texture */
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.28;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* language toggle: html[data-lang] governs visibility */
+html[data-lang="es"] .t-en{display:none}
+html[data-lang="en"] .t-es{display:none}
+
+/* ─────────────────────────────────────────
+   PUB BAR, sender identity + language switch
+   ───────────────────────────────────────── */
+.pub-bar{
+  position:sticky;top:0;z-index:100;
+  background:var(--paper);
+  border-bottom:1px solid var(--hair);
+  padding:0 24px;height:46px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;
+}
+.pub-bar-mark{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--disp);font-weight:500;font-size:16px;letter-spacing:-.01em;font-style:italic;color:var(--ink);
+}
+.pub-bar-mark .dot{color:var(--orange)}
+.pub-bar-sep{width:1px;height:12px;background:var(--hair-hard)}
+.pub-bar-credit{
+  font-family:var(--narrow);font-size:10px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft);
+}
+.lang-toggle{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+}
+.lang-btn{
+  appearance:none;background:none;border:none;cursor:pointer;
+  padding:4px 2px;color:var(--soft);font:inherit;letter-spacing:inherit;
+  border-bottom:2px solid transparent;
+  transition:color .15s ease,border-color .15s ease;
+}
+.lang-btn:hover{color:var(--ink)}
+.lang-btn[aria-pressed="true"]{color:var(--orange-deep);border-color:var(--orange)}
+.lang-sep{color:var(--hair-hard)}
+
+/* ─────────────────────────────────────────
+   REPORT SHELL
+   ───────────────────────────────────────── */
+.report{max-width:880px;margin:0 auto;padding:0 24px 96px}
+
+/* ─────────────────────────────────────────
+   MASTHEAD
+   ───────────────────────────────────────── */
+.masthead{padding:44px 0 32px;border-bottom:1px solid var(--ink)}
+.masthead-row{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:24px;
+  margin-bottom:22px;
+}
+.masthead-kicker{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--orange-deep);
+}
+.masthead-meta{
+  text-align:right;
+  font-family:var(--mono);font-size:11px;font-weight:400;color:var(--soft);
+  line-height:1.75;
+}
+.masthead-meta b{color:var(--ink);font-weight:600}
+.masthead-h1{
+  font-family:var(--disp);font-weight:600;
+  font-variation-settings:"opsz" 96;
+  font-size:clamp(30px,5vw,48px);
+  line-height:1.05;letter-spacing:-.02em;color:var(--ink);
+  text-shadow:0.4px 0.5px 0.8px rgba(28,26,23,0.08);
+  margin-bottom:12px;
+}
+.masthead-deck{
+  font-family:var(--disp);font-style:italic;font-weight:400;
+  font-variation-settings:"opsz" 40;
+  font-size:clamp(16px,2vw,20px);
+  line-height:1.4;color:var(--soft);
+  max-width:620px;
+}
+.masthead-deck b{font-style:normal;font-weight:600;color:var(--ink)}
+
+/* ─────────────────────────────────────────
+   BLUF, bottom line up front
+   ───────────────────────────────────────── */
+.bluf{padding:32px 0 8px}
+.bluf-kicker{
+  font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--soft);margin-bottom:14px;
+}
+.bluf-line{
+  font-family:var(--disp);font-weight:500;
+  font-variation-settings:"opsz" 60;
+  line-height:1.32;letter-spacing:-.01em;
+  text-shadow:0.4px 0.5px 0.8px rgba(28,26,23,0.06);
+  max-width:780px;
+}
+.bluf-line em{font-style:italic;color:var(--orange-deep);font-weight:500}
+.bluf-line strong{font-weight:700;color:var(--ink)}
+.bluf-line-1{
+  font-size:clamp(24px,3.8vw,36px);
+  color:var(--ink);
+  margin-bottom:12px;
+}
+.bluf-line-2{
+  font-size:clamp(18px,2.7vw,25px);
+  color:var(--soft);
+}
+.bluf-line-2 strong{color:var(--ink)}
+
+/* ─────────────────────────────────────────
+   PROGRESS, the dominant bird's-eye element
+   ───────────────────────────────────────── */
+.progress-block{margin:36px 0 48px}
+.progress-card{
+  background:var(--card);
+  border:1px solid var(--ink);
+  border-top:4px solid var(--orange);
+  padding:28px 28px 32px;
+}
+.progress-head{
+  display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;
+  padding-bottom:22px;border-bottom:1px solid var(--hair);margin-bottom:28px;
+}
+.progress-head-kicker{
+  font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--soft);margin-bottom:10px;display:block;
+}
+.progress-pct{display:flex;align-items:baseline;gap:10px}
+.progress-pct-num{
+  font-family:var(--disp);font-weight:700;
+  font-variation-settings:"opsz" 96;
+  font-size:clamp(48px,6vw,72px);line-height:.9;letter-spacing:-.03em;color:var(--ink);
+}
+.progress-pct-label{
+  font-family:var(--sans);font-size:14px;color:var(--soft);
+}
+.progress-target{text-align:right}
+.progress-target-kicker{
+  font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--soft);margin-bottom:8px;display:block;
+}
+.progress-target-val{
+  font-family:var(--mono);font-size:18px;font-weight:600;color:var(--orange-deep);
+  letter-spacing:.01em;
+}
+
+.milestone-bar{
+  display:flex;gap:3px;
+}
+.milestone{
+  flex:1;min-width:0;
+  display:flex;flex-direction:column;gap:9px;
+}
+.milestone-top{display:flex;align-items:baseline;justify-content:space-between;gap:6px}
+.milestone-num{
+  font-family:var(--mono);font-size:11px;font-weight:600;color:var(--hair-hard);
+}
+.milestone.is-done .milestone-num{color:var(--ink)}
+.milestone.is-progress .milestone-num{color:var(--orange-deep)}
+.milestone-label{
+  font-family:var(--narrow);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;line-height:1.3;color:var(--hair-hard);min-height:26px;
+}
+.milestone.is-done .milestone-label{color:var(--ink)}
+.milestone.is-progress .milestone-label{color:var(--ink)}
+.milestone.is-upcoming .milestone-label{color:var(--soft)}
+.milestone-sub{
+  display:block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.08em;
+  color:var(--orange-deep);text-transform:uppercase;margin-top:2px;
+}
+.milestone-track{
+  height:10px;background:var(--paper-shadow);border:1px solid var(--line);position:relative;overflow:hidden;
+}
+.milestone-fill{position:absolute;left:0;top:0;bottom:0;width:0%}
+.milestone.is-done .milestone-fill{background:var(--ink);width:100%}
+.milestone.is-progress .milestone-fill{background:var(--orange);width:52%}
+.milestone.is-upcoming .milestone-track{background:transparent}
+.milestone.is-upcoming .milestone-fill{width:0%}
+
+.progress-legend{
+  display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px solid var(--hair-soft);
+  font-family:var(--narrow);font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);
+}
+.progress-legend-item{display:flex;align-items:center;gap:7px}
+.progress-legend-swatch{width:12px;height:8px;display:inline-block}
+.progress-legend-swatch.done{background:var(--ink)}
+.progress-legend-swatch.progress{background:var(--orange)}
+.progress-legend-swatch.upcoming{background:transparent;border:1px solid var(--hair-hard)}
+
+@media(max-width:720px){
+  .milestone-bar{flex-wrap:wrap;row-gap:20px}
+  .milestone{flex:0 0 calc(50% - 6px)}
+}
+@media(max-width:460px){
+  .milestone{flex:0 0 100%}
+  .milestone-top{align-items:center}
+}
+
+/* ─────────────────────────────────────────
+   STATUS MAP, secondary tier
+   ───────────────────────────────────────── */
+.status-block{margin-bottom:44px}
+.section-flag{
+  display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--ink);margin-bottom:0;
+}
+.section-flag-label{
+  font-family:var(--narrow);font-size:11px;font-weight:700;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink);
+}
+.section-flag-num{
+  font-family:var(--mono);font-size:11px;color:var(--soft);
+}
+.status-card{background:var(--card);border:1px solid var(--line);border-top:none}
+.status-row{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 22px;border-bottom:1px solid var(--hair-soft);
+}
+.status-row:last-child{border-bottom:none}
+.status-name{
+  font-family:var(--sans);font-size:15px;font-weight:600;color:var(--ink);
+}
+.status-tag{
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  white-space:nowrap;
+}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+.status-row.is-done .status-dot{background:var(--ink)}
+.status-row.is-done .status-tag{color:var(--ink)}
+.status-row.is-progress .status-dot{background:var(--orange)}
+.status-row.is-progress .status-tag{color:var(--orange-deep)}
+.status-row.is-upcoming .status-dot{background:transparent;border:1.5px solid var(--hair-hard)}
+.status-row.is-upcoming .status-tag{color:var(--soft)}
+
+/* ─────────────────────────────────────────
+   DETAIL GRID, supporting tier
+   ───────────────────────────────────────── */
+.detail-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--hair);border:1px solid var(--hair);
+}
+.detail-card{background:var(--card);padding:24px 22px 26px;display:flex;flex-direction:column}
+.detail-card.is-ask{border-top:3px solid var(--orange)}
+.detail-kicker{
+  font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--soft);margin-bottom:16px;
+}
+.detail-card.is-ask .detail-kicker{color:var(--orange-deep)}
+.detail-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.detail-list li{
+  font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--body);
+  padding-left:16px;position:relative;
+}
+.detail-list li::before{
+  content:"";position:absolute;left:0;top:7px;width:6px;height:6px;background:var(--ink);
+}
+.detail-card.is-ask .detail-list li::before{background:var(--orange)}
+.detail-list li strong{font-weight:700;color:var(--ink)}
+.detail-list li .who{
+  display:block;margin-top:4px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--soft);
+}
+
+@media(max-width:820px){
+  .detail-grid{grid-template-columns:1fr}
+}
+
+/* ─────────────────────────────────────────
+   COLOPHON
+   ───────────────────────────────────────── */
+.colophon{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--ink);
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+}
+.colophon-sig{
+  font-family:var(--disp);font-style:italic;font-size:15px;color:var(--soft);
+}
+.colophon-sig b{font-style:normal;font-weight:600;color:var(--ink)}
+.colophon-mono{
+  font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:.04em;
+}
+
+@media(max-width:600px){
+  .masthead-row{flex-direction:column;gap:14px}
+  .masthead-meta{text-align:left}
+  .progress-card{padding:22px 18px 26px}
+  .status-row{padding:14px 16px}
+  .colophon{flex-direction:column;align-items:flex-start}
+}
+
+/* ─────────────────────────────────────────
+   PRINT
+   ───────────────────────────────────────── */
+@media print{
+  .pub-bar{position:static;border-bottom:1px solid #000}
+  .lang-toggle{display:none}
+  body::before{display:none}
+  .progress-card{border-color:#000}
+  .detail-grid{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+</style>
+<style>
+.rev-section{margin:44px 0}
+.funnel{background:var(--card);border:1px solid var(--line);border-top:none}
+.funnel-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 22px;border-bottom:1px solid var(--hair-soft)}
+.funnel-row:last-child{border-bottom:none}
+.funnel-row.is-keep{background:#fbf9f5}
+.funnel-label{font-family:var(--sans);font-size:14.5px;color:var(--body)}
+.funnel-label b{color:var(--ink);font-weight:600}
+.funnel-num{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ink);white-space:nowrap}
+.funnel-num.is-cut{color:var(--soft)}
+.funnel-num.is-live{color:var(--orange-deep)}
+.rct{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-top:none;font-family:var(--sans)}
+.rct th,.rct td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--hair-soft);vertical-align:middle}
+.rct thead th{font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--ink)}
+.rct tbody tr:last-child td{border-bottom:none}
+.rct .cat{font-size:15px;font-weight:600;color:var(--ink);width:36%}
+.rct .cat small{display:block;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.04em;color:var(--soft);text-transform:none;margin-top:3px}
+.rct .cat .reason{display:block;font-family:var(--sans);font-size:12px;font-weight:500;font-style:italic;color:var(--orange-deep);margin-top:6px;max-width:280px}
+.rct .n{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink);white-space:nowrap;text-align:right;width:60px}
+.rct .egs{font-size:12.5px;color:var(--body);line-height:1.5}
+.rct tfoot td{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink);border-top:1px solid var(--ink);background:#fbf9f5}
+.rct tr.excluded td{opacity:.5}
+.rct tr.excluded td.decide{opacity:1}
+
+/* include/exclude toggle -- one tap per row, pre-set to our recommendation */
+.rct .decide{width:140px;text-align:right;white-space:nowrap}
+.toggle{appearance:none;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font-family:var(--sans);font-size:12.5px;font-weight:600;padding:8px 14px;cursor:pointer;min-width:120px;transition:all .15s ease;letter-spacing:.01em}
+.toggle[data-state="exclude"]{background:transparent;color:var(--soft);border-color:var(--hair-hard)}
+.toggle:hover{border-color:var(--orange)}
+.toggle .lab-on::after{content:"On the site"}
+.toggle .lab-off::after{content:"Not shown"}
+.toggle[data-state="include"] .lab-off{display:none}
+.toggle[data-state="exclude"] .lab-on{display:none}
+.reco-tag{display:inline-block;font-family:var(--narrow);font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-top:6px}
+
+/* live impact + decision bar */
+.impact{display:flex;gap:0;border:1px solid var(--ink);border-top:4px solid var(--orange);background:var(--card);margin-bottom:8px}
+.impact-cell{flex:1;padding:20px 24px;border-right:1px solid var(--hair)}
+.impact-cell:last-child{border-right:none}
+.impact-num{font-family:var(--disp);font-weight:700;font-variation-settings:"opsz" 96;font-size:clamp(30px,4.5vw,44px);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.impact-label{font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-top:8px}
+.decision-bar{background:var(--card);border:1px solid var(--ink);border-top:none;padding:26px}
+.db-kicker{font-family:var(--narrow);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:6px}
+.db-lead{font-family:var(--disp);font-size:19px;font-weight:500;color:var(--ink);margin-bottom:20px;line-height:1.35}
+.db-field{margin-bottom:16px}
+.db-label{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.db-input,.db-textarea{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);padding:10px 12px}
+.db-input:focus,.db-textarea:focus{outline:none;border-color:var(--orange)}
+.db-textarea{min-height:66px;resize:vertical}
+.db-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;padding:12px 24px;border:1px solid var(--ink);cursor:pointer;background:var(--ink);color:#fff;transition:background .15s ease}
+.btn:hover{background:var(--orange-deep);border-color:var(--orange-deep)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--paper-shadow)}
+.db-toast{font-family:var(--mono);font-size:12px;color:var(--orange-deep);opacity:0;transition:opacity .2s ease}
+.db-toast.show{opacity:1}
+@media(max-width:640px){.rct .egs{display:none}.rct .cat{width:auto}.impact{flex-direction:column}.impact-cell{border-right:none;border-bottom:1px solid var(--hair)}}
+@media print{
+  body::before{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pub-bar{position:static}
+  .toggle{display:none}
+  .rct tr.excluded td{opacity:1}
+  tr[data-row] .decide::after{font-family:var(--narrow);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
+  tr[data-row]:not(.excluded) .decide::after{content:"Recommend: on site";color:var(--orange-deep)}
+  tr[data-row].excluded .decide::after{content:"Recommend: hold";color:var(--soft)}
+  .decision-bar .db-lead,.decision-bar .db-field,.decision-bar .db-actions{display:none}
+  .decision-bar .db-kicker{margin-bottom:10px}
+  .decision-bar::after{content:"To respond: reply to Jose with \201Cagree\201D, or name the groups you would change. We take it from there.";font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink);display:block}
+}
+</style>
+</head>
+<body>
+
+<header class="pub-bar">
+  <div class="pub-bar-mark"><span>Savvy Gatsby</span><span class="dot">&middot;</span><span>id8Labs</span></div>
+  <div class="pub-bar-credit">Inventory Review</div>
+</header>
+
+<main class="report">
+
+  <section class="masthead">
+    <div class="masthead-row">
+      <span class="masthead-kicker">Inventory Review</span>
+      <div class="masthead-meta">
+        <div><b>Jul 14, 2026</b></div>
+        <div>Source: ACCPAC export Jul 10</div>
+      </div>
+    </div>
+    <h1 class="masthead-h1">Inventory Review</h1>
+    <p class="masthead-deck">We cleaned your export and grouped what is left. The one call for you: <b>what belongs on the site</b>. We made a recommendation for each group, so most of this just needs your nod.</p>
+  </section>
+
+  <section class="bluf">
+    <div class="bluf-kicker">Bottom line</div>
+    <p class="bluf-line bluf-line-1">From <strong>4,207 records</strong> we have <strong>2,722 ready</strong>: <strong>1,980 already live</strong>, and <em>742 grouped and waiting on one decision</em>.</p>
+    <p class="bluf-line bluf-line-2">We recommend <strong>8 groups for the site</strong> and flagged <strong>4 that look off-thesis</strong>. Agree with us? Just press Send.</p>
+  </section>
+
+  <section class="rev-section">
+    <div class="section-flag"><span class="section-flag-label">What we already cleaned</span><span class="section-flag-num">4,207 &rarr; 2,722</span></div>
+    <div class="funnel">
+      <div class="funnel-row"><span class="funnel-label">Records exported from ACCPAC</span><span class="funnel-num">4,207</span></div>
+      <div class="funnel-row"><span class="funnel-label">We removed: <b>27 obsolete/EOL</b>, <b>584 zero-stock</b>, 1 blank</span><span class="funnel-num is-cut">&minus;612</span></div>
+      <div class="funnel-row is-keep"><span class="funnel-label"><b>Catalog-ready</b></span><span class="funnel-num">2,722</span></div>
+      <div class="funnel-row"><span class="funnel-label">Already live on the site</span><span class="funnel-num is-live">1,980</span></div>
+      <div class="funnel-row"><span class="funnel-label">Grouped, waiting on your call (below)</span><span class="funnel-num is-live">742</span></div>
+    </div>
+  </section>
+
+  <section class="rev-section">
+    <div class="section-flag"><span class="section-flag-label">What belongs on the site</span><span class="section-flag-num">our recommendation, your call</span></div>
+    <table class="rct">
+      <thead><tr>
+        <th>Group</th>
+        <th style="text-align:right">SKUs</th>
+        <th>Examples</th>
+        <th style="text-align:right">On the site?</th>
+      </tr></thead>
+      <tbody>
+<tr data-row data-cat="Spare parts" data-n="208" data-type="new">
+    <td class="cat">Spare parts<small>PARTS + PART</small><span class="reco-tag">New category</span></td>
+    <td class="n">208</td>
+    <td class="egs">Rollers, developer units, service kits (Canon, HP, Lexmark)</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Data & storage media" data-n="97" data-type="new">
+    <td class="cat">Data & storage media<small>DATA + SSD + USB + LTO</small><span class="reco-tag">New category</span></td>
+    <td class="n">97</td>
+    <td class="egs">SSD, USB, LTO tape, Samsung Lynk Cloud licenses</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="UPS / power protection" data-n="79" data-type="new">
+    <td class="cat">UPS / power protection<small>UPS + EXS</small><span class="reco-tag">New category</span></td>
+    <td class="n">79</td>
+    <td class="egs">Vertiv Liebert EXM / EXS Online UPS</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Computers & monitors" data-n="67" data-type="new">
+    <td class="cat">Computers & monitors<small>PCMO</small><span class="reco-tag">New category</span></td>
+    <td class="n">67</td>
+    <td class="egs">Samsung Odyssey monitors, Alcatel tablets</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Large-format supplies" data-n="67" data-type="fold">
+    <td class="cat">Large-format supplies<small>PLUK</small><span class="reco-tag">Folds into an existing category</span></td>
+    <td class="n">67</td>
+    <td class="egs">HP Designjet 712 / 713 printheads and ink</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Mounts & brackets" data-n="16" data-type="new">
+    <td class="cat">Mounts & brackets<small>NEOM + BRAC</small><span class="reco-tag">New category</span></td>
+    <td class="n">16</td>
+    <td class="egs">BTECH AV, Chief (display mounts)</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="SOHO cartridges" data-n="17" data-type="fold">
+    <td class="cat">SOHO cartridges<small>SOHO</small><span class="reco-tag">Folds into an existing category</span></td>
+    <td class="n">17</td>
+    <td class="egs">Canon 041 / 045 cartridges</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Trays / finishers" data-n="1" data-type="fold">
+    <td class="cat">Trays / finishers<small>TRAY</small><span class="reco-tag">Folds into an existing category</span></td>
+    <td class="n">1</td>
+    <td class="egs">HP LaserJet stapler / stacker finisher</td>
+    <td class="decide"><button type="button" class="toggle" data-state="include" aria-pressed="true"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Sewing machines" data-n="40" data-type="new" class="excluded">
+    <td class="cat">Sewing machines<small>SEWI</small><span class="reco-tag">New category</span><span class="reason">Brother sewing line, not printing or IT. Include only if you sell these online.</span></td>
+    <td class="n">40</td>
+    <td class="egs">Brother sergers and sewing machines</td>
+    <td class="decide"><button type="button" class="toggle" data-state="exclude" aria-pressed="false"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Climate & environment" data-n="29" data-type="new" class="excluded">
+    <td class="cat">Climate & environment<small>AIR + SMC</small><span class="reco-tag">New category</span><span class="reason">Vertiv data-center cooling, a specialized line. Keep it on the site?</span></td>
+    <td class="n">29</td>
+    <td class="egs">Vertiv condensers, sensors, controllers</td>
+    <td class="decide"><button type="button" class="toggle" data-state="exclude" aria-pressed="false"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Audio" data-n="18" data-type="new" class="excluded">
+    <td class="cat">Audio<small>JBL + AKG + AMX</small><span class="reco-tag">New category</span><span class="reason">JBL / AKG audio gear, off the printing and supplies thesis.</span></td>
+    <td class="n">18</td>
+    <td class="egs">JBL speakers, AKG microphones, DBX Zone Pro</td>
+    <td class="decide"><button type="button" class="toggle" data-state="exclude" aria-pressed="false"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+<tr data-row data-cat="Hospitality & kiosk displays" data-n="16" data-type="new" class="excluded">
+    <td class="cat">Hospitality & kiosk displays<small>HOSP + KIOS</small><span class="reco-tag">New category</span><span class="reason">Samsung signage vertical. Confirm you sell it on this site.</span></td>
+    <td class="n">16</td>
+    <td class="egs">Samsung hospitality and kiosk (Tizen / Windows)</td>
+    <td class="decide"><button type="button" class="toggle" data-state="exclude" aria-pressed="false"><span class="lab-on"></span><span class="lab-off"></span></button></td>
+  </tr>
+      </tbody>
+      <tfoot><tr><td colspan="2">Recommended for the site</td><td colspan="2" style="text-align:right"><span id="tf-count">552 of 742 SKUs across 8 groups</span></td></tr></tfoot>
+    </table>
+  </section>
+
+  <section class="rev-section">
+    <div class="section-flag"><span class="section-flag-label">Send your call</span><span class="section-flag-num">updates live</span></div>
+    <div class="impact">
+      <div class="impact-cell"><div class="impact-num" id="imp-products">2,532</div><div class="impact-label">Products on the site</div></div>
+      <div class="impact-cell"><div class="impact-num" id="imp-cats">16</div><div class="impact-label">Categories</div></div>
+      <div class="impact-cell"><div class="impact-num" id="imp-added">552</div><div class="impact-label">Added from these 742</div></div>
+    </div>
+    <div class="decision-bar">
+      <div class="db-kicker">Send my decision</div>
+      <div class="db-lead">If our recommendation looks right, just press Send. To change a group, tap its button. Add a note for anything you want renamed.</div>
+      <div class="db-field">
+        <label class="db-label" for="dec-who">Decided by</label>
+        <input class="db-input" id="dec-who" type="text" value="Nixon Corrado" autocomplete="off">
+      </div>
+      <div class="db-field">
+        <label class="db-label" for="dec-notes">Notes (optional)</label>
+        <textarea class="db-textarea" id="dec-notes" placeholder="Any renames, adjustments, or comments for the team."></textarea>
+      </div>
+      <div class="db-actions">
+        <button type="button" class="btn" id="dec-send">Send decision</button>
+        <button type="button" class="btn btn-ghost" id="dec-copy">Copy</button>
+        <span class="db-toast" id="dec-toast"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev-section">
+    <div class="detail-grid">
+      <div class="detail-card is-ask">
+        <span class="detail-kicker">Also fixed for you</span>
+        <ul class="detail-list">
+          <li>We caught <strong>97 products already live</strong> filed under the wrong category (a <strong>transfer belt</strong> as toner, a <strong>memory module</strong> as a printer). Already relabeled, no action needed from you.</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <span class="detail-kicker">Scope</span>
+        <ul class="detail-list">
+          <li>This is over the <strong>July 10 export</strong>, not the live ACCPAC system. That comes with the Yadira / EC accesses.</li>
+          <li>The 87 truly-unclear items (blank or mixed codes) we handle for you and only surface the few that genuinely need you.</li>
+        </ul>
+      </div>
+      <div class="detail-card is-ask">
+        <span class="detail-kicker">What happens next</span>
+        <ul class="detail-list">
+          <li>Your Send reaches us directly. We load the groups you approved and apply the 97 fixes in the same pass.<span class="who">No further step on your side</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <div class="colophon-sig"><b>Savvy Gatsby</b> with id8Labs, for Data Tech Inc.</div>
+    <div class="colophon-mono">datatech-usa.com</div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var TO = 'jcruz@savvygatsby.com';
+  var SUBJECT = 'Inventory decision - Data Tech';
+  var BASE_P = 1980, BASE_C = 11;
+  function rowsData(){
+    return Array.prototype.map.call(document.querySelectorAll('tr[data-row]'), function(r){
+      return {
+        cat:r.getAttribute('data-cat'), n:parseInt(r.getAttribute('data-n'),10),
+        type:r.getAttribute('data-type'), tr:r,
+        btn:r.querySelector('.toggle')
+      };
+    });
+  }
+  function recalc(){
+    var prod=BASE_P, cats=BASE_C, added=0, groups=0;
+    rowsData().forEach(function(d){
+      var on=d.btn.getAttribute('data-state')==='include';
+      if(on){ prod+=d.n; added+=d.n; groups++; if(d.type==='new') cats++; }
+    });
+    document.getElementById('imp-products').textContent=prod.toLocaleString();
+    document.getElementById('imp-cats').textContent=cats;
+    document.getElementById('imp-added').textContent=added.toLocaleString();
+    document.getElementById('tf-count').textContent=added.toLocaleString()+' of 742 SKUs across '+groups+' groups';
+  }
+  rowsData().forEach(function(d){
+    d.btn.addEventListener('click', function(){
+      var on=d.btn.getAttribute('data-state')==='include';
+      var next=on?'exclude':'include';
+      d.btn.setAttribute('data-state',next);
+      d.btn.setAttribute('aria-pressed', next==='include');
+      d.tr.classList.toggle('excluded', next==='exclude');
+      recalc();
+    });
+  });
+  function summary(){
+    var inc=[], exc=[];
+    rowsData().forEach(function(d){
+      var on=d.btn.getAttribute('data-state')==='include';
+      var line='• '+d.cat+' ('+d.n+' SKUs)'+(d.type==='fold'?' [fold into existing]':'');
+      (on?inc:exc).push(line);
+    });
+    var who=(document.getElementById('dec-who').value||'').trim()||'(no name)';
+    var notes=(document.getElementById('dec-notes').value||'').trim();
+    var prod=document.getElementById('imp-products').textContent;
+    var cats=document.getElementById('imp-cats').textContent;
+    var out='Inventory decision - Data Tech\n'
+      +'Decided by: '+who+'\nDate: '+new Date().toLocaleDateString()+'\n\n'
+      +'RESULT: '+prod+' products on the site across '+cats+' categories.\n\n'
+      +'PUT ON THE SITE ('+inc.length+'):\n'+(inc.join('\n')||'(none)')+'\n\n'
+      +'HOLD OFF ('+exc.length+'):\n'+(exc.join('\n')||'(none)')+'\n\n'
+      +'The 87 unclear items: handled on our side, we surface only what needs you.';
+    if(notes) out+='\n\nNOTES:\n'+notes;
+    return out;
+  }
+  function toast(m){ var t=document.getElementById('dec-toast'); t.textContent=m; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},3500); }
+  document.getElementById('dec-send').addEventListener('click', function(){
+    window.location.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(summary());
+    toast('Opening your email with the decision.');
+  });
+  document.getElementById('dec-copy').addEventListener('click', function(){
+    var b=summary();
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(b).then(function(){toast('Copied. Paste into email or WhatsApp.');},function(){toast('Could not copy; use Send decision.');});
+    } else { toast('Use Send decision.'); }
+  });
+  recalc();
+})();
+</script>
+
+</body>
+</html>
