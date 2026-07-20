@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Periodic Table of Primitives</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600&family=Archivo+Narrow:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper:#fafaf7; --paper2:#f2f0e8; --paper3:#ededdf;
+  --ink:#0b0b0b; --body:#2a2a2a; --muted:#5a5a5a;
+  --hair:#d6d3c9; --hairhard:#b4afa0;
+  --accent:#ff6b35; --signal:#2a8d83;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--body);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.65;}
+.container{max-width:1200px;margin:0 auto;padding:0 32px;}
+.kicker{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--muted);font-weight:600;}
+header{padding:56px 0 0;}
+h1{font-family:'Fraunces',serif;font-weight:400;font-size:56px;line-height:1.05;letter-spacing:-.01em;color:var(--ink);margin:14px 0 18px;}
+h1 em{font-style:italic;color:var(--accent);}
+.deck{font-size:19px;max-width:760px;color:var(--body);}
+.metarow{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);margin:22px 0 0;display:flex;gap:28px;flex-wrap:wrap;}
+.rule{border:none;border-top:2px solid var(--ink);margin:28px 0 0;}
+.hairline{border:none;border-top:1px solid var(--hair);}
+
+/* scrubber */
+.scrub{padding:26px 0 8px;}
+.scrub-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;}
+.scrub-label{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink);}
+.scrub-label b{color:var(--accent);font-weight:500;}
+input[type=range]{width:100%;margin:14px 0 4px;appearance:none;height:2px;background:var(--hairhard);outline:none;}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:14px;height:14px;background:var(--accent);cursor:pointer;border:none;}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--accent);cursor:pointer;border:none;border-radius:0;}
+.scrub-ticks{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);}
+
+/* the table */
+.tablewrap{overflow-x:auto;padding:26px 0 8px;}
+.ptable{display:grid;grid-template-columns:repeat(10,minmax(96px,1fr));gap:6px;min-width:1040px;}
+.gh{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:10.5px;color:var(--muted);font-weight:600;text-align:center;padding-bottom:4px;align-self:end;}
+.cell{border:1px solid var(--hair);background:var(--paper);min-height:96px;padding:8px 9px;position:relative;cursor:pointer;transition:background .15s,opacity .15s,border-color .15s;}
+.cell:hover{background:var(--paper2);}
+.cell.sel{border-color:var(--ink);background:var(--paper2);}
+.cell .z{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);position:absolute;top:6px;left:8px;}
+.cell .a{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);position:absolute;top:6px;right:8px;}
+.cell .sym{font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--ink);display:block;margin:18px 0 0;line-height:1.1;}
+.cell .nm{font-size:11.5px;color:var(--body);display:block;line-height:1.25;margin-top:2px;}
+.cell.candidate{border-style:dashed;}
+.cell.candidate .tagn1{position:absolute;bottom:6px;right:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--signal);}
+.cell.eka{border:1px dashed var(--hair);background:transparent;}
+.cell.eka .sym{color:var(--muted);font-weight:400;font-style:italic;font-size:22px;margin-top:22px;}
+.cell.eka .nm{color:var(--muted);}
+.cell.ekacand{border-color:var(--signal);}
+.cell .candtag{position:absolute;bottom:6px;right:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--signal);}
+.cell.empty{border:1px solid transparent;background:transparent;cursor:default;}
+.cell.empty::after{content:'';position:absolute;top:50%;left:50%;width:3px;height:3px;background:var(--hair);transform:translate(-50%,-50%);}
+.cell.unforged{opacity:.13;pointer-events:none;}
+.cell.justforged{border-color:var(--accent);}
+.periodlabel{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);grid-column:1 / -1;padding:10px 0 2px;}
+
+/* key */
+.key{border-top:2px solid var(--ink);margin-top:26px;padding:22px 0 4px;}
+.keyhead{margin-bottom:16px;}
+.keygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.keycol h3{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:11.5px;color:var(--ink);font-weight:600;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--hair);}
+.keycol p{font-size:13.5px;line-height:1.55;color:var(--body);margin:10px 0 0;}
+.keyul{list-style:none;margin:10px 0 0;padding:0;}
+.keyul li{font-size:13px;line-height:1.5;color:var(--body);margin-bottom:5px;}
+.keyul li b{color:var(--ink);}
+.keystat{list-style:none;margin:0;padding:0;}
+.keystat li{font-size:12.5px;line-height:1.4;color:var(--body);margin-bottom:9px;display:flex;align-items:baseline;gap:9px;}
+.keystat li b{color:var(--ink);}
+.sw{width:13px;height:13px;display:inline-block;border:1px solid var(--hairhard);flex:0 0 auto;position:relative;top:1px;}
+.sw.d{border-style:dashed;}
+.sw.k{border:1px dashed var(--hair);}
+.sw.sig{border-color:var(--signal);}
+.dot{width:13px;flex:0 0 auto;text-align:center;color:var(--hair);}
+.dot::before{content:'\00B7';font-size:20px;line-height:0;}
+.keycell{border:1px solid var(--ink);width:104px;height:104px;padding:9px 10px;position:relative;margin-bottom:4px;}
+.keycell .kc-z{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);position:absolute;top:7px;left:9px;}
+.keycell .kc-a{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);position:absolute;top:7px;right:9px;}
+.keycell .kc-sym{font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--ink);display:block;margin:20px 0 0;}
+.keycell .kc-nm{font-size:11.5px;color:var(--body);display:block;}
+@media(max-width:900px){.keygrid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.keygrid{grid-template-columns:1fr;}}
+
+/* card panel */
+.cardpanel{border-top:2px solid var(--ink);margin-top:30px;padding:26px 0 8px;display:none;}
+.cardpanel.open{display:block;}
+.cardgrid{display:grid;grid-template-columns:200px 1fr;gap:36px;}
+.bigsym{font-family:'Fraunces',serif;font-size:88px;font-weight:600;color:var(--ink);line-height:1;}
+.bigsym.ekasym{color:var(--muted);font-style:italic;font-weight:400;font-size:56px;}
+.cardnums{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:12px;line-height:2;}
+.cardnums b{color:var(--ink);font-weight:500;}
+h2.cardname{font-family:'Fraunces',serif;font-weight:400;font-size:34px;color:var(--ink);margin:0 0 4px;}
+.cardkick{margin-bottom:10px;}
+.cardbody p{margin:0 0 12px;max-width:760px;}
+.cardbody .lbl{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);font-weight:600;display:block;margin:16px 0 3px;}
+.origin{color:var(--body);}
+.origin b{color:var(--accent);font-weight:600;}
+
+footer{padding:40px 0 64px;}
+.foot-law{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);line-height:2;}
+@media(max-width:720px){h1{font-size:38px;}.cardgrid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <span class="kicker">id8Labs Doctrine &middot; Confirmed v0.2 &middot; 2026-07-20 &middot; In the Lexicon</span>
+  <h1>The Periodic Table of <em>Primitives</em></h1>
+  <p class="deck">Every business is a graph of triggers wired to primitives. The primitives are not a list. They are a table: ordered by mass, grouped by valence, forged in stars. The filled cells are what we have named. The empty cells are what we will need.</p>
+  <div class="metarow">
+    <span>25 ELEMENTS</span><span>5 EKA- (1 PROMOTION CANDIDATE)</span><span>4 PERIODS</span><span>10 GROUPS</span><span>LAW.md &middot; ELEMENTS.md &middot; PREDICTIONS.md</span>
+  </div>
+  <hr class="rule">
+</header>
+
+<section class="scrub">
+  <div class="scrub-head">
+    <span class="kicker">Nucleosynthesis &middot; drag to watch the universe age</span>
+    <span class="scrub-label" id="scrubLabel"></span>
+  </div>
+  <input type="range" id="forgeScrub" min="0" max="9" value="9" step="1">
+  <div class="scrub-ticks"><span>primordial</span><span>May 12</span><span>May 18</span><span>May 25</span><span>Jun 01</span><span>Jun 08</span><span>Jun 15</span><span>Jun 29</span><span>Jul 03</span><span>today</span></div>
+</section>
+
+<section class="tablewrap"><div class="ptable" id="ptable"></div></section>
+
+<section class="key">
+  <div class="keyhead"><span class="kicker">The Key &middot; how to read the table</span></div>
+  <div class="keygrid">
+
+    <div class="keycol">
+      <h3>A cell</h3>
+      <div class="keycell">
+        <span class="kc-z">21</span><span class="kc-a">A7</span>
+        <span class="kc-sym">At</span><span class="kc-nm">Attunement</span>
+      </div>
+      <p><b>Z</b> atomic number (top left): a permanent id, assigned in admission order. <b>A</b> mass (top right). <b>Symbol</b> and <b>name</b>. Click any cell for its full card: job, isotopes, origin star, compounds.</p>
+    </div>
+
+    <div class="keycol">
+      <h3>Rows &mdash; mass (period)</h3>
+      <p>How heavy the machinery is. <b>Mass A = d + s + t</b>, each scored 0&ndash;3:</p>
+      <ul class="keyul">
+        <li><b>d</b> judgment &mdash; 0 deterministic &rarr; 3 a human decides</li>
+        <li><b>s</b> state &mdash; 0 stateless &rarr; 3 corpus-bearing</li>
+        <li><b>t</b> trust &mdash; 0 internal &rarr; 3 money, privilege, identity</li>
+      </ul>
+      <ul class="keyul">
+        <li><b>Period 1</b> (A0&ndash;1) primordial: every business is born with these</li>
+        <li><b>Period 2</b> (A2&ndash;3) light metals: state enters</li>
+        <li><b>Period 3</b> (A4&ndash;5) heavy metals: judgment enters</li>
+        <li><b>Period 4</b> (A6+) the forged series: corpus, money, people</li>
+      </ul>
+    </div>
+
+    <div class="keycol">
+      <h3>Columns &mdash; valence (group)</h3>
+      <p>The bonding contract: what a primitive accepts and emits. <b>Same column = substitutable in a chain.</b> The ten groups are labelled across the top:</p>
+      <ul class="keyul">
+        <li><b>Initiators</b> begin work &middot; <b>Resolvers</b> fetch truth</li>
+        <li><b>Intakes</b> record arrivals &middot; <b>Keepers</b> hold</li>
+        <li><b>Transformers</b> make &middot; <b>Routers</b> choose a path</li>
+        <li><b>Provers</b> verdict &middot; <b>Gates</b> permit &middot; <b>Emitters</b> send</li>
+        <li><b>Meters</b> count and account</li>
+      </ul>
+    </div>
+
+    <div class="keycol">
+      <h3>Status</h3>
+      <ul class="keystat">
+        <li><span class="sw"></span> <b>stable</b> &mdash; primordial or recurred (N&ge;2)</li>
+        <li><span class="sw d"></span> <b>candidate</b> (N=1) &mdash; forged once, provisional</li>
+        <li><span class="sw sig"></span> <b>promotion candidate</b> &mdash; a prediction that already recurs; may admit now</li>
+        <li><span class="sw k"></span> <em>eka-</em> <b>predicted</b> &mdash; a named gap, not yet forged</li>
+        <li><span class="dot"></span> <b>no known element</b></li>
+      </ul>
+      <p>Drag the <b>scrubber</b> at the top to watch elements ignite in the order the portfolio forged them, primordial batch first.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="cardpanel" id="cardpanel">
+  <div class="cardgrid">
+    <div>
+      <div class="bigsym" id="cSym"></div>
+      <div class="cardnums" id="cNums"></div>
+    </div>
+    <div>
+      <span class="kicker cardkick" id="cKick"></span>
+      <h2 class="cardname" id="cName"></h2>
+      <div class="cardbody" id="cBody"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <hr class="hairline" style="margin-bottom:22px">
+  <div class="foot-law">
+    ELEMENT &rarr; bonds into CHAIN &rarr; closes into LOOP &rarr; wires into GRAPH.<br>
+    Chemistry is the client-visible layer. Splitting an element open is nuclear work: ours.<br>
+    The gaps are the product. A predicted element is a named known-unknown; Mendeleev's holes filled on schedule.
+  </div>
+</footer>
+
+</div>
+<script>
+const GROUPS=["Initiators","Resolvers","Intakes","Keepers","Transformers","Routers","Provers","Gates","Emitters","Meters"];
+// forge steps: 0 primordial, 1 May12 llc-ops, 2 May18 D&B chain, 3 May25 golden eval,
+// 4 Jun01 Attunement, 5 Jun08 Nursery, 6 Jun15 Core Thesis lock, 7 Jun29 GHOST, 8 Jul03 Canary, 9 today
+const STEPS=["Primordial: the unnamed batch every business is born burning",
+"May 12: llc-ops forge, after the annual-report slip","May 18: the D&B file-opening chain is mapped from Cheryl's work",
+"May 25: the golden eval set becomes Question 6","Jun 01: Attunement locked, mined in place at D&B",
+"Jun 08: the Nursery ships; nurses make rounds","Jun 15: the Core Thesis locks; the primordial batch is NAMED",
+"Jun 29: GHOST forged against the regulated-egress blocker","Jul 03: the Canary, the night the install verified itself",
+"Today: 25 elements placed (Meter + Switch admitted by the table itself), 5 cells predicted"];
+
+const E=[
+{z:1,s:"Tg",n:"Trigger",g:1,p:1,a:0,q:"d0 s0 t0",st:"stable",f:0,job:"When X happens, work begins. Accepts the world, emits an event.",iso:"time (cron, launchd) / event (file, mail, webhook) / invocation (human or upstream chain)",org:"Primordial. Named on the operator card, locked 2026-06-15.",cmp:"Every chain in the corpus opens with Tg. The graph IS triggers wired to primitives."},
+{z:2,s:"Lk",n:"Lookup",g:2,p:1,a:0,q:"d0 s0 t0",st:"stable",f:0,job:"Resolve a reference against a canonical source; emit the fact.",iso:"Sunbiz pull / County Appraiser pull / page diff (Monitor)",org:"Primordial. Operator card, 2026-06-15.",cmp:"D&B file-opening links 6 and 7; llc-ops Monitor. Tune to FORM, take DATA from canonical sources: Lk keeps chains honest."},
+{z:3,s:"Cv",n:"Convert",g:5,p:1,a:0,q:"d0 s0 t0",st:"candidate",f:2,job:"Deterministic transform of material. Format in, format out, no judgment exercised.",iso:"file-number generation / CSV normalization",org:"Forged in the D&B notation legend (2026-05-18), where C covered both convert and capture. The table splits them.",cmp:"File-number generation; Comptroller CSV reads."},
+{z:4,s:"Cp",n:"Capture",g:3,p:1,a:1,q:"d0 s1 t0",st:"stable",f:0,job:"Take an arriving payload and make it a structured record.",iso:"fees capture / workshop intake / braindump",org:"Primordial. Operator card, 2026-06-15.",cmp:"D&B fees-and-costs capture; morning ritual intake."},
+{z:5,s:"St",n:"State",g:4,p:1,a:1,q:"d0 s1 t0",st:"stable",f:0,job:"Hold working state while a chain runs; answer where-are-we.",iso:"matter state / release-train board / pipeline stage",org:"Primordial. Operator card, 2026-06-15.",cmp:"Distinct from Persistence by durability: St holds the run, Ps holds the record."},
+{z:6,s:"Vf",n:"Verification",g:7,p:1,a:1,q:"d1 s0 t0",st:"stable",f:0,job:"Check a claim against a rule and emit a verdict, deterministically.",iso:"ZIP+4 verify / contract check (VERIFY nurse) / deploy-verify / type check",org:"Primordial. Operator card, 2026-06-15.",cmp:"Every closed-loop chain. The Prover column runs Vf, Cn, Rc, Ev: rule check, system proof, reality match, judgment grade."},
+{z:7,s:"No",n:"Notification",g:9,p:1,a:1,q:"d0 s0 t1",st:"stable",f:0,job:"Put a message where a person or chain will see it.",iso:"internal ping (iMessage, Slack) / surface line (hub health card). Alias NOTIFY, N.",org:"Primordial. Operator card, 2026-06-15.",cmp:"dae-digest 21:00; Sentinel alerts; the Datatech weekly report to the phone."},
+{z:8,s:"Wa",n:"Watcher",g:3,p:2,a:2,q:"d0 s2 t0",st:"stable",f:1,job:"Hold a cursor against a source and emit only what is new. Capture plus memory of where it left off.",iso:"folder watch / mail watcher / claim loop",org:"Predicted by the gap discipline, then found already living in the corpus: llc-ops folder watch (2026-05-12), the mail watcher, the D&B pipeline watcher. The first eka- element confirmed.",cmp:"llc-ops Ledger; D&B Test Fire claim loop; mail-ops router."},
+{z:9,s:"Hb",n:"Heartbeat",g:9,p:2,a:2,q:"d0 s1 t1",st:"stable",f:2,job:"On a cadence, announce liveness. Proves the loop is alive, and only that.",iso:"hub health card / HALO heartbeat",org:"Forward Deployment standard, hardened at D&B.",cmp:"The opposable pair with the Canary survives in two groups: Hb announces (Emitter), Cn proves (Prover). A heartbeat shown as proof of function is the lie the pair exists to kill."},
+{z:10,s:"Rs",n:"Research",g:2,p:2,a:3,q:"d2 s1 t0",st:"stable",f:5,job:"Resolve a question, not a reference: sample sources, weigh with judgment, emit a finding.",iso:"market sweep / deep-research report",org:"The Nursery's market-alignment round, 2026-06-08; the standing research cadence before it.",cmp:"Market-alignment loop; KB compile inputs."},
+{z:11,s:"Ps",n:"Persistence",g:4,p:2,a:3,q:"d0 s2 t1",st:"stable",f:0,job:"Write the durable record; emit custody of it.",iso:"Occurrences: The Bank (SalesOS), the O-drive matter folder, Supabase rows, the report archive.",org:"Primordial. Operator card, 2026-06-15.",cmp:"File-opening links 4 and 5; every persisted-state terminal."},
+{z:12,s:"Dc",n:"Decision",g:6,p:2,a:3,q:"d2 s0 t1",st:"stable",f:0,job:"Take a case, exercise judgment, emit a path.",iso:"rule-route (d1, branch tables) / model-judgment (d2). The judgment isotope is why the Lane Rule exists.",org:"Primordial. Operator card, 2026-06-15.",cmp:"Lead scoring; Filer triage; CDC routing."},
+{z:13,s:"Cn",n:"Canary",g:7,p:2,a:3,q:"d0 s1 t2",st:"stable",f:8,job:"Fire one known-good fixture through the full production chain on the client's own infrastructure; emit proof the system works end to end.",iso:"four layers: hub button / install canary / scheduled fire / last-proven line",org:"D&B Test Fire. Named by Eddie 2026-07-03, the night a pre-loaded test-fire row made the v1.3.4 install self-verifying.",cmp:"The FD release train; hub TestFire."},
+{z:14,s:"Ag",n:"Approval Gate",g:8,p:2,a:3,q:"d0 s1 t2",st:"stable",f:1,job:"Hold a drafted action in pending custody until a human moves it to approved. Fail safe: the action does not fire.",iso:"pending/ to approved/ / queued drafts",org:"Forged in llc-ops (2026-05-12) after the annual-report slip.",cmp:"Filer; every outbound Dispatch bond; tweet and post queues."},
+{z:15,s:"Gd",n:"Grid",g:3,p:3,a:4,q:"d2 s1 t1",st:"candidate",f:5,job:"Unstructured pile in; grid of rows by question-columns out, each cell extracted in parallel, auditable, source highlighted.",iso:"intake compliance grid",org:"Harvested from the Legora pattern analysis; mapped onto Cheryl's intake corrections at D&B.",cmp:"Intake compliance checks; provenance rides in its cells."},
+{z:16,s:"Gn",n:"Generation",g:5,p:3,a:4,q:"d2 s1 t1",st:"stable",f:0,job:"Produce a new artifact with judgment: a draft, a label, a sheet, a report.",iso:"draft / label / sheet / report",org:"Primordial. Operator card, 2026-06-15.",cmp:"UPS label and CDC fees sheet; opener drafts; the weekly report PDFs."},
+{z:17,s:"Rc",n:"Reconcile",g:7,p:3,a:4,q:"d2 s2 t0",st:"stable",f:5,job:"Compare the map to the territory; emit the drift. Proves the documents match what is actually on disk and in flight.",iso:"triad reconcile / drift audit core",org:"The reconcile skill and the Nursery's RECONCILE nurse, 2026-06-08.",cmp:"Nursery rounds; the CONFIRM cycle's COMPARE at judgment mass."},
+{z:18,s:"Dp",n:"Dispatch",g:9,p:3,a:4,q:"d1 s0 t3",st:"stable",f:3,job:"Send outbound to a named relationship: a client email, a partner message, a public post.",iso:"client mail / partner message / public post",org:"Forged negatively, from the standing law that no such send exists without a human gate.",cmp:"THE HALOGEN. Never found free in nature; occurs only bonded to Hu or Ag. A free Dp in any chain design is a defect by law."},
+{z:19,s:"Ev",n:"Eval",g:7,p:4,a:6,q:"d2 s3 t1",st:"stable",f:3,job:"Grade a chain's output against a held-out corpus of the operator's own work; emit two pass rates, representative and hard, never blended.",iso:"deterministic checks / judgment rubric / hard set",org:"The golden eval set doctrine (Q6, 2026-05-25) and the EVAL nurse (2026-06-08). Ground truth at D&B: Cheryl's past matters.",cmp:"The eval loop; every delivery (presentation loop rule). Ev's verdict IS the Succession score: the same element at full mass flipping a task off the plate."},
+{z:20,s:"Bl",n:"Billing",g:10,p:4,a:6,q:"d1 s2 t3",st:"stable",f:0,job:"Account for value and move money: invoice, collect, reconcile against the ledger.",iso:"invoice / collect / reconcile",org:"Primordial on the card (2026-06-15); hardened by the invoicing biller and the first-invoice-PAID rail (2026-07).",cmp:"Invoicing chains; the Commitment Ladder's paid gates. Always gated: money is Eddie's lane."},
+{z:21,s:"At",n:"Attunement",g:2,p:4,a:7,q:"d2 s3 t2",st:"stable",f:4,job:"Mine an operator's whole corpus in place, read-only; emit a tuning profile (their form) and a golden eval set (their ground truth) in one pass.",iso:"movements: Attune / Build / Verify / Tend",org:"Forged at D&B; name locked by Eddie 2026-06-01, surfaced in a live design conversation.",cmp:"The Attunement cycle; per-firm GHOST tuning; the Tend cadence. The heaviest Resolver: Lookup's valence at corpus scale under privilege."},
+{z:22,s:"Gh",n:"GHOST",g:5,p:4,a:7,q:"d2 s2 t3",st:"candidate",f:7,job:"Local-first privacy transform: detect PII on device, swap for consistent fakes, send the scrubbed prompt out, rehydrate the answer. Fail closed: uncertain means scrub.",iso:"scrub / rehydrate / per-firm recognizers",org:"Forged 2026-06-29 against the regulated-egress blocker (D&B, egress OFF until DPA/ZDR). Named by Eddie the same day.",cmp:"Layers on DPA/ZDR, never replaces it. Ships with its Ev bond or not at all: recall alone was a degenerate target."},
+{z:23,s:"Hu",n:"Human-in-loop",g:8,p:4,a:7,q:"d3 s1 t3",st:"stable",f:0,job:"A person is the mechanism: judgment, taste, accountability. Accepts a verdict and context; emits passage, a note, or a stop.",iso:"operator-of-record / partner sign-off / Eddie's per-send gate",org:"Primordial. Operator card, 2026-06-15. The heaviest element on the table.",cmp:"Every Dp bond; the guardrail line; Fit and Commit; G2. The table exists to spend this element well: it is scarce, it does not scale, and wasting it on Period 1 work misprices the rarest material in the building."},
+{z:24,s:"Sw",n:"Switch",g:6,p:1,a:1,q:"d1 s0 t0",st:"stable",f:9,job:"Take a case, emit a path by a declared dispatch table. The deterministic Router.",iso:"route-by-type / route-by-tier / route-by-sender",org:"Admitted 2026-07-20 by the gap discipline. Not forged in one engagement: the table found it already running unnamed at N=2 (CDC routing in D&B matter-folder creation; mail-ops routing rules). The first element the table discovered rather than an engagement forged.",cmp:"Every fixed-branching chain gets a named deterministic link instead of an inline if/else. Distinct from Decision (Z=12) by mass: Sw follows a table, Dc exercises judgment. When a Switch's table needs judgment, it has become a Decision."},
+{z:25,s:"Me",n:"Meter",g:10,p:2,a:2,q:"d0 s2 t0",st:"stable",f:9,job:"Accept a stream of events, emit a running account: count, sum, rate. The lightest Meters element; deterministic bookkeeping.",iso:"usage-count (t0) / spend-tally (t rises near money)",org:"Admitted 2026-07-20 by the gap discipline. The Meters column's missing light element, predicted then found at N=2 across three disjoint occurrences (score-history.jsonl; the cost-preflight audit; token and spend meters).",cmp:"A metering link ahead of every Billing bond (meter, then bill); cost-preflight formalized; ROI dashboards that count Output before pricing it. Meter is to Billing what a scale is to an invoice: it counts, Billing charges."}
+];
+
+const EKA=[
+{s:"eka",n:"Threshold",g:8,p:1,cand:true,pred:"Group 8 Gates, Period 1. d1 s0 t0, A=1. Accepts a measured value plus a bar, emits pass or hold. The deterministic sibling of the Approval Gate: it waits on a number, not a human.",trace:"nurse pass-bars; the numbered G-gates (mechanical form); freshness gates; the off-plate Succession bar.",unlocks:"the Succession gate as a bondable link (Ev scores, Th passes on the bar); Attunement auto-greenlight; Nursery freshness enforcement.",trig:"Likely fired, but resolve the open question first. PROMOTION CANDIDATE pending ruling.",candor:"The real question: own element or isotope of the Approval Gate? Argument for distinct: the Approval Gate waits on a human action (t2, social); Threshold waits on a number (t0, re-runnable). Lean distinct. Eddie's call."},
+{s:"eka",n:"Assembly",g:5,p:2,pred:"Group 5 Transformers, Period 2. d0 s1 t1, A=2. Accepts a template plus a matter's data, emits a finished document. Deterministic composition: the judgment is upstream.",trace:"the D&B Week-3 closing-doc chain; document-release tooling; the CDC Fees-and-Costs sheet.",unlocks:"every standard doc-pack step gets a named link; the closing-doc chain becomes a reusable Assembly, not a bespoke build.",trig:"D&B closing-doc chain ships (N=1), then a second client clones it (N=2). Closest of the four gaps to forging.",candor:"Risk: if document assembly always carries per-doc conditional logic, it is Generation (d2), not deterministic, and this cell is legitimately empty. The build will tell us."},
+{s:"eka",n:"Custody",g:4,p:4,pred:"Group 4 Keepers, Period 4. d0 s3 t3, A=6. Accepts privileged material, emits protected custody plus access-controlled retrieval. Persistence's privileged cousin: Ps hands out custody, Cy guards the door.",trace:"the Safe House standard (~/SafeHouse, mode 700, off-repo, Warden-kept). Today a storage convention and a keeper, NOT a bondable contract.",unlocks:"a chain that reads and writes the Safe House through one custody contract (put item, get handle; redeem under policy). GHOST transforms; Custody holds.",trig:"The second regulated FDE engagement whose inbound PII must be held AND retrieved by a chain. The next law/medical/finance client forces it.",candor:"Genuinely unforged. High confidence it appears; the Safe House proves the need. Do not admit on apparatus alone."},
+{s:"eka",n:"Escalation",g:6,p:3,pred:"Group 6 Routers, Period 3. d2 s1 t2, A=5. Accepts a stuck or exceptional case, emits a routed human-path: which person, at what temperature, with what framing. A Router whose judgment is social.",trace:"Filer's CPA-outreach queue; gatekeeper escalation paths (Plan B when the gatekeeper goes dark); the access-triad routing logic.",unlocks:"a chain that, on an exception, picks the right human and drafts the right-temperature outreach (then hands to the Dispatch + Human-in-loop halogen bond); gatekeeper-cadence management.",trig:"When the Filer router and a gatekeeper-escalation router are built from one contract, in a second engagement.",candor:"Traces scattered across three framings. May resolve into Escalation, or split into machine-exception vs human-relationship routers. Let the second build decide."},
+{s:"eka",n:"Spotter",g:1,p:2,pred:"Group 1 Initiators, Period 2. d2 s1 t0, A=3. Accepts a stream or corpus, emits an opportunity-event. Unlike Trigger (fires on a defined event), Spotter judges what COUNTS as worth starting: it notices.",trace:"spotted-in-the-swim (potential chains noticed during mapping, the upsell inventory made visible); the Estuary signal (noticing which idea is alive). Same shape: this is worth starting, not it is time.",unlocks:"an automated upsell-inventory chain (watch the engagement, emit spotted chains to the Vault); the Estuary ritual instrumented so it stops depending on Claude noticing.",trig:"When spotted-in-the-swim and the Estuary signal share one contract, or a second engagement's mapping reuses the mechanism unconsciously.",candor:"The two traces might be one occurrence wearing two names, making this N=1. That is why it stays a gap. Watch for a genuine third instance."}
+];
+
+const EMPTYNOTES={"2,3":"No known element. Watch for a judgment resolver between Research and Attunement.","3,4":"No known element. A corpus-scale intake may be Attunement's shadow; may be legitimately empty.","4,3":"No known element between Persistence and eka-Custody.","6,4":"No known element. Period 4 routing may always be human (Hu).","8,3":"No stable element known. Trace: the Membrane G1 permits reversible on-brand changes.","9,4":"No known element. Outbound at Period 4 mass may be forbidden by law rather than missing.","10,1":"No known element lighter than eka-Meter.","10,3":"No known element between eka-Meter and Billing.","1,3":"No known element. Spotter may grow heavier with judgment.","1,4":"No known element. A Period 4 initiator would act on privilege; possibly forbidden."};
+
+const tbl=document.getElementById('ptable');
+let html='';
+GROUPS.forEach((g,i)=>{html+='<div class="gh">'+(i+1)+' '+g+'</div>';});
+for(let p=1;p<=4;p++){
+  for(let g=1;g<=10;g++){
+    const el=E.find(e=>e.g===g&&e.p===p);
+    const ek=EKA.find(e=>e.g===g&&e.p===p);
+    if(el){
+      html+='<div class="cell '+el.st+'" data-z="'+el.z+'" data-f="'+el.f+'"><span class="z">'+el.z+'</span><span class="a">A'+el.a+'</span><span class="sym">'+el.s+'</span><span class="nm">'+el.n+'</span>'+(el.st==='candidate'?'<span class="tagn1">N=1</span>':'')+'</div>';
+    }else if(ek){
+      html+='<div class="cell eka'+(ek.cand?' ekacand':'')+'" data-eka="'+ek.n+'"><span class="sym">eka</span><span class="nm">'+ek.n+'</span>'+(ek.cand?'<span class="candtag">N=2?</span>':'')+'</div>';
+    }else{
+      html+='<div class="cell empty" title="'+(EMPTYNOTES[g+','+p]||'No known element.')+'"></div>';
+    }
+  }
+}
+tbl.innerHTML=html;
+
+const panel=document.getElementById('cardpanel');
+function showEl(z){
+  const e=E.find(x=>x.z===+z);if(!e)return;
+  document.getElementById('cSym').textContent=e.s;
+  document.getElementById('cSym').className='bigsym';
+  document.getElementById('cNums').innerHTML='Z <b>'+e.z+'</b><br>A <b>'+e.a+'</b> ('+e.q+')<br>Group <b>'+GROUPS[e.g-1]+'</b><br>Period <b>'+e.p+'</b><br>Status <b>'+e.st+'</b>';
+  document.getElementById('cKick').textContent='Element '+e.z+' of '+E.length;
+  document.getElementById('cName').textContent=e.n;
+  document.getElementById('cBody').innerHTML='<p>'+e.job+'</p><span class="lbl">Isotopes</span><p>'+e.iso+'</p><span class="lbl">Origin star</span><p class="origin">'+e.org+'</p><span class="lbl">Known compounds</span><p>'+e.cmp+'</p>';
+  panel.classList.add('open');
+  document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
+  document.querySelector('.cell[data-z="'+z+'"]').classList.add('sel');
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function showEka(name){
+  const e=EKA.find(x=>x.n===name);if(!e)return;
+  document.getElementById('cSym').textContent='eka';
+  document.getElementById('cSym').className='bigsym ekasym';
+  document.getElementById('cNums').innerHTML='Group <b>'+GROUPS[e.g-1]+'</b><br>Period <b>'+e.p+'</b><br>Status <b>'+(e.cand?'promotion candidate':'predicted (gap)')+'</b>';
+  document.getElementById('cKick').textContent=e.cand?'Predicted element, may be admissible now':'Predicted element (Mendeleev wanted-poster)';
+  document.getElementById('cName').textContent='eka-'+e.n;
+  document.getElementById('cBody').innerHTML='<p>'+e.pred+'</p><span class="lbl">Trace evidence</span><p>'+e.trace+'</p><span class="lbl">Compounds it would unlock</span><p>'+e.unlocks+'</p><span class="lbl">Confirmation trigger</span><p class="origin">'+e.trig+'</p><span class="lbl">Candor</span><p>'+e.candor+'</p>';
+  panel.classList.add('open');
+  document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+tbl.addEventListener('click',ev=>{
+  const c=ev.target.closest('.cell');if(!c||c.classList.contains('unforged'))return;
+  if(c.dataset.z)showEl(c.dataset.z);else if(c.dataset.eka)showEka(c.dataset.eka);
+});
+
+const scrub=document.getElementById('forgeScrub');
+const label=document.getElementById('scrubLabel');
+function applyStep(){
+  const s=+scrub.value;
+  label.innerHTML='<b>'+STEPS[s]+'</b>';
+  document.querySelectorAll('.cell[data-z]').forEach(c=>{
+    const f=+c.dataset.f;
+    c.classList.toggle('unforged',f>s);
+    c.classList.toggle('justforged',f===s&&s>0);
+  });
+  document.querySelectorAll('.cell.eka').forEach(c=>{c.classList.toggle('unforged',s<9);});
+}
+scrub.addEventListener('input',applyStep);
+applyStep();
+</script>
+</body>
+</html>
