@@ -97,6 +97,27 @@ function shippedToWritingItem(issue: ShippedIssuePreview): WritingItem {
 }
 
 /**
+ * Standalone pieces that live as their own hosted HTML page under /public
+ * (not MDX essays, because they embed interactive content the markdown
+ * renderer cannot). Surfaced in the writing index via an explicit href, the
+ * same mechanism the Magazine issues use.
+ */
+const STANDALONE_PIECES: WritingItem[] = [
+  {
+    slug: 'the-gaps-are-the-product',
+    title: 'The Gaps Are the Product',
+    subtitle: 'A periodic table for the work every business runs on',
+    date: '2026-07-20',
+    category: 'essay',
+    readTime: '5 min read',
+    excerpt:
+      'I went to a planetarium and watched the periodic table get built by dying stars. Then I built one for the work every business runs on. It handed me back two elements I had been running for months without a name.',
+    tags: ['primitives', 'doctrine', 'interactive'],
+    href: '/periodic-table-of-primitives.html',
+  },
+]
+
+/**
  * Assign the permanent corpus accession number to every item.
  * Registered slugs keep their frozen number (CORPUS_REGISTER). Any slug not yet
  * registered is assigned the next number (max + 1) in date order (oldest first),
@@ -129,7 +150,7 @@ export function getAllWriting(): WritingItem[] {
   const magazine = getAllShippedIssues().map(shippedToWritingItem)
 
   // Combine, stamp permanent corpus numbers, then sort by date (newest first).
-  const allContent = assignCorpusNumbers([...essays, ...newsletters, ...magazine])
+  const allContent = assignCorpusNumbers([...essays, ...newsletters, ...magazine, ...STANDALONE_PIECES])
   return allContent.sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   )
