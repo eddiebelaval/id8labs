@@ -124,10 +124,26 @@ const nextConfig = {
       },
     ]
 
+    // Same headers, but allow the page to be framed by the SAME ORIGIN only.
+    // Used for /periodic-table.html so the essay at
+    // /periodic-table-of-primitives.html can embed the interactive table.
+    // Cross-origin framing stays blocked (clickjacking protection preserved).
+    const frameableSecurityHeaders = securityHeaders.map((h) => {
+      if (h.key === 'X-Frame-Options') return { key: h.key, value: 'SAMEORIGIN' }
+      if (h.key === 'Content-Security-Policy')
+        return { key: h.key, value: h.value.replace("frame-ancestors 'none'", "frame-ancestors 'self'") }
+      return h
+    })
+
     return [
       {
-        // Apply security headers to all routes
-        source: '/:path*',
+        // The interactive table page: same-origin framing allowed.
+        source: '/periodic-table.html',
+        headers: frameableSecurityHeaders,
+      },
+      {
+        // Apply strict security headers to all other routes (frame DENY).
+        source: '/((?!periodic-table\\.html).*)',
         headers: securityHeaders,
       },
       {
