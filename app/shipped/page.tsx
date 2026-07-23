@@ -5,6 +5,10 @@ import {
 } from '@/lib/shipped/issues'
 import { SHIPPED_DAILIES } from '@/lib/shipped/dailies.data'
 import {
+  SHIPPED_WEEKLY_SWEEPS,
+  SHIPPED_MONTHLY_SWEEPS,
+} from '@/lib/shipped/sweeps.data'
+import {
   Container,
   Kicker,
   Deck,
@@ -16,6 +20,7 @@ import {
   SubscribeForm,
 } from '@/components/editorial'
 import { DailyArchive } from './daily-archive'
+import { SweepList } from './sweep-list'
 
 export const metadata: Metadata = {
   title: 'Shipped. | ID8Labs',
@@ -53,6 +58,7 @@ export default function ShippedPage() {
   const issues = getAllShippedIssues()
   const dailies = SHIPPED_DAILIES
   const latestDaily = dailies[0]
+  const sweepCount = SHIPPED_WEEKLY_SWEEPS.length + SHIPPED_MONTHLY_SWEEPS.length
 
   return (
     <div className="min-h-screen bg-[var(--paper)]">
@@ -73,6 +79,7 @@ export default function ShippedPage() {
             items={[
               { value: String(issues.length), label: 'Weekly issues' },
               { value: String(dailies.length), label: 'Daily editions' },
+              { value: String(sweepCount), label: 'Sweeps' },
               {
                 value: latestDaily ? formatDate(latestDaily.date) : '—',
                 label: 'Latest edition',
@@ -119,8 +126,25 @@ export default function ShippedPage() {
         </Container>
       </section>
 
-      {/* Daily editions — grouped by week */}
+      {/* Weekly + monthly sweeps — the routine cadence, between the marquee
+          issues and the day-by-day archive */}
       <section className="border-t border-[var(--rule)] bg-[var(--paper-shadow)] py-20">
+        <Container>
+          <SectionHead
+            as="h2"
+            title={<>The <em>sweeps</em>.</>}
+            meta="Weekly + monthly"
+          />
+          <Deck className="mt-6 mb-10 max-w-[620px] text-[1.125rem]">
+            The week and the month, compressed. Published on the same cadence
+            the labs ship on.
+          </Deck>
+          <SweepList />
+        </Container>
+      </section>
+
+      {/* Daily editions — grouped by week */}
+      <section className="border-t border-[var(--rule)] py-20">
         <Container>
           <SectionHead
             as="h2"
