@@ -80,6 +80,20 @@ body::before{
 .colophon-foot .colophon-link b{color:var(--paper)}
 .pub-bar-folio{color:var(--ink)}
 .pub-bar-folio b{font-weight:600;color:var(--orange)}
+/* Persistent subscribe CTA in the spine — one click to the form from anywhere in the book */
+.pub-bar-cta{
+  display:inline-block;background:var(--ink);color:var(--paper);
+  text-decoration:none;border:1px solid var(--ink);border-radius:10px;
+  font-family:var(--narrow);font-weight:700;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 14px;transition:background .15s ease,border-color .15s ease;
+}
+.pub-bar-cta:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+@media (max-width:720px){
+  .pub-bar-hide-sm{display:none}
+  .pub-bar{padding:0 16px}
+  .pub-bar-cta{padding:5px 10px;letter-spacing:.12em}
+}
 
 /* ─────────────────────────────────────────
    FOLIO, the corner marker on every section.
@@ -1391,13 +1405,14 @@ body::before{
 <nav class="pub-bar">
   <div class="pub-bar-left">
     <span class="pub-bar-mark">Shipped<span class="dot">.</span></span>
-    <span class="pub-bar-sep"></span>
-    <span class="pub-bar-meta">A weekly magazine by <a href="https://id8labs.app" class="pub-bar-link">id8Labs</a></span>
+    <span class="pub-bar-sep pub-bar-hide-sm"></span>
+    <span class="pub-bar-meta pub-bar-hide-sm">A weekly magazine by <a href="https://id8labs.app" class="pub-bar-link">id8Labs</a></span>
   </div>
   <div class="pub-bar-right">
-    <span class="pub-bar-folio">Issue <b>10</b></span>
-    <span class="pub-bar-sep"></span>
-    <span class="pub-bar-meta">Jun 16, 2026</span>
+    <span class="pub-bar-folio pub-bar-hide-sm">Issue <b>10</b></span>
+    <span class="pub-bar-sep pub-bar-hide-sm"></span>
+    <span class="pub-bar-meta pub-bar-hide-sm">Jun 16, 2026</span>
+    <a href="#subscribe" class="pub-bar-cta">Subscribe</a>
   </div>
 </nav>
 
@@ -1617,6 +1632,8 @@ Three days up. Then dark.</p>
     margin: 64px auto;
     max-width: 1240px;
     text-align: center;
+    /* clears the 42px sticky pub-bar when jumped to from the top CTA */
+    scroll-margin-top: 64px;
   }
   .ship-sub-kicker {
     font-family: var(--narrow);
@@ -1706,7 +1723,7 @@ Three days up. Then dark.</p>
     .ship-sub-form button { padding: 16px 28px; }
   }
 </style>
-<section class="ship-sub">
+<section class="ship-sub" id="subscribe">
   <div class="ship-sub-kicker">Don't miss the next issue</div>
   <h3>Get <em>Shipped.</em> in your inbox every Friday at 9 AM ET.</h3>
   <p>One read on what Anthropic shipped this week. Editorial up front, comprehensive Release Log in back. No spam, unsubscribe one click.</p>
