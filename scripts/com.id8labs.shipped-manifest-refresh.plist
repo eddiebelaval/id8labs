@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Shipped. — hub manifest refresh.
+
+  Regenerates lib/shipped/dailies.data.ts + sweeps.data.ts from the shipped
+  repo's origin/daily-pages branch and pushes if anything changed, so the
+  /shipped hub can't silently understate what has been published.
+
+  Runs at 23:15 daily — after the 21:00 nightly publish and the 22:45
+  distribute job, so the day's edition is already on the branch.
+
+  Install:
+    cp scripts/com.id8labs.shipped-manifest-refresh.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.id8labs.shipped-manifest-refresh.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.id8labs.shipped-manifest-refresh</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/eddiebelaval/Development/id8/id8labs/scripts/refresh-shipped-manifest.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>23</integer>
+        <key>Minute</key>
+        <integer>15</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/eddiebelaval/Library/Logs/shipped/manifest-refresh-stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/eddiebelaval/Library/Logs/shipped/manifest-refresh-stderr.log</string>
+</dict>
+</plist>
