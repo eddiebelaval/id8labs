@@ -12,12 +12,15 @@ export function SubscribeForm({
   buttonLabel = 'Subscribe',
   successText = 'Got it. First issue arrives Friday 9 AM ET.',
   note,
+  cadences,
 }: {
   source?: string
   placeholder?: string
   buttonLabel?: string
   successText?: string
   note?: React.ReactNode
+  /** Shipped. cadences to opt into: 'nightly' | 'weekly' | 'monthly'. */
+  cadences?: string[]
 }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'done'>('idle')
@@ -33,7 +36,11 @@ export function SubscribeForm({
       const res = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: value, source }),
+        body: JSON.stringify({
+          email: value,
+          source,
+          ...(cadences?.length ? { cadences } : {}),
+        }),
       })
       if (res.ok) {
         setStatus('done')
