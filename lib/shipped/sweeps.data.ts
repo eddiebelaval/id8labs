@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-07-23 (10 weekly, 1 monthly)
+ * Last generated: 2026-07-24 (10 weekly, 1 monthly)
  */
 
 export interface ShippedSweep {
@@ -37,7 +37,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-07-13',
     title: 'Claude for Teachers, Artifacts multiplayer, Claude Code caps, MCP Tunnels, Dreaming API. Five days. One through-line: make the boundaries legible.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-29.html',
-    wordCount: 2067,
+    wordCount: 2104,
   },
   {
     period: '2026-28',
@@ -45,7 +45,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-07-06',
     title: 'Five versions of Claude Code, a government scan of 466 million lines, a question submitted by 52,000 people, and an undocumented SDK flag called dreaming. That is week 28.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-28.html',
-    wordCount: 2807,
+    wordCount: 2844,
   },
   {
     period: '2026-27',
@@ -53,7 +53,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-06-29',
     title: 'Claude Sonnet 5 became the default for every Free and Pro user. Fable 5 returned after 19 days of export control. Claude Code shipped six releases and flipped to Manual mode. Agent memory is three weeks out.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-27.html',
-    wordCount: 3079,
+    wordCount: 3116,
   },
   {
     period: '2026-26',
@@ -61,7 +61,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-06-22',
     title: 'Anthropic only. Week of 2026-06-22 to 2026-06-26. 11 log entries, 7 sections. Published by id8Labs.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-26.html',
-    wordCount: 2267,
+    wordCount: 2304,
   },
   {
     period: '2026-25',
@@ -69,7 +69,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-06-15',
     title: 'A billing policy announced on Monday was reversed by Tuesday. The rest of the week was release velocity.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-25.html',
-    wordCount: 1509,
+    wordCount: 1546,
   },
   {
     period: '2026-23',
@@ -77,7 +77,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-06-01',
     title: 'The week Anthropic filed its S-1, set a public timeline for Mythos, deprecated Opus 4.1, and shipped six Claude Code builds.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-23.html',
-    wordCount: 1365,
+    wordCount: 1401,
   },
   {
     period: '2026-22',
@@ -85,7 +85,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-05-25',
     title: 'Anthropic raised $65 billion at a near-trillion valuation, shipped a flagship model, and told customers the model it withheld for safety arrives in weeks.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-22.html',
-    wordCount: 1348,
+    wordCount: 1384,
   },
   {
     period: '2026-21',
@@ -93,7 +93,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-05-18',
     title: 'Anthropic bought the company that built everyone\'s SDKs and shut it down. Claude Code shipped five times.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-21.html',
-    wordCount: 1149,
+    wordCount: 1185,
   },
   {
     period: '2026-20',
@@ -101,7 +101,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-05-11',
     title: 'Claude went into AWS accounts, small business software, and a $200 million partnership with the organization trying to eradicate polio.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-20.html',
-    wordCount: 1878,
+    wordCount: 1914,
   },
   {
     period: '2026-19',
@@ -109,7 +109,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-05-04',
     title: 'CPO Ami Vora opened "Code with Claude 2026" at 09:00 PT on Wednesday in San Francisco with a line that should have cued the crowd: "This event is about how we are making our products work better for you." No keynote model reveal. What the stage delivered instead was a set of agentic features that Anthropic has apparently been running internally long enough to build confidence in.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-19.html',
-    wordCount: 1977,
+    wordCount: 2013,
   },
 ]
 
@@ -121,6 +121,6 @@ export const SHIPPED_MONTHLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-06-01',
     title: 'Two launches, two retirements, one new default. Fable 5 was the best model available on June 9; it was suspended on June 12. Sonnet 5 became the default on June 30.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-06.html',
-    wordCount: 5513,
+    wordCount: 5550,
   },
 ]
