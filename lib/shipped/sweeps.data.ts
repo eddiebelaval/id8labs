@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-07-24 (10 weekly, 1 monthly)
+ * Last generated: 2026-07-25 (11 weekly, 1 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-30',
+    label: 'Week of July 20-26, 2026',
+    sortKey: '2026-07-20',
+    title: 'Four Claude Code releases. A $200M economics research bet. Then Opus 5 landed Friday and made Fable 5 look expensive.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-30.html',
+    wordCount: 2207,
+  },
   {
     period: '2026-29',
     label: 'Week of July 13-19, 2026',
