@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-07-25 (79 daily editions, 12 weeks)
+ * Last generated: 2026-07-26 (80 daily editions, 12 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-07-25',
+    dayLabel: 'Sat, Jul 25',
+    title: 'Claude Opus 5, three API changes, and two Claude Code releases on the same day. xAI moved into Excel and confirmed Grok 4.5 in Augment. Google confirmed Gemini 4 is in pre-training, one day before Anthropic shipped the current frontier.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-07-25.html',
+    wordCount: 2706,
+  },
   {
     date: '2026-07-24',
     dayLabel: 'Fri, Jul 24',
@@ -601,6 +608,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-07-20',
     label: 'Week of July 20-26, 2026',
     editions: [
+      {
+        date: '2026-07-25',
+        dayLabel: 'Sat, Jul 25',
+        title: 'Claude Opus 5, three API changes, and two Claude Code releases on the same day. xAI moved into Excel and confirmed Grok 4.5 in Augment. Google confirmed Gemini 4 is in pre-training, one day before Anthropic shipped the current frontier.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-07-25.html',
+        wordCount: 2706,
+      },
       {
         date: '2026-07-24',
         dayLabel: 'Fri, Jul 24',
