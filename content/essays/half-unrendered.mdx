@@ -1,0 +1,173 @@
+---
+title: "Half Unrendered"
+subtitle: "I built a Call of Duty style zombie shooter in a weekend. Ten AI critics graded it. None of them found the bug."
+date: "2026-07-27"
+author: "Eddie Belaval"
+category: "essay"
+tags: ["claude-code", "agents", "three.js", "gamedev", "verification"]
+featured: true
+excerpt: "Ten review agents burned 1.5 million tokens scoring my game on lighting, composition and materials. The actual defect was that two thirds of the triangles were wound inside out and were never drawn at all. I found it by looking at a screenshot and saying it looked wrong."
+---
+
+*Written with Claude (Opus), Anthropic.*
+
+---
+
+Saturday night I decided to build a Call of Duty style zombie shooter that runs in a browser tab. No engine, no asset store, no build step. Three.js, ES modules, an import map. Every mesh, every texture, every sound generated in code.
+
+By Sunday afternoon it was a real game. Seven weapons with aim-down-sights. A processional avenue leading to a pyramid you buy your way into for a thousand gold. Nine rooms inside, wall buys, six perk shrines behind a power switch, a Pack-a-Punch altar, five bosses with telegraphed abilities. Enemies that stagger when you hit them and topple when they die.
+
+It also looked wrong, and it took me most of a day to find out why.
+
+That is the essay. Not how fast the thing got built. The difference between reviewing work and looking at it.
+
+## The critic loop plateaued
+
+I ran the thing I was supposed to run. Fan out subagents, have a harsh critic score the output against a reference project, feed the notes back, loop until it stops improving.
+
+The reference was [Claude of Duty](https://github.com/mshumer/Claude-of-Duty), Matt Shumer's browser FPS, which is what sent me down this road in the first place. I saw it on Twitter and wanted to know how it looked that good. One thing worth knowing about it, because it reframed the whole problem: the repo is 876KB and contains no binary art at all. No models, no textures, no audio files. Every bit of it is generated in code.
+
+Ten agents. About 1.5 million tokens. The mean score moved from 4.1 to 4.25 out of 10. Claude of Duty sat at 7.4.
+
+So the gap was not assets. I had an HDRI and scanned PBR materials that it does not have, and I was still losing. Whatever was wrong was mine.
+
+The critics were not lazy. They produced real notes with real numbers. Lighting 3.5. Composition 4.5. Materials 5.0. Viewmodel 4.0. Each round the fixers addressed the notes, and each round they introduced about as many regressions as they fixed. At one point two agents each made a correct change. One randomized the height of the wall bays so the silhouette would not draw a dead level line. The other placed the stone beams that span between them. The result was beams floating in mid-air over the gaps. Neither change was wrong alone. Nobody was holding the frame.
+
+I stopped the loop. It was not converging.
+
+## What I actually said
+
+I opened the game, took a screenshot, and told Claude it looked like Minecraft. Later, after another round, I said the map was "still messy and half unrendered."
+
+That was not a diagnosis. It was the reaction of someone looking at a picture. I did not know why it looked that way. I could not have told you which module was at fault.
+
+It was the most accurate statement anyone made about that codebase in two days.
+
+## The bug
+
+Here is the part that matters, because it is the whole argument. The remark did not identify the bug. It redirected the search.
+
+Nobody went looking for a winding error. What happened is that "half unrendered" was too specific to be scored, so instead of another rubric pass we went hunting for a particular thing I could point at in the picture: two bright white bars flanking the pyramid doorway. An agent was sent to find out what they were. It proved they were not objects at all, and pulling that thread landed on the function underneath.
+
+The rubric had no row for "is the geometry being drawn." My complaint had no row for anything. That is why it worked.
+
+Every stone block, column, wall, prop and enemy in the game is built by one function called `chamferedBox`. Claude wrote it, on my instruction, in the first hour of the build. A chamfer is the small bevel on a cut edge. It exists for one reason. Real cut stone catches a thin bright line of light along every edge, and a perfectly sharp 90 degree edge is the thing that makes the eye say "computer" without being told to. The whole module is a bet that this one detail separates a blocky voxel game from a built environment.
+
+That function was emitting 28 of its 44 triangles wound inside out.
+
+Winding order is how a GPU decides which side of a triangle is the front. Get it backwards and the triangle becomes a back face, and back faces are culled. Not drawn at all. All twelve edge bevels and both X-facing flats were wound the wrong way.
+
+Across the shipped scene that came to 517 separate geometries, 22,724 triangles between them, 14,448 of them facing away.
+
+The chamfer had never been drawn. Not once, in the entire history of the project. We paid the triangle cost on 517 objects and rendered none of it.
+
+It also meant you could see straight through the vertical edge of every box, that X-facing surfaces rendered at the depth of the far side of the object, and that the shadow pass recorded the wrong depth for thin slabs.
+
+"Half unrendered." Literally. Surfaces were not being drawn.
+
+## Why the critics missed it
+
+Here is the part worth sitting with.
+
+The critics graded lighting, composition, materials and silhouette. Those are the right categories. A human art director would use the same ones. The scores were defensible. The frame did look flat and the materials did read as cheap.
+
+But every one of those categories assumes the geometry is being drawn. Not one of the ten agents asked whether the renderer was rasterizing the polygons it had been handed. That question sits below the level of the rubric. It is not a critique, it is a precondition, and precondition failures are invisible to a scoring pass because the score has somewhere to land either way. A scene missing two thirds of its surfaces still gets a 4.5 for composition.
+
+"Half unrendered" contains no rubric at all. It describes what is on the screen. That is why it worked.
+
+## My verification was worse than useless
+
+The deeper problem was that my own checks were confidently wrong.
+
+Three times during this build a fully green test suite passed against a black screen. Once the cause was a render pass I wrote that cleared the color buffer every frame. `renderer.autoClear` defaults to true, so calling `render()` to draw the weapon on top wiped the entire world behind it. The suite reported "PASS: no console errors" on a black rectangle.
+
+`node --check` passes on a backtick that accidentally terminates a GLSL string early. It proved nothing.
+
+The enemy test harness read pixels back through a canvas without `preserveDrawingBuffer`, so it sampled a cleared buffer. It reported a sunlit desert at a luminance of 7 out of 255. The dark-frame threshold was then calibrated to "below 6" against that broken reader, which meant the gate could not fire.
+
+Every one of these is the same failure. A proxy for the thing, trusted instead of the thing. The only checks that caught anything real were assertions on the rendered pixels. Mean luminance of the frame. Percentage of the image above black. A/B pixel diffs against the same view seconds apart.
+
+## Four P0s that were not real
+
+Once we started measuring, most of the confident findings evaporated.
+
+"No cast shadow reaches the sand" was flagged critical and survived two review rounds. It was false. When we finally counted, 77.7% of ground pixels were shadowed. The real defect was the opposite one. With three quarters of the ground already in shadow there was no lit-to-shadowed boundary anywhere, and the eye had nothing to read depth against. Anyone who went debugging the shadow system on that note would have lost hours inside a system that worked.
+
+An agent reported the pyramid was sealed and unreachable, with 19 failing tests. It had measured a file another agent was in the middle of editing. When I ran the suite myself, everything passed, including "reached the King's Chamber."
+
+Another reported the enemies were invisible at 20 meters and froze the color palette on that basis. The screenshot it judged from had been taken two hours earlier, under lighting that had since been replaced.
+
+A shadow-coverage detector reported values between 400% and 2000%. It was counting the post-processing film grain.
+
+The pattern is consistent enough to be a rule. **An agent's finding is a hypothesis, not a result.** Confidence in the report tells you nothing. The only thing that promotes a hypothesis to a fact is a measurement you can reproduce.
+
+## The tests that worked were embarrassingly simple
+
+Every real discovery in this build came from changing one variable and seeing what moved.
+
+Take the two bright bars by the doorway, the thread that led to the winding bug. Everyone assumed they were props with a bad material, and a fair amount of time went into deciding how to restyle them. Then an agent repainted the sky dome flat magenta and re-rendered. The bars turned magenta. They were not objects. They were holes. Two courses of stone stacked face to face, each passed through an erosion function seeded from its own dimensions, so the shared plane stopped being shared and a slot opened. You were looking through 62 meters of temple to the sky behind it.
+
+The sand was a flat near-white plane that never got darker with distance, and no shadow landing on it changed anything. So we turned things off, one at a time, and measured the ground:
+
+```
+baseline                 ground luminance 175.2
+sun off                  ground luminance 174.7
+ALL scene lights off     ground luminance 174.5
+environment map off      ground luminance  14.5
+```
+
+Turning off every light in the scene moved the sand by four tenths of one percent. The HDRI environment map was the key light and the sun was decoration. That is why nothing had a lit side, and why a cast shadow changed nothing. There was no direct light to remove. Dropping the environment weight by half and letting the sun carry the load rebuilt every frame in the game at once.
+
+Neither of those is clever. Both are "change one thing and look."
+
+## The lesson I did not expect
+
+The most useful sentence to come out of two days:
+
+**Metrics tell you whether a change landed. They cannot tell you whether it is good.**
+
+I learned it from the hands. The first-person hands holding the gun looked like cardboard, so an agent rebuilt them. It measured everything. How much of the hand was cropped off the bottom of the frame. The value ladder between skin and sand. The pixel count of every highlight. The saturation ratio. Every number improved.
+
+The result looked like four machined dowels stacked in a row. A bandolier of shell casings. Worse than the flat version it replaced. I rejected it on sight.
+
+The next round found out why, and the method is the interesting part. It rendered the hand in flat colors as a mask, and the mask showed a red mass with four hard yellow bars across it. Three previous rounds had each added something to the lit layer. Knuckles, then joints, then tendons, each one reasoning that more articulation reads as more hand. Four bright bulbs in a row is not a knuckle line. It is four objects.
+
+Then arithmetic caught something no screenshot could have. The knuckle highlight was modeled at a height of 1.18 while the back of the hand it sits on crowns at 1.32. The highlight had been buried underneath the hand the entire time. On screen it just looked soft.
+
+Both halves are necessary. The mask render found what the numbers could not. The arithmetic found what the eye could not. Neither alone was enough.
+
+## The game was unwinnable and every check was green
+
+The last bug I found is the one I would put on a poster.
+
+Enemies were stalling on their way to the player. The cause turned out to be that the avoidance code sums a sideways push for each obstacle it sees, and a wall in this game is a run of overlapping circles, so the two circles on either side of an enemy's heading cancelled to exactly zero. It walked into stone at full speed forever. There was already a function that returns whether an actor is touching the world, with a comment saying the caller uses it to detect exactly this. No caller ever read it. The hook was written. The behavior never was.
+
+That is a normal bug. This is the part that is not.
+
+A boss in this game is 1.805 meters wide. A regular enemy is 0.744. So a boss cannot fit through gaps its own horde walks through all day. One of them held full speed for 1,116 frames out of 1,200 and moved zero. A wave ends when the boss dies.
+
+Bosses arrive on wave five. The game could not be finished. Not "was hard," could not be finished, on every run, by anyone.
+
+Every test was green. Every review round had scored the thing on lighting and composition and materials. Nobody found it, because finding it required playing to wave five, and no automated check plays to wave five. They check that the systems respond correctly. Whether the game is winnable is not a system. It is an experience, and the only instrument for it is a person with their hands on the keys.
+
+## What this says about building with agents
+
+I'm not down on the loop. It built a working game in a weekend, and the agents did excellent work. One of them wrote an instrument that pins the viewmodel transform so two renders of identical code diff at exactly zero, which is a better regression test than I would have thought to build. The measurement discipline in that report was better than mine.
+
+Three things are load-bearing.
+
+**Someone has to hold the frame.** Parallel agents each optimize their own note. That is what they are for. It is also why the beams ended up floating. Two correct changes, nobody responsible for the composition they add up to. Integration is a job, not a side effect.
+
+**The rubric is a ceiling.** A scoring pass can only find defects the rubric has a row for. Whatever is wrong below that level stays invisible no matter how many rounds you run, and the score keeps moving slightly, so it feels like progress.
+
+**The unstructured human reaction is not noise.** "It looks like Minecraft." "It's still messy and half unrendered." Those are not actionable notes and they are not supposed to be. They are the one signal in the system that is not filtered through somebody's idea of what to look for. Mine was worth more than 1.5 million tokens of structured review. Not because I'm good at graphics. I'm not. Because I was the only one in the building looking at the picture instead of grading it.
+
+The winding fix was four lines.
+
+## Play it
+
+[Sands of the Restless](https://eddiebelaval.github.io/sands-of-the-restless/) runs in any modern browser. Click to lock the pointer. WASD to move, right mouse to aim, F to buy. You start with 500 gold and a pistol; the sealed doorway at the end of the avenue costs 1000, and everything interesting is behind it.
+
+The source is [on GitHub](https://github.com/eddiebelaval/sands-of-the-restless), including `STATE.md`, which is the honest list of what still does not work.
+
+The commit history is intact and honest, including the commit message that says the chamfer was never drawn once.
