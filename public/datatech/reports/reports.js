@@ -1,5 +1,14 @@
 window.REPORTS = [
   {
+    "week": 31,
+    "year": 2026,
+    "type": "mon",
+    "dates": "Jul 27 to 31",
+    "labelEs": "Lunes · Semana por delante",
+    "labelEn": "Monday · Week ahead",
+    "url": "https://id8labs.app/datatech/reports/2026-W31-mon.html"
+  },
+  {
     "week": 30,
     "year": 2026,
     "type": "fri",
