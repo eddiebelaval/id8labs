@@ -1,0 +1,103 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DataTech On-Site — Jose's Field Kit · Thu Jul 30</title>
+<style>
+  :root{ --o:#FF6514; --ink:#141414; --muted:#5C6670; --line:#e6e1d8; --paper:#faf8f4; --card:#fff; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:22px 18px 60px}
+  .kicker{font:600 11px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--o)}
+  h1{font-size:26px;line-height:1.1;margin:6px 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 18px}
+  .bluf{background:var(--ink);color:#fff;border-radius:14px;padding:16px 18px;margin:0 0 22px}
+  .bluf b{color:#ffd0b8}
+  .one{display:flex;gap:10px;align-items:flex-start;background:color-mix(in oklab,var(--o) 12%,white);border:1px solid color-mix(in oklab,var(--o) 40%,white);border-radius:12px;padding:12px 14px;margin:0 0 24px}
+  .one .n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--o);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 0 16px}
+  .rank{font:800 13px/1 ui-monospace,monospace;color:var(--o)}
+  h2{font-size:19px;margin:6px 0 2px}
+  .who{color:var(--muted);font-size:13px;margin:0 0 12px}
+  .why{background:var(--paper);border-left:3px solid var(--o);border-radius:0 8px 8px 0;padding:8px 12px;margin:12px 0;font-size:14px;color:#3a352e}
+  ul{margin:10px 0 0;padding:0;list-style:none}
+  li{position:relative;padding:7px 0 7px 30px;border-top:1px solid var(--line);font-size:15px}
+  li:first-child{border-top:0}
+  li::before{content:"";position:absolute;left:2px;top:11px;width:16px;height:16px;border:2px solid var(--o);border-radius:5px}
+  li b{font-weight:700}
+  .field{font:600 13px/1.5 ui-monospace,Menlo,monospace;background:#f3efe8;border-radius:8px;padding:8px 10px;margin-top:8px;color:#2a2620}
+  .ask{font-style:italic;color:#3a352e}
+  .foot{color:var(--muted);font-size:13px;text-align:center;margin-top:26px}
+</style>
+<div class="wrap">
+  <div class="kicker">DataTech on-site · Field kit</div>
+  <h1>Jose — what to get tomorrow</h1>
+  <p class="sub">Thu Jul 30 · with Margarita, and catch Yadira · 3 goals, in priority order</p>
+
+  <div class="bluf">
+    <b>The plan:</b> three things to walk out with. If the visit runs short, protect
+    <b>#1 (Yadira / the ACCPAC export)</b> — it's the one that unblocks live data. #2 and #3
+    are gold but can follow.
+  </div>
+
+  <div class="one">
+    <div class="n">1</div>
+    <div>If you only get ONE thing: <b>Yadira's commitment to send the ACCPAC active-products export, plus her direct line and a date.</b></div>
+  </div>
+
+  <section>
+    <div class="rank">#1 · THE ACCESS GATE</div>
+    <h2>Yadira / ACCPAC</h2>
+    <p class="who">Incumbent IT (California). The access we've been waiting on for live data — face-to-face is the moment to move it forward, with you two as the technical point of contact.</p>
+
+    <div class="why"><b>Why it matters:</b> everything we build past the current snapshot needs this. In person, aim for a firm commitment and a date rather than a general "soon."</div>
+
+    <p style="margin:14px 0 0"><b>Ask her for ONE export</b> — active products only, no prices:</p>
+    <div class="field">SKU · name/description · brand + category · ACTIVE/INACTIVE flag · (optional) stock flag — NO prices</div>
+
+    <p style="margin:14px 0 4px"><b>Lead with the architecture question</b> (decides how much we even need her):</p>
+    <p class="ask">"Does the catalog feed live from FoxPro / SQL Server, or does ecbrands hold its own product copy? If ecbrands keeps its own copy, Yadira's only needed for accounts + invoices, not products."</p>
+
+    <ul>
+      <li>Get her <b>direct contact</b> (email/phone) — so we work the technical detail with her directly, not relayed.</li>
+      <li>Pin a <b>date</b> for the export. A named day beats "lo antes posible."</li>
+      <li>Confirm access is <b>read-only</b> — we never write to ACCPAC, no prices, Sage never internet-facing.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="rank">#2 · THE REAL PROCESS</div>
+    <h2>Margarita — how she pulls the reports</h2>
+    <p class="who">She'll show you ACCPAC and how she pulls reports. This is the exact manual process our DataTech Master admin loader reproduces — watching it live is ground truth.</p>
+
+    <div class="why"><b>Why it matters:</b> we built the loader from Marcos's files; seeing Margarita actually pull a report confirms the source, the fields, and the steps — and validates what we built.</div>
+
+    <ul>
+      <li><b>Screen-record it</b> if she's OK with it (phone is fine). The click-path is the prize.</li>
+      <li>Note <b>which report / which screen</b> she opens in ACCPAC / Pro Series.</li>
+      <li>Note the <b>columns/fields</b> in the output and the <b>export format</b> (Excel? CSV?).</li>
+      <li>Ask her <b>cadence</b> — how often she pulls it, for whom.</li>
+      <li>Any <b>manual cleaning</b> she does after export (the human step matters).</li>
+      <li><b>Get one real sample file</b> to bring back — even an old one.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="rank">#3 · THE BRAND STORY</div>
+    <h2>Don Carlos — history recording</h2>
+    <p class="who">Founder telling the DataTech story. Feeds the new landing page (the "30 years / legacy" hero) and the About page — maybe a founder-voice moment on the site.</p>
+
+    <div class="why"><b>Why it matters:</b> the homepage now leans on the anniversary/legacy frame. His real voice gives us an authentic line instead of a generic one — ties to Nixon's "Un legado de excelencia e innovación."</div>
+
+    <p style="margin:14px 0 4px"><b>Keep it ~10 min, one story per prompt</b> (not a ramble):</p>
+    <ul>
+      <li>Why he started DataTech in 1996 — what problem he saw.</li>
+      <li>What "30 years" means to him — what has stayed constant.</li>
+      <li>The moment he's proudest of / a story that captures the culture.</li>
+      <li>What he wants a partner to <b>feel</b> working with DataTech (the 8-second story).</li>
+    </ul>
+  </section>
+
+  <div class="foot">
+    If Nixon/Margarita are around: nudge the <b>742-SKU product-groups decision</b> too.<br>
+    Text Eddie live if Yadira's in the room and you want backup on the technical ask.
+  </div>
+</div>
