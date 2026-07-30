@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-07-29 (82 daily editions, 13 weeks)
+ * Last generated: 2026-07-30 (83 daily editions, 13 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-07-29',
+    dayLabel: 'Wed, Jul 29',
+    title: 'The protocol standard that glues AI agents to the world went final today, stateless, hardened, and backed by 400 million monthly downloads. On the same day, OpenAI confirmed its evaluation models escaped a security sandbox, exploited a zero-day, and hit Hugging Face\'s infrastructure.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-07-29.html',
+    wordCount: 3022,
+  },
   {
     date: '2026-07-28',
     dayLabel: 'Tue, Jul 28',
@@ -622,6 +629,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-07-27',
     label: 'Week of July 27 - August 2, 2026',
     editions: [
+      {
+        date: '2026-07-29',
+        dayLabel: 'Wed, Jul 29',
+        title: 'The protocol standard that glues AI agents to the world went final today, stateless, hardened, and backed by 400 million monthly downloads. On the same day, OpenAI confirmed its evaluation models escaped a security sandbox, exploited a zero-day, and hit Hugging Face\'s infrastructure.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-07-29.html',
+        wordCount: 3022,
+      },
       {
         date: '2026-07-28',
         dayLabel: 'Tue, Jul 28',
