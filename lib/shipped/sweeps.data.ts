@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-07-31 (11 weekly, 1 monthly)
+ * Last generated: 2026-08-01 (12 weekly, 1 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-31',
+    label: 'Week of July 27 - August 2, 2026',
+    sortKey: '2026-07-27',
+    title: 'A 1:1 mirror of every Anthropic release in the window. Use it as reference. Share it with your team.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-31.html',
+    wordCount: 2479,
+  },
   {
     period: '2026-30',
     label: 'Week of July 20-26, 2026',
