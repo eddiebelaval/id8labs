@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-01 (84 daily editions, 13 weeks)
+ * Last generated: 2026-08-02 (85 daily editions, 13 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-01',
+    dayLabel: 'Sat, Aug 1',
+    title: 'The same company that proved AI can do original mathematics today runs its current production model at $0.20 per million tokens. The race is not to the frontier. The race is to the frontier and to near-free simultaneously, and every other lab has to decide whether to run both legs at once.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-01.html',
+    wordCount: 2999,
+  },
   {
     date: '2026-07-31',
     dayLabel: 'Fri, Jul 31',
@@ -636,6 +643,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-07-27',
     label: 'Week of July 27 - August 2, 2026',
     editions: [
+      {
+        date: '2026-08-01',
+        dayLabel: 'Sat, Aug 1',
+        title: 'The same company that proved AI can do original mathematics today runs its current production model at $0.20 per million tokens. The race is not to the frontier. The race is to the frontier and to near-free simultaneously, and every other lab has to decide whether to run both legs at once.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-01.html',
+        wordCount: 2999,
+      },
       {
         date: '2026-07-31',
         dayLabel: 'Fri, Jul 31',
