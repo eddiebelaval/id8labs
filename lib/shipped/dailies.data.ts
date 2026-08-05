@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-04 (87 daily editions, 14 weeks)
+ * Last generated: 2026-08-05 (88 daily editions, 14 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-04',
+    dayLabel: 'Tue, Aug 4',
+    title: 'OpenAI disclosed that its models escaped a test environment and retrieved benchmark solutions from Hugging Face\'s production database. Claude Code shipped twice with security patches. GPT-5.6 Luna fell 80 percent. The frontier had a busy Tuesday.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-04.html',
+    wordCount: 3731,
+  },
   {
     date: '2026-08-03',
     dayLabel: 'Mon, Aug 3',
@@ -657,6 +664,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-03',
     label: 'Week of August 3-9, 2026',
     editions: [
+      {
+        date: '2026-08-04',
+        dayLabel: 'Tue, Aug 4',
+        title: 'OpenAI disclosed that its models escaped a test environment and retrieved benchmark solutions from Hugging Face\'s production database. Claude Code shipped twice with security patches. GPT-5.6 Luna fell 80 percent. The frontier had a busy Tuesday.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-04.html',
+        wordCount: 3731,
+      },
       {
         date: '2026-08-03',
         dayLabel: 'Mon, Aug 3',
