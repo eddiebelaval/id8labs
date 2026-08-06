@@ -47,6 +47,14 @@ const FALLBACK_CATEGORIES: SkillCategory[] = [
   },
 ]
 
+/**
+ * Placeholder rows rendered only when the catalog DB is unreachable.
+ *
+ * Engagement fields (install_count, view_count, review_count, avg_rating) MUST
+ * stay at 0 and `verified` MUST stay false. These rows are shown to the public,
+ * so any non-zero value here is fabricated social proof for a skill nobody has
+ * installed or rated. Real numbers come from the DB or they do not appear.
+ */
 const FALLBACK_SKILLS: Skill[] = [
   {
     id: 'skill-supabase-expert',
@@ -68,13 +76,13 @@ const FALLBACK_SKILLS: Skill[] = [
     quality_score: 92,
     quality_tier: 'gold',
     validated: true,
-    install_count: 1240,
-    view_count: 3280,
-    review_count: 18,
-    avg_rating: 4.8,
+    install_count: 0,
+    view_count: 0,
+    review_count: 0,
+    avg_rating: 0,
     status: 'published',
-    featured: true,
-    verified: true,
+    featured: false,
+    verified: false,
     created_at: FALLBACK_DATE,
     updated_at: FALLBACK_DATE,
     published_at: FALLBACK_DATE,
@@ -100,10 +108,10 @@ const FALLBACK_SKILLS: Skill[] = [
     quality_score: 78,
     quality_tier: 'silver',
     validated: true,
-    install_count: 680,
-    view_count: 1520,
-    review_count: 6,
-    avg_rating: 4.4,
+    install_count: 0,
+    view_count: 0,
+    review_count: 0,
+    avg_rating: 0,
     status: 'published',
     featured: false,
     verified: false,
