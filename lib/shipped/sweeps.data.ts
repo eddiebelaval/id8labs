@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-05 (12 weekly, 2 monthly)
+ * Last generated: 2026-08-06 (12 weekly, 2 monthly)
  */
 
 export interface ShippedSweep {
@@ -37,7 +37,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-07-27',
     title: 'A 1:1 mirror of every Anthropic release in the window. Use it as reference. Share it with your team.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-31.html',
-    wordCount: 2479,
+    wordCount: 2515,
   },
   {
     period: '2026-30',
@@ -45,7 +45,7 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     sortKey: '2026-07-20',
     title: 'Four Claude Code releases. A $200M economics research bet. Then Opus 5 landed Friday and made Fable 5 look expensive.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-30.html',
-    wordCount: 2207,
+    wordCount: 2243,
   },
   {
     period: '2026-29',
@@ -135,9 +135,9 @@ export const SHIPPED_MONTHLY_SWEEPS: ShippedSweep[] = [
     period: '2026-07',
     label: 'July 2026',
     sortKey: '2026-07-01',
-    title: 'A 1:1 mirror of every confirmed Anthropic release in July 2026. Use it as reference. Share it with your team.',
+    title: 'Anthropic shipped its strongest commercial model and disclosed its most serious safety incident in the same eight days. July 2026 in review.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-07.html',
-    wordCount: 4128,
+    wordCount: 383,
   },
   {
     period: '2026-06',
