@@ -38,11 +38,43 @@ export default function LabPage() {
       </section>
 
       <Container>
-        {/* Featured: Thesis */}
+        {/* Featured Work */}
         <section className="pb-16">
-          <SectionHead title={<>Featured <em className="italic text-id8-orange">Work</em></>} meta="Thesis" />
+          <SectionHead title={<>Featured <em className="italic text-id8-orange">Work</em></>} meta="2 Pieces" />
+
+          {/*
+            The Periodic Table of Primitives. The Lab is its destination surface
+            per periodic-table/LANDING-SPLIT-SPEC.md (LOCKED 2026-07-22): here the
+            table IS the attraction, studied rather than wielded, copy expands,
+            neutral body with a light Labs footer line. Hamato gets the contracted
+            instrument version. Counts verified against periodic-table/ELEMENTS.md
+            on 2026-08-06: 25 placed elements, 5 open eka- cells.
+            It is a static file in public/, so the card must render a real anchor.
+          */}
           <div className="pt-10">
-            <EditorialCard href="/thesis" featured>
+            <EditorialCard href="/periodic-table-of-primitives.html" external featured>
+              <Tag>Doctrine</Tag>
+              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal leading-tight tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
+                The Periodic Table of Primitives
+              </h2>
+              <p className="mt-5 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                Every business is a graph of triggers wired to primitives. We went looking for the elements. Strip any company down past its software, its org chart, its industry, and you hit the same small set of irreducible moves: something triggers, a fact gets looked up, a payload gets captured, a claim gets verified, a human decides. Twenty-five of them, placed, ordered by valence and mass.
+              </p>
+              <p className="mt-4 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                And like Mendeleev&apos;s, it has gaps. Five cells sit empty, predicted by the axes and not yet found in the wild. Two filled themselves in July: Switch and Meter turned out to be already running, unnamed, across a dozen systems. Cite it, argue with it, find an element we missed. The scoring is public and disputable on every card.
+              </p>
+              <TagRow
+                className="mt-7"
+                tags={['Interactive', '25 Elements', '5 Open Gaps', 'Nucleosynthesis Scrubber']}
+              />
+              <p className="mt-7 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                A working doctrine from the id8Labs studio. Developed in the open.
+              </p>
+            </EditorialCard>
+          </div>
+
+          <div className="pt-6">
+            <EditorialCard href="/thesis">
               <Tag>Thesis</Tag>
               <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal leading-tight tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
                 Consciousness as Filestructure
