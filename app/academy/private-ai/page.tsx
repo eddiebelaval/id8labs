@@ -300,27 +300,6 @@ export default function PrivateAIPage() {
 
         <Rule />
 
-        {/* Service CTA */}
-        <section className="py-16">
-          <Container narrow>
-            <div className="text-center">
-              <Kicker className="justify-center" dot>Want hands-on setup?</Kicker>
-              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-tight text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
-                Get your private AI system running fast
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
-                This course teaches the concepts. Our Workshop gives you 2 hours of live setup assistance — local AI running, workflows configured, policies drafted.
-              </p>
-              <div className="mt-9 flex flex-wrap justify-center gap-4">
-                <EditorialButton href="/services" variant="primary">Explore Services</EditorialButton>
-                <EditorialButton href="/academy" variant="secondary">Browse All Courses</EditorialButton>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        <Rule />
-
         {/* Course Navigation */}
         <section className="py-12">
           <Container>

@@ -151,8 +151,8 @@ export async function POST(request: NextRequest) {
     // Create Stripe checkout session using raw API (SDK has connection issues in Vercel)
     const successUrl = product.successRedirect
       ? `${request.nextUrl.origin}${product.successRedirect}&session_id={CHECKOUT_SESSION_ID}`
-      : `${request.nextUrl.origin}/services/success?type=${productId}&session_id={CHECKOUT_SESSION_ID}`
-    const cancelUrl = `${request.nextUrl.origin}/services`
+      : `${request.nextUrl.origin}/checkout/success?type=${productId}&session_id={CHECKOUT_SESSION_ID}`
+    const cancelUrl = `${request.nextUrl.origin}/`
 
     const session = await stripeRaw.checkout.sessions.create({
       customer: customerId!,

@@ -67,7 +67,6 @@ export const routes = {
   privacy: '/privacy',
   terms: '/terms',
   courses: '/courses',
-  services: '/services',
   resources: '/resources',
   // Academy routes
   academy: '/academy',

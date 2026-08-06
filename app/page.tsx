@@ -1,7 +1,6 @@
 import Script from 'next/script'
 import Hero from '@/components/Hero'
 import TheThesis from '@/components/TheThesis'
-import TheRamp from '@/components/TheRamp'
 import Builder from '@/components/Builder'
 import ProductGrid from '@/components/ProductGrid'
 import Education from '@/components/Education'
@@ -9,8 +8,6 @@ import Mission from '@/components/Mission'
 import HomeNavigation from '@/components/HomeNavigation'
 import SocialProofStrip from '@/components/SocialProofStrip'
 import LatestFromLab from '@/components/LatestFromLab'
-import ForwardDeployment from '@/components/ForwardDeployment'
-import DeployCTA from '@/components/DeployCTA'
 import { getAllWriting } from '@/lib/writing'
 import { getAllEssays } from '@/lib/essays'
 import { featuredHomeProducts, showcaseHomeProducts } from '@/lib/home-products'
@@ -21,12 +18,12 @@ const organizationSchema = {
   name: 'ID8Labs',
   url: 'https://id8labs.app',
   logo: 'https://id8labs.app/icon.svg',
-  description: 'ID8Labs designs primitive chain architectures with human gates for AI-era operators. Forward deployment that eats the drudgery before the work, so companies reach scale they could not have reached with tools alone.',
+  description: 'id8Labs is an independent lab building the tools of the AI build wave and writing its field notes every Friday. One cross-domain builder shipping a portfolio of real products at institutional scale.',
   foundingDate: '2024',
   founder: {
     '@type': 'Person',
     name: 'Eddie Belaval',
-    jobTitle: 'Founder & Principal Engineer',
+    jobTitle: 'AI System Architect',
     url: 'https://id8labs.app',
   },
   contactPoint: {
@@ -42,9 +39,9 @@ const organizationSchema = {
   knowsAbout: [
     'Artificial Intelligence',
     'Primitive Chain Architecture',
-    'Forward Deployment for AI Systems',
     'Human-Gated Workflow Architecture',
     'Agent Systems Design',
+    'Building in Public',
     'Claude Code',
     'MCP Servers',
     'AI Agent Development',
@@ -141,14 +138,11 @@ export default function Home() {
         activeProjects={activeProjects}
         startYear={2024}
       />
-      <ForwardDeployment />
-      <TheRamp />
       <ProductGrid />
       <LatestFromLab items={writingItems} />
       <Mission />
       <Education />
       <Builder />
-      <DeployCTA />
     </>
   )
 }

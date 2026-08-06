@@ -18,7 +18,7 @@ const intents = [
   {
     id: 'collaborate',
     title: 'Collaborate',
-    description: 'Partnership ideas, joint ventures, or consulting opportunities. I read every email.',
+    description: 'Partnership ideas, joint ventures, or collaboration on something you are building. I read every email.',
     cta: 'Send Email',
     href: 'mailto:eb@id8labs.tech?subject=Collaboration%20Inquiry',
   },

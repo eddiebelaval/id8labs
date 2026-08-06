@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 
 // Front page section definitions
 const sections = [
-  { id: 'hero', title: 'ID8Labs' },
-  { id: 'deploy', title: 'Work With Us' },
+  { id: 'hero', title: 'id8Labs' },
   { id: 'products', title: 'Proof' },
   { id: 'latest', title: 'Latest' },
   { id: 'mission', title: 'Philosophy' },

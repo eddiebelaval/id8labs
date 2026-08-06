@@ -273,7 +273,7 @@ ID8Labs offers:
 - **Enterprise Consulting** - Full AI integration strategy
 
 **Contact:** hello@id8labs.app
-**Web:** https://id8labs.app/services
+**Web:** https://hamato.systems/
 
 ---
 

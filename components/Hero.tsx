@@ -10,19 +10,19 @@ export default function Hero() {
           </Kicker>
 
           <h1 className="mb-7 max-w-[980px] font-[family-name:var(--font-display)] font-normal leading-[1] tracking-[-0.03em] text-[var(--ink)] text-[clamp(2.75rem,6.2vw,6rem)]">
-            Every business is a graph of{' '}
-            <em className="italic font-normal text-id8-orange">triggers</em> wired to{' '}
+            A studio shipping{' '}
+            <em className="italic font-normal text-id8-orange">products</em> built on{' '}
             <em className="italic font-normal text-id8-orange">primitives.</em>
           </h1>
 
           <Deck className="mb-9 max-w-[760px]">
-            Most run on unnamed primitives, half-composed chains, and people doing the
-            mechanical work. We name them, compose them, and free your people for the
-            judgment and taste only they can bring.
+            id8Labs is the lab where the work gets invented. Every product ships in
+            public, built on primitive chains with human gates, and proven by running
+            it ourselves. The field notes are open.
           </Deck>
 
           <div className="mb-12 flex flex-wrap gap-3.5">
-            <EditorialButton href="/services">Work with us</EditorialButton>
+            <EditorialButton href="/shipped">Read the field notes</EditorialButton>
             <EditorialButton href="#products" variant="ghost">
               See what we&apos;ve shipped
             </EditorialButton>

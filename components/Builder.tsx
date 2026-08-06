@@ -14,7 +14,7 @@ export default function Builder() {
             <h2 className="mb-6 font-[family-name:var(--font-display)] font-normal leading-[1.05] tracking-[-0.02em] text-[var(--ink)] text-[clamp(2.25rem,4.5vw,3.5rem)]">
               Eddie <em className="italic font-normal text-id8-orange">Belaval</em>
             </h2>
-            <Deck>AI system architect, forward deployment. Miami, FL.</Deck>
+            <Deck>AI system architect. Miami, FL.</Deck>
           </div>
 
           {/* Right - Content */}
@@ -22,16 +22,16 @@ export default function Builder() {
             {/* Role lines */}
             <div className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)] space-y-1.5">
               <p>AI System Architect</p>
-              <p>Forward Deployment for AI-era Operators</p>
+              <p>Building in Public Since 2024</p>
               <p>Pattern Recognition Across Domains</p>
             </div>
 
             {/* Bio Content */}
             <div className="space-y-6 font-[family-name:var(--font-serif)] text-lg md:text-xl leading-[1.55] text-[var(--body)]">
               <p>
-                I work in <span className="text-id8-orange">AI system architecture</span> and forward
-                deployment. I build primitive chains, AI harnesses, and intelligence layers, agents with
-                depth and breadth that create presence, not a chatbot. Twenty years on set,{' '}
+                I work in <span className="text-id8-orange">AI system architecture</span>. I build
+                primitive chains, AI harnesses, and intelligence layers, agents with depth and breadth
+                that create presence, not a chatbot. Twenty years on set,{' '}
                 <span className="text-id8-orange">First 48</span>, Orange County Choppers, 90 Day Fiancé,
                 reading how teams decide and where work leaks, now pointed at the architecture between the
                 tools.

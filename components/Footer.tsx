@@ -27,7 +27,6 @@ export default function Footer() {
             <nav className="flex flex-col gap-2 text-sm">
               <Link href="/" className={link}>Home</Link>
               <Link href="/products" className={link}>Products</Link>
-              <Link href="/services" className={link}>Services</Link>
               <Link href="/writing" className={link}>Writing</Link>
               <Link href="/shipped" className={link}>Shipped.</Link>
               <Link href="/lab" className={link}>Lab</Link>
@@ -84,7 +83,7 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
               <span className="inline-block h-2 w-2 rounded-full bg-[var(--teal)]" />
-              <span>Currently taking projects</span>
+              <span>Shipping in public</span>
             </div>
             <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
               Built with Next.js + Vercel + Supabase

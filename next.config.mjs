@@ -35,6 +35,25 @@ const nextConfig = {
         destination: 'https://hamato.systems/workshops/the-tuning-fork/',
         permanent: true,
       },
+      // Services and Method graduated to Hamato with the brand split (locked
+      // 2026-06-29): id8Labs is the studio, Hamato is the services arm. These
+      // routes are removed here, so send the buyer to the Hamato front door.
+      // Target is the root, not /services or /method — those 404 on Hamato.
+      {
+        source: '/services',
+        destination: 'https://hamato.systems/',
+        permanent: true,
+      },
+      {
+        source: '/services/:path*',
+        destination: 'https://hamato.systems/',
+        permanent: true,
+      },
+      {
+        source: '/method',
+        destination: 'https://hamato.systems/',
+        permanent: true,
+      },
       // Legacy /skills routes
       {
         source: '/skills',

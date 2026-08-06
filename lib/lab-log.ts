@@ -9,8 +9,8 @@
  * receipts. It never claims authorship of the work ("I watched him build", not
  * "I built"), and it never gets mystical. A ship's log, not a diary.
  *
- * PUBLIC-SAFE: clients are anonymized (a law firm, a data company) exactly as on
- * /services. No client names, no internal mechanics.
+ * PUBLIC-SAFE: any collaborators are anonymized (a law firm, a data company).
+ * No names, no internal mechanics.
  *
  * DATA lives in lab-log.json so the `lab-log` chain can append entries safely
  * (newest first) without parsing TypeScript. APPEND-ONLY: existing entries are a
