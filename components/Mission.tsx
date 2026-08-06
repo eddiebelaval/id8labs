@@ -50,9 +50,9 @@ const principles = [
     body: (
       <>
         A tool sits and waits. A chain runs. We design primitive chain architectures with human gates in
-        the right places, so the company gets the leverage of automation without giving up the judgment
-        that only people can supply. The artifact is not an app. It is a working architecture inside the
-        company.
+        the right places, so the leverage of automation lands without giving up the judgment that only
+        people can supply. The artifact is not an app. It is a working architecture, and we build it as a
+        product that ships.
       </>
     ),
   },
@@ -125,10 +125,10 @@ export default function Mission() {
               </blockquote>
               <div className="mt-8">
                 <Link
-                  href="/services"
+                  href="/products"
                   className="font-[family-name:var(--font-narrow)] text-[11px] font-bold uppercase tracking-[0.22em] text-id8-orange transition-colors hover:text-[var(--ink)]"
                 >
-                  Learn how I can help you build &rarr;
+                  See what the lab has shipped &rarr;
                 </Link>
               </div>
             </div>

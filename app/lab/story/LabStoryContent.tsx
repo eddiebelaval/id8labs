@@ -258,13 +258,13 @@ export default function LabStoryContent() {
           </div>
           <p className="mt-8">
             What this is <span className="font-bold">not:</span> replacement. Not a content machine.
-            Not a chatbot. This is forward deployment of architecture inside companies, with the
-            humans still in the seats where their judgment is doing real work.
+            Not a chatbot. This is the architecture between the tools, with the humans still in the
+            seats where their judgment is doing real work.
           </p>
           <p>
-            In 2025, this was a thesis about my own workflow. In 2026, it is a thesis about the
-            architecture inside companies. Four products shipping. An operating system connecting
-            them. Forty-nine essays documenting the process. The thesis held up and grew.
+            In 2025, this was a thesis about my own workflow. In 2026, it is a thesis a whole
+            portfolio runs on. Four products shipping. An operating system connecting them.
+            Forty-nine essays documenting the process. The thesis held up and grew.
           </p>
         </StickySection>
 
@@ -390,15 +390,15 @@ export default function LabStoryContent() {
               </p>
             </div>
             <div>
-              <p className="mb-1 font-bold text-id8-orange">Services</p>
+              <p className="mb-1 font-bold text-id8-orange">Shipped</p>
               <p className="text-[var(--muted)]">
-                AI implementation consulting for businesses that know AI matters but need help
-                making it operational.{' '}
+                A weekly, verified magazine for builders, reading the frontier one layer up and
+                logging the lab&apos;s own R&amp;D in public.{' '}
                 <Link
-                  href="/services"
+                  href="/shipped"
                   className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
                 >
-                  Learn more
+                  Read the field notes
                 </Link>
                 .
               </p>
@@ -462,12 +462,12 @@ export default function LabStoryContent() {
               </a>
             </p>
             <p>
-              Want to work together?{' '}
+              Want to follow the build?{' '}
               <Link
-                href="/services"
+                href="/shipped"
                 className="border-b border-id8-orange text-id8-orange transition-opacity hover:opacity-70"
               >
-                Book a call
+                Read Shipped
               </Link>
             </p>
             <div className="flex items-center gap-6 pt-4 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">

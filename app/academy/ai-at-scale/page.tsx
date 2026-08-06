@@ -312,27 +312,6 @@ export default function AIAtScalePage() {
 
         <Rule />
 
-        {/* Service CTA */}
-        <section className="py-16">
-          <Container narrow>
-            <div className="text-center">
-              <Kicker className="justify-center" dot>Ready for full transformation?</Kicker>
-              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-tight text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
-                The Build: 8+ weeks of hands-on implementation
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
-                This course teaches the frameworks. The Build gives you 8+ weeks of hands-on partnership — full operational transformation with custom AI systems built for your team.
-              </p>
-              <div className="mt-9 flex flex-wrap justify-center gap-4">
-                <EditorialButton href="/services" variant="primary">Explore The Build</EditorialButton>
-                <EditorialButton href="/academy" variant="secondary">Browse All Courses</EditorialButton>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        <Rule />
-
         {/* Course Navigation */}
         <section className="py-12">
           <Container>

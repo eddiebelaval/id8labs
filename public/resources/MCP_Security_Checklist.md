@@ -376,7 +376,7 @@ We build secure, production-ready MCP servers with proper auth, logging, and mon
 Claude Code and MCP security workshops. We teach your team to spot issues before they deploy.
 
 **Contact:** hello@id8labs.app
-**Web:** https://id8labs.app/services
+**Web:** https://hamato.systems/
 
 ---
 

@@ -96,7 +96,6 @@ export const CORPUS_REGISTER: Record<string, number> = {
   "shipped-06": 81,
   "shipped-07": 82,
   "shipped-08": 83,
-  "the-nursery": 84,
   "shipped-09": 85,
   "the-product-is-the-proof": 86,
   "newsletter/issue-1": 87,

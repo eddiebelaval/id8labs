@@ -175,14 +175,14 @@ export default function Module6Page() {
               </EditorialButton>
             </div>
 
-            {/* CTA 3: Services */}
+            {/* CTA 3: Keep exploring */}
             <div className="border border-[var(--hair)] p-6">
-              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">Need Custom Help?</h3>
+              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)] mb-2">Keep Exploring</h3>
               <p className="text-[var(--body)] mb-4">
-                Looking for 1-on-1 coaching, team training, or custom automation? View our consulting services.
+                Browse the full Academy for more free and paid courses on building with AI.
               </p>
-              <EditorialButton href="/services" variant="ghost">
-                View Services &rarr;
+              <EditorialButton href="/academy" variant="ghost">
+                Browse the Academy &rarr;
               </EditorialButton>
             </div>
           </div>

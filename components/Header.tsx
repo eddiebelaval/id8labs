@@ -58,9 +58,6 @@ export default function Header() {
               <Link href="/products" className={navLink}>
                 Products
               </Link>
-              <Link href="/services" className={navLink}>
-                Services
-              </Link>
 
               {/* Academy dropdown */}
               <div
@@ -272,9 +269,6 @@ export default function Header() {
           <div className="container space-y-4 border-t border-[var(--rule)] pb-24 pt-6">
             <Link href="/products" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
               Products
-            </Link>
-            <Link href="/services" className="block text-lg hover:text-id8-orange transition-colors" onClick={() => setMobileMenuOpen(false)}>
-              Services
             </Link>
 
             {/* Mobile Academy */}

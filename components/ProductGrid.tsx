@@ -170,7 +170,7 @@ export default function ProductGrid() {
             </h2>
             <Deck>
               We run the method on our own problems first. Every product here is the same
-              primitive-chain architecture we deploy for clients.
+              primitive-chain architecture, proven by shipping it ourselves.
             </Deck>
           </div>
 

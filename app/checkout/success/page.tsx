@@ -138,8 +138,8 @@ function SuccessContent() {
               Start Module 1
             </EditorialButton>
           )}
-          <EditorialButton href="/services" variant="ghost">
-            Back to Services
+          <EditorialButton href="/" variant="ghost">
+            Back to home
           </EditorialButton>
         </div>
 

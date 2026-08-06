@@ -21,17 +21,6 @@ const learningPaths = [
       { name: 'Claude Code for Knowledge Workers', duration: '10 modules', href: '/courses/claude-for-knowledge-workers' },
     ],
   },
-  {
-    title: 'Live Training',
-    description: 'Work directly with me. Build your project as the curriculum.',
-    badge: 'Instructor-Led',
-    free: false,
-    courses: [
-      { name: 'Claude Code Basics', duration: '90 min', href: '/services#claude-code' },
-      { name: 'Claude Code for Builders', duration: '3 sessions', href: '/services#claude-code' },
-      { name: 'Build With Claude', duration: '6-week cohort', href: '/services#claude-code' },
-    ],
-  },
 ]
 
 export default function Education() {

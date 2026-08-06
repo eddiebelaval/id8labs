@@ -518,27 +518,6 @@ export default function AcademyPage() {
 
       <Rule />
 
-      {/* Implementation Services cross-link */}
-      <section className="py-12">
-        <Container>
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div>
-              <h3 className="font-[family-name:var(--font-display)] font-normal text-xl text-[var(--ink)]">
-                Need hands-on implementation?
-              </h3>
-              <p className="mt-2 font-[family-name:var(--font-sans)] text-[var(--body)]">
-                If you&apos;d rather have AI workflows built for you, check out our implementation services.
-              </p>
-            </div>
-            <EditorialButton href="/services" variant="secondary" className="whitespace-nowrap">
-              View Services
-            </EditorialButton>
-          </div>
-        </Container>
-      </section>
-
-      <Rule />
-
       {/* CTA */}
       <section className="py-24">
         <Container narrow>
