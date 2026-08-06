@@ -1,0 +1,129 @@
+---
+title: "Everything Was Green"
+subtitle: "Shipped. published 103 editions without me. Then it published tomorrow's paper, and I found out nothing I had built was actually watching."
+date: "2026-08-06"
+category: "essay"
+author: "Eddie Belaval"
+excerpt: "Shipped. produced 103 editions on a cron with no human in the loop. Then it published an edition dated tomorrow, and the audit found four separate monitors that had been reporting healthy while asking the wrong questions."
+readTime: "8 min read"
+tags: ["shipped", "automation", "monitoring", "reliability", "case-study", "agents"]
+featured: true
+---
+
+**TL;DR:** Shipped. is an AI-labs magazine I built in one day and then left alone for 111 days. It published 103 editions on its own. On night 110 it published an edition dated tomorrow, containing today's news, and the real edition was never written at all. Four separate monitors reported healthy the entire time. This is what I found when I pulled the thread, and the watcher I built so it cannot happen quietly again.
+
+---
+
+## One day, then 111 of them
+
+The origin was small and specific. I would leave X for thirty minutes and come back feeling behind. In the three weeks before the first issue, Anthropic pushed 56 distinct releases: models, Claude Code versions, SDKs, research, launches. Social media covers that in fragments. Nobody ties the week together.
+
+I wanted the week in one read.
+
+The entire first version got built on 2026-04-16, in about ten hours. Concept at 1:12 PM. Voice rules at 1:21 PM, including the forbidden phrases list that still governs every page today. Nine design iterations in ninety minutes. The pipeline itself took twenty-five minutes, because Claude designed the architecture and Codex executed against the spec. Issue 01 shipped the next morning.
+
+Then the interesting part started, which is the part nobody writes about. The magazine got a nightly edition. The nightly got a weekly. The weekly got a monthly. Three cloud routines, firing on a cron, sweeping six frontier labs, rendering their own HTML, publishing to a branch, and staging email drafts. No human in the loop.
+
+By 2026-08-05 it had produced 89 dailies, 12 weeklies, and 2 monthlies across 164 commits. I had not looked at the machinery in weeks. That felt like success.
+
+## The night it published tomorrow
+
+On the evening of August 5th the nightly routine fired at 21:25 Eastern, as it had roughly ninety times before. It swept the labs, wrote the day's edition, and published a page titled **"Shipped. Daily, Thursday, August 6, 2026."**
+
+It was Wednesday, August 5th.
+
+Every log entry inside the page was correctly dated August 5th. The reporting was right. The window was right. Only the name on the door was wrong, and the edition for the day that actually happened was never written.
+
+The cause took about ten minutes to find and is embarrassing in its simplicity. Step 1 of the routine's instructions read: *"Run `date -u`. Convert to America/New_York."*
+
+The routine fires at 21:00 Eastern. At 21:00 Eastern it is already tomorrow in UTC. That conversion is the load-bearing step, and it was the only step in a routine full of hard gates that had no gate on it. Every other gate was a shell command the model ran and reported: a word count, a `grep` for em dashes, a check that the subscribe form was present. The date was the one thing it computed in its head. It held for ninety nights and then it did not.
+
+That is the first lesson, and it generalizes past this project: **an LLM step doing arithmetic that a command could do is an ungated step.** The fix was not a better prompt. The fix was to stop asking:
+
+```bash
+python3 -c "from datetime import datetime; from zoneinfo import ZoneInfo;
+n=datetime.now(ZoneInfo('America/New_York')); print(n.strftime('%Y-%m-%d'))"
+```
+
+Read the date. Never derive it. Then gate on it, the way everything else was gated.
+
+## The bugs behind the bug
+
+Fixing the date took twenty minutes. The audit took the rest of the day, because the wrong date was a flashlight.
+
+**The distributor would have eaten the next edition too.** The job that drafts the subscriber email tracked one high-water stem per cadence and only ever looked at the newest page. That future-dated page would have become the high-water mark that night. The next evening, when the real August 6th edition published, it would have compared equal to the mark and never been mailed. One wrong date, two lost editions. Any page backfilled below the mark had been silently unreachable for months on the same logic.
+
+High-water marks are lossy by construction. Track a set.
+
+**Three pages had a Subscribe button that went nowhere.** The routine adds a Subscribe pill to the navigation bar and pastes a subscribe form further down. Two independent edits. The healing script that was supposed to catch a missing form guarded on this:
+
+```python
+if pill in html or form in html:
+    return "already-patched"
+```
+
+An `or`, for two independent conditions. A page carrying only the pill was declared healed and skipped forever. Which is precisely what the routine emits when it does the first edit and skips the second: a Subscribe button anchored to a `#subscribe` that is not on the page. Click, nothing. Three pages had been in that state for twelve days while the healer logged "already had it" every single night.
+
+**One page had been serving base64 for seventy days.** An edition from May 27th was published base64-encoded. Readers got a wall of text. Worse, the subscribe healer had cheerfully appended a form to it, because a base64 blob contains no closing body tag and the healer's truncated-document branch only asks that one question. A healer that cannot recognize a broken input will certify it. It now refuses anything that does not start with a tag.
+
+**The archive index listed nine pages, all from May.** It was hand-edited, no routine owned it, and roughly ninety-five published pages had no path in. It is now derived from the directory listing, so it cannot fall behind what exists.
+
+## Everything was green
+
+Here is the part that actually matters, and the reason I am writing this down.
+
+Not one of those failures was hard to detect. A missing file. A stem sorting later than today. A document that does not start with a tag. A page missing a known string. Every one of them is a `grep`.
+
+They persisted because **the things I had built to watch this project were watching something else.**
+
+There was a nightly heartbeat on my machine that ran at 21:00 and sent me a desktop notification. It had run every night without fail. It was reporting on the readiness dashboard for the weekly magazine issue, a different product entirely, and it knew nothing about the nightly edition. It was green through all of it.
+
+The distributor logged `no new pages to draft` and exited zero on the two nights the routine did not run at all. Exit zero. Green.
+
+The subscribe healer reported `already had it: 103` while three of those 103 shipped a dead button. Green.
+
+The deploy pipeline reported a successful push while the site served three-month-old content, because a push is not a publish and nothing checked the difference. Green.
+
+Four monitors, four green lights, four different wrong questions. This is monitoring theater, and it is more dangerous than no monitoring at all, because no monitoring at least feels like risk. A wall of green feels like safety.
+
+## The Night Desk
+
+So I built the thing that should have existed on day two, and I built it from the incident log rather than from imagination. That distinction is the whole design. A watcher built from first principles watches what you thought of. A watcher built from the postmortem watches what actually happens to you.
+
+It runs twice a night and asks nine questions:
+
+1. Is today's Eastern-dated edition on the branch?
+2. Is anything dated in the future?
+3. Is every page a real document that opens with a tag, has a title, and closes?
+4. Does every page published since the design lock carry the shared stylesheet?
+5. Does every page have the subscribe form **and** the pill, the honeypot, and the absolute POST url?
+6. Does the index link exactly the pages that exist?
+7. Does the deployed site match the branch?
+8. Did the newest edition actually get drafted for email?
+9. Which editions are missing, reported and never alarmed?
+
+Check 4 is the one I am most pleased with. The three routines had drifted into three different visual identities, because each one free-handed its own CSS from a written description. So the description is gone. The design now lives in one file that gets pasted verbatim, and check 4 confirms the marker is present on every new page. If a routine quietly goes back to inventing its own stylesheet, the watcher sees it the next morning.
+
+**It is deliberately not an agent fleet.** My first instinct was an editor-in-chief agent with a team of subagents that execute and report back, and it is the wrong shape here. Every failure above was findable with `grep`. A nightly fleet of model calls would pay real money to rediscover facts a script already knows, and I have the receipt for that lesson: a monthly agent sweep on another project cost $112 on a single day, which was 77% of that month's API spend to date. Judgment belongs at escalation, not at collection. Green nights cost nothing. When something goes red and the fix is not mechanical, that is when a model gets invoked, with the evidence already gathered.
+
+Two more rules I would not skip again.
+
+**Prove every alarm before you trust the watcher.** There is a test file that injects eleven real failure modes plus the case that must stay silent, and asserts each one fires or does not. Twelve for twelve. An untested alarm is a green light you have not earned, which is the exact thing the watcher exists to prevent.
+
+**Never alarm on something that is not late yet.** The presence check stays silent before 21:35 because the routine does not fire until 21:00. Alarming early is how a real alert becomes noise, and how the next person to see it learns to scroll past.
+
+## What I would tell you
+
+Shipped. worked. That is the uncomfortable part. It produced 103 editions on a schedule with no human touching it, and by any output metric it was the most successful thing I have automated. The failure was not in the building. It was in the gap between *built* and *tended*, and I did not have a name for that gap until it cost me an edition.
+
+If you are running anything unattended, three questions are worth an afternoon:
+
+**What would a silent failure look like, and who would notice?** Not "would it error." Errors are easy. What does it look like when the job runs, exits zero, and produces the wrong thing?
+
+**Does every green light answer a question you actually care about?** Mine answered four questions correctly. None of them was "did the paper come out."
+
+**Has any alarm you own ever actually fired?** If not, you do not have an alarm. You have a decoration.
+
+The archive is public, the pipeline is MIT-licensed, and every failure described here is in the commit history with its fix attached. That was the point of making it open in the first place: not to show the parts that worked.
+
+*The archive lives at [eddiebelaval.github.io/shipped](https://eddiebelaval.github.io/shipped/). The pipeline is at [github.com/eddiebelaval/shipped](https://github.com/eddiebelaval/shipped), MIT-licensed. The watcher is [night-desk.py](https://github.com/eddiebelaval/shipped/blob/main/pipeline/scripts/night-desk.py) and the alarm proofs are [test-night-desk.py](https://github.com/eddiebelaval/shipped/blob/main/pipeline/test/test-night-desk.py), so you can check the claim rather than take it.*
