@@ -15,11 +15,19 @@ function cx(...parts: Array<string | false | undefined>): string {
 export function EditorialCard({
   children,
   href,
+  external = false,
   featured = false,
   className = '',
 }: {
   children: ReactNode
   href?: string
+  /**
+   * Render a plain anchor instead of next/link. Required for static files
+   * served straight out of public/ (e.g. /periodic-table.html): the App
+   * Router has no route for them, so next/link would attempt a client-side
+   * navigation to a route that does not exist.
+   */
+  external?: boolean
   featured?: boolean
   className?: string
 }) {
@@ -30,6 +38,13 @@ export function EditorialCard({
       : 'border-[var(--hair)] hover:bg-[var(--paper-shadow)] hover:border-[var(--hair-hard)]',
     className
   )
+  if (href && external) {
+    return (
+      <a href={href} className={cls}>
+        {children}
+      </a>
+    )
+  }
   if (href) {
     return (
       <Link href={href} className={cls}>
