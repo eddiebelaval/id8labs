@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { type WritingItem } from '@/lib/writing'
+import { writingHref } from '@/lib/writing-href'
 import { Container, Kicker, Deck, Tag, EditorialCard, Hairline } from '@/components/editorial'
 
 function categoryLabel(item: WritingItem): string {
@@ -20,7 +21,7 @@ function formatDate(dateString: string): string {
 
 function FeaturedArticle({ item }: { item: WritingItem }) {
   return (
-    <EditorialCard href={`/writing/${item.slug}`}>
+    <EditorialCard href={writingHref(item)}>
       {/* Meta line */}
       <div className="mb-4 flex items-center gap-4">
         <Tag>{categoryLabel(item)}</Tag>
@@ -56,7 +57,7 @@ function FeaturedArticle({ item }: { item: WritingItem }) {
 function RecentArticleItem({ item }: { item: WritingItem }) {
   return (
     <Link
-      href={`/writing/${item.slug}`}
+      href={writingHref(item)}
       className="group flex items-start justify-between gap-4 py-4 transition-colors"
     >
       <div className="min-w-0 flex-1">

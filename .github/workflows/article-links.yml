@@ -1,0 +1,67 @@
+name: Article Links
+
+# Every article link the site renders must resolve. 'The Gaps Are the Product'
+# 404'd from the homepage for weeks because the homepage rail and the /writing
+# index derived links differently — nothing ever checked that a rendered URL was
+# a real URL. This job checks it on every build.
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+concurrency:
+  group: article-links-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  article-links:
+    name: Every rendered article link resolves
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      # Note: DISABLE_MARKETPLACE_REDIRECTS is deliberately NOT set here. The
+      # audit must run against the redirects the site actually ships, including
+      # the content redirects that keep previously-linked slugs resolving.
+      - name: Build application
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: Start server
+        run: |
+          npm run start -- -p 3000 &
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null http://localhost:3000/ && echo "server up" && exit 0
+            sleep 2
+          done
+          echo "server did not come up within 120s" >&2
+          exit 1
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: Audit article links
+        run: npm run check:links
+        env:
+          LINK_CHECK_BASE_URL: http://localhost:3000

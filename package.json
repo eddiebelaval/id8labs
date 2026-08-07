@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "npx tsx scripts/validate-essays.ts && next build",
     "validate:essays": "npx tsx scripts/validate-essays.ts",
+    "check:links": "npx tsx scripts/check-article-links.ts",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
