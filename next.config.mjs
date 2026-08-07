@@ -23,10 +23,29 @@ const nextConfig = {
 
   // Redirects for backwards compatibility
   async redirects() {
+    // Content redirects are ALWAYS on. A /writing/{slug} URL that has ever been
+    // linked or shared must resolve; DISABLE_MARKETPLACE_REDIRECTS is an escape
+    // hatch for the marketplace routes below (so e2e can exercise them
+    // directly), not a licence to reintroduce a 404.
+    const contentRedirects = [
+      // 'The Gaps Are the Product' is a standalone hosted page (it embeds the
+      // interactive periodic table, which the markdown renderer cannot do), so
+      // it has no MDX file and app/writing/[slug] cannot resolve it. The
+      // homepage linked /writing/the-gaps-are-the-product for weeks and it
+      // 404'd. Renderers now link the real path via writingHref(); this keeps
+      // the slug-shaped URL working for everyone who already has it.
+      {
+        source: '/writing/the-gaps-are-the-product',
+        destination: '/periodic-table-of-primitives.html',
+        permanent: true,
+      },
+    ]
+
     if (process.env.DISABLE_MARKETPLACE_REDIRECTS === 'true') {
-      return []
+      return contentRedirects
     }
     return [
+      ...contentRedirects,
       // The Tuning Fork moved to the Hamato front door (converged 2026-07-08).
       // Edge-level redirect so no-JS clients and crawlers follow it too; the
       // page-level redirect() alone served a 307 with no Location header.

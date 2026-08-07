@@ -1,6 +1,7 @@
 'use client'
 
 import { type WritingItem, type WritingCategory } from '@/lib/writing'
+import { writingHref } from '@/lib/writing-href'
 import { Suspense, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { NewsletterSubscribe } from '@/components/newsletter'
@@ -200,14 +201,8 @@ function WritingListInner({ items }: WritingListProps) {
           {filteredItems.map((item) => {
             const isNewsletter = item.category === 'newsletter'
             const isMagazine = item.category === 'magazine'
-            // Magazine items carry an explicit href to /shipped/{NN}.
-            // Newsletter items resolve to /newsletter/{slug} (slug already prefixed).
-            // Everything else routes to /writing/{slug}.
-            const linkHref = item.href
-              ? item.href
-              : isNewsletter
-                ? `/${item.slug}`
-                : `/writing/${item.slug}`
+            // One resolver for every renderer — see lib/writing-href.ts.
+            const linkHref = writingHref(item)
 
             // Corpus: every piece's folio is its permanent accession number (No. NNN),
             // baked into the data server-side (lib/writing.ts + corpus-register.ts).
