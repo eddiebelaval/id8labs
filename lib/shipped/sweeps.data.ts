@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-06 (12 weekly, 2 monthly)
+ * Last generated: 2026-08-07 (13 weekly, 3 monthly)
  */
 
 export interface ShippedSweep {
@@ -88,6 +88,14 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     wordCount: 1546,
   },
   {
+    period: '2026-24',
+    label: 'Week of June 8-14, 2026',
+    sortKey: '2026-06-08',
+    title: 'A 1:1 mirror of every Anthropic release in the window, June 08 to June 12, 2026. Use it as reference. Share it with your team.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-24.html',
+    wordCount: 2195,
+  },
+  {
     period: '2026-23',
     label: 'Week of June 1-7, 2026',
     sortKey: '2026-06-01',
@@ -146,5 +154,13 @@ export const SHIPPED_MONTHLY_SWEEPS: ShippedSweep[] = [
     title: 'Two launches, two retirements, one new default. Fable 5 was the best model available on June 9; it was suspended on June 12. Sonnet 5 became the default on June 30.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-06.html',
     wordCount: 5550,
+  },
+  {
+    period: '2026-05',
+    label: 'May 2026',
+    sortKey: '2026-05-01',
+    title: 'A 1:1 mirror of the month&#x27;s confirmed Anthropic releases, May 06 to May 31, 2026. Use it as reference. Share it with your team.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-05.html',
+    wordCount: 2782,
   },
 ]

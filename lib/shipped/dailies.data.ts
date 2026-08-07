@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-06 (89 daily editions, 14 weeks)
+ * Last generated: 2026-08-07 (90 daily editions, 14 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-06',
+    dayLabel: 'Thu, Aug 6',
+    title: 'Google loses its AI architects on the same morning Meta ships its first coding agent. Plus: Anthropic inference hooks, Claude Code security, Mistral Shieldstral, xAI voice.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-06.html',
+    wordCount: 2861,
+  },
   {
     date: '2026-08-05',
     dayLabel: 'Wed, Aug 5',
@@ -518,9 +525,9 @@ export const SHIPPED_DAILIES: ShippedDaily[] = [
   {
     date: '2026-05-27',
     dayLabel: 'Wed, May 27',
-    title: 'Shipped. Daily — Wednesday, May 27, 2026',
+    title: 'Claude Code ships twice in 24 hours, the TypeScript SDK clears two versions, and Anthropic holds its first partner broadcast.',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-05-27.html',
-    wordCount: 384,
+    wordCount: 617,
   },
   {
     date: '2026-05-26',
@@ -671,6 +678,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-03',
     label: 'Week of August 3-9, 2026',
     editions: [
+      {
+        date: '2026-08-06',
+        dayLabel: 'Thu, Aug 6',
+        title: 'Google loses its AI architects on the same morning Meta ships its first coding agent. Plus: Anthropic inference hooks, Claude Code security, Mistral Shieldstral, xAI voice.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-06.html',
+        wordCount: 2861,
+      },
       {
         date: '2026-08-05',
         dayLabel: 'Wed, Aug 5',
@@ -1220,9 +1234,9 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
       {
         date: '2026-05-27',
         dayLabel: 'Wed, May 27',
-        title: 'Shipped. Daily — Wednesday, May 27, 2026',
+        title: 'Claude Code ships twice in 24 hours, the TypeScript SDK clears two versions, and Anthropic holds its first partner broadcast.',
         url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-05-27.html',
-        wordCount: 384,
+        wordCount: 617,
       },
       {
         date: '2026-05-26',
