@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-07 (90 daily editions, 14 weeks)
+ * Last generated: 2026-08-08 (91 daily editions, 14 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-07',
+    dayLabel: 'Fri, Aug 7',
+    title: 'Demis Hassabis hands over Google DeepMind operations and says AGI is close. xAI ships Grok 4.6 on Musk\'s promised date. OpenAI launches Agent Plugins open standard. Meta\'s coding agent debuts alongside a security disclosure.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-07.html',
+    wordCount: 3036,
+  },
   {
     date: '2026-08-06',
     dayLabel: 'Thu, Aug 6',
@@ -678,6 +685,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-03',
     label: 'Week of August 3-9, 2026',
     editions: [
+      {
+        date: '2026-08-07',
+        dayLabel: 'Fri, Aug 7',
+        title: 'Demis Hassabis hands over Google DeepMind operations and says AGI is close. xAI ships Grok 4.6 on Musk\'s promised date. OpenAI launches Agent Plugins open standard. Meta\'s coding agent debuts alongside a security disclosure.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-07.html',
+        wordCount: 3036,
+      },
       {
         date: '2026-08-06',
         dayLabel: 'Thu, Aug 6',

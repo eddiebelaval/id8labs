@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-07 (13 weekly, 3 monthly)
+ * Last generated: 2026-08-08 (14 weekly, 3 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-32',
+    label: 'Week of August 3-9, 2026',
+    sortKey: '2026-08-03',
+    title: 'The week Anthropic locked down the permission layer while Google handed off the cockpit. Four Claude Code security releases, inference hooks for enterprise, and two architects leave Google DeepMind on the same morning.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-32.html',
+    wordCount: 3936,
+  },
   {
     period: '2026-31',
     label: 'Week of July 27 - August 2, 2026',
