@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-08 (91 daily editions, 14 weeks)
+ * Last generated: 2026-08-09 (92 daily editions, 14 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-08',
+    dayLabel: 'Sat, Aug 8',
+    title: 'Safety gates are being tested from both directions. OpenAI disclosed Astra crossed the critical cyber threshold. Anthropic recalibrated Fable 5 biology safeguards. xAI shipped Grok Imagine 2.0.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-08.html',
+    wordCount: 2622,
+  },
   {
     date: '2026-08-07',
     dayLabel: 'Fri, Aug 7',
@@ -685,6 +692,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-03',
     label: 'Week of August 3-9, 2026',
     editions: [
+      {
+        date: '2026-08-08',
+        dayLabel: 'Sat, Aug 8',
+        title: 'Safety gates are being tested from both directions. OpenAI disclosed Astra crossed the critical cyber threshold. Anthropic recalibrated Fable 5 biology safeguards. xAI shipped Grok Imagine 2.0.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-08.html',
+        wordCount: 2622,
+      },
       {
         date: '2026-08-07',
         dayLabel: 'Fri, Aug 7',
