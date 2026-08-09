@@ -167,6 +167,29 @@ const flagshipProducts: FlagshipProduct[] = [
       { label: 'Price', value: 'Open Source' },
     ],
   },
+  {
+    name: 'Resonance',
+    tagline: 'Human Design and numerology, computed live',
+    description: 'A star-position engine built into the page. Every reading is a pure function of two instants — the one you were born in and the one you are reading in — so nothing is looked up and no chart is stored. Scrub the sky six months either way and watch it move. It also says plainly which half of the page is astronomy and which half is a tradition somebody invented in 1987.',
+    version: 'v1.0',
+    status: 'live',
+    link: 'https://resonance88.id8labs.app',
+    external: true,
+    image: '/images/resonance-preview.webp',
+    features: [
+      'Self-contained ephemeris, no network calls',
+      'Bodygraph and a live geocentric orrery',
+      'Scrubbable sky, six months either way',
+      '177-entry reference Academy',
+      'Nona interprets, and cannot invent a fact',
+      'No account, and no chart is ever stored',
+    ],
+    specs: [
+      { label: 'Platform', value: 'Web App' },
+      { label: 'AI Model', value: 'Claude' },
+      { label: 'Price', value: 'Free' },
+    ],
+  },
 ]
 
 // ============================================
@@ -316,7 +339,7 @@ export default function ProductsContent() {
           <MetaRow
             className="mt-12 border-t border-[var(--hair)] pt-6"
             items={[
-              { value: '6', label: 'flagship products' },
+              { value: '7', label: 'flagship products' },
               { value: '2', label: 'in development' },
               { value: '383', label: 'free skills & agents' },
             ]}
