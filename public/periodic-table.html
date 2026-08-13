@@ -35,24 +35,46 @@ input[type=range]::-webkit-slider-thumb{appearance:none;width:14px;height:14px;b
 input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--accent);cursor:pointer;border:none;border-radius:0;}
 .scrub-ticks{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);}
 
-/* the table */
-.tablewrap{overflow-x:auto;padding:26px 0 8px;}
-.ptable{display:grid;grid-template-columns:repeat(10,minmax(96px,1fr));gap:6px;min-width:1040px;}
-.gh{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:10.5px;color:var(--muted);font-weight:600;text-align:center;padding-bottom:4px;align-self:end;}
+/* the table — sized to whatever container it lands in, never side-scrolls.
+   Fixed px values come first as the fallback; the cqi rules below refine them. */
+.tablewrap{overflow-x:auto;padding:26px 0 8px;container-type:inline-size;}
+.ptable{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;}
+.ptable{gap:clamp(2px,0.55cqi,6px);}
+.gh{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;color:var(--muted);font-weight:600;text-align:center;padding-bottom:4px;align-self:end;line-height:1.2;}
+.gh{font-size:clamp(7px,0.94cqi,10.5px);}
 .cell{border:1px solid var(--hair);background:var(--paper);min-height:96px;padding:8px 9px;position:relative;cursor:pointer;transition:background .15s,opacity .15s,border-color .15s;}
+.cell{min-height:clamp(30px,8.7cqi,100px);padding:clamp(3px,0.8cqi,9px);}
 .cell:hover{background:var(--paper2);}
 .cell.sel{border-color:var(--ink);background:var(--paper2);}
 .cell .z{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);position:absolute;top:6px;left:8px;}
 .cell .a{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);position:absolute;top:6px;right:8px;}
+.cell .z,.cell .a{font-size:clamp(6.5px,0.94cqi,10.5px);top:clamp(2px,0.55cqi,6px);}
+.cell .z{left:clamp(3px,0.72cqi,8px);}
+.cell .a{right:clamp(3px,0.72cqi,8px);}
 .cell .sym{font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--ink);display:block;margin:18px 0 0;line-height:1.1;}
+.cell .sym{font-size:clamp(12px,2.65cqi,30px);margin-top:clamp(8px,1.6cqi,18px);}
 .cell .nm{font-size:11.5px;color:var(--body);display:block;line-height:1.25;margin-top:2px;}
+.cell .nm{font-size:clamp(7px,1.02cqi,11.5px);}
 .cell.candidate{border-style:dashed;}
 .cell.candidate .tagn1{position:absolute;bottom:6px;right:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--signal);}
 .cell.eka{border:1px dashed var(--hair);background:transparent;}
 .cell.eka .sym{color:var(--muted);font-weight:400;font-style:italic;font-size:22px;margin-top:22px;}
+.cell.eka .sym{font-size:clamp(10px,1.95cqi,22px);margin-top:clamp(10px,1.95cqi,22px);}
 .cell.eka .nm{color:var(--muted);}
 .cell.ekacand{border-color:var(--signal);}
 .cell .candtag{position:absolute;bottom:6px;right:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--signal);}
+.cell .tagn1,.cell .candtag{font-size:clamp(6px,0.85cqi,9.5px);bottom:clamp(2px,0.55cqi,6px);right:clamp(3px,0.72cqi,8px);}
+/* narrow containers: drop the labels, keep the symbol and the tap target */
+@container (max-width:640px){
+  .gh .gname{display:none;}
+  .cell .nm,.cell .a,.cell .tagn1,.cell .candtag{display:none;}
+  .cell{display:flex;align-items:center;justify-content:center;}
+  .cell .sym,.cell.eka .sym{margin:0;}
+  .cell .z{top:1px;left:3px;}
+}
+@container (max-width:420px){
+  .cell .z{display:none;}
+}
 .cell.empty{border:1px solid transparent;background:transparent;cursor:default;}
 .cell.empty::after{content:'';position:absolute;top:50%;left:50%;width:3px;height:3px;background:var(--hair);transform:translate(-50%,-50%);}
 .cell.unforged{opacity:.13;pointer-events:none;}
@@ -103,6 +125,14 @@ h2.cardname{font-family:'Fraunces',serif;font-weight:400;font-size:34px;color:va
 footer{padding:40px 0 64px;}
 .foot-law{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);line-height:2;}
 @media(max-width:720px){h1{font-size:38px;}.cardgrid{grid-template-columns:1fr;}}
+
+/* embed mode (?embed=1): the essay already carries the title and the framing,
+   so the embed drops the page chrome and keeps the instrument. */
+body.embed header .kicker,body.embed header h1,body.embed header .deck,body.embed footer{display:none;}
+body.embed header{padding:22px 0 0;}
+body.embed .metarow{margin:0;}
+body.embed .container{padding:0 clamp(14px,2.6vw,32px);}
+body.embed .cardpanel{padding-bottom:26px;}
 </style>
 </head>
 <body>
@@ -260,7 +290,7 @@ const EMPTYNOTES={"2,3":"No known element. Watch for a judgment resolver between
 
 const tbl=document.getElementById('ptable');
 let html='';
-GROUPS.forEach((g,i)=>{html+='<div class="gh">'+(i+1)+' '+g+'</div>';});
+GROUPS.forEach((g,i)=>{html+='<div class="gh"><span class="gnum">'+(i+1)+'</span> <span class="gname">'+g+'</span></div>';});
 for(let p=1;p<=4;p++){
   for(let g=1;g<=10;g++){
     const el=E.find(e=>e.g===g&&e.p===p);
@@ -321,6 +351,24 @@ function applyStep(){
 }
 scrub.addEventListener('input',applyStep);
 applyStep();
+
+/* Embedded in the essay: strip the chrome and tell the host how tall we are,
+   so the iframe grows to fit instead of trapping the table in a scroll box. */
+(function(){
+  try{
+    if(new URLSearchParams(location.search).get('embed')==='1')document.body.classList.add('embed');
+    if(window.parent===window)return;
+    var last=0;
+    function post(){
+      var h=Math.ceil(Math.max(document.documentElement.scrollHeight,document.body.scrollHeight));
+      if(h&&Math.abs(h-last)>1){last=h;window.parent.postMessage({type:'ptable:height',height:h},'*');}
+    }
+    if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
+    window.addEventListener('load',post);
+    window.addEventListener('resize',post);
+    post();
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
