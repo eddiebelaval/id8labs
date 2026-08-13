@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-12 (95 daily editions, 15 weeks)
+ * Last generated: 2026-08-13 (96 daily editions, 15 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-12',
+    dayLabel: 'Wed, Aug 12',
+    title: 'xAI ships Grok Bot and Grok 4.6 in 24 hours. DeepMind SL2T reaches the Pixel 11. Anthropic draws the enterprise compliance perimeter. OpenAI expands ads to five markets. Mistral bets on European sovereignty.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-12.html',
+    wordCount: 3183,
+  },
   {
     date: '2026-08-11',
     dayLabel: 'Tue, Aug 11',
@@ -713,6 +720,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-10',
     label: 'Week of August 10-16, 2026',
     editions: [
+      {
+        date: '2026-08-12',
+        dayLabel: 'Wed, Aug 12',
+        title: 'xAI ships Grok Bot and Grok 4.6 in 24 hours. DeepMind SL2T reaches the Pixel 11. Anthropic draws the enterprise compliance perimeter. OpenAI expands ads to five markets. Mistral bets on European sovereignty.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-12.html',
+        wordCount: 3183,
+      },
       {
         date: '2026-08-11',
         dayLabel: 'Tue, Aug 11',
