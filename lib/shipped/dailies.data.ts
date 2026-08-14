@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-13 (96 daily editions, 15 weeks)
+ * Last generated: 2026-08-14 (97 daily editions, 15 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-13',
+    dayLabel: 'Thu, Aug 13',
+    title: 'Anthropic in talks to acquire Decart for $6B, xAI ships Grok 4.6 at frontier parity for half the price, Google DeepMind reshuffles leadership.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-13.html',
+    wordCount: 4255,
+  },
   {
     date: '2026-08-12',
     dayLabel: 'Wed, Aug 12',
@@ -720,6 +727,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-10',
     label: 'Week of August 10-16, 2026',
     editions: [
+      {
+        date: '2026-08-13',
+        dayLabel: 'Thu, Aug 13',
+        title: 'Anthropic in talks to acquire Decart for $6B, xAI ships Grok 4.6 at frontier parity for half the price, Google DeepMind reshuffles leadership.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-13.html',
+        wordCount: 4255,
+      },
       {
         date: '2026-08-12',
         dayLabel: 'Wed, Aug 12',
