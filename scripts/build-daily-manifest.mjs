@@ -78,6 +78,12 @@ function decodeEntities(s) {
     .replace(/&#39;|&apos;/g, "'")
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    // Any numeric reference the named list above missed (&#x27; &#8217; …).
+    // Last, so a double-escaped &amp;#x27; decodes all the way through.
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) =>
+      String.fromCodePoint(parseInt(hex, 16))
+    )
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
 }
 
 /** Strip tags, collapse whitespace, decode entities, tidy stray spaces. */
