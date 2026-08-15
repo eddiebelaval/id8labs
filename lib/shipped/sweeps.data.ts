@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-14 (14 weekly, 3 monthly)
+ * Last generated: 2026-08-15 (15 weekly, 3 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-33',
+    label: 'Week of August 10-16, 2026',
+    sortKey: '2026-08-10',
+    title: 'The price cut was not the move. The price cut was the announcement that there would be no move. Sonnet 5 launched at $2 per million tokens input, $10 per million output. On August 10, Anthropic confirmed those numbers are permanent. A September 1 increase to $3 per million had been scheduled. That increase is canceled.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-33.html',
+    wordCount: 2835,
+  },
   {
     period: '2026-32',
     label: 'Week of August 3-9, 2026',
