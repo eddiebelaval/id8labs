@@ -22,23 +22,24 @@ function SweepRows({ sweeps }: { sweeps: ShippedSweep[] }) {
             href={sweep.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group grid grid-cols-[1fr] md:grid-cols-[220px_1fr_auto] items-baseline gap-2 md:gap-8 border-b border-[var(--hair)] py-4 transition-colors hover:bg-[var(--paper)]"
+            className="group block border-b border-[var(--hair)] py-4 transition-colors hover:bg-[var(--paper)]"
           >
-            <span className="font-[family-name:var(--font-mono)] text-xs font-medium text-[var(--ink)]">
-              {sweep.label}
+            <span className="flex items-baseline justify-between gap-4 font-[family-name:var(--font-mono)] text-[11px] text-[var(--muted)]">
+              <span className="text-xs font-medium text-[var(--ink)]">
+                {sweep.label}
+              </span>
+              <span className="flex items-center gap-4">
+                <span className="tabular-nums">
+                  {sweep.wordCount.toLocaleString('en-US')} words
+                </span>
+                <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.18em] text-id8-orange opacity-0 transition-opacity group-hover:opacity-100">
+                  Read ↗
+                </span>
+              </span>
             </span>
 
-            <span className="font-[family-name:var(--font-sans)] text-[15px] leading-[1.5] text-[var(--body)] transition-colors group-hover:text-[var(--ink)]">
+            <span className="mt-1.5 block font-[family-name:var(--font-sans)] text-[15px] leading-[1.5] text-[var(--body)] transition-colors group-hover:text-[var(--ink)]">
               {sweep.title}
-            </span>
-
-            <span className="mt-1 flex items-center gap-4 md:mt-0 md:justify-end font-[family-name:var(--font-mono)] text-[11px] text-[var(--muted)]">
-              <span className="tabular-nums">
-                {sweep.wordCount.toLocaleString('en-US')} words
-              </span>
-              <span className="font-[family-name:var(--font-narrow)] text-[10px] font-bold uppercase tracking-[0.18em] text-id8-orange opacity-0 transition-opacity group-hover:opacity-100">
-                Read &nearr;
-              </span>
             </span>
           </a>
         </li>
@@ -63,7 +64,7 @@ export function SweepList() {
   }
 
   return (
-    <div className="space-y-14">
+    <div className="grid gap-14 lg:grid-cols-[3fr_2fr] lg:gap-16">
       {hasWeekly && (
         <section>
           <div className="mb-5 flex flex-wrap items-baseline justify-between gap-3 border-b border-[var(--rule)] pb-3">

@@ -167,7 +167,7 @@ export const SHIPPED_MONTHLY_SWEEPS: ShippedSweep[] = [
     period: '2026-05',
     label: 'May 2026',
     sortKey: '2026-05-01',
-    title: 'A 1:1 mirror of the month&#x27;s confirmed Anthropic releases, May 06 to May 31, 2026. Use it as reference. Share it with your team.',
+    title: "A 1:1 mirror of the month's confirmed Anthropic releases, May 06 to May 31, 2026. Use it as reference. Share it with your team.",
     url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-05.html',
     wordCount: 2782,
   },
