@@ -61,6 +61,12 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--acce
 .cell.eka .sym{color:var(--muted);font-weight:400;font-style:italic;font-size:22px;margin-top:22px;}
 .cell.eka .sym{font-size:clamp(10px,1.95cqi,22px);margin-top:clamp(10px,1.95cqi,22px);}
 .cell.eka .nm{color:var(--muted);}
+/* a placed cell shown in its earlier PREDICTED state (scrubber in the past) */
+.cell.aspred{border-style:dashed;background:transparent;}
+.cell.aspred .sym{color:var(--muted);font-weight:400;font-style:italic;font-size:22px;margin-top:22px;}
+.cell.aspred .sym{font-size:clamp(10px,1.95cqi,22px);margin-top:clamp(10px,1.95cqi,22px);}
+.cell.aspred .nm{color:var(--muted);}
+.cell.aspred .z,.cell.aspred .a,.cell.aspred .tagn1{visibility:hidden;}
 .cell.ekacand{border-color:var(--signal);}
 .cell .candtag{position:absolute;bottom:6px;right:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--signal);}
 .cell .tagn1,.cell .candtag{font-size:clamp(6px,0.85cqi,9.5px);bottom:clamp(2px,0.55cqi,6px);right:clamp(3px,0.72cqi,8px);}
@@ -271,7 +277,7 @@ const E=[
 {z:5,s:"St",n:"State",g:4,p:1,a:1,q:"d0 s1 t0",st:"stable",f:0,job:"Hold working state while a chain runs; answer where-are-we.",iso:"matter state / release-train board / pipeline stage",org:"Primordial. Operator card, 2026-06-15.",cmp:"Distinct from Persistence by durability: St holds the run, Ps holds the record."},
 {z:6,s:"Vf",n:"Verification",g:7,p:1,a:1,q:"d1 s0 t0",st:"stable",f:0,job:"Check a claim against a rule and emit a verdict, deterministically.",iso:"ZIP+4 verify / contract check (VERIFY nurse) / deploy-verify / type check",org:"Primordial. Operator card, 2026-06-15.",cmp:"Every closed-loop chain. The Prover column runs Vf, Cn, Rc, Ev: rule check, system proof, reality match, judgment grade."},
 {z:7,s:"No",n:"Notification",g:9,p:1,a:1,q:"d0 s0 t1",st:"stable",f:0,job:"Put a message where a person or chain will see it.",iso:"internal ping (iMessage, Slack) / surface line (hub health card). Alias NOTIFY, N.",org:"Primordial. Operator card, 2026-06-15.",cmp:"dae-digest 21:00; Sentinel alerts; a client's weekly report to the phone."},
-{z:8,s:"Wa",n:"Watcher",g:3,p:2,a:2,q:"d0 s2 t0",st:"stable",f:1,job:"Hold a cursor against a source and emit only what is new. Capture plus memory of where it left off.",iso:"folder watch / mail watcher / claim loop",org:"Predicted by the gap discipline, then found already living in the corpus: llc-ops folder watch (2026-05-12), the mail watcher, the pilot's pipeline watcher. The first eka- element confirmed.",cmp:"llc-ops Ledger; the pilot's Test Fire claim loop; mail-ops router."},
+{z:8,s:"Wa",n:"Watcher",g:3,p:2,a:2,q:"d0 s2 t0",st:"stable",f:1,job:"Hold a cursor against a source and emit only what is new. Capture plus memory of where it left off.",iso:"folder watch / mail watcher / claim loop",org:"Predicted by the gap discipline, then found already living in the corpus: llc-ops folder watch (2026-05-12), the mail watcher, the pilot's pipeline watcher. The first eka- element confirmed.",cmp:"llc-ops Ledger; the pilot's Test Fire claim loop; mail-ops router.",pred:1,predwhy:"Predicted by the gap discipline as a stateful Intake — Capture plus a cursor that remembers where it left off — then found already living in the corpus. The first eka- cell confirmed."},
 {z:9,s:"Hb",n:"Heartbeat",g:9,p:2,a:2,q:"d0 s1 t1",st:"stable",f:2,job:"On a cadence, announce liveness. Proves the loop is alive, and only that.",iso:"hub health card / HALO heartbeat",org:"Forward Deployment standard, hardened at the pilot engagement.",cmp:"The opposable pair with the Canary survives in two groups: Hb announces (Emitter), Cn proves (Prover). A heartbeat shown as proof of function is the lie the pair exists to kill."},
 {z:10,s:"Rs",n:"Research",g:2,p:2,a:3,q:"d2 s1 t0",st:"stable",f:5,job:"Resolve a question, not a reference: sample sources, weigh with judgment, emit a finding.",iso:"market sweep / deep-research report",org:"The Nursery's market-alignment round, 2026-06-08; the standing research cadence before it.",cmp:"Market-alignment loop; KB compile inputs."},
 {z:11,s:"Ps",n:"Persistence",g:4,p:2,a:3,q:"d0 s2 t1",st:"stable",f:0,job:"Write the durable record; emit custody of it.",iso:"Occurrences: The Bank (SalesOS), the O-drive matter folder, Supabase rows, the report archive.",org:"Primordial. Operator card, 2026-06-15.",cmp:"File-opening links 4 and 5; every persisted-state terminal."},
@@ -287,11 +293,11 @@ const E=[
 {z:21,s:"At",n:"Attunement",g:2,p:4,a:7,q:"d2 s3 t2",st:"stable",f:4,job:"Mine an operator's whole corpus in place, read-only; emit a tuning profile (their form) and a golden eval set (their ground truth) in one pass.",iso:"movements: Attune / Build / Verify / Tend",org:"Forged at the pilot engagement; name locked by Eddie 2026-06-01, surfaced in a live design conversation.",cmp:"The Attunement cycle; per-firm GHOST tuning; the Tend cadence. The heaviest Resolver: Lookup's valence at corpus scale under privilege."},
 {z:22,s:"Gh",n:"GHOST",g:5,p:4,a:7,q:"d2 s2 t3",st:"candidate",f:7,job:"Local-first privacy transform: detect PII on device, swap for consistent fakes, send the scrubbed prompt out, rehydrate the answer. Fail closed: uncertain means scrub.",iso:"scrub / rehydrate / per-firm recognizers",org:"Forged 2026-06-29 against the regulated-egress blocker (the pilot engagement, egress OFF until DPA/ZDR). Named by Eddie the same day.",cmp:"Layers on DPA/ZDR, never replaces it. Ships with its Ev bond or not at all: recall alone was a degenerate target."},
 {z:23,s:"Hu",n:"Human-in-loop",g:8,p:4,a:7,q:"d3 s1 t3",st:"stable",f:0,job:"A person is the mechanism: judgment, taste, accountability. Accepts a verdict and context; emits passage, a note, or a stop.",iso:"operator-of-record / partner sign-off / Eddie's per-send gate",org:"Primordial. Operator card, 2026-06-15. The heaviest element on the table.",cmp:"Every Dp bond; the guardrail line; Fit and Commit; G2. The table exists to spend this element well: it is scarce, it does not scale, and wasting it on Period 1 work misprices the rarest material in the building."},
-{z:24,s:"Sw",n:"Switch",g:6,p:1,a:1,q:"d1 s0 t0",st:"stable",f:9,job:"Take a case, emit a path by a declared dispatch table. The deterministic Router.",iso:"route-by-type / route-by-tier / route-by-sender",org:"Admitted 2026-07-20 by the gap discipline. Not forged in one engagement: the table found it already running unnamed at N=2 (CDC routing in the pilot's matter-folder creation; mail-ops routing rules). The first element the table discovered rather than an engagement forged.",cmp:"Every fixed-branching chain gets a named deterministic link instead of an inline if/else. Distinct from Decision (Z=12) by mass: Sw follows a table, Dc exercises judgment. When a Switch's table needs judgment, it has become a Decision."},
-{z:25,s:"Me",n:"Meter",g:10,p:2,a:2,q:"d0 s2 t0",st:"stable",f:9,job:"Accept a stream of events, emit a running account: count, sum, rate. The lightest Meters element; deterministic bookkeeping.",iso:"usage-count (t0) / spend-tally (t rises near money)",org:"Admitted 2026-07-20 by the gap discipline. The Meters column's missing light element, predicted then found at N=2 across three disjoint occurrences (score-history.jsonl; the cost-preflight audit; token and spend meters).",cmp:"A metering link ahead of every Billing bond (meter, then bill); cost-preflight formalized; ROI dashboards that count Output before pricing it. Meter is to Billing what a scale is to an invoice: it counts, Billing charges."},
+{z:24,s:"Sw",n:"Switch",g:6,p:1,a:1,q:"d1 s0 t0",st:"stable",f:9,job:"Take a case, emit a path by a declared dispatch table. The deterministic Router.",iso:"route-by-type / route-by-tier / route-by-sender",org:"Admitted 2026-07-20 by the gap discipline. Not forged in one engagement: the table found it already running unnamed at N=2 (CDC routing in the pilot's matter-folder creation; mail-ops routing rules). The first element the table discovered rather than an engagement forged.",cmp:"Every fixed-branching chain gets a named deterministic link instead of an inline if/else. Distinct from Decision (Z=12) by mass: Sw follows a table, Dc exercises judgment. When a Switch's table needs judgment, it has become a Decision.",pred:1,predwhy:"Predicted as the deterministic Router, the light rule-only sibling of Decision. The gap discipline found it already running unnamed at N=2, then named it."},
+{z:25,s:"Me",n:"Meter",g:10,p:2,a:2,q:"d0 s2 t0",st:"stable",f:9,job:"Accept a stream of events, emit a running account: count, sum, rate. The lightest Meters element; deterministic bookkeeping.",iso:"usage-count (t0) / spend-tally (t rises near money)",org:"Admitted 2026-07-20 by the gap discipline. The Meters column's missing light element, predicted then found at N=2 across three disjoint occurrences (score-history.jsonl; the cost-preflight audit; token and spend meters).",cmp:"A metering link ahead of every Billing bond (meter, then bill); cost-preflight formalized; ROI dashboards that count Output before pricing it. Meter is to Billing what a scale is to an invoice: it counts, Billing charges.",pred:1,predwhy:"Predicted as the Meters column's missing light element — a column holding only Billing was the most suspicious shape on the table. Found running unnamed at N=2, then named."},
 {z:26,s:"Dm",n:"Doorman",g:8,p:3,a:4,q:"d1 s1 t2",st:"stable",f:10,job:"Classify a proposed mutation by reversibility — two-way door vs one-way door — and hold accordingly: the reversible branch passes to auto-apply; the irreversible branch is held for the human gate. The gate that decides whether the Approval Gate or Human-in-loop is spent at all.",iso:"reversible-pass (applies this turn) / irreversible-hold (queues for Ag/Hu). Ambiguous fails safe to hold.",org:"Surfaced by the AUDIT pass 2026-08-15, running at N=2 unconscious across six blind authors: recurrence-auto-confirm, no-gate-on-obvious-remediation, the Gardener, plumb, assay, the Night Desk (three after genesis). First read as a Router, but the grid placed it Gate: Routers was full at its mass (Decision holds Period 2), while the empty Gates Period-3 cell already carried a reversibility trace, 'the Membrane G1 permits reversible on-brand changes.'",cmp:"Every auto-heal system opens with a Dm to decide what it may touch without a human. It completes the Gates column, the second full column after Provers: the meta-gate between the Approval Gate (a human's action holds the door) and Human-in-loop (the human IS the door). Distinct from a Switch route-by-reversibility isotope by state and trust: Sw is a stateless t0 dispatch table; Dm holds the pending irreversible action (s1) and carries the t2 blast radius of an ungated one-way door."},
-{z:27,s:"Th",n:"Threshold",g:8,p:1,a:1,q:"d1 s0 t0",st:"stable",f:10,job:"Accept a measured value plus a declared bar; emit pass or hold. The deterministic sibling of the Approval Gate: Ag waits on a human, Th waits on a number.",iso:"pass-bar (meets the bar) / freshness gate (is the pass current) / the numbered G-gates in mechanical form",org:"Admitted 2026-08-15; the 2026-07-20 ruling closed. Eddie ruled it a distinct element, not an Approval Gate isotope: Ag's condition is a human action (t2, social), Th's is a number (t0, re-runnable). Different mass, trust, and failure mode.",cmp:"The Succession gate as a bondable link (Ev scores, Th passes on the bar); Attunement auto-greenlight; Nursery freshness enforcement. The lightest Gate and the base of the now-complete Gates column: Th (P1) to Ag (P2) to Dm (P3) to Hu (P4)."},
-{z:28,s:"Ay",n:"Assembly",g:5,p:2,a:2,q:"d0 s1 t1",st:"candidate",f:10,job:"Accept a template plus a matter's data; emit a finished document. Deterministic composition: the judgment (which template, which fields) is upstream; Assembly fills and renders.",iso:"closing-doc composition / standard doc-pack",org:"Predicted 2026-07-20 at exactly these coordinates, then forged in the lab: the pilot's closing-doc composition was built and ran. Never shipped to the field, the client descoped the intake to a raw-PDF dump before delivery (1.3.7). Lab-forged, field-unshipped.",cmp:"Every standard doc-pack step becomes a named Assembly link. Candidate at N=1: admits to stable on a second occurrence (a field ship, or a second client's doc-pack cloning it). Distinct from Generation (Z=16): if a doc build needs per-doc judgment it is Gn (d2), not Ay (d0)."}
+{z:27,s:"Th",n:"Threshold",g:8,p:1,a:1,q:"d1 s0 t0",st:"stable",f:10,job:"Accept a measured value plus a declared bar; emit pass or hold. The deterministic sibling of the Approval Gate: Ag waits on a human, Th waits on a number.",iso:"pass-bar (meets the bar) / freshness gate (is the pass current) / the numbered G-gates in mechanical form",org:"Admitted 2026-08-15; the 2026-07-20 ruling closed. Eddie ruled it a distinct element, not an Approval Gate isotope: Ag's condition is a human action (t2, social), Th's is a number (t0, re-runnable). Different mass, trust, and failure mode.",cmp:"The Succession gate as a bondable link (Ev scores, Th passes on the bar); Attunement auto-greenlight; Nursery freshness enforcement. The lightest Gate and the base of the now-complete Gates column: Th (P1) to Ag (P2) to Dm (P3) to Hu (P4).",pred:1,predwhy:"Predicted as the deterministic Gate — the number-waiting sibling of the human-waiting Approval Gate. Held as a promotion candidate until Eddie ruled it a distinct element."},
+{z:28,s:"Ay",n:"Assembly",g:5,p:2,a:2,q:"d0 s1 t1",st:"candidate",f:10,job:"Accept a template plus a matter's data; emit a finished document. Deterministic composition: the judgment (which template, which fields) is upstream; Assembly fills and renders.",iso:"closing-doc composition / standard doc-pack",org:"Predicted 2026-07-20 at exactly these coordinates, then forged in the lab: the pilot's closing-doc composition was built and ran. Never shipped to the field, the client descoped the intake to a raw-PDF dump before delivery (1.3.7). Lab-forged, field-unshipped.",cmp:"Every standard doc-pack step becomes a named Assembly link. Candidate at N=1: admits to stable on a second occurrence (a field ship, or a second client's doc-pack cloning it). Distinct from Generation (Z=16): if a doc build needs per-doc judgment it is Gn (d2), not Ay (d0).",pred:1,predwhy:"Predicted at exactly these coordinates as the deterministic document composer between Convert and Generation. Then forged in the lab, and placed as a candidate."}
 ];
 
 const EKA=[
@@ -310,7 +316,7 @@ for(let p=1;p<=4;p++){
     const el=E.find(e=>e.g===g&&e.p===p);
     const ek=EKA.find(e=>e.g===g&&e.p===p);
     if(el){
-      html+='<div class="cell '+el.st+'" data-z="'+el.z+'" data-f="'+el.f+'"><span class="z">'+el.z+'</span><span class="a">A'+el.a+'</span><span class="sym">'+el.s+'</span><span class="nm">'+el.n+'</span>'+(el.st==='candidate'?'<span class="tagn1">N=1</span>':'')+'</div>';
+      html+='<div class="cell '+el.st+'"'+(el.pred?' data-pred="1"':'')+' data-z="'+el.z+'" data-f="'+el.f+'" data-sym="'+el.s+'" data-nm="'+el.n+'"><span class="z">'+el.z+'</span><span class="a">A'+el.a+'</span><span class="sym">'+el.s+'</span><span class="nm">'+el.n+'</span>'+(el.st==='candidate'?'<span class="tagn1">N=1</span>':'')+'</div>';
     }else if(ek){
       html+='<div class="cell eka'+(ek.cand?' ekacand':'')+'" data-eka="'+ek.n+'"><span class="sym">eka</span><span class="nm">'+ek.n+'</span>'+(ek.cand?'<span class="candtag">N=2?</span>':'')+'</div>';
     }else{
@@ -346,9 +352,24 @@ function showEka(name){
   document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
+function showPredicted(z){
+  const e=E.find(x=>x.z===+z);if(!e)return;
+  document.getElementById('cSym').textContent='eka';
+  document.getElementById('cSym').className='bigsym ekasym';
+  document.getElementById('cNums').innerHTML='Predicted <b>'+e.s+'</b> &middot; A'+e.a+'<br>Group <b>'+GROUPS[e.g-1]+'</b><br>Period <b>'+e.p+'</b><br>Status <b>predicted (gap)</b>';
+  document.getElementById('cKick').textContent='At this point in time — a predicted cell, not yet forged';
+  document.getElementById('cName').textContent='eka-'+e.n;
+  document.getElementById('cBody').innerHTML='<p>'+(e.predwhy||'')+'</p><span class="lbl">Later forged as</span><p class="origin">'+e.s+' &mdash; '+e.n+'. '+e.org+'</p>';
+  panel.classList.add('open');
+  document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
+  const cell=document.querySelector('.cell[data-z="'+z+'"]');if(cell)cell.classList.add('sel');
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 tbl.addEventListener('click',ev=>{
   const c=ev.target.closest('.cell');if(!c||c.classList.contains('unforged'))return;
-  if(c.dataset.z)showEl(c.dataset.z);else if(c.dataset.eka)showEka(c.dataset.eka);
+  if(c.classList.contains('aspred'))showPredicted(c.dataset.z);
+  else if(c.dataset.z)showEl(c.dataset.z);
+  else if(c.dataset.eka)showEka(c.dataset.eka);
 });
 
 const scrub=document.getElementById('forgeScrub');
@@ -358,8 +379,21 @@ function applyStep(){
   label.innerHTML='<b>'+STEPS[s]+'</b>';
   document.querySelectorAll('.cell[data-z]').forEach(c=>{
     const f=+c.dataset.f;
-    c.classList.toggle('unforged',f>s);
-    c.classList.toggle('justforged',f===s&&s>0);
+    const sym=c.querySelector('.sym'), nm=c.querySelector('.nm');
+    if(c.dataset.pred==='1' && f>s){
+      // this cell was a PREDICTED gap at this point in time: show what we predicted
+      // (the eka- state), not the greyed-out end symbol. It resolves when forged.
+      c.classList.remove('unforged','justforged');
+      c.classList.add('aspred');
+      if(sym) sym.textContent='eka';
+      if(nm) nm.textContent=c.dataset.nm;
+    }else{
+      c.classList.remove('aspred');
+      if(sym) sym.textContent=c.dataset.sym;
+      if(nm) nm.textContent=c.dataset.nm;
+      c.classList.toggle('unforged',f>s);
+      c.classList.toggle('justforged',f===s&&s>0);
+    }
   });
   document.querySelectorAll('.cell.eka').forEach(c=>{c.classList.toggle('unforged',s<9);});
 }
