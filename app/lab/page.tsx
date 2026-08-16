@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getEssaysByCategory } from '@/lib/essays'
+import { periodicTable } from '@/lib/lab-systems'
 import {
   Container,
   Kicker,
@@ -40,35 +41,74 @@ export default function LabPage() {
       <Container>
         {/* Featured Work */}
         <section className="pb-16">
-          <SectionHead title={<>Featured <em className="italic text-id8-orange">Work</em></>} meta="2 Pieces" />
+          <SectionHead title={<>Living <em className="italic text-id8-orange">systems</em></>} meta="Developed in the open" />
 
           {/*
             The Periodic Table of Primitives. The Lab is its destination surface
             per periodic-table/LANDING-SPLIT-SPEC.md (LOCKED 2026-07-22): here the
             table IS the attraction, studied rather than wielded, copy expands,
             neutral body with a light Labs footer line. Hamato gets the contracted
-            instrument version. Counts verified against periodic-table/ELEMENTS.md
-            on 2026-08-06: 25 placed elements, 5 open eka- cells.
-            It is a static file in public/, so the card must render a real anchor.
+            instrument version. Numbers come from lib/lab-systems.ts (the single
+            mirror the Forge-Watch audit updates) so this card never goes stale.
+            The static instrument lives in public/, so the card renders a real anchor.
           */}
           <div className="pt-10">
-            <EditorialCard href="/periodic-table-of-primitives.html" external featured>
-              <Tag>Doctrine</Tag>
+            <EditorialCard href={periodicTable.instrumentHref} external featured>
+              <Tag>Living Doctrine</Tag>
               <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal leading-tight tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
                 The Periodic Table of Primitives
               </h2>
               <p className="mt-5 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
-                Every business is a graph of triggers wired to primitives. We went looking for the elements. Strip any company down past its software, its org chart, its industry, and you hit the same small set of irreducible moves: something triggers, a fact gets looked up, a payload gets captured, a claim gets verified, a human decides. Twenty-five of them, placed, ordered by valence and mass.
+                Every business is a graph of triggers wired to primitives. We went looking for the elements. Strip any company down past its software, its org chart, its industry, and you hit the same small set of irreducible moves: something triggers, a fact gets looked up, a payload gets captured, a claim gets verified, a human decides. {periodicTable.placed} of them, placed, ordered by valence and mass.
               </p>
               <p className="mt-4 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
-                And like Mendeleev&apos;s, it has gaps. Five cells sit empty, predicted by the axes and not yet found in the wild. Two filled themselves in July: Switch and Meter turned out to be already running, unnamed, across a dozen systems. Cite it, argue with it, find an element we missed. The scoring is public and disputable on every card.
+                And like Mendeleev&apos;s, it has gaps. {periodicTable.openGaps} cells sit empty, predicted by the axes and not yet found in the wild. The rest filled themselves in: elements that turned out to be already running, unnamed, across a dozen systems. Cite it, argue with it, find an element we missed. The scoring is public and disputable on every card.
               </p>
               <TagRow
                 className="mt-7"
-                tags={['Interactive', '25 Elements', '5 Open Gaps', 'Nucleosynthesis Scrubber']}
+                tags={['Interactive', `${periodicTable.placed} Elements`, `${periodicTable.openGaps} Open Gaps`, 'Nucleosynthesis Scrubber']}
               />
               <p className="mt-7 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
                 A working doctrine from the id8Labs studio. Developed in the open.
+              </p>
+            </EditorialCard>
+          </div>
+
+          {/* The pulse: this doctrine is audited on a cadence. Links live OUTSIDE
+              the card anchor (no nested anchors). The audit trail is the essays. */}
+          <div className="pt-4 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+            <span>
+              Audited {periodicTable.auditCadence} &middot; last pass{' '}
+              {new Date(periodicTable.lastAudit).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+            </span>
+            <span className="text-[var(--hair-hard)]">/</span>
+            {periodicTable.essays.map((e) => (
+              <Link key={e.slug} href={e.href} className="transition-colors hover:text-id8-orange">
+                {e.title} &#8599;
+              </Link>
+            ))}
+          </div>
+
+          {/* HALO / Genome — the second living system. SYSTEM only, no client
+              named or counted (LANDING-SPLIT-SPEC privacy rule). */}
+          <div className="pt-8">
+            <EditorialCard href="/lab/halo" featured>
+              <Tag>Living System</Tag>
+              <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal leading-tight tracking-[-0.015em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
+                The HALO
+              </h2>
+              <p className="mt-5 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                A brand&apos;s DNA on disk. Most brands live in a person&apos;s head and a folder of old files, and drift a little with every new page. A HALO is the fix: four genes &mdash; Design, Voice, Ethos, Lexicon &mdash; written down as files the production tools read first, so an asset comes out on-brand the way a cell comes out with the right proteins. By construction, not by a correction pass at the end.
+              </p>
+              <p className="mt-4 max-w-2xl font-[family-name:var(--font-sans)] text-[1.0625rem] leading-relaxed text-[var(--body)]">
+                We do not invent the genome, we mine it &mdash; read a brand&apos;s own work in place and let its DNA fall out of the corpus. Then every asset is checked against it before it ships, the way you diff a render against a reference. The brand structurally cannot drift.
+              </p>
+              <TagRow
+                className="mt-7"
+                tags={['Four Genes', 'Attunement', 'Form-Parity Verified', 'On-Brand by Construction']}
+              />
+              <p className="mt-7 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
+                A working system from the id8Labs studio. Developed in the open.
               </p>
             </EditorialCard>
           </div>
