@@ -113,28 +113,30 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--acce
 @media(max-width:900px){.keygrid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.keygrid{grid-template-columns:1fr;}}
 
-/* table + card side by side: the card reads as a sidebar next to the table,
-   not a panel far below it. Collapses to stacked under 1000px. */
-.tablelayout{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;}
-@media(min-width:1000px){.tablelayout{grid-template-columns:minmax(0,1fr) 320px;gap:34px;}}
-/* card panel — the sidebar */
-.cardpanel{padding:2px 0 8px;}
+/* table on top; the card packs into a wide band right below it — body text in
+   two columns that fill the width (no dead space), a compact identity rail
+   flanking it on the right. Short and wide, not a tall narrow sidebar. */
+.tablelayout{display:block;}
+.cardpanel{margin-top:6px;padding:0 0 8px;}
 .cardhint{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.6;color:var(--muted);border-top:2px solid var(--ink);padding-top:18px;}
 .cardpanel.open .cardhint{display:none;}
 .cardpanel:not(.open) .cardgrid{display:none;}
-.cardgrid{display:grid;grid-template-columns:1fr;gap:14px;border-top:2px solid var(--ink);padding-top:18px;}
-@media(min-width:1000px){
-  .cardpanel{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;}
-  .cardhint,.cardgrid{border-top:none;padding-top:0;}
-}
-.bigsym{font-family:'Fraunces',serif;font-size:88px;font-weight:600;color:var(--ink);line-height:1;}
-.bigsym.ekasym{color:var(--muted);font-style:italic;font-weight:400;font-size:56px;}
-.cardnums{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:12px;line-height:2;}
+.cardgrid{display:grid;grid-template-columns:minmax(0,1fr) 232px;gap:44px;border-top:2px solid var(--ink);padding-top:22px;align-items:start;}
+.cardmain{min-width:0;}
+.cardmeta{min-width:0;}
+@media(max-width:820px){.cardgrid{grid-template-columns:1fr;gap:20px;}}
+.bigsym{font-family:'Fraunces',serif;font-size:60px;font-weight:600;color:var(--ink);line-height:1;}
+.bigsym.ekasym{color:var(--muted);font-style:italic;font-weight:400;font-size:44px;}
+.cardnums{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:14px;line-height:2;}
 .cardnums b{color:var(--ink);font-weight:500;}
-h2.cardname{font-family:'Fraunces',serif;font-weight:400;font-size:34px;color:var(--ink);margin:0 0 4px;}
-.cardkick{margin-bottom:10px;}
-.cardbody p{margin:0 0 12px;max-width:760px;}
-.cardbody .lbl{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);font-weight:600;display:block;margin:16px 0 3px;}
+h2.cardname{font-family:'Fraunces',serif;font-weight:400;font-size:26px;color:var(--ink);margin:10px 0 4px;line-height:1.12;}
+.cardkick{margin-bottom:8px;display:block;}
+.cardbody{column-count:2;column-gap:42px;}
+.cardbody .sec{break-inside:avoid;margin:0 0 15px;}
+.cardbody .sec:first-child{margin-top:0;}
+.cardbody p{margin:0;}
+.cardbody .lbl{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);font-weight:600;display:block;margin:0 0 3px;}
+@media(max-width:600px){.cardbody{column-count:1;}}
 .origin{color:var(--body);}
 .origin b{color:var(--accent);font-weight:600;}
 
@@ -178,15 +180,15 @@ body.embed .cardpanel{padding-bottom:26px;}
 <aside class="cardpanel" id="cardpanel">
   <div class="cardhint" id="cardhint">Click any cell for its card &mdash; job, isotopes, origin star, compounds.</div>
   <div class="cardgrid">
-    <div>
-      <div class="bigsym" id="cSym"></div>
-      <div class="cardnums" id="cNums"></div>
-    </div>
-    <div>
-      <span class="kicker cardkick" id="cKick"></span>
-      <h2 class="cardname" id="cName"></h2>
+    <div class="cardmain">
       <div class="cardbody" id="cBody"></div>
     </div>
+    <aside class="cardmeta">
+      <div class="bigsym" id="cSym"></div>
+      <h2 class="cardname" id="cName"></h2>
+      <span class="kicker cardkick" id="cKick"></span>
+      <div class="cardnums" id="cNums"></div>
+    </aside>
   </div>
 </aside>
 </div>
@@ -334,7 +336,7 @@ function showEl(z){
   document.getElementById('cNums').innerHTML='Z <b>'+e.z+'</b><br>A <b>'+e.a+'</b> ('+e.q+')<br>Group <b>'+GROUPS[e.g-1]+'</b><br>Period <b>'+e.p+'</b><br>Status <b>'+e.st+'</b>';
   document.getElementById('cKick').textContent='Element '+e.z+' of '+E.length;
   document.getElementById('cName').textContent=e.n;
-  document.getElementById('cBody').innerHTML='<p>'+e.job+'</p><span class="lbl">Isotopes</span><p>'+e.iso+'</p><span class="lbl">Origin star</span><p class="origin">'+e.org+'</p><span class="lbl">Known compounds</span><p>'+e.cmp+'</p>';
+  document.getElementById('cBody').innerHTML='<div class="sec"><p>'+e.job+'</p></div><div class="sec"><span class="lbl">Isotopes</span><p>'+e.iso+'</p></div><div class="sec"><span class="lbl">Origin star</span><p class="origin">'+e.org+'</p></div><div class="sec"><span class="lbl">Known compounds</span><p>'+e.cmp+'</p></div>';
   panel.classList.add('open');
   document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
   document.querySelector('.cell[data-z="'+z+'"]').classList.add('sel');
@@ -347,7 +349,7 @@ function showEka(name){
   document.getElementById('cNums').innerHTML='Group <b>'+GROUPS[e.g-1]+'</b><br>Period <b>'+e.p+'</b><br>Status <b>'+(e.cand?'promotion candidate':'predicted (gap)')+'</b>';
   document.getElementById('cKick').textContent=e.cand?'Predicted element, may be admissible now':'Predicted element (Mendeleev wanted-poster)';
   document.getElementById('cName').textContent='eka-'+e.n;
-  document.getElementById('cBody').innerHTML='<p>'+e.pred+'</p><span class="lbl">Trace evidence</span><p>'+e.trace+'</p><span class="lbl">Compounds it would unlock</span><p>'+e.unlocks+'</p><span class="lbl">Confirmation trigger</span><p class="origin">'+e.trig+'</p><span class="lbl">Candor</span><p>'+e.candor+'</p>';
+  document.getElementById('cBody').innerHTML='<div class="sec"><p>'+e.pred+'</p></div><div class="sec"><span class="lbl">Trace evidence</span><p>'+e.trace+'</p></div><div class="sec"><span class="lbl">Compounds it would unlock</span><p>'+e.unlocks+'</p></div><div class="sec"><span class="lbl">Confirmation trigger</span><p class="origin">'+e.trig+'</p></div><div class="sec"><span class="lbl">Candor</span><p>'+e.candor+'</p></div>';
   panel.classList.add('open');
   document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -359,7 +361,7 @@ function showPredicted(z){
   document.getElementById('cNums').innerHTML='Predicted <b>'+e.s+'</b> &middot; A'+e.a+'<br>Group <b>'+GROUPS[e.g-1]+'</b><br>Period <b>'+e.p+'</b><br>Status <b>predicted (gap)</b>';
   document.getElementById('cKick').textContent='At this point in time — a predicted cell, not yet forged';
   document.getElementById('cName').textContent='eka-'+e.n;
-  document.getElementById('cBody').innerHTML='<p>'+(e.predwhy||'')+'</p><span class="lbl">Later forged as</span><p class="origin">'+e.s+' &mdash; '+e.n+'. '+e.org+'</p>';
+  document.getElementById('cBody').innerHTML='<div class="sec"><p>'+(e.predwhy||'')+'</p></div><div class="sec"><span class="lbl">Later forged as</span><p class="origin">'+e.s+' &mdash; '+e.n+'. '+e.org+'</p></div>';
   panel.classList.add('open');
   document.querySelectorAll('.cell').forEach(c=>c.classList.remove('sel'));
   const cell=document.querySelector('.cell[data-z="'+z+'"]');if(cell)cell.classList.add('sel');
