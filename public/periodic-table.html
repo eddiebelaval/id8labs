@@ -107,10 +107,20 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--acce
 @media(max-width:900px){.keygrid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.keygrid{grid-template-columns:1fr;}}
 
-/* card panel */
-.cardpanel{border-top:2px solid var(--ink);margin-top:30px;padding:26px 0 8px;display:none;}
-.cardpanel.open{display:block;}
-.cardgrid{display:grid;grid-template-columns:200px 1fr;gap:36px;}
+/* table + card side by side: the card reads as a sidebar next to the table,
+   not a panel far below it. Collapses to stacked under 1000px. */
+.tablelayout{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;}
+@media(min-width:1000px){.tablelayout{grid-template-columns:minmax(0,1fr) 320px;gap:34px;}}
+/* card panel — the sidebar */
+.cardpanel{padding:2px 0 8px;}
+.cardhint{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.6;color:var(--muted);border-top:2px solid var(--ink);padding-top:18px;}
+.cardpanel.open .cardhint{display:none;}
+.cardpanel:not(.open) .cardgrid{display:none;}
+.cardgrid{display:grid;grid-template-columns:1fr;gap:14px;border-top:2px solid var(--ink);padding-top:18px;}
+@media(min-width:1000px){
+  .cardpanel{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;}
+  .cardhint,.cardgrid{border-top:none;padding-top:0;}
+}
 .bigsym{font-family:'Fraunces',serif;font-size:88px;font-weight:600;color:var(--ink);line-height:1;}
 .bigsym.ekasym{color:var(--muted);font-style:italic;font-weight:400;font-size:56px;}
 .cardnums{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:12px;line-height:2;}
@@ -157,7 +167,23 @@ body.embed .cardpanel{padding-bottom:26px;}
   <div class="scrub-ticks"><span>primordial</span><span>May 12</span><span>May 18</span><span>May 25</span><span>Jun 01</span><span>Jun 08</span><span>Jun 15</span><span>Jun 29</span><span>Jul 03</span><span>today</span></div>
 </section>
 
+<div class="tablelayout">
 <section class="tablewrap"><div class="ptable" id="ptable"></div></section>
+<aside class="cardpanel" id="cardpanel">
+  <div class="cardhint" id="cardhint">Click any cell for its card &mdash; job, isotopes, origin star, compounds.</div>
+  <div class="cardgrid">
+    <div>
+      <div class="bigsym" id="cSym"></div>
+      <div class="cardnums" id="cNums"></div>
+    </div>
+    <div>
+      <span class="kicker cardkick" id="cKick"></span>
+      <h2 class="cardname" id="cName"></h2>
+      <div class="cardbody" id="cBody"></div>
+    </div>
+  </div>
+</aside>
+</div>
 
 <section class="key">
   <div class="keyhead"><span class="kicker">The Key &middot; how to read the table</span></div>
@@ -212,20 +238,6 @@ body.embed .cardpanel{padding-bottom:26px;}
       <p>Drag the <b>scrubber</b> at the top to watch elements ignite in the order the portfolio forged them, primordial batch first.</p>
     </div>
 
-  </div>
-</section>
-
-<section class="cardpanel" id="cardpanel">
-  <div class="cardgrid">
-    <div>
-      <div class="bigsym" id="cSym"></div>
-      <div class="cardnums" id="cNums"></div>
-    </div>
-    <div>
-      <span class="kicker cardkick" id="cKick"></span>
-      <h2 class="cardname" id="cName"></h2>
-      <div class="cardbody" id="cBody"></div>
-    </div>
   </div>
 </section>
 
