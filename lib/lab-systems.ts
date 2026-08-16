@@ -22,9 +22,9 @@ export type LabSystem = {
 /** The Periodic Table of Primitives. Source of truth: periodic-table/ELEMENTS.md. */
 export const periodicTable = {
   slug: 'periodic-table',
-  placed: 28,
+  placed: 29,
   openGaps: 3,
-  fullColumns: 2, // Provers, Gates
+  fullColumns: 3, // Transformers, Provers, Gates
   lastAudit: '2026-08-15',
   auditCadence: 'monthly',
   // The audit trail, newest first. These are the essays that narrate each pass.
@@ -35,7 +35,7 @@ export const periodicTable = {
   instrumentHref: '/periodic-table.html',
   // One-line pulse: what the last pass did. Updated each audit.
   lastPass:
-    'The first monthly audit (Aug 2026) admitted two elements the table had been running unnamed, corrected where a third belonged, and placed one more as a lab-forged candidate.',
+    'The first monthly audit (Aug 2026) admitted two elements the table had been running unnamed and placed a third as a lab-forged candidate. Days later, tuning to a pattern we run constantly forged Rollup — the deterministic fan-in that consolidates many records into one report — into the cell the table had flagged between Meter and Billing.',
 } as const
 
 /** The HALO / Genome system. Source: the id8-halos vault. Client-neutral only. */
