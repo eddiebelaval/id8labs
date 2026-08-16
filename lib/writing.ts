@@ -115,6 +115,18 @@ const STANDALONE_PIECES: WritingItem[] = [
     tags: ['primitives', 'doctrine', 'interactive'],
     href: '/periodic-table-of-primitives.html',
   },
+  {
+    slug: 'the-table-has-a-pulse',
+    title: 'The Table Has a Pulse',
+    subtitle: 'The first audit of a periodic table that checks itself',
+    date: '2026-08-15',
+    category: 'essay',
+    readTime: '5 min read',
+    excerpt:
+      'Twenty-six days after I built a periodic table for the work every business runs on, I finally ran the audit it came with. It handed me an element I had been running for months without a name, then corrected me about where it belonged.',
+    tags: ['primitives', 'doctrine', 'interactive'],
+    href: '/the-table-has-a-pulse.html',
+  },
 ]
 
 /**
