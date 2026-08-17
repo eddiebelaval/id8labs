@@ -22,13 +22,14 @@ export type LabSystem = {
 /** The Periodic Table of Primitives. Source of truth: periodic-table/ELEMENTS.md. */
 export const periodicTable = {
   slug: 'periodic-table',
-  placed: 29,
+  placed: 30,
   openGaps: 3,
-  fullColumns: 3, // Transformers, Provers, Gates
+  fullColumns: 4, // Transformers, Provers, Gates, Meters
   lastAudit: '2026-08-15',
   auditCadence: 'monthly',
   // The audit trail, newest first. These are the essays that narrate each pass.
   essays: [
+    { slug: 'the-floor-below-the-floor', title: 'The Floor Below the Floor', href: '/the-floor-below-the-floor.html', date: '2026-08-17' },
     { slug: 'the-table-has-a-pulse', title: 'The Table Has a Pulse', href: '/the-table-has-a-pulse.html', date: '2026-08-15' },
     { slug: 'the-gaps-are-the-product', title: 'The Gaps Are the Product', href: '/periodic-table-of-primitives.html', date: '2026-07-20' },
   ],
