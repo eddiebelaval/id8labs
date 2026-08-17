@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-16 (99 daily editions, 15 weeks)
+ * Last generated: 2026-08-17 (100 daily editions, 15 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-16',
+    dayLabel: 'Sun, Aug 16',
+    title: 'Anthropic disclosed Model 2, raised misalignment risk to low, and revealed the safety benchmark that stopped working. Plus $11.5B Q2 revenue, OpenAI Linux app, Gemini 3.7 Flash, and Meta Muse Glimmer on Ollama.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-16.html',
+    wordCount: 2927,
+  },
   {
     date: '2026-08-15',
     dayLabel: 'Sat, Aug 15',
@@ -741,6 +748,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-08-10',
     label: 'Week of August 10-16, 2026',
     editions: [
+      {
+        date: '2026-08-16',
+        dayLabel: 'Sun, Aug 16',
+        title: 'Anthropic disclosed Model 2, raised misalignment risk to low, and revealed the safety benchmark that stopped working. Plus $11.5B Q2 revenue, OpenAI Linux app, Gemini 3.7 Flash, and Meta Muse Glimmer on Ollama.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-16.html',
+        wordCount: 2927,
+      },
       {
         date: '2026-08-15',
         dayLabel: 'Sat, Aug 15',
