@@ -1,9 +1,9 @@
 ---
 title: "From Conversation to System"
-subtitle: "How a FaceTime call with a friend became my entire dev workflow — from templates to animated architecture diagrams"
+subtitle: "How a FaceTime call with a friend became my entire dev workflow, from templates to animated architecture diagrams"
 date: "2026-02-08"
 category: "essay"
-readTime: "14 min read"
+readTime: "13 min read"
 excerpt: "Last night, my friend Shah showed me his project structure over FaceTime. All I had was a screenshot and a conversation. By the next morning, I'd built a complete workspace system with templates, generators, conversational form filling, and interactive HTML visualizations with a formalized design language."
 tags: ["AI", "developer-tools", "workflow", "design-system", "claude-code", "productivity"]
 featured: true
@@ -13,23 +13,23 @@ featured: true
 
 Last night, my friend Shah showed me his flagship product over FaceTime.
 
-Shah is an actual developer. Like, a real one. And watching him walk through his codebase was honestly overwhelming — in the best way. Clean folder hierarchy, template files for every type of work, generators that scaffold new tasks, a `prep/` directory for research, a `scratch/` folder for experiments. The whole thing was polished, intentional, and clearly the product of someone who knows what they're doing.
+Shah is an actual developer. Watching him walk through his codebase was overwhelming, in the best way. Clean folder hierarchy, a template for every kind of work, generators that scaffold new tasks, a `prep/` directory for research, a `scratch/` folder for experiments. Nothing improvised.
 
-Here's the thing about me: I'm not a developer. I'm a filmmaker turned vibe coder — twenty years in television production, now building products with AI tools. I've built a lot with AI tools, but watching an actual developer work? Seeing how Shah organized his thinking, his inputs, his scaffolding? That was inspiring. It made me realize I still had a lot to learn.
+I'm not a developer. I'm a filmmaker turned vibe coder. Twenty years in television production, now building products with AI. I've shipped a lot that way. But watching an actual developer work, seeing how Shah organized his thinking, his inputs, his scaffolding, showed me how much I still had to learn.
 
-All I really had to work with was our conversation and some screenshots I frantically took trying to process what I was looking at. But that was enough.
+All I had was our conversation and the screenshots I grabbed trying to keep up.
 
-I looked at it and had one of those moments where you realize you've been solving the wrong problem.
+It was enough to show me I'd been solving the wrong problem.
 
 I had built an absolute machine for *execution*. HYDRA runs 23 automation jobs. I have 287 skills, 42 agents, 40+ slash commands. Claude Code can spin up a feature branch, build the component, write tests, create a PR, and deploy to Vercel in under ten minutes. The output pipeline was a weapon.
 
-But the input? The input had room to grow.
+But the input? The input was an afterthought.
 
-Don't get me wrong — I wasn't flying blind. I use plan mode obsessively. Every non-trivial feature gets an exploration phase, an architecture plan, and user approval before a single line of implementation code gets written. That discipline is real, and it works.
+I wasn't flying blind. I use plan mode obsessively. Every non-trivial feature gets an exploration phase, an architecture plan, and my approval before a single line of implementation code gets written. That discipline is real, and it works.
 
-But plan mode operates on what's already in your head. You sit down, think through the problem in the moment, and write a plan. What I didn't have was **structured input that feeds the plan**. No template prompting me to define acceptance criteria before I start planning. No prep document where I'd already researched alternatives before entering plan mode. No ADR capturing *why* I made the last three architecture decisions so the next plan builds on that history instead of re-deriving it.
+But plan mode operates on what's already in your head. You sit down, think the problem through in the moment, and write a plan. What I didn't have was **structured input that feeds the plan**. No template prompting me to define acceptance criteria first. No prep document where I'd already weighed the alternatives. No ADR capturing *why* I made the last three architecture decisions, so the next plan builds on that history instead of re-deriving it.
 
-Shah's setup wasn't about going from chaos to order — it was about going from good planning to **informed planning**. A task template with sections for "what I'll test" and "edge cases to consider" means you walk into plan mode with half the thinking already done. A prep document with "alternatives considered" means your plan doesn't just pick the first approach that comes to mind.
+Shah's setup wasn't chaos to order. It was good planning to **informed planning**. A task template with sections for "what I'll test" and "edge cases to consider" means you walk into plan mode with half the thinking already done. A prep document with "alternatives considered" means your plan doesn't just grab the first approach that comes to mind.
 
 I'd built the engine and the navigation. Shah showed me I was missing the pre-flight checklist.
 
@@ -43,10 +43,10 @@ The next morning, I sat down and built the whole thing in a single session.
 
 The system has two layers:
 
-**Global templates** live at `~/.claude/` — shared across every project:
-- `doc-templates/` — 13 templates (feature specs, bug investigations, API designs, deployment checklists, ADRs, post-mortems)
-- `prep-templates/` — 6 research templates (architecture research, API evaluation, competitor analysis, cost modeling, security review)
-- `prompts/` — 9 thinking frameworks (code review, debugging, performance audit, ship-readiness)
+**Global templates** live at `~/.claude/`, shared across every project:
+- `doc-templates/`: 13 templates (feature specs, bug investigations, API designs, deployment checklists, ADRs, post-mortems)
+- `prep-templates/`: 6 research templates (architecture research, API evaluation, competitor analysis, cost modeling, security review)
+- `prompts/`: 9 thinking frameworks (code review, debugging, performance audit, ship-readiness)
 
 **Per-project workspaces** live inside each project:
 ```
@@ -80,17 +80,17 @@ done-task.sh workspace/tasks/2026-02-08-fix-auth-redirect-loop.md
 # Moves to .done/ with completion date
 ```
 
-All Bash 3.2 compatible — because macOS ships with ancient Bash and I refuse to add a dependency for a shell script. No `declare -A`, no associative arrays. Just pipe-delimited strings and `${var%%|*}` splitting.
+All Bash 3.2 compatible, because macOS ships with ancient Bash and I refuse to add a dependency for a shell script. No `declare -A`, no associative arrays. Just pipe-delimited strings and `${var%%|*}` splitting.
 
-The key insight: every script outputs the file path it created. So you can chain them: the generator creates the file, Claude reads it, and the conversation continues from a structured starting point instead of a blank page.
+The trick: every script outputs the file path it created. So you can chain them. The generator creates the file, Claude reads it, and the conversation continues from a structured start instead of a blank page.
 
 ---
 
 ## The Unexpected Discovery: Conversational Form Filling
 
-Here's where it got interesting.
+The generators were supposed to be the whole feature. They weren't.
 
-I created three slash commands — `/task`, `/prep`, `/adr` — that wrap the generators. But instead of just running the script and handing back an empty template, each command starts a **conversation**.
+I created three slash commands, `/task`, `/prep`, `/adr`, that wrap the generators. But instead of running the script and handing back an empty template, each command starts a **conversation**.
 
 The `/adr` command, for example, doesn't dump a blank ADR template in your lap. It interviews you:
 
@@ -102,15 +102,15 @@ The `/adr` command, for example, doesn't dump a blank ADR template in your lap. 
 >
 > **You:** "Yeah, we thought about a middleware wrapper function, but RLS means the database itself enforces it so even if we forget in the API layer, data is still protected."
 
-By the time the conversation ends, the ADR is fully filled in — context, decision, alternatives considered, trade-offs. Not a blank form. A *document*.
+By the time the conversation ends, the ADR is fully filled in: context, decision, alternatives considered, trade-offs. Not a blank form. A *document*.
 
-This works because of Claude Code's `AskUserQuestion` tool. It presents structured choices — multiple options with descriptions, single or multi-select — so the conversation feels more like a product intake meeting than a form. The tool can ask up to four questions at once, each with 2-4 options, and the user can always type something custom.
+This works because of Claude Code's `AskUserQuestion` tool. It presents structured choices, multiple options with descriptions, single or multi-select, so the conversation feels more like a product intake meeting than a form. It can ask up to four questions at once, each with 2-4 options, and you can always type your own.
 
-The same pattern powers `/prep` (research documents) and `/task` (task files). You say `/prep Evaluate PartyKit vs WebSockets`, and instead of getting a blank research template, Claude asks: "What matters most — latency, developer experience, cost, or community support?" Your answer pre-fills the evaluation criteria. The document arrives 80% done.
+The same pattern powers `/prep` (research documents) and `/task` (task files). You say `/prep Evaluate PartyKit vs WebSockets`, and instead of a blank research template, Claude asks: "What matters most: latency, developer experience, cost, or community support?" Your answer pre-fills the evaluation criteria. The document arrives 80% done.
 
 **The pattern is: generator creates the skeleton, conversation fills the flesh.**
 
-This inverts the normal developer workflow. Instead of *writing* a spec and then building from it, you *talk through* the spec and arrive at a document that already captures your thinking. The template guides the conversation. The conversation fills the template. Neither is useful alone.
+This inverts the normal workflow. Instead of *writing* a spec and building from it, you *talk through* it and arrive at a document that already captures your thinking. Neither half works alone.
 
 ---
 
@@ -118,21 +118,21 @@ This inverts the normal developer workflow. Instead of *writing* a spec and then
 
 Somewhere during the template build, I hit a wall.
 
-I was trying to explain the workspace system to myself — how all the pieces connect, what lives where, how generators relate to templates relate to project workspaces. I typed out a long explanation. Read it back. My eyes glazed over.
+I was trying to explain the workspace system to myself: how the pieces connect, what lives where, how generators relate to templates relate to workspaces. I typed out a long explanation. Read it back. My eyes glazed over.
 
-I'm a visual learner. Always have been. Twenty years in television production wired my brain to think in frames, not paragraphs. Terminal text walls don't stick. Architecture diagrams do.
+I'm a visual learner. Always have been. Two decades in television wired my brain to think in frames, not paragraphs. Terminal text walls don't stick. Architecture diagrams do.
 
 So I built `/visualize`.
 
 The idea: instead of explaining something in text, generate a **single self-contained HTML file** that teaches it visually. No CDN links. No external dependencies. One file you can open in a browser and *see* the system.
 
-The first thing I visualized was the workspace system itself — **[you can try it live here](/demos/workspace-system-guide.html)**. Five tabbed views:
+The first thing I visualized was the workspace system itself. **[You can try it live here](/demos/workspace-system-guide.html)**. Five tabbed views:
 
-1. **Overview** — stats bar (13 templates, 8 generators, 6 prep types) + mental model of the two-level architecture
-2. **Templates** — every template listed with what it references and when to use it
-3. **Generators** — each script with usage examples and what it creates
-4. **Workflow** — step-by-step flow from "I have an idea" to "task is done"
-5. **Cheatsheet** — copy-paste commands for daily use
+1. **Overview**: stats bar (13 templates, 8 generators, 6 prep types) plus a mental model of the two-level architecture
+2. **Templates**: every template listed with what it references and when to use it
+3. **Generators**: each script with usage examples and what it creates
+4. **Workflow**: step-by-step flow from "I have an idea" to "task is done"
+5. **Cheatsheet**: copy-paste commands for daily use
 
 Tabs instead of scrolling. Expandable cards instead of bullet lists. Color-coded badges instead of inline labels. One glance tells you more than a page of markdown.
 
@@ -142,75 +142,75 @@ But the first version looked... generic. Dark mode with blue accents. Could have
 
 ## Finding the Right Visual Language
 
-id8labs already had a design philosophy: monochromatic, no shadows, no gradients, generous whitespace, maximum credibility. Our site is literally called the "White Paper Edition" internally — boring on purpose, because the lab coat needs to be trusted.
+id8labs already had a design philosophy: monochromatic, no shadows, no gradients, generous whitespace, maximum credibility. Our site is literally called the "White Paper Edition" internally: boring on purpose, because the lab coat needs to be trusted.
 
-But that philosophy was for the company site. The visualizations needed something different — a dark-mode technical aesthetic for tools that explain architecture and systems. I knew the *principles* I wanted (restraint, warmth, surgical use of color), but I hadn't formalized the tokens.
+But that philosophy was for the company site. The visualizations needed something different: a dark-mode technical aesthetic for tools that explain architecture and systems. I knew the *principles* I wanted (restraint, warmth, surgical use of color), but I hadn't formalized the tokens.
 
-So I went looking for reference. I studied a handful of sites in the AI/dev tools space — companies whose design felt the way I wanted my visualizations to feel. Professional without being corporate. Dark without being gloomy. Technical without being cold. A few patterns kept showing up across the best ones:
+So I went looking for reference. I studied a handful of sites in the AI and dev-tools space, the ones whose design felt the way I wanted mine to feel. Professional without being corporate. Dark without being gloomy. Technical without being cold. A few patterns kept showing up across the best of them:
 
-- **Near-black, not pure black** — `#020202` instead of `#000`. Subtle, but it removes the harshness.
-- **Near-white, not pure white** — `#eeeeee` instead of `#fff`. Easier on the eyes.
-- **Warm neutral grays** — brownish undertones, not the cool blue-gray that most dark themes default to. This is what gives a dark UI warmth instead of sterility.
-- **Light-weight headings** — weight 400 with tight letter-spacing (`-2px`). Big type at thin weight reads elegant, not heavy. The opposite of what most developers reach for.
-- **No shadows. No gradients. No glow.** — The layout and typography *are* the design. Whitespace does the heavy lifting.
-- **One accent color, used surgically** — section indicator dots, active tabs, badges. Never splashed around.
+- **Near-black, not pure black.** `#020202` instead of `#000`. It takes the harshness out.
+- **Near-white, not pure white.** `#eeeeee` instead of `#fff`. Easier on the eyes.
+- **Warm neutral grays.** Brownish undertones, not the cool blue-gray most dark themes default to. That is what makes a dark UI feel warm instead of sterile.
+- **Light-weight headings.** Weight 400, tight letter-spacing (`-2px`). Big type at thin weight reads elegant, not heavy. The opposite of what most developers reach for.
+- **No shadows. No gradients. No glow.** The layout and typography *are* the design. Whitespace does the heavy lifting.
+- **One accent color, used surgically.** Section dots, active tabs, badges. Never splashed around.
 
-These weren't radical discoveries — they were confirmations. Our existing design principles already pointed here. What I didn't have was the specifics: exact hex values, font stacks, component patterns, spacing tokens.
+These weren't radical discoveries. They were confirmations. Our existing principles already pointed here. What I lacked was the specifics: exact hex values, font stacks, component patterns, spacing tokens.
 
-I formalized everything into a design system with our own orange/amber accent palette and teal for success states. Warm neutrals across the board. Geist for typography. Every decision codified as CSS custom properties and baked directly into the `/visualize` command spec.
+I formalized everything into a design system with our own orange/amber accent palette and teal for success states. Warm neutrals across the board. Geist for typography. Every decision codified as CSS custom properties and baked into the `/visualize` command spec.
 
-Now every HTML visualization I generate automatically follows this language. The command file has the complete token system — every CSS variable, every component pattern, every layout rule — so any future session produces consistent output without me explaining the design again.
+Now every HTML visualization I generate follows this language automatically. The command file holds the complete token system, every CSS variable, every component pattern, every layout rule, so any future session produces consistent output without me explaining the design again.
 
 ---
 
 ## Making Diagrams Breathe
 
-The rebuilt workspace guide looked gorgeous. But it was static. Architecture diagrams with boxes and arrows, frozen on the page. When you're trying to understand *flow* — how data moves, how a request travels through a system, where the handoffs happen — static arrows don't cut it.
+The rebuilt workspace guide looked gorgeous. But it was static. Boxes and arrows frozen on the page. When you're trying to understand *flow*, how data moves, how a request travels through a system, where the handoffs happen, static arrows don't cut it.
 
 I asked: "Can we add animations?"
 
-Not decorative animations. *Teaching* animations. Animations that answer the question "what should I look at next?"
+Not decorative animations. *Teaching* animations. Animations that answer "what should I look at next?"
 
 The system now has four layers of motion:
 
-**Page load sequence** — Elements don't appear all at once. The section dot pulses first. The header fades in. The title slides up. Stats count from zero to their final number with an ease-out curve. Content cards cascade in with staggered delays. Your eye follows a choreographed path from "where am I?" to "what's important?"
+**Page load sequence.** Elements don't appear all at once. The section dot pulses first. The header fades in. The title slides up. Stats count from zero with an ease-out curve. Content cards cascade in on staggered delays. Your eye follows a choreographed path from "where am I?" to "what's important?"
 
-**Tab transitions** — When you switch views, every child element gets a staggered `fadeSlideUp`. File lists stagger at 30ms (fast, like a list rendering). Cards stagger at 60ms. Large content blocks at 120ms. The stagger timing encodes the content's density.
+**Tab transitions.** When you switch views, every child element gets a staggered `fadeSlideUp`. File lists stagger at 30ms, fast, like a list rendering. Cards at 60ms. Large content blocks at 120ms. The stagger timing encodes the content's density.
 
-**Stat counters** — Numbers animate from 0 to their target using `requestAnimationFrame` with an ease-out cubic curve: `1 - Math.pow(1 - progress, 3)`. The deceleration at the end makes the number "land" — it feels like it arrives somewhere rather than just stopping.
+**Stat counters.** Numbers animate from 0 to their target using `requestAnimationFrame` with an ease-out cubic curve: `1 - Math.pow(1 - progress, 3)`. The deceleration at the end makes the number "land." It feels like it arrives somewhere rather than just stopping.
 
-**Flow lines** — This is the one I'm most proud of. Three SVG techniques for showing direction:
+**Flow lines.** The one I'm most proud of. Three SVG techniques for showing direction:
 
-1. **Flowing dashes** — `stroke-dasharray` with animated `stroke-dashoffset`. The dashes move along the path like data streaming through a pipeline.
-2. **Traveling pulse** — A small circle that follows an SVG path using `<animateMotion>`. It moves along the exact curve of the connection line, fading in and out at the endpoints.
-3. **Glow pulse** — A breathing effect on active connections using `feGaussianBlur`. The line subtly brightens and dims, drawing your eye to the primary path.
+1. **Flowing dashes.** `stroke-dasharray` with animated `stroke-dashoffset`. The dashes move along the path like data streaming through a pipeline.
+2. **Traveling pulse.** A small circle that follows an SVG path using `<animateMotion>`. It rides the exact curve of the connection line, fading in and out at the endpoints.
+3. **Glow pulse.** A breathing effect on active connections using `feGaussianBlur`. The line brightens and dims, pulling your eye to the primary path.
 
-In a flow diagram, you combine all three: a muted base line (always visible), flowing dashes (shows direction), a traveling dot on the primary path (draws the eye), and a glow on whatever's currently active.
+In a flow diagram you combine all three: a muted base line always visible, flowing dashes for direction, a traveling dot on the main path, and a glow on whatever's active.
 
 Color codes the flow: orange for the happy path, amber for alternatives, teal for success feedback, muted gray for dormant connections.
 
-Every animation rule is baked into the `/visualize` command spec. Every future diagram automatically gets directional flow. The HTML files teach themselves.
+Every animation rule lives in the `/visualize` spec. Every future diagram gets directional flow for free. The HTML files teach themselves.
 
 ---
 
 ## HTML as Artifacts
 
-Here's the meta-realization that ties this all together.
+Underneath all of it is one realization.
 
-When I ask Claude Code to explain something complex, the default output is text. Markdown. Maybe a code block or a table. But for spatial concepts — architecture, data flow, system relationships — text is the wrong medium.
+When I ask Claude Code to explain something complex, the default output is text. Markdown. Maybe a code block or a table. But for spatial concepts, architecture, data flow, system relationships, text is the wrong medium.
 
 HTML files are the right medium.
 
 A single self-contained HTML file is:
-- **Visual** — layout, color, typography convey hierarchy instantly
-- **Interactive** — tabs, expandable sections, hover states let you explore at your own pace
-- **Portable** — open it in any browser, share it with anyone, no dependencies
-- **Versioned** — it's a file, so it can live in git (or in `scratch/` if it's throwaway)
-- **Generative** — Claude can create them in real-time, populated with actual data from your codebase
+- **Visual.** Layout, color, and typography convey hierarchy instantly.
+- **Interactive.** Tabs, expandable sections, and hover states let you explore at your own pace.
+- **Portable.** Open it in any browser, share it with anyone, no dependencies.
+- **Versioned.** It's a file, so it lives in git, or in `scratch/` if it's throwaway.
+- **Generative.** Claude builds them in real time, populated with real data from your codebase.
 
-This is what Anthropic calls "artifacts" in Claude.ai — but Claude Code generates them as actual files that persist on your machine. You don't lose them when the conversation ends. They're real documents.
+This is what Anthropic calls "artifacts" in Claude.ai. But Claude Code generates them as actual files on your machine. You don't lose them when the conversation ends. They're real documents.
 
-The workspace guide I built isn't documentation. It's a **teaching tool** that uses real numbers from my actual setup (13 templates, 8 generators, 3 initialized projects), laid out in a design language I adapted from one of the best AI company sites on the internet, with animations that guide your eye through the system's architecture.
+The workspace guide isn't documentation. It's a **teaching tool** built on real numbers from my own setup: 13 templates, 8 generators, 3 initialized projects. Laid out in a design language I adapted from one of the best AI company sites on the internet, with animations that walk you through the architecture.
 
 And it took one session to build.
 
@@ -218,23 +218,23 @@ And it took one session to build.
 
 ## The Assessment Tab: From Educational to Actionable
 
-The animations made the visualizations beautiful. But beautiful documentation has the same problem as ugly documentation — you read it, you understand the system, and then you close the tab and go figure out what to do next.
+The animations made the visualizations beautiful. But beautiful documentation has the same problem as ugly documentation: you read it, you understand the system, then you close the tab and go figure out what to do next.
 
 I wanted to close that gap.
 
-Every visualization now has a mandatory final tab called **Assessment**. It's a senior developer code review of the system being visualized, baked directly into the artifact. Four sections:
+Every visualization now ends on a mandatory tab called **Assessment**. It's a senior-developer code review of the system, built right into the artifact. Four sections:
 
-**What We Did Right** — architectural wins, good patterns, smart decisions. Be specific: reference actual files and line numbers. This reinforces good habits and prevents the refactoring impulse from touching things that are working.
+**What We Did Right.** Architectural wins, good patterns, smart decisions. Be specific: reference actual files and line numbers. It reinforces good habits and keeps the refactoring impulse off things that are working.
 
-**What Needs Fixing** — issues, anti-patterns, missing pieces, tech debt. Each card has a severity badge (CRITICAL / HIGH / MEDIUM / LOW), a description of why it matters, and — this is the key part — **a ready-to-paste Claude Code prompt to fix the issue**.
+**What Needs Fixing.** Issues, anti-patterns, missing pieces, tech debt. Each card carries a severity badge (CRITICAL / HIGH / MEDIUM / LOW), a note on why it matters, and the key part, **a ready-to-paste Claude Code prompt to fix it**.
 
-**High-Impact Next Steps** — the "if you only do three things, do these" list. Ordered by leverage. Each item includes what to do, why it matters, and a prompt.
+**High-Impact Next Steps.** The "if you only do three things, do these" list. Ordered by leverage. Each item gives what to do, why it matters, and a prompt.
 
-**Prompts Summary** — every prompt from the assessment, numbered and listed in one place. This is the action sheet. Work through them top to bottom.
+**Prompts Summary.** Every prompt from the assessment, numbered in one place. This is the action sheet. Work through them top to bottom.
 
-The prompt blocks have copy-to-clipboard buttons. You read the assessment, spot an issue, click COPY, paste it into Claude Code, and the fix starts. The visualization isn't just a map of your system — it's a command center.
+The prompt blocks have copy-to-clipboard buttons. You read the assessment, spot an issue, click COPY, paste it into Claude Code, and the fix starts. The visualization isn't a map of your system anymore. It's a command center.
 
-This changes what a `/visualize` output *is*. It's not documentation anymore. It's a diagnostic tool with the prescriptions built in. You don't visualize to understand — you visualize to understand *and then act*, without leaving the browser.
+This changes what a `/visualize` output *is*. Not a document. A diagnostic tool with the prescriptions built in. You don't visualize to understand. You visualize to understand *and then act*, without leaving the browser.
 
 ---
 
@@ -245,12 +245,12 @@ The workspace system is running on Homer, Pause, and DeepStack. Every new task s
 But the bigger unlock is the visual layer. Now that `/visualize` has a design system, an animation engine, and flow-line capabilities, it becomes the default way to explain anything complex. Instead of writing a paragraph about how the authentication flow works, I can generate an interactive diagram where the auth token literally travels along the path from client to server to database and back.
 
 Next on the list:
-- **Visualize Homer's architecture** — the full monorepo with data flow lines between dashboard, API, and Supabase
-- **Visualize HYDRA's job network** — 23 launchd jobs with dependency arrows and real cron schedules
-- **Visualize the hackathon plan for Pause Sync** — the single-device split-screen flow with real-time translation pipeline
+- **Visualize Homer's architecture.** The full monorepo, data-flow lines between dashboard, API, and Supabase.
+- **Visualize HYDRA's job network.** 23 launchd jobs with dependency arrows and real cron schedules.
+- **Visualize the hackathon plan for Pause Sync.** The single-device split-screen flow with its real-time translation pipeline.
 
 The input infrastructure is built. The visual language is defined. Now it compounds.
 
 ---
 
-*Credit to Shah for the FaceTime conversation that started all this. He's a real developer, and he really did show me the way.*
+*Credit to Shah for the FaceTime call that started this. He's the real developer here. He just showed me the way.*
