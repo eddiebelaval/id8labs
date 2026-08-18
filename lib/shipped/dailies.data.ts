@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-17 (100 daily editions, 15 weeks)
+ * Last generated: 2026-08-18 (101 daily editions, 16 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-17',
+    dayLabel: 'Mon, Aug 17',
+    title: 'Anthropic and Google both retired legacy API endpoints on the same Monday. Claude Code ships GitLab MR support and session auto-continue.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-17.html',
+    wordCount: 1914,
+  },
   {
     date: '2026-08-16',
     dayLabel: 'Sun, Aug 16',
@@ -743,6 +750,20 @@ export const SHIPPED_DAILIES: ShippedDaily[] = [
 
 /** Daily editions grouped by ISO week, newest week first. */
 export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
+  {
+    isoWeek: '2026-W34',
+    weekStart: '2026-08-17',
+    label: 'Week of August 17-23, 2026',
+    editions: [
+      {
+        date: '2026-08-17',
+        dayLabel: 'Mon, Aug 17',
+        title: 'Anthropic and Google both retired legacy API endpoints on the same Monday. Claude Code ships GitLab MR support and session auto-continue.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-17.html',
+        wordCount: 1914,
+      },
+    ],
+  },
   {
     isoWeek: '2026-W33',
     weekStart: '2026-08-10',
