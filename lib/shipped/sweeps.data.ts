@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-21 (15 weekly, 3 monthly)
+ * Last generated: 2026-08-22 (16 weekly, 3 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-34',
+    label: 'Week of August 17-23, 2026',
+    sortKey: '2026-08-17',
+    title: 'Two labs disclosed models they will not release and filed for the biggest IPO in history. The frontier braked and banked in the same week.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-34.html',
+    wordCount: 3339,
+  },
   {
     period: '2026-33',
     label: 'Week of August 10-16, 2026',
