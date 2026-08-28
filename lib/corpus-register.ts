@@ -101,4 +101,5 @@ export const CORPUS_REGISTER: Record<string, number> = {
   "newsletter/issue-1": 87,
   "newsletter/issue-3": 88,
   "newsletter/issue-2": 89,
+  "the-birth-of-the-moving-alphabet": 90,
 }
