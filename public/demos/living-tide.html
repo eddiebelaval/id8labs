@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Living Tide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2733; --ink-soft:#4a5a6a; --paper:#fbfcfe; --line:#dfe6ee;
+    --sea:#2f6f8f; --sea-deep:#1d4e66; --sea-fill:#bfe0ec; --sun:#e8a13a; --moon:#8a7fb5;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:radial-gradient(1200px 600px at 80% -10%, #eef6fa 0%, rgba(238,246,250,0) 60%), var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:18px; line-height:1.66; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:56px 26px 96px;}
+  .kicker{font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--sea); font-weight:600; margin:0 0 18px;}
+  h1{font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:clamp(40px,8vw,62px); line-height:1.02; letter-spacing:-.01em; margin:0 0 10px;}
+  .dek{font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:400; font-size:clamp(19px,3.4vw,23px); line-height:1.4; color:var(--ink-soft); margin:0 0 30px;}
+  p{margin:0 0 20px;}
+  h2{font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:clamp(25px,4.6vw,31px); line-height:1.14; letter-spacing:-.01em; margin:52px 0 8px;}
+  strong{font-weight:600; color:var(--ink);} em{font-style:italic;}
+  .rule{border:0; height:1px; background:var(--line); margin:46px 0;}
+  .step{border-left:3px solid var(--sea-fill); padding:2px 0 2px 20px; margin:0 0 26px;}
+  .step h3{font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:20px; margin:0 0 4px; color:var(--sea-deep);}
+  .step h3 .tag{display:block; font-family:'Inter',sans-serif; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--sea); font-weight:600; margin-bottom:3px;}
+  .step p{margin:0; font-size:17px; color:var(--ink-soft);}
+  .honest{background:linear-gradient(180deg,#fff7ec,#fdf1df); border:1px solid #f0dcb8; border-radius:16px; padding:26px 26px 8px; margin:38px 0;}
+  .honest .lede{color:var(--sun); font-size:12px; letter-spacing:.18em; text-transform:uppercase; font-weight:600; margin:0 0 6px;}
+  .honest strong{color:#a56a12;}
+  .pull{font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:clamp(22px,4vw,28px); line-height:1.3; color:var(--sea-deep); border-top:2px solid var(--sea-fill); border-bottom:2px solid var(--sea-fill); padding:26px 0; margin:44px 0; text-align:center;}
+  .declaration{background:var(--sea-deep); color:#eaf4f8; border-radius:18px; padding:34px 30px; margin:44px 0 10px;}
+  .declaration h2{color:#fff; margin-top:0;} .declaration p{color:#cfe3ec;} .declaration strong{color:#fff;}
+  .signoff{font-family:'Fraunces',Georgia,serif; font-style:italic; font-size:20px; color:var(--ink-soft); text-align:center; margin:40px 0 0;}
+  .footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:#8a97a5; text-align:center;}
+  ::selection{background:#cfe9f2;}
+
+  /* ---- the live chart figure (the product's own dark celestial instrument, shown as a framed figure) ---- */
+  .live-chart{margin:50px 0 30px;}
+  .live-chart .cap-above{font-size:12.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--sea); font-weight:600; margin:0 0 14px; text-align:center;}
+  .panel{
+    position:relative; overflow:hidden; border-radius:24px;
+    background:radial-gradient(700px 380px at 50% -20%, #12172b 0%, rgba(18,23,43,0) 60%), linear-gradient(180deg,#0c1224 0%, #080b16 60%, #05070f 100%);
+    border:1px solid rgba(255,255,255,.09);
+    box-shadow:0 26px 60px -30px rgba(8,12,26,.7), inset 0 1px 0 rgba(255,255,255,.06);
+    padding:16px 16px 18px;
+  }
+  .panel .peyebrow{font-family:'Fraunces',serif; font-style:italic; color:#e8c583; font-size:20px; padding:6px 6px 12px;}
+  .chartwrap{position:relative; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.09); overflow:hidden;}
+  .chart-head{padding:12px 15px 10px; border-bottom:1px solid rgba(255,255,255,.07);}
+  .legend{display:flex; gap:16px; align-items:center; font-size:12px; color:#8a93ac;}
+  .legend .k{display:flex; align-items:center; gap:7px;}
+  .swatch{flex:none; width:18px; height:10px; border-radius:3px; position:relative;}
+  .swatch.room{background:linear-gradient(180deg,#f0d59a 0%,#c9a8dd 55%,#3c5096 100%); box-shadow:0 0 8px rgba(232,197,131,.4), inset 0 1px 0 rgba(255,255,255,.3);}
+  .swatch.field::after{content:''; position:absolute; left:0; right:0; top:50%; height:1.6px; transform:translateY(-50%); background-image:repeating-linear-gradient(90deg,#6fe3c2 0 3px, transparent 3px 6.5px);}
+  .legend .spacer{flex:1;}
+  .legend .now{color:#e8c583; font-weight:600; display:flex; align-items:center; gap:6px;}
+  .legend .now::before{content:''; width:6px; height:6px; border-radius:50%; background:#e8c583; box-shadow:0 0 8px rgba(232,197,131,.85);}
+  .axis-note{margin-top:8px; font-size:10.5px; color:#8a93ac;}
+  canvas#tide{display:block; width:100%; height:auto;}
+  .read{margin-top:14px; background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:14px 15px;}
+  .read .cue{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#6fe3c2; font-weight:600; margin-bottom:6px;}
+  .read p{margin:0; font-size:15px; line-height:1.5; color:#eef1f8;}
+  .read em{color:#e8c583; font-style:italic; font-family:'Fraunces',serif;}
+  .live-chart figcaption{margin-top:14px; font-size:14px; color:var(--ink-soft); text-align:center; line-height:1.5;}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;}}
+</style>
+</head>
+<body>
+<article class="wrap">
+
+  <p class="kicker">A Resonance Field Note</p>
+  <h1>The Living Tide</h1>
+  <p class="dek">Everyone's mood, drawn as one rising line. Then laid over the planet's real electromagnetic weather to see where the two move together.</p>
+
+  <p>Every wellness app tells you something soft enough to never be wrong. Big feelings coming today. Trust the process. This is the opposite of that.</p>
+
+  <p>The thing I'm proudest of in Resonance is called <strong>The Living Tide</strong>. Here's the whole idea in one breath: <strong>everyone's mood, drawn as an ocean tide, laid over the planet's real weather. Not the rain kind. The <em>electromagnetic</em> kind.</strong></p>
+
+  <p>That sounds like two unrelated things. Give me four minutes. It clicks.</p>
+
+  <hr class="rule">
+
+  <h2>Start with the picture</h2>
+  <p>Every day, people open Resonance and log how they feel. Thousands of little check-ins. On their own they're just dots. So we blend all of them into <strong>one line that rises and falls through the day</strong>. The room gets activated, the line climbs. Things settle, it sinks. We color it by what the crowd is <em>feeling</em>, not just how much.</p>
+  <p>Here's the move that makes it land. We draw it <strong>exactly like a marine tide chart</strong>. A curve, the water filled in underneath, a marker for right now, the sun and moon riding along the top. Because in the real ocean, the sun and moon are what pull the tides. You've read a tide chart on a pier your whole life. Your eye already knows how.</p>
+
+  <h2>Now the strange, true part</h2>
+  <p>The Earth has weather you can't feel but instruments can. The sun throws charged wind at us, and when it hits hard it <em>rattles the planet's magnetic field</em>. Scientists measure exactly how hard. It's called the <strong>geomagnetic index</strong>. It's public. Updated constantly. Nobody made it up.</p>
+  <p>The Living Tide pulls that in. The geomagnetic index, the moon's phase, the Schumann resonance. We call it <strong>the field</strong>. The field is the planet's mood. Real, measured, downloadable numbers.</p>
+
+  <h2>The whole trick: lay them on top of each other</h2>
+  <p>That's the whole trick. Put the human tide and the planetary field on the same chart and <strong>measure how much they actually move together.</strong> There's real math for it, a correlation. But you already understand it. Do the two curves rise and fall in step, or wander off on their own?</p>
+
+  <div class="step"><h3><span class="tag">Step 1</span>The tide is you</h3><p>Everyone's logged feeling, blended into one rising and falling line. Height is how activated the room is. Color is what it feels like.</p></div>
+  <div class="step"><h3><span class="tag">Step 2</span>The field is the planet</h3><p>The Earth's real electromagnetic weather. Mostly how hard the solar wind is rattling the magnetic field, plus the moon and the Schumann resonance. All measured. All public.</p></div>
+  <div class="step"><h3><span class="tag">Step 3</span>The read is the overlap</h3><p>We line the two up and measure how much they genuinely move together. When they crest in step, further than chance would explain, we point at it. When they don't, we say so out loud. <em>The tide is calm.</em></p></div>
+  <div class="step"><h3><span class="tag">Step 4</span>The leap is yours</h3><p>A shared rise isn't proof. But the mechanism is real. A geomagnetic storm genuinely nudges sleep, the nervous system, mood. So when the room and the planet rise together, that's worth <em>feeling</em>. We point. You decide.</p></div>
+
+  <p>Notice what step three does that no horoscope ever will. <strong>It's willing to say there's nothing there.</strong> Clear skies. Calm tide. Most apps would rather manufacture a pattern than admit a quiet day. We'd rather tell you the truth and keep your trust.</p>
+
+  <div class="honest">
+    <p class="lede">The part I refuse to fudge</p>
+    <h2 style="margin-top:2px">About that "7.83&nbsp;Hz" thing</h2>
+    <p>You may have seen the folklore. The Schumann resonance vibrates at 7.83&nbsp;Hz and syncs with your brainwaves. Gorgeous idea. Also <strong>not true.</strong> The field is far too weak to drive your brain, and when it spikes, the spike is usually just <em>lightning</em>. Often one thunderstorm sitting over the sensor.</p>
+    <p>So The Living Tide correlates your tide against the variable that <strong>actually has peer-reviewed science behind it</strong>. Geomagnetic activity. The storm data tied to disrupted sleep and even cardiovascular strain. Schumann stays on the chart as the beautiful hero visual, honestly labeled. We use the pretty thing for beauty and the proven thing for the read. We never mix them up.</p>
+  </div>
+
+  <div class="pull">"Correlation isn't causation" isn't a disclaimer we bury. It's the whole design.</div>
+
+  <h2>Why this is actually bold</h2>
+  <p>The whole wellness-astrology aisle runs on one of two tricks. Either it's <strong>vague on purpose</strong>, horoscopes engineered so they can never be wrong. Or it's <strong>quiet pseudoscience</strong>, selling the 7.83&nbsp;Hz brain-sync as settled fact.</p>
+  <p>Resonance runs a third road. <strong>Signal, not noise.</strong> Be specific enough to actually be wrong. Be a filter that only ever hands you what's real. And when there's nothing to report, say <em>clear skies today</em>.</p>
+  <p>The Living Tide is that thesis made social and alive. Real planetary data, a real crowd of real feelings, the honest overlap between them, shown in a language your eye already speaks. Then it hands you the meaning instead of dictating it. Nobody else in this space has the restraint to <strong>point without claiming.</strong> On real data. With taste.</p>
+
+  <div class="declaration">
+    <h2>Where I stand on it</h2>
+    <p><strong>Bold on purpose, honest on principle.</strong></p>
+    <p>I won't pretend the connection between a planetary storm and a room full of moods is proven. It isn't, not yet. But I won't flinch from it either. I'd rather show you something true and trust you to feel it than hand you a horoscope built to never be wrong. The Living Tide takes <strong>exactly the leap the evidence allows and not one inch more.</strong> And it always shows you where the solid ground ends and the leap begins.</p>
+  </div>
+
+  <figure class="live-chart">
+    <p class="cap-above">And here's what it looks like</p>
+    <div class="panel">
+      <div class="peyebrow">Today, together</div>
+      <div class="chartwrap">
+        <div class="chart-head">
+          <div class="legend">
+            <span class="k"><span class="swatch room"></span>the room</span>
+            <span class="k"><span class="swatch field"></span>the field</span>
+            <span class="spacer"></span>
+            <span class="now">now &middot; 3:47p</span>
+          </div>
+          <div class="axis-note">Height = how charged the room feels &middot; color = the mood</div>
+        </div>
+        <canvas id="tide"></canvas>
+      </div>
+      <div class="read">
+        <div class="cue">&#10022; notice</div>
+        <p>The tide is running high on <em>restless</em> this afternoon, and the field has been climbing since dawn. See how they crest together.</p>
+      </div>
+    </div>
+    <figcaption>The gold tide is the room. The dashed aurora line is the planet's field. Watch the afternoon: they crest together. (Illustrative data.)</figcaption>
+  </figure>
+
+  <p class="signoff">The planet rose. The room rose with it.<br>What that means, that part's yours.</p>
+  <p class="footer">The Living Tide &middot; a feature of Resonance</p>
+
+</article>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const gauss=(x,mu,sig)=>Math.exp(-((x-mu)*(x-mu))/(2*sig*sig));
+  const sig=(x)=>1/(1+Math.exp(-x));
+  function room(t){ let v=.40 + .36*gauss(t,15.4,3.1) - .15*gauss(t,5,2.3) + .07*gauss(t,20.6,1.9) + .04*gauss(t,9,1.6); return Math.max(.07,Math.min(.96,v)); }
+  function field(t){ let v=.30 + .42*sig((t-10)/2.5) - .20*sig((t-19.5)/2.2) + .05*gauss(t,16.2,2.2); return Math.max(.08,Math.min(.9,v)); }
+  const SUNRISE=6.3, SUNSET=19.7, NOW=15.78;
+
+  const cv=document.getElementById('tide'), cx=cv.getContext('2d');
+  let W=0,H=0; const DPR=Math.min(devicePixelRatio||1,2.5);
+  const PADL=6,PADR=6,PADT=44,PADB=26;
+  function size(){ const cssW=cv.parentElement.clientWidth; const cssH=Math.round(cssW*0.82); cv.style.height=cssH+'px'; W=cv.width=Math.round(cssW*DPR); H=cv.height=Math.round(cssH*DPR); }
+  const X=t=> (PADL + (t/24)*((W/DPR)-PADL-PADR))*DPR;
+  const Y=v=> (PADT + (1-v)*((H/DPR)-PADT-PADB))*DPR;
+  function curvePath(fn,prog,shim){ cx.beginPath(); const end=24*prog; for(let t=0;t<=end+0.001;t+=0.25){ const tt=Math.min(t,24); let v=fn(tt); if(shim) v+=Math.sin(tt*1.6+shim)*0.006; const x=X(tt),y=Y(v); t===0?cx.moveTo(x,y):cx.lineTo(x,y);} }
+
+  function draw(now){
+    const prog=reduce?1:Math.min(1,now/1500); const ep=prog<1?(1-Math.pow(1-prog,3)):1; const shim=reduce?0:now/620;
+    cx.clearRect(0,0,W,H); const plotB=Y(0), plotT=Y(1);
+    cx.fillStyle='rgba(6,9,20,.5)'; cx.fillRect(0,plotT-8*DPR,X(SUNRISE),H); cx.fillRect(X(SUNSET),plotT-8*DPR,W-X(SUNSET),H);
+    cx.lineWidth=1;
+    for(let g=0;g<=4;g++){ const y=plotT+(plotB-plotT)*g/4; cx.beginPath(); cx.moveTo(X(0),y); cx.lineTo(X(24),y); cx.strokeStyle='rgba(255,255,255,.045)'; cx.stroke(); }
+    cx.fillStyle='rgba(150,160,185,.6)'; cx.font=(11*DPR)+'px Inter, sans-serif'; cx.textAlign='center';
+    [['12a',0],['6a',6],['12p',12],['6p',18],['12a',24]].forEach(([l,t])=>{ let x=X(t); const pad=12*DPR; x=Math.max(X(0)+pad,Math.min(X(24)-pad,x)); cx.fillText(l,x,plotB+17*DPR); });
+    if(ep>0.5){ const cxp=X(16), cyp=Y((room(16)+field(16))/2); const rad=cx.createRadialGradient(cxp,cyp,2,cxp,cyp,120*DPR); const pulse=reduce?.5:.42+.16*Math.sin(now/700); rad.addColorStop(0,'rgba(150,220,200,'+(0.16*pulse+.06)+')'); rad.addColorStop(.5,'rgba(160,150,220,'+(0.07*pulse)+')'); rad.addColorStop(1,'rgba(0,0,0,0)'); cx.fillStyle=rad; cx.fillRect(0,0,W,H); }
+    curvePath(field,ep,0); cx.lineWidth=1.8*DPR; cx.strokeStyle='rgba(111,227,194,.75)'; cx.setLineDash([3*DPR,3.5*DPR]); cx.lineCap='round'; cx.stroke(); cx.setLineDash([]);
+    curvePath(room,ep,shim); cx.lineTo(X(Math.min(24,24*ep)),plotB); cx.lineTo(X(0),plotB); cx.closePath();
+    const wg=cx.createLinearGradient(0,plotT,0,plotB); wg.addColorStop(0,'rgba(232,197,131,.52)'); wg.addColorStop(.42,'rgba(180,150,210,.34)'); wg.addColorStop(1,'rgba(60,80,150,.10)'); cx.fillStyle=wg; cx.fill();
+    curvePath(room,ep,shim); cx.lineWidth=2.4*DPR; cx.lineJoin='round'; cx.lineCap='round';
+    const sg=cx.createLinearGradient(X(0),0,X(24),0); sg.addColorStop(0,'#d9b878'); sg.addColorStop(.6,'#f0d59a'); sg.addColorStop(1,'#e8c583'); cx.strokeStyle=sg; cx.shadowColor='rgba(232,197,131,.55)'; cx.shadowBlur=12*DPR; cx.stroke(); cx.shadowBlur=0;
+    const topY=plotT-24*DPR;
+    cx.beginPath(); for(let t=0;t<=24;t+=.5){ const arc=topY-Math.sin(Math.max(0,Math.min(1,(t-SUNRISE)/(SUNSET-SUNRISE)))*Math.PI)*16*DPR; const x=X(t); t===0?cx.moveTo(x,arc):cx.lineTo(x,arc);} cx.strokeStyle='rgba(255,255,255,.09)'; cx.lineWidth=1; cx.stroke();
+    const sunP=Math.max(0,Math.min(1,(NOW-SUNRISE)/(SUNSET-SUNRISE))); const sunY=topY-Math.sin(sunP*Math.PI)*16*DPR, sunX=X(NOW);
+    const sgr=cx.createRadialGradient(sunX,sunY,0,sunX,sunY,13*DPR); sgr.addColorStop(0,'#fff4d8'); sgr.addColorStop(.4,'#f4cf86'); sgr.addColorStop(1,'rgba(244,207,134,0)'); cx.fillStyle=sgr; cx.beginPath(); cx.arc(sunX,sunY,13*DPR,0,6.2832); cx.fill();
+    cx.fillStyle='#ffe9b8'; cx.beginPath(); cx.arc(sunX,sunY,4.2*DPR,0,6.2832); cx.fill();
+    const mx=X(2.4),my=topY-3*DPR; cx.fillStyle='rgba(210,216,235,.85)'; cx.beginPath(); cx.arc(mx,my,5*DPR,0,6.2832); cx.fill(); cx.fillStyle='rgba(10,14,26,.98)'; cx.beginPath(); cx.arc(mx+2.2*DPR,my-1*DPR,4.6*DPR,0,6.2832); cx.fill();
+    if(ep>=1 || 24*ep>=NOW){ const nx=X(NOW), ny=Y(room(NOW)+(reduce?0:Math.sin(shim*1.6+NOW*1.6)*0.006)); cx.strokeStyle='rgba(232,197,131,.28)'; cx.lineWidth=1*DPR; cx.beginPath(); cx.moveTo(nx,plotT-4*DPR); cx.lineTo(nx,plotB); cx.stroke(); const pr=reduce?1:(.75+.25*Math.sin(now/430)); cx.fillStyle='rgba(232,197,131,'+(.18*pr)+')'; cx.beginPath(); cx.arc(nx,ny,11*DPR*pr,0,6.2832); cx.fill(); cx.fillStyle='#fff2cf'; cx.beginPath(); cx.arc(nx,ny,4*DPR,0,6.2832); cx.fill(); cx.strokeStyle='#e8c583'; cx.lineWidth=1.6*DPR; cx.beginPath(); cx.arc(nx,ny,4*DPR,0,6.2832); cx.stroke(); }
+  }
+  let t0=null;
+  function frame(ts){ if(t0===null)t0=ts; draw(ts-t0); if(!reduce) requestAnimationFrame(frame); }
+  function boot(){ size(); if(reduce) draw(2000); else requestAnimationFrame(frame); }
+  addEventListener('resize',()=>{ size(); if(reduce) draw(2000); });
+  boot();
+})();
+</script>
+</body>
+</html>
