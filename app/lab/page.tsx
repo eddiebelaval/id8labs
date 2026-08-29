@@ -82,6 +82,10 @@ export default function LabPage() {
               {new Date(periodicTable.lastAudit).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
             </span>
             <span className="text-[var(--hair-hard)]">/</span>
+            <Link href={periodicTable.livingTableHref} className="transition-colors hover:text-id8-orange">
+              The Living Table &#8599;
+            </Link>
+            <span className="text-[var(--hair-hard)]">/</span>
             {periodicTable.essays.map((e) => (
               <Link key={e.slug} href={e.href} className="transition-colors hover:text-id8-orange">
                 {e.title} &#8599;

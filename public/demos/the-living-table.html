@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Living Table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{--paper:#f2ecdd;--sheet:#f6f1e4;--ink:#1a160f;--mut:#8a7d62;--hair:#cfc7b4;--red:#b2402f}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    -webkit-font-smoothing:antialiased;padding:clamp(18px,3vw,40px)}
+  header{max-width:1400px;margin:0 auto 20px}
+  .eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+  .eyebrow a{color:var(--mut);text-decoration:none;border-bottom:1px solid var(--hair)}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:clamp(30px,5vw,56px);margin:0;letter-spacing:-.015em}
+  h1 em{font-style:italic;font-weight:500}
+  .sub{font-size:12.5px;color:var(--mut);margin:12px 0 0;max-width:82ch;line-height:1.6}
+  .sub b{color:var(--ink);font-weight:600}
+  .scroll{max-width:1400px;margin:0 auto;overflow-x:auto;padding-bottom:8px}
+  .grid{display:grid;gap:8px;min-width:1080px;
+    grid-template-columns:56px repeat(10,1fr);
+    grid-template-rows:auto repeat(4,1fr);}
+  .ghead{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-align:center;
+    align-self:end;padding-bottom:6px;line-height:1.25;border-bottom:1px solid var(--ink)}
+  .ghead .gn{font-family:"Fraunces",serif;font-size:13px;color:var(--ink);display:block}
+  .plabel{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);
+    writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;align-self:center;justify-self:center;line-height:1.3}
+  .cell{background:var(--sheet);border:1px solid var(--ink);border-radius:2px;position:relative;
+    text-decoration:none;color:inherit;display:flex;flex-direction:column;aspect-ratio:1/1.05;overflow:hidden;
+    transition:transform .16s,box-shadow .16s}
+  .cell:hover{transform:translateY(-3px);box-shadow:4px 5px 0 rgba(26,22,15,.12);z-index:2}
+  .cell .z{position:absolute;top:5px;left:7px;font-size:9px;color:var(--mut);z-index:2}
+  .cell .mass{position:absolute;top:5px;right:7px;font-size:8px;letter-spacing:.06em;color:var(--mut);z-index:2}
+  .cell canvas{width:100%;flex:1;display:block}
+  .cell .nm{font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);text-align:center;
+    padding:2px 3px 5px;border-top:1px solid var(--hair);line-height:1.15;min-height:22px;display:flex;align-items:center;justify-content:center}
+  .cell.crit{border-color:var(--red)}
+  .cell.crit .z{color:var(--red)}
+  .gap{border:1px dashed var(--hair);border-radius:2px;aspect-ratio:1/1.05;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;color:var(--mut);opacity:.75}
+  .gap .eka{font-family:"Fraunces",serif;font-style:italic;font-size:13px}
+  .gap .ekz{font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+  footer{max-width:1400px;margin:22px auto 0;border-top:1px solid var(--hair);padding-top:14px;font-size:11.5px;color:var(--mut);line-height:1.6}
+  footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <p class="eyebrow"><a href="/periodic-table.html">&larr; Periodic Table</a> &middot; the notation, set in the grid</p>
+  <h1>The Living <em>Table</em></h1>
+  <p class="sub">The thirty primitives in their true places, <b>columns are families</b> (shared apparatus), <b>rows are mass periods</b> (primordial to forged). Each cell draws its own moving glyph from the alphabet. Click any element for its full patent plate. The dashed cells are the eka- gaps: primitives the table predicts but the portfolio has not yet forged.</p>
+</header>
+<div class="scroll"><div class="grid" id="grid"></div></div>
+<footer><b>Reading:</b> the same object as the alphabet, arranged by chemistry instead of listed by family. Placement from the canonical table (group &times; period); drawings from <b>glyphs.js</b>, the single source. FIG no. = atomic no.</footer>
+
+<script src="glyphs.js"></script>
+<script>
+// canonical placement: symbol -> [group(col 1-10), period(row 1-4)]  (from TABLE.html's E)
+const PLACE = {
+  Tg:[1,1],Lk:[2,1],Cp:[3,1],St:[4,1],Cv:[5,1],Sw:[6,1],Vf:[7,1],Th:[8,1],No:[9,1],Se:[10,1],
+  Rs:[2,2],Wa:[3,2],Ps:[4,2],Ay:[5,2],Dc:[6,2],Cn:[7,2],Ag:[8,2],Hb:[9,2],Me:[10,2],
+  Gd:[3,3],Gn:[5,3],Rc:[7,3],Dm:[8,3],Dp:[9,3],Ro:[10,3],
+  At:[2,4],Gh:[5,4],Ev:[7,4],Hu:[8,4],Bl:[10,4]
+};
+// known unfilled eka- predictions: [group, period, label, coordLabel]
+const GAPS = [ [4,4,"eka-Keeper","Custody"], [6,3,"eka-Router","Escalation"] ];
+const FAMILIES = { 1:"Initiators",2:"Resolvers",3:"Intakes",4:"Keepers",5:"Transformers",6:"Routers",7:"Provers",8:"Gates",9:"Emitters",10:"Meters" };
+const PERIODS = { 1:"I · primordial",2:"II · light metals",3:"III · heavy metals",4:"IV · the forged" };
+
+const grid = document.getElementById("grid");
+// corner
+const corner=document.createElement("div");grid.appendChild(corner);
+// group headers (row 1)
+for(let g=1;g<=10;g++){const h=document.createElement("div");h.className="ghead";
+  h.innerHTML=`<span class="gn">${g}</span>${FAMILIES[g]}`;h.style.gridColumn=(g+1);h.style.gridRow=1;grid.appendChild(h);}
+// period labels (col 1)
+for(let p=1;p<=4;p++){const l=document.createElement("div");l.className="plabel";l.textContent=PERIODS[p];
+  l.style.gridColumn=1;l.style.gridRow=(p+1);grid.appendChild(l);}
+// element cells
+const mounts=[];
+Object.keys(PLACE).forEach(sym=>{
+  const [g,p]=PLACE[sym], m=Glyphs.meta(sym); if(!m) return;
+  const a=document.createElement("a");a.className="cell"+(sym==="Hu"||m.mass[2]>=3?"":"");
+  a.href="the-alphabet.html";a.title=m.name+" (Z"+m.z+" · "+m.mass.join("·")+")";
+  a.style.gridColumn=(g+1);a.style.gridRow=(p+1);
+  a.innerHTML=`<span class="z">${m.z}</span><span class="mass">${m.mass.join("·")}</span><div class="cv"></div><div class="nm">${m.name}</div>`;
+  grid.appendChild(a);
+  mounts.push({host:a.querySelector(".cv"),sym});
+});
+// eka- gap cells
+GAPS.forEach(([g,p,eka,coord])=>{const d=document.createElement("div");d.className="gap";
+  d.style.gridColumn=(g+1);d.style.gridRow=(p+1);
+  d.innerHTML=`<span class="eka">${eka}</span><span class="ekz">${coord}</span>`;grid.appendChild(d);});
+
+// mount a live glyph into each cell (compact motion, symbol drawn by the library)
+mounts.forEach(o=>{
+  const w=o.host.clientWidth||96;
+  Glyphs.mount(o.host,o.sym,{size:Math.max(64,w),chrome:false,label:false});
+});
+addEventListener("resize",()=>{ /* canvases are fixed-size; layout reflows via grid */ });
+</script>
+</body>
+</html>

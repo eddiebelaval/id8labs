@@ -34,6 +34,7 @@ export const periodicTable = {
     { slug: 'the-gaps-are-the-product', title: 'The Gaps Are the Product', href: '/periodic-table-of-primitives.html', date: '2026-07-20' },
   ],
   instrumentHref: '/periodic-table.html',
+  livingTableHref: '/demos/the-living-table.html',
   // One-line pulse: what the last pass did. Updated each audit.
   lastPass:
     'The first monthly audit (Aug 2026) admitted two elements the table had been running unnamed and placed a third as a lab-forged candidate. Days later, tuning to a pattern we run constantly forged Rollup — the deterministic fan-in that consolidates many records into one report — into the cell the table had flagged between Meter and Billing.',
