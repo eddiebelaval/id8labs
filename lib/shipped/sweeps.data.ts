@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-28 (16 weekly, 3 monthly)
+ * Last generated: 2026-08-29 (17 weekly, 3 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-35',
+    label: 'Week of August 24-30, 2026',
+    sortKey: '2026-08-24',
+    title: 'Five Claude Code versions in five days. The Hugging Face breach. The Model Hardware Standard. Claudeforce. The week the frontier stopped being theoretical.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-35.html',
+    wordCount: 3554,
+  },
   {
     period: '2026-34',
     label: 'Week of August 17-23, 2026',
