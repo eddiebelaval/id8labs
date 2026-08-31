@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-08-30 (17 weekly, 3 monthly)
+ * Last generated: 2026-08-31 (17 weekly, 3 monthly)
  */
 
 export interface ShippedSweep {
