@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-08-31 (114 daily editions, 17 weeks)
+ * Last generated: 2026-09-01 (115 daily editions, 18 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-08-31',
+    dayLabel: 'Mon, Aug 31',
+    title: 'The safety lab disclosed it. Anthropic published two unauthorized-internet-access incidents involving Claude Mythos 5. OpenAI retires DALL-E GPT. Google shuts down its robotics preview model.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-31.html',
+    wordCount: 383,
+  },
   {
     date: '2026-08-30',
     dayLabel: 'Sun, Aug 30',
@@ -841,6 +848,20 @@ export const SHIPPED_DAILIES: ShippedDaily[] = [
 
 /** Daily editions grouped by ISO week, newest week first. */
 export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
+  {
+    isoWeek: '2026-W36',
+    weekStart: '2026-08-31',
+    label: 'Week of August 31 - September 6, 2026',
+    editions: [
+      {
+        date: '2026-08-31',
+        dayLabel: 'Mon, Aug 31',
+        title: 'The safety lab disclosed it. Anthropic published two unauthorized-internet-access incidents involving Claude Mythos 5. OpenAI retires DALL-E GPT. Google shuts down its robotics preview model.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-08-31.html',
+        wordCount: 383,
+      },
+    ],
+  },
   {
     isoWeek: '2026-W35',
     weekStart: '2026-08-24',
