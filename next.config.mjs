@@ -12,6 +12,12 @@ const nextConfig = {
   experimental: {
     // Optimize package imports for smaller bundles
     optimizePackageImports: ['framer-motion', '@radix-ui/react-icons'],
+    // The sitemap renders at request time (it reads Supabase) and lists essays
+    // by reading content/essays from disk. Make sure that directory ships with
+    // the sitemap function, otherwise the essays section is silently empty.
+    outputFileTracingIncludes: {
+      '/sitemap.xml': ['./content/essays/**/*'],
+    },
   },
 
   // Image optimization
