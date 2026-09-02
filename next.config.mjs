@@ -12,6 +12,12 @@ const nextConfig = {
   experimental: {
     // Optimize package imports for smaller bundles
     optimizePackageImports: ['framer-motion', '@radix-ui/react-icons'],
+    // The sitemap renders at request time (it reads Supabase) and lists essays
+    // by reading content/essays from disk. Make sure that directory ships with
+    // the sitemap function, otherwise the essays section is silently empty.
+    outputFileTracingIncludes: {
+      '/sitemap.xml': ['./content/essays/**/*'],
+    },
   },
 
   // Image optimization
@@ -39,6 +45,33 @@ const nextConfig = {
         destination: '/periodic-table-of-primitives.html',
         permanent: true,
       },
+      // 'The Nursery' graduated to Hamato with the brand split (its MDX now
+      // lives in content/graduated, off the /writing route) but the URL was
+      // still linked and 404'd. Same destination as the other graduated
+      // routes below: Hamato's front door.
+      {
+        source: '/writing/the-nursery',
+        destination: 'https://hamato.systems/',
+        permanent: true,
+      },
+      // Retired StackShack agents. These slugs were removed from the catalog
+      // with no source left to restore, but Google still holds them from the
+      // 2026-09-01 crawl (18 internal 404s). Consolidate onto the marketplace.
+      ...[
+        'agent-database-migration-specialist',
+        'agent-chat-test-runner',
+        'agent-email-notification-specialist',
+        'agent-payment-security-specialist',
+        'agent-usage-tracking-specialist',
+        'agent-stripe-integration-specialist',
+        'agent-watcher-database-integrity',
+        'agent-watcher-code-quality-guardian',
+        'agent-watcher-security-validator',
+      ].map((slug) => ({
+        source: `/stackshack/${slug}`,
+        destination: '/stackshack?type=agents',
+        permanent: true,
+      })),
     ]
 
     if (process.env.DISABLE_MARKETPLACE_REDIRECTS === 'true') {
@@ -95,21 +128,23 @@ const nextConfig = {
         destination: '/writing/:slug',
         permanent: true,
       },
-      // Legacy browse pages → unified marketplace tabs
+      // Legacy browse pages → unified marketplace tabs. Permanent so search
+      // engines consolidate the old list pages onto /stackshack instead of
+      // re-crawling them as if they might come back (Phase 1 findability audit).
       {
         source: '/commands',
         destination: '/stackshack?tab=commands',
-        permanent: false, // Not permanent - might change
+        permanent: true,
       },
       {
         source: '/settings',
         destination: '/stackshack?tab=settings',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/gallery',
         destination: '/stackshack?tab=stacks',
-        permanent: false,
+        permanent: true,
       },
     ]
   },

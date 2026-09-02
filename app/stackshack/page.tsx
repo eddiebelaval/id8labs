@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
+import type { Metadata } from 'next'
 import {
   getAllSkills,
   getAllCategories,
@@ -38,6 +39,18 @@ export const revalidate = 3600
 
 interface PageProps {
   searchParams: Promise<{ tab?: MarketplaceTab; type?: string; category?: string }>
+}
+
+// Every filtered view of the marketplace (?tab=, ?type=, ?category=) is the
+// same page pre-filtered. Without a canonical, Google indexed each combination
+// as its own not-indexed URL under one shared title. Point all of them,
+// including the unfiltered base page, at the one URL that should rank.
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    alternates: {
+      canonical: 'https://id8labs.app/stackshack',
+    },
+  }
 }
 
 export default async function StackShackMarketplacePage({

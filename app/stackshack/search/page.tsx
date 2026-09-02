@@ -1,11 +1,24 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Search } from 'lucide-react'
 import { searchSkills, getAllCategories } from '@/lib/skills'
 import { SkillCard } from '@/components/skills/SkillCard'
 import { SkillSearchBar } from '@/components/skills/SkillSearchBar'
 import { SkillFilters } from '@/components/skills/SkillFilters'
 import { Container, Kicker } from '@/components/editorial'
+
+// Internal search results are not content. Every ?q= variation used to be
+// indexed under the layout's generic title (300+ of them in GSC). Keep the
+// page crawlable so links to real tool pages are still followed, but never
+// index the results page itself.
+export const metadata: Metadata = {
+  title: 'Search',
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
 
 interface PageProps {
   searchParams: Promise<{ q?: string; category?: string; complexity?: string }>
