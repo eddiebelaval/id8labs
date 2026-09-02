@@ -39,6 +39,15 @@ const nextConfig = {
         destination: '/periodic-table-of-primitives.html',
         permanent: true,
       },
+      // 'The Nursery' graduated to Hamato with the brand split (its MDX now
+      // lives in content/graduated, off the /writing route) but the URL was
+      // still linked and 404'd. Same destination as the other graduated
+      // routes below: Hamato's front door.
+      {
+        source: '/writing/the-nursery',
+        destination: 'https://hamato.systems/',
+        permanent: true,
+      },
     ]
 
     if (process.env.DISABLE_MARKETPLACE_REDIRECTS === 'true') {
@@ -95,21 +104,23 @@ const nextConfig = {
         destination: '/writing/:slug',
         permanent: true,
       },
-      // Legacy browse pages → unified marketplace tabs
+      // Legacy browse pages → unified marketplace tabs. Permanent so search
+      // engines consolidate the old list pages onto /stackshack instead of
+      // re-crawling them as if they might come back (Phase 1 findability audit).
       {
         source: '/commands',
         destination: '/stackshack?tab=commands',
-        permanent: false, // Not permanent - might change
+        permanent: true,
       },
       {
         source: '/settings',
         destination: '/stackshack?tab=settings',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/gallery',
         destination: '/stackshack?tab=stacks',
-        permanent: false,
+        permanent: true,
       },
     ]
   },
