@@ -48,6 +48,24 @@ const nextConfig = {
         destination: 'https://hamato.systems/',
         permanent: true,
       },
+      // Retired StackShack agents. These slugs were removed from the catalog
+      // with no source left to restore, but Google still holds them from the
+      // 2026-09-01 crawl (18 internal 404s). Consolidate onto the marketplace.
+      ...[
+        'agent-database-migration-specialist',
+        'agent-chat-test-runner',
+        'agent-email-notification-specialist',
+        'agent-payment-security-specialist',
+        'agent-usage-tracking-specialist',
+        'agent-stripe-integration-specialist',
+        'agent-watcher-database-integrity',
+        'agent-watcher-code-quality-guardian',
+        'agent-watcher-security-validator',
+      ].map((slug) => ({
+        source: `/stackshack/${slug}`,
+        destination: '/stackshack?type=agents',
+        permanent: true,
+      })),
     ]
 
     if (process.env.DISABLE_MARKETPLACE_REDIRECTS === 'true') {
