@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-09-04 (17 weekly, 4 monthly)
+ * Last generated: 2026-09-05 (18 weekly, 4 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-36',
+    label: 'Week of August 31 - September 6, 2026',
+    sortKey: '2026-08-31',
+    title: 'The week Anthropic published its own safety incidents, shipped Fable 5.1 at 75% off cache reads, and OpenAI crossed its own Critical red line with GPT-6 Astra.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-36.html',
+    wordCount: 2927,
+  },
   {
     period: '2026-35',
     label: 'Week of August 24-30, 2026',
