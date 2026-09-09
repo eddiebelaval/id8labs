@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-09-08 (122 daily editions, 19 weeks)
+ * Last generated: 2026-09-09 (123 daily editions, 19 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-09-08',
+    dayLabel: 'Tue, Sep 8',
+    title: 'OpenAI publishes two essays in one morning: the machines are running at 3.1 agent-workdays per researcher, and maybe the machines should slow down. Mistral closes a record 3-billion-euro raise. Anthropic lines up 517 billion dollars in compute.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-08.html',
+    wordCount: 383,
+  },
   {
     date: '2026-09-07',
     dayLabel: 'Mon, Sep 7',
@@ -902,6 +909,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-09-07',
     label: 'Week of September 7-13, 2026',
     editions: [
+      {
+        date: '2026-09-08',
+        dayLabel: 'Tue, Sep 8',
+        title: 'OpenAI publishes two essays in one morning: the machines are running at 3.1 agent-workdays per researcher, and maybe the machines should slow down. Mistral closes a record 3-billion-euro raise. Anthropic lines up 517 billion dollars in compute.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-08.html',
+        wordCount: 383,
+      },
       {
         date: '2026-09-07',
         dayLabel: 'Mon, Sep 7',
