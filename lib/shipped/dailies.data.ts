@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-09-09 (123 daily editions, 19 weeks)
+ * Last generated: 2026-09-10 (124 daily editions, 19 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-09-09',
+    dayLabel: 'Wed, Sep 9',
+    title: 'OpenAI claims Navier-Stokes proof. Meta launches Muse. Mistral closes Europe\'s largest-ever tech equity round. DeepMind maps every DNA mutation.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-09.html',
+    wordCount: 3944,
+  },
   {
     date: '2026-09-08',
     dayLabel: 'Tue, Sep 8',
@@ -909,6 +916,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-09-07',
     label: 'Week of September 7-13, 2026',
     editions: [
+      {
+        date: '2026-09-09',
+        dayLabel: 'Wed, Sep 9',
+        title: 'OpenAI claims Navier-Stokes proof. Meta launches Muse. Mistral closes Europe\'s largest-ever tech equity round. DeepMind maps every DNA mutation.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-09.html',
+        wordCount: 3944,
+      },
       {
         date: '2026-09-08',
         dayLabel: 'Tue, Sep 8',
