@@ -31,6 +31,13 @@ function getContextMessage(redirect: string | null): ContextMessage | null {
     }
   }
 
+  if (redirect.startsWith('/pricing')) {
+    return {
+      title: 'Sign in to continue',
+      subtitle: 'Sign in to complete your purchase. It only takes a moment.',
+    }
+  }
+
   return null
 }
 
