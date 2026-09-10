@@ -1,4 +1,3 @@
-import Script from 'next/script'
 import Hero from '@/components/Hero'
 import TheThesis from '@/components/TheThesis'
 import Builder from '@/components/Builder'
@@ -119,15 +118,14 @@ export default function Home() {
 
   return (
     <>
+      {/* Server-rendered JSON-LD so crawlers that do not execute JS still see it. */}
       {schemas.map(({ id, data }) => (
-        <Script
+        <script
           key={id}
           id={id}
           type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify(data)}
-        </Script>
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
       ))}
       <HomeNavigation />
       <Hero />
