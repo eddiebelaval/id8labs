@@ -114,12 +114,14 @@ Use any future expiry date and any 3-digit CVC.
 ## Files Changed
 
 - `lib/stripe.ts` - Stripe client + product config
-- `lib/purchase.ts` - Purchase verification utility
 - `lib/supabase/schema.sql` - Database schema
 - `app/api/stripe/checkout/route.ts` - Creates checkout sessions
 - `app/api/stripe/webhook/route.ts` - Handles payment events
 - `app/(auth)/*` - Sign-in/sign-up pages
 - `middleware.ts` - Auth + route protection
-- `components/PurchaseGate.tsx` - Paywall for paid modules
 - `components/CheckoutButton.tsx` - Checkout button
-- Modules 1-5 - Wrapped with PurchaseGate
+
+Note: the self-paced Academy courses are free by design; there is no per-module
+paywall. The retired `PurchaseGate` / `lib/purchase.ts` scaffolding was removed
+2026-09-10. Paid offers (live cohorts, services, agent kits) are surfaced on
+`/pricing`.
