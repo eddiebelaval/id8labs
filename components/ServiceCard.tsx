@@ -64,6 +64,13 @@ export function ServiceCard({ product, className = '' }: ServiceCardProps) {
             body: JSON.stringify({ productId: product.id }),
           })
 
+          // Checkout requires a signed-in user; send anonymous visitors to
+          // sign-in and return them to this page afterward.
+          if (response.status === 401) {
+            window.location.href = `/sign-in?redirect=${encodeURIComponent(window.location.pathname)}`
+            return
+          }
+
           const data = await response.json()
 
           if (!response.ok) {
