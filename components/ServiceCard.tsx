@@ -105,7 +105,7 @@ export function ServiceCard({ product, className = '' }: ServiceCardProps) {
 
     switch (product.purchaseType) {
       case 'stripe':
-        return `Get Access — ${product.priceDisplay}`
+        return `Get Access · ${product.priceDisplay}`
       case 'booking':
         return product.price === null ? 'Book Discovery Call' : 'Schedule Session'
       case 'free':
