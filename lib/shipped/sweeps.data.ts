@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-09-11 (18 weekly, 4 monthly)
+ * Last generated: 2026-09-12 (19 weekly, 4 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-37',
+    label: 'Week of September 7-13, 2026',
+    sortKey: '2026-09-07',
+    title: 'GPT-6 Astra billed. OpenAI claimed Navier-Stokes. The threat report and the Agents API landed on the same Thursday morning.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-37.html',
+    wordCount: 3457,
+  },
   {
     period: '2026-36',
     label: 'Week of August 31 - September 6, 2026',
