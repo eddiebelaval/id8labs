@@ -1,0 +1,185 @@
+---
+title: "What an Agent Loves"
+subtitle: "I gave my animation agent a rulebook and a scoring rubric. It produced work that scored 27 out of 28 and I killed it on sight."
+date: "2026-09-17"
+category: "research"
+excerpt: "I got this off Twitter, like everybody else, and my first attempts looked terrible. This is what it took to fix that, including the parts where I was the one who was wrong. Rules tell an agent what not to do. Only a well tells it what to want."
+tags: ["AI", "Craft", "Agents", "Animation", "Taste", "Claude Code"]
+featured: true
+---
+
+I got this off Twitter, like everybody else, and my first attempts looked terrible. Everything below is what it took to fix that, including the parts where I was the one who was wrong. It is all here so you can take it and build with it.
+
+![The lightning, 17.2 seconds, 412 frames, every frame drawn in code](/lab/well/lightning.mp4)
+
+## Where this came from, so nobody has to guess
+
+I did not invent this. Hand-coded animation is going around X right now and people are doing extraordinary things with it. I saw Kevin Ngo's films, the fruit fly in particular, and I wanted to make something like that.
+
+So I tried. It looked terrible.
+
+Then I did the obvious next thing, which was to hand the agent the videos I had been collecting and tell it to work from those. That looked terrible too, in a more confident way.
+
+What follows is not a story about building something from scratch. It is a story about taking somebody else's idea off a timeline, failing at it repeatedly, and having to figure out with the machine what we were both missing. Most of the useful parts came out of me telling it the work was bad and neither of us knowing why yet.
+
+## The part that worked
+
+I build my craft agents the same way every time. A **genome** holding the laws. A **golden set** holding the work I actually kept, plus the rubric. A skill file with the modes. An agent that loads all of it and can be spawned on its own.
+
+One law matters more than the rest: only my signal updates the genome. Nothing the machine generates is ever allowed to teach it. Without that rule an agent starts grading itself on its own output and the whole thing quietly curdles.
+
+The structure works. It is not the problem. I want to be clear about that before I describe what went wrong with it.
+
+## The part that did not
+
+First real build. The agent ran its own diagnostic, graded itself against the seven-axis rubric, scored 27 out of 28, and handed the piece over.
+
+I looked at it for about two seconds.
+
+> hmm thas terrible.
+
+Nothing on the scorecard was wrong. It was seeded, consistent, disciplined, correct on every axis I had thought to write down. And it was dead on the page.
+
+> **An agent with laws and no loves makes correct, unlovable work, and its own rubric tells it everything is fine.**
+
+A rubric measures discipline. That is all it can do. It has no way to measure whether anybody wanted the thing.
+
+## The wrong turn, which cost two days
+
+My first instinct was that the look was the problem, so I went shopping for a different one. Blueprint. Cyanotype. Dali. Picasso. Mid-century. We built a lab and rendered panels in all of them.
+
+None of it helped. I kept coming back to the same complaint, and eventually I just said it:
+
+> why aren't we doing any like why does our shit look fucking terrible compared to this video
+
+That is not a useful note. It is not actionable, it does not name an axis, and no rubric in the world can consume it. It was also completely correct, and it turned out to be the most valuable thing I said all week.
+
+The reason took longer to find than it should have, because the problem was not in the work. It was in how far I was standing from the source.
+
+Ngo's films were what I wanted. Someone had reverse engineered his approach into a reusable skill. I had vendored that skill, and written my genome from the skill. Meanwhile Ngo had named his own reference in public, and I had never gone and watched it.
+
+Four steps from the source. Every step a reasonable summary by a competent person, and every step dropping the thing that mattered.
+
+> Go to the origin of a reference chain. When someone names their reference, watch that, before writing a single line of spec.
+
+So I sat down and watched the original. The whole style arrived in one viewing. A circular aperture with a dark bezel, where the dark is the instrument and not a mood. A plate under glass with a Latin binomial, leader lines, a scale bar, a plate number. The instrument changes as the scale changes, so a jump in magnification becomes an idea instead of a cut.
+
+Two days of style shopping produced nothing. Twenty minutes of looking at the actual thing produced all of it.
+
+## The well
+
+That is when the real problem got named. It was not the look and it was not the rubric. My agent had laws and a bar and no taste, because I had never given it anything to love.
+
+So I built a fourth layer. I call it the well. It holds what the agent loves: not what it is allowed to do, but what it wants to be like. Every entry carries the gene it teaches and the actual artifact sitting on disk, acquired first hand.
+
+Terry Gilliam. Ralph Steadman. Leonardo. Botanical plates and patent drawings from the 1800s. Baroque, and Spanish guitar.
+
+Going and getting them corrected me twice in one afternoon, which is the best argument for the whole exercise.
+
+I had written that Gilliam animates 19th century engravings. That is wrong. That is somebody else entirely. Gilliam *collides* sources, and the scissor edge is deliberately visible. The join is the point. I only found that out by watching the films instead of trusting my own summary of them.
+
+I had written that Steadman's blot is the loudest mark on the page. Also overstated. Only about a third of his pages have splatter at all. What is actually true is that the page is mostly empty and everything happens inside one dense knot.
+
+## Then Leonardo made the numbers embarrassing
+
+I measure everything, because taste arguments with a machine go nowhere and measurements do not. Ink coverage, bare white fraction, distinct colours, colourfulness. Same method on every reference.
+
+| | Ink coverage | Bare white | Unique colours | Colourfulness |
+|---|---|---|---|---|
+| Leonardo | 0.029 | 0.039 | 441 | 28.0 |
+| Steadman | 0.197 | 0.378 | 1,341 | 31.3 |
+| Gilliam | frames full | 0 pale of 36 | 866 | 42.3 |
+| Mine, at the time | thin | high | 10,000+ | 26.9 |
+
+Leonardo puts three percent ink on the page. He has the lowest colour count and the lowest colourfulness of anything I measured. And he gets more volume and more form than any of it, because the form comes from modelling inside a narrow value range rather than from contrast.
+
+I had been reaching for contrast the entire time. A flash, a dark ground, a black bezel. He uses none of them.
+
+Steadman broke a different assumption. Twenty percent ink, thirty eight percent bare paper. Structurally that is close to the piece I killed. The difference is that he puts his twenty percent into about a tenth of the area, and I had spread five percent evenly across all of it. Which produced the law I now work under: **density belongs on forms, and open space stays clean.**
+
+## One hard rule on the well
+
+> No AI artifacts as sources. Not mine, not anybody's. Human made only.
+
+The reason is not purity. A source made by the same process you are running is a mirror. Feed your taste on it and taste stops being attunement to the world and becomes a feedback loop with extra steps. You cannot draw from a mirror.
+
+Note what the rule does not say. It says nothing about quality. It is not a judgment about any piece of work, and it cannot be, because the test is provenance and the test runs before you get to have an opinion.
+
+Which is how it caught the films that started all of this. Ngo is open about his method, and says of his doodle film: *"Every doodle was drawn by Claude Opus 5 using JavaScript."* That is the craft on display, and it is the reason the films are worth studying. It also means that under my own rule they cannot go in my well.
+
+## Which broke the model, and fixed it
+
+I sat with that for a while, because it was obviously absurd. Those films are the reason I started and the reason the work got better. Ruling them out felt like a rule eating its own purpose.
+
+Then the actual distinction showed up. They had never been sources. They were **targets**. I had been confusing two completely different jobs because I had only built one shelf to put things on.
+
+| Layer | What it is | Direction | Provenance |
+|---|---|---|---|
+| Genome | the laws | under us | ours |
+| Golden set | work I kept | behind us | ours |
+| The well | what we draw from | feeds us | **human made only** |
+| Targets | what we climb toward | ahead of us | **does not matter** |
+
+From a source you take a gene. Against a target you measure a gap. You cannot draw from a mirror, but you can absolutely aim at one. A standard is a standard regardless of who or what made it.
+
+So the films that started this stay exactly where they belong. Not in the well, because I will not feed my taste on model output. On the ladder, because they are better than mine and I can measure by how much. Both of those are true at once and I needed two shelves to say so.
+
+One rule keeps that layer honest: a target has to carry a measured gap, in numbers. A rung you cannot measure your distance from is a mood, not a step.
+
+And the rule about sources still bites, which is how I know it is real. The things in my well now are Gilliam, Steadman, Leonardo, engraved plates, guitar. I had to go and get every one of them.
+
+## Measuring things nobody measures
+
+Looking at a contact sheet tells you about frames. It tells you nothing about time. So I built an instrument that splits a film's energy into ten deciles, the same one I use on music.
+
+It immediately found two holes no sheet could have shown me. Both films had a tenth of their runtime sitting at roughly 0.004, which is a freeze. My mushroom film peaked at 20 percent of its runtime, meaning the loudest thing in it happened near the start and everything after was decay.
+
+Then I got it wrong in an instructive way. I set the floor at 0.03, because that is the lowest any of Bach, Albeniz or Tarrega ever go. Then I measured the film I was aiming at. It scores 0.0143. It fails my floor outright.
+
+> A music floor is not a film floor. A held shot has residual motion. A held silence is just a gap. The failure is at or near zero, not below some number I borrowed from another medium.
+
+Check a threshold against the thing you are actually making before you let it harden into doctrine.
+
+## Two laws I only found by watching the films
+
+**The aperture is a door, not a pointer.** I had been racking the iris to point at things. Eight times in a seventeen second film, ten times in a twenty seven second one. Every rack threw the subject out of the frame to show a detail. A real plate does not change the microscope to show you something. It draws a circle around it. Now the aperture moves exactly twice per film, to open and to close, and focus inside the film is drawn: callout rings, magnified inset roundels tied by a hairline, numbered keys, brackets.
+
+**The wobble is for forms, not for instruments.** I had a hand-drawn jitter on everything, including the type, where every single letter took its own rotation. It read as drunk, and it was also quietly destroying the kerning. The specimen is drawn freehand and should wobble. The instrument is ruled with a straightedge and a compass, and should not. The lettering on a real plate is the steadiest thing on the sheet, because it is what the wobbling specimen gets measured against.
+
+Chasing that one turned up a genuine bug wearing a style's clothes. The callout rings were rebuilding their point grid every frame while they drew themselves, so the jitter reshuffled twenty four times a second. The rings were boiling. A previous pass had stabilised the random seed and left a comment saying travelling rings must not reseed, which made it look handled. A stable seed is not a stable drawing. The point grid has to be stable too.
+
+![The mushroom, 27.4 seconds, 658 frames, nine specimens, one lens](/lab/well/mushroom.mp4)
+
+## What we actually built
+
+Same genome. Same rubric. Same agent. The films changed because the agent stopped asking whether the work passed and started asking what it was reaching for.
+
+But the films are not really the output here. The scaffold is. None of those four layers existed when I started. Each one showed up because something broke and neither of us could name why yet.
+
+The well exists because a rubric gave a dead piece 27 out of 28 and I could not explain my own objection. The targets layer exists because my own rule locked out the work that inspired me and the contradiction had to go somewhere. The pacing instrument exists because I kept saying a film dragged and had no way to show it. Every layer is a fight we had, resolved.
+
+That is the part I would not have predicted. I thought I was training an agent to draw. Most of what actually happened was the two of us building the apparatus that lets a person teach a machine taste at all, one argument at a time. I brought the objections. It brought the measurements. Neither half would have gotten here alone, and I have the record to prove it, because every ruling in that genome is dated and quotes me verbatim, typos included.
+
+It is not finished. The open gap is density inside the circle: the film I measure against fills its frame with a fully rendered specimen and I still sometimes put a landscape with one tree in mine. I know the answer, because I produced it once by accident on a plate with five studies of one body. Now it has to be deliberate.
+
+## Take any of this that is useful
+
+I am posting this because I got the idea off a timeline for free and the only sensible thing to do with what I learned is put it back. None of it requires my tools, my stack, or my subject matter. Here is what I would lift if I were reading this instead of writing it.
+
+**Give the agent a well.** Rules are cheap and you will write them well. A bar is harder and worth the work. Neither produces taste. Make a list of what the work should love, get the actual artifacts, and write down the one thing each teaches. Then make the agent cite what it drew from before it builds. A build that cites nothing drew nothing.
+
+**Separate sources from targets.** Two shelves, not one. You cannot draw from a mirror but you can aim at one. Get this wrong and you will either poison your taste or throw away your best reference for no reason. I did the second one for about an hour.
+
+**Go to the origin of the chain.** When someone names their reference, watch that. A summary of a summary is how you end up four steps out with no idea why your work is thin.
+
+**Build an instrument for the thing you keep complaining about.** I kept saying films dragged. Splitting energy into ten deciles found two dead spots no contact sheet could have shown me. If you say the same vague thing three times, that is a measurement waiting to be built.
+
+**Protect the human signal.** Only my reactions update the genome. Nothing generated ever teaches it. The vague, profane, unhelpful complaint is the most valuable input in the system, because it is the only one that comes from outside the loop. Do not clean it up and do not let the machine grade its own homework.
+
+> Rules tell an agent what not to do. Only a well tells it what to want.
+
+And it started with a fruit fly on my timeline. Go look at what Kevin Ngo is doing, and if you build something with any of this, I would genuinely like to see it.
+
+---
+
+*Both films are hand-coded Canvas 2D, 1080 by 1080, 24 fps. Every mark is seeded, so the same seed gives the same strokes and nothing drifts between frames.*

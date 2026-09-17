@@ -62,10 +62,14 @@ export default function EssayPage({ params }: { params: { slug: string } }) {
     release: 'Release Note'
   }
 
+  // Essay dates are calendar dates ("YYYY-MM-DD"), not instants. new Date()
+  // parses them as UTC midnight, so formatting in any timezone behind UTC
+  // renders the previous day. Force UTC, matching writing-list.tsx.
   const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
-    year: 'numeric'
+    year: 'numeric',
+    timeZone: 'UTC'
   })
 
   return (
@@ -132,6 +136,33 @@ export default function EssayPage({ params }: { params: { slug: string } }) {
               components={{
                 h1: ({ children }) => <h2>{children}</h2>,
                 h2: ({ children }) => <h3>{children}</h3>,
+                /*
+                  Markdown has no video syntax and this renderer deliberately
+                  does not allow raw HTML, so an essay carrying a film uses the
+                  image syntax and we switch on the extension. Additive: any
+                  src that is not .mp4 renders exactly as it did before.
+                */
+                img: ({ src, alt }) => {
+                  const url = typeof src === 'string' ? src : ''
+                  if (!url.toLowerCase().endsWith('.mp4')) {
+                    // eslint-disable-next-line @next/next/no-img-element
+                    return <img src={url} alt={alt ?? ''} loading="lazy" />
+                  }
+                  const poster = url.replace(/\.mp4$/i, '-poster.jpg')
+                  return (
+                    <video
+                      src={url}
+                      poster={poster}
+                      controls
+                      loop
+                      muted
+                      playsInline
+                      preload="none"
+                      aria-label={alt ?? undefined}
+                      className="w-full rounded-sm border border-[var(--hair)] bg-black"
+                    />
+                  )
+                },
                 table: ({ children }) => (
                   <div className="mb-6 overflow-x-auto">
                     <table className="w-full border-collapse text-sm">{children}</table>
