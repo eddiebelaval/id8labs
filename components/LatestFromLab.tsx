@@ -12,10 +12,13 @@ function categoryLabel(item: WritingItem): string {
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString)
+  // Calendar date, not an instant. See writing-list.tsx: without timeZone the
+  // UTC-midnight parse renders a day early for any viewer behind UTC.
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
+    timeZone: 'UTC',
   })
 }
 

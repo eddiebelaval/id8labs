@@ -62,10 +62,14 @@ export default function EssayPage({ params }: { params: { slug: string } }) {
     release: 'Release Note'
   }
 
+  // Essay dates are calendar dates ("YYYY-MM-DD"), not instants. new Date()
+  // parses them as UTC midnight, so formatting in any timezone behind UTC
+  // renders the previous day. Force UTC, matching writing-list.tsx.
   const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
-    year: 'numeric'
+    year: 'numeric',
+    timeZone: 'UTC'
   })
 
   return (

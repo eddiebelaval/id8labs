@@ -208,7 +208,8 @@ export default function LabPage() {
                   )}
                 </div>
                 <span className="flex-shrink-0 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
-                  {new Date(essay.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                  {/* calendar date, force UTC or the 1st of a month renders as the previous month */}
+                  {new Date(essay.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
                 </span>
               </Link>
             ))}
