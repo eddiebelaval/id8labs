@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-09-21 (135 daily editions, 20 weeks)
+ * Last generated: 2026-09-22 (135 daily editions, 20 weeks)
  */
 
 export interface ShippedDaily {
