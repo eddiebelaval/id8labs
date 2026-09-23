@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-09-22 (135 daily editions, 20 weeks)
+ * Last generated: 2026-09-23 (136 daily editions, 21 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-09-22',
+    dayLabel: 'Tue, Sep 22',
+    title: 'Anthropic releases Opus 5.5 at Fable-level performance and 40% lower cost. OpenAI halves GPT-6 Sol and Luna the same morning. The frontier price floor fell by half today.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-22.html',
+    wordCount: 2826,
+  },
   {
     date: '2026-09-20',
     dayLabel: 'Sun, Sep 20',
@@ -988,6 +995,20 @@ export const SHIPPED_DAILIES: ShippedDaily[] = [
 
 /** Daily editions grouped by ISO week, newest week first. */
 export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
+  {
+    isoWeek: '2026-W39',
+    weekStart: '2026-09-21',
+    label: 'Week of September 21-27, 2026',
+    editions: [
+      {
+        date: '2026-09-22',
+        dayLabel: 'Tue, Sep 22',
+        title: 'Anthropic releases Opus 5.5 at Fable-level performance and 40% lower cost. OpenAI halves GPT-6 Sol and Luna the same morning. The frontier price floor fell by half today.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-22.html',
+        wordCount: 2826,
+      },
+    ],
+  },
   {
     isoWeek: '2026-W38',
     weekStart: '2026-09-14',
