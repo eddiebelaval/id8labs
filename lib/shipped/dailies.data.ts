@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-09-24 (137 daily editions, 21 weeks)
+ * Last generated: 2026-09-25 (138 daily editions, 21 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-09-24',
+    dayLabel: 'Thu, Sep 24',
+    title: 'Anthropic found a CRISPR-like enzyme in bacteriophage DNA. OpenAI cut prices 50%. Meta unveiled a keychain AI. The UN Security Council held its first AI session.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-24.html',
+    wordCount: 3010,
+  },
   {
     date: '2026-09-23',
     dayLabel: 'Wed, Sep 23',
@@ -1007,6 +1014,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-09-21',
     label: 'Week of September 21-27, 2026',
     editions: [
+      {
+        date: '2026-09-24',
+        dayLabel: 'Thu, Sep 24',
+        title: 'Anthropic found a CRISPR-like enzyme in bacteriophage DNA. OpenAI cut prices 50%. Meta unveiled a keychain AI. The UN Security Council held its first AI session.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-09-24.html',
+        wordCount: 3010,
+      },
       {
         date: '2026-09-23',
         dayLabel: 'Wed, Sep 23',
