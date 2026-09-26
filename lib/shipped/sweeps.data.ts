@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-09-25 (20 weekly, 4 monthly)
+ * Last generated: 2026-09-26 (21 weekly, 4 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-39',
+    label: 'Week of September 21-27, 2026',
+    sortKey: '2026-09-21',
+    title: 'Anthropic shipped Opus 5.5 at Fable-class performance and 40% lower cost. Agents found a novel enzyme in bacteriophage DNA. Plugin marketplace opened. $11.6B infrastructure deal.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-39.html',
+    wordCount: 2778,
+  },
   {
     period: '2026-38',
     label: 'Week of September 14-20, 2026',
