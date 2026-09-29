@@ -37,6 +37,7 @@ const STATIC_PAGES: Array<[path: string, freq: Freq, priority: number]> = [
   ['/academy', 'weekly', 0.8],
   ['/pricing', 'monthly', 0.8],
   ['/thesis', 'monthly', 0.7],
+  ['/brand', 'monthly', 0.4],
   ['/eddie', 'monthly', 0.6],
   ['/contact', 'monthly', 0.7],
   ['/newsletter', 'monthly', 0.5],
