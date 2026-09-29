@@ -48,9 +48,9 @@ export default function Header() {
             {/* Wordmark */}
             <Link
               href="/"
-              className="text-3xl font-medium tracking-tight hover:opacity-70 transition-opacity"
+              className="hover:opacity-70 transition-opacity"
             >
-              <BrandName />
+              <BrandName className="h-8 lg:h-9" />
             </Link>
 
             {/* Desktop nav */}
