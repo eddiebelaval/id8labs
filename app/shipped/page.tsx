@@ -76,8 +76,16 @@ export default function ShippedPage() {
         <Container>
           <Kicker dot>The Magazine</Kicker>
           <div className="mt-5 flex items-end justify-between gap-6 border-b border-[var(--ink)] pb-4">
-            <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[0.95] text-[var(--ink)] text-[clamp(2.75rem,7vw,4.5rem)]">
-              Shipped<span className="text-id8-orange">.</span>
+            {/* The locked Shipped. wordmark (outlined from the OG card's setting), never live text. */}
+            <h1 className="leading-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/shipped-wordmark.svg"
+                alt="Shipped."
+                width={776}
+                height={259}
+                className="block h-[clamp(2.75rem,7vw,4.75rem)] w-auto"
+              />
             </h1>
             {/* Signature from the id8Labs instrument family (dot inked: one orange per masthead). */}
             <p className="flex shrink-0 items-end gap-3 pb-1">
