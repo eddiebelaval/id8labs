@@ -32,11 +32,13 @@ export const metadata: Metadata = {
     description:
       'The magazine on what the AI labs ship. Front page first; the full archive behind it.',
     type: 'website',
+    images: [{ url: '/shipped/og-v5.png', width: 1200, height: 630, alt: 'Shipped. from id8' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Shipped.',
     description: 'The magazine on what the AI labs ship.',
+    images: ['/shipped/og-v5.png'],
   },
 }
 
@@ -73,9 +75,25 @@ export default function ShippedPage() {
       <section className="pt-16 pb-10">
         <Container>
           <Kicker dot>The Magazine</Kicker>
-          <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[0.95] text-[var(--ink)] text-[clamp(2.75rem,7vw,4.5rem)]">
-            Shipped<span className="text-id8-orange">.</span>
-          </h1>
+          <div className="mt-5 flex items-end justify-between gap-6 border-b border-[var(--ink)] pb-4">
+            <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[0.95] text-[var(--ink)] text-[clamp(2.75rem,7vw,4.5rem)]">
+              Shipped<span className="text-id8-orange">.</span>
+            </h1>
+            {/* Signature from the id8Labs instrument family (dot inked: one orange per masthead). */}
+            <p className="flex shrink-0 items-end gap-3 pb-1">
+              <span className="pb-2 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
+                from
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/id8-wordmark-short-ink.svg"
+                alt="id8"
+                width={71}
+                height={58}
+                className="block h-10 w-auto sm:h-14"
+              />
+            </p>
+          </div>
           <Deck className="mt-6 max-w-[660px]">
             The magazine on what the AI labs ship. The front page carries the
             latest edition and the days that mattered most; the archives hold
