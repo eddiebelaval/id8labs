@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import BrandName from './BrandName'
 
 const colHead =
   'mb-3 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]'
@@ -14,9 +13,15 @@ export default function Footer() {
         <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-8">
           {/* Colophon */}
           <div className="col-span-2 md:col-span-1">
-            <p className="mb-2 text-sm">
-              <BrandName /> <span className="font-[family-name:var(--font-mono)] text-[var(--muted)]">© 2026</span>
-            </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/id8labs-wordmark.svg"
+              alt="id8Labs"
+              width={72}
+              height={71}
+              className="mb-3 block h-[72px] w-auto"
+            />
+            <p className="mb-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">© 2026</p>
             <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">Miami, FL</p>
             <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">EST (UTC-5)</p>
           </div>

@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     description: 'A one-person product lab. Many real products, a deep personal AI substrate, and the field notes of the build wave written every Friday. Proof that one cross-domain builder can ship at institutional scale.',
     images: [
       {
-        url: '/og-image.png?v=2',
+        url: '/og-image.png?v=3',
         width: 1200,
         height: 630,
         alt: 'id8Labs - An independent lab building the tools of the AI build wave.',
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     title: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
     description: 'A one-person product lab building the tools of the AI build wave and writing its field notes every Friday.',
     creator: '@eddiebe',
-    images: ['/og-image.png?v=2'],
+    images: ['/og-image.png?v=3'],
   },
   robots: {
     index: true,
@@ -115,8 +115,8 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FF6B35" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>

@@ -11,7 +11,7 @@ export default function AuthLayout({
       <div className="mx-auto w-full px-6 md:px-9 py-10" style={{ maxWidth: '760px' }}>
         <header className="mb-16">
           <Link href="/" className="inline-block">
-            <BrandName className="text-3xl" />
+            <BrandName className="h-9" />
           </Link>
         </header>
         <div className="flex items-center justify-center">
