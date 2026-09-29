@@ -146,7 +146,8 @@ function WritingListInner({ items }: WritingListProps) {
             ) : (
               <>
                 Essays, research, release notes, the{' '}
-                <span className="not-italic font-[family-name:var(--font-display)]">Shipped<span className="text-id8-orange">.</span></span>{' '}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/shipped-wordmark.svg" alt="Shipped." width={776} height={259} className="inline-block h-[1em] w-auto align-[-0.256em]" />{' '}
                 newsletter, and the weekly magazine on what the AI labs ship.
               </>
             )}
@@ -183,8 +184,9 @@ function WritingListInner({ items }: WritingListProps) {
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <div>
                 <Kicker dot>The id8Labs Newsletter</Kicker>
-                <p className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium italic tracking-[-0.01em] text-[var(--ink)]">
-                  Shipped<span className="text-id8-orange">.</span>
+                <p className="mt-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/brand/shipped-wordmark.svg" alt="Shipped." width={776} height={259} className="block h-10 w-auto" />
                 </p>
               </div>
               <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
