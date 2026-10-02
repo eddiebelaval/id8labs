@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-10-01 (144 daily editions, 22 weeks)
+ * Last generated: 2026-10-02 (145 daily editions, 22 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-10-01',
+    dayLabel: 'Thu, Oct 1',
+    title: 'OpenAI ships Dots agents and scraps GPT-6.1 Astra for safety. Google drops Gemini 4 Argon with 1M output tokens. FTC opens agent probe. Anthropic takes the federal government. Meta goes enterprise.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-01.html',
+    wordCount: 3504,
+  },
   {
     date: '2026-09-30',
     dayLabel: 'Wed, Sep 30',
@@ -1056,6 +1063,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-09-28',
     label: 'Week of September 28 - October 4, 2026',
     editions: [
+      {
+        date: '2026-10-01',
+        dayLabel: 'Thu, Oct 1',
+        title: 'OpenAI ships Dots agents and scraps GPT-6.1 Astra for safety. Google drops Gemini 4 Argon with 1M output tokens. FTC opens agent probe. Anthropic takes the federal government. Meta goes enterprise.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-01.html',
+        wordCount: 3504,
+      },
       {
         date: '2026-09-30',
         dayLabel: 'Wed, Sep 30',

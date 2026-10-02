@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-10-01 (21 weekly, 4 monthly)
+ * Last generated: 2026-10-02 (21 weekly, 5 monthly)
  */
 
 export interface ShippedSweep {
@@ -203,6 +203,14 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
 
 /** Monthly Anthropic roundups, newest first. */
 export const SHIPPED_MONTHLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-09',
+    label: 'September 2026',
+    sortKey: '2026-09-01',
+    title: 'The month the 5.5 family broke the cost curve, the IPO clock started, and Dario warned the world about the thing Anthropic is building.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-09.html',
+    wordCount: 5368,
+  },
   {
     period: '2026-08',
     label: 'August 2026',
