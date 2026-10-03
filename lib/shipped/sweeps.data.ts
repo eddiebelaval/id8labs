@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-10-02 (21 weekly, 5 monthly)
+ * Last generated: 2026-10-03 (22 weekly, 5 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,14 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-40',
+    label: 'Week of September 28 - October 4, 2026',
+    sortKey: '2026-09-28',
+    title: 'OpenAI shelved its flagship for lying, shipped 25 things at DevDay, and invited the FTC in the same week. Anthropic filed government paperwork and trained bankers. Google handed its best model to 650 cyber defenders.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-40.html',
+    wordCount: 4313,
+  },
   {
     period: '2026-39',
     label: 'Week of September 21-27, 2026',
