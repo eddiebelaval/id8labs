@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-10-03 (146 daily editions, 22 weeks)
+ * Last generated: 2026-10-04 (147 daily editions, 22 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-10-03',
+    dayLabel: 'Sat, Oct 3',
+    title: 'Two bets on enterprise AI, same week. While OpenAI tooled the builders at DevDay, Anthropic spent $100 million to credential the deployers inside every Fortune 500.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-03.html',
+    wordCount: 2507,
+  },
   {
     date: '2026-10-02',
     dayLabel: 'Fri, Oct 2',
@@ -1070,6 +1077,13 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
     weekStart: '2026-09-28',
     label: 'Week of September 28 - October 4, 2026',
     editions: [
+      {
+        date: '2026-10-03',
+        dayLabel: 'Sat, Oct 3',
+        title: 'Two bets on enterprise AI, same week. While OpenAI tooled the builders at DevDay, Anthropic spent $100 million to credential the deployers inside every Fortune 500.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-03.html',
+        wordCount: 2507,
+      },
       {
         date: '2026-10-02',
         dayLabel: 'Fri, Oct 2',
