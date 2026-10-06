@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import ProductsContent from './ProductsContent'
 
 export const metadata: Metadata = {
-  title: 'Products - ID8Labs',
-  description: 'Primitive chains shipping from the lab. Each product is the architecture applied to a specific domain, battle-tested in production.',
+  title: 'Software from the Lab',
+  description: 'Explore software from id8Labs for writing, conversation, research, and everyday work. Available tools, beta projects, and experiments, with their status clearly marked.',
+  alternates: { canonical: '/products' },
 }
 
 export default function ProductsPage() {

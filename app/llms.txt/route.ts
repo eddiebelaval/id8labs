@@ -15,9 +15,9 @@ export const dynamic = 'force-static'
 
 const BODY = `# id8Labs
 
-> id8Labs is Eddie Belaval's studio for AI-native software: working products built with Claude, an open marketplace of Claude Code configurations (StackShack), a hands-on Academy, and long-form writing on building in the age of AI.
+> id8Labs is an independent software studio in Miami, founded by filmmaker and AI System Architect Eddie Belaval. The lab makes useful software, explores questions in public, and shares its discoveries in an open notebook.
 
-id8Labs builds in public. The site hosts shipping products, a growing catalog of Claude Code skills, plugins, commands and settings, course material, and essays on AI-native software development.
+Explore available software and beta projects, interactive research, free self-paced Academy courses, the StackShack marketplace, and essays on building with AI. For commissioned systems and forward deployment, visit Hamato at https://hamato.systems.
 
 ## Products
 - [Parallax](https://id8labs.app/products/parallax): Someone to talk to, powered by Claude. Ava listens, remembers, and helps you understand what is going on through 19 analytical lenses. Free and private.
@@ -33,14 +33,14 @@ id8Labs builds in public. The site hosts shipping products, a growing catalog of
 - [Categories](https://id8labs.app/stackshack/categories): Browse the marketplace by category.
 
 ## Academy
-- [Academy](https://id8labs.app/academy): Courses on working with Claude and Claude Code, from first principles to scale.
+- [Academy](https://id8labs.app/academy): Free self-paced courses on working with AI and Claude Code, from first principles to scale.
 
-## Writing
-- [Writing](https://id8labs.app/writing): Essays on AI-native software, building in public, and the craft of building with AI.
+## The open notebook
+- [Notebook](https://id8labs.app/writing): Essays, research, and field notes from building software with AI.
 - [The Thesis](https://id8labs.app/thesis): The core argument behind id8Labs.
 
 ## Shipped
-- [Shipped](https://id8labs.app/shipped): A magazine documenting what id8Labs ships, issue by issue.
+- [Shipped](https://id8labs.app/shipped): The magazine from id8Labs on what the AI labs release, with daily editions, deeper reads, and an archive.
 
 ## About
 - [Eddie](https://id8labs.app/eddie): About Eddie Belaval, the builder behind id8Labs.

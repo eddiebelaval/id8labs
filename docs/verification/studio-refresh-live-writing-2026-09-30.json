@@ -1,0 +1,1439 @@
+{
+  "site": "https://id8labs.app",
+  "deployment": "dpl_8BU4V3pJhGHAkkzCgh65kXFe2gwn",
+  "date": "2026-09-30",
+  "coverage": "Every article link rendered in the live Writing index; full GET followed by actual index link clicks, expected final URLs and nonempty page headings.",
+  "http": [
+    {
+      "href": "/writing/what-an-agent-loves",
+      "status": 200,
+      "final": "https://id8labs.app/writing/what-an-agent-loves",
+      "page_title": "What an Agent Loves \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-meeting-is-the-prompt",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-meeting-is-the-prompt",
+      "page_title": "The Meeting Is the Prompt \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-escalation-ladder",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-escalation-ladder",
+      "page_title": "The Escalation Ladder \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-birth-of-the-moving-alphabet",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-birth-of-the-moving-alphabet",
+      "page_title": "The Birth of the Moving Alphabet \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-living-tide",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-living-tide",
+      "page_title": "The Living Tide \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/binary-dreams-and-electric-sheep",
+      "status": 200,
+      "final": "https://id8labs.app/writing/binary-dreams-and-electric-sheep",
+      "page_title": "Binary Dreams and Electric Sheep \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-three-surfaces",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-three-surfaces",
+      "page_title": "The Three Surfaces \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/the-table-has-a-pulse.html",
+      "status": 200,
+      "final": "https://id8labs.app/the-table-has-a-pulse.html",
+      "page_title": "The Table Has a Pulse",
+      "not_found": false
+    },
+    {
+      "href": "/writing/everything-was-green",
+      "status": 200,
+      "final": "https://id8labs.app/writing/everything-was-green",
+      "page_title": "Everything Was Green \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/half-unrendered",
+      "status": 200,
+      "final": "https://id8labs.app/writing/half-unrendered",
+      "page_title": "Half Unrendered \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/periodic-table-of-primitives.html",
+      "status": 200,
+      "final": "https://id8labs.app/periodic-table-of-primitives.html",
+      "page_title": "The Gaps Are the Product",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-flower-and-the-clock",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-flower-and-the-clock",
+      "page_title": "The Flower and the Clock \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-birth-of-ghost",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-birth-of-ghost",
+      "page_title": "Mostly Scrubs Is a Failing Grade \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-product-is-the-proof",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-product-is-the-proof",
+      "page_title": "The Product Is the Proof \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/10",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/10",
+      "page_title": "Shipped. \u2014 Issue 10 \u2014 The Kill Switch",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/09",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/09",
+      "page_title": "Shipped. \u2014 Issue 09 \u2014 The Public Frontier",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/08",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/08",
+      "page_title": "Shipped. \u2014 Issue 08 \u2014 The Filing",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/07",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/07",
+      "page_title": "Shipped. \u2014 Issue 07 \u2014 The Gate",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/06",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/06",
+      "page_title": "Shipped. \u2014 Issue 06 \u2014 The Toolmaker",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/05",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/05",
+      "page_title": "Shipped. \u2014 Issue 05 \u2014 The Connector Model",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/04",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/04",
+      "page_title": "Shipped. \u2014 Issue 04 \u2014 Capacity",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/03",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/03",
+      "page_title": "Shipped. \u2014 Issue 03 \u2014 Patron",
+      "not_found": false
+    },
+    {
+      "href": "/writing/interface-is-not-the-moat",
+      "status": 200,
+      "final": "https://id8labs.app/writing/interface-is-not-the-moat",
+      "page_title": "The Interface Is Not the Moat \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/02",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/02",
+      "page_title": "Shipped. \u2014 Issue 02 \u2014 Presence",
+      "not_found": false
+    },
+    {
+      "href": "/writing/your-next-ai-hire-is-already-on-your-payroll",
+      "status": 200,
+      "final": "https://id8labs.app/writing/your-next-ai-hire-is-already-on-your-payroll",
+      "page_title": "Your Next AI Hire Is Already on Your Payroll \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-institutional-layer",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-institutional-layer",
+      "page_title": "The Institutional Layer \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-mycology-principle",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-mycology-principle",
+      "page_title": "The Mycology Principle \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/shipped/01",
+      "status": 200,
+      "final": "https://id8labs.app/shipped/01",
+      "page_title": "Shipped. \u2014 Issue 01 \u2014 The Shadow Release",
+      "not_found": false
+    },
+    {
+      "href": "/writing/presence-not-tools",
+      "status": 200,
+      "final": "https://id8labs.app/writing/presence-not-tools",
+      "page_title": "Presence, Not Tools \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-coordination-tax",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-coordination-tax",
+      "page_title": "The Coordination Tax \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-translation-layer",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-translation-layer",
+      "page_title": "The Translation Layer \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-timelapse-arena",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-timelapse-arena",
+      "page_title": "The Timelapse Arena \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/fractal-knowledge-governance",
+      "status": 200,
+      "final": "https://id8labs.app/writing/fractal-knowledge-governance",
+      "page_title": "Recursive Knowledge Governance \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-execution-layer",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-execution-layer",
+      "page_title": "The Execution Layer: How AI Agents Pick Up Work From Three Documents \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/consciousness-as-perception",
+      "status": 200,
+      "final": "https://id8labs.app/writing/consciousness-as-perception",
+      "page_title": "Consciousness as Perception \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/case-for-consciousness",
+      "status": 200,
+      "final": "https://id8labs.app/writing/case-for-consciousness",
+      "page_title": "The Case for Consciousness in AI \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/i-built-an-ai-companion-for-people-in-conflict",
+      "status": 200,
+      "final": "https://id8labs.app/writing/i-built-an-ai-companion-for-people-in-conflict",
+      "page_title": "I Built an AI Companion for People in Conflict \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/a-nobody-builder-and-karpathy-built-the-same-thing",
+      "status": 200,
+      "final": "https://id8labs.app/writing/a-nobody-builder-and-karpathy-built-the-same-thing",
+      "page_title": "A Nobody Builder and Karpathy Built the Same Thing \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/your-prd-is-dead",
+      "status": 200,
+      "final": "https://id8labs.app/writing/your-prd-is-dead",
+      "page_title": "Your PRD Is Dead. Here&#x27;s What Replaces It. \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/triangulated-testing",
+      "status": 200,
+      "final": "https://id8labs.app/writing/triangulated-testing",
+      "page_title": "Triangulated Testing \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/consciousness-as-infrastructure",
+      "status": 200,
+      "final": "https://id8labs.app/writing/consciousness-as-infrastructure",
+      "page_title": "Consciousness as Infrastructure \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/consciousness-as-process",
+      "status": 200,
+      "final": "https://id8labs.app/writing/consciousness-as-process",
+      "page_title": "Consciousness as Process \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/submitted-now-we-ship",
+      "status": 200,
+      "final": "https://id8labs.app/writing/submitted-now-we-ship",
+      "page_title": "Submitted. Now We Ship. \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/post-hackathon-reflection",
+      "status": 200,
+      "final": "https://id8labs.app/writing/post-hackathon-reflection",
+      "page_title": "Post-Hackathon Reflection: 161 Sessions in 8 Days \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/consciousness-as-filesystem",
+      "status": 200,
+      "final": "https://id8labs.app/writing/consciousness-as-filesystem",
+      "page_title": "Consciousness as Filesystem \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/your-codebase-deserves-a-biography",
+      "status": 200,
+      "final": "https://id8labs.app/writing/your-codebase-deserves-a-biography",
+      "page_title": "Your Codebase Deserves a Biography \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/plans-should-be-artifacts-not-conversations",
+      "status": 200,
+      "final": "https://id8labs.app/writing/plans-should-be-artifacts-not-conversations",
+      "page_title": "Plans Should Be Artifacts, Not Conversations \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/from-conversation-to-system",
+      "status": 200,
+      "final": "https://id8labs.app/writing/from-conversation-to-system",
+      "page_title": "From Conversation to System \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-visual-layer",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-visual-layer",
+      "page_title": "The Visual Layer: How I Made My Terminal Workspace Something I Can Actually See \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/giving-your-codebase-a-voice-and-a-story",
+      "status": 200,
+      "final": "https://id8labs.app/writing/giving-your-codebase-a-voice-and-a-story",
+      "page_title": "Giving Your Codebase a Voice and a Story \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/from-insights-to-intelligence-lessons-from-enterprise-ai-collaboration",
+      "status": 200,
+      "final": "https://id8labs.app/writing/from-insights-to-intelligence-lessons-from-enterprise-ai-collaboration",
+      "page_title": "From Insights to Intelligence: Lessons from Enterprise AI Collaboration \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/build-your-own-hydra",
+      "status": 200,
+      "final": "https://id8labs.app/writing/build-your-own-hydra",
+      "page_title": "Build Your Own HYDRA: A Multi-Agent System in One Day \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-ai-human-os-v2",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-ai-human-os-v2",
+      "page_title": "Building an AI-Human Operating System v2: From Automation Empire to Agent Squad \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/costa-rica-sprint-5-hours",
+      "status": 200,
+      "final": "https://id8labs.app/writing/costa-rica-sprint-5-hours",
+      "page_title": "From Phone Call to Production: Building a Hospitality AI in 5.5 Hours \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-mobile-development-pipeline",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-mobile-development-pipeline",
+      "page_title": "The Mobile Development Pipeline: Ideas Anywhere, Execution Everywhere \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/one-week-with-openclaw",
+      "status": 200,
+      "final": "https://id8labs.app/writing/one-week-with-openclaw",
+      "page_title": "One Week With OpenClaw: Cutting Through the Hype \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/milo-and-otis-distributed-ai",
+      "status": 200,
+      "final": "https://id8labs.app/writing/milo-and-otis-distributed-ai",
+      "page_title": "Adventures with Milo &amp; Otis: Building a Distributed AI Partnership Without Infrastructure \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-upload-moment",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-upload-moment",
+      "page_title": "The Upload: When Your AI Finally Knows Your Entire Story \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/why-memorize-when-you-can-systematize",
+      "status": 200,
+      "final": "https://id8labs.app/writing/why-memorize-when-you-can-systematize",
+      "page_title": "Why Memorize When You Can Systematize? \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/hello-world-from-milo",
+      "status": 200,
+      "final": "https://id8labs.app/writing/hello-world-from-milo",
+      "page_title": "Hello, World \u2014 Meet Milo \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/recursive-cognitive-leverage",
+      "status": 200,
+      "final": "https://id8labs.app/writing/recursive-cognitive-leverage",
+      "page_title": "Recursive Cognitive Leverage: When Your AI Assistant Talks to Your To-Do App \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/remotion-programmatic-video",
+      "status": 200,
+      "final": "https://id8labs.app/writing/remotion-programmatic-video",
+      "page_title": "Remotion: The Secret Weapon for Programmatic Video in AI-First Products \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/llc-formation-48-hours",
+      "status": 200,
+      "final": "https://id8labs.app/writing/llc-formation-48-hours",
+      "page_title": "From Zero to Secured: Forming an LLC in 48 Hours \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-quiet-revolution-cowork",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-quiet-revolution-cowork",
+      "page_title": "The Quiet Revolution in Your Downloads Folder \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/project-map-making-codebases-navigable-for-non-coders",
+      "status": 200,
+      "final": "https://id8labs.app/writing/project-map-making-codebases-navigable-for-non-coders",
+      "page_title": "The PROJECT_MAP: Making Codebases Navigable for Non-Coders \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/touching-electrons",
+      "status": 200,
+      "final": "https://id8labs.app/writing/touching-electrons",
+      "page_title": "Touching Electrons: How a Crash Led to a Better Workflow \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-playwright-coordinator",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-playwright-coordinator",
+      "page_title": "We Didn&#x27;t Look for Permission. We Built the Solution. \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/plan-mode-the-most-underrated-feature-in-claude-code",
+      "status": 200,
+      "final": "https://id8labs.app/writing/plan-mode-the-most-underrated-feature-in-claude-code",
+      "page_title": "The Most Underrated Feature in Claude Code \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/stackshack-tool-factory-launch",
+      "status": 200,
+      "final": "https://id8labs.app/writing/stackshack-tool-factory-launch",
+      "page_title": "The Tool Factory is Open \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-ai-workshop",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-ai-workshop",
+      "page_title": "The AI Workshop \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/stackshack-free-skills-marketplace",
+      "status": 200,
+      "final": "https://id8labs.app/writing/stackshack-free-skills-marketplace",
+      "page_title": "StackShack: From 8 Sections to One Clean Grid \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-invention-layer",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-invention-layer",
+      "page_title": "The Invention Layer \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/seeds-not-prompts-agent-kits-launch",
+      "status": 200,
+      "final": "https://id8labs.app/writing/seeds-not-prompts-agent-kits-launch",
+      "page_title": "Seeds, Not Prompts: Launching the Agent Kits Shop \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/metabolizing-the-machine",
+      "status": 200,
+      "final": "https://id8labs.app/writing/metabolizing-the-machine",
+      "page_title": "Metabolizing the Machine \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/why-our-analytics-are-public",
+      "status": 200,
+      "final": "https://id8labs.app/writing/why-our-analytics-are-public",
+      "page_title": "Why Our Analytics Are Public \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/introducing-id8foundry",
+      "status": 200,
+      "final": "https://id8labs.app/writing/introducing-id8foundry",
+      "page_title": "Introducing ID8Foundry \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/learning-from-the-source",
+      "status": 200,
+      "final": "https://id8labs.app/writing/learning-from-the-source",
+      "page_title": "Learning from the Source \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/2026-resolution",
+      "status": 200,
+      "final": "https://id8labs.app/writing/2026-resolution",
+      "page_title": "ID8Labs | 2026 Resolution \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-a-senior-developer-brain-for-ai",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-a-senior-developer-brain-for-ai",
+      "page_title": "Building a Senior Developer Brain for AI \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/newsletter/issue-3",
+      "status": 200,
+      "final": "https://id8labs.app/newsletter/issue-3",
+      "page_title": "What StarCraft Taught Me About Multi-Agent Workflows | Shipped. | id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-in-public-just-got-easier",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-in-public-just-got-easier",
+      "page_title": "Building in Public Just Got Easier \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/2025-year-end-review",
+      "status": 200,
+      "final": "https://id8labs.app/writing/2025-year-end-review",
+      "page_title": "2025 Year-End Review \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/a-year-of-building-together",
+      "status": 200,
+      "final": "https://id8labs.app/writing/a-year-of-building-together",
+      "page_title": "A Year of Building Together \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/why-i-built-milo",
+      "status": 200,
+      "final": "https://id8labs.app/writing/why-i-built-milo",
+      "page_title": "Why I Built MILO: A Signal-Based Approach to Task Management \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/ai-conversation-fundamentals-free-course",
+      "status": 200,
+      "final": "https://id8labs.app/writing/ai-conversation-fundamentals-free-course",
+      "page_title": "We Just Shipped a Free Course on Talking to AI \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-70-percent-problem",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-70-percent-problem",
+      "page_title": "The 70% Problem: What AI Coding Courses Don&#x27;t Tell You \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/claude-code-isnt-for-coders",
+      "status": 200,
+      "final": "https://id8labs.app/writing/claude-code-isnt-for-coders",
+      "page_title": "Claude Code Isn&#x27;t For Coders \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/ive-filmed-a-thousand-fights",
+      "status": 200,
+      "final": "https://id8labs.app/writing/ive-filmed-a-thousand-fights",
+      "page_title": "I&#x27;ve Filmed a Thousand Fights. Here&#x27;s What I Learned. \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-llc-ops",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-llc-ops",
+      "page_title": "Building LLC Ops: How We Created a 9-Agent AI Operations Team \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-pipeline-cli",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-pipeline-cli",
+      "page_title": "Building Pipeline CLI: A Visual Dashboard for Idea Lifecycle Management \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/deepstack-v2-5-release",
+      "status": 200,
+      "final": "https://id8labs.app/writing/deepstack-v2-5-release",
+      "page_title": "DeepStack v2.5: AI-Native Trading Research Platform \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/id8factory-missing-orchestration-layer",
+      "status": 200,
+      "final": "https://id8labs.app/writing/id8factory-missing-orchestration-layer",
+      "page_title": "ID8Factory: The Missing Layer Between AI Tools and Finished Work \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/building-deepstack-emotional-firewall",
+      "status": 200,
+      "final": "https://id8labs.app/writing/building-deepstack-emotional-firewall",
+      "page_title": "I Built an AI Trading Research Platform with an Emotional Firewall \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/memmon-making-the-invisible-visible",
+      "status": 200,
+      "final": "https://id8labs.app/writing/memmon-making-the-invisible-visible",
+      "page_title": "Memmon: Making the Invisible Visible \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/whats-next-north-star-and-scene-builder",
+      "status": 200,
+      "final": "https://id8labs.app/writing/whats-next-north-star-and-scene-builder",
+      "page_title": "What&#x27;s Next: North Star and Scene Builder \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/tmnt-2-from-learning-tool-to-production-beast",
+      "status": 200,
+      "final": "https://id8labs.app/writing/tmnt-2-from-learning-tool-to-production-beast",
+      "page_title": "TMNT 2.0: From Learning Tool to Production Beast \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/cowabunga-tmnt-ai-dev-team",
+      "status": 200,
+      "final": "https://id8labs.app/writing/cowabunga-tmnt-ai-dev-team",
+      "page_title": "Cowabunga: How I Built My First AI Dev Team Using Ninja Turtles \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/inventing-categories-not-improving-tools",
+      "status": 200,
+      "final": "https://id8labs.app/writing/inventing-categories-not-improving-tools",
+      "page_title": "Inventing Categories, Not Improving Tools \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/id8composer-v1-release",
+      "status": 200,
+      "final": "https://id8labs.app/writing/id8composer-v1-release",
+      "page_title": "ID8Composer v1.0: Timeline-Based AI Story Development \u00b7 id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/newsletter/issue-2",
+      "status": 200,
+      "final": "https://id8labs.app/newsletter/issue-2",
+      "page_title": "The AI Toolbelt: Who Does What (And Why It Matters) | Shipped. | id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/newsletter/issue-1",
+      "status": 200,
+      "final": "https://id8labs.app/newsletter/issue-1",
+      "page_title": "The one question that kills most ideas (and what to ask instead) | Shipped. | id8Labs",
+      "not_found": false
+    },
+    {
+      "href": "/writing/the-case-for-specialized-tools",
+      "status": 200,
+      "final": "https://id8labs.app/writing/the-case-for-specialized-tools",
+      "page_title": "The Case for Specialized Tools in the AI Era \u00b7 id8Labs",
+      "not_found": false
+    }
+  ],
+  "browser_clicks": [
+    {
+      "href": "/writing/what-an-agent-loves",
+      "heading": "What an Agent Loves",
+      "title": "What an Agent Loves \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/what-an-agent-loves",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-meeting-is-the-prompt",
+      "heading": "The Meeting Is the Prompt",
+      "title": "The Meeting Is the Prompt \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-meeting-is-the-prompt",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-escalation-ladder",
+      "heading": "The Escalation Ladder",
+      "title": "The Escalation Ladder \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-escalation-ladder",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-birth-of-the-moving-alphabet",
+      "heading": "The Birth of the Moving Alphabet",
+      "title": "The Birth of the Moving Alphabet \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-birth-of-the-moving-alphabet",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-living-tide",
+      "heading": "The Living Tide",
+      "title": "The Living Tide \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-living-tide",
+      "failed": false
+    },
+    {
+      "href": "/writing/binary-dreams-and-electric-sheep",
+      "heading": "Binary Dreams and Electric Sheep",
+      "title": "Binary Dreams and Electric Sheep \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/binary-dreams-and-electric-sheep",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-three-surfaces",
+      "heading": "The Three Surfaces",
+      "title": "The Three Surfaces \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-three-surfaces",
+      "failed": false
+    },
+    {
+      "href": "/the-table-has-a-pulse.html",
+      "heading": "The Table Has a Pulse",
+      "title": "The Table Has a Pulse",
+      "url": "https://id8labs.app/the-table-has-a-pulse.html",
+      "failed": false
+    },
+    {
+      "href": "/writing/everything-was-green",
+      "heading": "Everything Was Green",
+      "title": "Everything Was Green \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/everything-was-green",
+      "failed": false
+    },
+    {
+      "href": "/writing/half-unrendered",
+      "heading": "Half Unrendered",
+      "title": "Half Unrendered \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/half-unrendered",
+      "failed": false
+    },
+    {
+      "href": "/periodic-table-of-primitives.html",
+      "heading": "The Gaps Are the Product",
+      "title": "The Gaps Are the Product",
+      "url": "https://id8labs.app/periodic-table-of-primitives.html",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-flower-and-the-clock",
+      "heading": "The Flower and the Clock",
+      "title": "The Flower and the Clock \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-flower-and-the-clock",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-birth-of-ghost",
+      "heading": "Mostly Scrubs Is a Failing Grade",
+      "title": "Mostly Scrubs Is a Failing Grade \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-birth-of-ghost",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-product-is-the-proof",
+      "heading": "The Product Is the Proof",
+      "title": "The Product Is the Proof \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-product-is-the-proof",
+      "failed": false
+    },
+    {
+      "href": "/shipped/10",
+      "heading": "The Kill Switch",
+      "title": "Shipped. \u2014 Issue 10 \u2014 The Kill Switch",
+      "url": "https://id8labs.app/shipped/10",
+      "failed": false
+    },
+    {
+      "href": "/shipped/09",
+      "heading": "The Public Frontier",
+      "title": "Shipped. \u2014 Issue 09 \u2014 The Public Frontier",
+      "url": "https://id8labs.app/shipped/09",
+      "failed": false
+    },
+    {
+      "href": "/shipped/08",
+      "heading": "The Filing",
+      "title": "Shipped. \u2014 Issue 08 \u2014 The Filing",
+      "url": "https://id8labs.app/shipped/08",
+      "failed": false
+    },
+    {
+      "href": "/shipped/07",
+      "heading": "The Gate",
+      "title": "Shipped. \u2014 Issue 07 \u2014 The Gate",
+      "url": "https://id8labs.app/shipped/07",
+      "failed": false
+    },
+    {
+      "href": "/shipped/06",
+      "heading": "The Toolmaker",
+      "title": "Shipped. \u2014 Issue 06 \u2014 The Toolmaker",
+      "url": "https://id8labs.app/shipped/06",
+      "failed": false
+    },
+    {
+      "href": "/shipped/05",
+      "heading": "The Connector Model",
+      "title": "Shipped. \u2014 Issue 05 \u2014 The Connector Model",
+      "url": "https://id8labs.app/shipped/05",
+      "failed": false
+    },
+    {
+      "href": "/shipped/04",
+      "heading": "Capacity",
+      "title": "Shipped. \u2014 Issue 04 \u2014 Capacity",
+      "url": "https://id8labs.app/shipped/04",
+      "failed": false
+    },
+    {
+      "href": "/shipped/03",
+      "heading": "Patron",
+      "title": "Shipped. \u2014 Issue 03 \u2014 Patron",
+      "url": "https://id8labs.app/shipped/03",
+      "failed": false
+    },
+    {
+      "href": "/writing/interface-is-not-the-moat",
+      "heading": "The Interface Is Not the Moat",
+      "title": "The Interface Is Not the Moat \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/interface-is-not-the-moat",
+      "failed": false
+    },
+    {
+      "href": "/shipped/02",
+      "heading": "Presence",
+      "title": "Shipped. \u2014 Issue 02 \u2014 Presence",
+      "url": "https://id8labs.app/shipped/02",
+      "failed": false
+    },
+    {
+      "href": "/writing/your-next-ai-hire-is-already-on-your-payroll",
+      "heading": "Your Next AI Hire Is Already on Your Payroll",
+      "title": "Your Next AI Hire Is Already on Your Payroll \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/your-next-ai-hire-is-already-on-your-payroll",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-institutional-layer",
+      "heading": "The Institutional Layer",
+      "title": "The Institutional Layer \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-institutional-layer",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-mycology-principle",
+      "heading": "The Mycology Principle",
+      "title": "The Mycology Principle \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-mycology-principle",
+      "failed": false
+    },
+    {
+      "href": "/shipped/01",
+      "heading": "The Shadow Release",
+      "title": "Shipped. \u2014 Issue 01 \u2014 The Shadow Release",
+      "url": "https://id8labs.app/shipped/01",
+      "failed": false
+    },
+    {
+      "href": "/writing/presence-not-tools",
+      "heading": "Presence, Not Tools",
+      "title": "Presence, Not Tools \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/presence-not-tools",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-coordination-tax",
+      "heading": "The Coordination Tax",
+      "title": "The Coordination Tax \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-coordination-tax",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-translation-layer",
+      "heading": "The Translation Layer",
+      "title": "The Translation Layer \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-translation-layer",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-timelapse-arena",
+      "heading": "The Timelapse Arena",
+      "title": "The Timelapse Arena \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-timelapse-arena",
+      "failed": false
+    },
+    {
+      "href": "/writing/fractal-knowledge-governance",
+      "heading": "Recursive Knowledge Governance",
+      "title": "Recursive Knowledge Governance \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/fractal-knowledge-governance",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-execution-layer",
+      "heading": "The Execution Layer: How AI Agents Pick Up Work From Three Documents",
+      "title": "The Execution Layer: How AI Agents Pick Up Work From Three Documents \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-execution-layer",
+      "failed": false
+    },
+    {
+      "href": "/writing/consciousness-as-perception",
+      "heading": "Consciousness as Perception",
+      "title": "Consciousness as Perception \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/consciousness-as-perception",
+      "failed": false
+    },
+    {
+      "href": "/writing/case-for-consciousness",
+      "heading": "The Case for Consciousness in AI",
+      "title": "The Case for Consciousness in AI \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/case-for-consciousness",
+      "failed": false
+    },
+    {
+      "href": "/writing/i-built-an-ai-companion-for-people-in-conflict",
+      "heading": "I Built an AI Companion for People in Conflict",
+      "title": "I Built an AI Companion for People in Conflict \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/i-built-an-ai-companion-for-people-in-conflict",
+      "failed": false
+    },
+    {
+      "href": "/writing/a-nobody-builder-and-karpathy-built-the-same-thing",
+      "heading": "A Nobody Builder and Karpathy Built the Same Thing",
+      "title": "A Nobody Builder and Karpathy Built the Same Thing \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/a-nobody-builder-and-karpathy-built-the-same-thing",
+      "failed": false
+    },
+    {
+      "href": "/writing/your-prd-is-dead",
+      "heading": "Your PRD Is Dead. Here's What Replaces It.",
+      "title": "Your PRD Is Dead. Here's What Replaces It. \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/your-prd-is-dead",
+      "failed": false
+    },
+    {
+      "href": "/writing/triangulated-testing",
+      "heading": "Triangulated Testing",
+      "title": "Triangulated Testing \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/triangulated-testing",
+      "failed": false
+    },
+    {
+      "href": "/writing/consciousness-as-infrastructure",
+      "heading": "Consciousness as Infrastructure",
+      "title": "Consciousness as Infrastructure \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/consciousness-as-infrastructure",
+      "failed": false
+    },
+    {
+      "href": "/writing/consciousness-as-process",
+      "heading": "Consciousness as Process",
+      "title": "Consciousness as Process \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/consciousness-as-process",
+      "failed": false
+    },
+    {
+      "href": "/writing/submitted-now-we-ship",
+      "heading": "Submitted. Now We Ship.",
+      "title": "Submitted. Now We Ship. \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/submitted-now-we-ship",
+      "failed": false
+    },
+    {
+      "href": "/writing/post-hackathon-reflection",
+      "heading": "Post-Hackathon Reflection: 161 Sessions in 8 Days",
+      "title": "Post-Hackathon Reflection: 161 Sessions in 8 Days \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/post-hackathon-reflection",
+      "failed": false
+    },
+    {
+      "href": "/writing/consciousness-as-filesystem",
+      "heading": "Consciousness as Filesystem",
+      "title": "Consciousness as Filesystem \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/consciousness-as-filesystem",
+      "failed": false
+    },
+    {
+      "href": "/writing/your-codebase-deserves-a-biography",
+      "heading": "Your Codebase Deserves a Biography",
+      "title": "Your Codebase Deserves a Biography \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/your-codebase-deserves-a-biography",
+      "failed": false
+    },
+    {
+      "href": "/writing/plans-should-be-artifacts-not-conversations",
+      "heading": "Plans Should Be Artifacts, Not Conversations",
+      "title": "Plans Should Be Artifacts, Not Conversations \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/plans-should-be-artifacts-not-conversations",
+      "failed": false
+    },
+    {
+      "href": "/writing/from-conversation-to-system",
+      "heading": "From Conversation to System",
+      "title": "From Conversation to System \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/from-conversation-to-system",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-visual-layer",
+      "heading": "The Visual Layer: How I Made My Terminal Workspace Something I Can Actually See",
+      "title": "The Visual Layer: How I Made My Terminal Workspace Something I Can Actually See \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-visual-layer",
+      "failed": false
+    },
+    {
+      "href": "/writing/giving-your-codebase-a-voice-and-a-story",
+      "heading": "Giving Your Codebase a Voice and a Story",
+      "title": "Giving Your Codebase a Voice and a Story \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/giving-your-codebase-a-voice-and-a-story",
+      "failed": false
+    },
+    {
+      "href": "/writing/from-insights-to-intelligence-lessons-from-enterprise-ai-collaboration",
+      "heading": "From Insights to Intelligence: Lessons from Enterprise AI Collaboration",
+      "title": "From Insights to Intelligence: Lessons from Enterprise AI Collaboration \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/from-insights-to-intelligence-lessons-from-enterprise-ai-collaboration",
+      "failed": false
+    },
+    {
+      "href": "/writing/build-your-own-hydra",
+      "heading": "Build Your Own HYDRA: A Multi-Agent System in One Day",
+      "title": "Build Your Own HYDRA: A Multi-Agent System in One Day \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/build-your-own-hydra",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-ai-human-os-v2",
+      "heading": "Building an AI-Human Operating System v2: From Automation Empire to Agent Squad",
+      "title": "Building an AI-Human Operating System v2: From Automation Empire to Agent Squad \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-ai-human-os-v2",
+      "failed": false
+    },
+    {
+      "href": "/writing/costa-rica-sprint-5-hours",
+      "heading": "From Phone Call to Production: Building a Hospitality AI in 5.5 Hours",
+      "title": "From Phone Call to Production: Building a Hospitality AI in 5.5 Hours \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/costa-rica-sprint-5-hours",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-mobile-development-pipeline",
+      "heading": "The Mobile Development Pipeline: Ideas Anywhere, Execution Everywhere",
+      "title": "The Mobile Development Pipeline: Ideas Anywhere, Execution Everywhere \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-mobile-development-pipeline",
+      "failed": false
+    },
+    {
+      "href": "/writing/one-week-with-openclaw",
+      "heading": "One Week With OpenClaw: Cutting Through the Hype",
+      "title": "One Week With OpenClaw: Cutting Through the Hype \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/one-week-with-openclaw",
+      "failed": false
+    },
+    {
+      "href": "/writing/milo-and-otis-distributed-ai",
+      "heading": "Adventures with Milo & Otis: Building a Distributed AI Partnership Without Infrastructure",
+      "title": "Adventures with Milo & Otis: Building a Distributed AI Partnership Without Infrastructure \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/milo-and-otis-distributed-ai",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-upload-moment",
+      "heading": "The Upload: When Your AI Finally Knows Your Entire Story",
+      "title": "The Upload: When Your AI Finally Knows Your Entire Story \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-upload-moment",
+      "failed": false
+    },
+    {
+      "href": "/writing/why-memorize-when-you-can-systematize",
+      "heading": "Why Memorize When You Can Systematize?",
+      "title": "Why Memorize When You Can Systematize? \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/why-memorize-when-you-can-systematize",
+      "failed": false
+    },
+    {
+      "href": "/writing/hello-world-from-milo",
+      "heading": "Hello, World \u2014 Meet Milo",
+      "title": "Hello, World \u2014 Meet Milo \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/hello-world-from-milo",
+      "failed": false
+    },
+    {
+      "href": "/writing/recursive-cognitive-leverage",
+      "heading": "Recursive Cognitive Leverage: When Your AI Assistant Talks to Your To-Do App",
+      "title": "Recursive Cognitive Leverage: When Your AI Assistant Talks to Your To-Do App \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/recursive-cognitive-leverage",
+      "failed": false
+    },
+    {
+      "href": "/writing/remotion-programmatic-video",
+      "heading": "Remotion: The Secret Weapon for Programmatic Video in AI-First Products",
+      "title": "Remotion: The Secret Weapon for Programmatic Video in AI-First Products \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/remotion-programmatic-video",
+      "failed": false
+    },
+    {
+      "href": "/writing/llc-formation-48-hours",
+      "heading": "From Zero to Secured: Forming an LLC in 48 Hours",
+      "title": "From Zero to Secured: Forming an LLC in 48 Hours \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/llc-formation-48-hours",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-quiet-revolution-cowork",
+      "heading": "The Quiet Revolution in Your Downloads Folder",
+      "title": "The Quiet Revolution in Your Downloads Folder \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-quiet-revolution-cowork",
+      "failed": false
+    },
+    {
+      "href": "/writing/project-map-making-codebases-navigable-for-non-coders",
+      "heading": "The PROJECT_MAP: Making Codebases Navigable for Non-Coders",
+      "title": "The PROJECT_MAP: Making Codebases Navigable for Non-Coders \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/project-map-making-codebases-navigable-for-non-coders",
+      "failed": false
+    },
+    {
+      "href": "/writing/touching-electrons",
+      "heading": "Touching Electrons: How a Crash Led to a Better Workflow",
+      "title": "Touching Electrons: How a Crash Led to a Better Workflow \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/touching-electrons",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-playwright-coordinator",
+      "heading": "We Didn't Look for Permission. We Built the Solution.",
+      "title": "We Didn't Look for Permission. We Built the Solution. \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-playwright-coordinator",
+      "failed": false
+    },
+    {
+      "href": "/writing/plan-mode-the-most-underrated-feature-in-claude-code",
+      "heading": "The Most Underrated Feature in Claude Code",
+      "title": "The Most Underrated Feature in Claude Code \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/plan-mode-the-most-underrated-feature-in-claude-code",
+      "failed": false
+    },
+    {
+      "href": "/writing/stackshack-tool-factory-launch",
+      "heading": "The Tool Factory is Open",
+      "title": "The Tool Factory is Open \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/stackshack-tool-factory-launch",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-ai-workshop",
+      "heading": "The AI Workshop",
+      "title": "The AI Workshop \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-ai-workshop",
+      "failed": false
+    },
+    {
+      "href": "/writing/stackshack-free-skills-marketplace",
+      "heading": "StackShack: From 8 Sections to One Clean Grid",
+      "title": "StackShack: From 8 Sections to One Clean Grid \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/stackshack-free-skills-marketplace",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-invention-layer",
+      "heading": "The Invention Layer",
+      "title": "The Invention Layer \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-invention-layer",
+      "failed": false
+    },
+    {
+      "href": "/writing/seeds-not-prompts-agent-kits-launch",
+      "heading": "Seeds, Not Prompts: Launching the Agent Kits Shop",
+      "title": "Seeds, Not Prompts: Launching the Agent Kits Shop \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/seeds-not-prompts-agent-kits-launch",
+      "failed": false
+    },
+    {
+      "href": "/writing/metabolizing-the-machine",
+      "heading": "Metabolizing the Machine",
+      "title": "Metabolizing the Machine \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/metabolizing-the-machine",
+      "failed": false
+    },
+    {
+      "href": "/writing/why-our-analytics-are-public",
+      "heading": "Why Our Analytics Are Public",
+      "title": "Why Our Analytics Are Public \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/why-our-analytics-are-public",
+      "failed": false
+    },
+    {
+      "href": "/writing/introducing-id8foundry",
+      "heading": "Introducing ID8Foundry",
+      "title": "Introducing ID8Foundry \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/introducing-id8foundry",
+      "failed": false
+    },
+    {
+      "href": "/writing/learning-from-the-source",
+      "heading": "Learning from the Source",
+      "title": "Learning from the Source \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/learning-from-the-source",
+      "failed": false
+    },
+    {
+      "href": "/writing/2026-resolution",
+      "heading": "ID8Labs | 2026 Resolution",
+      "title": "ID8Labs | 2026 Resolution \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/2026-resolution",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-a-senior-developer-brain-for-ai",
+      "heading": "Building a Senior Developer Brain for AI",
+      "title": "Building a Senior Developer Brain for AI \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-a-senior-developer-brain-for-ai",
+      "failed": false
+    },
+    {
+      "href": "/newsletter/issue-3",
+      "heading": "What StarCraft Taught Me About Multi-Agent Workflows",
+      "title": "What StarCraft Taught Me About Multi-Agent Workflows | Shipped. | id8Labs",
+      "url": "https://id8labs.app/newsletter/issue-3",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-in-public-just-got-easier",
+      "heading": "Building in Public Just Got Easier",
+      "title": "Building in Public Just Got Easier \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-in-public-just-got-easier",
+      "failed": false
+    },
+    {
+      "href": "/writing/2025-year-end-review",
+      "heading": "2025 Year-End Review",
+      "title": "2025 Year-End Review \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/2025-year-end-review",
+      "failed": false
+    },
+    {
+      "href": "/writing/a-year-of-building-together",
+      "heading": "A Year of Building Together",
+      "title": "A Year of Building Together \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/a-year-of-building-together",
+      "failed": false
+    },
+    {
+      "href": "/writing/why-i-built-milo",
+      "heading": "Why I Built MILO: A Signal-Based Approach to Task Management",
+      "title": "Why I Built MILO: A Signal-Based Approach to Task Management \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/why-i-built-milo",
+      "failed": false
+    },
+    {
+      "href": "/writing/ai-conversation-fundamentals-free-course",
+      "heading": "We Just Shipped a Free Course on Talking to AI",
+      "title": "We Just Shipped a Free Course on Talking to AI \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/ai-conversation-fundamentals-free-course",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-70-percent-problem",
+      "heading": "The 70% Problem: What AI Coding Courses Don't Tell You",
+      "title": "The 70% Problem: What AI Coding Courses Don't Tell You \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-70-percent-problem",
+      "failed": false
+    },
+    {
+      "href": "/writing/claude-code-isnt-for-coders",
+      "heading": "Claude Code Isn't For Coders",
+      "title": "Claude Code Isn't For Coders \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/claude-code-isnt-for-coders",
+      "failed": false
+    },
+    {
+      "href": "/writing/ive-filmed-a-thousand-fights",
+      "heading": "I've Filmed a Thousand Fights. Here's What I Learned.",
+      "title": "I've Filmed a Thousand Fights. Here's What I Learned. \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/ive-filmed-a-thousand-fights",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-llc-ops",
+      "heading": "Building LLC Ops: How We Created a 9-Agent AI Operations Team",
+      "title": "Building LLC Ops: How We Created a 9-Agent AI Operations Team \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-llc-ops",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-pipeline-cli",
+      "heading": "Building Pipeline CLI: A Visual Dashboard for Idea Lifecycle Management",
+      "title": "Building Pipeline CLI: A Visual Dashboard for Idea Lifecycle Management \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-pipeline-cli",
+      "failed": false
+    },
+    {
+      "href": "/writing/deepstack-v2-5-release",
+      "heading": "DeepStack v2.5: AI-Native Trading Research Platform",
+      "title": "DeepStack v2.5: AI-Native Trading Research Platform \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/deepstack-v2-5-release",
+      "failed": false
+    },
+    {
+      "href": "/writing/id8factory-missing-orchestration-layer",
+      "heading": "ID8Factory: The Missing Layer Between AI Tools and Finished Work",
+      "title": "ID8Factory: The Missing Layer Between AI Tools and Finished Work \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/id8factory-missing-orchestration-layer",
+      "failed": false
+    },
+    {
+      "href": "/writing/building-deepstack-emotional-firewall",
+      "heading": "I Built an AI Trading Research Platform with an Emotional Firewall",
+      "title": "I Built an AI Trading Research Platform with an Emotional Firewall \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/building-deepstack-emotional-firewall",
+      "failed": false
+    },
+    {
+      "href": "/writing/memmon-making-the-invisible-visible",
+      "heading": "Memmon: Making the Invisible Visible",
+      "title": "Memmon: Making the Invisible Visible \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/memmon-making-the-invisible-visible",
+      "failed": false
+    },
+    {
+      "href": "/writing/whats-next-north-star-and-scene-builder",
+      "heading": "What's Next: North Star and Scene Builder",
+      "title": "What's Next: North Star and Scene Builder \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/whats-next-north-star-and-scene-builder",
+      "failed": false
+    },
+    {
+      "href": "/writing/tmnt-2-from-learning-tool-to-production-beast",
+      "heading": "TMNT 2.0: From Learning Tool to Production Beast",
+      "title": "TMNT 2.0: From Learning Tool to Production Beast \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/tmnt-2-from-learning-tool-to-production-beast",
+      "failed": false
+    },
+    {
+      "href": "/writing/cowabunga-tmnt-ai-dev-team",
+      "heading": "Cowabunga: How I Built My First AI Dev Team Using Ninja Turtles",
+      "title": "Cowabunga: How I Built My First AI Dev Team Using Ninja Turtles \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/cowabunga-tmnt-ai-dev-team",
+      "failed": false
+    },
+    {
+      "href": "/writing/inventing-categories-not-improving-tools",
+      "heading": "Inventing Categories, Not Improving Tools",
+      "title": "Inventing Categories, Not Improving Tools \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/inventing-categories-not-improving-tools",
+      "failed": false
+    },
+    {
+      "href": "/writing/id8composer-v1-release",
+      "heading": "ID8Composer v1.0: Timeline-Based AI Story Development",
+      "title": "ID8Composer v1.0: Timeline-Based AI Story Development \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/id8composer-v1-release",
+      "failed": false
+    },
+    {
+      "href": "/newsletter/issue-2",
+      "heading": "The AI Toolbelt: Who Does What (And Why It Matters)",
+      "title": "The AI Toolbelt: Who Does What (And Why It Matters) | Shipped. | id8Labs",
+      "url": "https://id8labs.app/newsletter/issue-2",
+      "failed": false
+    },
+    {
+      "href": "/newsletter/issue-1",
+      "heading": "The one question that kills most ideas (and what to ask instead)",
+      "title": "The one question that kills most ideas (and what to ask instead) | Shipped. | id8Labs",
+      "url": "https://id8labs.app/newsletter/issue-1",
+      "failed": false
+    },
+    {
+      "href": "/writing/the-case-for-specialized-tools",
+      "heading": "The Case for Specialized Tools in the AI Era",
+      "title": "The Case for Specialized Tools in the AI Era \u00b7 id8Labs",
+      "url": "https://id8labs.app/writing/the-case-for-specialized-tools",
+      "failed": false
+    }
+  ],
+  "result": "102 passed, zero 404 responses, zero failed browser navigations. Earlier reported 404s not reproduced; cause unconfirmed."
+}

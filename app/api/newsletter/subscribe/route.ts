@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/server'
 import { checkRateLimit, getRateLimitKey, rateLimitHeaders, RATE_LIMITS } from '@/lib/rate-limit'
 import { notifyNewSubscriber } from '@/lib/notifications/new-subscriber'
+import { subscriptionListsForSource } from '@/lib/newsletter/subscriptions'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 
 // Shipped. issue pages POST here from two origins: id8labs.app (weekly,
 // same-origin) and eddiebelaval.github.io (daily pages on GitHub Pages,
@@ -58,11 +60,13 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
 
   try {
     const { email, source, name, cadences, website } = await request.json()
+    const requestedLists = subscriptionListsForSource(source)
+    const publicationName = requestedLists.includes('shipped') ? 'Shipped.' : NEWSLETTER_NAME
 
     // Honeypot — hidden "website" field on the Shipped. form; humans never
     // see it, bots fill it. Report success so the bot doesn't learn.
     if (typeof website === 'string' && website.trim()) {
-      return NextResponse.json({ success: true, message: 'Successfully subscribed to Shipped.!', isNewSubscriber: true })
+      return NextResponse.json({ success: true, message: `Successfully subscribed to ${publicationName}`, isNewSubscriber: true })
     }
 
     // Validate email
@@ -97,14 +101,33 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
     }
 
     // Check if already subscribed
-    const { data: existing } = await supabase
+    const { data: existing, error: lookupError } = await supabase
       .from('newsletter_subscribers')
       .select('id, status')
       .eq('email', email.toLowerCase())
       .single()
 
+    if (lookupError && lookupError.code !== 'PGRST116') {
+      console.error('Error checking subscriber:', lookupError)
+      return NextResponse.json({ error: 'Could not verify subscription choices' }, { status: 503 })
+    }
+
     if (existing) {
-      if (existing.status === 'active') {
+      const { data: current, error: selectError } = await supabase
+        .from('newsletter_subscribers')
+        .select('lists')
+        .eq('id', existing.id)
+        .single<{ lists: string[] | null }>()
+
+      if (selectError) {
+        console.error('Error reading subscription choices:', selectError)
+        return NextResponse.json({ error: 'Could not verify subscription choices' }, { status: 503 })
+      }
+
+      // Null is the legacy personal-newsletter membership, not a magazine opt-in.
+      const existingLists = current?.lists ?? ['newsletter']
+      const mergedLists = Array.from(new Set([...existingLists, ...requestedLists]))
+      if (existing.status === 'active' && mergedLists.length === existingLists.length && !Object.keys(shippedFields).length) {
         return NextResponse.json({
           success: true,
           message: 'Already subscribed',
@@ -112,49 +135,15 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
         })
       }
 
-      // Resubscribe if previously unsubscribed. If source starts with
-      // 'shipped', also ensure they're on the Shipped. list (idempotent).
-      // Tolerant of pre-migration schema where `lists` column doesn't exist.
-      const srcLower = (source || 'website').toLowerCase()
       const basePayload = {
         status: 'active',
         unsubscribed_at: null as null,
+        lists: mergedLists,
       }
-      let updateError: { message?: string } | null = null
-      if (srcLower.startsWith('shipped')) {
-        const { data: current, error: selectError } = await supabase
-          .from('newsletter_subscribers')
-          .select('lists')
-          .eq('id', existing.id)
-          .single<{ lists: string[] | null }>()
-        if (selectError && !/column.*lists.*does not exist/i.test(selectError.message || '')) {
-          updateError = selectError
-        } else {
-          const existingLists: string[] = current?.lists ?? ['newsletter']
-          const mergedLists = existingLists.includes('shipped')
-            ? existingLists
-            : [...existingLists, 'shipped']
-          updateError = (
-            await supabase
-              .from('newsletter_subscribers')
-              .update({ ...basePayload, lists: mergedLists, ...shippedFields })
-              .eq('id', existing.id)
-          ).error
-          if (updateError && missingColumn(updateError.message)) {
-            updateError = (
-              await supabase
-                .from('newsletter_subscribers')
-                .update({ ...basePayload, lists: mergedLists })
-                .eq('id', existing.id)
-            ).error
-          }
-          if (updateError && missingColumn(updateError.message)) {
-            updateError = (
-              await supabase.from('newsletter_subscribers').update(basePayload).eq('id', existing.id)
-            ).error
-          }
-        }
-      } else {
+      let updateError = (
+        await supabase.from('newsletter_subscribers').update({ ...basePayload, ...shippedFields }).eq('id', existing.id)
+      ).error
+      if (updateError && missingColumn(updateError.message)) {
         updateError = (
           await supabase.from('newsletter_subscribers').update(basePayload).eq('id', existing.id)
         ).error
@@ -163,28 +152,24 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
       if (updateError) {
         console.error('Error resubscribing:', updateError)
         return NextResponse.json(
-          { error: 'Failed to resubscribe' },
+          { error: 'Failed to save subscription choices' },
           { status: 500 }
         )
       }
 
       return NextResponse.json({
         success: true,
-        message: 'Welcome back! You\'ve been resubscribed.',
+        message: existing.status === 'active'
+          ? `Successfully subscribed to ${publicationName}`
+          : 'Welcome back! You\'ve been resubscribed.',
         isNewSubscriber: false,
       })
     }
 
-    // Determine which lists this subscriber lands on. Shipped-sourced
-    // signups opt into both the Shipped. weekly and the general newsletter
-    // by default; non-Shipped sources are newsletter-only.
-    const srcLower = (source || 'website').toLowerCase()
-    const lists = srcLower.startsWith('shipped')
-      ? ['newsletter', 'shipped']
-      : ['newsletter']
+    // Each form opts into its own publication. A second signup adds the other.
+    const lists = requestedLists
 
-    // New subscriber — try with lists column first (post-migration). If the
-    // column doesn't exist yet (code ahead of migration), retry without.
+    // Optional profile columns can lag deployment; publication choices must save.
     const baseInsert = {
       email: email.toLowerCase(),
       source: source || 'website',
@@ -205,13 +190,6 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
       ).error
     }
 
-    if (insertError && missingColumn(insertError.message)) {
-      // Schema is pre-migration. Insert without lists; list segmentation
-      // is recoverable from source after migration lands.
-      console.warn('[subscribe] newsletter_subscribers.lists not found; inserting without. Apply migration 20260423120000_shipped_list_and_sends.sql.')
-      insertError = (await supabase.from('newsletter_subscribers').insert(baseInsert)).error
-    }
-
     if (insertError) {
       console.error('Error subscribing:', insertError)
       return NextResponse.json(
@@ -229,7 +207,7 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
 
     return NextResponse.json({
       success: true,
-      message: 'Successfully subscribed to Shipped.!',
+      message: `Successfully subscribed to ${publicationName}`,
       isNewSubscriber: true,
     })
 

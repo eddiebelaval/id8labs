@@ -1,0 +1,27 @@
+{
+  "deployment": "dpl_4x4HoWHtuCTozZQE4kRGUvBcfQLo",
+  "checks": [
+    {
+      "path": "/writing?filter=newsletter",
+      "status": 200,
+      "contentCheck": "Signal to Noise"
+    },
+    {
+      "path": "/newsletter/issue-3",
+      "status": 200,
+      "contentCheck": "Signal to Noise"
+    },
+    {
+      "path": "/shipped",
+      "status": 200,
+      "contentCheck": "shipped-wordmark.svg"
+    },
+    {
+      "path": "/api/newsletter/subscribe",
+      "status": 400,
+      "check": "invalid email rejected; no subscriber created"
+    }
+  ],
+  "focusedTestsPassed": 35,
+  "liveSubscriberMutation": false
+}

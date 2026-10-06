@@ -327,11 +327,11 @@ export default function ProductsContent() {
         <header className="border-b border-[var(--hair)] pb-14">
           <Kicker dot className="mb-5">The Lab · Products</Kicker>
           <h1 className="font-[family-name:var(--font-display)] font-normal tracking-[-0.03em] leading-[1.02] text-[var(--ink)] text-[clamp(2.75rem,6vw,5rem)] max-w-3xl mb-7">
-            Primitive chains, <em className="italic text-id8-orange">shipped</em>.
+            Useful software, <em className="italic text-id8-orange">from the lab</em>.
           </h1>
           <Deck className="max-w-2xl mb-9">
-            Each product is the architecture applied to a specific domain. Everything battle-tested
-            in production.
+            Tools for writing, conversation, research, and everyday work. Explore what is available,
+            what is in beta, and what we are still figuring out.
           </Deck>
           <EditorialButton href="/" variant="ghost">
             Back to home
@@ -348,7 +348,7 @@ export default function ProductsContent() {
 
         {/* Flagship Products */}
         <section className="py-16">
-          <SectionHead title={<>Flagship <em className="italic text-id8-orange">products</em></>} meta="Live now" />
+          <SectionHead title={<>Flagship <em className="italic text-id8-orange">products</em></>} meta="Available and in beta" />
           <div className="mt-10 space-y-8">
             {flagshipProducts.map((product, index) => (
               <FlagshipCard key={product.name} product={product} index={index} />
