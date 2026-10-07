@@ -245,7 +245,7 @@ export default function AcademyPage() {
             Learn AI through <em className="italic text-id8-orange">real examples</em>.
           </h1>
           <Deck className="mt-6 max-w-2xl">
-            Not another abstract tutorial. Learn prompt engineering and AI workflows through real scenarios from writers, content creators, and indie makers. All courses free.
+            Learn alongside the lab. Start with a conversation, practice with real examples, and build your way into working with AI. Every self-paced course is free.
           </Deck>
 
           <div className="mt-8 max-w-md">

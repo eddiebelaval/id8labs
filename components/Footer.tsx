@@ -1,101 +1,45 @@
 import Link from 'next/link'
+import BrandName from './BrandName'
+import { Container } from '@/components/editorial'
+import { studioNavigation } from '@/lib/studio'
 
-const colHead =
-  'mb-3 font-[family-name:var(--font-narrow)] text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]'
-
-const link =
-  'text-[var(--muted)] hover:text-id8-orange transition-colors'
+const label = 'mb-5 font-[family-name:var(--font-narrow)] text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]'
+const link = 'py-1 text-sm text-[var(--muted)] transition-colors hover:text-[var(--ink)]'
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-[var(--rule)] bg-[var(--paper)]">
-      <div className="container relative py-12">
-        <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-8">
-          {/* Colophon */}
+    <footer className="border-t border-[var(--hair)] bg-[var(--paper)]">
+      <Container className="py-12 md:py-16">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/brand/id8labs-wordmark.svg"
-              alt="id8Labs"
-              width={72}
-              height={71}
-              className="mb-3 block h-[72px] w-auto"
-            />
-            <p className="mb-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">© 2026</p>
-            <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">Miami, FL</p>
-            <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">EST (UTC-5)</p>
+            <Link href="/" aria-label="id8Labs home"><BrandName className="h-10" /></Link>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-[var(--muted)]">Independent software studio.<br />Good questions. Useful software.<br />Built in Miami, shared in public.</p>
           </div>
-
-          {/* Navigation */}
-          <div>
-            <h3 className={colHead}>Navigation</h3>
-            <nav className="flex flex-col gap-2 text-sm">
-              <Link href="/" className={link}>Home</Link>
-              <Link href="/products" className={link}>Products</Link>
-              <Link href="/writing" className={link}>Writing</Link>
-              <Link href="/shipped" className={link}>Shipped.</Link>
-              <Link href="/lab" className={link}>Lab</Link>
-              <div className="mt-1 flex gap-3">
-                <Link href="/privacy" className={`${link} text-xs`}>Privacy</Link>
-                <Link href="/terms" className={`${link} text-xs`}>Terms</Link>
-              </div>
-            </nav>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h3 className={colHead}>Products</h3>
-            <nav className="flex flex-col gap-2 text-sm">
-              <a href="https://id8composer.app" target="_blank" rel="noopener noreferrer" className={link}>Composer</a>
-              <a href="https://deepstack.trade" target="_blank" rel="noopener noreferrer" className={link}>DeepStack</a>
-              <Link href="/products/pipeline" className={link}>Pipeline</Link>
-              <Link href="/products/llc-ops" className={link}>LLC Ops</Link>
-              <Link href="/products/milo" className={link}>MILO</Link>
-            </nav>
-          </div>
-
-          {/* Academy */}
-          <div>
-            <h3 className={colHead}>Academy</h3>
-            <nav className="flex flex-col gap-2 text-sm">
-              <Link href="/academy" className={link}>All Courses</Link>
-              <Link href="/academy/prompt-engineering-creators" className={`${link} flex items-center gap-1.5`}>
-                <span className="bg-[var(--teal)] px-1 py-0.5 font-[family-name:var(--font-narrow)] text-[8px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">New</span>
-                Prompt Engineering
-              </Link>
-              <Link href="/courses/ai-conversation-fundamentals" className={`${link} flex items-center gap-1.5`}>
-                <span className="bg-[var(--teal)] px-1 py-0.5 font-[family-name:var(--font-narrow)] text-[8px] font-semibold uppercase tracking-[0.15em] text-[var(--paper)]">Free</span>
-                AI Fundamentals
-              </Link>
-              <Link href="/courses/claude-for-knowledge-workers" className={link}>Claude Code Course</Link>
-            </nav>
-          </div>
-
-          {/* Connect */}
-          <div>
-            <h3 className={colHead}>Connect</h3>
-            <div className="flex flex-col gap-2 text-sm">
-              <Link href="/contact" className={link}>Start a Conversation</Link>
-              <a href="https://x.com/eddiebe" target="_blank" rel="noopener noreferrer" className={link}>X @eddiebe</a>
-              <a href="https://github.com/eddiebelaval" target="_blank" rel="noopener noreferrer" className={link}>GitHub</a>
-              <a href="https://linkedin.com/in/eddiebelaval" target="_blank" rel="noopener noreferrer" className={link}>LinkedIn</a>
-            </div>
-          </div>
+          <nav aria-label="Studio links" className="flex flex-col items-start">
+            <h2 className={label}>The studio</h2>
+            {studioNavigation.map((item) => <Link key={item.href} href={item.href} className={link}>{item.label}</Link>)}
+            <Link href="/eddie" className={link}>About Eddie</Link>
+          </nav>
+          <nav aria-label="Resources" className="flex flex-col items-start">
+            <h2 className={label}>From the lab</h2>
+            <Link href="/shipped" className={link}>Shipped. magazine</Link>
+            <Link href="/stackshack" className={link}>StackShack</Link>
+            <Link href="/newsletter" className={link}>Newsletter</Link>
+            <Link href="/brand" className={link}>The identity</Link>
+          </nav>
+          <nav aria-label="Connect" className="flex flex-col items-start">
+            <h2 className={label}>Say hello</h2>
+            <Link href="/contact" className={link}>Contact</Link>
+            <a href="https://github.com/eddiebelaval" className={link} target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://x.com/eddiebe" className={link} target="_blank" rel="noopener noreferrer">X</a>
+            <p className="mt-5 max-w-[210px] text-xs leading-relaxed text-[var(--muted)]">For commissioned systems, visit <a href="https://hamato.systems" className="underline underline-offset-4 transition-colors hover:text-[var(--ink)]">Hamato</a>.</p>
+          </nav>
         </div>
-
-        {/* Bottom */}
-        <div className="border-t border-[var(--hair)] pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2 font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
-              <span className="inline-block h-2 w-2 rounded-full bg-[var(--teal)]" />
-              <span>Shipping in public</span>
-            </div>
-            <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
-              Built with Next.js + Vercel + Supabase
-            </p>
-          </div>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-5 border-t border-[var(--hair)] pt-6 font-[family-name:var(--font-mono)] text-[11px] text-[var(--muted)]">
+          <p>© {new Date().getFullYear()} id8Labs · Miami, FL</p>
+          <div className="flex gap-6"><Link href="/privacy" className="hover:text-[var(--ink)]">Privacy</Link><Link href="/terms" className="hover:text-[var(--ink)]">Terms</Link></div>
         </div>
-      </div>
+      </Container>
     </footer>
   )
 }

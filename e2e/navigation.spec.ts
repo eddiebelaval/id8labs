@@ -10,9 +10,9 @@ test.describe('Navigation', () => {
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(500); // Wait for header to render
 
-    // Click the Products link in the header navigation
+    // The header link to /products reads "Software" since the 2026-09-29 studio refresh
     const header = page.locator('header');
-    const productsLink = header.getByRole('link', { name: /products/i });
+    const productsLink = header.locator('nav a[href="/products"]');
     await productsLink.waitFor({ state: 'visible', timeout: 5000 });
     await productsLink.click();
     await expect(page).toHaveURL(/\/products/);

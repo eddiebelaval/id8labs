@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { GoogleAnalytics, UmamiAnalytics } from '@/components/Analytics'
 import ContentFrost from '@/components/ContentFrost'
+import { STUDIO_DESCRIPTION } from '@/lib/studio'
 
 // ── Editorial type system ("Shipped." design language) ──
 const fraunces = Fraunces({
@@ -46,16 +47,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
+    default: 'id8Labs | Independent Software Studio',
     template: '%s | id8Labs',
   },
-  description: 'id8Labs is an independent lab building the tools of the AI build wave, and writing its field notes every Friday. One cross-domain builder, a portfolio of real products shipped at institutional scale. Composer, DeepStack, Pipeline, LLC Ops, Shipped, and the Academy.',
+  description: STUDIO_DESCRIPTION,
   keywords: [
-    'Independent AI Lab',
+    'Independent Software Studio',
+    'AI Writing Tools',
+    'AI Research',
     'Build in Public',
-    'Primitive Chain Architecture',
-    'Agent Systems Design',
-    'Solo Builder at Institutional Scale',
     'Claude Code',
     'MCP Servers',
     'AI Agent Development',
@@ -70,21 +70,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://id8labs.app',
     siteName: 'id8Labs',
-    title: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
-    description: 'A one-person product lab. Many real products, a deep personal AI substrate, and the field notes of the build wave written every Friday. Proof that one cross-domain builder can ship at institutional scale.',
+    title: 'id8Labs | Independent Software Studio',
+    description: STUDIO_DESCRIPTION,
     images: [
       {
         url: '/og-image.png?v=3',
         width: 1200,
         height: 630,
-        alt: 'id8Labs - An independent lab building the tools of the AI build wave.',
+        alt: 'id8Labs, an independent software studio.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'id8Labs - An Independent Lab Building the Tools of the AI Build Wave',
-    description: 'A one-person product lab building the tools of the AI build wave and writing its field notes every Friday.',
+    title: 'id8Labs | Independent Software Studio',
+    description: STUDIO_DESCRIPTION,
     creator: '@eddiebe',
     images: ['/og-image.png?v=3'],
   },

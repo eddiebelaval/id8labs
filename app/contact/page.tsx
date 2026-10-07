@@ -3,17 +3,18 @@ import { Container, Kicker, Deck, Rule, SectionHead, MetaRow } from '@/component
 import BookCallCard from '@/components/BookCallCard'
 
 export const metadata: Metadata = {
-  title: 'Contact - ID8Labs',
-  description: 'Get in touch with ID8Labs. Custom builds, collaborations, or just saying hi.',
+  title: 'Contact the Studio',
+  description: 'Product questions, collaborations, and conversations with id8Labs. Commissioned systems and forward deployment live at Hamato.',
+  alternates: { canonical: '/contact' },
 }
 
 const intents = [
   {
     id: 'build',
-    title: 'Build Something',
-    description: 'Need a custom agent system, CLI tool, or automation workflow? Let\'s talk scope.',
-    cta: 'DM on X',
-    href: 'https://x.com/eddiebe',
+    title: 'Commissioned Systems',
+    description: 'Looking for a system built and installed for your business? Hamato is our forward deployment agency.',
+    cta: 'Visit Hamato',
+    href: 'https://hamato.systems',
   },
   {
     id: 'collaborate',

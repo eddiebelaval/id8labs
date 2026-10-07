@@ -56,8 +56,9 @@ test.describe('Academy Hub - Anonymous User', () => {
     const foundationLink = page.locator('a[href*="ai-conversation-fundamentals"]').first();
     if (await foundationLink.isVisible()) {
       await foundationLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      expect(page.url()).toContain('ai-conversation-fundamentals');
+      // Client-side navigation: wait for the URL to change instead of reading it once right after
+      // the click (the read raced the router and saw /academy).
+      await expect(page).toHaveURL(/ai-conversation-fundamentals/);
     }
   });
 

@@ -3,8 +3,9 @@ import { getAllWriting } from '@/lib/writing'
 import { WritingList } from './writing-list'
 
 export const metadata: Metadata = {
-  title: 'Writing | ID8Labs',
-  description: 'Essays, research, release notes, and the Shipped. newsletter on AI, automation, and building the future.',
+  title: 'The Notebook: Essays and Research',
+  description: 'The open notebook of id8Labs: essays, research, and observations from building software with AI. Shipped. follows what the AI labs release.',
+  alternates: { canonical: '/writing' },
 }
 
 // Revalidate every hour to pick up new content
