@@ -4,6 +4,18 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
+// Third-party analytics the CSP must allow: Google Analytics (components/Analytics.tsx), Umami
+// (same), and the Cloudflare Web Analytics beacon Cloudflare's proxy injects into every page.
+const UMAMI_ORIGIN = 'https://umami-analytics-eddies-projects-b49c74d7.vercel.app'
+const ANALYTICS_SCRIPT_HOSTS = ['https://www.googletagmanager.com', 'https://static.cloudflareinsights.com', UMAMI_ORIGIN].join(' ')
+const ANALYTICS_CONNECT_HOSTS = [
+  'https://www.googletagmanager.com',
+  'https://*.google-analytics.com',
+  'https://*.analytics.google.com',
+  'https://cloudflareinsights.com',
+  UMAMI_ORIGIN,
+].join(' ')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -181,11 +193,13 @@ const nextConfig = {
         key: 'Content-Security-Policy',
         value: [
           "default-src 'self'",
-          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com",
+          // Analytics hosts must be listed here AND in connect-src: from 2026-01-08 to 2026-10-07 they
+          // were missing from script-src, the browser blocked every tracker, and the site recorded no visits.
+          `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com ${ANALYTICS_SCRIPT_HOSTS}`,
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "img-src 'self' data: blob: https: http:",
           "font-src 'self' data: https://fonts.gstatic.com",
-          "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com https://api.stripe.com https://*.vercel-insights.com https://*.vercel-analytics.com https://umami-analytics-eddies-projects-b49c74d7.vercel.app",
+          `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com https://api.stripe.com https://*.vercel-insights.com https://*.vercel-analytics.com ${ANALYTICS_CONNECT_HOSTS}`,
           "frame-src 'self' https://js.stripe.com https://vercel.live",
           "worker-src 'self' blob:",
           "media-src 'self'",
