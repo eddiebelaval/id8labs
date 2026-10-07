@@ -6,14 +6,23 @@ export const metadata: Metadata = {
   title: { absolute: 'id8Labs | Independent Software Studio' },
   description: STUDIO_DESCRIPTION,
   alternates: { canonical: 'https://id8labs.app' },
+  // Next.js REPLACES the layout's openGraph/twitter with a page's (no merge), so the homepage
+  // restates them in full: without the image, a shared id8labs.app link had no preview.
   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'id8Labs',
     title: 'id8Labs | Good questions. Useful software.',
     description: STUDIO_DESCRIPTION,
     url: 'https://id8labs.app',
+    images: [{ url: '/og-image.png?v=3', width: 1200, height: 630, alt: 'id8Labs, an independent software studio.' }],
   },
   twitter: {
+    card: 'summary_large_image',
+    creator: '@eddiebe',
     title: 'id8Labs | Good questions. Useful software.',
     description: STUDIO_DESCRIPTION,
+    images: ['/og-image.png?v=3'],
   },
 }
 

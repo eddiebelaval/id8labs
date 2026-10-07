@@ -53,9 +53,17 @@ describe('Studio navigation', () => {
 describe('Studio homepage preservation', () => {
   it('renders the selected product links and keeps Rune labeled Beta', () => {
     render(<Home />)
-    for (const product of studioProducts) {
-      const links = screen.getAllByRole('link', { name: `Explore ${product.name}`, exact: true })
-      for (const link of links) expect(link).toHaveAttribute('href', product.href)
+    // Hard-coded, not read from studioProducts: comparing the page to its own source list could never fail.
+    const expected: Array<[string, string]> = [
+      ['Composer', '/products/composer'],
+      ['Parallax', '/products/parallax'],
+      ['Rune', '/products/rune'],
+    ]
+    expect(studioProducts.map((p) => p.name)).toEqual(expected.map(([name]) => name))
+    for (const [name, href] of expected) {
+      const links = screen.getAllByRole('link', { name: `Explore ${name}` })
+      expect(links.length).toBeGreaterThan(0)
+      for (const link of links) expect(link).toHaveAttribute('href', href)
     }
     expect(screen.getByText('Beta')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'The full collection' })).toHaveAttribute('href', '/products')
