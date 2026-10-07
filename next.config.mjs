@@ -16,6 +16,11 @@ const ANALYTICS_CONNECT_HOSTS = [
   UMAMI_ORIGIN,
 ].join(' ')
 
+// Cal.com booking embed (components/CalBooking.tsx on /contact and /pricing): the loader script
+// comes from app.cal.com and the booking UI renders in an iframe on cal.com / app.cal.com.
+// Missing from the CSP until 2026-10-07, so "Book a Call" never loaded.
+const CAL_ORIGINS = ['https://app.cal.com', 'https://cal.com'].join(' ')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -195,12 +200,12 @@ const nextConfig = {
           "default-src 'self'",
           // Analytics hosts must be listed here AND in connect-src: from 2026-01-08 to 2026-10-07 they
           // were missing from script-src, the browser blocked every tracker, and the site recorded no visits.
-          `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com ${ANALYTICS_SCRIPT_HOSTS}`,
+          `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com ${ANALYTICS_SCRIPT_HOSTS} https://app.cal.com`,
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "img-src 'self' data: blob: https: http:",
           "font-src 'self' data: https://fonts.gstatic.com",
-          `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com https://api.stripe.com https://*.vercel-insights.com https://*.vercel-analytics.com ${ANALYTICS_CONNECT_HOSTS}`,
-          "frame-src 'self' https://js.stripe.com https://vercel.live",
+          `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.anthropic.com https://api.stripe.com https://*.vercel-insights.com https://*.vercel-analytics.com ${ANALYTICS_CONNECT_HOSTS} ${CAL_ORIGINS}`,
+          `frame-src 'self' https://js.stripe.com https://vercel.live ${CAL_ORIGINS}`,
           "worker-src 'self' blob:",
           "media-src 'self'",
           "object-src 'none'",

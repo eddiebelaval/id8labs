@@ -41,3 +41,13 @@ describe.each(['/((?!periodic-table\\.html).*)', '/periodic-table.html'])('CSP f
     expect(d['default-src']).toEqual(["'self'"])
   })
 })
+
+// "Book a Call" on /contact and /pricing: the cal.com loader script, its API calls, and the booking iframe.
+describe.each(['/((?!periodic-table\\.html).*)', '/periodic-table.html'])('CSP cal.com embed for %s', (source) => {
+  it('loads the embed script, reaches the API, and frames the booking page', async () => {
+    const d = await directives(source)
+    expect(d['script-src']).toContain('https://app.cal.com')
+    expect(d['connect-src']).toContain('https://app.cal.com')
+    for (const host of ['https://cal.com', 'https://app.cal.com']) expect(d['frame-src']).toContain(host)
+  })
+})
