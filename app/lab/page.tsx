@@ -14,7 +14,8 @@ import {
 
 export const metadata: Metadata = {
   title: 'Lab',
-  description: 'Where id8Labs does the thinking. Thesis, research, and the story behind what we build.',
+  description: 'Discover the questions behind the software: interactive research, living maps, experiments, and essays from the independent id8Labs studio.',
+  alternates: { canonical: '/lab' },
 }
 
 export default function LabPage() {
@@ -33,7 +34,7 @@ export default function LabPage() {
             The Lab<span className="text-id8-orange">.</span>
           </h1>
           <Deck className="mt-6 max-w-[640px]">
-            Every product we ship started as a question we couldn&apos;t stop asking. This is where those questions live before they become code.
+            The questions behind the software. Explore interactive research, living maps, and experiments, then follow the ideas into the notebook.
           </Deck>
         </Container>
       </section>

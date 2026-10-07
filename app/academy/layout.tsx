@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Academy',
-  description: 'AI-powered courses and learning resources from id8Labs. Master modern development with hands-on, project-based learning.',
+  description: 'Free self-paced courses from id8Labs. Learn to work with AI through real examples, from your first conversation to building with Claude Code.',
   alternates: { canonical: '/academy' },
   openGraph: {
     title: 'Academy | id8Labs',
-    description: 'AI-powered courses and learning resources from id8Labs. Master modern development with hands-on, project-based learning.',
+    description: 'Free self-paced courses from id8Labs. Learn to work with AI through real examples, from your first conversation to building with Claude Code.',
     url: 'https://id8labs.app/academy',
   },
 }
