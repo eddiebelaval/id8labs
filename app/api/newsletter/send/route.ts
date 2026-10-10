@@ -135,12 +135,13 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // Production mode - send to all subscribers
+    // Signal to Noise only. Null lists preserve legacy newsletter memberships.
     // Fetch subscribers based on filter
     let query = supabase
       .from('newsletter_subscribers')
       .select('email, is_academy_member')
       .eq('status', 'active')
+      .or('lists.cs.{newsletter},lists.is.null')
 
     if (audienceFilter === 'academy') {
       query = query.eq('is_academy_member', true)

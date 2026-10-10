@@ -46,6 +46,12 @@ const nextConfig = {
     // hatch for the marketplace routes below (so e2e can exercise them
     // directly), not a licence to reintroduce a 404.
     const contentRedirects = [
+      // The newsletter archive lives in the Notebook's Newsletter tab. A page-level
+      // redirect() here was prerendered as a 307 with NO Location header, so
+      // crawlers, link previews and mail clients hit a dead end (browsers only got
+      // through via the client-side RSC redirect). A config redirect sends a real
+      // Location.
+      { source: '/newsletter', destination: '/writing?filter=newsletter', permanent: false },
       // 'The Gaps Are the Product' is a standalone hosted page (it embeds the
       // interactive periodic table, which the markdown renderer cannot do), so
       // it has no MDX file and app/writing/[slug] cannot resolve it. The
@@ -234,12 +240,17 @@ const nextConfig = {
         headers: securityHeaders,
       },
       {
-        // Cache static assets for 1 year
+        // Public images and fonts are not content-hashed, and Next applies this
+        // header whatever the status, so a one-year `immutable` here let Cloudflare
+        // keep a pre-deploy 404 for a year (it happened to the Signal to Noise email
+        // header, 2026-10-10). One day plus background refresh: a cached 404 heals
+        // within a day, and good assets still serve from cache. Hashed build output
+        // keeps its year below.
         source: '/:all*(svg|jpg|jpeg|png|gif|ico|webp|avif|woff|woff2)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
           },
         ],
       },

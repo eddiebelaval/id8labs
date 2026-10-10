@@ -153,9 +153,9 @@ export default function NewsletterPopup({
               <div className="p-6 pt-2">
                 <NewsletterSubscribe
                   variant="inline"
-                  source="shipped-popup"
+                  source="newsletter-popup"
                   title=""
-                  description="Get weekly insights on AI, automation, and building the future delivered to your inbox."
+                  description="Essays on building, thinking, and the patterns that transfer. Once a month, in your inbox."
                   buttonText="Subscribe"
                   showPrivacyNote={true}
                   onSuccess={handleSuccess}

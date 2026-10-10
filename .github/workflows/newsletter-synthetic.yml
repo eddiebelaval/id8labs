@@ -1,0 +1,39 @@
+name: Newsletter synthetic check
+
+# Watches the public newsletter + signup path on production. A failed run sends
+# GitHub's failure notification. Magazine signups 500'd on prod for months
+# (a missing column the retry guard did not recognise) and nothing noticed.
+# Deliberately never requests /brand/* assets: a probe that lands before a deploy
+# can make Cloudflare cache a 404.
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe production
+        env:
+          SITE: https://id8labs.app
+        run: |
+          set -u
+          fail=0
+          check() { # name expected actual
+            if [ "$3" = "$2" ]; then echo "ok   $1 ($3)"; else echo "FAIL $1: expected $2, got $3"; fail=1; fi
+          }
+          check "newsletter tab" 200 "$(curl -s -o /dev/null -w '%{http_code}' "$SITE/writing?filter=newsletter")"
+          check "newsletter issue" 200 "$(curl -s -o /dev/null -w '%{http_code}' "$SITE/newsletter/issue-3")"
+          loc="$(curl -s -o /dev/null -w '%{redirect_url}' "$SITE/newsletter")"
+          case "$loc" in *"/writing?filter=newsletter"*) echo "ok   /newsletter redirect ($loc)";; *) echo "FAIL /newsletter redirect: '$loc'"; fail=1;; esac
+          # Invalid email must be rejected by validation (400), not crash (5xx).
+          code="$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' \
+            -d '{"email":"synthetic-check-invalid","source":"synthetic-check"}' "$SITE/api/newsletter/subscribe")"
+          check "subscribe validation" 400 "$code"
+          exit $fail

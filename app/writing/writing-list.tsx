@@ -2,10 +2,12 @@
 
 import { type WritingItem, type WritingCategory } from '@/lib/writing'
 import { writingHref } from '@/lib/writing-href'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 import { Suspense, useState } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { NewsletterSubscribe } from '@/components/newsletter'
+import SignalToNoiseWordmark from '@/components/newsletter/SignalToNoiseWordmark'
 import {
   Container,
   Kicker,
@@ -180,13 +182,13 @@ function WritingListInner({ items }: WritingListProps) {
       {filter === 'newsletter' && (
         <section className="border-b border-[var(--hair)] py-8">
           <Container>
-            <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-6">
               <div>
                 <Kicker dot>The id8Labs Newsletter</Kicker>
-                <p className="mt-3">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/brand/shipped-wordmark.svg" alt="Shipped." width={776} height={259} className="block h-10 w-auto" />
-                </p>
+                {/* The newsletter is Signal to Noise; Shipped. is the magazine. */}
+                <h2 className="mt-5" aria-label={NEWSLETTER_NAME}>
+                  <SignalToNoiseWordmark className="w-[280px] sm:w-[360px]" />
+                </h2>
               </div>
               <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
                 Monthly · {filteredItems.length} issue{filteredItems.length !== 1 ? 's' : ''}
@@ -246,15 +248,15 @@ function WritingListInner({ items }: WritingListProps) {
           <div className="text-center">
             <Kicker dot className="justify-center">Subscribe</Kicker>
             <h2 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] text-[var(--ink)] text-[clamp(1.75rem,4vw,2.5rem)]">
-              Get Shipped<span className="text-id8-orange">.</span> delivered
+              Get {NEWSLETTER_NAME} delivered
             </h2>
             <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
-              Weekly insights on AI, automation, and building the future. Join 1,000+ builders.
+              Essays on building, thinking, and the patterns that transfer.
             </p>
             <div className="mx-auto max-w-md">
               <NewsletterSubscribe
                 variant="inline"
-                source="shipped-writing"
+                source="newsletter-writing"
                 title=""
                 description=""
                 buttonText="Subscribe to Newsletter"
