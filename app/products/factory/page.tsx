@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Factory | id8Labs',
     description: 'AI creative production pipeline. Orchestrates Midjourney, Grok, Gemini and other AI tools into a single tracked workflow.',
-    url: 'https://id8labs.app/products/factory',
+    url: 'https://id8labs.si/products/factory',
   },
 }
 

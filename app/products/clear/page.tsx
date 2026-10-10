@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Clearance | id8Labs',
     description: 'Protect creators from copyright strikes by removing background music from footage.',
-    url: 'https://id8labs.app/products/clear',
+    url: 'https://id8labs.si/products/clear',
   },
 }
 

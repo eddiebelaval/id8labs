@@ -8,7 +8,7 @@
  * from the hub archive so the unified /writing feed can never drift from the
  * magazine's own archive page.
  *
- * Canonical home of record: https://id8labs.app/shipped
+ * Canonical home of record: https://id8labs.si/shipped
  *
  * To add an issue: run `/publish-shipped` (renders the issue, updates the hub,
  * and regenerates issues.data.ts). Do not hand-edit issues.data.ts.
@@ -48,7 +48,7 @@ export function getAllShippedIssues(): ShippedIssuePreview[] {
 
 /**
  * Build the public (relative) URL for an issue. Pages live in
- * /public/shipped/{NN}/index.html which Vercel serves at id8labs.app/shipped/{NN}.
+ * /public/shipped/{NN}/index.html which Vercel serves at id8labs.si/shipped/{NN}.
  * This is the single canonical link builder — every internal reference should
  * route through it so all links point to the same place.
  */
@@ -65,4 +65,4 @@ export function getShippedIssueUrl(issueNumber: string): string {
 }
 
 /** Absolute canonical URL for the Shipped. hub (all issues, newest first). */
-export const SHIPPED_HUB_URL = 'https://id8labs.app/shipped'
+export const SHIPPED_HUB_URL = 'https://id8labs.si/shipped'

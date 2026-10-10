@@ -12,7 +12,7 @@
 | Field | Value |
 |-------|-------|
 | **Source Essay** | The 70% Problem: What AI Coding Courses Don't Tell You |
-| **Essay URL** | id8labs.app/essays/the-70-percent-problem |
+| **Essay URL** | id8labs.si/essays/the-70-percent-problem |
 | **Total Posts** | 6 |
 | **Schedule Span** | 11 days (Week 1 + Week 2) |
 | **Start Date** | January 6, 2025 (Monday) |
@@ -67,7 +67,7 @@ And until you understand it, AI coding tools will make you FEEL productive while
 
 **First Comment (post immediately after):**
 ```
-Full essay: https://id8labs.app/essays/the-70-percent-problem
+Full essay: https://id8labs.si/essays/the-70-percent-problem
 
 I wrote 2,000+ words on why 90% of dev teams use AI tools but only 16% see real gains—and what to do about it.
 ```
@@ -183,7 +183,7 @@ Which tip are you trying first? Comment 1, 2, 3, or 4.
 | 3 | Content | #2: Treat Output as a Draft | Every line of AI code should be read as if a junior developer wrote it. Because that's essentially what happened—a very fast junior with no context about your situation. Review it. Question it. Don't copy-paste and pray. |
 | 4 | Content | #3: Build the Last 30% First | Before asking Claude to write anything, write down: • Edge cases specific to your system • Integration points that burned you before • Security requirements that aren't negotiable. THEN ask Claude to write with those constraints. |
 | 5 | Content | #4: Use AI for Exploration, Not Production | AI is brilliant for: "How might I approach this?" AI is dangerous for: "What exactly should I ship?" Explore architectures with Claude. Write the implementation yourself. |
-| 6 | CTA | The 70% is free. | The 30% is where you earn it. Full essay: id8labs.app/essays/the-70-percent-problem |
+| 6 | CTA | The 70% is free. | The 30% is where you earn it. Full essay: id8labs.si/essays/the-70-percent-problem |
 
 **Carousel Design Specs:**
 - Size: 1080x1350px (LinkedIn carousel optimal)

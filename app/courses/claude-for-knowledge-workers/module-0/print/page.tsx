@@ -280,7 +280,7 @@ export default function Module0PrintPage() {
               Stop asking. <em className="italic text-id8-orange">Start delegating.</em>
             </p>
             <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--muted)]">
-              id8labs.app/courses/claude-for-knowledge-workers
+              id8labs.si/courses/claude-for-knowledge-workers
             </p>
           </div>
         </Container>

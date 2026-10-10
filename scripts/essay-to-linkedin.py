@@ -7,7 +7,7 @@ is: convert the essay MDX to CLEAN SEMANTIC HTML (no styling), open it, select
 all, copy, paste into the LinkedIn article body. Formatting carries; nothing to
 hand-format.
 
-Adds a canonical backlink to id8labs.app so the lab stays the source of record
+Adds a canonical backlink to id8labs.si so the lab stays the source of record
 (no duplicate-content penalty), and writes a .txt twin for a short LinkedIn post.
 
 Usage:
@@ -20,7 +20,7 @@ import os, re, sys, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ESSAYS = os.path.join(ROOT, "content", "essays")
 OUT = os.path.join(ROOT, "linkedin-exports")
-SITE = "https://id8labs.app/writing"
+SITE = "https://id8labs.si/writing"
 
 
 def parse_frontmatter(text):

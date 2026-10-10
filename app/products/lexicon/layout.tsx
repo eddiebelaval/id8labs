@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Lexicon | id8Labs',
     description: 'Wikipedia meets Perplexity for story universes. Graph-powered knowledge platform for narrative worlds.',
-    url: 'https://id8labs.app/products/lexicon',
+    url: 'https://id8labs.si/products/lexicon',
   },
 }
 

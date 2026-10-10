@@ -96,10 +96,10 @@ Review weekly. Double down on what works.
 
 Most Adopters struggle with context rot (outdated CLAUDE.md) or over-trusting without verification.
 
-**Free:** [Agentic Architecture Patterns](https://id8labs.app/resources/agentic-patterns) - deep dive on PEV
+**Free:** [Agentic Architecture Patterns](https://id8labs.si/resources/agentic-patterns) - deep dive on PEV
 
 **Paid:** Workflow audit + optimization ($500, 2 hours) → [Book here](https://cal.com/id8labs/adopter-audit)
 
 ---
 
-*Built by [ID8Labs](https://id8labs.app) - Tools for Builders*
+*Built by [ID8Labs](https://id8labs.si) - Tools for Builders*

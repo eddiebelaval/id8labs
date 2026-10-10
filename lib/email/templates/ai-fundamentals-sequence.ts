@@ -119,7 +119,7 @@ function getDay1Email(email: string): EmailTemplate {
           P.S. If you haven't finished the course yet, Module 3 (The Iteration Loop) goes deeper on this exact skill.
         </p>
 
-        <a href="https://id8labs.app/courses/ai-conversation-fundamentals?utm_source=email&utm_medium=nurture&utm_campaign=ai-fundamentals&utm_content=day-1" style="display: inline-block; margin-top: 15px; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/courses/ai-conversation-fundamentals?utm_source=email&utm_medium=nurture&utm_campaign=ai-fundamentals&utm_content=day-1" style="display: inline-block; margin-top: 15px; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Continue the Course →
         </a>
       </td>
@@ -132,7 +132,7 @@ function getDay1Email(email: string): EmailTemplate {
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #A3A3A3;">Unsubscribe</a>
@@ -254,7 +254,7 @@ function getDay2Email(email: string): EmailTemplate {
           It's 5 hands-on modules. You'll build real automations by the end of Module 1.
         </p>
 
-        <a href="https://id8labs.app/courses/claude-for-knowledge-workers?utm_source=email&utm_medium=nurture&utm_campaign=ai-fundamentals&utm_content=day-2" style="display: inline-block; margin: 10px 0 20px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/courses/claude-for-knowledge-workers?utm_source=email&utm_medium=nurture&utm_campaign=ai-fundamentals&utm_content=day-2" style="display: inline-block; margin: 10px 0 20px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Get the Full Course — $99
         </a>
 
@@ -275,7 +275,7 @@ function getDay2Email(email: string): EmailTemplate {
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #A3A3A3;">Unsubscribe</a>
@@ -419,7 +419,7 @@ function getDay3Email(email: string): EmailTemplate {
           </tr>
         </table>
 
-        <a href="https://id8labs.app/courses/claude-for-knowledge-workers?utm_source=email&utm_medium=nurture&utm_campaign=ai-fundamentals&utm_content=day-3" style="display: inline-block; margin: 10px 0 25px; padding: 16px 32px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/courses/claude-for-knowledge-workers?utm_source=email&utm_medium=nurture&utm_campaign=ai-fundamentals&utm_content=day-3" style="display: inline-block; margin: 10px 0 25px; padding: 16px 32px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Get Instant Access — $99
         </a>
 
@@ -448,7 +448,7 @@ function getDay3Email(email: string): EmailTemplate {
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #A3A3A3;">Unsubscribe</a>

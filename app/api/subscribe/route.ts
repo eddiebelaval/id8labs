@@ -29,7 +29,7 @@ async function triggerEmailSequence(email: string, source: string): Promise<void
   }
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://id8labs.app'
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://id8labs.si'
     const internalKey = process.env.SUPABASE_SERVICE_ROLE_KEY
     const response = await fetch(`${baseUrl}/api/email-sequences/trigger`, {
       method: 'POST',
@@ -194,7 +194,7 @@ function generateSubscribeEmail(email: string, source: string): string {
                     <p style="margin: 0 0 15px; color: #737373; font-size: 14px; line-height: 1.5;">
                       15 minutes to understand what Claude Code actually is and complete your first real delegation.
                     </p>
-                    <a href="https://id8labs.app/courses/claude-for-knowledge-workers/module-0" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+                    <a href="https://id8labs.si/courses/claude-for-knowledge-workers/module-0" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
                       Start Module 0
                     </a>
                   </td>
@@ -217,7 +217,7 @@ function generateSubscribeEmail(email: string, source: string): string {
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{unsubscribe}}}" style="color: #A3A3A3;">Unsubscribe</a>

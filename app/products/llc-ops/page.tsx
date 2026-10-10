@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'LLC Ops | id8Labs',
     description: 'Custom AI agent systems for business operations. 9 specialized agents providing PhD-level guidance on tax strategy, compliance, and financial management.',
-    url: 'https://id8labs.app/products/llc-ops',
+    url: 'https://id8labs.si/products/llc-ops',
   },
 }
 

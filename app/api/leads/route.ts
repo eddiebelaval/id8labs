@@ -186,10 +186,10 @@ async function handleWaitlistLead(body: WaitlistLeadPayload) {
 
 function getActionPlanUrl(level: string): string {
   const actionPlans: Record<string, string> = {
-    Explorer: 'https://id8labs.app/resources/action-plans/explorer',
-    Adopter: 'https://id8labs.app/resources/action-plans/adopter',
-    Practitioner: 'https://id8labs.app/resources/action-plans/practitioner',
-    Pioneer: 'https://id8labs.app/resources/action-plans/pioneer',
+    Explorer: 'https://id8labs.si/resources/action-plans/explorer',
+    Adopter: 'https://id8labs.si/resources/action-plans/adopter',
+    Practitioner: 'https://id8labs.si/resources/action-plans/practitioner',
+    Pioneer: 'https://id8labs.si/resources/action-plans/pioneer',
   }
   return actionPlans[level] || actionPlans.Explorer
 }
@@ -338,7 +338,7 @@ function generateWelcomeEmail(
                     <p style="margin: 0 0 10px; color: #737373; font-size: 14px;">
                       Comprehensive security guide for AI integrations.
                     </p>
-                    <a href="https://id8labs.app/resources/MCP_Security_Checklist.md" style="color: #FF6B35; font-size: 14px; font-weight: 600; text-decoration: none;">
+                    <a href="https://id8labs.si/resources/MCP_Security_Checklist.md" style="color: #FF6B35; font-size: 14px; font-weight: 600; text-decoration: none;">
                       View Checklist →
                     </a>
                   </td>
@@ -383,7 +383,7 @@ function generateWelcomeEmail(
               <p style="margin: 0 0 20px; color: #737373; font-size: 15px;">
                 Ready to accelerate your AI development journey?
               </p>
-              <a href="https://id8labs.app/academy" style="display: inline-block; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px;">
+              <a href="https://id8labs.si/academy" style="display: inline-block; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px;">
                 Explore the Academy
               </a>
             </td>
@@ -399,7 +399,7 @@ function generateWelcomeEmail(
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL • <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL • <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           You received this email because you completed our AI Readiness Assessment.
@@ -472,7 +472,7 @@ function generateCourseWaitlistEmail(email: string): { subject: string; html: st
                     <p style="margin: 0 0 15px; color: #737373; font-size: 14px; line-height: 1.5;">
                       15 minutes to understand what Claude Code actually is — and complete your first real delegation.
                     </p>
-                    <a href="https://id8labs.app/courses/claude-for-knowledge-workers/module-0" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+                    <a href="https://id8labs.si/courses/claude-for-knowledge-workers/module-0" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
                       Start Module 0 →
                     </a>
                   </td>
@@ -580,7 +580,7 @@ function generateCourseWaitlistEmail(email: string): { subject: string; html: st
               <p style="margin: 0 0 10px; color: #737373; font-size: 14px;">
                 Want the backstory? Read how I use Claude Code to run a TV production company and an LLC:
               </p>
-              <a href="https://id8labs.app/essays/claude-code-isnt-for-coders" style="color: #FF6B35; font-size: 14px; font-weight: 600; text-decoration: none;">
+              <a href="https://id8labs.si/essays/claude-code-isnt-for-coders" style="color: #FF6B35; font-size: 14px; font-weight: 600; text-decoration: none;">
                 Claude Code Isn't For Coders →
               </a>
             </td>
@@ -596,7 +596,7 @@ function generateCourseWaitlistEmail(email: string): { subject: string; html: st
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL • <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL • <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           You received this email because you joined the Claude Code for Knowledge Workers waitlist.
@@ -639,7 +639,7 @@ function generateGenericWaitlistEmail(email: string, source: string): { subject:
         <p style="margin: 0 0 20px; color: #737373; font-size: 16px; line-height: 1.6;">
           Thanks for your interest in ID8Labs. We'll keep you updated on new tools, courses, and resources.
         </p>
-        <a href="https://id8labs.app" style="display: inline-block; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px;">
+        <a href="https://id8labs.si" style="display: inline-block; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px;">
           Explore ID8Labs
         </a>
       </td>
@@ -647,7 +647,7 @@ function generateGenericWaitlistEmail(email: string, source: string): { subject:
     <tr>
       <td style="padding: 30px; background-color: #f5f5f5; text-align: center;">
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL • <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL • <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
       </td>
     </tr>

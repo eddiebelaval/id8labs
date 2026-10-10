@@ -265,7 +265,7 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
             <Container narrow>
               <div className="relative w-full overflow-hidden border border-[var(--hair)]">
                 <Image
-                  src={issue.heroImage.replace(/^https:\/\/id8labs\.app(?=\/)/, '')}
+                  src={issue.heroImage.replace(/^https:\/\/id8labs\.(?:app|si)(?=\/)/, '')}
                   alt={issue.heroAlt || issue.title}
                   width={1200}
                   height={675}

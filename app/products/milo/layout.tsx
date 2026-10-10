@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Milo | id8Labs',
     description: 'Mission Intelligence Life Operator. An AI entity with persistent memory, emotional awareness, and genuine personality.',
-    url: 'https://id8labs.app/products/milo',
+    url: 'https://id8labs.si/products/milo',
   },
 }
 

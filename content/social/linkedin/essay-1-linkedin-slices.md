@@ -140,7 +140,7 @@ Write the implementation yourself.
 The 70% is free.
 The 30% is where you earn it.
 
-Full essay: id8labs.app/essays/the-70-percent-problem
+Full essay: id8labs.si/essays/the-70-percent-problem
 
 ---
 

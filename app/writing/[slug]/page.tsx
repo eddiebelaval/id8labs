@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const essay = getEssayBySlug(params.slug)
   if (!essay) return { title: { absolute: 'Writing · id8Labs' } }
   const description = essay.excerpt || essay.subtitle
-  const url = `https://id8labs.app/writing/${essay.slug}`
+  const url = `https://id8labs.si/writing/${essay.slug}`
   return {
     title: { absolute: `${essay.title} · id8Labs` },
     description,

@@ -5,10 +5,10 @@ import { notifyNewSubscriber } from '@/lib/notifications/new-subscriber'
 import { subscriptionListsForSource } from '@/lib/newsletter/subscriptions'
 import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 
-// Shipped. issue pages POST here from two origins: id8labs.app (weekly,
+// Shipped. issue pages POST here from two origins: id8labs.si (weekly,
 // same-origin) and eddiebelaval.github.io (daily pages on GitHub Pages,
 // cross-origin — these need CORS or the browser blocks the response).
-const CORS_ORIGINS = ['https://id8labs.app', 'https://eddiebelaval.github.io']
+const CORS_ORIGINS = ['https://id8labs.si', 'https://id8labs.app', 'https://eddiebelaval.github.io']
 
 // Cadences a Shipped. subscriber can pick on the form.
 const SHIPPED_CADENCES = ['nightly', 'weekly', 'monthly']

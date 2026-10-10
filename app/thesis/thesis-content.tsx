@@ -907,7 +907,7 @@ export default function ThesisContent() {
         <ThesisQA />
 
         <footer className={styles.thesisFooter}>
-          <p>id8Labs. <a href="https://id8labs.app">id8labs.app</a></p>
+          <p>id8Labs. <a href="https://id8labs.si">id8labs.si</a></p>
           <p style={{ marginTop: '0.5rem', opacity: 0.5 }}>A thesis in progress. Published March 2026.</p>
         </footer>
       </div>

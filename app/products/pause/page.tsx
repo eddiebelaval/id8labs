@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pause | id8Labs',
     description: 'A communication translation platform for conflict resolution. Pause cleans the signal so the message can land.',
-    url: 'https://id8labs.app/products/pause',
+    url: 'https://id8labs.si/products/pause',
   },
 }
 

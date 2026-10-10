@@ -5,7 +5,7 @@ REST API for the StackShack CLI and marketplace.
 ## Base URL
 
 ```
-https://id8labs.app/api/v1
+https://id8labs.si/api/v1
 ```
 
 ## Endpoints

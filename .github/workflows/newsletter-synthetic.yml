@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Probe production
         env:
-          SITE: https://id8labs.app
+          SITE: https://id8labs.si
         run: |
           set -u
           fail=0

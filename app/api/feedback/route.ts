@@ -159,7 +159,7 @@ function generateFeedbackFollowUpEmail(helpful: boolean, courseName: string): st
               <p style="margin: 0 0 15px; color: #737373; font-size: 14px; line-height: 1.5;">
                 Experience what it's like to delegate real work to Claude Code. Clean up your Downloads folder in 10 minutes.
               </p>
-              <a href="https://id8labs.app/courses/claude-for-knowledge-workers/module-0" style="display: inline-block; padding: 10px 20px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+              <a href="https://id8labs.si/courses/claude-for-knowledge-workers/module-0" style="display: inline-block; padding: 10px 20px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
                 Start Module 0 (Free) →
               </a>
             </td>
@@ -176,7 +176,7 @@ function generateFeedbackFollowUpEmail(helpful: boolean, courseName: string): st
               <p style="margin: 0 0 15px; color: #737373; font-size: 14px; line-height: 1.5;">
                 5 modules of hands-on practice with file management, research, writing, and building your personal operations system.
               </p>
-              <a href="https://id8labs.app/courses/claude-for-knowledge-workers" style="color: #FF6B35; font-size: 14px; font-weight: 600; text-decoration: none;">
+              <a href="https://id8labs.si/courses/claude-for-knowledge-workers" style="color: #FF6B35; font-size: 14px; font-weight: 600; text-decoration: none;">
                 View Full Course →
               </a>
             </td>
@@ -213,7 +213,7 @@ function generateFeedbackFollowUpEmail(helpful: boolean, courseName: string): st
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{unsubscribe}}}" style="color: #A3A3A3;">Unsubscribe</a>
@@ -292,7 +292,7 @@ function generateFeedbackFollowUpEmail(helpful: boolean, courseName: string): st
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{unsubscribe}}}" style="color: #A3A3A3;">Unsubscribe</a>

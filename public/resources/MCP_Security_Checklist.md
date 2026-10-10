@@ -394,4 +394,4 @@ I learned this the hard way. You don't have to.
 
 **License:** Free to share, modify, and distribute with attribution to ID8Labs.
 
-© 2026 ID8Labs • https://id8labs.app
+© 2026 ID8Labs • https://id8labs.si

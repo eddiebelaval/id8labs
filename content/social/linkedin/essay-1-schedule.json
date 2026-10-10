@@ -4,7 +4,7 @@
     "source": {
       "essayId": "the-70-percent-problem",
       "essayTitle": "The 70% Problem: What AI Coding Courses Don't Tell You",
-      "essayUrl": "https://id8labs.app/essays/the-70-percent-problem",
+      "essayUrl": "https://id8labs.si/essays/the-70-percent-problem",
       "postsFile": "essay-1-posts.json"
     },
     "profile": {
@@ -32,7 +32,7 @@
       "content": "There's a moment every developer using AI hits.\n\nYou've been flying. Claude just scaffolded an entire feature in minutes. The code looks clean. The logic makes sense.\n\nYou're thinking, \"This is it. This is the 10x productivity everyone promised.\"\n\nThen you run it.\n\nAnd it almost works. Almost.\n\nThe first 70% happens shockingly fast.\nThe last 30% takes longer than writing the whole thing from scratch.\n\nThis is the 70% Problem.\n\nAnd until you understand it, AI coding tools will make you FEEL productive while actually slowing you down.\n\n(Full essay in comments 👇)\n\n#AI #ClaudeCode #SoftwareDevelopment #BuildInPublic #TechFounders",
       "firstComment": {
         "required": true,
-        "content": "Full essay: https://id8labs.app/essays/the-70-percent-problem\n\nI wrote 2,000+ words on why 90% of dev teams use AI tools but only 16% see real gains—and what to do about it."
+        "content": "Full essay: https://id8labs.si/essays/the-70-percent-problem\n\nI wrote 2,000+ words on why 90% of dev teams use AI tools but only 16% see real gains—and what to do about it."
       },
       "hashtags": ["#AI", "#ClaudeCode", "#SoftwareDevelopment", "#BuildInPublic", "#TechFounders"]
     },
@@ -112,7 +112,7 @@
           "type": "cta",
           "headline": "The 70% is free.",
           "subheadline": "The 30% is where you earn it.",
-          "ctaText": "Full essay: id8labs.app/essays/the-70-percent-problem"
+          "ctaText": "Full essay: id8labs.si/essays/the-70-percent-problem"
         }
       ],
       "carouselSpecs": {

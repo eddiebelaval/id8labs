@@ -199,8 +199,8 @@ The social media scheduler reads from:
 ## Integration with Website
 
 Essays in `content/essays/*.mdx` are **automatically rendered** on the website at:
-- List: `id8labs.app/essays`
-- Individual: `id8labs.app/essays/{slug}`
+- List: `id8labs.si/essays`
+- Individual: `id8labs.si/essays/{slug}`
 
 **How it works:**
 1. `lib/mdx-essays.ts` reads MDX files from this directory

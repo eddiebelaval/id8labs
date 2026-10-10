@@ -62,7 +62,7 @@ const FOOTER_HTML = `
           ID8 Academy - Learn to Build with AI
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #A3A3A3;">Unsubscribe</a>
@@ -139,7 +139,7 @@ ${HEADER_HTML}
           No fluff. No filler. Just frameworks that work.
         </p>
 
-        <a href="https://id8labs.app/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=welcome" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=welcome" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Open Your Dashboard →
         </a>
 
@@ -210,7 +210,7 @@ ${HEADER_HTML}
           The people who finish aren't smarter — they just <strong>move faster at the start</strong>.
         </p>
 
-        <a href="https://id8labs.app/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=day1" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=day1" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Open Your Dashboard →
         </a>
 
@@ -270,7 +270,7 @@ ${HEADER_HTML}
           </p>
         </div>
 
-        <a href="https://id8labs.app/milo?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=milo-intro" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/milo?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=milo-intro" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Open MILO →
         </a>
 
@@ -333,7 +333,7 @@ ${HEADER_HTML}
           Don't let it sit.
         </p>
 
-        <a href="https://id8labs.app/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=week1" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=week1" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Pick Up Where You Left Off →
         </a>
 
@@ -402,7 +402,7 @@ ${HEADER_HTML}
           This is where theory becomes revenue.
         </p>
 
-        <a href="https://id8labs.app/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=halfway" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=halfway" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Continue to Module 4 →
         </a>
 
@@ -464,7 +464,7 @@ ${HEADER_HTML}
           Module 6 is the capstone. It ties everything together.
         </p>
 
-        <a href="https://id8labs.app/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=final-push" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://id8labs.si/academy?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=final-push" style="display: inline-block; margin: 10px 0 25px; padding: 14px 28px; background-color: #FF6B35; color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Finish Module 6 →
         </a>
 
@@ -507,12 +507,12 @@ ${HEADER_HTML}
           <p style="margin: 0 0 15px; color: #0A0A0A; font-size: 16px; font-weight: bold;">
             Your Certificate of Completion
           </p>
-          <a href="https://id8labs.app/academy/certificate?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=graduation" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+          <a href="https://id8labs.si/academy/certificate?utm_source=email&utm_medium=onboarding&utm_campaign=academy&utm_content=graduation" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
             Download Certificate
           </a>
         </div>
 
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://id8labs.app/academy/certificate" style="display: inline-block; margin: 10px 0 25px; padding: 12px 24px; background-color: #0A66C2; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://id8labs.si/academy/certificate" style="display: inline-block; margin: 10px 0 25px; padding: 12px 24px; background-color: #0A66C2; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
           Share on LinkedIn →
         </a>
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ID8Foundry | id8Labs',
     description: 'The system that builds systems. A self-improving development framework that captures patterns, decisions, and failures across projects.',
-    url: 'https://id8labs.app/products/foundry',
+    url: 'https://id8labs.si/products/foundry',
   },
 }
 

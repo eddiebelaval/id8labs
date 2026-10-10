@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'X-Place | id8Labs',
     description: 'Collaborative pixel canvas for the X ecosystem. r/place meets Twitter.',
-    url: 'https://id8labs.app/products/xplace',
+    url: 'https://id8labs.si/products/xplace',
   },
 }
 

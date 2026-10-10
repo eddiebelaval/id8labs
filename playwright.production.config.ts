@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Production-specific Playwright configuration
- * Use with: PLAYWRIGHT_BASE_URL=https://id8labs.app npx playwright test --config=playwright.production.config.ts
+ * Use with: PLAYWRIGHT_BASE_URL=https://id8labs.si npx playwright test --config=playwright.production.config.ts
  */
 export default defineConfig({
   testDir: './e2e',
@@ -28,7 +28,7 @@ export default defineConfig({
   /* Shared settings */
   use: {
     /* Base URL for production */
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://id8labs.app',
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://id8labs.si',
 
     /* Collect trace on first retry */
     trace: 'on-first-retry',
