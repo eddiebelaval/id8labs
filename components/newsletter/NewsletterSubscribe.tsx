@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { m, AnimatePresence } from '@/components/motion'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 
 export type NewsletterVariant = 'inline' | 'compact' | 'full-width'
 
@@ -19,7 +20,7 @@ interface NewsletterSubscribeProps {
 export default function NewsletterSubscribe({
   variant = 'inline',
   source = 'website',
-  title = 'Shipped.',
+  title = NEWSLETTER_NAME,
   description = 'Essays on building, thinking, and the patterns that transfer.',
   buttonText = 'Subscribe',
   className = '',
@@ -82,7 +83,7 @@ export default function NewsletterSubscribe({
         </svg>
       </div>
       <p className="text-[var(--text-primary)] text-sm">
-        You're subscribed to Shipped.! Check your inbox.
+        You're subscribed to {NEWSLETTER_NAME}. Check your inbox.
       </p>
     </m.div>
   )
@@ -248,7 +249,7 @@ export default function NewsletterSubscribe({
               </svg>
             </div>
             <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
-              Welcome to Shipped.!
+              Welcome to {NEWSLETTER_NAME}!
             </h3>
             <p className="text-[var(--text-secondary)]">
               Check your inbox for a confirmation email.

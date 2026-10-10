@@ -1,3 +1,4 @@
+import { isAdminEmail } from '@/lib/auth/admin-email'
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { Resend } from 'resend'
@@ -73,7 +74,7 @@ async function verifyAdminAccess(request: NextRequest): Promise<boolean> {
     { cookies: { getAll() { return request.cookies.getAll() }, setAll() {} } }
   )
   const { data: { user } } = await supabase.auth.getUser()
-  return user?.email === process.env.ADMIN_EMAIL
+  return isAdminEmail(user?.email)
 }
 
 export async function POST(request: NextRequest) {
@@ -135,12 +136,13 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // Production mode - send to all subscribers
+    // Signal to Noise only. Null lists preserve legacy newsletter memberships.
     // Fetch subscribers based on filter
     let query = supabase
       .from('newsletter_subscribers')
       .select('email, is_academy_member')
       .eq('status', 'active')
+      .or('lists.cs.{newsletter},lists.is.null')
 
     if (audienceFilter === 'academy') {
       query = query.eq('is_academy_member', true)

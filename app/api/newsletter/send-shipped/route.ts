@@ -1,3 +1,4 @@
+import { isAdminEmail } from '@/lib/auth/admin-email'
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { Resend } from 'resend'
@@ -52,7 +53,7 @@ async function verifyAdminAccess(request: NextRequest): Promise<boolean> {
     { cookies: { getAll() { return request.cookies.getAll() }, setAll() {} } }
   )
   const { data: { user } } = await supabase.auth.getUser()
-  return user?.email === process.env.ADMIN_EMAIL
+  return isAdminEmail(user?.email)
 }
 
 interface Subscriber {
