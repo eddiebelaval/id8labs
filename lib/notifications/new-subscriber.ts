@@ -75,7 +75,7 @@ async function pingEmail(payload: NewSubscriberNotification): Promise<void> {
         </p>
         <hr style="margin: 24px 0; border: 0; border-top: 1px solid #e5e5e5;">
         <p style="margin: 0; font-size: 12px; color: #999;">
-          <a href="https://id8labs.app/admin/newsletter/shipped" style="color: #FF6B35;">Open Shipped. dashboard →</a>
+          <a href="https://id8labs.si/admin/newsletter/shipped" style="color: #FF6B35;">Open Shipped. dashboard →</a>
         </p>
       </div>
     `,

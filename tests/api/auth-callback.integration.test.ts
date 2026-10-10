@@ -136,11 +136,11 @@ describe('GET /api/auth/callback', () => {
       ;(createClient as Mock).mockResolvedValue(mockSupabase)
 
       const request = createMockRequest(
-        'https://id8labs.app/api/auth/callback?code=valid-code'
+        'https://id8labs.si/api/auth/callback?code=valid-code'
       )
       const response = await GET(request)
 
-      expect(response.headers.get('location')).toContain('https://id8labs.app')
+      expect(response.headers.get('location')).toContain('https://id8labs.si')
     })
 
     it('should handle session with all required fields', async () => {

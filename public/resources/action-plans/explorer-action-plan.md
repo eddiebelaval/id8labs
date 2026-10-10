@@ -87,4 +87,4 @@ Most Explorers get stuck on context setup - Claude keeps forgetting your prefere
 
 ---
 
-*Built by [ID8Labs](https://id8labs.app) - Tools for Builders*
+*Built by [ID8Labs](https://id8labs.si) - Tools for Builders*

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Rune - Speak Your Book Into Existence',
     description:
       'Meet Sam — a voice-first book writer. Talk about your story world, Sam organizes everything. Import existing writing. Three stages to a finished manuscript.',
-    url: 'https://id8labs.app/products/rune',
+    url: 'https://id8labs.si/products/rune',
   },
 }
 

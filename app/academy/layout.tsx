@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Academy | id8Labs',
     description: 'Free self-paced courses from id8Labs. Learn to work with AI through real examples, from your first conversation to building with Claude Code.',
-    url: 'https://id8labs.app/academy',
+    url: 'https://id8labs.si/academy',
   },
 }
 

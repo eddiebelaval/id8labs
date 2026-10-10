@@ -48,7 +48,7 @@ interface PageProps {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     alternates: {
-      canonical: 'https://id8labs.app/stackshack',
+      canonical: 'https://id8labs.si/stackshack',
     },
   }
 }

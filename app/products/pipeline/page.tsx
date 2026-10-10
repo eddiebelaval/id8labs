@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pipeline | id8Labs',
     description: 'Complete idea-to-exit lifecycle management for solo builders. 8 interconnected AI agents with decay mechanics and stage gates.',
-    url: 'https://id8labs.app/products/pipeline',
+    url: 'https://id8labs.si/products/pipeline',
   },
 }
 

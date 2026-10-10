@@ -16,7 +16,7 @@ import { Resend } from 'resend'
 // Re-runs are idempotent — anyone already logged for the issue is skipped.
 
 const EMAIL_FROM = 'Shipped. <hello@id8labs.tech>'
-const SITE_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://id8labs.app'
+const SITE_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://id8labs.si'
 const SHIPPED_ISSUE_NAMESPACE = 1000
 const CADENCES = ['nightly', 'weekly', 'monthly'] as const
 type Cadence = (typeof CADENCES)[number]

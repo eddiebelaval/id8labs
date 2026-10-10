@@ -85,7 +85,7 @@ const FOOTER_HTML = `
           ID8Labs - Professional Tools for the AI Era
         </p>
         <p style="margin: 0; color: #A3A3A3; font-size: 12px;">
-          Miami, FL | <a href="https://id8labs.app" style="color: #A3A3A3;">id8labs.app</a>
+          Miami, FL | <a href="https://id8labs.si" style="color: #A3A3A3;">id8labs.si</a>
         </p>
         <p style="margin: 15px 0 0; color: #A3A3A3; font-size: 11px;">
           <a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color: #A3A3A3;">Unsubscribe</a>
@@ -152,7 +152,7 @@ export function generateNewsletterHtml(issue: NewsletterIssue, isAcademyMember: 
               <div style="padding: 15px; background-color: #ffffff; border-radius: 6px; font-family: monospace; font-size: 13px; color: #0A0A0A; line-height: 1.5;">
                 "${issue.miloTip.prompt}"
               </div>
-              <a href="https://id8labs.app/milo?utm_source=newsletter&utm_medium=email&utm_campaign=issue-${issue.issueNumber}" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #FF6B35; color: #ffffff; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+              <a href="https://id8labs.si/milo?utm_source=newsletter&utm_medium=email&utm_campaign=issue-${issue.issueNumber}" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #FF6B35; color: #ffffff; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 6px;">
                 Try in MILO →
               </a>
         `
@@ -190,7 +190,7 @@ export function generateNewsletterHtml(issue: NewsletterIssue, isAcademyMember: 
               <p style="margin: 0 0 15px; color: #737373; font-size: 14px; line-height: 1.6;">
                 Academy members get exclusive MILO tips, templates, and advanced resources.
               </p>
-              <a href="https://id8labs.app/academy?utm_source=newsletter&utm_medium=email&utm_campaign=issue-${issue.issueNumber}&utm_content=upgrade" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
+              <a href="https://id8labs.si/academy?utm_source=newsletter&utm_medium=email&utm_campaign=issue-${issue.issueNumber}&utm_content=upgrade" style="display: inline-block; padding: 12px 24px; background-color: #FF6B35; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">
                 Join the Academy — $99
               </a>
             </div>
@@ -426,7 +426,7 @@ export const NEWSLETTER_ESSAY_3: NewsletterEssay = {
     'RTS skills transfer directly',
   ],
   title: 'What StarCraft Taught Me About Multi-Agent Workflows',
-  heroImage: 'https://id8labs.app/images/newsletter/starcraft-claude-code.png',
+  heroImage: 'https://id8labs.si/images/newsletter/starcraft-claude-code.png',
   heroAlt: 'Claude Code meets StarCraft II - Paradigms of Digital Conflict',
   author: 'Eddie Belaval',
   authorBio: 'Eddie Belaval builds AI-powered creative tools at ID8Labs. He mains Zerg - zergling swarms, specifically. Some patterns run deep.',
@@ -672,7 +672,7 @@ Try it in your next meeting. Watch what happens.`,
     title: 'The Validation Sprint Template',
     content:
       'This month\'s download: Our internal 5-day validation sprint template. It\'s the exact process we use before greenlighting any new feature.',
-    downloadLink: 'https://id8labs.app/academy/resources/validation-sprint',
+    downloadLink: 'https://id8labs.si/academy/resources/validation-sprint',
   },
   closingNote: 'That\'s Issue #1. The Assumption Stack alone has saved us countless hours of wasted work. Try it on your next idea.',
 }

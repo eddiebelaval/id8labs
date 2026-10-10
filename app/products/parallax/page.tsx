@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Parallax - Someone to Talk To',
     description:
       'Meet Ava — an AI companion who listens, remembers, and helps you see what you\'re missing. 19 lenses. Safety-first. Free. Private. No waitlist.',
-    url: 'https://id8labs.app/products/parallax',
+    url: 'https://id8labs.si/products/parallax',
   },
 }
 

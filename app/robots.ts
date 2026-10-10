@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://id8labs.app/sitemap.xml',
+    sitemap: 'https://id8labs.si/sitemap.xml',
   }
 }
