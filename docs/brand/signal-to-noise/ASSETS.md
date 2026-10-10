@@ -22,4 +22,4 @@ an issue page), plus e2e/newsletter.spec.ts in CI.
 
 Briefly live 9/30 (dpl_8aNp2nbcEbrEodaUKSsnfmHUDB1x) from uncommitted files and then
 overwritten by nightly deploys; shipped properly through PR #154.
-https://id8labs.app/writing?filter=newsletter
+https://id8labs.si/writing?filter=newsletter
