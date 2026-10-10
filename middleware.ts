@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { isAdminEmail } from '@/lib/auth/admin-email'
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
@@ -47,8 +48,9 @@ export async function middleware(request: NextRequest) {
   // --- Admin protection: only ADMIN_EMAIL can access /admin/* and /api/admin/* ---
   const isAdminPath = request.nextUrl.pathname.startsWith('/admin') || request.nextUrl.pathname.startsWith('/api/admin')
   if (isAdminPath) {
-    const adminEmail = process.env.ADMIN_EMAIL
-    if (!user || user.email !== adminEmail) {
+    // Fails closed (lib/auth/admin-email.ts): a signed-in account with no email
+    // used to pass `user.email !== adminEmail` when ADMIN_EMAIL was unset.
+    if (!user || !isAdminEmail(user.email)) {
       if (request.nextUrl.pathname.startsWith('/api/')) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
       }
