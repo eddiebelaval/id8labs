@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 
 interface AvailableIssue {
   issueNumber: number
@@ -141,7 +142,7 @@ export default function ComposePage() {
         </Link>
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Compose Newsletter</h1>
-          <p className="text-[var(--muted)]">Write and send Shipped.</p>
+          <p className="text-[var(--muted)]">Write and send {NEWSLETTER_NAME}</p>
         </div>
       </div>
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { SubscriberGrowthChart } from '@/components/admin/SubscriberGrowthChart'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 
 interface Stats {
   totalSubscribers: number
@@ -90,7 +91,7 @@ export default function NewsletterDashboard() {
       <div className="flex items-center justify-between mb-8 border-b border-[var(--rule)] pb-6">
         <div>
           <h1 className="font-[family-name:var(--font-display)] text-2xl font-normal tracking-[-0.02em] text-[var(--ink)]">Newsletter</h1>
-          <p className="text-[var(--muted)]">Manage Shipped.</p>
+          <p className="text-[var(--muted)]">Manage {NEWSLETTER_NAME} and Shipped.</p>
         </div>
         <Link
           href="/admin/newsletter/compose"
