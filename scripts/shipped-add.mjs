@@ -84,7 +84,9 @@ async function main() {
       'return=representation')
     if (res.status >= 400) {
       const body = await res.text()
-      if (/column.*phone.*does not exist/i.test(body)) {
+      // Postgres says 42703 "column ... does not exist"; PostgREST writes say PGRST204
+      // "Could not find the 'phone' column". Match both.
+      if (/column.*phone.*does not exist|could not find the 'phone' column|PGRST204/i.test(body)) {
         console.warn('[shipped-add] phone column not present yet; saving without phone. '
           + 'Apply migration 20260616020402_add_phone_to_subscribers.sql to capture phone.')
         res = await send(isUpdate ? 'PATCH' : 'POST', target, payload, 'return=representation')
@@ -107,7 +109,7 @@ async function main() {
       source: 'shipped-cli',
       status: 'active',
       is_academy_member: false,
-      lists: ['newsletter', 'shipped'],
+      lists: ['shipped'], // each publication is its own opt-in (Signal to Noise is separate)
     }, false, base)
     console.log(`Added ${lower} to the Shipped. list${phone ? ` (phone ${phone})` : ''}.`)
   }
