@@ -107,7 +107,7 @@ async function main() {
       source: 'shipped-cli',
       status: 'active',
       is_academy_member: false,
-      lists: ['newsletter', 'shipped'],
+      lists: ['shipped'], // each publication is its own opt-in (Signal to Noise is separate)
     }, false, base)
     console.log(`Added ${lower} to the Shipped. list${phone ? ` (phone ${phone})` : ''}.`)
   }
