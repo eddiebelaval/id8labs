@@ -93,7 +93,13 @@ async function handleSubscribe(request: NextRequest): Promise<NextResponse> {
       ...(subName && { name: subName }),
       ...(subCadences && { cadences: subCadences }),
     }
-    const missingColumn = (msg?: string) => /column.*does not exist/i.test(msg || '')
+    // A write naming an unapplied column fails as PostgREST PGRST204 ("Could not
+    // find the 'cadences' column ... in the schema cache"), not Postgres 42703
+    // ("column ... does not exist"). Match both so the retry without the optional
+    // fields fires; prod lacked name/cadences (migration 20260711) and the narrow
+    // match turned every magazine signup into a 500.
+    const missingColumn = (msg?: string) =>
+      /column.*does not exist|could not find the .*column|PGRST204/i.test(msg || '')
 
     const supabase = createAdminClient()
     if (!supabase) {

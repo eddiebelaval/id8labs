@@ -7,8 +7,9 @@ files in this directory into `public/brand/`.
 - `signal-to-noise-wordmark-mono.svg`: single-ink lockup.
 - `signal-to-noise-wordmark-knockout.svg`: reversed single-ink lockup.
 - `signal-to-noise-symbol.svg`: dedicated 16px micro symbol, uses currentColor.
-- `signal-to-noise-wordmark.png`: 360 by 156 pixel light-background raster export
-  for email headers. This PNG is not transparent.
+- `signal-to-noise-wordmark.png`: 900 by 392 pixel transparent raster (4x the
+  225 by 98 email slot), rendered from the SVG. Referenced as `?v=2`: Cloudflare
+  holds a year-long cached 404 for the unversioned URL from before launch.
 - `vectorize.py`: builds SVG sources and site copies from the installed Bodoni 72
   outlines. No font binaries are redistributed or loaded by the site.
 - `proof.html`: working proof surface, with mono/reversed and actual 16px tests.

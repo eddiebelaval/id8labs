@@ -73,7 +73,7 @@ const HEADER_HTML = `
     <!-- Header -->
     <tr>
       <td style="padding: 30px 30px 20px; text-align: left;">
-        <img src="https://id8labs.app/brand/signal-to-noise-wordmark.png" alt="${NEWSLETTER_NAME}" width="225" height="98" style="display:block;width:225px;max-width:100%;height:auto;border:0;" />
+        <img src="https://id8labs.app/brand/signal-to-noise-wordmark.png?v=2" alt="${NEWSLETTER_NAME}" width="225" height="98" style="display:block;width:225px;max-width:100%;height:auto;border:0;" />
       </td>
     </tr>
 `

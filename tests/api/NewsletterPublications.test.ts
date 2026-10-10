@@ -42,6 +42,27 @@ beforeEach(() => {
 })
 
 describe('Publication choices', () => {
+  // Real PostgREST text when a column was never migrated (prod lacked name/cadences).
+  const PGRST204 = { code: 'PGRST204', message: "Could not find the 'cadences' column of 'newsletter_subscribers' in the schema cache" }
+
+  it('saves a magazine signup when the optional columns are missing (retries without them)', async () => {
+    db.insert.mockResolvedValueOnce({ error: PGRST204 }).mockResolvedValue({ error: null })
+    const response = await signup('shipped-magazine-issue-11', { name: 'Ada', cadences: ['weekly'] })
+    expect(response.status).toBe(200)
+    expect(db.insert).toHaveBeenLastCalledWith(expect.objectContaining({ email: 'reader@example.com', lists: ['shipped'] }))
+    expect(db.insert.mock.lastCall?.[0]).not.toHaveProperty('cadences')
+  })
+
+  it('updates a returning subscriber when the optional columns are missing', async () => {
+    db.single.mockResolvedValueOnce({ data: { id: 'u1', status: 'active' }, error: null })
+      .mockResolvedValueOnce({ data: { lists: ['newsletter'] }, error: null })
+    db.save.mockResolvedValueOnce({ error: PGRST204 }).mockResolvedValue({ error: null })
+    const response = await signup('shipped-magazine-issue-11', { cadences: ['nightly'] })
+    expect(response.status).toBe(200)
+    expect(db.update).toHaveBeenLastCalledWith(expect.objectContaining({ lists: ['newsletter', 'shipped'] }))
+    expect(db.update.mock.lastCall?.[0]).not.toHaveProperty('cadences')
+  })
+
   it.each(['shipped-hub', 'shipped-magazine-issue-10', 'shipped-daily'])('opts %s into only Shipped', async (source) => {
     expect((await signup(source)).status).toBe(200)
     expect(db.insert).toHaveBeenCalledWith(expect.objectContaining({ email: 'reader@example.com', lists: ['shipped'] }))
