@@ -17,8 +17,9 @@ files in this directory into `public/brand/`.
 The archive and both newsletter issue formats use a shared wordmark component.
 Email templates use the PNG export and retain a readable alt label. No real
 mailing was sent. Iris reviewed the rendered assets and desktop placement; see
-REVIEW.md. Mobile page behavior remains unverified due to the connected browser
-not applying its requested viewport override.
+REVIEW.md. Mobile verified 2026-10-10 in Chrome at phone width (Notebook tab and
+an issue page), plus e2e/newsletter.spec.ts in CI.
 
-Published deployment: dpl_8aNp2nbcEbrEodaUKSsnfmHUDB1x.
+Briefly live 9/30 (dpl_8aNp2nbcEbrEodaUKSsnfmHUDB1x) from uncommitted files and then
+overwritten by nightly deploys; shipped properly through PR #154.
 https://id8labs.app/writing?filter=newsletter

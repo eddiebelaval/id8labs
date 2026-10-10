@@ -1,4 +1,6 @@
 import { Resend } from 'resend'
+import { subscriptionListsForSource } from '@/lib/newsletter/subscriptions'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
 
 interface NewSubscriberNotification {
   email: string
@@ -19,7 +21,9 @@ async function pingSlack(payload: NewSubscriberNotification): Promise<void> {
   if (!webhook) return
 
   const issue = formatIssueName(payload.source)
-  const text = `New Shipped. subscriber — *${payload.email}* via *${issue}*`
+  // Two publications share this table; name the one the reader actually joined.
+  const publication = subscriptionListsForSource(payload.source).includes('shipped') ? 'Shipped.' : NEWSLETTER_NAME
+  const text = `New ${publication} subscriber: *${payload.email}* via *${issue}*`
 
   await fetch(webhook, {
     method: 'POST',
@@ -56,14 +60,16 @@ async function pingEmail(payload: NewSubscriberNotification): Promise<void> {
   if (!adminEmail || !resend) return
 
   const issue = formatIssueName(payload.source)
+  // Two publications share this table; name the one the reader actually joined.
+  const publication = subscriptionListsForSource(payload.source).includes('shipped') ? 'Shipped.' : NEWSLETTER_NAME
 
   await resend.emails.send({
-    from: 'Shipped. <hello@id8labs.tech>',
+    from: 'id8Labs <hello@id8labs.tech>',
     to: adminEmail,
-    subject: `New Shipped. subscriber — ${issue}`,
+    subject: `New ${publication} subscriber: ${issue}`,
     html: `
       <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px;">
-        <h2 style="margin: 0 0 16px; font-size: 18px; color: #1a1a1a;">New Shipped. subscriber</h2>
+        <h2 style="margin: 0 0 16px; font-size: 18px; color: #1a1a1a;">New ${publication} subscriber</h2>
         <p style="margin: 0 0 8px; font-size: 15px; color: #1a1a1a;">
           <strong>${payload.email}</strong>
         </p>

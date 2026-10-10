@@ -46,6 +46,12 @@ const nextConfig = {
     // hatch for the marketplace routes below (so e2e can exercise them
     // directly), not a licence to reintroduce a 404.
     const contentRedirects = [
+      // The newsletter archive lives in the Notebook's Newsletter tab. A page-level
+      // redirect() here was prerendered as a 307 with NO Location header, so
+      // crawlers, link previews and mail clients hit a dead end (browsers only got
+      // through via the client-side RSC redirect). A config redirect sends a real
+      // Location.
+      { source: '/newsletter', destination: '/writing?filter=newsletter', permanent: false },
       // 'The Gaps Are the Product' is a standalone hosted page (it embeds the
       // interactive periodic table, which the markdown renderer cannot do), so
       // it has no MDX file and app/writing/[slug] cannot resolve it. The
