@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getIssueBySlug, getAllIssues, isEssay } from '@/lib/newsletter/issues'
 import { NewsletterSubscribe } from '@/components/newsletter'
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
+import SignalToNoiseWordmark from '@/components/newsletter/SignalToNoiseWordmark'
 import {
   Container,
   Kicker,
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!issue) {
     return {
-      title: 'Issue Not Found | Shipped.',
+      title: `Issue Not Found | ${NEWSLETTER_NAME}`,
     }
   }
 
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = isEssay(issue) ? issue.title : issue.subject
 
   return {
-    title: `${title} | Shipped.`,
+    title: `${title} | ${NEWSLETTER_NAME}`,
     description,
     openGraph: {
       title,
@@ -235,7 +237,10 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
               </EditorialButton>
             </div>
 
-            <Kicker dot>Shipped. · Issue {issue.issueNumber}</Kicker>
+            <a href="/newsletter" className="mb-7 inline-block" aria-label="Signal to Noise newsletter archive">
+              <SignalToNoiseWordmark className="w-[210px] sm:w-[240px]" />
+            </a>
+            <Kicker dot>Issue {issue.issueNumber}</Kicker>
 
             <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
               {issue.title}
@@ -260,7 +265,7 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
             <Container narrow>
               <div className="relative w-full overflow-hidden border border-[var(--hair)]">
                 <Image
-                  src={issue.heroImage}
+                  src={issue.heroImage.replace(/^https:\/\/id8labs\.app(?=\/)/, '')}
                   alt={issue.heroAlt || issue.title}
                   width={1200}
                   height={675}
@@ -295,12 +300,12 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
                 Want more essays like this?
               </h2>
               <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
-                Subscribe to Shipped. for essays on building, thinking, and the patterns that transfer.
+                Subscribe to {NEWSLETTER_NAME} for essays on building, thinking, and the patterns that transfer.
               </p>
               <div className="mx-auto max-w-md">
                 <NewsletterSubscribe
                   variant="inline"
-                  source={`shipped-issue-${issue.issueNumber}`}
+                  source={`newsletter-issue-${issue.issueNumber}`}
                   title=""
                   description=""
                   buttonText="Subscribe"
@@ -325,7 +330,10 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
             </EditorialButton>
           </div>
 
-          <Kicker dot>Shipped. · Issue {issue.issueNumber}</Kicker>
+          <a href="/newsletter" className="mb-7 inline-block" aria-label="Signal to Noise newsletter archive">
+            <SignalToNoiseWordmark className="w-[210px] sm:w-[240px]" />
+          </a>
+          <Kicker dot>Issue {issue.issueNumber}</Kicker>
 
           <h1 className="mt-5 font-[family-name:var(--font-display)] font-normal tracking-[-0.02em] leading-[1.02] text-[var(--ink)] text-[clamp(2.25rem,5.5vw,3.5rem)]">
             {issue.subject}
@@ -431,12 +439,12 @@ export default async function NewsletterIssuePage({ params }: PageProps) {
               Want more insights like this?
             </h2>
             <p className="mx-auto mt-4 mb-8 max-w-xl font-[family-name:var(--font-sans)] text-[var(--body)] leading-relaxed">
-              Subscribe to Shipped. for essays on building, thinking, and the patterns that transfer.
+              Subscribe to {NEWSLETTER_NAME} for essays on building, thinking, and the patterns that transfer.
             </p>
             <div className="mx-auto max-w-md">
               <NewsletterSubscribe
                 variant="inline"
-                source={`shipped-issue-${issue.issueNumber}`}
+                source={`newsletter-issue-${issue.issueNumber}`}
                 title=""
                 description=""
                 buttonText="Subscribe"

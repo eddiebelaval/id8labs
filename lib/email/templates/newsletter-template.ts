@@ -1,4 +1,6 @@
-// ID8 Newsletter - "Shipped."
+import { NEWSLETTER_NAME } from '@/lib/newsletter/brand'
+
+// ID8 Newsletter - Signal to Noise
 // Essay-format newsletter system
 // Supports both essay format and legacy structured format
 
@@ -71,8 +73,7 @@ const HEADER_HTML = `
     <!-- Header -->
     <tr>
       <td style="padding: 30px 30px 20px; text-align: left;">
-        <span style="color: #FF6B35; font-weight: bold; font-size: 20px;">id8</span><span style="color: #0A0A0A; font-weight: bold; font-size: 20px;">Labs</span>
-        <span style="color: #737373; font-size: 14px; margin-left: 10px;">Shipped.</span>
+        <img src="https://id8labs.app/brand/signal-to-noise-wordmark.png" alt="${NEWSLETTER_NAME}" width="225" height="98" style="display:block;width:225px;max-width:100%;height:auto;border:0;" />
       </td>
     </tr>
 `
@@ -626,7 +627,7 @@ export const NEWSLETTER_ISSUE_1: NewsletterIssue = {
   date: 'January 2025',
   subject: 'The one question that kills most ideas (and what to ask instead)',
   subjectVariants: [
-    'Shipped. #1 is here',
+    `${NEWSLETTER_NAME} #1 is here`,
     'A better question for your next idea',
   ],
   bigIdea: {
