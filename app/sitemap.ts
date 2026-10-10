@@ -19,7 +19,7 @@ import { getAllShippedIssues, getShippedIssueHref } from '@/lib/shipped/issues'
  * empty and the rest of the sitemap still ships.
  */
 
-const BASE = 'https://id8labs.app'
+const BASE = 'https://id8labs.si'
 
 type Entry = MetadataRoute.Sitemap[number]
 type Freq = NonNullable<Entry['changeFrequency']>

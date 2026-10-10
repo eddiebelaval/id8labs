@@ -217,7 +217,7 @@ The full course goes deeper into each workflow with:
 - Templates and starter files
 - Community support
 
-**[Join the Waitlist →](https://id8labs.app/courses/claude-for-knowledge-workers)**
+**[Join the Waitlist →](https://id8labs.si/courses/claude-for-knowledge-workers)**
 
 ---
 

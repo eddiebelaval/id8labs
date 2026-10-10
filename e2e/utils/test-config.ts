@@ -9,7 +9,7 @@ export const testConfig = {
   environments: {
     local: 'http://localhost:3000',
     preview: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
-    production: 'https://id8labs.app',
+    production: 'https://id8labs.si',
   },
 
   /**

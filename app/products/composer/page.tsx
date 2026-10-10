@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Composer | id8Labs',
     description: 'Timeline-based AI story development platform for writers, directors, and producers.',
-    url: 'https://id8labs.app/products/composer',
+    url: 'https://id8labs.si/products/composer',
   },
 }
 

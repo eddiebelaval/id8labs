@@ -95,7 +95,7 @@ Create a setup script so new team members are running in <30 minutes.
 
 Most Practitioners struggle with over-engineering orchestration or ignoring cost at scale.
 
-**Free:** [MCP Security Checklist](https://id8labs.app/resources/MCP_Security_Checklist.md) - audit your setup
+**Free:** [MCP Security Checklist](https://id8labs.si/resources/MCP_Security_Checklist.md) - audit your setup
 
 **Paid:**
 - Architecture consultation ($5k, 4 sessions) → [Book here](https://cal.com/id8labs/practitioner-consult)
@@ -104,4 +104,4 @@ Most Practitioners struggle with over-engineering orchestration or ignoring cost
 
 ---
 
-*Built by [ID8Labs](https://id8labs.app) - Tools for Builders*
+*Built by [ID8Labs](https://id8labs.si) - Tools for Builders*

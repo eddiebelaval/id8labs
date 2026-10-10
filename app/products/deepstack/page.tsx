@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'DeepStack | id8Labs',
     description: 'AI-powered trading research platform. Claude-powered analysis, professional charts, thesis tracking, and an emotional firewall.',
-    url: 'https://id8labs.app/products/deepstack',
+    url: 'https://id8labs.si/products/deepstack',
   },
 }
 

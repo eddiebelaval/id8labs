@@ -179,7 +179,7 @@ function generateConfirmationEmail(workshop: Workshop, name: string, attendance?
       <td style="padding: 28px 30px; background-color: #fafaf7; text-align: center;">
         <p style="margin: 0 0 8px; color: #5a5a5a; font-size: 13px;">ID8Labs — Professional tools for the AI era</p>
         <p style="margin: 0; color: #999; font-size: 12px;">
-          Miami, FL • <a href="https://id8labs.app" style="color: #999;">id8labs.app</a>
+          Miami, FL • <a href="https://id8labs.si" style="color: #999;">id8labs.si</a>
         </p>
       </td>
     </tr>

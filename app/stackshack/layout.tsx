@@ -24,10 +24,10 @@ export const metadata: Metadata = {
       'Discover 180+ free skills, agents, commands & settings for Claude Code. Build custom stacks, share with community, install with one command.',
     type: 'website',
     siteName: 'ID8Labs',
-    url: 'https://id8labs.app/stackshack',
+    url: 'https://id8labs.si/stackshack',
     images: [
       {
-        url: 'https://id8labs.app/og-image.png',
+        url: 'https://id8labs.si/og-image.png',
         width: 1200,
         height: 630,
         alt: 'StackShack - AI Marketplace by ID8Labs',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: 'StackShack - Build Your AI Workflow Stack',
     description:
       '180+ free skills, agents & tools for Claude Code. Build stacks, share, install instantly.',
-    images: ['https://id8labs.app/og-image.png'],
+    images: ['https://id8labs.si/og-image.png'],
     creator: '@eddiebe',
   },
 }

@@ -167,7 +167,7 @@ const actionPlans: Record<string, {
     ctaLinkText: 'Book a Workflow Audit ($500)',
     freeResource: {
       title: 'Agentic Architecture Patterns',
-      url: 'https://id8labs.app/resources/agentic-patterns'
+      url: 'https://id8labs.si/resources/agentic-patterns'
     }
   },
   practitioner: {
@@ -232,7 +232,7 @@ const actionPlans: Record<string, {
     ctaLinkText: 'Book Architecture Consultation ($5k)',
     freeResource: {
       title: 'MCP Security Checklist',
-      url: 'https://id8labs.app/resources/MCP_Security_Checklist.md'
+      url: 'https://id8labs.si/resources/MCP_Security_Checklist.md'
     }
   },
   pioneer: {

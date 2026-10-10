@@ -96,4 +96,4 @@ The agent ecosystem is tiny. You have the opportunity to shape it.
 
 ---
 
-*Eddie Belaval, Founder - [ID8Labs](https://id8labs.app)*
+*Eddie Belaval, Founder - [ID8Labs](https://id8labs.si)*

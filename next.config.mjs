@@ -86,10 +86,22 @@ const nextConfig = {
       })),
     ]
 
+    // Brand domain moved id8labs.app -> id8labs.si (2026-10-10). Every page on
+    // the old host 301s to the same path on the new one. /api/* is exempt:
+    // Stripe and other webhook senders do not follow redirects, so the old
+    // host keeps answering them until each endpoint is re-registered.
+    const domainRedirects = ['id8labs.app', 'www.id8labs.app'].map((host) => ({
+      source: '/:path((?!api/).*)',
+      has: [{ type: 'host', value: host }],
+      destination: 'https://id8labs.si/:path',
+      permanent: true,
+    }))
+
     if (process.env.DISABLE_MARKETPLACE_REDIRECTS === 'true') {
-      return contentRedirects
+      return [...domainRedirects, ...contentRedirects]
     }
     return [
+      ...domainRedirects,
       ...contentRedirects,
       // The Tuning Fork moved to the Hamato front door (converged 2026-07-08).
       // Edge-level redirect so no-JS clients and crawlers follow it too; the

@@ -240,7 +240,7 @@ fs.writeFileSync(outputPath, JSON.stringify(settings, null, 2))
 console.log(`✓ Written to ${outputPath}`)
 console.log('\nNext steps:')
 console.log('1. Run: tsx scripts/import-settings-to-db.ts')
-console.log('2. Test API: curl https://id8labs.app/api/v1/settings/production-safe')
+console.log('2. Test API: curl https://id8labs.si/api/v1/settings/production-safe')
 console.log('3. Test CLI: stackshack install production-safe')
 
 // Generate example output for each setting
