@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-10-12 (155 daily editions, 23 weeks)
+ * Last generated: 2026-10-13 (156 daily editions, 24 weeks)
  */
 
 export interface ShippedDaily {
@@ -40,11 +40,18 @@ export interface ShippedDailyWeek {
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
   {
+    date: '2026-10-12',
+    dayLabel: 'Mon, Oct 12',
+    title: 'All the frontier that ships',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-12.html',
+    wordCount: 3526,
+  },
+  {
     date: '2026-10-11',
     dayLabel: 'Sun, Oct 11',
     title: 'All the frontier that ships',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-11.html',
-    wordCount: 3445,
+    wordCount: 3465,
   },
   {
     date: '2026-10-10',
@@ -1129,6 +1136,20 @@ export const SHIPPED_DAILIES: ShippedDaily[] = [
 /** Daily editions grouped by ISO week, newest week first. */
 export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
   {
+    isoWeek: '2026-W42',
+    weekStart: '2026-10-12',
+    label: 'Week of October 12-18, 2026',
+    editions: [
+      {
+        date: '2026-10-12',
+        dayLabel: 'Mon, Oct 12',
+        title: 'All the frontier that ships',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-12.html',
+        wordCount: 3526,
+      },
+    ],
+  },
+  {
     isoWeek: '2026-W41',
     weekStart: '2026-10-05',
     label: 'Week of October 5-11, 2026',
@@ -1138,7 +1159,7 @@ export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
         dayLabel: 'Sun, Oct 11',
         title: 'All the frontier that ships',
         url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-10-11.html',
-        wordCount: 3445,
+        wordCount: 3465,
       },
       {
         date: '2026-10-10',
