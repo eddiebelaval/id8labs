@@ -7,12 +7,12 @@
 <meta property="og:title" content="Shipped. — Issue 08 — The Filing">
 <meta property="og:description" content="A weekly magazine on what Anthropic ships. Issue 08 — Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks..">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://id8labs.si/shipped/08/">
-<meta property="og:image" content="https://id8labs.si/shipped/08/og-v5.png">
+<meta property="og:url" content="https://id8labs.app/shipped/08/">
+<meta property="og:image" content="https://id8labs.app/shipped/08/og-v5.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shipped. — Issue 08 — The Filing">
 <meta name="twitter:description" content="A weekly magazine on what Anthropic ships.">
-<meta name="twitter:image" content="https://id8labs.si/shipped/08/og-v5.png">
+<meta name="twitter:image" content="https://id8labs.app/shipped/08/og-v5.png">
 <meta name="description" content="A weekly magazine on what Anthropic ships. Issue 08 — Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks..">
 <meta name="author" content="Eddie Belaval">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='75' cy='62' r='14' fill='%23FF6B35'/%3E%3Ctext x='10' y='75' font-family='Georgia,serif' font-weight='700' font-size='62' fill='%231a1a1a'%3ES%3C/text%3E%3C/svg%3E">
@@ -1395,6 +1395,12 @@ body::before{
   .cover-top-right{text-align:left}
   .btn-num{font-size:54px}
 }
+
+/* Phone guard (2026-10-15): a code block or an unbroken token never pushes the page wider than the screen. */
+@media (max-width:720px){
+  pre{white-space:pre-wrap;word-break:break-word;max-width:100%}
+  .prose,.log-entry,.log-entry > div,.log-entry-body{min-width:0;overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>
@@ -1406,7 +1412,7 @@ body::before{
   <div class="pub-bar-left">
     <span class="pub-bar-mark"><img class="shipped-mark" src="/brand/shipped-wordmark.svg" alt="Shipped." width="776" height="259" style="display:inline-block;height:1em;width:auto;vertical-align:-.256em"></span>
     <span class="pub-bar-sep pub-bar-hide-sm"></span>
-    <span class="pub-bar-meta pub-bar-hide-sm">A weekly magazine by <a href="https://id8labs.si" class="pub-bar-link">id8Labs</a></span>
+    <span class="pub-bar-meta pub-bar-hide-sm">A weekly magazine by <a href="https://id8labs.app" class="pub-bar-link">id8Labs</a></span>
   </div>
   <div class="pub-bar-right">
     <span class="pub-bar-folio pub-bar-hide-sm">Issue <b>08</b></span>
@@ -1416,111 +1422,140 @@ body::before{
   </div>
 </nav>
 
-<!-- ═════════════════════════════════════════
-     COVER
-     ═════════════════════════════════════════ -->
-<section class="cover" id="top">
-  <div class="cover-grid"></div>
+<style>
+.pf{max-width:1320px;margin:0 auto;padding:22px 28px 40px;font-family:var(--disp);color:var(--ink)}
+.pf img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.pf-ears{display:flex;justify-content:space-between;gap:20px;font-family:var(--narrow);font-size:13px;letter-spacing:.06em;padding-bottom:10px;border-bottom:1px solid var(--ink)}
+.pf-motto{text-align:center;font-family:var(--narrow);font-size:12px;letter-spacing:.42em;text-transform:uppercase;margin:16px 0 0;color:var(--muted)}
+.pf-flag{display:flex;justify-content:center;align-items:flex-end;gap:18px;margin:14px 0 0}
+.pf-sig{display:flex;align-items:flex-end;gap:10px;padding-bottom:.6%}
+.pf-from{font-family:var(--narrow);font-weight:600;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);padding-bottom:8px}
+.pf .pf-sig img{height:clamp(32px,4vw,56px);width:auto;image-rendering:auto}
+.pf-mark{height:clamp(64px,11vw,150px);width:auto;overflow:visible}
+.pf-weather{margin:18px 0 12px;text-align:center;font-style:italic;font-size:17px;color:var(--body)}
+.pf-nav{border-top:4px double var(--ink);border-bottom:1px solid var(--ink);display:flex;justify-content:center;flex-wrap:wrap;gap:6px 32px;padding:10px 0;font-family:var(--narrow);font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.pf-nav a{color:inherit;text-decoration:none}.pf-nav a:first-child{color:var(--orange)}
+.pf-fig{position:relative;margin:0}
+.pf-fig img{border:1px solid var(--ink)}
+.pf-jumpfig{margin:6px 0 22px}.pf-jumpfig img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.pf-cover{margin-top:22px}.pf-band{margin:22px 0 4px}.pf-cover img{border:3px solid var(--ink);max-height:560px;object-fit:cover}
+.pf-cap{font-family:var(--narrow);font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:.02em}
+.pf-cap i{font-family:var(--disp)}
+.pf-pending{position:absolute;top:10px;left:10px;z-index:2;background:var(--ink);color:var(--paper);font-family:var(--narrow);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:5px 9px}
+.pf-head{padding:14px 0 18px;border-bottom:4px double var(--ink)}
+.pf-kick{font-family:var(--narrow);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+.pf-head h2{font-weight:800;font-size:clamp(38px,5vw,68px);line-height:.98;letter-spacing:-.025em;margin:8px 0 10px;max-width:1100px}
+.pf-deck{font-style:italic;font-size:clamp(19px,1.8vw,23px);line-height:1.38;color:var(--body);max-width:900px}
+.pf-byl{font-family:var(--narrow);font-size:13px;color:var(--muted);margin-top:10px}
+.pf-grid{display:grid;grid-template-columns:1.55fr 1fr .9fr;margin-top:26px}
+.pf-grid.pf-solo{grid-template-columns:2.2fr 1fr}
+.pf-grid>*{padding:0 24px;min-width:0}.pf-grid>*:first-child{padding-left:0}.pf-grid>*:last-child{padding-right:0}
+.pf-grid>*+*{border-left:1px solid rgba(11,11,11,.55)}
+.pf-body{font-size:18px;line-height:1.58;color:var(--body);margin-top:16px}
+.pf-body p+p{margin-top:12px}
+.pf-body p:first-child::first-letter{float:left;font-weight:900;font-size:5.1em;line-height:.8;padding:6px 10px 0 0;color:var(--orange)}
+.pf-sect{display:flex;justify-content:space-between;align-items:baseline;border-top:3px double var(--ink);border-bottom:1px solid var(--ink);padding:8px 0;margin-bottom:14px;font-family:var(--narrow);font-weight:700;font-size:13px;letter-spacing:.24em;text-transform:uppercase}
+.pf-story h3{font-weight:700;font-size:23px;line-height:1.1;margin:12px 0 8px}
+.pf-story+.pf-story{border-top:1px solid rgba(11,11,11,.14);margin-top:20px;padding-top:18px}
+.pf-grid .pf-fig img{aspect-ratio:3/2;object-fit:cover}
+/* Level columns: the lead column sets the row height; the middle and rail fill
+   exactly that height (height:0 + min-height:100% takes the row's height without
+   adding to it) and fade out behind a jump link. No column runs the page. */
+.pf-fill{height:0;min-height:100%;overflow:hidden;position:relative}
+.pf-fill::after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(rgba(250,248,244,0),var(--paper) 70%);pointer-events:none}
+.pf-pin{position:absolute;bottom:0;z-index:2;font-family:var(--narrow);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);text-decoration:none;border-bottom:1px solid currentColor}
+.pf-fill.pf-fits::after,.pf-fill.pf-fits .pf-pin{display:none}
+.pf-quiet{margin-top:22px}
+.pf-jump{display:inline-block;margin-top:8px;font-family:var(--narrow);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);text-decoration:none;border-bottom:1px solid currentColor}
+.pf-jump-lead{margin-top:14px}
+.pf-inside{border-top:3px double var(--ink);margin-top:20px;padding-top:12px;display:flex;flex-direction:column;gap:8px}
+.pf-inside a{font-weight:700;font-size:17px;line-height:1.2;color:var(--ink);text-decoration:none}
+.pf-sm{font-size:16px;line-height:1.5;color:var(--body)}.pf-sm p+p{margin-top:10px}
+.pf-box{border:2px solid var(--ink);background:#fffdf8;padding:16px 18px}
+.pf-row{font-size:15px;line-height:1.4;padding:9px 0;border-bottom:1px dotted rgba(11,11,11,.55)}.pf-row:last-of-type{border-bottom:0}
+.pf-tag{font-family:var(--mono);font-size:11px;color:var(--orange)}
+.pf-more{font-family:var(--narrow);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);display:inline-block;margin-top:10px}
+.pf-nums{margin-top:22px}.pf-num{display:grid;grid-template-columns:84px 1fr;align-items:baseline;border-top:1px solid rgba(11,11,11,.14);padding:8px 0}
+.pf-num b{font-family:var(--narrow);font-size:28px;color:var(--orange);line-height:1}.pf-num span{font-family:var(--narrow);font-size:13px;line-height:1.35}
+.pf-term{margin-top:22px}.pf-hw{font-style:italic;font-weight:700;font-size:30px}.pf-ipa{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:8px}
+@media (max-width:980px){.pf-grid,.pf-grid.pf-solo{grid-template-columns:1fr}.pf-grid>*{padding:0;border-left:0 !important;margin-bottom:28px}
+  .pf-fill{height:auto;min-height:0;overflow:visible}.pf-fill::after,.pf-pin{display:none}.pf-quiet{display:none}}
+@media (max-width:560px){.pf{padding-left:16px;padding-right:16px}.pf-ears{flex-direction:column;align-items:center;gap:4px}}
+</style>
+<section class="pf" id="top">
+  <div class="pf-ears"><span>Vol. I · No. 08</span><span>Jun 5, 2026 · Weekly Edition</span><span>18 releases in the log · Anthropic first</span></div>
+  <p class="pf-motto">All the frontier that ships</p>
+  <div class="pf-flag"><svg class="pf-mark" viewBox="0 0 775.57 259.49" role="img" aria-label="Shipped."><g transform="translate(0.08 193.02)"><path fill="currentColor" d="M61.55 2.6Q50.57 2.6 43.45 -0.06Q36.34 -2.73 32.14 -6.21Q27.95 -9.69 25.87 -12.35Q23.79 -15.02 22.82 -15.02Q21.84 -15.02 19.24 -12.77Q16.64 -10.53 13.59 -7.64Q10.53 -4.75 8.06 -2.5Q5.59 -0.26 4.88 -0.26Q4.29 -0.26 4.06 -0.75Q3.83 -1.24 3.97 -2.08L14.56 -55.71Q14.82 -56.68 15.02 -57.1Q15.21 -57.52 15.6 -57.52Q16.05 -57.52 16.25 -57.17Q16.45 -56.81 16.51 -55.9L20.21 -35.49Q22.88 -18 32.34 -9.39Q41.8 -0.78 55.25 -0.78Q64.81 -0.78 72.18 -4.75Q79.56 -8.71 84.14 -15.6Q88.73 -22.49 89.77 -31.2Q91.59 -43.16 86.25 -53.89Q80.92 -64.61 65.78 -76.18Q47.71 -89.89 40.89 -101.98Q34.06 -114.08 35.16 -129.16Q36.14 -143.59 44.92 -156.29Q53.69 -169 68.93 -176.93Q84.17 -184.86 104.45 -184.86Q121.29 -184.86 131.95 -179.37Q142.61 -173.88 147.49 -165.07Q152.36 -156.26 151.78 -146.25Q151.39 -139.03 148.27 -135Q145.15 -130.97 140.08 -130.97Q136.56 -130.97 134.52 -133.67Q132.47 -136.37 131.43 -142.09L129.16 -154.9Q126.36 -169.91 119.7 -176.34Q113.04 -182.78 102.57 -182.78Q91.33 -182.78 82.65 -177.68Q73.97 -172.58 68.87 -164.19Q63.77 -155.81 62.98 -145.86Q61.82 -132.47 67.6 -121.81Q73.39 -111.15 88.53 -98.41Q101.66 -87.56 108.65 -78.2Q115.64 -68.84 117.84 -60.09Q120.06 -51.35 118.76 -42.32Q117.26 -28.47 109.17 -18.36Q101.08 -8.26 88.66 -2.83Q76.25 2.6 61.55 2.6ZM163.6 -41.73Q168.35 -56.75 174.65 -68.09Q180.96 -79.43 187.69 -87Q194.41 -94.58 200.65 -98.38Q206.89 -102.18 211.51 -102.18Q217.16 -102.18 218.63 -97.66Q220.09 -93.15 216.06 -80.34L197.86 -22.16Q195.32 -13.91 195.55 -8.48Q195.78 -3.06 199.26 -0.39Q202.73 2.27 209.62 2.27Q221.32 2.27 229.77 -3.25Q238.22 -8.78 243.69 -18.07Q244.27 -19.24 244.33 -19.89Q244.4 -20.54 243.94 -20.61Q243.56 -20.73 243.23 -20.44Q242.9 -20.15 242.19 -19.18Q237.12 -12.8 233.68 -10.46Q230.23 -8.12 227.44 -8.12Q224.25 -8.12 223.14 -11.89Q222.04 -15.67 225.75 -27.5L243.56 -84.7Q246.54 -94.12 246.54 -101.08Q246.54 -108.03 242.87 -111.9Q239.2 -115.77 231.01 -115.77Q221.71 -115.77 210.86 -110.37Q200 -104.98 189.05 -92.92Q178.1 -80.86 168.28 -60.65L168.87 -60.39L195.71 -156.26Q198.57 -166.59 203.38 -172.57Q208.19 -178.56 214.01 -181.12Q219.83 -183.69 225.55 -183.69Q229.9 -183.69 233.9 -181.38Q237.9 -179.08 241.8 -176.02Q245.7 -172.97 249.73 -170.66Q253.76 -168.35 258.18 -168.35Q263.06 -168.35 265.85 -170.82Q268.64 -173.29 268.64 -176.93Q268.64 -182.13 262.92 -185.57Q257.2 -189.02 245.89 -189.02Q221.39 -189.02 204.42 -181.29Q187.46 -173.55 176.67 -158.21Q165.88 -142.87 159.64 -120.12L129.94 -11.96Q128.44 -6.37 128.38 -3.25Q128.31 -0.13 130.32 1.07Q132.34 2.27 137.15 2.27Q148.2 2.27 154.38 -0.36Q160.55 -2.99 160.55 -7.15Q160.55 -9.1 159.57 -10.59Q158.6 -12.09 158.6 -14.43Q158.6 -16.9 158.93 -20.67Q159.25 -24.44 160.35 -29.67Q161.46 -34.91 163.6 -41.73ZM279.63 -27.5Q275.93 -16.05 276.93 -12.09Q277.94 -8.12 281.32 -8.12Q284.12 -8.12 287.56 -10.46Q291 -12.8 296.07 -19.18Q296.79 -20.15 297.12 -20.44Q297.44 -20.73 297.83 -20.61Q298.29 -20.54 298.22 -19.89Q298.16 -19.24 297.57 -18.07Q292.11 -8.78 283.6 -3.25Q275.08 2.27 263.44 2.27Q256.62 2.27 253.11 -0.36Q249.6 -2.99 249.31 -8.45Q249.02 -13.91 251.68 -22.16L271.76 -83.39Q275.6 -94.9 274.98 -99.09Q274.37 -103.28 270.73 -103.28Q268.06 -103.28 264.45 -100.94Q260.85 -98.61 254.93 -91.72Q254.41 -91.13 254.02 -90.87Q253.63 -90.61 253.18 -90.67Q252.85 -90.81 252.95 -91.23Q253.05 -91.65 253.44 -92.3Q260.52 -103.28 269.52 -109.53Q278.53 -115.77 288.08 -115.77Q294.12 -115.77 297.8 -112.97Q301.47 -110.17 302.19 -104.36Q302.9 -98.54 299.91 -89.44ZM293.54 -133.51Q288.01 -133.51 285.06 -136.4Q282.1 -139.3 282.1 -143.78Q282.1 -148.46 284.89 -153.92Q287.69 -159.38 292.37 -163.28Q297.05 -167.18 302.84 -167.18Q309.4 -167.18 312.23 -164.25Q315.06 -161.33 315.06 -156.97Q315.06 -151.45 312.36 -146.02Q309.66 -140.59 304.82 -137.05Q299.98 -133.51 293.54 -133.51ZM363.16 -136.89 311.29 49.4Q310.12 53.62 310.38 55.74Q310.63 57.85 314.67 58.37L324.81 59.67Q325.65 59.73 326.01 60Q326.37 60.26 326.37 60.65Q326.37 61.04 326.01 61.3Q325.65 61.55 324.87 61.55L270.4 62.47Q269.75 62.47 269.43 62.3Q269.1 62.14 269.1 61.75Q269.1 61.36 269.43 61.1Q269.75 60.84 270.47 60.71Q275.34 59.93 277.91 58.99Q280.48 58.05 281.77 56.29Q283.07 54.54 283.92 51.48L334.75 -124.61Q335.14 -125.84 337.74 -127.66Q340.34 -129.48 344.11 -131.5Q347.88 -133.51 351.72 -135.33Q355.55 -137.15 358.44 -138.25Q361.34 -139.36 362.18 -139.36Q362.96 -139.36 363.22 -138.78Q363.48 -138.19 363.16 -136.89ZM309.79 -87.36Q309.34 -86.84 308.75 -86.74Q308.17 -86.64 307.78 -86.91Q307.32 -87.3 307.38 -87.91Q307.45 -88.53 307.91 -89.05Q315.58 -98.09 324.71 -104.52Q333.84 -110.95 345.22 -114.2Q356.59 -117.45 370.89 -116.94Q385.84 -116.35 395.69 -109.3Q405.54 -102.25 409.76 -90.06Q413.99 -77.87 412.1 -61.82Q409.89 -42.9 400.27 -28.41Q390.65 -13.91 376.38 -5.85Q362.12 2.21 346 1.89Q335.73 1.69 329.16 -2.15Q322.6 -5.98 318.96 -13L320.97 -13.85Q323.96 -8.26 328.71 -5.4Q333.45 -2.54 339.3 -2.34Q348.99 -2.02 357.99 -8.78Q366.99 -15.54 373.91 -29.05Q380.84 -42.58 384.02 -62.66Q386.88 -80.08 385.32 -91.36Q383.76 -102.64 378.88 -108.29Q374.01 -113.95 366.8 -114.4Q351.06 -115.12 336.44 -108.42Q321.81 -101.73 309.79 -87.36ZM472.75 -136.89 420.88 49.4Q419.7 53.62 419.96 55.74Q420.22 57.85 424.25 58.37L434.39 59.67Q435.24 59.73 435.6 60Q435.95 60.26 435.95 60.65Q435.95 61.04 435.6 61.3Q435.24 61.55 434.46 61.55L379.99 62.47Q379.34 62.47 379.01 62.3Q378.69 62.14 378.69 61.75Q378.69 61.36 379.01 61.1Q379.34 60.84 380.06 60.71Q384.93 59.93 387.5 58.99Q390.06 58.05 391.37 56.29Q392.66 54.54 393.51 51.48L444.34 -124.61Q444.73 -125.84 447.33 -127.66Q449.93 -129.48 453.7 -131.5Q457.47 -133.51 461.3 -135.33Q465.14 -137.15 468.03 -138.25Q470.93 -139.36 471.77 -139.36Q472.55 -139.36 472.81 -138.78Q473.07 -138.19 472.75 -136.89ZM419.38 -87.36Q418.93 -86.84 418.34 -86.74Q417.75 -86.64 417.37 -86.91Q416.91 -87.3 416.97 -87.91Q417.04 -88.53 417.5 -89.05Q425.16 -98.09 434.3 -104.52Q443.43 -110.95 454.81 -114.2Q466.18 -117.45 480.48 -116.94Q495.43 -116.35 505.28 -109.3Q515.12 -102.25 519.35 -90.06Q523.58 -77.87 521.69 -61.82Q519.48 -42.9 509.86 -28.41Q500.24 -13.91 485.97 -5.85Q471.7 2.21 455.58 1.89Q445.31 1.69 438.75 -2.15Q432.19 -5.98 428.55 -13L430.56 -13.85Q433.55 -8.26 438.29 -5.4Q443.04 -2.54 448.89 -2.34Q458.57 -2.02 467.58 -8.78Q476.58 -15.54 483.5 -29.05Q490.43 -42.58 493.61 -62.66Q496.47 -80.08 494.91 -91.36Q493.35 -102.64 488.48 -108.29Q483.6 -113.95 476.38 -114.4Q460.65 -115.12 446.03 -108.42Q431.4 -101.73 419.38 -87.36ZM535.93 -54.8Q535.93 -54.8 540.83 -56.55Q545.74 -58.3 553.41 -61.07Q561.08 -63.83 569.47 -66.85Q577.85 -69.88 585 -72.38Q592.15 -74.88 595.92 -76.12L593.19 -73.64Q594.56 -76.83 595.47 -81.67Q596.38 -86.52 596.44 -93.47Q596.5 -102.44 593.68 -108.09Q590.85 -113.75 585.91 -113.75Q580.32 -113.75 574.76 -109.56Q569.21 -105.37 564.27 -97.47Q559.33 -89.57 555.56 -78.42Q551.79 -67.28 549.84 -53.3Q547.04 -33.22 553.44 -22.43Q559.85 -11.63 573.88 -11.63Q581.36 -11.63 588.06 -14.75Q594.75 -17.88 600.44 -24.28Q606.12 -30.68 610.55 -40.5Q611 -41.27 611.36 -41.6Q611.72 -41.93 612.17 -41.8Q612.62 -41.73 612.75 -41.15Q612.88 -40.56 612.5 -39.65Q607.16 -26.32 599.01 -16.93Q590.85 -7.54 580.06 -2.63Q569.27 2.27 556.01 2.27Q543.79 2.27 535.28 -3.35Q526.76 -8.97 523.06 -20.02Q519.35 -31.07 521.43 -47.12Q523.32 -61.36 529.2 -73.91Q535.08 -86.45 543.99 -96Q552.89 -105.56 563.88 -110.99Q574.86 -116.42 586.88 -116.42Q597.15 -116.42 603.85 -112.19Q610.55 -107.97 613.76 -101.11Q616.98 -94.25 616.72 -86.32Q616.65 -84.83 617.43 -84.05Q618.22 -83.27 620.3 -83.33Q621.14 -83.39 621.46 -83.17Q621.79 -82.94 621.86 -82.55Q621.99 -82.16 621.69 -81.84Q621.4 -81.51 620.69 -81.25Q619.06 -80.8 612.3 -78.52Q605.54 -76.25 596.02 -72.96Q586.5 -69.68 576.16 -66.17Q565.83 -62.66 556.82 -59.54Q547.82 -56.42 542.2 -54.47Q536.58 -52.52 536.58 -52.52ZM708.11 -101.01 700.38 -100.81Q701.61 -105.82 699.76 -109.66Q697.91 -113.49 690.69 -113.49Q683.74 -113.49 676.72 -108.58Q669.7 -103.67 663.26 -95.29Q656.83 -86.91 651.62 -76.41Q646.43 -65.91 643.01 -54.63Q639.6 -43.36 638.63 -32.63Q636.87 -18.14 639.93 -12.32Q642.98 -6.5 648.38 -6.5Q651.95 -6.5 657.41 -10.56Q662.87 -14.62 669.01 -22.36Q675.16 -30.1 680.84 -41.08Q686.53 -52.07 690.5 -65.84L717.02 -159.58Q721.31 -174.72 730.44 -181.87Q739.57 -189.02 755.04 -189.02Q763.17 -189.02 767.33 -186.06Q771.49 -183.11 771.49 -178.94Q771.49 -175.5 769.08 -173.13Q766.68 -170.75 762.13 -170.75Q758.75 -170.75 755.3 -172.22Q751.86 -173.68 748.44 -175.66Q745.03 -177.65 741.91 -179.11Q738.79 -180.57 736.06 -180.57Q732.29 -180.57 729.01 -177.06Q725.73 -173.55 725.6 -167.9Q725.6 -165.1 727.12 -162.56Q728.65 -160.03 730.73 -157.27Q732.81 -154.5 734.5 -150.93Q736.19 -147.36 736.68 -142.58Q737.17 -137.8 735.35 -131.17L705.9 -27.37Q702.72 -16.12 703.27 -12.12Q703.82 -8.12 707.72 -8.12Q710.52 -8.12 713.86 -10.46Q717.21 -12.8 722.28 -19.18Q723 -20.15 723.32 -20.44Q723.65 -20.73 724.04 -20.61Q724.49 -20.54 724.43 -19.89Q724.36 -19.24 723.78 -18.07Q720.14 -11.83 715.16 -7.28Q710.19 -2.73 704.11 -0.23Q698.04 2.27 690.95 2.27Q683.35 2.27 679.74 -0.98Q676.13 -4.23 676.13 -10.21Q676.13 -13.39 676.91 -17.97Q677.69 -22.55 679.74 -30.09Q681.79 -37.63 685.3 -49.47L687.44 -49.2Q680.29 -32.7 671.52 -21.19Q662.74 -9.69 653.22 -3.71Q643.7 2.27 634.21 2.27Q626.73 2.27 621.08 -1.53Q615.42 -5.33 612.72 -13.32Q610.03 -21.32 611.26 -33.73Q612.43 -48.3 619.19 -62.82Q625.95 -77.35 636.71 -89.34Q647.47 -101.34 660.69 -108.58Q673.92 -115.83 687.9 -115.83Q695.89 -115.83 700.44 -113.91Q704.99 -112 706.78 -108.65Q708.57 -105.3 708.11 -101.01Z"/><path fill="#ff6b35" d="M743.7 2.21Q739.05 2.21 735.36 -0.19Q731.66 -2.59 729.51 -6.57Q727.35 -10.54 727.35 -15.34Q727.35 -20.02 729.53 -24.02Q731.71 -28.02 735.45 -30.36Q739.19 -32.7 743.72 -32.7Q748.41 -32.7 752.18 -30.32Q755.95 -27.95 758.13 -24Q760.31 -20.05 760.31 -15.36Q760.31 -10.55 758.11 -6.56Q755.92 -2.57 752.2 -0.18Q748.48 2.21 743.7 2.21Z"/></g></svg><span class="pf-sig"><span class="pf-from">from</span><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODUuNjMgMjMzLjk3IiB3aWR0aD0iMjg1LjYzIiBoZWlnaHQ9IjIzMy45NyIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJpZDggd29yZG1hcmsgb24gYSBydWxlZCBzY2FsZSIgZmlsbD0iY3VycmVudENvbG9yIj48dGl0bGU+aWQ4IHdvcmRtYXJrIG9uIGEgcnVsZWQgc2NhbGU8L3RpdGxlPjxzdHlsZT4uaW5re2ZpbGw6Y3VycmVudENvbG9yfS5pbmstc3tmaWxsOm5vbmU7c3Ryb2tlOmN1cnJlbnRDb2xvcn0uYWNjZW50e2ZpbGw6Y3VycmVudENvbG9yfS5hY2NlbnQtc3tmaWxsOm5vbmU7c3Ryb2tlOmN1cnJlbnRDb2xvcn08L3N0eWxlPjxwYXRoIGNsYXNzPSJpbmsiIGQ9Ik01NC42OSA4My43N1YxNjUuODlRNTQuNjkgMTY3LjI1IDU1LjI5IDE2OC4wNFE1NS44OSAxNjguODMgNTcuMTggMTY5LjFMNjIuOTcgMTcwLjA2UTYzLjY1IDE3MC4xNCA2My44OSAxNzAuMzlRNjQuMTQgMTcwLjY0IDY0LjE0IDE3MS4wMVE2NC4xNCAxNzEuMzYgNjMuODcgMTcxLjU5UTYzLjYgMTcxLjgyIDYzLjA2IDE3MS44MkgyNC45OFEyNC41OCAxNzEuODIgMjQuMjkgMTcxLjU5UTI0IDE3MS4zNiAyNCAxNzEuMDFRMjQgMTcwLjc0IDI0LjI0IDE3MC41MVEyNC40OSAxNzAuMjggMjUuMDcgMTcwLjE1TDMxLjE1IDE2OS4xUTMyLjQ5IDE2OC44MyAzMy4wNyAxNjguMDRRMzMuNjQgMTY3LjI1IDMzLjY0IDE2NS45OFY5My4zOVEzMy42NCA5Mi43MiAzMy4zMyA5Mi4zNFEzMy4wMyA5MS45NyAzMi4yNiA5MS45NUwyNS4xOCA5MS45M1EyNC42OSA5MS45MSAyNC40NiA5MS42N1EyNC4yMiA5MS40MyAyNC4yMiA5MS4xMVEyNC4yMiA5MC42OSAyNC40OSA5MC40OVEyNC43NiA5MC4yOSAyNS4yNSA5MC4xM0w1MS4wMiA4Mi44NVE1Mi4wNSA4Mi41MyA1Mi41IDgyLjQ1UTUyLjk0IDgyLjM3IDUzLjM3IDgyLjM3UTU0LjAzIDgyLjM3IDU0LjM2IDgyLjc3UTU0LjY5IDgzLjE4IDU0LjY5IDgzLjc3WiBNMTMyLjE2IDE1OS42MSAxMzIuMTIgMTU5LjE1VjM1LjAyUTEzMi4xMiAzNC4zNSAxMzEuODEgMzMuOThRMTMxLjUgMzMuNiAxMzAuNzMgMzMuNTlMMTIzLjY2IDMzLjU3UTEyMy4xNyAzMy41NCAxMjIuOTMgMzMuM1ExMjIuNjkgMzMuMDYgMTIyLjY5IDMyLjc1UTEyMi42OSAzMi4zMiAxMjIuOTYgMzIuMTJRMTIzLjIzIDMxLjkyIDEyMy43MiAzMS43N0wxNDkuNSAyNC40OFExNTAuNTIgMjQuMTcgMTUwLjk2IDI0LjA4UTE1MS40MSAyNCAxNTEuODUgMjRRMTUyLjUxIDI0IDE1Mi44NCAyNC40MVExNTMuMTcgMjQuODEgMTUzLjE3IDI1LjQxVjE2NS44OVExNTMuMTcgMTY3LjI1IDE1My43NyAxNjguMDRRMTU0LjM2IDE2OC44MyAxNTUuNjYgMTY5LjFMMTYxLjQ0IDE3MC4wNlExNjIuMTIgMTcwLjE0IDE2Mi4zNyAxNzAuMzlRMTYyLjYxIDE3MC42NCAxNjIuNjEgMTcxLjAxUTE2Mi42MSAxNzEuMzYgMTYyLjM1IDE3MS41OVExNjIuMDggMTcxLjgyIDE2MS41MyAxNzEuODJIMTM1LjQxUTEzMy44OCAxNzEuODIgMTMzLjAyIDE3MC45MlExMzIuMTYgMTcwLjAzIDEzMi4xNiAxNjguMlpNNjcuNzUgMTMwLjM0UTY3Ljc1IDExNS4zOCA3My4zOSAxMDQuNTVRNzkuMDQgOTMuNzEgODguNDggODcuODhROTcuOTIgODIuMDQgMTA5LjM1IDgyLjA0UTExOS40NyA4Mi4wNCAxMjYuMjcgODYuMjNRMTMzLjA3IDkwLjQxIDEzNy4yNCA5Ny42MUwxMzUuMjYgOTguNzFRMTMyLjA4IDkyLjU0IDEyNi42NyA4OC45NFExMjEuMjUgODUuMzMgMTEzLjkzIDg1LjMzUTEwNy4wNCA4NS4zMyAxMDEuNDMgODkuNzJROTUuODEgOTQuMTEgOTIuNDggMTAzLjU3UTg5LjE1IDExMy4wMyA4OS4xNSAxMjguMjlRODkuMTUgMTQxLjkxIDkyLjA1IDE1MC44NFE5NC45NSAxNTkuNzcgMTAwLjA3IDE2NC4xNVExMDUuMTggMTY4LjUzIDExMS44MyAxNjguNTNRMTE3LjE0IDE2OC41MyAxMjIuODQgMTY1LjU1UTEyOC41NCAxNjIuNTYgMTMzLjc3IDE1NS43NUwxMzQuOTYgMTU3LjEzUTEyNy40IDE2Ni4yNCAxMjAuMyAxNzAuMDRRMTEzLjIgMTczLjg0IDEwNC42NCAxNzMuODRROTMuOTYgMTczLjg0IDg1LjYyIDE2OC41NFE3Ny4yOCAxNjMuMjQgNzIuNTEgMTUzLjQ2UTY3Ljc1IDE0My42NyA2Ny43NSAxMzAuMzRaIE0yMTIuOTUgMTczLjk3UTE5OC43MiAxNzMuOTcgMTg4LjYxIDE2OS44NlExNzguNSAxNjUuNzUgMTczLjE4IDE1OC4zNlExNjcuODcgMTUwLjk2IDE2Ny44NyAxNDEuM1ExNjcuODcgMTMzLjg3IDE3MS4yNCAxMjcuMTZRMTc0LjYxIDEyMC40NSAxODIuMzMgMTE1LjJRMTkwLjA0IDEwOS45NCAyMDMuMDkgMTA3TDIwMy41OSAxMDcuOTJRMTk2LjY5IDExMi4zMSAxOTMuMDQgMTIwLjg2UTE4OS4zOSAxMjkuNDIgMTg5LjM5IDEzOC4yMlExODkuMzkgMTU1LjcyIDE5Ni4yNyAxNjQuMDJRMjAzLjE1IDE3Mi4zMSAyMTQuMyAxNzIuMzFRMjI1Ljc2IDE3Mi4zMSAyMzIuMTkgMTY1LjVRMjM4LjYyIDE1OC42OSAyMzguNjIgMTQ2LjU3UTIzOC42MiAxMzkuOTEgMjM1LjYzIDEzNC4yOFEyMzIuNjMgMTI4LjY1IDIyNi4zNiAxMjQuMDRRMjIwLjA4IDExOS40NCAyMTAuMjUgMTE1Ljk3UTE4Ny4xMyAxMDcuNTQgMTc3LjAxIDk2LjFRMTY2Ljg5IDg0LjY3IDE2Ni44OSA2OS4zMVExNjYuODkgNTcuODkgMTcyLjgzIDQ4Ljk3UTE3OC43NyA0MC4wNCAxODkuNDMgMzQuOVEyMDAuMDkgMjkuNzYgMjE0LjQgMjkuNzZRMjI5LjUxIDI5Ljc2IDI0MC4wOCAzNC4xNVEyNTAuNjQgMzguNTQgMjU2LjE0IDQ2LjcxUTI2MS42MyA1NC44OSAyNjEuNjMgNjYuMTFRMjYxLjYzIDc2LjAyIDI1Ni45MSA4NC4yM1EyNTIuMTggOTIuNDQgMjQzLjY4IDk3Ljk5UTIzNS4xOSAxMDMuNTUgMjIzLjczIDEwNS41TDIyMy4zMiAxMDQuNTRRMjI4LjE0IDEwMS44MyAyMzIuMDIgOTYuNlEyMzUuODkgOTEuMzcgMjM4LjE4IDg0LjE5UTI0MC40NyA3Ny4wMiAyNDAuNDcgNjguNTFRMjQwLjQ3IDU2Ljg0IDIzNy4yIDQ4LjQ5UTIzMy45MyA0MC4xNCAyMjcuOTIgMzUuN1EyMjEuOTEgMzEuMjUgMjEzLjYyIDMxLjI1UTIwNi4yMiAzMS4yNSAyMDAuNDkgMzQuNjlRMTk0Ljc2IDM4LjEzIDE5MS41IDQ0LjI2UTE4OC4yNCA1MC4zOSAxODguMjQgNTguNVExODguMjQgNjcuNjUgMTkxLjM4IDc0Ljk2UTE5NC41MiA4Mi4yOCAyMDEuNjMgODcuOTNRMjA4Ljc0IDkzLjU5IDIyMC41MSA5Ny43UTI0Mi40NCAxMDUuMjQgMjUxLjg2IDExNS4zN1EyNjEuMjggMTI1LjQ5IDI2MS4yOCAxMzYuNzVRMjYxLjI4IDE0Ny45OSAyNTUuMyAxNTYuMzdRMjQ5LjMyIDE2NC43NSAyMzguNDQgMTY5LjM2UTIyNy41NiAxNzMuOTcgMjEyLjk1IDE3My45N1oiLz48Y2lyY2xlIGNsYXNzPSJhY2NlbnQiIGN4PSI0My42NyIgY3k9IjU0Ljc3IiByPSIxNi44NCIvPjxwYXRoIGNsYXNzPSJpbmstcyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0iYnV0dCIgZD0iTTI0IDE4NS45N0wyNjEuNjMgMTg1Ljk3Ii8+PHBhdGggY2xhc3M9Imluay1zIiBzdHJva2Utd2lkdGg9IjIuNSIgZD0iTTM2IDE4NS45N0wzNiAxOTcuOTdNNDggMTg1Ljk3TDQ4IDE5Ny45N002MCAxODUuOTdMNjAgMTk3Ljk3TTcyIDE4NS45N0w3MiAxOTcuOTdNOTYgMTg1Ljk3TDk2IDE5Ny45N00xMDggMTg1Ljk3TDEwOCAxOTcuOTdNMTIwIDE4NS45N0wxMjAgMTk3Ljk3TTEzMiAxODUuOTdMMTMyIDE5Ny45N00xNTYgMTg1Ljk3TDE1NiAxOTcuOTdNMTY4IDE4NS45N0wxNjggMTk3Ljk3TTE4MCAxODUuOTdMMTgwIDE5Ny45N00xOTIgMTg1Ljk3TDE5MiAxOTcuOTdNMjE2IDE4NS45N0wyMTYgMTk3Ljk3TTIyOCAxODUuOTdMMjI4IDE5Ny45N00yNDAgMTg1Ljk3TDI0MCAxOTcuOTdNMjUyIDE4NS45N0wyNTIgMTk3Ljk3Ii8+PHBhdGggY2xhc3M9Imluay1zIiBzdHJva2Utd2lkdGg9IjUiIGQ9Ik0yNCAxODUuOTdMMjQgMjA5Ljk3TTg0IDE4NS45N0w4NCAyMDkuOTdNMTQ0IDE4NS45N0wxNDQgMjA5Ljk3TTIwNCAxODUuOTdMMjA0IDIwOS45NyIvPjwvc3ZnPgo=" alt="id8" width="71" height="58"></span></div>
+  <p class="pf-weather">A confidential filing. A model held back, on a date now.</p>
+  <nav class="pf-nav"><a href="#top">Front Page</a><a href="#investigation">Lead</a><a href="#also">Also Shipped</a><a href="#term">Term</a><a href="#log">The Log</a></nav>
 
-  <div class="cover-top">
-    <div class="cover-top-left">
-      <div class="cover-top-kicker">Issue <b>#08</b>&nbsp;&nbsp;·&nbsp;&nbsp;Volume I&nbsp;&nbsp;·&nbsp;&nbsp;The Filing</div>
-      <div class="cover-top-sub">Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks.</div>
-    </div>
-    <div class="cover-top-right">
-      <div><b>2026 — 06 — 05</b></div>
-      <div>Period 2026-05-30 → 2026-06-05</div>
-      <div>18 Releases · 6 Days</div>
-    </div>
-  </div>
+  
 
-  <div class="cover-stage">
-    <div class="cover-huge-num">08</div>
-    <div class="cover-stack">
-      <span class="cover-spine">Shipped.&nbsp;&nbsp;·&nbsp;&nbsp;Volume I&nbsp;&nbsp;·&nbsp;&nbsp;The Filing&nbsp;&nbsp;·&nbsp;&nbsp;08</span>
-      <span class="masthead-cover"><img class="shipped-mark" src="/brand/shipped-wordmark.svg" alt="Shipped." width="776" height="259" style="display:inline-block;height:1em;width:auto;vertical-align:-.256em"></span>
-      <h1 class="cover-deck">The Filing</h1>
-      <p class="cover-deckline">Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks.</p>
-    </div>
-  </div>
+  <header class="pf-head">
+    <span class="pf-kick">Investigation · Lead Story</span>
+    <h2>Glasswing widens, and a date appears on Mythos</h2>
+    <p class="pf-deck">Anthropic filed confidentially to go public at $965B, then spent the week building for fleets and hardening the locks.</p>
+    <p class="pf-byl">Edited by Eddie Belaval. Reported with the assistance of Claude.</p>
+  </header>
 
-  <div class="cover-bottom">
-    
+  
+  <div class="pf-grid">
+    <article id="front-lead">
+      
+      <div class="pf-body"><p>Twenty-four hours after the S-1, Anthropic made a different kind of announcement. Project Glasswing is expanding to 150 new organizations across more than 15 countries: power utilities, water systems, healthcare providers, communications companies, hardware manufacturers (<a href="https://www.anthropic.com/news/expanding-project-glasswing">Anthropic</a>). It is the program's largest single widening since launch, and it roughly doubles the program's partner count. Samsung and NATO are confirmed additions, per Financial Times reporting cited by SiliconANGLE (<a href="https://siliconangle.com/2026/06/02/anthropic-expands-project-glasswing-cybersecurity-program-150-organizations">SiliconANGLE</a>). Since launch, Glasswing partners have collectively found more than 10,000 high- or critical-severity security flaws in widely deployed systems (<a href="https://www.cnbc.com/2026/06/02/anthropic-mythos-ai-project-glasswing.html">CNBC</a>).</p>
+<p>That is the headline number, and it is genuinely large. But the actual news sat two-thirds of the way down the announcement, in the kind of sentence companies bury when they are not yet ready to be held to it: Mythos-class models will be available to all customers "in the coming weeks," once additional safeguards are finalized.</p></div>
+      <a class="pf-jump pf-jump-lead" href="#investigation">Continued inside</a>
+    </article>
+    <div id="front-also" class="pf-fill">
+      <div class="pf-sect">Also Shipped</div>
+      
+      <div class="pf-story">
+        
+        <h3>Claude Code starts building for fleets</h3>
+        <div class="pf-sm"><p>The week's Claude Code arc had one direction, and it was not the individual developer. It was the manager running Claude Code across an org. v2.1.163 added <code>requiredMinimumVersion</code> and <code>requiredMaximumVersion</code> as managed settings, blocking startup outside an allowed range with no override (<a href="https://github.com/anthropics/claude-code/releases">releases</a>).</p></div>
+        <a class="pf-jump" href="#also">Continued inside</a>
+      </div>
+      <div class="pf-story">
+        
+        <h3>Fallback models land as a config setting</h3>
+        <div class="pf-sm"><p>v2.1.166 shipped <code>fallbackModel</code>: up to three alternative models tried in order when your primary is overloaded (<a href="https://github.com/anthropics/claude-code/releases">releases</a>). Production agent teams have been hand-rolling this failover for months, wrapping their calls in retry logic that catches an overload and swaps the model string.</p></div>
+        <a class="pf-jump" href="#also">Continued inside</a>
+      </div>
+      <div class="pf-story">
+        
+        <h3>The locks get quietly tightened</h3>
+        <div class="pf-sm"><p>Three security moves landed across the week, none of them headlines, all of them load-bearing. v2.1.160 made Claude prompt before writing to shell startup files like <code>.zshenv</code> and <code>.zlogin</code> and to build-tool configs such as <code>.npmrc</code> and <code>.bazelrc</code> that can grant code execution on the next run. v2.1.</p></div>
+        <a class="pf-jump" href="#also">Continued inside</a>
+      </div>
+      <div class="pf-inside"><span class="pf-kick">Also inside</span>
+        <a href="#also">Auto mode reaches the enterprise clouds</a><a href="#also">The SDKs deprecate Opus 4.1</a><a href="#also">A partner network gets a services track</a>
+      </div>
+      <a class="pf-pin" href="#also">Continued inside</a>
+    </div>
+    <aside class="pf-fill">
+      <div class="pf-box">
+        <span class="pf-kick">The Log · In Window</span>
+        <div class="pf-row"><b>06-06</b> Claude Code v2.1.166 <span class="pf-tag">CODE</span></div><div class="pf-row"><b>06-05</b> Claude Code v2.1.165 <span class="pf-tag">CODE</span></div><div class="pf-row"><b>06-05</b> anthropic-sdk-typescript v0.101.0 <span class="pf-tag">SDK-TS</span></div><div class="pf-row"><b>06-05</b> anthropic-sdk-python v0.106.0 <span class="pf-tag">SDK-PY</span></div><div class="pf-row"><b>06-05</b> vertex-sdk v0.17.0 <span class="pf-tag">SDK-TS</span></div><div class="pf-row"><b>06-05</b> foundry-sdk v0.3.0 <span class="pf-tag">SDK-TS</span></div>
+        <a class="pf-more" href="#log">All 18 entries</a>
+      </div>
+      
+      <div class="pf-term"><div class="pf-sect">Term of the Issue</div>
+    <div class="pf-hw">Quiet period</div>
+    <div class="pf-ipa">ˈkwaɪ.ət ˈpɪr.i.əd noun</div>
+    <p class="pf-sm">The stretch around a confidential securities filing when a company says less, not more, and lets its conduct speak where its numbers can't. The direction is disclosed; the figures stay sealed until the company elects to reveal them, typically just ahead of the roadshow.</p>
+    <a class="pf-more" href="#term">Full entry</a></div>
+      <div class="pf-quiet"><div class="pf-sect">Quiet on the Wire</div><div class="pf-sm"><p>The window had its own outage, and the timing was unkind. On June 2, the day after the S-1, Anthropic confirmed elevated error rates across Claude AI, Console, API, and Claude Code; SQ Magazine logged 14 user-reported incidents on DownDetector before the company identified the root cause and rolled out a fix (<a href="https://sqmagazine.co.uk/claude-ai-down-outage-june-2026/">SQ Magazine</a>). A smaller elevated-error spell on Sonnet 4.5 cleared the morning of June 1. No post-mortem published. There was no new model in the window, no new research paper, and the docs endpoints stayed dark behind repeated 403s, which is its own quiet theme: the platform's own changelog was harder to read than usual the week it filed to be read by everyone. The week a company files to go public is the week reliability stops being an engineering metric and starts being a disclosure.</p></div></div>
+      <div class="pf-quiet"><div class="pf-sect">The Close</div><div class="pf-sm"><em><p>A confidential filing. A model held back, on a date now. Version pinning, fallback models, locked-down messaging. No new flagship. The discipline was the release.</p></em></div></div>
+      <a class="pf-pin" href="#log">More inside</a>
+    </aside>
   </div>
 </section>
-
-<!-- ═════════════════════════════════════════
-     TABLE OF CONTENTS (driven by frontmatter, per-issue)
-     ═════════════════════════════════════════ -->
-<section class="section toc-section" id="contents">
-  <div class="section-folio">
-    <div class="section-folio-left">
-      <span class="folio"><b>p.02</b> <span class="ruler"></span> Shipped. <span class="dot">·</span> 08 <span class="dot">·</span> Front of book</span>
-    </div>
-    <span class="section-folio-sub">Front of book</span>
-  </div>
-
-  <div class="toc-head">
-    <div class="toc-head-num">08</div>
-    <div class="toc-head-title">In this issue,</div>
-  </div>
-
-  <div class="toc-grid">
-    <a href="#the-open" class="toc-entry">
-      <span class="toc-entry-n">01</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">The Open</span>
-      </div>
-    </a>
-    <a href="#the-lead-story" class="toc-entry">
-      <span class="toc-entry-n">02</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">The Lead Story</span>
-      </div>
-    </a>
-    <a href="#investigation" class="toc-entry">
-      <span class="toc-entry-n">03</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">Investigation</span>
-      </div>
-    </a>
-    <a href="#also-shipped" class="toc-entry">
-      <span class="toc-entry-n">04</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">Also Shipped</span>
-      </div>
-    </a>
-    <a href="#by-the-numbers" class="toc-entry">
-      <span class="toc-entry-n">05</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">By the Numbers</span>
-      </div>
-    </a>
-    <a href="#quiet-on-the-wire" class="toc-entry">
-      <span class="toc-entry-n">06</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">Quiet on the Wire</span>
-      </div>
-    </a>
-    <a href="#term-of-the-issue" class="toc-entry">
-      <span class="toc-entry-n">07</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">Term of the Issue</span>
-      </div>
-    </a>
-    <a href="#the-close" class="toc-entry">
-      <span class="toc-entry-n">08</span>
-      <div class="toc-entry-body">
-        <span class="toc-entry-kicker">The Close</span>
-      </div>
-    </a>
-  </div>
-</section>
+<script>(function(){function f(){document.querySelectorAll('.pf-fill').forEach(function(c){c.classList.toggle('pf-fits',c.scrollHeight<=c.clientHeight+2)})}window.addEventListener('load',f);window.addEventListener('resize',f)})();</script>
 <!-- BEGIN EDITORIAL SECTIONS -->
 <section class="section open-section" id="open">
   <div class="section-folio">
     <div class="section-folio-left">
-      <span class="folio"><b>p.03</b> <span class="ruler"></span> Shipped. <span class="dot">—</span> 00 <span class="dot">—</span> Apr 2026</span>
+      <span class="folio"><b>p.03</b> <span class="ruler"></span> Shipped. <span class="dot">·</span> 08 <span class="dot">·</span> Jun 2026</span>
     </div>
     <span class="section-folio-sub">The Open</span>
   </div>
@@ -1536,12 +1571,8 @@ body::before{
     <aside class="open-aside">
       <div>The brief</div>
       <div><b>Period</b> May 30 → Jun 5</div>
-      <div><b>Days</b> 21</div>
-      <div><b>Releases</b> 56</div>
-      <div><b>Consortium</b> 12 orgs</div>
-      <div><b>Ceiling</b> 1 model, gated</div>
-      <div><b>Floor</b> 1 model, GA</div>
-      <div><b>The gap</b> the new normal</div>
+      <div><b>Days</b> 7</div>
+      <div><b>Releases</b> 18</div>
     </aside>
   </div>
 </section>
@@ -1695,7 +1726,7 @@ No new flagship. The discipline was the release.</p>
     margin-right: auto;
   }
   .ship-sub h3 em { font-style: normal; color: var(--orange); }
-  .ship-sub p {
+  .ship-sub > p {
     font-family: var(--sans);
     font-size: 15px;
     color: rgba(250,250,247,.7);
@@ -1705,14 +1736,19 @@ No new flagship. The discipline was the release.</p>
   }
   .ship-sub-form {
     display: flex;
+    flex-direction: column;
     max-width: 480px;
     margin: 0 auto;
+  }
+  .ship-sub-row {
+    display: flex;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
     transition: border-color 0.15s;
   }
-  .ship-sub-form:focus-within { border-color: var(--orange); }
-  .ship-sub-form input[type="email"] {
+  .ship-sub-row:focus-within { border-color: var(--orange); }
+  .ship-sub-form input[type="email"],
+  .ship-sub-form input[type="text"] {
     flex: 1;
     background: transparent;
     border: none;
@@ -1722,8 +1758,24 @@ No new flagship. The discipline was the release.</p>
     font-size: 15px;
     padding: 16px 20px;
     -webkit-appearance: none;
+    min-width: 0;
   }
-  .ship-sub-form input[type="email"]::placeholder { color: rgba(250,250,247,.4); }
+  .ship-sub-form input::placeholder { color: rgba(250,250,247,.4); }
+  .ship-sub-name {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: none;
+    transition: border-color 0.15s;
+  }
+  .ship-sub-name:focus { border-color: rgba(255,107,53,.45); outline: none; }
+  /* Honeypot — off-screen, not display:none, so naive bots still fill it */
+  .ship-sub-hp {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
   .ship-sub-form button {
     background: var(--orange);
     color: var(--ink);
@@ -1736,9 +1788,38 @@ No new flagship. The discipline was the release.</p>
     padding: 0 28px;
     cursor: pointer;
     transition: background 0.15s;
+    white-space: nowrap;
   }
   .ship-sub-form button:hover { background: #ff5722; }
   .ship-sub-form button:disabled { opacity: 0.5; cursor: wait; }
+  .ship-sub-cadences {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .ship-sub-cadence {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--narrow);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(250,250,247,.6);
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .ship-sub-cadence:hover { color: rgba(250,250,247,.9); }
+  .ship-sub-cadence input[type="checkbox"] {
+    accent-color: var(--orange);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
   .ship-sub-meta {
     margin-top: 16px;
     font-family: var(--narrow);
@@ -1757,17 +1838,25 @@ No new flagship. The discipline was the release.</p>
   .ship-sub-status.error { color: #ff8b6b; }
   @media (max-width: 540px) {
     .ship-sub { padding: 56px 24px; margin: 32px auto; }
-    .ship-sub-form { flex-direction: column; }
-    .ship-sub-form button { padding: 16px 28px; }
+    .ship-sub-cadences { gap: 14px; }
   }
 </style>
 <section class="ship-sub" id="subscribe">
-  <div class="ship-sub-kicker">Don't miss the next issue</div>
-  <h3>Get <em>Shipped.</em> in your inbox every Friday at 9 AM ET.</h3>
-  <p>One read on what Anthropic shipped this week. Editorial up front, comprehensive Release Log in back. No spam, unsubscribe one click.</p>
+  <div class="ship-sub-kicker">Stay on the frontier</div>
+  <h3>Get <em>Shipped.</em> in your inbox.</h3>
+  <p>Daily digest at 9 PM ET. Weekly magazine every Friday morning. Six labs, one feed. No spam, one-click unsubscribe.</p>
   <form class="ship-sub-form" id="ship-sub-form-issue">
-    <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
-    <button type="submit" id="ship-sub-btn-issue">Subscribe →</button>
+    <div class="ship-sub-row">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+      <button type="submit" id="ship-sub-btn-issue">Subscribe &#x2192;</button>
+    </div>
+    <input type="text" name="sub_name" placeholder="Name (optional)" autocomplete="name" aria-label="Name" class="ship-sub-name">
+    <input type="text" name="website" class="ship-sub-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="ship-sub-cadences">
+      <label class="ship-sub-cadence"><input type="checkbox" name="cadences" value="nightly" checked> Daily digest</label>
+      <label class="ship-sub-cadence"><input type="checkbox" name="cadences" value="weekly" checked> Weekly magazine</label>
+      <label class="ship-sub-cadence"><input type="checkbox" name="cadences" value="monthly"> Monthly roundup</label>
+    </div>
   </form>
   <div class="ship-sub-meta">Next issue, Jun 12, 2026</div>
   <div class="ship-sub-status" id="ship-sub-status-issue" aria-live="polite"></div>
@@ -1782,19 +1871,22 @@ No new flagship. The discipline was the release.</p>
     e.preventDefault();
     var email = form.email.value.trim();
     if (!email) return;
+    var name = (form.sub_name && form.sub_name.value.trim()) || '';
+    var cadences = Array.from(form.querySelectorAll('input[name="cadences"]:checked')).map(function(el) { return el.value; });
+    if (!cadences.length) cadences = ['nightly', 'weekly'];
     btn.disabled = true;
-    status.classList.remove('error');
+    status.className = 'ship-sub-status';
     status.textContent = 'Subscribing\u2026';
     try {
-      var res = await fetch('/api/newsletter/subscribe', {
+      var res = await fetch('https://id8labs.app/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'shipped-magazine-issue-08' })
+        body: JSON.stringify({ email: email, name: name, cadences: cadences, source: 'shipped-magazine-issue-08', website: (form.website && form.website.value) || '' })
       });
       var data = await res.json().catch(function(){ return {}; });
       if (res.ok) {
-        status.textContent = 'You\u2019re in. Issue 10 lands Jun 12 2026 at 9 AM ET.';
-        form.reset();
+        status.textContent = data.isNewSubscriber === false ? 'Already on the list.' : 'You\u2019re in. Next edition lands soon.';
+        if (data.isNewSubscriber !== false) form.reset();
       } else {
         status.classList.add('error');
         status.textContent = (data && data.error) || 'Something went wrong. Try again in a moment.';
@@ -2081,7 +2173,7 @@ No new flagship. The discipline was the release.</p>
   <div class="colophon-inner">
     <div class="colophon-mast">
       <div class="colophon-word"><img class="shipped-mark" src="/brand/shipped-wordmark-knockout.svg" alt="Shipped." width="776" height="259" style="display:inline-block;height:1em;width:auto;vertical-align:-.256em"></div>
-      <div class="colophon-tag">A weekly magazine on what Anthropic is releasing. Published every Friday at 9 AM ET, by <a href="https://id8labs.si" class="colophon-link">id8Labs</a>.</div>
+      <div class="colophon-tag">A weekly magazine on what Anthropic is releasing. Published every Friday at 9 AM ET, by <a href="https://id8labs.app" class="colophon-link">id8Labs</a>.</div>
     </div>
     <div class="colophon-body">
       <div class="colophon-col">
@@ -2111,7 +2203,7 @@ No new flagship. The discipline was the release.</p>
       </div>
     </div>
     <div class="colophon-foot">
-      <span>© 2026 <a href="https://id8labs.si" class="colophon-link"><b>id8Labs</b></a> &nbsp;·&nbsp; All rights reserved</span>
+      <span>© 2026 <a href="https://id8labs.app" class="colophon-link"><b>id8Labs</b></a> &nbsp;·&nbsp; All rights reserved</span>
       <span>Printed in pixels &nbsp;·&nbsp; Set in Fraunces &amp; Archivo &nbsp;·&nbsp; Press sheet by Iris</span>
       <span class="hot">Next issue, Jun 12, 2026</span>
     </div>
