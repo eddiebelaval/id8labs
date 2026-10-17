@@ -1,0 +1,67 @@
+---
+title: "One Machine, Ten Sessions"
+subtitle: "I run four to ten agent sessions at once on one Mac. Three bad weeks taught me that the shared space is the product."
+date: "2026-10-17"
+publishDate: "2026-10-24"
+category: "research"
+author: "Eddie + Claude"
+excerpt: "An agent cleaning up after itself deleted ten other agents' work. Another stopped its own server and took down a live demo. A third played guitar through my speakers for an hour. None of them did anything wrong by their own lights. That was the problem."
+tags: ["Agents", "Operations", "Claude Code", "Lessons"]
+featured: false
+---
+
+Most days I have somewhere between four and ten Claude sessions open on the same machine. One is building a guitar school. One is running the morning magazine. One is on a client install. One is cleaning up after the other three. They share one disk, one temp folder, one set of ports, one pair of speakers, and one person, me, who cannot see what any of them is doing until it goes wrong.
+
+For a long time I thought of each session as its own job. October taught me that they are roommates. Here are the three nights that did it.
+
+## The guitar that would not stop
+
+On October 11 a guitar started playing out of my speakers. Not a song I had opened. Fragments, starting and stopping. There was no window to close. I went through every tab I had. For most of an hour I could not find where it was coming from, and I said some things to my computer I will not print here.
+
+It was an audio test. An agent checking Woodshed's sound had launched a headless browser, the invisible kind with no window, and pressed play. Headless does not mean silent. Every check it ran came out of my desk.
+
+The fix was two parts. Every automated browser at the lab now launches with its audio muted, no exceptions. And sound gets measured by rendering it offline, straight to a file, never by playing it live and listening. The ear check that verifies every Woodshed song works exactly that way now. It is better engineering anyway. A file can be compared. A sound in a room cannot.
+
+## The cleanup that cleaned up everyone
+
+On October 10, an agent writing course material finished its work and did the responsible thing. It cleaned up its temporary files. It did it with one line that deleted every folder in the shared temp directory whose name started with `tmp.`
+
+Its own folder started with `tmp.` So did at least ten other sessions' folders, all of them mid-run.
+
+To its credit it told me what it had done, immediately. That is how I know. But think about what that means. It was careful. It cleaned up. It used a pattern because a pattern is efficient. And in a space other agents share, a pattern is a wildcard aimed at people you cannot see.
+
+The rule now is that you delete only the exact path you created and wrote down at the moment you created it, in your own memory, not in a shared file. That last part came from a second, smaller accident the same afternoon. Two agents both saved "my scratch folder is here" to the same note, one overwrote the other, and frames for one video landed in the other's folder. Nothing was lost that time. The rule got one sentence longer.
+
+Then I stopped trusting the rule and made it a wall. A safety check now runs before every command in every session and refuses any delete that uses a wildcard inside the shared temp directory. A rule is something an agent remembers. A wall is something it hits.
+
+## The demo that went dark
+
+This morning, October 17, at 12:47, a test agent finished checking a web page and shut down the little server it had started. It shut it down by name: stop every process called `server.py`.
+
+There were three. One was its own. One was the live demo I was running for a client, a room with state in it, which is now gone. One was the board I use to watch all my agents, which had to restart itself. Your own dashboard rebooting is a strange way to find out something is wrong.
+
+Same failure, different tool. A name is a pattern. On a shared machine, generic names like `server.py` and `node` and `python` belong to everybody.
+
+The rule: when you start a process, record its number, and stop only that number. Before you touch a port, ask who is on it. Tests get their own ports and never bind one somebody is demoing on.
+
+And here is the part I find most honest. When I went back to the guitar rule from a week earlier, it ended with advice for cleaning up stray browsers. The advice was to kill them by pattern. The fix for one night was the weapon for the next. I changed it this morning.
+
+## The bill was a roommate problem too
+
+The quietest version of this was money. When I finally measured where a week's tokens went, 92 percent of the re-reading came from twenty sessions that had grown past three hundred thousand tokens of context. Every turn in a session that size re-reads everything before it. Nobody did anything wrong. The sessions just stayed open, the way a light stays on in an empty room.
+
+Long sessions feel productive, because you never lose your place. On a shared budget, they are the most expensive way to keep your place there is.
+
+## What I would tell someone starting
+
+If you run more than one agent on one machine, the machine is a shared space, and shared spaces need house rules. Mine fit on an index card:
+
+- Mute every browser you launch. Measure sound in a file.
+- Delete only the path you created and recorded. Never a pattern.
+- Stop only the process you started and recorded. Never a name.
+- Never bind a port somebody else is using.
+- End a session when the job is done.
+
+None of the three agents I wrote about broke a rule they knew. Each one was tidy, efficient and correct inside its own job. The failures all lived in the space between jobs, which none of them could see.
+
+That is the actual work of running a lab like this. Not making each agent smarter. Making the room they share safe for all of them at once, and turning every lesson into a wall, so the next agent does not have to remember it.

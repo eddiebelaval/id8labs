@@ -1,0 +1,91 @@
+---
+title: "The Paper Stays"
+subtitle: "A week spent drawing a workshop deck in code instead of making slides, and what it taught about seams."
+date: "2026-09-17"
+publishDate: "2026-10-21"
+category: "essay"
+author: "Eddie + Claude"
+excerpt: "Every object in the deck is drawn by code, on paper that has weight and grain. The paper never moves. The objects do. That turned out to be a rule about more than decks."
+tags: ["Workshops", "Craft", "Animation", "Teaching", "Claude Code"]
+featured: false
+---
+
+*Written September 17, the week before the workshop. Left as it was.*
+
+I spent the week drawing a presentation instead of making one.
+
+The night is September 24. US Century Bank is hosting thirty to forty of its small-business clients, owners who run clinics and firms and crews, in a university room in Miami Lakes. They are not technical. Half of them will listen in Spanish. Jose opens, I take three topics, Cameron takes three, Allie takes one, and Jose closes by handing every person a one-page AI policy they can put in front of their team on Monday.
+
+My three topics are the ones about what you type. What never goes into a chatbot. What to ask yourself before you paste. Why your team is already using AI in secret and what to do about it. The whole arc rests on one sentence: the tool is not the risk, what you type into it is.
+
+I could have made slides. I have made a thousand slides. Instead every object in the deck is drawn by code, on paper that has weight and grain, and the remote steps through it the way a hand turns a page.
+
+## What a drawn slide is
+
+There is no image anywhere in the deck. A person, a sphere, a door, a seal, a memo pinned to a wall: each one is a few hundred short strokes placed by rules. The strokes follow the form, so a sphere wraps around its highlight and a door's grain runs with the wood. The randomness is seeded, so the strokes hold still between frames and only the things that should move, move. Your message travels as words, readable words, riding along a drawn line from you to the machine and back.
+
+The first version I saw of that, a fruit fly on a peach that read as colored pencil, was somebody else's. It had a caption that said every frame was drawn with JavaScript. I wanted to know how, and by the end of the day the engine could draw a hatched sphere and a figure and a paper with a pen frame, and I said the thing you say when you know you are not going back: this is what we are doing for the rest of time.
+
+The rule that came out of that day is the one I keep repeating to myself. Every shape gets a plain word under it. Every flow is a loop: a question goes in, an answer comes back. Nothing ever passes behind a closed door.
+
+## The red pen at 1:30 in the morning
+
+Most of the notes were about honesty in the picture, not prettiness.
+
+The beam of words to the business door crossed in front of a closed personal door. Twice I flagged it and twice it came back subtly wrong, because the fix was being made per slide. The real fix was structural: put the doors on a diagonal so every beam has a clear line of sight, and put the labels above the doors, never in the lane. After that it could not happen again anywhere.
+
+The second topic had a version called "Whose license is on the line." It looked fine. It taught nothing. It restated the first topic with scarier words, and a room that has already nodded once will not nod twice at the same idea. It became three questions you ask before you paste, then the one switch that is on by default in every consumer AI tool, named tool by tool, then homework. Turn off training tonight. Move client work to a business account this month.
+
+That is the rule I wish I had written down years ago. A topic has to teach something the room can do tomorrow. If it does not, it is a mood, and the night already has a mood.
+
+## The cut you cannot see
+
+By Tuesday night I was rehearsing, and I hated the seams. Each slide was its own page, and moving to the next one was a blink, a flash of blank, the next drawing snapping into place. A deck of drawings that turns pages like a slideshow is a slideshow.
+
+I asked for a dissolve. Then I heard myself and took it back. A dissolve isn't connective tissue. It's a cut with a blanket over it.
+
+What I wanted was for things to move. The words leave the sheet, the doors arrive on it. So that is what the engine does now. The paper never moves. When you press forward at the end of a slide, the drawing slides off in the direction of travel while the next slide is already loaded underneath, on the same paper. Then the next drawing slides in from the other side. The two frames swap on a bare sheet, and because every slide paints the same seeded paper, there is nothing to see at the swap. Backward runs it the other way.
+
+It takes about a second. It reads as one desk with things being moved around on it, which is what the whole night is.
+
+The generic version is what ships next week. The engine has hooks for a slide to own its choreography, the figure walking off, the executive turning, the seal traveling from one beat to the next. Those are the two or three moments worth hand-animating, after the rehearsal tells me which ones.
+
+## The hub is not the workshop
+
+The deck lives inside a hub, and the hub was wrong until Wednesday.
+
+We have a workshops site. It had a lobby and, one level down, a facilitator page per show: a dark bar, a row of tabs, the run sheet first, the cold brief last, every tool loaded inside. The Tuning Fork, our open workshop, had one. The bank night had a docket page that looked nothing like it, and the deck popped out into a bare tab with no way back. No continuity. You could not stand in the hub and use its tools while you looked at the work.
+
+I said it badly the first time and Jose's pattern said it right: the Tuning Fork is not a hub, it is a workshop. The lobby is the hub. So the lobby became the frame. Pick a show in the rail and it opens in the stage with the rail still there and the header naming what is open. The bank night got its facilitator page on the same shell as the Tuning Fork: Run Sheet, Docket, Script, Rehearse, Present, Prep, Take-Home, Brief. Rehearse runs the deck inside the hub with the script under the slide. Present opens it in its own window for the projector while the hub stays put on the laptop.
+
+Each speaker got a link that opens on their own block, with a primer above it for the two who are walking in cold. Jose, Cameron and Allie have theirs.
+
+## Things that bit
+
+One thing bit hard enough to write down.
+
+The deck was built for a full day in the wrong tree. The monorepo still had a copy of the workshops site, retired in June, with a note in the folder saying so. I never read the note. When I deployed, the stale copy went over the live site and the Tuning Fork's deck, prompter and rehearsal pages vanished for about fifteen minutes, until the real repo was redeployed. The tell was in the deployment's alias list: the custom domain was not on it. A deploy that says READY on the wrong project looks identical to a deploy that worked.
+
+Two rules came out of it. Read the Vercel link before you deploy, and if a path has the archived folder in it, stop. Both are filed where I will trip over them next time.
+
+## The vocabulary
+
+Wednesday I found the thing I had been reverse engineering by hand, already reverse engineered by somebody better at it.
+
+A repo on GitHub takes four of Kevin Ngo's films, the fruit fly, a riso flipbook, a paper boat, a pencil website, and rebuilds what they share as one JavaScript core. Seeded marks. A wobbly outline that never coincides with its fill. Crayon strokes with a grainy edge. Construction lines with ticks that say "this is a drawing being made." Four texture finishes. A recipe for building any character or object from a handful of parts and a pose of three to six numbers. A camera. And a habit I adopted on the spot: before you draw a scene, render a style sheet of every mark in your palette and look at it.
+
+I vendored it as a reference, wrote what it taught into our own skill, and ported the first thirteen marks into the engine. Then I made the style sheet: every mark the engine can draw, on our paper, labelled. Row one is ours. Rows two and three are what we learned this week.
+
+That page is the point. We are going to draw more and more of the things we like, and the way you get there is not by wanting to. It is by being able to look at the alphabet.
+
+## What generalizes
+
+Two things carry past a bank night.
+
+The first is that the honest fix is structural. A beam that crosses a closed door is not a slide problem. It is a layout rule that has not been written yet. Fix it once, where it lives, and it stops coming back.
+
+The second is about seams. Whether it is a deck, a hub, or a team, the thing people feel is not the pages. It is what happens between them. If the frame stays and the objects move, it reads as one place. If the frame keeps changing, no amount of polish on the pages makes it whole.
+
+The paper stays.
+The objects move.
+The room leaves with one thing it can do tomorrow.

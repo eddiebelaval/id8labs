@@ -30,6 +30,29 @@ interface FlagshipProduct {
 
 const flagshipProducts: FlagshipProduct[] = [
   {
+    name: 'Woodshed',
+    tagline: 'A free school for the classical guitar',
+    description: 'Tárrega, Barrios, Albéniz, transcribed from real printed editions and checked bar by bar. The player shows you, live, which finger plays which note: a bouncing staff with one ball per plucking finger, a tab lane on the same clock, and both hands on the fretboard. A Verified badge is computed by the gates, never typed, and no song earns it until an independent reviewer and an ear check have passed it.',
+    version: 'v1.0',
+    status: 'live',
+    link: 'https://woodshed.id8labs.si',
+    external: true,
+    image: '/images/woodshed-preview.webp',
+    features: [
+      'Every printed fingering honoured',
+      'Bouncing staff, tab and fretboard on one clock',
+      'Verified badge earned by gates, not typed',
+      'Independent review and an ear check per song',
+      'Speed knob, loops, mixer and a mic tuner',
+      'Public-domain and Creative Commons editions only',
+    ],
+    specs: [
+      { label: 'Platform', value: 'Web App' },
+      { label: 'Instruments', value: 'Guitar + Piano' },
+      { label: 'Price', value: 'Free' },
+    ],
+  },
+  {
     name: 'Composer',
     tagline: 'AI Writing Partner with Memory',
     description: 'AI writing partner that actually remembers your story world. Built in the field when production teams needed persistent context across sessions. Knowledge bases, canvas mode, and persistent story memory.',
@@ -55,7 +78,7 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'Parallax',
     tagline: 'Someone to talk to',
-    description: 'Meet Ava — the Attuned Voice Advocate. She listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, a 22-article Academy across 8 sections, and a safety system validated through 1,010 tests. Telegram integration for mobile access. Free. Private. No waitlist.',
+    description: 'Meet Ava, the Attuned Voice Advocate. She listens, remembers, and helps you understand what\'s really going on. 19 analytical lenses, a 22-article Academy across 8 sections, and a safety system validated through 1,010 tests. Telegram integration for mobile access. Free. Private. No waitlist.',
     version: 'Live',
     status: 'live' as const,
     link: '/products/parallax',
@@ -78,7 +101,7 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'Rune',
     tagline: 'Speak Your Book Into Existence',
-    description: 'Meet Sam — your scribe. A voice-first book writer that listens, organizes, and helps you turn conversation into manuscript. Import existing writing. Three stages: Workshop, Study, Press. Open source.',
+    description: 'Meet Sam, your scribe. A voice-first book writer that listens, organizes, and helps you turn conversation into manuscript. Import existing writing. Three stages: Workshop, Study, Press. Open source.',
     version: 'Beta',
     status: 'beta' as const,
     link: '/products/rune',
@@ -170,7 +193,7 @@ const flagshipProducts: FlagshipProduct[] = [
   {
     name: 'Resonance',
     tagline: 'Human Design and numerology, computed live',
-    description: 'A star-position engine built into the page. Every reading is a pure function of two instants — the one you were born in and the one you are reading in — so nothing is looked up and no chart is stored. Scrub the sky six months either way and watch it move. It also says plainly which half of the page is astronomy and which half is a tradition somebody invented in 1987.',
+    description: 'A star-position engine built into the page. Every reading is a pure function of two instants, the one you were born in and the one you are reading in, so nothing is looked up and no chart is stored. Scrub the sky six months either way and watch it move. It also says plainly which half of the page is astronomy and which half is a tradition somebody invented in 1987.',
     version: 'v1.0',
     status: 'live',
     link: 'https://resonance88.id8labs.app',
@@ -187,6 +210,29 @@ const flagshipProducts: FlagshipProduct[] = [
     specs: [
       { label: 'Platform', value: 'Web App' },
       { label: 'AI Model', value: 'Claude' },
+      { label: 'Price', value: 'Free' },
+    ],
+  },
+  {
+    name: 'Shipped.',
+    tagline: 'The magazine on what the AI labs ship',
+    description: 'A daily digest and a weekly issue on every confirmed release from the AI labs, produced by a desk of agents and held to a human editor. The image gate is a Claude QC pass calibrated to my own approvals, and every edition is set on the same warm paper as this site.',
+    version: 'Daily',
+    status: 'live',
+    link: '/shipped',
+    external: false,
+    image: '/images/shipped-preview.webp',
+    features: [
+      'Daily and weekly editions',
+      'Agent-run edition desk',
+      'Claude QC image gate, calibrated to the editor',
+      'Every edition on the paper design',
+      'Free by email',
+      'Archive of every issue',
+    ],
+    specs: [
+      { label: 'Format', value: 'Magazine' },
+      { label: 'Cadence', value: 'Daily + Weekly' },
       { label: 'Price', value: 'Free' },
     ],
   },
@@ -208,7 +254,7 @@ const comingSoonProducts: ComingSoonProduct[] = [
   {
     name: 'Lexicon',
     tagline: 'Story bible as knowledge graph',
-    description: 'Characters, relationships, timelines—100 episodes deep, instantly searchable.',
+    description: 'Characters, relationships, timelines, 100 episodes deep, instantly searchable.',
     status: 'development',
     link: '/products/lexicon',
   },
@@ -218,6 +264,18 @@ const comingSoonProducts: ComingSoonProduct[] = [
     description: 'Shared pixel canvas, cooldown timers, real-time chaos. Live at aiplaces.art.',
     status: 'development' as const,
     link: 'https://aiplaces.art',
+  },
+  {
+    name: 'Fed',
+    tagline: 'A food OS for one household',
+    description: 'Send it a recipe post or a cooking video and it comes back as a recipe. Meals, pantry and a spoken engine, with a door for agents.',
+    status: 'development',
+  },
+  {
+    name: 'Darkroom',
+    tagline: 'RAW stills to cinematic timelapse',
+    description: 'Four rooms from ingest to grade, then a real edit bay. Built to the bar of the pro tools it borrows its grammar from.',
+    status: 'development',
   },
 ]
 
@@ -339,8 +397,8 @@ export default function ProductsContent() {
           <MetaRow
             className="mt-12 border-t border-[var(--hair)] pt-6"
             items={[
-              { value: '7', label: 'flagship products' },
-              { value: '2', label: 'in development' },
+              { value: String(flagshipProducts.length), label: 'flagship products' },
+              { value: String(comingSoonProducts.length), label: 'in development' },
               { value: '383', label: 'free skills & agents' },
             ]}
           />
@@ -372,9 +430,9 @@ export default function ProductsContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--hair)] border border-[var(--hair)] mb-8">
               {[
-                { value: '383', label: 'skills & agents — all 100% free' },
-                { value: '10', label: 'starter packs — curated for common workflows' },
-                { value: '∞', label: 'autonomous agents — ready in Claude Code' },
+                { value: '383', label: 'skills & agents, all 100% free' },
+                { value: '10', label: 'starter packs, curated for common workflows' },
+                { value: '∞', label: 'autonomous agents, ready in Claude Code' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-[var(--paper)] p-6">
                   <div className="font-[family-name:var(--font-display)] font-normal text-4xl text-[var(--ink)] mb-1">{stat.value}</div>

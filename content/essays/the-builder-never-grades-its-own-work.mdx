@@ -1,0 +1,66 @@
+---
+title: "The Builder Never Grades Its Own Work"
+subtitle: "Woodshed went public on October 12. It took a builder, a blind reviewer, an ear that cannot be argued with, and ten tries at the door."
+date: "2026-10-17"
+publishDate: "2026-10-18"
+category: "release"
+author: "Eddie + Claude"
+excerpt: "A free school for the classical guitar, where no song shows a Verified badge until somebody who did not build it says it is right. The lesson was not about guitar. It was about who is allowed to say done."
+tags: ["Woodshed", "Agents", "Verification", "Music", "Release"]
+featured: true
+heroImage: "/images/woodshed-preview.webp"
+---
+
+Woodshed is live at [woodshed.id8labs.si](https://woodshed.id8labs.si). It is a free school for the classical guitar. You pick Lágrima or Adelita or Recuerdos de la Alhambra, and a staff of glass balls bounces across the screen, one ball for each finger of the plucking hand, with a tab lane running on the same clock and both hands drawn on the fretboard. It tells you which finger plays which note, live, while it plays.
+
+I learned this music as a kid. My teacher was taught by Segovia as a child, which puts me one handshake away from the man who made the guitar a concert instrument. So the thing I could not live with was a school that teaches a wrong note with confidence. There are a lot of those online. Somebody runs a score through a converter, the converter guesses, nobody checks the guess, and a kid practices the guess for a month.
+
+The rule I set for Woodshed was simple to say and expensive to keep. Every song comes from a real printed edition, public domain or Creative Commons. Every finger the editor printed is honoured. And no song shows a Verified badge until somebody who did not build it says it is right.
+
+## Two agents, one myth
+
+The builder is called Hermes. The reviewer is called Apollo. In the myth Hermes builds the first lyre out of a tortoise shell and gives it to Apollo, and Apollo becomes the god of music. I liked that the one who makes the instrument is not the one who judges the music.
+
+Hermes takes an edition off IMSLP and turns it into a song. It reads the page, either from the editor's own MIDI or by optical music recognition, then runs a second reader over the same page to catch what the first one missed. It reads every bar by eye. It keeps every printed fingering and fills in the rest with a solver, and every finger it had to compute is marked as computed, so nobody mistakes a guess for the editor's hand.
+
+Then Hermes stops. That is the part that matters. Its own gates passing is, in its words, "my self-check, not a verdict."
+
+Apollo opens the files cold. It renders the editor's page itself and reads it system by system. It lints every bar against rules a teacher carries in their head: one string, one note; one finger, one place; no right-hand crossings; nothing open under a barre. Only after its own pass does it read what Hermes said. And every review carries the same honest line at the top: "I read scores and data. I have not heard or played anything."
+
+## What the reviewer caught
+
+Lágrima is sixteen printed bars, the name means teardrop, and it is one of the first real pieces a student of Tárrega learns. It took four review passes.
+
+On pass three Apollo found an open B string ringing under a half barre at the ninth fret in bar five. A student would have learned to lift a finger that should stay down. It found the right hand crossing over itself in the main figure of bars one, three and thirteen, the bars a student plays more than any other, which is exactly the habit you spend years unlearning. Hermes did not patch the song. It fixed the rule that produced the crossing, in the package, so every other song built on that rule got the fix too.
+
+One small thing survived to the end. In bar fourteen the index finger plays two strings in a row on a falling line. Apollo ruled it playable, unidiomatic, not blocking, and wrote down the fingering a teacher would tidy it to. That ruling is in the file. If you want to know why bar fourteen is fingered the way it is, you can read the argument.
+
+## The ear
+
+A reviewer that reads can still miss what a listener hears. So there is a third check, and it does not trust either of them.
+
+The ear check renders each song through the player's own audio engine, offline, at full speed, in a muted browser. Then a transcription model that has never seen the song turns the audio back into notes. It only gets the sound. Those notes are compared against our data and against the editor's own MIDI pulled out of the edition PDF. Every disagreement gets sorted into "the transcriber is guessing" or "we have a real problem," and the suspects are settled with a null test, not by somebody squinting at a waveform.
+
+Lágrima came back 100 percent. Asturias came back 94.7 percent strict, and every one of the 133 disagreements turned out to be a place where our notes match the printed page and the editor's MIDI rounds differently. Explained, page by page, and written down.
+
+The badge is computed from all of it. It is never typed. There is a test that fails if anyone removes the reviewer's READY or the ear check's pass from the rule that draws the badge.
+
+## Ten tries at the door
+
+You would think the hard part was the guitar. The hard part was the release.
+
+Every production deploy at the lab goes through a go or no-go poll. Six reviewers look at the same build from six sides: the site and its access, the data, the deploy and its rollback, the paper trail, the path a real person takes, and whether the thing does what it says. They never see each other's answers. Each one seals its call. One NO-GO holds the release.
+
+Woodshed went out on the tenth poll of the day. The nine holds were all real. One caught that the written rollback step would have reverted past the guard that keeps an unclear-copyright piece off the public site. One caught that nothing tested the badge rule. One caught deployment aliases the exposure check had never looked at. Every one of those would have been my problem at two in the morning some later week.
+
+It also cost about five million tokens and three hours of me waiting, and I said so, out loud and not politely. So the lab wrote down why. Eighty percent of the cost was that nobody ran the known checklist before calling the poll, so every poll discovered instead of confirmed. Now there is a preflight, one command, about three minutes, and no poll is called until it prints PASS. Its first run caught forty changed files with no test coverage that every poll before it had walked past.
+
+## What it taught me
+
+The lesson was not about guitar. It was about who is allowed to say done.
+
+A builder grading its own work is not lying. It is just looking at the thing with the same eyes that made it, so it sees what it meant instead of what it did. The fix is not a better builder. The fix is a second set of eyes that did not build it, a third check that does not care what either of them thinks, and a rule that the badge is drawn by the evidence and not by anybody's confidence.
+
+Since the launch the school has grown a piano side: Bach inventions, Burgmüller, Czerny, the Schumann album for the young, each one marked "Apollo READY, ear check pass" in the log before it ships. Same rule. Same myth.
+
+Go play something. If you find a wrong note, tell me which bar. That is the whole point.
