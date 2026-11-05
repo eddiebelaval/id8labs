@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-11-04 (23 weekly, 5 monthly)
+ * Last generated: 2026-11-05 (25 weekly, 6 monthly)
  */
 
 export interface ShippedSweep {
@@ -31,6 +31,22 @@ export interface ShippedSweep {
 
 /** Weekly Anthropic sweeps, newest first. */
 export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-45',
+    label: 'Week of November 2-8, 2026',
+    sortKey: '2026-11-02',
+    title: 'All the frontier that ships',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-45.html',
+    wordCount: 3552,
+  },
+  {
+    period: '2026-42',
+    label: 'Week of October 12-18, 2026',
+    sortKey: '2026-10-12',
+    title: 'The lab that filed a police report and booked $16.8 billion in the same week. And then Meta handed out 816 billion parameters for free.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-42.html',
+    wordCount: 3342,
+  },
   {
     period: '2026-41',
     label: 'Week of October 5-11, 2026',
@@ -219,6 +235,14 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
 
 /** Monthly Anthropic roundups, newest first. */
 export const SHIPPED_MONTHLY_SWEEPS: ShippedSweep[] = [
+  {
+    period: '2026-10',
+    label: 'October 2026',
+    sortKey: '2026-10-01',
+    title: 'All the frontier that ships',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-monthly/2026-10.html',
+    wordCount: 5703,
+  },
   {
     period: '2026-09',
     label: 'September 2026',
