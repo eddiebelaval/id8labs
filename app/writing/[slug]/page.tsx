@@ -102,6 +102,7 @@ export default function EssayPage({ params }: { params: { slug: string } }) {
             items={[
               { label: formattedDate },
               { label: essay.readTime },
+              ...(essay.author === 'Gonzo' ? [{ label: `by ${essay.author}` }] : []),
             ]}
           />
 
