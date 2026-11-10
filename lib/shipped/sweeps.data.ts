@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-11-09 (25 weekly, 6 monthly)
+ * Last generated: 2026-11-10 (25 weekly, 6 monthly)
  */
 
 export interface ShippedSweep {
@@ -43,9 +43,9 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     period: '2026-42',
     label: 'Week of October 12-18, 2026',
     sortKey: '2026-10-12',
-    title: 'The lab that filed a police report and booked $16.8 billion in the same week. And then Meta handed out 816 billion parameters for free.',
+    title: 'All the frontier that ships',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-42.html',
-    wordCount: 3342,
+    wordCount: 4111,
   },
   {
     period: '2026-41',
