@@ -11,7 +11,7 @@
  * These are the ROUTINE sweeps, distinct from the numbered magazine issues
  * in issues.data.ts. Newest period first.
  *
- * Last generated: 2026-11-11 (26 weekly, 6 monthly)
+ * Last generated: 2026-11-12 (27 weekly, 6 monthly)
  */
 
 export interface ShippedSweep {
@@ -40,12 +40,20 @@ export const SHIPPED_WEEKLY_SWEEPS: ShippedSweep[] = [
     wordCount: 3645,
   },
   {
+    period: '2026-44',
+    label: 'Week of October 26 - November 1, 2026',
+    sortKey: '2026-10-26',
+    title: 'All the frontier that ships',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-44.html',
+    wordCount: 3340,
+  },
+  {
     period: '2026-43',
     label: 'Week of October 19-25, 2026',
     sortKey: '2026-10-19',
-    title: 'Anthropic commits equity to public benefit with a mechanism that grows as the company does. No other frontier lab has done this.',
+    title: 'All the frontier that ships',
     url: 'https://eddiebelaval.github.io/shipped/anthropic-weekly/2026-43.html',
-    wordCount: 2369,
+    wordCount: 3063,
   },
   {
     period: '2026-42',
