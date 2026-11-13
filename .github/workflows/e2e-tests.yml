@@ -15,7 +15,7 @@ concurrency:
 jobs:
   e2e:
     name: E2E Tests (Chromium)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
 
     steps:
@@ -75,7 +75,7 @@ jobs:
   # Full browser matrix on main branch only
   e2e-full:
     name: Full E2E (Firefox + WebKit)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.ref == 'refs/heads/main'
     timeout-minutes: 45
 
