@@ -35,6 +35,10 @@ Explore available software and beta projects, interactive research, free self-pa
 ## Academy
 - [Academy](https://id8labs.si/academy): Free self-paced courses on working with AI and Claude Code, from first principles to scale.
 
+## Workshops
+- [Workshops](https://id8labs.si/workshops): Rooms in Miami, in English and Spanish, where Eddie helps small-business owners learn AI tools such as Claude Code. Journal accounts of the US Century Bank night and Presencia.
+- [Talleres](https://id8labs.si/es/workshops): La misma página, en español.
+
 ## The open notebook
 - [Notebook](https://id8labs.si/writing): Essays, research, and field notes from building software with AI.
 - [The Thesis](https://id8labs.si/thesis): The core argument behind id8Labs.
