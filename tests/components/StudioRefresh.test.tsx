@@ -29,7 +29,7 @@ describe('Studio navigation', () => {
     expect(nav.querySelectorAll('a')).toHaveLength(5)
     expect(screen.getByRole('link', { name: 'Software' })).toHaveAttribute('aria-current', 'page')
     expect(screen.getByRole('link', { name: 'Notebook' })).toHaveAttribute('href', '/writing')
-    expect(screen.getByRole('link', { name: 'Workshops' })).toHaveAttribute('href', '/workshops')
+    expect(screen.getByRole('link', { name: 'Teaching' })).toHaveAttribute('href', '/workshops')
   })
 
   it('opens the mobile destinations, closes with Escape, and returns focus', () => {
@@ -69,7 +69,7 @@ describe('Studio homepage preservation', () => {
     expect(screen.getByText('Beta')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'The full collection' })).toHaveAttribute('href', '/products')
     expect(screen.getByRole('link', { name: 'Learn with the lab' })).toHaveAttribute('href', '/academy')
-    expect(screen.getByRole('link', { name: 'Workshops' })).toHaveAttribute('href', '/workshops')
+    expect(screen.getByRole('link', { name: 'Teaching' })).toHaveAttribute('href', '/workshops')
   })
 
   it('shows the current Shipped edition while keeping the entry in the studio', () => {

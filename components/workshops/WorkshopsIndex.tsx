@@ -3,13 +3,9 @@ import { ArrowUpRight } from 'lucide-react'
 import { Container, Deck, Kicker, Rule } from '@/components/editorial'
 
 /**
- * Public workshops index. Facts in the two stories are taken from the
- * journal posts they link to. The standfirst is the page framing.
- *
- * Presencia's neighborhood is unresolved. The journal says Doral; Eddie's
- * records say Miami Lakes, May 21, 2026. This page says UAGM in Miami and
- * late May until that is confirmed. Do not copy either neighborhood here,
- * and do not edit the journal to match.
+ * Teaching index at /workshops. Facts in the two stories come from the
+ * journal posts they link to. Miami Lakes is the home base. The journal
+ * essay still says Doral for Presencia; leave that sentence as written.
  * The bank-night headcount stays the journal's words: thirty to forty.
  */
 
@@ -41,11 +37,11 @@ type Copy = {
 
 const copy: Record<WorkshopsLocale, Copy> = {
   en: {
-    kicker: 'Miami',
-    titleLead: 'Build your own ',
-    titleEm: 'infrastructure',
+    kicker: 'Miami Lakes',
+    titleLead: 'Teaching from ',
+    titleEm: 'Miami Lakes',
     titleTail: '.',
-    deck: 'Eddie helps small-business owners and people learn AI tools such as Claude Code, so they can build their own infrastructure for their own work. The rooms are in Miami, in English and in Spanish.',
+    deck: 'Eddie helps small-business owners and people learn AI tools such as Claude Code, so they can build their own infrastructure for their own work. Miami Lakes is the home base. The teaching happens wherever it fits: a room, a small group, or one person at a time, in English and in Spanish. Sessions vary.',
     section: 'From the journal',
     stories: [
       {
@@ -56,10 +52,10 @@ const copy: Record<WorkshopsLocale, Copy> = {
         links: [{ href: '/writing/the-paper-stays', label: 'Read the journal' }],
       },
       {
-        meta: 'Late May · UAGM, Miami',
+        meta: 'Late May · UAGM, Miami Lakes',
         title: 'Presencia',
         summary:
-          'A workshop for professionals, built in partnership with Jose and Profesa, at UAGM (Universidad Ana G. Méndez) in Miami. It is called Presencia, the Spanish word for what that series is building. The journal calls the workshop the essay made visceral: a room of business owners, live demos, and a single Monday action, set for late May. Presence, Not Tools is the third article written for that room.',
+          'A session for professionals, with Jose and Profesa, at UAGM (Universidad Ana G. Méndez) in Miami Lakes. It is called Presencia, the Spanish word for what that series is building. The journal calls it the essay made visceral: a room of business owners, live demos, and a single Monday action, set for late May. Presence, Not Tools is the third article written for that room.',
         links: [
           { href: '/writing/presence-not-tools', label: 'Presence, Not Tools' },
           {
@@ -71,11 +67,11 @@ const copy: Record<WorkshopsLocale, Copy> = {
     ],
   },
   es: {
-    kicker: 'Miami',
-    titleLead: 'Construye tu propia ',
-    titleEm: 'infraestructura',
+    kicker: 'Miami Lakes',
+    titleLead: 'Enseñanza desde ',
+    titleEm: 'Miami Lakes',
     titleTail: '.',
-    deck: 'Eddie ayuda a dueños de pequeños negocios y a otras personas a aprender herramientas de inteligencia artificial, como Claude Code, para construir su propia infraestructura para su propio trabajo. Los encuentros son en Miami, en inglés y en español.',
+    deck: 'Eddie ayuda a dueños de pequeños negocios y a otras personas a aprender herramientas de inteligencia artificial, como Claude Code, para construir su propia infraestructura para su propio trabajo. Miami Lakes es la base. La enseñanza ocurre donde haga falta: en una sala, en un grupo pequeño o de uno en uno, en inglés y en español. Las sesiones varían.',
     section: 'Del diario',
     stories: [
       {
@@ -86,10 +82,10 @@ const copy: Record<WorkshopsLocale, Copy> = {
         links: [{ href: '/writing/the-paper-stays', label: 'Leer el diario' }],
       },
       {
-        meta: 'Finales de mayo · UAGM, Miami',
+        meta: 'Finales de mayo · UAGM, Miami Lakes',
         title: 'Presencia',
         summary:
-          'Un taller para profesionales, hecho en alianza con Jose y Profesa, en la UAGM (Universidad Ana G. Méndez), en Miami. Se llama Presencia, por la palabra en español que nombra lo que esa serie está construyendo. El diario lo describe así: el ensayo, en una sala de dueños de negocios, con demostraciones en vivo y una sola acción para el lunes, fijado para finales de mayo. Presence, Not Tools es el tercer artículo escrito para esa sala.',
+          'Una sesión para profesionales, con Jose y Profesa, en la UAGM (Universidad Ana G. Méndez), en Miami Lakes. Se llama Presencia, la palabra en español que nombra lo que esa serie está construyendo. El diario lo llama el ensayo vuelto experiencia: una sala de dueños de negocios, demostraciones en vivo y una sola acción para el lunes, fijado para finales de mayo. Presence, Not Tools es el tercer artículo escrito para esa sala.',
         links: [
           { href: '/writing/presence-not-tools', label: 'Presence, Not Tools' },
           {

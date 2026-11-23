@@ -8,7 +8,7 @@ export const studioNavigation = [
   { href: '/lab', label: 'The lab', description: 'Discoveries and experiments' },
   { href: '/writing', label: 'Notebook', description: 'Essays, research, and Shipped.' },
   { href: '/academy', label: 'Academy', description: 'Free courses to learn with AI' },
-  { href: '/workshops', label: 'Workshops', description: 'Rooms in Miami, English and Spanish' },
+  { href: '/workshops', label: 'Teaching', description: 'Miami Lakes is the home base. English and Spanish.' },
 ] as const
 
 // The front-door selection derives availability from the complete portfolio.
