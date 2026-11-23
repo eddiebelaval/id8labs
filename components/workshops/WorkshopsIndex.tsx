@@ -6,7 +6,8 @@ import { Container, Deck, Kicker, Rule } from '@/components/editorial'
  * Teaching index at /workshops. Facts in the two stories come from the
  * journal posts they link to. Miami Lakes is the home base. The journal
  * essay still says Doral for Presencia; leave that sentence as written.
- * The bank-night headcount stays the journal's words: thirty to forty.
+ * The bank-night headcount on this page is about 30. The journal
+ * still says thirty to forty; leave that sentence as written.
  */
 
 export type WorkshopsLocale = 'en' | 'es'
@@ -48,7 +49,7 @@ const copy: Record<WorkshopsLocale, Copy> = {
         meta: 'September 24 · Miami Lakes',
         title: 'The US Century Bank night',
         summary:
-          'Written September 17, the week before the night, and left as it was. US Century Bank hosted thirty to forty of its small-business clients, owners who run clinics and firms and crews, in a university room in Miami Lakes. They are not technical. Half of them listened in Spanish. Jose opened, Eddie took three topics, Cameron took three, Allie took one, and Jose closed by handing every person a one-page AI policy they can put in front of their team on Monday. The three topics Eddie took are about what you type: what never goes into a chatbot, what to ask yourself before you paste, and why a team is already using AI in secret.',
+          'Written September 17, the week before the night, and left as it was. US Century Bank hosted about 30 small-business owners, who run clinics and firms and crews, in a university room in Miami Lakes. They are not technical. Half of them listened in Spanish. Jose opened, Eddie took three topics, Cameron took three, Allie took one, and Jose closed by handing every person a one-page AI policy they can put in front of their team on Monday. The three topics Eddie took are about what you type: what never goes into a chatbot, what to ask yourself before you paste, and why a team is already using AI in secret.',
         links: [{ href: '/writing/the-paper-stays', label: 'Read the journal' }],
       },
       {
@@ -78,7 +79,7 @@ const copy: Record<WorkshopsLocale, Copy> = {
         meta: '24 de septiembre · Miami Lakes',
         title: 'La noche de US Century Bank',
         summary:
-          'Escrito el 17 de septiembre, la semana antes de la noche, y dejado tal cual. US Century Bank reunió a entre treinta y cuarenta de sus clientes, dueños de clínicas, firmas y cuadrillas, en un salón universitario en Miami Lakes. No eran un público técnico. La mitad escuchó en español. Jose abrió, Eddie tomó tres temas, Cameron tomó tres, Allie tomó uno, y Jose cerró entregándole a cada persona una política de IA de una página para poner frente a su equipo el lunes. Los tres temas de Eddie son sobre lo que uno escribe: qué nunca debe entrar en un chatbot, qué preguntarse antes de pegar un texto y por qué el equipo ya está usando inteligencia artificial en secreto.',
+          'Escrito el 17 de septiembre, la semana antes de la noche, y dejado tal cual. US Century Bank reunió a unos 30 dueños de pequeños negocios, que llevan clínicas, firmas y cuadrillas, en un salón universitario en Miami Lakes. No eran un público técnico. La mitad escuchó en español. Jose abrió, Eddie tomó tres temas, Cameron tomó tres, Allie tomó uno, y Jose cerró entregándole a cada persona una política de IA de una página para poner frente a su equipo el lunes. Los tres temas de Eddie son sobre lo que uno escribe: qué nunca debe entrar en un chatbot, qué preguntarse antes de pegar un texto y por qué el equipo ya está usando inteligencia artificial en secreto.',
         links: [{ href: '/writing/the-paper-stays', label: 'Leer el diario' }],
       },
       {
