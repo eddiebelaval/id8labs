@@ -23,12 +23,13 @@ vi.mock('next/image', () => ({
 afterEach(cleanup)
 
 describe('Studio navigation', () => {
-  it('offers four focused destinations and marks the current page', () => {
+  it('offers the studio destinations and marks the current page', () => {
     render(<Header />)
     const nav = screen.getByRole('navigation', { name: 'Main navigation' })
-    expect(nav.querySelectorAll('a')).toHaveLength(4)
+    expect(nav.querySelectorAll('a')).toHaveLength(5)
     expect(screen.getByRole('link', { name: 'Software' })).toHaveAttribute('aria-current', 'page')
     expect(screen.getByRole('link', { name: 'Notebook' })).toHaveAttribute('href', '/writing')
+    expect(screen.getByRole('link', { name: 'Teaching' })).toHaveAttribute('href', '/workshops')
   })
 
   it('opens the mobile destinations, closes with Escape, and returns focus', () => {
@@ -68,6 +69,7 @@ describe('Studio homepage preservation', () => {
     expect(screen.getByText('Beta')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'The full collection' })).toHaveAttribute('href', '/products')
     expect(screen.getByRole('link', { name: 'Learn with the lab' })).toHaveAttribute('href', '/academy')
+    expect(screen.getByRole('link', { name: 'Teaching' })).toHaveAttribute('href', '/workshops')
   })
 
   it('shows the current Shipped edition while keeping the entry in the studio', () => {

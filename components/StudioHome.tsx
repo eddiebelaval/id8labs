@@ -143,6 +143,7 @@ export default function StudioHome() {
               <p className="max-w-2xl font-[family-name:var(--font-display)] text-2xl font-normal leading-relaxed text-[var(--body)]">Twenty years in television taught me to pay attention to how people work. The lab is where those observations become things people can use.</p>
               <div className="mt-7 flex flex-wrap gap-x-7 gap-y-2">
                 <Link href="/eddie" className={textLink}>Meet Eddie <ArrowRight size={15} aria-hidden="true" /></Link>
+                <Link href="/workshops" className={textLink}>Teaching <ArrowRight size={15} aria-hidden="true" /></Link>
                 <Link href="/academy" className={textLink}>Learn with the lab <ArrowRight size={15} aria-hidden="true" /></Link>
               </div>
             </div>
