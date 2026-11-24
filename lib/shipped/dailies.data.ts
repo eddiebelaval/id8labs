@@ -10,7 +10,7 @@
  * surfaced here grouped by ISO week so /shipped can present the archive as
  * issue buckets. Newest week (and newest day) first.
  *
- * Last generated: 2026-11-23 (186 daily editions, 29 weeks)
+ * Last generated: 2026-11-24 (187 daily editions, 30 weeks)
  */
 
 export interface ShippedDaily {
@@ -39,6 +39,13 @@ export interface ShippedDailyWeek {
 
 /** Every daily edition, flat, newest first. */
 export const SHIPPED_DAILIES: ShippedDaily[] = [
+  {
+    date: '2026-11-23',
+    dayLabel: 'Mon, Nov 23',
+    title: 'OpenAI\'s chief scientist proposes a speed limit on pretraining. Anthropic\'s stock is finding one on its own.',
+    url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-11-23.html',
+    wordCount: 2160,
+  },
   {
     date: '2026-11-22',
     dayLabel: 'Sun, Nov 22',
@@ -1345,6 +1352,20 @@ export const SHIPPED_DAILIES: ShippedDaily[] = [
 
 /** Daily editions grouped by ISO week, newest week first. */
 export const SHIPPED_DAILY_WEEKS: ShippedDailyWeek[] = [
+  {
+    isoWeek: '2026-W48',
+    weekStart: '2026-11-23',
+    label: 'Week of November 23-29, 2026',
+    editions: [
+      {
+        date: '2026-11-23',
+        dayLabel: 'Mon, Nov 23',
+        title: 'OpenAI\'s chief scientist proposes a speed limit on pretraining. Anthropic\'s stock is finding one on its own.',
+        url: 'https://eddiebelaval.github.io/shipped/anthropic-daily/2026-11-23.html',
+        wordCount: 2160,
+      },
+    ],
+  },
   {
     isoWeek: '2026-W47',
     weekStart: '2026-11-16',
