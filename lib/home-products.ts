@@ -87,6 +87,15 @@ export const showcaseHomeProducts: HomeProduct[] = [
     category: 'builders',
   },
   {
+    name: 'Squire',
+    status: 'internal',
+    statusLabel: 'Open Source • Free',
+    description: 'The complete Claude Code toolkit. Behavioral ruleset, 63 commands, 300+ skills, 34 agents — distilled from 3,307 commits of AI-augmented development.',
+    link: 'https://github.com/eddiebelaval/squire',
+    external: true,
+    category: 'builders',
+  },
+  {
     name: 'Lexicon',
     status: 'development',
     statusLabel: 'In Development',
